@@ -18,6 +18,7 @@ Build a **small, independent submod prototype** of politically forbidden warfare
 - [Design specification](docs/GAME_DESIGN.md) — eight related political systems and core rules
 - [Technical gates](docs/TECHNICAL_GATES.md) — G1–G5 and verification requirements
 - [Development workflow](docs/WORKFLOW.md) — how to work safely with GitHub/Codex
+- [Static validation](docs/STATIC_VALIDATION.md) — Python tests, CI, and limitations
 - [Backlog](docs/BACKLOG.md) — ordered, actionable next work
 
 ## Boundaries
