@@ -1,0 +1,31 @@
+# Real Westeros
+
+A submod for **Crusader Kings III — A Game of Thrones (AGOT)**.
+
+**Vision:** *Liberté, conséquences, immersion.* A living political Westeros in which player and AI characters can disobey, negotiate, make and break promises, pursue justice, and face persistent consequences.
+
+## Project status
+
+**Pre-prototype.** The structural script audit and initial game-design specification exist. No gameplay feature has been implemented or tested in CK3 yet. In particular, declaring an illegal war while retaining its original casus belli is **not proven possible** and must not be advertised as working.
+
+## First milestone
+
+Build a **small, independent submod prototype** of politically forbidden warfare (G1) while preserving the original CK3/AGOT casus belli, war lifecycle, and Mega Wars hooks. Keep any engine-dependent behavior explicitly marked as unverified until tested in CK3.
+
+## Repository guide
+
+- [AGENTS.md](AGENTS.md) — mandatory instructions for coding agents
+- [Design specification](docs/GAME_DESIGN.md) — eight related political systems and core rules
+- [Technical gates](docs/TECHNICAL_GATES.md) — G1–G5 and verification requirements
+- [Development workflow](docs/WORKFLOW.md) — how to work safely with GitHub/Codex
+- [Backlog](docs/BACKLOG.md) — ordered, actionable next work
+
+## Boundaries
+
+- **No paid infrastructure or external API costs.** Work within the existing ChatGPT Plus subscription and free tooling.
+- Keep AGOT and CK3 installation files out of this public repository. Only ship original submod source and documentation; reference source-script paths, not copied game assets.
+- Never edit the installed game or AGOT in place.
+- Gameplay decisions are delegated to the coding/design agent unless they materially change the original vision. Record decisions in Git.
+- Static checks are not a substitute for running CK3. In-game validation remains outstanding.
+
+This repository is intended to be the single source of truth for code, task progress, and development decisions.
