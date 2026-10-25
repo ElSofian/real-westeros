@@ -4,8 +4,8 @@ A task is done only when the deliverable and verification evidence are present.
 
 | Priority | ID | Task | State |
 |---|---|---|---|
-| P0 | RW-001 | Initialize public repository, instructions, design summary and gates | In progress |
-| P0 | RW-002 | Establish independent mod directory and descriptor with conservative version metadata | Todo |
+| P0 | RW-001 | Initialize public repository, instructions, design summary and gates | Done |
+| P0 | RW-002 | Establish independent mod directory and descriptor with conservative version metadata | Done (scaffold; engine untested) |
 | P0 | RW-003 | Build basic structural checks (file encodings, brace balance, duplicate definitions, localization keys as applicable); avoid false assurance | Todo |
 | P0 | RW-004 | Investigate G1 against local AGOT/CK3 sources and create smallest safe experimental war prototype | Todo |
 | P0 | RW-005 | Write reproducible engine test plan and logging for genuine CB / Mega Wars scenarios | Todo |
@@ -15,4 +15,4 @@ A task is done only when the deliverable and verification evidence are present.
 | P1 | RW-009 | Add AI actor selection and negative-path tests for one end-to-end incident | Todo |
 | P2 | RW-010 | Expand political memory, justice, diplomacy and other systems incrementally | Todo |
 
-**Next task after repository bootstrap:** RW-002, then RW-003, then RW-004. Do not start the full implementation before G1 feasibility is understood; prepare independent proof-of-concept code without declaring engine success.
+**Next task:** RW-003 static checks, then RW-004. Do not start the full implementation before G1 feasibility is understood; prepare independent proof-of-concept code without declaring engine success.
