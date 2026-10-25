@@ -1,0 +1,23 @@
+# Local installations, game assets and generated distributions
+.DS_Store
+Thumbs.db
+__pycache__/
+*.py[cod]
+*.log
+*.zip
+*.7z
+*.rar
+build/
+dist/
+out/
+local/
+vendor/
+CK3_Scripts/
+AGOT_Scripts/
+CK3_Scripts.zip
+AGOT_Scripts.zip
+
+# Optional private developer workspace
+.env
+.env.*
+!.env.example
