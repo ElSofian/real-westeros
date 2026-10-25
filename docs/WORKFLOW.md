@@ -5,7 +5,7 @@
 3. Run static tests; clearly label untested engine behavior. Never use the public repo to distribute installed AGOT/CK3 assets.
 4. Record progress, blockers, next task and relevant checks in `docs/PROGRESS.md`.
 5. Have Codex continue through the ordered backlog **within the task session limits available**. Any scheduled restart or background continuation is a distinct feature that must be configured and confirmed — a GitHub connection by itself does not create it.
-6. Stop rather than assume success if blocked by missing game engine, unsupported syntax, compatibility ambiguity, budget limits or required access.
+6. Do not claim success for engine-dependent behavior without CK3. But missing CK3/AGOT is **not** a blocker to scaffolding, documentation, static validation, and independently verifiable changes. If GitHub PR creation is unavailable in a specific session, commit and use whatever Git/GitHub publishing capability is available; otherwise report the exact blocker without discarding completed local work.
 7. No paid APIs or servers. ChatGPT Plus does not automatically include Agents API consumption.
 8. Keep reports to the owner concise; normal engineering choices are delegated.
 
