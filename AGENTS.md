@@ -15,8 +15,11 @@ Develop Real Westeros as an independent CK3 AGOT submod. The three non-negotiabl
 9. If an action depends on a technical gate, mark it experimental; never silently replace the authentic casus belli with a fake generic one.
 10. Do not autonomously merge an unverified gameplay PR to `main`. Open a draft PR when there is uncertainty.
 
+## Nonblocking environment policy
+A missing local CK3/AGOT installation does **not** block repository scaffolding, game design, ordinary Git operations, static verification, or isolated experimental source changes. Use the verified relative launcher path `path="mod/real_westeros"`; document the usual CK3 user-data destination instead of requesting or inventing a personal absolute path. The descriptor currently targets CK3 `1.19.*` based on AGOT 0.5.2.1 declaring support for 1.19.0.6; do not claim it was engine-verified. Mark engine-dependent behavior *unverified* until tested. If a particular GitHub action is unavailable in your agent session, use the configured Git CLI if possible; otherwise commit locally and report the precise missing permission/tool, without discarding finished work. A lack of one publishing action is not a reason to avoid working on files.
+
 ## First assignment
-Investigate G1: a vassal war disallowed by political law while retaining the authentic CB and CK3/AGOT lifecycle. Start with a precise feasibility investigation and a minimal isolated spike. If local CK3/AGOT sources are absent, document exact references to inspect rather than guess code or claim tests.
+After RW-002 scaffold, undertake RW-003 static checks, then investigate G1: a vassal war disallowed by political law while retaining the authentic CB and CK3/AGOT lifecycle. Start with a precise feasibility investigation and a minimal isolated spike. If local CK3/AGOT sources are absent, document exact references to inspect rather than guess code or claim tests. Continue with independent tasks that do not require those sources.
 
 ## Validation labels
 - **Static-checked:** parser or structural checks pass, but engine behavior not demonstrated.
