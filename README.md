@@ -19,6 +19,7 @@ Build a **small, independent submod prototype** of politically forbidden warfare
 - [Technical gates](docs/TECHNICAL_GATES.md) — G1–G5 and verification requirements
 - [Development workflow](docs/WORKFLOW.md) — how to work safely with GitHub/Codex
 - [Static validation](docs/STATIC_VALIDATION.md) — Python tests, CI, and limitations
+- [G1 engine test plan](docs/TEST_PLAN_G1.md) — authentic CB, Mega Wars and regression scenarios
 - [Backlog](docs/BACKLOG.md) — ordered, actionable next work
 
 ## Boundaries
