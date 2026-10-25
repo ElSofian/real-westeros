@@ -6,7 +6,7 @@ A submod for **Crusader Kings III — A Game of Thrones (AGOT)**.
 
 ## Project status
 
-**Pre-prototype.** The structural script audit and initial game-design specification exist. No gameplay feature has been implemented or tested in CK3 yet. In particular, declaring an illegal war while retaining its original casus belli is **not proven possible** and must not be advertised as working.
+**Scaffold / pre-prototype.** The structural script audit and initial game-design specification exist. A local-mod descriptor and empty folder structure are committed. No gameplay feature has been implemented or tested in CK3 yet. See [installation](docs/INSTALL.md). In particular, declaring an illegal war while retaining its original casus belli is **not proven possible** and must not be advertised as working.
 
 ## First milestone
 
