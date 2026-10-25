@@ -13,7 +13,7 @@ Develop Real Westeros as an independent CK3 AGOT submod. The three non-negotiabl
 7. No paid cloud services, credits, APIs, hosted servers or new subscriptions.
 8. Keep responses and PR summaries concise. The owner delegates normal engineering and design choices; escalate only major vision changes or real blockers.
 9. If an action depends on a technical gate, mark it experimental; never silently replace the authentic casus belli with a fake generic one.
-10. Do not autonomously merge an unverified gameplay PR to `main`. Open a draft PR when there is uncertainty.
+10. Routine decisions, documentation, scaffolds, and statically verifiable submod code can be reviewed and merged autonomously after actual available checks pass. Explicitly mark CK3 behavior as **not engine-tested** until in-game validation. Keep risky core war / Mega Wars changes isolated when they cannot be checked without the engine, and never present them as working. Do not merge failing checks or changes that distribute third-party assets.
 
 ## Nonblocking environment policy
 A missing local CK3/AGOT installation does **not** block repository scaffolding, game design, ordinary Git operations, static verification, or isolated experimental source changes. Use the verified relative launcher path `path="mod/real_westeros"`; document the usual CK3 user-data destination instead of requesting or inventing a personal absolute path. The descriptor currently targets CK3 `1.19.*` based on AGOT 0.5.2.1 declaring support for 1.19.0.6; do not claim it was engine-verified. Mark engine-dependent behavior *unverified* until tested. If a particular GitHub action is unavailable in your agent session, use the configured Git CLI if possible; otherwise commit locally and report the precise missing permission/tool, without discarding finished work. A lack of one publishing action is not a reason to avoid working on files.
@@ -25,3 +25,6 @@ After RW-002 scaffold, undertake RW-003 static checks, then investigate G1: a va
 - **Static-checked:** parser or structural checks pass, but engine behavior not demonstrated.
 - **Engine-tested:** observed directly in CK3 with reproducible steps.
 - **Blocked:** missing engine capability, source, or required environment.
+
+## Autonomous continuation
+The owner does not want to relay messages between separate agents or approve ordinary PRs. When operating in a scheduled ChatGPT/Work run with GitHub tools, advance the next self-contained backlog task directly if possible: inspect repository, edit on a feature branch, verify what can be verified, create/review a PR, merge safe changes, and update `docs/PROGRESS.md`. If an integration cannot launch Codex Cloud, do not request that the owner copy/paste prompts as a routine workaround; use available capabilities for useful direct progress. A scheduled task is *not* evidence of uninterrupted Codex execution. Stop on quota exhaustion and record genuine blockers. No new paid services.
