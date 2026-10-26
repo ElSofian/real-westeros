@@ -87,6 +87,15 @@ def decline(offer: Offer, actor: str, expected_version: int, now: int) -> Offer:
     return replace(offer, status='declined')
 
 
+def expire(offer: Offer, now: int) -> Offer:
+    """Finalize an expired pending offer; do not execute game effects."""
+    if offer.status != 'pending':
+        raise OfferRejected('offer already finalized')
+    if now < offer.expires_at:
+        raise OfferRejected('offer has not expired')
+    return replace(offer, status='expired')
+
+
 class OfferBook:
     """Single-threaded, in-memory authority for the CURRENT revision only.
 
@@ -123,5 +132,10 @@ class OfferBook:
     def decline(self, offer_id: str, actor: str, expected_version: int,
                 now: int) -> Offer:
         updated = decline(self.current(offer_id), actor, expected_version, now)
+        self._offers[offer_id] = updated
+        return updated
+
+    def expire(self, offer_id: str, now: int) -> Offer:
+        updated = expire(self.current(offer_id), now)
         self._offers[offer_id] = updated
         return updated
