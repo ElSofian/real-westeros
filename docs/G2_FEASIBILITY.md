@@ -57,7 +57,7 @@ Lord A offers Lord B: (1) a conditional promise of military assistance; (2) imme
 ## Offline protocol proof
 
 - tools/g2_offer_probe.py: immutable offer transitions and a **single-threaded in-memory current-revision authority** (OfferBook). Executes **zero** CK3 effects.
-- tests/test_g2_offer_probe.py: **16** positive/negative tests: two-clause consent, counteroffer, stale revision, wrong recipient, failed/missing precondition, duplicate response/ID/clauses, expiry, terminal decline, invalid parties.
+- tests/test_g2_offer_probe.py: **18** positive/negative tests: two-clause consent, counteroffer, stale revision, wrong recipient, failed/missing precondition, duplicate response/ID/clauses, expiry, terminal decline, invalid parties.
 - Run: python -m unittest discover -s tests -v ; python tools/validate_mod.py
 
 **Limit:** a detached old Offer object can still be inspected and manipulated by pure functions; only OfferBook consults the latest authoritative revision. OfferBook is volatile, single-threaded, and **not** CK3 persistence, concurrency control or an engine-side transaction. RW-007 must design real save/reload state and idempotent reentrant callbacks. Do not port the Python code into CK3 as if it were a validated game API.
