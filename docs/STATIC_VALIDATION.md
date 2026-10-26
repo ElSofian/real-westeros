@@ -26,3 +26,9 @@ The `Validate submod` GitHub Actions workflow runs both commands on pull request
 File-extension checks cannot establish whether a text file or asset is third-party copyrighted content. Human/code review must still ensure that no CK3/AGOT source files or proprietary assets are committed. The checks deliberately do not ban original mod-created image assets by extension.
 
 A green CI run means **static-checked only**, never **engine-tested**. In-game verification remains necessary before declaring gameplay complete.
+
+## Private G1 source locator (RW-004)
+
+`python tools/audit_g1_sources.py --ck3-root "<CK3>/game" --agot-root "<AGOT>"`
+
+This optional local-only check identifies candidate source files and identifier line numbers. It does not copy or output any source code or personal paths. It cannot be run in CI without private game files, and `LOCATED_UNVERIFIED` is **not** a CK3 parsing, feasibility, or engine-test result. Synthetic positive/negative tests for the locator run with the normal `unittest discover` command. See `docs/G1_FEASIBILITY.md`.
