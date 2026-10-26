@@ -5,7 +5,7 @@ import sys
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
-from g2_offer_probe import Clause, OfferBook, OfferRejected, accept, counter, decline, propose  # noqa: E402
+from g2_offer_probe import Clause, OfferBook, OfferRejected, accept, counter, decline, expire, propose  # noqa: E402
 
 
 class OfferProbeTests(unittest.TestCase):
@@ -96,6 +96,17 @@ class OfferProbeTests(unittest.TestCase):
         book.create(self.offer)
         with self.assertRaisesRegex(OfferRejected, 'duplicate offer ID'):
             book.create(self.offer)
+
+    def test_expire_marks_offer_terminal(self):
+        book = OfferBook()
+        book.create(self.offer)
+        self.assertEqual(book.expire('affair-1', 100).status, 'expired')
+        with self.assertRaisesRegex(OfferRejected, 'finalized'):
+            book.accept('affair-1', 'lord_b', 1, 101, {'service': True, 'payment': True})
+
+    def test_expire_before_deadline_rejected(self):
+        with self.assertRaisesRegex(OfferRejected, 'not expired'):
+            expire(self.offer, 99)
 
     def test_no_self_dealing(self):
         with self.assertRaisesRegex(OfferRejected, 'parties'):
