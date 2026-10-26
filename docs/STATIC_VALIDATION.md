@@ -35,4 +35,4 @@ This optional local-only check identifies candidate source files and identifier 
 
 ## G2 negotiation protocol probe (RW-006)
 
-`tools/g2_offer_probe.py` is a **Python-only state-machine proof**, not CK3 script. Its 16 positive/negative tests run with the standard unittest command. It models versioned consent and an in-memory current-revision authority; it does **not** implement save/load, a CK3 UI, native transfers or atomic CK3 transactions. See `docs/G2_FEASIBILITY.md`.
+`tools/g2_offer_probe.py` is a **Python-only state-machine proof**, not CK3 script. Its 18 positive/negative tests run with the standard unittest command. It models versioned consent and an in-memory current-revision authority; it does **not** implement save/load, a CK3 UI, native transfers or atomic CK3 transactions. See `docs/G2_FEASIBILITY.md`.
