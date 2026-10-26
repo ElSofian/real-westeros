@@ -32,3 +32,7 @@ A green CI run means **static-checked only**, never **engine-tested**. In-game v
 `python tools/audit_g1_sources.py --ck3-root "<CK3>/game" --agot-root "<AGOT>"`
 
 This optional local-only check identifies candidate source files and identifier line numbers. It does not copy or output any source code or personal paths. It cannot be run in CI without private game files, and `LOCATED_UNVERIFIED` is **not** a CK3 parsing, feasibility, or engine-test result. Synthetic positive/negative tests for the locator run with the normal `unittest discover` command. See `docs/G1_FEASIBILITY.md`.
+
+## G2 negotiation protocol probe (RW-006)
+
+`tools/g2_offer_probe.py` is a **Python-only state-machine proof**, not CK3 script. Its 18 positive/negative tests run with the standard unittest command. It models versioned consent and an in-memory current-revision authority; it does **not** implement save/load, a CK3 UI, native transfers or atomic CK3 transactions. See `docs/G2_FEASIBILITY.md`.
