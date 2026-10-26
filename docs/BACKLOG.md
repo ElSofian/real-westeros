@@ -7,7 +7,7 @@ A task is done only when the deliverable and verification evidence are present.
 | P0 | RW-001 | Initialize public repository, instructions, design summary and gates | Done |
 | P0 | RW-002 | Establish independent mod directory and descriptor with conservative version metadata | Done (scaffold; engine untested) |
 | P0 | RW-003 | Build basic structural checks (file encodings, brace balance, duplicate definitions, localization keys as applicable); avoid false assurance | Done (12 local unit tests; static only) |
-| P0 | RW-004 | Investigate G1 against local AGOT/CK3 sources and create smallest safe experimental war prototype | Todo |
+| P0 | RW-004 | Investigate G1 against local AGOT/CK3 sources and create smallest safe experimental war prototype | In progress — source map + negative fixtures; BLOCKED for gameplay spike (pinned source/engine absent) |
 | P0 | RW-005 | Write reproducible engine test plan and logging for genuine CB / Mega Wars scenarios | Done (test plan only; engine execution pending) |
 | P1 | RW-006 | Identify a viable multi-clause negotiation UI/model or document engine limits (G2) | Todo |
 | P1 | RW-007 | Create persistence model for pending political affairs and obligations | Todo |
@@ -15,4 +15,4 @@ A task is done only when the deliverable and verification evidence are present.
 | P1 | RW-009 | Add AI actor selection and negative-path tests for one end-to-end incident | Todo |
 | P2 | RW-010 | Expand political memory, justice, diplomacy and other systems incrementally | Todo |
 
-**Next task:** RW-004 G1 source/feasibility investigation. RW-005 test cases are documented but not engine-tested. Do not start the full implementation before G1 feasibility is understood; prepare independent proof-of-concept code without declaring engine success.
+**Next task:** RW-004 remains blocked at the pinned-source/native-CB boundary. Proceed with independent RW-006 G2 feasibility research; do not invent a G1 war spike. RW-005 test cases are documented but not engine-tested. Do not start the full implementation before G1 feasibility is understood; prepare independent proof-of-concept code without declaring engine success.
