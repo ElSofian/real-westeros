@@ -53,6 +53,15 @@ rw_sentencing.0001 = {
         ai_chance = { base = 0 }
     }
     option = {
+        name = rw_title_status.open
+        trigger = { rw_title_status_view_trigger = yes }
+        if = {
+            limit = { rw_title_status_view_trigger = yes }
+            trigger_event = { id = rw_title_status.0001 }
+        }
+        ai_chance = { base = 0 }
+    }
+    option = {
         name = rw_sentencing.leave_unchanged
         trigger = { rw_sentencing_current_prisoner_trigger = yes }
         # No keep-imprisoned flag, pardon, timer or new sanction.

@@ -1,0 +1,43 @@
+# Current personal custody/knowledge, not historical guilt or a house sanction.
+rw_title_status_view_trigger = {
+    rw_sentencing_current_prisoner_trigger = yes
+}
+rw_title_status_revoke_reason_trigger = {
+    rw_title_status_view_trigger = yes
+    has_revoke_title_reason = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+}
+rw_title_status_no_revoke_reason_trigger = {
+    rw_title_status_view_trigger = yes
+    NOT = { has_revoke_title_reason = scope:rw_scheme_evidence_record.var:rw_evidence_participant }
+}
+rw_title_status_knight_trigger = {
+    rw_title_status_view_trigger = yes
+    scope:rw_scheme_evidence_record.var:rw_evidence_participant = { is_agot_knight_trigger = yes }
+}
+rw_title_status_stripped_knight_trigger = {
+    rw_title_status_view_trigger = yes
+    scope:rw_scheme_evidence_record.var:rw_evidence_participant = { has_trait = stripped_knight }
+}
+rw_title_status_landed_knight_contract_trigger = {
+    rw_title_status_view_trigger = yes
+    scope:rw_scheme_evidence_record.var:rw_evidence_participant = {
+        exists = liege
+        vassal_contract_has_flag = has_landed_knight_contract
+    }
+}
+rw_title_status_can_open_revocation_trigger = {
+    rw_title_status_view_trigger = yes
+    is_ai = no
+    scope:rw_scheme_evidence_record.var:rw_evidence_participant = {
+        is_landed = yes
+        liege = scope:rw_scheme_observer
+    }
+    is_character_interaction_valid = {
+        recipient = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+        interaction = revoke_title_interaction
+    }
+}
+rw_title_status_can_open_release_trigger = {
+    rw_title_status_view_trigger = yes
+    rw_sentencing_can_open_release_trigger = yes
+}
