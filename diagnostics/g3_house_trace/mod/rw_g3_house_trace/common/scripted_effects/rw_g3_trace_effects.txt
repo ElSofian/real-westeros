@@ -1,0 +1,16 @@
+rw_g3_trace_start_effect = {
+    if = {
+        limit = { rw_g3_trace_can_start_trigger = yes }
+        scope:recipient.house = {
+            set_variable = { name = rw_g3_trace_active value = flag:enabled days = 7 }
+        }
+        debug_log = "RW_G3 trace=enabled window_days=7"
+    }
+}
+rw_g3_trace_stop_effect = {
+    if = {
+        limit = { rw_g3_trace_can_stop_trigger = yes }
+        scope:recipient.house = { remove_variable = rw_g3_trace_active }
+        debug_log = "RW_G3 trace=disabled"
+    }
+}

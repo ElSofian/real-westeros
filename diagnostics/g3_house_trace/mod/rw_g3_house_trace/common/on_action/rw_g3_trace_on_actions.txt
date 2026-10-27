@@ -1,0 +1,57 @@
+# Opt-in diagnostic callbacks only. Never replace native effects/events.
+on_title_gain = {
+    on_actions = { rw_g3_trace_gain }
+}
+rw_g3_trace_gain = {
+    trigger = { rw_g3_trace_title_callback_trigger = yes }
+    effect = {
+        if = {
+            limit = { rw_g3_trace_title_callback_trigger = yes }
+            scope:title = {
+                debug_log = "RW_G3 callback=gain holder=[ROOT.Char.GetID] title=[THIS.Title.GetNameNoTooltip]"
+            }
+        }
+    }
+}
+on_title_gain_inheritance = {
+    on_actions = { rw_g3_trace_inheritance }
+}
+rw_g3_trace_inheritance = {
+    trigger = { rw_g3_trace_title_callback_trigger = yes }
+    effect = {
+        if = {
+            limit = { rw_g3_trace_title_callback_trigger = yes }
+            scope:title = {
+                debug_log = "RW_G3 callback=inheritance holder=[ROOT.Char.GetID] title=[THIS.Title.GetNameNoTooltip]"
+            }
+        }
+    }
+}
+on_title_gain_usurpation = {
+    on_actions = { rw_g3_trace_usurpation }
+}
+rw_g3_trace_usurpation = {
+    trigger = { rw_g3_trace_title_callback_trigger = yes }
+    effect = {
+        if = {
+            limit = { rw_g3_trace_title_callback_trigger = yes }
+            scope:title = {
+                debug_log = "RW_G3 callback=usurpation holder=[ROOT.Char.GetID] title=[THIS.Title.GetNameNoTooltip]"
+            }
+        }
+    }
+}
+on_title_lost = {
+    on_actions = { rw_g3_trace_loss }
+}
+rw_g3_trace_loss = {
+    trigger = { rw_g3_trace_title_callback_trigger = yes }
+    effect = {
+        if = {
+            limit = { rw_g3_trace_title_callback_trigger = yes }
+            scope:title = {
+                debug_log = "RW_G3 callback=loss holder=[ROOT.Char.GetID] title=[THIS.Title.GetNameNoTooltip]"
+            }
+        }
+    }
+}

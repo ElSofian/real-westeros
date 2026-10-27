@@ -22,6 +22,7 @@ are deferred to the final campaign, not waived. Prefer a disposable fresh save.
 | Judicial inspection | Observer-only custody/reason check and guarded native arrest-window shortcut; no automatic send |
 | Personal prisoner sentencing | Native execution/release terms or unchanged detention; no automatic send/result |
 | Individual title/status review | Current grounds, knight/contract status; experimental native revocation/release terms, no forced transfer |
+| Optional G3 diagnostic | Separate mod under `diagnostics/g3_house_trace/`; debug-only seven-day house/title trace, no sanction |
 | Known-case archive | Independent story records, role/disclosure-filtered views, retained closed records |
 
 All rows describe intended source behavior; none has been observed in CK3 here.
@@ -60,14 +61,18 @@ needed to build, and the ZIP contains no Python gameplay runtime.
 
 ## Integrity and limits
 
-The ZIP has `mod/real_westeros.mod`, `mod/real_westeros/`, selected instructions,
+The ZIP has `mod/real_westeros.mod`, `mod/real_westeros/`, selected instructions
+(including the G3 diagnostic notice and hash-only source receipt),
 and `MANIFEST.json`. The manifest identifies HEAD, provisional version metadata,
 and each payload file's SHA-256/size. It excludes itself from its file list; directory
 entries have no payload checksum. The adjacent `.sha256` hashes the whole mod ZIP.
 Compare with `Get-FileHash ... -Algorithm SHA256` in PowerShell or `sha256sum`.
 Hashes detect differences; they are not a signature or CK3 compatibility proof.
 
-Packaging reads only tracked regular blobs under the narrow mod/docs allowlist.
+Packaging reads only tracked regular blobs under the narrow mod/docs allowlist
+and eight explicitly listed optional G3 diagnostic files. The diagnostic is outside
+the main mod payload and is installed/enabled separately; its descriptors, launcher
+path, script braces and localization encodings receive separate structural checks.
 Symlinks and unexpected mod payloads fail closed. It preserves empty scaffold
 directories, verifies the staged mod structurally, and produces identical ZIP bytes
 for the same committed payload/toolchain (not a promise across all zlib versions).

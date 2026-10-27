@@ -1,0 +1,3 @@
+﻿l_english:
+ rw_g3_trace_start_interaction:0 "G3 diagnostic: trace this character’s current house for seven days"
+ rw_g3_trace_stop_interaction:0 "G3 diagnostic: stop tracing this character’s current house"

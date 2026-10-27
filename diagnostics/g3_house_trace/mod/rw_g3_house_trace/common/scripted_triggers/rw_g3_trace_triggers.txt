@@ -1,0 +1,23 @@
+# Diagnostic only. Never used to determine legality, succession or sanctions.
+rw_g3_trace_can_select_house_trigger = {
+    debug_only = yes
+    exists = scope:actor
+    exists = scope:recipient
+    scope:actor = { is_alive = yes is_ai = no }
+    scope:recipient = { is_alive = yes exists = house }
+}
+rw_g3_trace_can_start_trigger = {
+    rw_g3_trace_can_select_house_trigger = yes
+    scope:recipient.house = { NOT = { has_variable = rw_g3_trace_active } }
+}
+rw_g3_trace_can_stop_trigger = {
+    rw_g3_trace_can_select_house_trigger = yes
+    scope:recipient.house = { has_variable = rw_g3_trace_active }
+}
+# Native title callback: root is the changed holder, not the title or a house head.
+rw_g3_trace_title_callback_trigger = {
+    debug_only = yes
+    exists = scope:title
+    exists = house
+    house = { var:rw_g3_trace_active = flag:enabled }
+}

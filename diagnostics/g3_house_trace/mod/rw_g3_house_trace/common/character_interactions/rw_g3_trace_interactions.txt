@@ -1,0 +1,19 @@
+rw_g3_trace_start_interaction = {
+    category = interaction_debug_main
+    common_interaction = yes
+    use_diplomatic_range = no
+    auto_accept = yes
+    is_shown = { rw_g3_trace_can_start_trigger = yes }
+    on_accept = { rw_g3_trace_start_effect = yes }
+    ai_will_do = { base = 0 }
+}
+
+rw_g3_trace_stop_interaction = {
+    category = interaction_debug_main
+    common_interaction = yes
+    use_diplomatic_range = no
+    auto_accept = yes
+    is_shown = { rw_g3_trace_can_stop_trigger = yes }
+    on_accept = { rw_g3_trace_stop_effect = yes }
+    ai_will_do = { base = 0 }
+}
