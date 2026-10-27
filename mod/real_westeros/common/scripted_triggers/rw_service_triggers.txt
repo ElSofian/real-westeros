@@ -7,6 +7,7 @@ rw_service_party_eligible_trigger = {
 rw_service_provider_available_trigger = {
     rw_service_party_eligible_trigger = yes
     NOT = { has_character_flag = rw_service_pending }
+    NOT = { has_character_flag = rw_service_obligation }
     NOT = { has_character_flag = rw_service_cooldown }
 }
 rw_service_can_offer_trigger = {
@@ -21,15 +22,18 @@ rw_service_matches_trigger = {
     exists = scope:rw_service_serial
     exists = scope:rw_service_revision
     exists = scope:rw_service_price
+    exists = scope:rw_service_mode
     scope:rw_service_provider = {
         has_variable = rw_service_target
         has_variable = rw_service_serial
         has_variable = rw_service_revision
         has_variable = rw_service_price
+        has_variable = rw_service_mode
         var:rw_service_target = scope:rw_service_client
         var:rw_service_serial = scope:rw_service_serial
         var:rw_service_revision = scope:rw_service_revision
         var:rw_service_price = scope:rw_service_price
+        var:rw_service_mode = scope:rw_service_mode
     }
 }
 rw_service_active_trigger = {
@@ -52,4 +56,69 @@ rw_service_provider_turn_trigger = {
 }
 rw_service_affordable_trigger = {
     scope:rw_service_client = { gold >= scope:rw_service_price }
+}
+
+rw_service_deferred_trigger = {
+    scope:rw_service_mode = flag:deferred
+}
+# Owner-only identity is sufficient to cancel an orphan; never to pay/fulfill it.
+rw_service_obligation_owner_matches_trigger = {
+    exists = scope:rw_service_provider
+    exists = scope:rw_service_serial
+    exists = scope:rw_service_revision
+    scope:rw_service_provider = {
+        has_variable = rw_service_serial
+        has_variable = rw_service_revision
+        var:rw_service_serial = scope:rw_service_serial
+        var:rw_service_revision = scope:rw_service_revision
+        has_character_flag = rw_service_obligation
+        var:rw_service_turn = flag:obligation
+    }
+}
+rw_service_obligation_matches_trigger = {
+    rw_service_matches_trigger = yes
+    scope:rw_service_provider = {
+        has_character_flag = rw_service_obligation
+        var:rw_service_turn = flag:obligation
+    }
+}
+rw_service_obligation_live_trigger = {
+    rw_service_obligation_matches_trigger = yes
+    scope:rw_service_provider = { is_alive = yes }
+    scope:rw_service_client = { is_alive = yes }
+}
+rw_service_obligation_actionable_trigger = {
+    rw_service_obligation_live_trigger = yes
+    this = scope:rw_service_provider
+    scope:rw_service_provider = {
+        has_character_flag = rw_service_deadline
+        NOT = { has_character_flag = rw_service_not_due }
+    }
+}
+rw_service_obligation_fulfillable_trigger = {
+    rw_service_obligation_actionable_trigger = yes
+    scope:rw_service_provider = { rw_service_party_eligible_trigger = yes }
+    scope:rw_service_client = { rw_service_party_eligible_trigger = yes }
+    rw_service_affordable_trigger = yes
+}
+# Receipt validation is separate: settlement/clear already removed active identity.
+rw_service_breach_receipt_trigger = {
+    exists = scope:rw_service_provider
+    exists = scope:rw_service_client
+    exists = scope:rw_service_serial
+    this = scope:rw_service_client
+    scope:rw_service_client = { is_alive = yes }
+    scope:rw_service_provider = {
+        is_alive = yes
+        has_variable = rw_service_last_serial
+        has_variable = rw_service_last_client
+        has_variable = rw_service_last_outcome
+        var:rw_service_last_serial = scope:rw_service_serial
+        var:rw_service_last_client = scope:rw_service_client
+        var:rw_service_last_outcome = flag:broken
+        trigger_if = {
+            limit = { has_variable = rw_service_reacted_serial }
+            NOT = { var:rw_service_reacted_serial = scope:rw_service_serial }
+        }
+    }
 }

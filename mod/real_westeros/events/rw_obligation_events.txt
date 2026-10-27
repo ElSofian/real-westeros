@@ -1,0 +1,65 @@
+namespace = rw_obligations
+
+rw_obligations.0001 = {
+    type = character_event
+    title = rw_obligations.0001.t
+    desc = rw_obligations.0001.desc
+    theme = diplomacy
+    left_portrait = { character = scope:rw_service_client }
+    option = {
+        name = rw_obligations.fulfill
+        trigger = { rw_service_obligation_fulfillable_trigger = yes }
+        rw_service_fulfill_promise_effect = yes
+        ai_chance = { base = 70 }
+    }
+    option = {
+        name = rw_obligations.break
+        trigger = { rw_service_obligation_actionable_trigger = yes }
+        rw_service_break_promise_effect = yes
+        ai_chance = { base = 10 }
+    }
+    option = {
+        name = rw_obligations.wait
+        trigger = { rw_service_obligation_actionable_trigger = yes }
+        # Leave it live and revisit in a week, for AI and human alike.
+        rw_service_wait_promise_effect = yes
+        ai_chance = { base = 20 }
+    }
+    option = {
+        name = rw_obligations.lapsed
+        trigger = { NOT = { rw_service_obligation_actionable_trigger = yes } }
+        # Never clear a live obligation just because this popup is obsolete/early.
+        ai_chance = { base = 100 }
+    }
+}
+
+rw_obligations.0002 = {
+    type = character_event
+    hidden = yes
+    immediate = { rw_service_timeout_effect = yes }
+}
+
+rw_obligations.0003 = {
+    type = character_event
+    title = rw_obligations.0003.t
+    desc = rw_obligations.0003.desc
+    theme = diplomacy
+    left_portrait = { character = scope:rw_service_provider }
+    option = {
+        name = rw_obligations.resent
+        trigger = { rw_service_breach_receipt_trigger = yes }
+        rw_service_resent_breach_effect = yes
+        ai_chance = { base = 60 }
+    }
+    option = {
+        name = rw_obligations.forgive
+        trigger = { rw_service_breach_receipt_trigger = yes }
+        rw_service_forgive_breach_effect = yes
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = rw_obligations.lapsed
+        trigger = { NOT = { rw_service_breach_receipt_trigger = yes } }
+        ai_chance = { base = 100 }
+    }
+}

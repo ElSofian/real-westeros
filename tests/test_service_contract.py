@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1] / 'mod/real_westeros'
 def contract_errors(triggers, effects):
     triggers, effects = (clean_script(s)[0] for s in (triggers, effects))
     errors = []
-    for key in ('serial', 'revision', 'price'):
+    for key in ('serial', 'revision', 'price', 'mode'):
         if f'var:rw_service_{key} = scope:rw_service_{key}' not in triggers:
             errors.append(f'missing {key} identity')
     if 'var:rw_service_target = scope:rw_service_client' not in triggers:
@@ -44,6 +44,10 @@ class ServiceContractTests(unittest.TestCase):
         changed = self.t.replace('var:rw_service_revision = scope:rw_service_revision', 'always = yes')
         self.assertIn('missing revision identity', contract_errors(changed, self.e))
 
+    def test_payment_mode_mutation(self):
+        changed = self.t.replace('var:rw_service_mode = scope:rw_service_mode', 'always = yes')
+        self.assertIn('missing mode identity', contract_errors(changed, self.e))
+
     def test_old_contract_mutation(self):
         self.assertIn('serial reset', contract_errors(self.t, self.e + '\nremove_variable = rw_service_serial'))
 
@@ -70,7 +74,8 @@ class ServiceContractTests(unittest.TestCase):
     def test_translations_cover_event_options(self):
         events = (ROOT / 'events/rw_service_events.txt').read_text()
         keys = set(re.findall(r'(?:title|desc|name)\s*=\s*(rw_[\w.]+)', events))
-        keys.update(('rw_offer_endorsement_interaction', 'rw_offer_endorsement_interaction_desc'))
+        keys.update(('rw_offer_endorsement_interaction', 'rw_offer_endorsement_interaction_desc',
+                     'rw_offer_deferred_endorsement_interaction', 'rw_offer_deferred_endorsement_interaction_desc'))
         for lang in ('english','french'):
             p = ROOT / f'localization/{lang}/rw_services_l_{lang}.yml'
             self.assertTrue(p.read_bytes().startswith(b'\xef\xbb\xbf'))

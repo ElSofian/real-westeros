@@ -1,0 +1,41 @@
+# Reopen a live obligation after choosing to wait. No new negotiation or cooldown.
+rw_review_endorsement_promise_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_review_endorsement_promise_interaction_desc
+    auto_accept = yes
+    is_shown = {
+        scope:actor = {
+            has_character_flag = rw_service_obligation
+            var:rw_service_target = scope:recipient
+        }
+    }
+    is_valid_showing_failures_only = {
+        scope:actor = {
+            is_alive = yes
+            has_character_flag = rw_service_deadline
+            NOT = { has_character_flag = rw_service_not_due }
+        }
+        scope:recipient = { is_alive = yes }
+    }
+    on_accept = {
+        if = {
+            limit = {
+                scope:actor = {
+                    is_alive = yes
+                    has_character_flag = rw_service_obligation
+                    has_character_flag = rw_service_deadline
+                    NOT = { has_character_flag = rw_service_not_due }
+                    var:rw_service_target = scope:recipient
+                }
+                scope:recipient = { is_alive = yes }
+            }
+            scope:actor = { save_scope_as = rw_service_provider }
+            scope:recipient = { save_scope_as = rw_service_client }
+            rw_service_snapshot_effect = yes
+            scope:actor = { trigger_event = { id = rw_obligations.0001 } }
+        }
+    }
+    ai_potential = { has_character_flag = rw_service_obligation }
+    # Scheduled event handles AI performance; avoid a second proactive popup loop.
+    ai_will_do = { base = 0 }
+}

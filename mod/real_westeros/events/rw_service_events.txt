@@ -4,13 +4,27 @@ namespace = rw_services
 rw_services.0001 = {
     type = character_event
     title = rw_services.0001.t
-    desc = rw_services.0001.desc
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_service_deferred_trigger = yes }
+                desc = rw_services.0001.deferred_desc
+            }
+            desc = rw_services.0001.desc
+        }
+    }
     theme = diplomacy
     left_portrait = { character = scope:rw_service_provider }
     option = {
         name = rw_services.accept_50
-        trigger = { rw_service_client_turn_trigger = yes rw_service_affordable_trigger = yes }
+        trigger = { rw_service_client_turn_trigger = yes rw_service_affordable_trigger = yes NOT = { rw_service_deferred_trigger = yes } }
         rw_service_settle_effect = yes
+        ai_chance = { base = 30 }
+    }
+    option = {
+        name = rw_services.promise_50
+        trigger = { rw_service_client_turn_trigger = yes rw_service_deferred_trigger = yes rw_service_affordable_trigger = yes }
+        rw_service_accept_promise_effect = yes
         ai_chance = { base = 30 }
     }
     option = {
@@ -37,13 +51,27 @@ rw_services.0001 = {
 rw_services.0002 = {
     type = character_event
     title = rw_services.0002.t
-    desc = rw_services.0002.desc
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_service_deferred_trigger = yes }
+                desc = rw_services.0002.deferred_desc
+            }
+            desc = rw_services.0002.desc
+        }
+    }
     theme = diplomacy
     left_portrait = { character = scope:rw_service_client }
     option = {
         name = rw_services.accept_25
-        trigger = { rw_service_provider_turn_trigger = yes rw_service_affordable_trigger = yes }
+        trigger = { rw_service_provider_turn_trigger = yes rw_service_affordable_trigger = yes NOT = { rw_service_deferred_trigger = yes } }
         rw_service_settle_effect = yes
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = rw_services.promise_25
+        trigger = { rw_service_provider_turn_trigger = yes rw_service_deferred_trigger = yes rw_service_affordable_trigger = yes }
+        rw_service_accept_promise_effect = yes
         ai_chance = { base = 40 }
     }
     option = {
