@@ -1,0 +1,24 @@
+# This personal response does not reopen the mediator's concluded case.
+rw_repair_client_turn_trigger = {
+    rw_case_matches_trigger = yes
+    rw_case_jurisdiction_trigger = yes
+    this = scope:rw_service_client
+    scope:rw_case_record = {
+        var:rw_case_stage = flag:closed
+        var:rw_case_result = flag:repaired
+        var:rw_case_gesture = flag:offered
+        has_variable = rw_case_gesture_pending
+        rw_case_disclosed_trigger = yes
+    }
+}
+rw_repair_can_read_trigger = {
+    rw_case_matches_trigger = yes
+    exists = scope:rw_case_reader
+    this = scope:rw_case_reader
+    scope:rw_case_record = {
+        rw_case_reader_allowed_trigger = { READER = scope:rw_case_reader }
+        var:rw_case_stage = flag:closed
+        var:rw_case_result = flag:repaired
+        has_variable = rw_case_gesture
+    }
+}

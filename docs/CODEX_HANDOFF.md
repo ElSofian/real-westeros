@@ -5,8 +5,11 @@
 RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remains
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
 and RW010_DEFERRED.md. Contextual service-breach mediation is in RW010_CASES.md. Independent case records/read-only history are in RW010_RECORDS.md. Non-contractual allegations, statements and disclosure are in RW010_ALLEGATIONS.md.
-Next: investigate actual target-version native scheme-discovery/evidence entry points
-before assassination-related justice. Do not invent automatic discovery hooks or
+Personal consent to conciliatory gestures is in RW010_REPAIR_RESPONSE.md.
+Source inspection found no scheme/discovery entry points in the supplied war archives;
+automatic assassination integration needs additional target-version source evidence.
+Next independent slice: mutual cancellation of a deferred promise, preserving
+separate consent and receipt identity. Do not invent automatic discovery hooks or
 replace original CK3 scripts with Python gameplay models.
 All engine runs are deferred until final testing per owner. G1 is todo at the
 war-feature stage, not an immediate prerequisite. Keep original scenarios and

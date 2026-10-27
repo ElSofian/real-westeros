@@ -25,3 +25,25 @@ log excerpt rather than treating static or zero-test results as engine validatio
 - Independent case records: execute the eight groups in RW010_RECORDS.md. Emphasize two same-provider cases, cross-case stale callback isolation, retained outcomes, per-iteration archive scopes, role-filtered visibility, current authority versus historical knowledge, lost-callback fallback, save/reload, retention/owner death and resource overhead. None executed.
 
 - Non-contractual allegations: execute the eight groups in RW010_ALLEGATIONS.md. Prioritize unanswered/admitted/contested distinction, no silence-to-proof conversion, disclosure-gated mediator archive access, soft response eligibility, evidence unchanged by apology/withdrawal, cross-kind equal serial isolation, read-only statement history and absent legacy metadata. None executed.
+
+## Voluntary reception of conciliatory gestures (RW-010)
+
+No cases executed. See RW010_REPAIR_RESPONSE.md.
+
+1. Service case and admitted/contested allegation: invite a gesture, provider makes
+   it once for 25 prestige, mediator gains +5, client gains nothing before choice.
+2. Accept: client gains +5 for two years once. Reject: no client opinion change,
+   extra sanction, refund or service payment; mediator opinion remains independent.
+3. Ignore past 30 days, then choose a stale option: no consent or opinion change.
+   The original mediation deadline is unchanged; no-response history is explicit.
+4. Execute a stale/duplicate/wrong-client/wrong-kind response while another case
+   exists: neither case receives an unintended answer or repeated benefit.
+5. Lose common jurisdiction, land or an actor before response; acknowledge only,
+   no benefit. Test provider death/story deletion and client death/save reload.
+6. Save/reload offered, accepted and rejected records. Check response view for both
+   parties and informed mediator, deny outsiders; browsing never responds/renews.
+7. Load an older repaired record lacking gesture metadata: no inferred acceptance,
+   no new benefit, no migration/reversal of existing old opinion effects.
+8. Observe AI accepting/refusing through the same event/effects; ensure an unfunded
+   provider cannot make a gesture, retention stays unchanged, and statements,
+   native crimes/secrets, titles and service receipts are untouched.

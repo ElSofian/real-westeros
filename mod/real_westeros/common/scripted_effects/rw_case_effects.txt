@@ -76,11 +76,13 @@ rw_case_invite_repair_effect = {
 rw_case_apologise_effect = {
     if = {
         limit = { rw_case_provider_turn_trigger = yes prestige >= 25 }
+        # Create a separate, bounded personal response before notifying the client.
+        scope:rw_case_record = {
+            set_variable = { name = rw_case_gesture value = flag:offered }
+            set_variable = { name = rw_case_gesture_pending value = flag:yes days = 30 }
+        }
         rw_case_close_effect = { RESULT = repaired }
         add_prestige = -25
-        scope:rw_service_client = {
-            add_opinion = { target = scope:rw_service_provider modifier = rw_case_apology_opinion }
-        }
         scope:rw_case_mediator = {
             add_opinion = { target = scope:rw_service_provider modifier = rw_case_apology_opinion }
         }

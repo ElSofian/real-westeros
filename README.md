@@ -7,7 +7,7 @@ A submod for **Crusader Kings III — A Game of Thrones (AGOT)**.
 ## Project status
 
 **Experimental CK3 script slices; not engine-tested.** The repository includes a
-reconciliation, immediate/deferred endorsement negotiations, contextual mediation, independent personal case records and contested allegations, with
+reconciliation, immediate/deferred endorsement negotiations, contextual mediation, independent personal case records, contested allegations and voluntary repair responses, with
 static checks and EN/FR localization. All CK3 runtime tests are deferred to the
 final campaign. See [installation](docs/INSTALL.md) and
 [final engine scenarios](docs/FINAL_ENGINE_TESTS.md). Illegal-war feasibility (G1)
@@ -15,7 +15,7 @@ remains unverified and is planned for the war-feature stage.
 
 ## Current milestone
 
-Investigate native scheme evidence entry points before assassination-related justice and dynastic consequences. **G1 is back
+Native scheme evidence integration awaits target-version discovery sources. Continue independent service/incident development; see [voluntary repair responses](docs/RW010_REPAIR_RESPONSE.md). **G1 is back
 in the development plan for the war-feature stage**, rather than the immediate task.
 Retain its research and diagnostic; establish authentic-CB feasibility before shipping
 unlawful-war gameplay. Independent development can continue. See the original scenarios

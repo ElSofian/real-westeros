@@ -1,0 +1,19 @@
+rw_repair_accept_effect = {
+    if = {
+        limit = { rw_repair_client_turn_trigger = yes }
+        scope:rw_case_record = {
+            remove_variable = rw_case_gesture_pending
+            set_variable = { name = rw_case_gesture value = flag:accepted }
+        }
+        add_opinion = { target = scope:rw_service_provider modifier = rw_case_apology_opinion }
+    }
+}
+rw_repair_reject_effect = {
+    if = {
+        limit = { rw_repair_client_turn_trigger = yes }
+        scope:rw_case_record = {
+            remove_variable = rw_case_gesture_pending
+            set_variable = { name = rw_case_gesture value = flag:rejected }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+﻿l_french:
+ rw_repair.accept:0 "Accepter ce geste (+5 points d’opinion pendant deux ans)."
+ rw_repair.reject:0 "Refuser : notre différend n’est pas résolu."
+ rw_repair.read_response:0 "Lire la réponse au geste d’apaisement."
+ rw_repair.title:0 "Un geste et son accueil"
+ rw_repair.accepted:0 "[rw_service_client.GetTitledFirstName] a accepté le geste de [rw_service_provider.GetTitledFirstName]. Son opinion s’est améliorée de 5 pendant deux ans. Cela ne change ni les faits et déclarations consignés ni l’obligation de service initiale."
+ rw_repair.rejected:0 "[rw_service_client.GetTitledFirstName] a refusé le geste de [rw_service_provider.GetTitledFirstName]. Aucune nouvelle peine, aucun remboursement ni paiement n’a suivi. Le geste et les faits restent consignés."
+ rw_repair.unanswered:0 "Aucune acceptation ni aucun refus n’est consigné. Le silence, l’expiration ou la perte d’éligibilité ne vaut pas accord. Consulter ne rouvre pas la réponse et ne prolonge pas son délai de 30 jours."
+ rw_repair.unavailable:0 "Aucune réponse autorisée n’est disponible. Aucun accord n’est supposé."
