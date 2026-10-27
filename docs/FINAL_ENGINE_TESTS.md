@@ -71,3 +71,15 @@ No cases executed. See RW010_MUTUAL_CANCELLATION.md.
 8. Save/reload before/after requests and decisions, provider/client death, lost
    land, old experimental saves, and later receipt replacement. Notices must never
    claim release for a different receipt; independent case evidence stays intact.
+
+## Integrated distribution installation (all runtime checks deferred)
+
+1. Download the GitHub artifact, extract the outer wrapper, verify the inner ZIP
+   against its `.sha256`, and record MANIFEST.json commit/version/target metadata.
+2. Copy both items from the inner ZIP's `mod/` directory to the actual CK3 user-data
+   `mod/` folder; enable Real Westeros after AGOT. Confirm launcher and parser logs.
+3. Use the feature table in INTEGRATED_BUILD.md as entry-point inventory for the
+   final campaign. Record observed EN/FR text, script errors and interactions.
+4. Update by replacing the old submod folder, not by merging obsolete scripts.
+   Check a disposable fresh save separately from older experimental-save migration.
+   ZIP/manifest/CI success does not count as passing any CK3 scenario.

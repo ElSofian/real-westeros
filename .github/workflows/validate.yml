@@ -17,3 +17,14 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Validate mod files
         run: python tools/validate_mod.py
+      - name: Build experimental distribution
+        run: python tools/build_distribution.py --output build/RealWesteros-experimental.zip
+      - name: Upload experimental distribution
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: RealWesteros-experimental-${{ github.sha }}
+          path: |
+            build/RealWesteros-experimental.zip
+            build/RealWesteros-experimental.zip.sha256
+          if-no-files-found: error
+          retention-days: 7
