@@ -184,3 +184,40 @@ All unrun. See RW010_SCHEME_RESPONSE.md; these add no criminal immunity.
   and observer death. Original observation, service receipts, native crimes/secrets,
   titles and AGOT outcomes remain unchanged except the explicitly accepted gold
   transfer and distinct agreed goodwill.
+
+## Read-only native judicial inspection (JUSTICE-01 to JUSTICE-07)
+
+All unrun; compare the same native states with and without the submod. See
+RW010_SCHEME_JUSTICE.md. No arrest is performed by this examination.
+
+- JUSTICE-01: only the observer can open the examination of their retained exposed
+  participant; generic discovery, foreign/expired/wrong-schema/serial records and
+  participant access cannot leak current legal information or infer an organiser.
+- JUSTICE-02: inspect a free participant, observer-held prisoner and other-held
+  prisoner. Verify exactly one custody description, no new jailer identity, and
+  no arrest/transfer/release or inferred previous penalty.
+- JUSTICE-03: with and without a native imprisonment reason, compare the normal
+  native interaction. Display grounds in the observer-to-participant direction;
+  an unrelated reason must not be attributed to the plot. A reason alone does not
+  guarantee native validity, success or lawful execution/confiscation.
+- JUSTICE-04: use native discovery choices/arrest/release/consumption before and
+  after inspection; reopening reflects current state without reconstructing a
+  punishment history or restoring consumed reasons. Native refusal/rebellion and
+  AGOT conditions remain unchanged.
+- JUSTICE-05: pay/refuse/contest/ignore/withdraw the voluntary request, then inspect:
+  no pardon, immunity, reason creation/consumption or changed original observation.
+- JUSTICE-06: kill the participant, end the plot, expire the record or kill the
+  observer; old popups cannot open an invalid arrest window. No heir substitution.
+  Save/reload, verify description concatenation, scope evaluation and privacy.
+- JUSTICE-07: browse repeatedly and compare AI/player native actions, retention,
+  notifications, logs and performance: no timers, duplicated penalties, private
+  disclosures or persistent cached legal judgment.
+
+- JUSTICE-08: for a human observer and an exact living/free recorded participant,
+  compare the native arrest interaction validity with the shortcut. Open then cancel:
+  no message, imprisonment, penalty or consumed reason. Confirm manually only in a
+  disposable test and compare native success/refusal/rebellion/tyranny with baseline.
+  Loss of authority, detention or invalidity between popup and click blocks handoff;
+  native UI rechecks before actual sending. No reason requirement is fabricated and
+  no reason is attributed to this plot. AI still uses its native interaction (same
+  gameplay conditions/consequences) rather than a scripted player-window send.

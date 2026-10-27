@@ -1,0 +1,51 @@
+# Read-only current-state inspection; never an arrest authorization.
+rw_scheme_justice_view_trigger = {
+    rw_scheme_evidence_view_trigger = yes
+    scope:rw_scheme_evidence_record = {
+        var:rw_evidence_kind = flag:participant_exposed
+        exists = var:rw_evidence_participant
+    }
+}
+rw_scheme_justice_living_trigger = {
+    rw_scheme_justice_view_trigger = yes
+    scope:rw_scheme_evidence_record.var:rw_evidence_participant = {
+        is_alive = yes
+        NOT = { this = scope:rw_scheme_observer }
+    }
+}
+rw_scheme_justice_own_custody_trigger = {
+    rw_scheme_justice_living_trigger = yes
+    scope:rw_scheme_evidence_record.var:rw_evidence_participant = {
+        is_imprisoned_by = scope:rw_scheme_observer
+    }
+}
+rw_scheme_justice_other_custody_trigger = {
+    rw_scheme_justice_living_trigger = yes
+    scope:rw_scheme_evidence_record.var:rw_evidence_participant = {
+        is_imprisoned = yes
+        NOT = { is_imprisoned_by = scope:rw_scheme_observer }
+    }
+}
+rw_scheme_justice_free_trigger = {
+    rw_scheme_justice_living_trigger = yes
+    scope:rw_scheme_evidence_record.var:rw_evidence_participant = { is_imprisoned = no }
+}
+rw_scheme_justice_reason_trigger = {
+    rw_scheme_justice_living_trigger = yes
+    # Root remains the observing character, not the story or participant.
+    has_imprisonment_reason = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+}
+rw_scheme_justice_no_reason_trigger = {
+    rw_scheme_justice_living_trigger = yes
+    NOT = { has_imprisonment_reason = scope:rw_scheme_evidence_record.var:rw_evidence_participant }
+}
+# UI handoff only. Native interaction remains authoritative, including tyranny.
+rw_scheme_justice_can_open_arrest_trigger = {
+    rw_scheme_justice_free_trigger = yes
+    is_ai = no
+    is_imprisoned = no
+    is_character_interaction_valid = {
+        recipient = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+        interaction = imprison_interaction
+    }
+}
