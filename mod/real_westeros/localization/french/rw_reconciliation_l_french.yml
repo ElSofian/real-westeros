@@ -1,0 +1,10 @@
+﻿l_french:
+ rw_seek_reconciliation_interaction:0 "Proposer une réconciliation (expérimental)"
+ rw_seek_reconciliation_interaction_desc:0 "Adresser une demande personnelle pour apaiser les relations. Une acceptation améliore l’opinion mutuelle pendant deux ans ; un refus déçoit le demandeur pendant un an. Une demande par an. Fonction non testée dans CK3."
+ rw_reconciliation.0001.t:0 "Une main tendue"
+ rw_reconciliation.0001.desc:0 "[rw_petitioner.GetTitledFirstName] propose de laisser nos griefs derrière nous. Ni serment, ni titre, ni dette : seulement l’espoir de relations moins amères."
+ rw_reconciliation.0001.accept:0 "Prenons un nouveau départ."
+ rw_reconciliation.0001.refuse:0 "Je n’oublie pas si facilement."
+ rw_reconciliation.0001.lapsed:0 "Le moment est passé."
+ rw_reconciliation_accepted_opinion:0 "A accepté une réconciliation"
+ rw_reconciliation_refused_opinion:0 "A refusé une réconciliation"

@@ -1,0 +1,25 @@
+rw_can_petition_trigger = {
+    is_alive = yes
+    is_adult = yes
+    is_landed = yes
+    is_at_war = no
+    NOT = { has_character_flag = rw_petition_cooldown }
+    NOT = { has_character_flag = rw_petition_pending }
+}
+
+# ROOT is the recipient; the petitioner is carried by the event scope.
+rw_petition_can_resolve_trigger = {
+    is_alive = yes
+    is_adult = yes
+    is_landed = yes
+    is_at_war = no
+    exists = scope:rw_petitioner
+    scope:rw_petitioner = {
+        is_alive = yes
+        is_adult = yes
+        is_landed = yes
+        is_at_war = no
+        has_character_flag = rw_petition_pending
+        var:rw_petition_target = root
+    }
+}

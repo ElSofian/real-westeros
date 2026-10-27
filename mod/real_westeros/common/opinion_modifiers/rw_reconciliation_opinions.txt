@@ -1,0 +1,8 @@
+rw_reconciliation_accepted_opinion = {
+    opinion = 10
+    years = 2
+}
+rw_reconciliation_refused_opinion = {
+    opinion = -5
+    years = 1
+}

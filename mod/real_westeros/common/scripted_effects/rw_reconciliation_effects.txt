@@ -1,0 +1,29 @@
+# Consume the pending marker before applying any consequence.
+# A repeated/stale event response therefore has no second effect.
+rw_clear_petition_effect = {
+    scope:rw_petitioner = {
+        remove_character_flag = rw_petition_pending
+        remove_variable = rw_petition_target
+    }
+}
+
+rw_accept_reconciliation_effect = {
+    if = {
+        limit = { rw_petition_can_resolve_trigger = yes }
+        rw_clear_petition_effect = yes
+        scope:rw_petitioner = {
+            add_opinion = { target = root modifier = rw_reconciliation_accepted_opinion }
+        }
+        add_opinion = { target = scope:rw_petitioner modifier = rw_reconciliation_accepted_opinion }
+    }
+}
+
+rw_decline_reconciliation_effect = {
+    if = {
+        limit = { rw_petition_can_resolve_trigger = yes }
+        rw_clear_petition_effect = yes
+        scope:rw_petitioner = {
+            add_opinion = { target = root modifier = rw_reconciliation_refused_opinion }
+        }
+    }
+}
