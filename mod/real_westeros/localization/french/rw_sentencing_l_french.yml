@@ -1,0 +1,13 @@
+﻿l_french:
+ rw_sentencing.open:0 "Envisager une sanction personnelle pour ce prisonnier."
+ rw_sentencing.title:0 "Le sort de mon prisonnier"
+ rw_sentencing.intro:0 "Le participant démasqué consigné dans cette observation est actuellement mon prisonnier. Cela ne prouve ni la raison de son arrestation, ni qu’une infraction a déjà été jugée. Je peux laisser sa détention inchangée ou examiner les conditions habituelles d’exécution ou de libération.\n\n"
+ rw_sentencing.reason:0 "Je dispose actuellement d’un motif reconnu d’exécution contre cette personne. Il peut concerner un autre acte ; ce n’est pas un verdict selon lequel le complot consigné mérite la mort. Les motifs d’emprisonnement et d’exécution sont distincts.\n\n"
+ rw_sentencing.no_reason:0 "Je ne dispose actuellement d’aucun motif reconnu d’exécution contre cette personne. Une observation de complot ou un motif d’emprisonnement n’en crée pas. Cela ne prouve ni son innocence, ni une grâce, ni une sanction antérieure.\n\n"
+ rw_sentencing.unknown_reason:0 "Les motifs actuels d’exécution n’ont pas pu être établis.\n\n"
+ rw_sentencing.terms:0 "Je peux examiner les conditions, les coûts et les conséquences d’une exécution ou d’une libération avant de confirmer mon choix. Une libération peut être assortie d’exigences. Je peux aussi remettre ma décision à plus tard et laisser la détention inchangée."
+ rw_sentencing.unavailable:0 "Le dossier n’est plus accessible ou les conditions de détention ont changé. Je ne peux plus examiner le sort de ce prisonnier ici. Aucune décision n’est prise."
+ rw_sentencing.review_execution:0 "Examiner les conditions habituelles d’exécution (sans envoyer)."
+ rw_sentencing.review_release:0 "Examiner les conditions habituelles de libération (sans envoyer)."
+ rw_sentencing.leave_unchanged:0 "Laisser la détention inchangée pour le moment."
+ rw_sentencing.close:0 "Fermer."

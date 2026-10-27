@@ -1,0 +1,13 @@
+﻿l_english:
+ rw_sentencing.open:0 "Consider this prisoner’s personal sentence."
+ rw_sentencing.title:0 "The fate of my prisoner"
+ rw_sentencing.intro:0 "The exposed participant recorded in this observation is currently my prisoner. This does not establish why they were arrested or that an offense has already been judged. I can leave their detention unchanged, or examine the normal terms for execution or release.\n\n"
+ rw_sentencing.reason:0 "I currently have a recognized execution reason against this person. It may concern another act; it is not a verdict that the recorded plot warrants death. Imprisonment grounds and execution grounds are distinct.\n\n"
+ rw_sentencing.no_reason:0 "I currently have no recognized execution reason against this person. A plot observation or an imprisonment reason does not create one. This does not establish innocence, a pardon or prior punishment.\n\n"
+ rw_sentencing.unknown_reason:0 "Current execution grounds could not be established.\n\n"
+ rw_sentencing.terms:0 "I can examine the conditions, costs and consequences of execution or release before confirming my choice. Release may come with demands. I can also postpone my decision and leave detention unchanged."
+ rw_sentencing.unavailable:0 "The record is no longer accessible or custody conditions have changed. I can no longer consider this prisoner’s fate here. No decision is taken."
+ rw_sentencing.review_execution:0 "Review execution terms (does not send)."
+ rw_sentencing.review_release:0 "Review release terms (does not send)."
+ rw_sentencing.leave_unchanged:0 "Leave detention unchanged for now."
+ rw_sentencing.close:0 "Close."

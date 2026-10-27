@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "kind": "private_source_inspection_references_not_engine_evidence",
+  "archive_sha256": "4f227833b067dc285f1b0780d3c3e753a311532f17ab099c36dac33b9eb9e3cc",
+  "window_dispatch_references": "JUSTICE_SOURCE_RECEIPT.json",
+  "reviewed_references": [
+    {
+      "source": "CK3",
+      "path": "common/character_interactions/00_prison_interactions.txt",
+      "sha256": "3e05c94cdce4d42cce8256d2d79cd78feb1c9d5b79daa64aa8243aa0c658f22b",
+      "size": 201766,
+      "markers": {
+        "release_from_prison_interaction = {": [
+          4088
+        ],
+        "execute_prisoner_interaction = {": [
+          6228
+        ],
+        "has_execute_reason =": [
+          4502,
+          6291,
+          6300,
+          6310,
+          6351,
+          7763,
+          7793,
+          8419
+        ],
+        "execute_prisoner_effect = {": [
+          7084,
+          7092
+        ],
+        "agot_landed_knight_no_executions_tt": [],
+        "release_from_prison = yes": [
+          4166,
+          4906,
+          7609,
+          7783,
+          8384,
+          8408,
+          8458,
+          8482,
+          8510,
+          8621,
+          8631,
+          8677
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/character_interactions/00_prison_interactions.txt",
+      "sha256": "04d7f3975b951537b34b0cbb264e0cc2eeb7ac05c21d63c7c31d8b1d593ef750",
+      "size": 249917,
+      "markers": {
+        "release_from_prison_interaction = {": [
+          4352
+        ],
+        "execute_prisoner_interaction = {": [
+          7376
+        ],
+        "has_execute_reason =": [
+          4947,
+          7443,
+          7465,
+          7475,
+          7516,
+          9268,
+          9298,
+          9929
+        ],
+        "execute_prisoner_effect = {": [
+          8408,
+          8415,
+          8422,
+          8429,
+          8436,
+          8451,
+          8459
+        ],
+        "agot_landed_knight_no_executions_tt": [
+          7787
+        ],
+        "release_from_prison = yes": [
+          4438,
+          5401,
+          9107,
+          9288,
+          9894,
+          9918,
+          9968,
+          9992,
+          10020,
+          10131,
+          10141,
+          10190
+        ]
+      }
+    }
+  ]
+}

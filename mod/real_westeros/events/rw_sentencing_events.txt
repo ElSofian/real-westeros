@@ -1,0 +1,66 @@
+namespace = rw_sentencing
+
+# Inspect terms first. Only the native interaction may actually impose a sentence.
+rw_sentencing.0001 = {
+    type = character_event
+    title = rw_sentencing.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_sentencing_current_prisoner_trigger = yes }
+                desc = {
+                    desc = rw_sentencing.intro
+                    first_valid = {
+                        triggered_desc = { trigger = { rw_sentencing_execution_reason_trigger = yes } desc = rw_sentencing.reason }
+                        triggered_desc = { trigger = { rw_sentencing_no_execution_reason_trigger = yes } desc = rw_sentencing.no_reason }
+                        desc = rw_sentencing.unknown_reason
+                    }
+                    desc = rw_sentencing.terms
+                }
+            }
+            desc = rw_sentencing.unavailable
+        }
+    }
+    right_portrait = {
+        trigger = { rw_sentencing_current_prisoner_trigger = yes }
+        character = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+    }
+    theme = intrigue
+    option = {
+        name = rw_sentencing.review_execution
+        trigger = { rw_sentencing_can_open_execution_trigger = yes }
+        if = {
+            limit = { rw_sentencing_can_open_execution_trigger = yes }
+            open_interaction_window = {
+                interaction = execute_prisoner_interaction
+                actor = root
+                recipient = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+            }
+        }
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = rw_sentencing.review_release
+        trigger = { rw_sentencing_can_open_release_trigger = yes }
+        if = {
+            limit = { rw_sentencing_can_open_release_trigger = yes }
+            open_interaction_window = {
+                interaction = release_from_prison_interaction
+                actor = root
+                recipient = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+            }
+        }
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = rw_sentencing.leave_unchanged
+        trigger = { rw_sentencing_current_prisoner_trigger = yes }
+        # No keep-imprisoned flag, pardon, timer or new sanction.
+        ai_chance = { base = 100 }
+    }
+    option = {
+        name = rw_sentencing.close
+        trigger = { NOT = { rw_sentencing_current_prisoner_trigger = yes } }
+        ai_chance = { base = 100 }
+    }
+}

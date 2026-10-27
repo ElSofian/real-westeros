@@ -12,7 +12,8 @@ SCHEME_SOURCE_RECEIPT.json contains references/hashes only. Native dispatch, kno
 and persistence semantics remain engine-unverified. Voluntary political responses
 (25-gold request, refusal/contestation/withdrawal) are in RW010_SCHEME_RESPONSE.md.
 Current judicial inspection and guarded native arrest-window handoff are in
-RW010_SCHEME_JUSTICE.md; no new legal sanctions or automatic arrest sends.
+RW010_SCHEME_JUSTICE.md. Personal prisoner execution/release window handoffs are
+in RW010_PRISONER_SENTENCING.md; no automatic send or replacement prison effect.
 Mutual cancellation of a deferred promise is in RW010_MUTUAL_CANCELLATION.md.
 An experimental distribution is built from committed inputs by CI; see INTEGRATED_BUILD.md.
 Cross-slice source audit and versioned provider-decision reminders are in
@@ -20,11 +21,14 @@ INTEGRATION_AUDIT.md; final LIFE-* cases remain unrun. The targeted scheme colle
 was integrated via PR #29; no additional collection is currently requested.
 Native eligibility/prior-consequence review distinguishes current reasons/custody
 from per-offense history; the latter is not established. A source-backed
-validity-checked window handoff preserves native sending/refusal/resistance. Next
-design personal sentencing of an actual native prisoner; never force the no-tyranny
-imprisonment helper as a legality check. Keep knowledge, legal authority and existing
+validity-checked window handoff preserves native sending/refusal/resistance. Personal
+sentencing now opens native execution/release terms for the actual prisoner
+without claiming the sentence completed. Next inspect native individual
+confiscation/status-removal options before house-wide consequences/restoration (G3);
+never force the no-tyranny imprisonment helper as a legality check. Keep knowledge,
+legal authority and existing
 native penalties separate; the implemented contribution is voluntary, not immunity.
-No executions, confiscations, family sanctions or dynastic restoration are implemented.
+No custom executions, confiscations, family sanctions or dynastic restoration are implemented.
 Independent gameplay work remains allowed. Packaging is not engine validation. Do not invent automatic discovery hooks or
 replace original CK3 scripts with Python gameplay models.
 All engine runs are deferred until final testing per owner. G1 is todo at the

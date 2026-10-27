@@ -76,5 +76,13 @@ rw_scheme_evidence.0001 = {
             trigger_event = { id = rw_scheme_justice.0001 }
         }
     }
+    option = {
+        name = rw_sentencing.open
+        trigger = { rw_sentencing_current_prisoner_trigger = yes }
+        if = {
+            limit = { rw_sentencing_current_prisoner_trigger = yes }
+            trigger_event = { id = rw_sentencing.0001 }
+        }
+    }
     option = { name = rw_scheme_evidence.acknowledge }
 }
