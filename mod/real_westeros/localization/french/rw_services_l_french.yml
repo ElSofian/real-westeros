@@ -1,0 +1,13 @@
+﻿l_french:
+ rw_offer_endorsement_interaction:0 "Proposer un soutien public (expérimental)"
+ rw_offer_endorsement_interaction_desc:0 "Proposer de soutenir publiquement ce dirigeant pour 50 pièces d’or. Il peut proposer 25. L’acceptation transfère le montant convenu et lui accorde immédiatement 50 points de prestige. Offre valable 30 jours ; une offre par an. Non testé dans CK3."
+ rw_services.0001.t:0 "Une voix en votre faveur"
+ rw_services.0001.desc:0 "[rw_service_provider.GetTitledFirstName] propose de soutenir publiquement ma position pour 50 pièces d’or, avec un gain immédiat de 50 points de prestige. Je peux accepter, proposer 25 pièces ou refuser."
+ rw_services.0002.t:0 "Un prix réduit"
+ rw_services.0002.desc:0 "[rw_service_client.GetTitledFirstName] propose 25 pièces d’or pour mon soutien public. Si j’accepte, je reçois 25 pièces et cette personne gagne immédiatement 50 points de prestige. Je peux maintenir mon prix de 50 pièces ou mettre fin aux échanges."
+ rw_services.accept_50:0 "Payer 50 pièces pour ce soutien."
+ rw_services.counter_25:0 "Proposer plutôt 25 pièces."
+ rw_services.accept_25:0 "Accepter 25 pièces et apporter mon soutien."
+ rw_services.requote_50:0 "Maintenir le prix de 50 pièces."
+ rw_services.refuse:0 "Mettre fin à la négociation."
+ rw_services.lapsed:0 "Cette proposition n’est plus valable."

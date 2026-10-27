@@ -6,11 +6,16 @@ A submod for **Crusader Kings III — A Game of Thrones (AGOT)**.
 
 ## Project status
 
-**Scaffold / pre-prototype.** The structural script audit and initial game-design specification exist. A local-mod descriptor and empty folder structure are committed. No gameplay feature has been implemented or tested in CK3 yet. See [installation](docs/INSTALL.md). In particular, declaring an illegal war while retaining its original casus belli is **not proven possible** and must not be advertised as working.
+**Experimental CK3 script slices; not engine-tested.** The repository includes a
+reconciliation incident and an immediate endorsement-for-gold negotiation, with
+static checks and EN/FR localization. All CK3 runtime tests are deferred to the
+final campaign. See [installation](docs/INSTALL.md) and
+[final engine scenarios](docs/FINAL_ENGINE_TESTS.md). Illegal-war feasibility (G1)
+remains unverified and is planned for the war-feature stage.
 
 ## Current milestone
 
-Audit and validate the integrated experimental reconciliation slice. **G1 is back
+Extend the native-script service slice toward deferred promises and consequences. **G1 is back
 in the development plan for the war-feature stage**, rather than the immediate task.
 Retain its research and diagnostic; establish authentic-CB feasibility before shipping
 unlawful-war gameplay. Independent development can continue. See the original scenarios

@@ -1,0 +1,85 @@
+# Persistent serial distinguishes contracts; revision distinguishes their quotes.
+rw_service_snapshot_effect = {
+    scope:rw_service_provider = {
+        save_scope_value_as = { name = rw_service_serial value = var:rw_service_serial }
+        save_scope_value_as = { name = rw_service_revision value = var:rw_service_revision }
+        save_scope_value_as = { name = rw_service_price value = var:rw_service_price }
+    }
+}
+rw_service_begin_effect = {
+    if = {
+        limit = { rw_service_can_offer_trigger = yes }
+        scope:actor = { save_scope_as = rw_service_provider }
+        scope:recipient = { save_scope_as = rw_service_client }
+        scope:actor = {
+            if = {
+                limit = { NOT = { has_variable = rw_service_serial } }
+                set_variable = { name = rw_service_serial value = 0 }
+            }
+            change_variable = { name = rw_service_serial add = 1 }
+            set_variable = { name = rw_service_revision value = 0 }
+            set_variable = { name = rw_service_price value = 50 }
+            set_variable = { name = rw_service_target value = scope:recipient }
+            set_variable = { name = rw_service_turn value = flag:client }
+            add_character_flag = { flag = rw_service_pending days = 30 }
+            add_character_flag = { flag = rw_service_cooldown days = 365 }
+        }
+        rw_service_snapshot_effect = yes
+        scope:rw_service_client = { trigger_event = { id = rw_services.0001 } }
+    }
+}
+# Never reset the serial or revision on cleanup; old responses stay obsolete.
+rw_service_clear_effect = {
+    if = {
+        limit = { rw_service_matches_trigger = yes }
+        scope:rw_service_provider = {
+            remove_character_flag = rw_service_pending
+            remove_variable = rw_service_target
+            remove_variable = rw_service_price
+            remove_variable = rw_service_turn
+        }
+    }
+}
+rw_service_counter_effect = {
+    if = {
+        limit = {
+            rw_service_client_turn_trigger = yes
+            scope:rw_service_client = { gold >= 25 }
+        }
+        scope:rw_service_provider = {
+            change_variable = { name = rw_service_revision add = 1 }
+            set_variable = { name = rw_service_price value = 25 }
+            set_variable = { name = rw_service_turn value = flag:provider }
+        }
+        rw_service_snapshot_effect = yes
+        scope:rw_service_provider = { trigger_event = { id = rw_services.0002 } }
+    }
+}
+rw_service_requote_effect = {
+    if = {
+        limit = { rw_service_provider_turn_trigger = yes }
+        scope:rw_service_provider = {
+            change_variable = { name = rw_service_revision add = 1 }
+            set_variable = { name = rw_service_price value = 50 }
+            set_variable = { name = rw_service_turn value = flag:client }
+        }
+        rw_service_snapshot_effect = yes
+        scope:rw_service_client = { trigger_event = { id = rw_services.0001 } }
+    }
+}
+# This is one immediate service, not a promise to perform later. No escrow or debt.
+# Consume identity before the three native effects; no other callback repeats them.
+rw_service_settle_effect = {
+    if = {
+        limit = {
+            OR = { rw_service_client_turn_trigger = yes rw_service_provider_turn_trigger = yes }
+            rw_service_affordable_trigger = yes
+        }
+        rw_service_clear_effect = yes
+        scope:rw_service_client = {
+            add_gold = { value = scope:rw_service_price multiply = -1 }
+        }
+        scope:rw_service_provider = { add_gold = scope:rw_service_price }
+        scope:rw_service_client = { add_prestige = 50 }
+    }
+}

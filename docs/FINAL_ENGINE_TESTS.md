@@ -15,3 +15,5 @@ Record CK3 executable, AGOT version, DLC, playset order and commit for every run
 
 Keep baseline AGOT saves separate and disposable. Report failures by scenario and
 log excerpt rather than treating static or zero-test results as engine validation.
+
+- Negotiated endorsement: execute all seven groups in RW010_SERVICES.md, including 25/50-gold settlement, counter/requote, lost affordability, stale quote and old-contract response, unchanged deadline, save/reload, AI and same-tick attempts. Verify exact gold conservation and one-time prestige. None executed.
