@@ -1,0 +1,455 @@
+{
+  "schema": 1,
+  "kind": "private_source_subset_inspection_not_engine_or_full_coverage_evidence",
+  "archive_sha256": {
+    "schemes": "4f227833b067dc285f1b0780d3c3e753a311532f17ab099c36dac33b9eb9e3cc",
+    "g1_complement": "eda36d2f7c1c32a318508e456964bbf70f004e69efc397da4b7ebe3a742e0903"
+  },
+  "reviewed_references": [
+    {
+      "collection": "schemes",
+      "source": "CK3",
+      "path": "common/on_action/title_on_actions.txt",
+      "sha256": "6e9823c47b8c8427b509ad6e4b9c62a30ead0392940452c3ded8c669e751e8fe",
+      "size": 124292,
+      "markers": {
+        "on_title_gain = {": [
+          187
+        ],
+        "on_title_gain_inheritance = {": [
+          2744
+        ],
+        "on_title_gain_usurpation = {": [
+          2782
+        ],
+        "on_title_lost = {": [
+          2859
+        ]
+      }
+    },
+    {
+      "collection": "schemes",
+      "source": "CK3",
+      "path": "common/scripted_triggers/00_scripted_triggers.txt",
+      "sha256": "490c3784ee1555a49f7a4adc9baabb8522485f1af6e1c837961e299a88695b5e",
+      "size": 14623,
+      "markers": {
+        "can_be_granted_titles_by = {": [
+          287
+        ]
+      }
+    },
+    {
+      "collection": "schemes",
+      "source": "CK3",
+      "path": "common/scripted_triggers/00_elective_triggers.txt",
+      "sha256": "606464399eb4666763e81a4174ab0b10ac129a54b01ace329922fd7c1eafec85",
+      "size": 8701,
+      "markers": {
+        "has_unelectable_trait_trigger = {": [
+          16
+        ],
+        "has_trait = disinherited": [
+          18
+        ]
+      }
+    },
+    {
+      "collection": "schemes",
+      "source": "CK3",
+      "path": "common/character_interactions/00_dynast_interactions.txt",
+      "sha256": "a7865c20847e3a3db96b77b775b89fb327f3e39680d3a9e605be76af3ccf1c36",
+      "size": 40495,
+      "markers": {
+        "disinherit_interaction = {": [
+          3
+        ],
+        "restore_inheritance_interaction = {": [
+          712
+        ]
+      }
+    },
+    {
+      "collection": "schemes",
+      "source": "CK3",
+      "path": "common/character_interactions/00_prison_interactions.txt",
+      "sha256": "3e05c94cdce4d42cce8256d2d79cd78feb1c9d5b79daa64aa8243aa0c658f22b",
+      "size": 201766,
+      "markers": {
+        "debug_imprison_simple_interaction = {": [
+          7279
+        ],
+        "debug_only = yes": [
+          7288
+        ]
+      }
+    },
+    {
+      "collection": "schemes",
+      "source": "CK3",
+      "path": "common/scripted_effects/00_interaction_effects.txt",
+      "sha256": "7b426465fced71a6d6aa96b34c8924b91990d0be144fe4bfaa57681bb7fa6ea5",
+      "size": 122109,
+      "markers": {
+        "disinherit_effect = {": [
+          1634
+        ],
+        "restore_inheritance_effect = {": [
+          1703
+        ]
+      }
+    },
+    {
+      "collection": "schemes",
+      "source": "CK3",
+      "path": "events/activities/coronation_activity/coronation_events_6.txt",
+      "sha256": "1fa77da77f8465aaf4951d1893c870f616bab2f1b3735d3095d21104290284a5",
+      "size": 351621,
+      "markers": {
+        "name = confederation_house_promoted": [
+          450
+        ],
+        "years = 10": [
+          451,
+          718,
+          734,
+          882,
+          1386,
+          1403,
+          1454,
+          1511,
+          1540,
+          1554,
+          12591,
+          12601,
+          12619,
+          12637
+        ]
+      }
+    },
+    {
+      "collection": "schemes",
+      "source": "AGOT",
+      "path": "common/on_action/title_on_actions.txt",
+      "sha256": "b16a4ee1697d90081f7b0e9869b9796ec43753416315c70bb3405938f6ab40f8",
+      "size": 135746,
+      "markers": {
+        "on_title_gain = {": [
+          200
+        ],
+        "on_title_gain_inheritance = {": [
+          2840
+        ],
+        "on_title_gain_usurpation = {": [
+          2888
+        ],
+        "on_title_lost = {": [
+          2973
+        ]
+      }
+    },
+    {
+      "collection": "schemes",
+      "source": "AGOT",
+      "path": "common/scripted_triggers/00_scripted_triggers.txt",
+      "sha256": "b727fcf82488345cee6e060bd4592d6a96f5301c638bcf9011a920b0a165c4a8",
+      "size": 17096,
+      "markers": {
+        "can_be_granted_titles_by = {": [
+          309
+        ]
+      }
+    },
+    {
+      "collection": "schemes",
+      "source": "AGOT",
+      "path": "common/scripted_triggers/00_elective_triggers.txt",
+      "sha256": "04dffa426024135d41445936cc255f1f08f977ae114f81b51205b3f1c7773f4d",
+      "size": 8745,
+      "markers": {
+        "has_unelectable_trait_trigger = {": [
+          16
+        ],
+        "has_trait = disinherited": [
+          18
+        ]
+      }
+    },
+    {
+      "collection": "schemes",
+      "source": "AGOT",
+      "path": "common/character_interactions/00_dynast_interactions.txt",
+      "sha256": "b7c3b3ee805ff30525d7d4b35fc76d0637d1c8141d4a255c1e5535c3a85ce55c",
+      "size": 45419,
+      "markers": {
+        "disinherit_interaction = {": [
+          3
+        ],
+        "restore_inheritance_interaction = {": [
+          739
+        ]
+      }
+    },
+    {
+      "collection": "schemes",
+      "source": "AGOT",
+      "path": "common/character_interactions/00_prison_interactions.txt",
+      "sha256": "04d7f3975b951537b34b0cbb264e0cc2eeb7ac05c21d63c7c31d8b1d593ef750",
+      "size": 249917,
+      "markers": {
+        "debug_imprison_simple_interaction = {": [
+          8770
+        ],
+        "debug_only = yes": [
+          8779
+        ]
+      }
+    },
+    {
+      "collection": "schemes",
+      "source": "AGOT",
+      "path": "common/scripted_effects/00_interaction_effects.txt",
+      "sha256": "dfde92191c93bf93a074dc475fe1a188d8d17f7f4515c22b4f903bb2d6cfff91",
+      "size": 130434,
+      "markers": {
+        "disinherit_effect = {": [
+          1669
+        ],
+        "restore_inheritance_effect = {": [
+          1847
+        ]
+      }
+    },
+    {
+      "collection": "schemes",
+      "source": "AGOT",
+      "path": "events/agot_events/agot_dynastic_stability_events.txt",
+      "sha256": "4e5fc88e103cc5d99b62b555ae1f6df5b21682c70d950fb6f523443f1cf7d94e",
+      "size": 15465,
+      "markers": {
+        "set_house =": [
+          150,
+          168,
+          186,
+          192,
+          452,
+          612,
+          617,
+          622,
+          626
+        ],
+        "agot_set_current_house =": [
+          199
+        ]
+      }
+    },
+    {
+      "collection": "schemes",
+      "source": "AGOT",
+      "path": "events/activities/coronation_activity/coronation_events_6.txt",
+      "sha256": "e2db91e51e1510e685577fdc3957428b933862459c15d9edb8929d2a9f30131b",
+      "size": 355984,
+      "markers": {
+        "name = confederation_house_promoted": [
+          450
+        ],
+        "years = 10": [
+          451,
+          718,
+          734,
+          882,
+          1390,
+          1407,
+          1458,
+          1515,
+          1544,
+          1558,
+          12713,
+          12723,
+          12741,
+          12759
+        ]
+      }
+    },
+    {
+      "collection": "schemes",
+      "source": "AGOT",
+      "path": "common/on_action/agot_on_actions/agot_esr_on_actions.txt",
+      "sha256": "2b2eec77af46df0bfd5b17556c445d0aec06d74c4a52d1a96e79cd6c713c5ebd",
+      "size": 104522,
+      "markers": {
+        "[ROOT.Char.GetID] esr_ranked_up; scope:title: [THIS.Title.GetNameNoTooltip]": [
+          3640
+        ]
+      }
+    },
+    {
+      "collection": "g1_complement",
+      "source": "CK3",
+      "path": "common/laws/00_succession_laws.txt",
+      "sha256": "f4140755ce89b2bc0c7b5bb80e9318efd7a7ae7ece2e8129119c2ebe9bb9c532",
+      "size": 49206,
+      "markers": {
+        "order_of_succession = inheritance": [
+          64,
+          149,
+          210,
+          292,
+          358,
+          420,
+          496,
+          694,
+          826,
+          882,
+          949,
+          1001,
+          1054,
+          1438
+        ],
+        "title_division = partition": [
+          67,
+          152,
+          213,
+          829,
+          885,
+          952,
+          1004,
+          1057
+        ]
+      }
+    },
+    {
+      "collection": "g1_complement",
+      "source": "CK3",
+      "path": "common/laws/01_title_succession_laws.txt",
+      "sha256": "d398c523a190b0b05d16dac12ee91b2afbc68e323aa219b602cf260f90b8095f",
+      "size": 8891,
+      "markers": {
+        "order_of_succession = election": [
+          20,
+          50,
+          85,
+          116,
+          153,
+          184,
+          266
+        ],
+        "election_type = feudal_elective": [
+          21
+        ]
+      }
+    },
+    {
+      "collection": "g1_complement",
+      "source": "CK3",
+      "path": "common/casus_belli_types/00_claim.txt",
+      "sha256": "d9aa37bdc45f81b4f6185b2697a3ebd09404084ea0d3cf77bbe3c1d2c962e8b1",
+      "size": 19745,
+      "markers": {
+        "on_victory = {": [
+          375
+        ],
+        "type = conquest_claim": [
+          469,
+          512,
+          548
+        ],
+        "setup_claim_cb = {": [
+          475,
+          636,
+          757
+        ],
+        "resolve_title_and_vassal_change = scope:change": [
+          483,
+          537,
+          558
+        ]
+      }
+    },
+    {
+      "collection": "g1_complement",
+      "source": "AGOT",
+      "path": "common/laws/00_succession_laws.txt",
+      "sha256": "2f1a66ae530cf09a500874c5b4bb9e7e1ec780717a753ee081ee0236341c8167",
+      "size": 59359,
+      "markers": {
+        "order_of_succession = inheritance": [
+          69,
+          156,
+          219,
+          301,
+          370,
+          432,
+          510,
+          719,
+          851,
+          907,
+          974,
+          1026,
+          1079,
+          1470,
+          1758
+        ],
+        "title_division = partition": [
+          72,
+          159,
+          222,
+          854,
+          910,
+          977,
+          1029,
+          1082
+        ]
+      }
+    },
+    {
+      "collection": "g1_complement",
+      "source": "AGOT",
+      "path": "common/laws/01_title_succession_laws.txt",
+      "sha256": "fc27ee55c3a77692ca5f8b348209d5f9faf7e40193e7ce3dce5069467a523531",
+      "size": 13456,
+      "markers": {
+        "order_of_succession = election": [
+          21,
+          54,
+          90,
+          121,
+          160,
+          191,
+          273,
+          528
+        ],
+        "election_type = feudal_elective": [
+          22
+        ]
+      }
+    },
+    {
+      "collection": "g1_complement",
+      "source": "AGOT",
+      "path": "common/casus_belli_types/00_claim.txt",
+      "sha256": "deb9a27936f27fbb930de372d146122192612ec7e2479df9ba080382e3faf7b2",
+      "size": 21452,
+      "markers": {
+        "on_victory = {": [
+          406
+        ],
+        "type = conquest_claim": [
+          505,
+          548,
+          584
+        ],
+        "setup_claim_cb = {": [
+          511,
+          675,
+          796
+        ],
+        "resolve_title_and_vassal_change = scope:change": [
+          519,
+          573,
+          594
+        ]
+      }
+    }
+  ]
+}

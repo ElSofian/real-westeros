@@ -16,6 +16,8 @@ RW010_SCHEME_JUSTICE.md. Personal prisoner execution/release window handoffs are
 in RW010_PRISONER_SENTENCING.md; no automatic send or replacement prison effect.
 Individual title/status review and experimental revocation/release window handoffs
 are in RW010_TITLE_STATUS.md. Native title-picker setup remains engine-unverified.
+G3 source-route audit, future decree/restoration contract and opt-in seven-day
+CK3 house/title trace are in G3_HOUSE_SANCTIONS.md; no collective sanction yet.
 Mutual cancellation of a deferred promise is in RW010_MUTUAL_CANCELLATION.md.
 An experimental distribution is built from committed inputs by CI; see INTEGRATED_BUILD.md.
 Cross-slice source audit and versioned provider-decision reminders are in
@@ -26,8 +28,10 @@ from per-offense history; the latter is not established. A source-backed
 validity-checked window handoff preserves native sending/refusal/resistance. Personal
 sentencing now opens native execution/release terms for the actual prisoner
 without claiming the sentence completed. Individual title/status source review is
-complete as a bounded source inspection, not engine proof. Next scope G3 house
-sanctions/restoration and audit grant/inheritance/election/conquest separately;
+complete as a bounded source inspection, not engine proof. G3 now has a scoped
+four-route source audit and inactive-by-default final-campaign trace. Next develop
+explicitly scoped house-affair persistence/restoration; universal landholding
+enforcement remains unresolved and must not be replaced by a political marker;
 never force the no-tyranny imprisonment helper as a legality check. Keep knowledge,
 legal authority and existing
 native penalties separate; the implemented contribution is voluntary, not immunity.

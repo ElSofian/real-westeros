@@ -22,6 +22,7 @@ are deferred to the final campaign, not waived. Prefer a disposable fresh save.
 | Judicial inspection | Observer-only custody/reason check and guarded native arrest-window shortcut; no automatic send |
 | Personal prisoner sentencing | Native execution/release terms or unchanged detention; no automatic send/result |
 | Individual title/status review | Current grounds, knight/contract status; experimental native revocation/release terms, no forced transfer |
+| G3 diagnostic | Debug-only, explicitly marked seven-day house/title callback trace; no sanction or title change |
 | Known-case archive | Independent story records, role/disclosure-filtered views, retained closed records |
 
 All rows describe intended source behavior; none has been observed in CK3 here.
@@ -60,7 +61,8 @@ needed to build, and the ZIP contains no Python gameplay runtime.
 
 ## Integrity and limits
 
-The ZIP has `mod/real_westeros.mod`, `mod/real_westeros/`, selected instructions,
+The ZIP has `mod/real_westeros.mod`, `mod/real_westeros/`, selected instructions
+(including the G3 diagnostic notice and hash-only source receipt),
 and `MANIFEST.json`. The manifest identifies HEAD, provisional version metadata,
 and each payload file's SHA-256/size. It excludes itself from its file list; directory
 entries have no payload checksum. The adjacent `.sha256` hashes the whole mod ZIP.

@@ -26,3 +26,13 @@ The above paths are **source inspection references**. No CK3 engine feasibility 
 - A spike may be committed as explicitly experimental only when it does not overwrite installed game assets.
 - A playable feature is *not* accepted as complete without reproducible CK3 engine evidence.
 - Owner plans end-of-project global manual tests; automated static checks must run during development. Flag the risk of deferring engine tests so blocked features do not become invisible.
+
+## G3 source investigation and final-campaign diagnostic
+
+G3_HOUSE_SANCTIONS.md separates four acquisition routes, personal disinheritance,
+house persistence and institutional restoration. Native post-transfer callbacks are
+not a demonstrated pre-transfer veto. Existing source subsets do not establish a
+universal 50-year house landholding ban; no impossibility claim is made. Original
+opt-in debug interactions mark one chosen current house for seven days, and additive
+callback children log restricted observations only. They neither enforce a sanction
+nor clear G3. All G3-01…12 runtime cases remain deferred; no intermediate run requested.

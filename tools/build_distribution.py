@@ -15,7 +15,8 @@ else:
     from validate_mod import REQUIRED_DIRS, descriptor as parse_descriptor, validate
 
 DOCS = ('README.md', 'docs/INSTALL.md', 'docs/INTEGRATED_BUILD.md',
-        'docs/FINAL_ENGINE_TESTS.md', 'docs/TEST_PLAN_G1.md')
+        'docs/FINAL_ENGINE_TESTS.md', 'docs/TEST_PLAN_G1.md',
+        'docs/G3_HOUSE_SANCTIONS.md', 'docs/G3_SOURCE_RECEIPT.json')
 PREFIX = 'mod/real_westeros/'
 
 

@@ -292,3 +292,43 @@ baseline AGOT; a successful source check is not evidence of title confiscation.
 - TITLE-09: native AI targeting/terms, other AGOT prison/title flows, performance/logs
   and observer succession: no new forced scheduler, inherited personal guilt or
   hidden organiser. Native title/status interactions stay authoritative.
+
+## G3 house sanctions/transfer coverage (G3-01 to G3-12)
+
+All unrun. See G3_HOUSE_SANCTIONS.md. The included trace observes transfers only;
+collective sanctions and landholding enforcement are not implemented.
+
+- G3-01: baseline AGOT versus mod without debug/marker: same native title transfers,
+  lifecycle/war/Mega Wars, logs and performance; no RW_G3 callback logs or gameplay effects.
+- G3-02: debug human tester starts exact selected current house trace for seven days.
+  Verify UI category, save/reload and house variable; no second enable refreshes it.
+  Stop early or let it expire; no logs when debug is off or the marker is absent.
+- G3-03: marked AI and player holders gain/lose titles; verify actual additive native
+  dispatch, ROOT character ID, scope:title display name and destination log file.
+  Multiple callback labels may describe one transfer. No secret/full-scope dump.
+- G3-04: grant a title to a marked member using the normal native path; document
+  selection, acceptance and resulting callback(s). A helper or trace does not prove
+  a pre-transfer ban; inspect missing initiating grant/caller definitions if needed.
+- G3-05: partition and single-heir succession with deceased old holders: capture
+  title gain/loss/inheritance order, split titles, heirs, claims and native cleanup.
+  No title is moved back, no personal guilt transferred or reason created/consumed.
+- G3-06: elective succession across applicable types: record eligibility/winner and
+  observed callbacks separately from hereditary succession; no guessed election tag.
+- G3-07: claim/conquest and usurpation separately: capture genuine native war/vassal
+  resolution and callback coverage. Usurpation is not a synonym for conquest; do not
+  infer all CB coverage or ban enforcement from one callback or one successful war.
+- G3-08: AGOT dynastic stability, new cadet branch/house change, new births and same-
+  dynasty other houses: only actual currently marked house holders trace. Record when
+  native house changes occur relative to callbacks; no automatic marker propagation.
+- G3-09: source/engine investigation of a future enforced ban must cover all four
+  routes, exact jurisdiction, new members, foreign grants and exceptions. A marker,
+  disinherited trait, one blocked interaction or post-transfer reversal is insufficient.
+- G3-10: future decree registry: issuing authority dies/loses title, rightful successor,
+  competing authority, house extinction/change and multi-generation save/reload. Prove
+  intended institutional continuity without inherited personal criminal guilt.
+- G3-11: future restoration/expiry: exact decree/authority/house/claimant, original
+  fixed term, stale replay, multiple decrees and optional political reversal; do not
+  remove unrelated native traits/rights or automatically grant occupied ancestral land.
+- G3-12: compare native AGOT dynastic stability, title laws, disinheritance/restoration,
+  banking, house relations, regional institutions and performance before declaring G3
+  cleared. Trace output is diagnostic evidence only, not completed gameplay validation.
