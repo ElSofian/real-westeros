@@ -26,11 +26,11 @@ REFERENCES = (
     SourceReference(
         "CK3", "common/character_interactions/00_war.txt",
         ("declare_war_interaction", "has_any_display_cb_on",
-         "allows_declaring_war_against_target_trigger"),
+         "war_declarer_needs_hook_on_liege"),
     ),
     SourceReference(
         "CK3", "common/scripted_triggers/00_war_and_peace_triggers.txt",
-        ("allows_declaring_war_against_target_trigger",),
+        ("war_declarer_needs_hook_on_liege",),
     ),
     SourceReference(
         "AGOT", "common/character_interactions/00_war.txt",
@@ -38,7 +38,7 @@ REFERENCES = (
     ),
     SourceReference(
         "AGOT", "common/scripted_triggers/00_war_and_peace_triggers.txt",
-        ("can_attack_in_hierarchy",),
+        ("war_declarer_needs_hook_on_liege",),
     ),
     SourceReference(
         "AGOT", "common/scripted_triggers/00_agot_mega_wars_triggers.txt",

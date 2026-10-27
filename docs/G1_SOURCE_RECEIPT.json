@@ -1,0 +1,86 @@
+{
+  "evidence_type": "User-supplied private script subset; no engine run",
+  "reported_agot_version": "0.5.2.1",
+  "reported_agot_supported_version": "1.19.0.6",
+  "actual_ck3_executable_build": "unverified",
+  "files": [
+    {
+      "source": "CK3",
+      "file": "common/character_interactions/00_war.txt",
+      "status": "LOCATED_UNVERIFIED",
+      "markers": {
+        "declare_war_interaction": [
+          1,
+          4
+        ],
+        "has_any_display_cb_on": [
+          52
+        ],
+        "war_declarer_needs_hook_on_liege": [
+          254,
+          275,
+          287
+        ]
+      },
+      "sha256": "5c99b8f14893929a9bc2dbb5b258cdd2d4233d5805091952209413de876ee09f"
+    },
+    {
+      "source": "CK3",
+      "file": "common/scripted_triggers/00_war_and_peace_triggers.txt",
+      "status": "LOCATED_UNVERIFIED",
+      "markers": {
+        "war_declarer_needs_hook_on_liege": [
+          223
+        ]
+      },
+      "sha256": "4e3d7db2931b313f132d5228babdbb60a67dd28e9898a337be78b2fc1def862e"
+    },
+    {
+      "source": "AGOT",
+      "file": "common/character_interactions/00_war.txt",
+      "status": "LOCATED_UNVERIFIED",
+      "markers": {
+        "declare_war_interaction": [
+          1,
+          4
+        ],
+        "can_attack_in_hierarchy": [
+          68
+        ]
+      },
+      "sha256": "07c93240045371d3ede417e59607a08e36e331ca995bf448a439cff76233147e"
+    },
+    {
+      "source": "AGOT",
+      "file": "common/scripted_triggers/00_war_and_peace_triggers.txt",
+      "status": "LOCATED_UNVERIFIED",
+      "markers": {
+        "war_declarer_needs_hook_on_liege": [
+          223
+        ]
+      },
+      "sha256": "5f1fd8d6bfd46b5b0e43e389bd436ff06329f3072decdeb1b6d18eba0f295fd6"
+    },
+    {
+      "source": "AGOT",
+      "file": "common/scripted_triggers/00_agot_mega_wars_triggers.txt",
+      "status": "LOCATED_UNVERIFIED",
+      "markers": {},
+      "sha256": "47b64ffdee753972cd72413e4b8fa31cab3edda27b5d91b1fc73a1cc12c63bb1"
+    },
+    {
+      "source": "AGOT",
+      "file": "common/on_action/agot_on_actions/agot_war_on_actions.txt",
+      "status": "LOCATED_UNVERIFIED",
+      "markers": {},
+      "sha256": "92bc772f325eeb30e531be42d8fb6cd6a2d5ffe1cb0ac5ae4f422472d71d4919"
+    },
+    {
+      "source": "AGOT",
+      "file": "common/story_cycles/agot_story_cycle_mega_wars.txt",
+      "status": "LOCATED_UNVERIFIED",
+      "markers": {},
+      "sha256": "5fb6b17534e7c46d3b24a56190fd9c380e5e28d94f4d7450612acecbed4bd6b5"
+    }
+  ]
+}

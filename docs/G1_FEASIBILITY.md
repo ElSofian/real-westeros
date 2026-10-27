@@ -1,117 +1,104 @@
-# G1 feasibility — politically illegal vassal war with an authentic CB
+# G1 feasibility — politically forbidden war with an authentic CB
 
-**Status (2026-10-26): BLOCKED for implementation; source-location investigation is in progress.**
-**No CK3/AGOT runtime test, no gameplay script, no evidence of a working bypass.**
-This document is a version-conscious engineering gate, not a promise that G1 is feasible.
+**Status: source-backed candidate identified; engine feasibility still UNVERIFIED.**
+Updated after private source inspection on 2026-10-27. No war script spike has been
+shipped and no CK3 engine test has run. This is not a verdict of impossibility.
 
-## Exact question
+## Question and target
 
-Can a vassal deliberately defy a realm-law prohibition while using the *same*
-valid vanilla/AGOT casus belli, native declaration interface, war lifecycle and
-AGOT Mega Wars logic? Only the *political-law* restriction may be bypassed.
-Missing claims, wrong targets, unrelated CB conditions, imprisonment, and
-native impossibilities must still reject the action.
+Can a vassal defy a political prohibition while retaining the original CB, normal
+CB selector, costs, declaration and AGOT war lifecycle? Missing claims, wrong targets,
+imprisonment and unrelated restrictions must remain effective. No substitute generic
+CB, temporary legal exemption, changed realm law or fake hook is acceptable.
 
-## Evidence and confidence
+The user reports CK3 1.19.* and AGOT 0.5.2.1. The private collector report contains
+AGOT descriptor fields `version=0.5.2.1` and `supported_version=1.19.0.6`. These are
+reported metadata, not independent verification of CK3's executable build, active
+playset, load order or effective runtime scripts. Seven supplied script files were
+inspected privately. They are not committed here. Relative filenames, raw-file hashes
+and marker line numbers are recorded in `G1_SOURCE_RECEIPT.json`.
 
-| Evidence | Version | Observation | Confidence for CK3 1.19 / AGOT 0.5.2.1 |
-|---|---|---|---|
-| Repository `docs/TECHNICAL_GATES.md` | Prior AGOT descriptor 0.5.2.1, CK3 support 1.19.0.6 | Identifies likely AGOT files and trigger names, not independently re-inspected this run | Lead only |
-| [CK3DB Declare War](https://ck3db.com/interactions/declare-war) | CK3 **1.20.1.2** | Public index shows `declare_war_interaction` validity checks both `has_any_display_cb_on` and `allows_declaring_war_against_target_trigger`. The expanded conditions include hierarchy, realm-law, contract and hook checks. | Medium for 1.20.1.2; **unverified** for 1.19/AGOT |
-| [CK3DB Ask for Permission](https://ck3db.com/interactions/ask-for-permission-to-declare-war) | CK3 **1.20.1.2** | Some government types have a separate permission variable; this is not evidence of a general bypass. | Low transferability |
-| [CK3DB public reference](https://ck3db.com/scripted-triggers) | CK3 1.20.1.2 | A third-party index of scripted triggers, not the project's pinned executable. | Research only |
-| Local installed CK3 scripts | CK3 1.19.* target | **Not available** in this execution. | None |
-| Local installed AGOT scripts | AGOT 0.5.2.1 target | **Not available** in this execution. | None |
-| CK3 engine run | None | **Never executed**. | None |
+## Findings from the supplied files
 
-**Key finding:** The indexed 1.20.1.2 interaction has **multiple distinct
-validity checks**, so relaxing a single `can_attack_in_hierarchy` call is not
-proof that a native CB becomes selectable. The public index also shows
-`on_accept` handling notifications, hooks, and other post-declaration
-side effects. Replacing the interaction with a simplified copy risks dropping
-native behavior. These observations cannot be assumed to apply unchanged to
-CK3 1.19 or AGOT 0.5.2.1.
+| Reference (relative to each source root) | Finding |
+|---|---|
+| AGOT `common/character_interactions/00_war.txt:1–5` | Declaration uses the native special interaction and declaration interface. |
+| Same file, lines 68 and 89 | Hierarchy validation and displayable-CB enumeration are distinct gates; relaxing one is insufficient evidence. |
+| AGOT `common/scripted_triggers/00_war_and_peace_triggers.txt:223–246` | `war_declarer_needs_hook_on_liege` expresses the ordinary law/contract gate: internal/all-vassal-war bans, war-contract exemption, and government/hierarchy conditions. This helper is identical in the supplied CK3 and AGOT files. |
+| AGOT interaction, lines 366–412 | Target validity accepts either no need for a liege hook or a selected hook send option. The option separately checks usable hook possession. |
+| AGOT interaction, lines 414–578 | Acceptance performs existing feedback and post-declaration side effects, including hook use and native war handling. Replacing it would risk losing behavior. |
+| AGOT interaction, lines 200–295 | Administrative/permanent war bans and permission policies have separate checks. A feudal hook-gate change is not a universal bypass. |
+| AGOT `common/on_action/agot_on_actions/agot_war_on_actions.txt:7–16` | Native war-start dispatch includes `agot_mega_war_action` and other AGOT handlers. |
+| Same file, lines 18–60 and 130 onward | Victory, defeat, white peace, invalidation and transfer have separate handlers. Mega War initialization uses the war scope and separate classification trigger. |
+| AGOT `common/scripted_triggers/00_agot_mega_wars_triggers.txt:3–67` | Mega War eligibility includes hierarchy, government and historical exceptions. An unlawful peer war must not automatically become a Mega War. |
+| AGOT `common/story_cycles/agot_story_cycle_mega_wars.txt:29–80, 691 onward` | Story termination rebuilds realm state through external effects; there is also a fallback for missing/invalidated wars. Referenced effects are not included in this upload. |
 
-## Boundaries to investigate in the pinned versions
+### Correction to earlier research
 
-1. **Interaction visibility and validity:** Compare the *effective* AGOT
-   `declare_war_interaction` against CK3's original. Identify each political
-   law check and each unrelated restriction. Determine whether AGOT replaces
-   the interaction definition or extends its helpers.
-2. **CB enumeration / selection UI:** Trace
-   `has_any_display_cb_on` and any CB `can_use`, `can_use_title`, cost,
-   hierarchy, and targeting checks. Determine whether political law also
-   removes the CB from the native selector. An enabled interaction alone is
-   insufficient.
-3. **Native declaration operation:** Identify a **documented and supported**
-   way to invoke the existing CB with the normal declaration flow. Verify that
-   the engine, not an invented script effect, owns war creation and CB data.
-4. **AGOT lifecycle:** Inspect
-   `common/scripted_triggers/00_agot_mega_wars_triggers.txt`,
-   `common/on_action/agot_on_actions/agot_war_on_actions.txt`, and
-   `common/story_cycles/agot_story_cycle_mega_wars.txt`. Determine which
-   hooks fire from a normal declaration and whether any alternate path
-   bypasses them. Check war end and cleanup too.
-5. **AI parity:** Verify the same availability and CB rules for human and AI
-   characters. A bounded AI opportunity selector may decide *when* to attempt
-   the action; it may not grant a different mechanical bypass.
-6. **Save/reload and timing:** Capture legality when war is declared, not
-   retroactively from a later change of law or liege; do not store a fake
-   substitute CB.
+The earlier lead `allows_declaring_war_against_target_trigger` came from a third-party
+CK3 1.20.1.2 index. It is absent from both supplied war-interaction/helper files.
+`can_attack_in_hierarchy` is called by the interaction, not defined by the supplied
+war-and-peace helper file. Its implementation/complete semantics are not established
+by this subset. The locator now searches the actual observed hook-gate identifier;
+it must not report the newer index as evidence for the target build.
 
-## Options (not implementations)
+## Implementation route to investigate first
 
-| Option | Condition to consider it | Current verdict |
-|---|---|---|
-| **A. Additive opt-in interaction** that routes to the native CB selector/declaration | Pinned source/API proves it can pass the *original* CB through without bypassing other restrictions or native AGOT hooks | **Unproven**; preferred only if demonstrable |
-| **B. Narrow override of a shared scripted trigger** with explicit unlawful-war context | Pinned source proves a safe, scoped override is possible without changing all other war declarations or competing with AGOT | **High risk**; avoid unless A is impossible and complete regressions can be tested |
-| **C. Replace `declare_war_interaction` or a global war on_action** | Would duplicate vanilla/AGOT definitions and lifecycle | **Rejected by default**; compatibility hazard |
-| **D. Invent a generic CB / trigger an unrelated war** | Loses the authentic CB and may bypass Mega Wars | **Rejected — violates project design** |
-| **E. Temporarily grant a legal exemption or change the realm law** | Changes political legality and may affect unrelated actions | **Rejected as a silent workaround** |
+The strongest source-backed candidate is a **narrow contextual change to the
+hook-requirement helper**, preserving the existing native declaration interaction,
+selector and CB. It would apply only to an explicitly selected unlawful attempt
+with a recorded actor/target/context; outside that context behavior must be identical.
+The actual law/contract must remain unchanged so political illegality can be recorded.
+This is a candidate, not implemented code or proof the engine accepts it.
 
-No isolated CK3 script spike is justified until option A or B has an
-identified native entry point in the pinned source. A syntactically plausible
-but unverifiable `start_war` snippet would not advance the gate.
+Before writing this spike, establish:
 
-## Reproducible private source-location check
+1. Whether hierarchy/CB enumeration and individual CB validity independently reject
+   the same crown-law condition. The helper alone cannot establish this.
+2. All call sites of the hook helper and all effective definitions supplied by mods.
+   A global helper override can affect other contexts and mod load-order conflicts.
+3. How an opt-in actor/target context survives the native UI, cancellation, same-tick
+   revalidation and AI declaration. No marker may grant a general lasting bypass.
+4. How legality is recorded at actual declaration, then consumed once without replacing
+   AGOT start/end hooks. Cancellation must not count as a political offense.
 
-A stdlib-only helper locates candidate files and identifier line numbers
-**without copying, displaying or committing any CK3/AGOT code**:
+An additive interaction routing to the native selector remains an alternative only
+if target-version source/API and runtime tests show it preserves the full flow.
+Do not copy the existing interaction wholesale into the public submod. Do not invent
+an undocumented `start_war` effect or claim an override can alter engine internals.
 
-```bash
-python tools/audit_g1_sources.py --ck3-root "<CK3 installation>/game" --agot-root "<AGOT mod directory>"
-python tools/audit_g1_sources.py --ck3-root "<CK3 installation>/game" --agot-root "<AGOT mod directory>" --json
-```
+## Remaining evidence and smallest useful test
 
-`LOCATED_UNVERIFIED` means a file and its expected identifiers were located,
-**not** that the source was parsed, that the identifier is executable, or
-that any war is possible. `REVIEW_MARKERS` indicates a missing candidate
-identifier, which may be a version change or an incorrect prior assumption;
-`MISSING`, `EMPTY` and `UNREADABLE` likewise require investigation.
-The command exits nonzero for any unresolved reference. It prints only
-relative paths, identifier names and line numbers, never absolute paths or
-source contents. Its fixtures are synthetic, not CK3 assets.
+The seven-file subset is sufficient to locate the scripted crown-law gate, but lacks
+CB definitions and the other helper call sites. Inspect the installed claim CB
+(`common/casus_belli_types`), relevant laws/contracts, and matching references in
+scripted triggers/effects before selecting the patch boundary. Obtain the exact CK3
+menu/executable version. Source review cannot prove the engine's hidden checks.
 
-## Minimal next evidence required
+Then run an isolated, disposable-save spike against an AGOT-only baseline:
 
-- Pin **actual** CK3 executable build, AGOT descriptor and load order.
-- Run the source locator against those private local directories, inspect
-  the **full relevant blocks** privately and record only short findings
-  and references in this repository. The source locator alone is insufficient.
-- Identify the native war-declaration entry point that retains a chosen CB.
-  If it cannot be found, keep G1 **BLOCKED** and do not write a fake war.
-- Only then implement an isolated experimental spike in a separate PR,
-  with negative-path checks (missing claim, wrong CB target, law exception).
-- Execute the high-signal cases in
-  [TEST_PLAN_G1.md](TEST_PLAN_G1.md): G1-01 through G1-05, G1-08,
-  G1-10 through G1-13, then AI and regression cases. Compare against
-  AGOT-only baseline. No gameplay claim before these engine tests.
+- A legal claim war at peace: same native CB, target title, cost and declaration.
+- The same valid claim under the relevant crown-law ban, without a hook or contractual
+  exemption: only explicit unlawful intent may admit it. Verify CB identity afterwards.
+- Missing claim, wrong target and imprisonment: still rejected; cancellation leaves
+  no offense or reusable bypass. Existing legal hook/contract routes remain intact.
+- Save/reload and AI: context cannot leak to a second target; AI uses the same gate.
+- Resolve by victory, defeat, white peace and invalidation; compare title/realm state
+  and AGOT logs. Test an eligible Mega War separately, including story cleanup.
+
+Use `TEST_PLAN_G1.md` for the expanded cases. Failure of a particular helper override
+rules out that patch, not automatically every possible implementation of G1.
+
+## Private inspection tool
+
+Run `python tools/audit_g1_sources.py --ck3-root <private-game-root> --agot-root <private-mod-root>`.
+It reports only relative paths and identifiers; `LOCATED_UNVERIFIED` is a location
+result, not a semantic or engine pass. Its tests use synthetic data. No private local
+installation paths, source code, saves, archives or game assets belong in Git.
 
 ## Decision
 
-**BLOCKED / NO GO for gameplay implementation today, not a proven technical
-impossibility.** Public CK3 1.20.1.2 evidence demonstrates several gates and
-post-declaration side effects, but does **not** demonstrate a supported,
-version-correct way to bypass only political law while preserving the
-original CB and AGOT lifecycle. Continue independent G2 research while
-the pinned private source/engine boundary remains unavailable.
+**Proceed with targeted source investigation and then an isolated engine spike.**
+The source hurdle is narrower than previously known: a concrete script-level gate
+exists. G1 is neither approved as working nor rejected as impossible. The next blocker
+is missing CB/call-site evidence and engine execution, not missing war-interaction files.
