@@ -2,6 +2,8 @@ name: Validate submod
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - '.github/task-claims/**'
   pull_request:
 jobs:
   structural:
