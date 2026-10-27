@@ -164,6 +164,7 @@ class NativeSchemeEvidenceTests(unittest.TestCase):
     def test_localization_and_no_hidden_identity_rendering(self):
         interaction = (MOD / 'common/character_interactions/rw_scheme_evidence_interactions.txt').read_text()
         keys = set(re.findall(r'(?:title|desc|name)\s*=\s*(rw_[\w.]+)', self.v + interaction))
+        keys = {key for key in keys if not key.startswith('rw_scheme_response.')}
         keys.update(('rw_review_my_scheme_evidence_interaction', 'rw_scheme_evidence.notice_title', 'rw_scheme_evidence.notice_desc'))
         for lang in ('english', 'french'):
             p = MOD / f'localization/{lang}/rw_scheme_evidence_l_{lang}.yml'

@@ -48,5 +48,25 @@ rw_scheme_evidence.0001 = {
         }
     }
     theme = intrigue
+    option = {
+        name = rw_scheme_response.open
+        trigger = { rw_scheme_response_can_open_trigger = yes }
+        if = {
+            limit = { rw_scheme_response_can_open_trigger = yes }
+            scope:rw_scheme_evidence_record.var:rw_evidence_participant = { save_scope_as = rw_scheme_participant }
+            if = {
+                limit = { OR = { rw_scheme_response_owner_turn_trigger = yes rw_scheme_response_can_withdraw_trigger = yes } }
+                trigger_event = { id = rw_scheme_response.0001 }
+            }
+        }
+    }
+    option = {
+        name = rw_scheme_response.read
+        trigger = { rw_scheme_response_can_read_trigger = yes }
+        if = {
+            limit = { rw_scheme_response_can_read_trigger = yes }
+            trigger_event = { id = rw_scheme_response.0003 }
+        }
+    }
     option = { name = rw_scheme_evidence.acknowledge }
 }

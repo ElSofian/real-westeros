@@ -7,7 +7,7 @@ A submod for **Crusader Kings III — A Game of Thrones (AGOT)**.
 ## Project status
 
 **Experimental CK3 script slices; not engine-tested.** The repository includes a
-reconciliation, immediate/deferred endorsement negotiations, contextual mediation, independent personal case records, contested allegations, voluntary repair responses, mutual promise cancellation and private native-scheme observations, with
+reconciliation, immediate/deferred endorsement negotiations, contextual mediation, independent personal case records, contested allegations, voluntary repair responses, mutual promise cancellation and private native-scheme observations and voluntary political responses, with
 static checks and EN/FR localization. All CK3 runtime tests are deferred to the
 final campaign. CI builds a downloadable experimental ZIP with a commit/hash manifest;
 see [integrated build](docs/INTEGRATED_BUILD.md). See [installation](docs/INSTALL.md) and
@@ -18,7 +18,8 @@ remains unverified and is planned for the war-feature stage.
 
 Target-version scheme sources have been received and verified. Experimental
 [discovery intake and private observation records](docs/RW010_SCHEME_EVIDENCE.md)
-are implemented; discretionary justice and dynastic consequences remain to develop.
+and [voluntary political responses](docs/RW010_SCHEME_RESPONSE.md) are implemented;
+coercive justice and dynastic consequences remain to develop.
 **G1 is back
 in the development plan for the war-feature stage**, rather than the immediate task.
 Retain its research and diagnostic; establish authentic-CB feasibility before shipping

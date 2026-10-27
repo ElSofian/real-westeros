@@ -1,0 +1,104 @@
+# Identity shared by both parties, independent of a live native scheme.
+rw_scheme_response_identity_trigger = {
+    exists = scope:rw_scheme_observer
+    exists = scope:rw_scheme_evidence_record
+    exists = scope:rw_scheme_evidence_serial
+    exists = scope:rw_scheme_participant
+    scope:rw_scheme_evidence_record = {
+        rw_scheme_evidence_reader_trigger = { READER = scope:rw_scheme_observer }
+        var:rw_evidence_serial = scope:rw_scheme_evidence_serial
+        var:rw_evidence_kind = flag:participant_exposed
+        var:rw_evidence_participant = scope:rw_scheme_participant
+        has_variable = rw_scheme_response_state
+    }
+}
+rw_scheme_response_owner_turn_trigger = {
+    rw_scheme_response_identity_trigger = yes
+    this = scope:rw_scheme_observer
+    is_alive = yes
+    is_adult = yes
+    is_landed = yes
+    scope:rw_scheme_evidence_record = {
+        has_variable = rw_scheme_response_window
+        var:rw_scheme_response_state = flag:open
+    }
+}
+# Journal UI has no participant snapshot yet; resolve it only after this gate.
+rw_scheme_response_can_open_trigger = {
+    rw_scheme_evidence_view_trigger = yes
+    scope:rw_scheme_evidence_record = {
+        var:rw_evidence_kind = flag:participant_exposed
+        exists = var:rw_evidence_participant
+        has_variable = rw_scheme_response_window
+    }
+    OR = {
+        AND = { is_adult = yes is_landed = yes scope:rw_scheme_evidence_record = { var:rw_scheme_response_state = flag:open } }
+        scope:rw_scheme_evidence_record = { var:rw_scheme_response_state = flag:offered }
+    }
+}
+# Withdrawal is harmless even after losing land/authority or after imprisonment.
+rw_scheme_response_can_withdraw_trigger = {
+    rw_scheme_response_identity_trigger = yes
+    this = scope:rw_scheme_observer
+    is_alive = yes
+    scope:rw_scheme_evidence_record = {
+        has_variable = rw_scheme_response_window
+        var:rw_scheme_response_state = flag:offered
+    }
+}
+# A private political request, not a legal finding or imprisonment justification.
+rw_scheme_response_authority_trigger = {
+    scope:rw_scheme_observer = {
+        is_alive = yes
+        is_adult = yes
+        is_landed = yes
+        is_imprisoned = no
+        host = this
+    }
+    scope:rw_scheme_participant = {
+        is_alive = yes
+        is_adult = yes
+        is_imprisoned = no
+        NOT = { this = scope:rw_scheme_observer }
+        OR = {
+            AND = { exists = liege liege = scope:rw_scheme_observer }
+            is_courtier_of = scope:rw_scheme_observer
+        }
+    }
+}
+rw_scheme_response_can_request_trigger = {
+    rw_scheme_response_owner_turn_trigger = yes
+    rw_scheme_response_authority_trigger = yes
+}
+rw_scheme_response_participant_turn_trigger = {
+    rw_scheme_response_identity_trigger = yes
+    rw_scheme_response_authority_trigger = yes
+    this = scope:rw_scheme_participant
+    scope:rw_scheme_evidence_record = {
+        has_variable = rw_scheme_response_window
+        var:rw_scheme_response_state = flag:offered
+    }
+}
+rw_scheme_response_can_pay_trigger = {
+    rw_scheme_response_participant_turn_trigger = yes
+    gold >= 25
+}
+# Viewing a response never requires the participant to remain alive/in the realm.
+rw_scheme_response_can_read_trigger = {
+    rw_scheme_evidence_view_trigger = yes
+    scope:rw_scheme_evidence_record = {
+        var:rw_evidence_kind = flag:participant_exposed
+        has_variable = rw_scheme_response_state
+    }
+}
+# Story scope: only an explicitly offered, still-open demand is shared with its addressee.
+rw_scheme_response_received_filter_trigger = {
+    story_type = story_rw_scheme_evidence
+    var:rw_evidence_schema = 1
+    has_variable = rw_evidence_serial
+    has_variable = rw_evidence_retained
+    var:rw_evidence_kind = flag:participant_exposed
+    var:rw_evidence_participant = $READER$
+    var:rw_scheme_response_state = flag:offered
+    has_variable = rw_scheme_response_window
+}

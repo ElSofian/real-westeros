@@ -17,6 +17,7 @@ are deferred to the final campaign, not waived. Prefer a disposable fresh save.
 | Mediation | Decline, evidence-gated personal reprimand, invitation to conciliatory gesture |
 | Gesture reception | Client acceptance/refusal, personal response recorded separately |
 | Affront allegation | Acknowledgment/contest/silence; withdrawal or explicit disclosure |
+| Political scheme response | Voluntary 25-gold request for non-stacking goodwill, refusal/contestation/withdrawal; no criminal pardon |
 | Native plot observations | Discovered murder plot vs exposed participant; target-only journal, no new sanction |
 | Known-case archive | Independent story records, role/disclosure-filtered views, retained closed records |
 

@@ -65,12 +65,15 @@ same observer/story type/schema/kind/scheme, plus participant for exposure recor
 Different plots, kinds or participants remain separate. There is no useful-action
 count cap, global pair scan, automatic accusation or periodic scheme search.
 
+Current amendment: RW010_SCHEME_RESPONSE.md adds a separate voluntary political
+response on new exposed-participant records, with its own short window.
+
 A discreet interface notice follows record initialization. It adds no modal choice
 to the existing native discovery events and grants no reward, cost or opinion effect.
 Players can use **Review My Discovered Murder Plots** from a character menu to read
 their own records; the selected character's records are never enumerated and that
-character receives no notification. AI receives the same record/notice logic; this
-slice offers no additional political decision to automate. Read-only archive browsing
+character receives no notification. AI receives the same record/notice logic; the intake itself
+applies no political decision. The response amendment supplies shared actor events. Read-only archive browsing
 is not proactively scheduled for AI.
 
 Viewing requires typed story, supported schema/kind, retained record, observer root
@@ -107,7 +110,8 @@ saved story iteration scopes, privacy, deduplication, plot end and reload behavi
 Older saves gain entries only from future callbacks; no historical plot is scanned
 or backfilled. No migration success is claimed.
 
-Next: use this explicit evidence provenance to design a discretionary target response,
+The voluntary response is now in RW010_SCHEME_RESPONSE.md. Next investigate native
+legal eligibility and prior consequences before coercive personal sanctions,
 while preserving native justice and avoiding duplicate effects. Actual family/house
 sanctions and restoration remain a separate G3 stage. The unlawful-war feature stays
 at its G1 stage. Source entry points are now located; engine feasibility is still open.

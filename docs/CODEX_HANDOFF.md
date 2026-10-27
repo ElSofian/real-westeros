@@ -9,14 +9,17 @@ Personal consent to conciliatory gestures is in RW010_REPAIR_RESPONSE.md.
 The private scheme collection is received and hash-verified. Target-version discovery
 entry points and experimental private observation records are in RW010_SCHEME_EVIDENCE.md;
 SCHEME_SOURCE_RECEIPT.json contains references/hashes only. Native dispatch, knowledge
-and persistence semantics remain engine-unverified. No new legal sanctions yet.
+and persistence semantics remain engine-unverified. Voluntary political responses
+(25-gold request, refusal/contestation/withdrawal) are in RW010_SCHEME_RESPONSE.md.
+No new legal sanctions yet.
 Mutual cancellation of a deferred promise is in RW010_MUTUAL_CANCELLATION.md.
 An experimental distribution is built from committed inputs by CI; see INTEGRATED_BUILD.md.
 Cross-slice source audit and versioned provider-decision reminders are in
 INTEGRATION_AUDIT.md; final LIFE-* cases remain unrun. The targeted scheme collector
 was integrated via PR #29; no additional collection is currently requested.
-Next develop a discretionary response to explicitly recorded native evidence,
-keeping target knowledge, legal authority and existing native penalties separate.
+Next investigate native legal eligibility and already-applied consequence state
+before coercive personal sanctions. Keep knowledge, legal authority and existing
+native penalties separate; the implemented contribution is voluntary, not immunity.
 No executions, confiscations, family sanctions or dynastic restoration are implemented.
 Independent gameplay work remains allowed. Packaging is not engine validation. Do not invent automatic discovery hooks or
 replace original CK3 scripts with Python gameplay models.
