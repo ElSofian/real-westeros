@@ -1,9 +1,32 @@
-# Consume the pending marker before applying any consequence.
-# A repeated/stale event response therefore has no second effect.
+# Revalidate at execution, not only when showing the interaction.
+rw_begin_petition_effect = {
+    if = {
+        limit = { rw_petition_parties_valid_trigger = yes }
+        scope:recipient = { save_scope_as = rw_petition_recipient }
+        scope:actor = {
+            save_scope_as = rw_petitioner
+            if = {
+                limit = { NOT = { has_variable = rw_petition_revision } }
+                set_variable = { name = rw_petition_revision value = 0 }
+            }
+            change_variable = { name = rw_petition_revision add = 1 }
+            save_scope_value_as = { name = rw_petition_revision value = var:rw_petition_revision }
+            add_character_flag = { flag = rw_petition_cooldown days = 365 }
+            add_character_flag = { flag = rw_petition_pending days = 30 }
+            set_variable = { name = rw_petition_target value = scope:recipient }
+        }
+        scope:recipient = { trigger_event = { id = rw_reconciliation.0001 } }
+    }
+}
+
+# Consume before consequence. Keep the monotonic revision, including after expiry.
 rw_clear_petition_effect = {
-    scope:rw_petitioner = {
-        remove_character_flag = rw_petition_pending
-        remove_variable = rw_petition_target
+    if = {
+        limit = { rw_petition_matches_trigger = yes }
+        scope:rw_petitioner = {
+            remove_character_flag = rw_petition_pending
+            remove_variable = rw_petition_target
+        }
     }
 }
 
@@ -12,7 +35,7 @@ rw_accept_reconciliation_effect = {
         limit = { rw_petition_can_resolve_trigger = yes }
         rw_clear_petition_effect = yes
         scope:rw_petitioner = {
-            add_opinion = { target = root modifier = rw_reconciliation_accepted_opinion }
+            add_opinion = { target = scope:rw_petition_recipient modifier = rw_reconciliation_accepted_opinion }
         }
         add_opinion = { target = scope:rw_petitioner modifier = rw_reconciliation_accepted_opinion }
     }
@@ -23,7 +46,7 @@ rw_decline_reconciliation_effect = {
         limit = { rw_petition_can_resolve_trigger = yes }
         rw_clear_petition_effect = yes
         scope:rw_petitioner = {
-            add_opinion = { target = root modifier = rw_reconciliation_refused_opinion }
+            add_opinion = { target = scope:rw_petition_recipient modifier = rw_reconciliation_refused_opinion }
         }
     }
 }

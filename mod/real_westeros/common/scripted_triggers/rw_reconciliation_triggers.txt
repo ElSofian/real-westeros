@@ -7,19 +7,39 @@ rw_can_petition_trigger = {
     NOT = { has_character_flag = rw_petition_pending }
 }
 
-# ROOT is the recipient; the petitioner is carried by the event scope.
+# Used by both UI validation and the effect that actually opens the incident.
+rw_petition_parties_valid_trigger = {
+    scope:actor = { rw_can_petition_trigger = yes }
+    scope:recipient = { is_alive = yes is_adult = yes is_landed = yes is_at_war = no }
+    NOT = { scope:actor = scope:recipient }
+}
+
+# Identity is independent of eligibility/expiry, so dismissal can clean up its own
+# obsolete state without clearing a later petition to the same character.
+rw_petition_matches_trigger = {
+    exists = scope:rw_petitioner
+    exists = scope:rw_petition_recipient
+    exists = scope:rw_petition_revision
+    this = scope:rw_petition_recipient
+    scope:rw_petitioner = {
+        has_variable = rw_petition_target
+        has_variable = rw_petition_revision
+        var:rw_petition_target = scope:rw_petition_recipient
+        var:rw_petition_revision = scope:rw_petition_revision
+    }
+}
+
 rw_petition_can_resolve_trigger = {
+    rw_petition_matches_trigger = yes
     is_alive = yes
     is_adult = yes
     is_landed = yes
     is_at_war = no
-    exists = scope:rw_petitioner
     scope:rw_petitioner = {
         is_alive = yes
         is_adult = yes
         is_landed = yes
         is_at_war = no
         has_character_flag = rw_petition_pending
-        var:rw_petition_target = root
     }
 }

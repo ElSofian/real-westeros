@@ -31,3 +31,6 @@ RW-004 / G1 is back in the todo list for its normal war-feature development stag
 
 ## Autonomous continuation
 The owner does not want to relay messages between separate agents or approve ordinary PRs. When operating in a scheduled ChatGPT/Work run with GitHub tools, advance the next self-contained backlog task directly if possible: inspect repository, edit on a feature branch, verify what can be verified, create/review a PR, merge safe changes, and update `docs/PROGRESS.md`. If an integration cannot launch Codex Cloud, do not request that the owner copy/paste prompts as a routine workaround; use available capabilities for useful direct progress. A scheduled task is *not* evidence of uninterrupted Codex execution. Stop on quota exhaustion and record genuine blockers. No new paid services.
+
+## Current validation schedule
+The owner defers all CK3 runtime tests to one final campaign. Continue useful source audit, original CK3 scripts and available static checks without repeatedly requesting manual game tests. Track unverified behavior and required final scenarios explicitly. This changes timing, not the requirement for engine evidence before claiming gameplay compatibility.
