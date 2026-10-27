@@ -1,0 +1,55 @@
+rw_service_party_eligible_trigger = {
+    is_alive = yes
+    is_adult = yes
+    is_landed = yes
+    is_at_war = no
+}
+rw_service_provider_available_trigger = {
+    rw_service_party_eligible_trigger = yes
+    NOT = { has_character_flag = rw_service_pending }
+    NOT = { has_character_flag = rw_service_cooldown }
+}
+rw_service_can_offer_trigger = {
+    scope:actor = { rw_service_provider_available_trigger = yes }
+    scope:recipient = { rw_service_party_eligible_trigger = yes gold >= 25 }
+    NOT = { scope:actor = scope:recipient }
+}
+# Identity without eligibility allows cleanup of this offer even after expiry/death.
+rw_service_matches_trigger = {
+    exists = scope:rw_service_provider
+    exists = scope:rw_service_client
+    exists = scope:rw_service_serial
+    exists = scope:rw_service_revision
+    exists = scope:rw_service_price
+    scope:rw_service_provider = {
+        has_variable = rw_service_target
+        has_variable = rw_service_serial
+        has_variable = rw_service_revision
+        has_variable = rw_service_price
+        var:rw_service_target = scope:rw_service_client
+        var:rw_service_serial = scope:rw_service_serial
+        var:rw_service_revision = scope:rw_service_revision
+        var:rw_service_price = scope:rw_service_price
+    }
+}
+rw_service_active_trigger = {
+    rw_service_matches_trigger = yes
+    scope:rw_service_provider = {
+        rw_service_party_eligible_trigger = yes
+        has_character_flag = rw_service_pending
+    }
+    scope:rw_service_client = { rw_service_party_eligible_trigger = yes }
+}
+rw_service_client_turn_trigger = {
+    rw_service_active_trigger = yes
+    this = scope:rw_service_client
+    scope:rw_service_provider = { var:rw_service_turn = flag:client }
+}
+rw_service_provider_turn_trigger = {
+    rw_service_active_trigger = yes
+    this = scope:rw_service_provider
+    scope:rw_service_provider = { var:rw_service_turn = flag:provider }
+}
+rw_service_affordable_trigger = {
+    scope:rw_service_client = { gold >= scope:rw_service_price }
+}

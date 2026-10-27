@@ -1,0 +1,67 @@
+namespace = rw_services
+
+# Client receives a 50-gold quotation; accepting performs the endorsement immediately.
+rw_services.0001 = {
+    type = character_event
+    title = rw_services.0001.t
+    desc = rw_services.0001.desc
+    theme = diplomacy
+    left_portrait = { character = scope:rw_service_provider }
+    option = {
+        name = rw_services.accept_50
+        trigger = { rw_service_client_turn_trigger = yes rw_service_affordable_trigger = yes }
+        rw_service_settle_effect = yes
+        ai_chance = { base = 30 }
+    }
+    option = {
+        name = rw_services.counter_25
+        trigger = { rw_service_client_turn_trigger = yes scope:rw_service_client = { gold >= 25 } }
+        rw_service_counter_effect = yes
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = rw_services.refuse
+        trigger = { rw_service_client_turn_trigger = yes }
+        rw_service_clear_effect = yes
+        ai_chance = { base = 30 }
+    }
+    option = {
+        name = rw_services.lapsed
+        trigger = { NOT = { rw_service_client_turn_trigger = yes } }
+        rw_service_clear_effect = yes
+        ai_chance = { base = 100 }
+    }
+}
+
+# Provider receives the client's 25-gold counteroffer.
+rw_services.0002 = {
+    type = character_event
+    title = rw_services.0002.t
+    desc = rw_services.0002.desc
+    theme = diplomacy
+    left_portrait = { character = scope:rw_service_client }
+    option = {
+        name = rw_services.accept_25
+        trigger = { rw_service_provider_turn_trigger = yes rw_service_affordable_trigger = yes }
+        rw_service_settle_effect = yes
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = rw_services.requote_50
+        trigger = { rw_service_provider_turn_trigger = yes }
+        rw_service_requote_effect = yes
+        ai_chance = { base = 20 }
+    }
+    option = {
+        name = rw_services.refuse
+        trigger = { rw_service_provider_turn_trigger = yes }
+        rw_service_clear_effect = yes
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = rw_services.lapsed
+        trigger = { NOT = { rw_service_provider_turn_trigger = yes } }
+        rw_service_clear_effect = yes
+        ai_chance = { base = 100 }
+    }
+}

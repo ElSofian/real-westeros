@@ -1,0 +1,13 @@
+﻿l_english:
+ rw_offer_endorsement_interaction:0 "Offer Public Endorsement (Experimental)"
+ rw_offer_endorsement_interaction_desc:0 "Offer to speak publicly in support of this ruler for 50 gold. They may counter with 25. Acceptance transfers the agreed gold and grants them 50 prestige immediately. Offer expires after 30 days; one offer per year. Not engine-tested."
+ rw_services.0001.t:0 "A Voice in Your Favour"
+ rw_services.0001.desc:0 "[rw_service_provider.GetTitledFirstName] offers to speak in support of my standing. The price is 50 gold, for an immediate gain of 50 prestige. I may accept, offer 25 gold, or decline."
+ rw_services.0002.t:0 "A Lower Price"
+ rw_services.0002.desc:0 "[rw_service_client.GetTitledFirstName] offers 25 gold for my public endorsement. If I agree, I receive 25 gold and they gain 50 prestige immediately. I may instead maintain my 50-gold price, or end the discussion."
+ rw_services.accept_50:0 "Pay 50 gold for the endorsement."
+ rw_services.counter_25:0 "Offer 25 gold instead."
+ rw_services.accept_25:0 "Accept 25 gold and give the endorsement."
+ rw_services.requote_50:0 "Maintain the price of 50 gold."
+ rw_services.refuse:0 "End the negotiation."
+ rw_services.lapsed:0 "This proposal is no longer valid."
