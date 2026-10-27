@@ -1,5 +1,7 @@
 # RW-010 — contextual mediation of a recorded breach
 
+Current amendment: RW010_REPAIR_RESPONSE.md replaces the automatic client opinion benefit with explicit acceptance/refusal; mediator opinion remains separate. Earlier flow descriptions below predate this change.
+
 **Experimental CK3 scripts; not engine-tested.** All runtime checks remain deferred
 to the final campaign at the owner's request.
 

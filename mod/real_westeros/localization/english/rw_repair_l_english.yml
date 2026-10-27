@@ -1,0 +1,9 @@
+﻿l_english:
+ rw_repair.accept:0 "Accept the gesture (+5 opinion for two years)."
+ rw_repair.reject:0 "Decline; this does not resolve our disagreement."
+ rw_repair.read_response:0 "Read the response to the conciliatory gesture."
+ rw_repair.title:0 "A Gesture and Its Reception"
+ rw_repair.accepted:0 "[rw_service_client.GetTitledFirstName] accepted the conciliatory gesture by [rw_service_provider.GetTitledFirstName]. Their opinion improved by 5 for two years. This does not change recorded facts, statements or the original service obligation."
+ rw_repair.rejected:0 "[rw_service_client.GetTitledFirstName] declined the gesture by [rw_service_provider.GetTitledFirstName]. No further penalty, refund or payment followed. The gesture and underlying facts remain recorded."
+ rw_repair.unanswered:0 "No acceptance or refusal of this gesture is recorded. Silence, expiry or loss of eligibility is not consent. This view cannot reopen the response or extend its 30-day deadline."
+ rw_repair.unavailable:0 "No authorised response record is available. No consent is inferred."

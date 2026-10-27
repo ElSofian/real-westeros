@@ -1,5 +1,7 @@
 # RW-010 — contested affront allegation
 
+Current amendment: RW010_REPAIR_RESPONSE.md replaces the automatic client opinion benefit with explicit acceptance/refusal; mediator opinion remains separate. Earlier flow descriptions below predate this change.
+
 **Original experimental CK3 scripts, not engine-tested.** This is a structured
 political allegation action, not automatic detection of vanilla insults, discovered
 assassination schemes, fabricated objective truth or an offline Python simulation.
