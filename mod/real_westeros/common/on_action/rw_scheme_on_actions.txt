@@ -1,0 +1,17 @@
+# Source-backed native entry points. Append only named on_actions: never replace
+# native/AGOT effect, trigger or event lists. Composition still needs engine testing.
+on_scheme_discovered = {
+    on_actions = { rw_on_murder_scheme_discovered }
+}
+on_scheme_agent_discovered = {
+    on_actions = { rw_on_murder_participant_exposed }
+}
+# Native root is the scheme; an agent callback supplies scope:agent.
+rw_on_murder_scheme_discovered = {
+    trigger = { rw_scheme_discovery_intake_trigger = yes }
+    effect = { rw_scheme_discovery_intake_effect = yes }
+}
+rw_on_murder_participant_exposed = {
+    trigger = { rw_scheme_participant_intake_trigger = yes }
+    effect = { rw_scheme_participant_intake_effect = yes }
+}

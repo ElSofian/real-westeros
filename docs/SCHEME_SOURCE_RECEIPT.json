@@ -1,0 +1,214 @@
+{
+  "schema": 1,
+  "kind": "private_source_integrity_and_inspection_receipt_not_engine_evidence",
+  "archive_sha256": "4f227833b067dc285f1b0780d3c3e753a311532f17ab099c36dac33b9eb9e3cc",
+  "manifest_entries_verified": 1724,
+  "selected_bytes": 107379853,
+  "descriptor_metadata": {
+    "CK3": {
+      "version": null,
+      "supported_version": null
+    },
+    "AGOT": {
+      "version": "0.5.2.1",
+      "supported_version": "1.19.0.6"
+    }
+  },
+  "ck3_executable_version": "not_collected",
+  "dependency_depth": 3,
+  "frontier_count": 241,
+  "unresolved_count": 2876,
+  "reviewed_references": [
+    {
+      "source": "CK3",
+      "path": "common/on_action/scheme_on_actions.txt",
+      "sha256": "486118fb88ecddb25858b1e640a78a25a2b438910225d9fec3ecb95a960e371a",
+      "size": 5764,
+      "markers": {
+        "on_scheme_discovered": [
+          2
+        ],
+        "on_scheme_agent_discovered": [
+          80
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/schemes/scheme_types/murder_scheme.txt",
+      "sha256": "6faf5fdf5e2c7a7516d3fba42d199a2b76056ebd58a3346f472e8644a5addf8c",
+      "size": 10128,
+      "markers": {
+        "murder": [
+          1,
+          287
+        ],
+        "hostile_scheme_monthly_discovery_chance_effect": [
+          381
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/scripted_effects/00_scheme_scripted_effects.txt",
+      "sha256": "478f4b1b9d94f28e33b83b8453f6bbcfd239830d821196d68120d5727723f6df",
+      "size": 412683,
+      "markers": {
+        "hostile_scheme_monthly_discovery_chance_effect": [
+          57
+        ],
+        "expose_scheme_agent": [],
+        "attached_scheme": [
+          16202
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/scripted_triggers/00_scheme_triggers.txt",
+      "sha256": "7d3d941fc21a6ecbfef7629325678a8c51ec6f9922f5f911ca74fade1043e6b5",
+      "size": 26172,
+      "markers": {
+        "is_scheme_exposed": [
+          777
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "events/scheme_events/hostile_scheme_discovery_events.txt",
+      "sha256": "c5232383e70f16d125347fa124f260974cf61334ce42efa4f87981c86dde736d",
+      "size": 17313,
+      "markers": {
+        "hostile_scheme_discovery.1001": [
+          21
+        ],
+        "hostile_scheme_discovery.2001": [
+          369
+        ],
+        "expose_scheme": [
+          466,
+          572
+        ],
+        "expose_scheme_agent": [
+          188
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/on_action/scheme_on_actions.txt",
+      "sha256": "b0047c67db757e258643ca630e8a7cf9cab29602355755cb921aaa2364ff0f81",
+      "size": 6003,
+      "markers": {
+        "on_scheme_discovered": [
+          2
+        ],
+        "on_scheme_agent_discovered": [
+          81
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/schemes/scheme_types/murder_scheme.txt",
+      "sha256": "dd9aac17d3251e61e556e8c4abe009753e5fccaf631d3dfcd9eb80be8d004fa0",
+      "size": 10709,
+      "markers": {
+        "murder": [
+          1,
+          303
+        ],
+        "hostile_scheme_monthly_discovery_chance_effect": [
+          407
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/scripted_effects/00_scheme_scripted_effects.txt",
+      "sha256": "f81c8d3c85e856feb22167906e22a661882c1216d2cb2166fa20a22b54280962",
+      "size": 428318,
+      "markers": {
+        "hostile_scheme_monthly_discovery_chance_effect": [
+          57
+        ],
+        "expose_scheme_agent": [],
+        "attached_scheme": [
+          16826
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/scripted_triggers/00_scheme_triggers.txt",
+      "sha256": "4e4575ece0ab1472165382fa5bb3e40a82d1aa27439f317f164e43f126339eae",
+      "size": 26598,
+      "markers": {
+        "is_scheme_exposed": [
+          786
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "events/scheme_events/hostile_scheme_discovery_events.txt",
+      "sha256": "1dce8a92f331962fe23cbcab944b15fce817d9cc0233298e0c238ce3085cdc84",
+      "size": 18440,
+      "markers": {
+        "hostile_scheme_discovery.1001": [
+          21
+        ],
+        "hostile_scheme_discovery.2001": [
+          373
+        ],
+        "expose_scheme": [
+          478,
+          584
+        ],
+        "expose_scheme_agent": [
+          192
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/on_action/agot_on_actions/agot_general_on_actions.txt",
+      "sha256": "d408c354a308f481d52abf7620fe1893c4e0df45a908c709ac822f31f6702bda",
+      "size": 13474,
+      "markers": {
+        "on_artifact_changed_owner": [
+          5
+        ],
+        "on_actions": [
+          6,
+          120,
+          125,
+          148,
+          167,
+          173,
+          397,
+          471
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "events/activities/hold_court_activity/hold_court_events_general.txt",
+      "sha256": "6daa5fdc917efe99afb524b2cfa55b6535b140ef987d18c924313e2fd018dba1",
+      "size": 628926,
+      "markers": {
+        "is_agent_exposed_in_scheme": [
+          21209,
+          21424,
+          21751,
+          21779,
+          21786,
+          21909,
+          22054,
+          22096
+        ]
+      }
+    }
+  ]
+}

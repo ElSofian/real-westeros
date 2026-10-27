@@ -108,3 +108,41 @@ All unrun. See INTEGRATION_AUDIT.md for source findings and evidence to capture.
   stale events permit only neutral dismissal; manual review can allocate a new
   decision without restarting dates. Original expiry still works. Also test actor
   death, land/realm changes and scope loss; do not assume migration succeeds.
+
+## Native murder-scheme observations (SCHEME-01 to SCHEME-10)
+
+All unrun. See RW010_SCHEME_EVIDENCE.md and the source hash receipt.
+
+- SCHEME-01: with AGOT alone, record ordinary scheme discovery/agent exposure,
+  native events, guardian/host protection effects, native penalties and cleanup.
+  With Real Westeros after AGOT, verify both source-backed callbacks are extended,
+  not replaced, and existing behavior remains. Inspect parser/error logs and ordering.
+- SCHEME-02: exposed murder plot against a living adult landed ruler in their own
+  court: one scheme-discovered record, no organiser/agent identity or extra sanction.
+  A hidden plot, other scheme type, courtier/minor or target away from own host must
+  not be captured by this narrow slice.
+- SCHEME-03: expose one actual participant through the native path: record exactly
+  that person, not the hidden organiser or other agents. Verify that the native
+  exposed predicate is already true in the callback; fail closed if it is not.
+- SCHEME-04: repeated same callback produces no second record/notice while retained.
+  A second plot against the same ruler, a different participant, or generic discovery
+  vs participant exposure must remain distinct. Test same-day callback orderings.
+- SCHEME-05: a false/contested affront allegation, murder secret exposure without a
+  scheme callback, or copied wrong-scheme agent scope cannot create a native evidence
+  record. Native agent removal and imprisonment choices still work independently.
+- SCHEME-06: browse own journal through the interaction from a character menu.
+  The selected recipient gets no access/notice; lieges, relatives, scheme owner and
+  unexposed agents cannot browse the target's records. Check stored participant
+  name resolution, serial/type guards, missing schema and unavailable identities.
+- SCHEME-07: end/abort the scheme or kill the exposed participant: retained facts
+  remain readable without following a destroyed scheme pointer or substituting a
+  hidden owner/heir. No active status or current guilt is invented by historical text.
+- SCHEME-08: save/reload after each callback, several same-owner records, notifications
+  and archive enumeration. Record notice count, iteration scopes and AI/player parity.
+  Discovery intake has no additional AI political choice, cost or periodic pair scan.
+- SCHEME-09: five-year retention, up to 60-day passive cleanup, observer death and
+  succession: no personal guilt/knowledge inheritance. Repeated discovery near expiry
+  does not bypass retention semantics or alter service receipts/other case evidence.
+- SCHEME-10: older save has no automatic historical backfill; future callbacks may
+  initialize new records. Compare load order/DLC, native crime/secret/opinion/title
+  state, performance and error logs before making any compatibility claim.

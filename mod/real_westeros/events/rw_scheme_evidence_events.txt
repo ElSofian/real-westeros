@@ -1,0 +1,52 @@
+namespace = rw_scheme_evidence
+
+rw_scheme_evidence.0001 = {
+    type = character_event
+    title = rw_scheme_evidence.title
+    immediate = {
+        if = {
+            limit = {
+                rw_scheme_evidence_view_trigger = yes
+                scope:rw_scheme_evidence_record = {
+                    var:rw_evidence_kind = flag:participant_exposed
+                    exists = var:rw_evidence_participant
+                }
+            }
+            scope:rw_scheme_evidence_record.var:rw_evidence_participant = {
+                save_scope_as = rw_evidence_visible_participant
+            }
+        }
+    }
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    rw_scheme_evidence_view_trigger = yes
+                    exists = scope:rw_evidence_visible_participant
+                    scope:rw_scheme_evidence_record = {
+                        var:rw_evidence_kind = flag:participant_exposed
+                        var:rw_evidence_participant = scope:rw_evidence_visible_participant
+                    }
+                }
+                desc = rw_scheme_evidence.participant
+            }
+            triggered_desc = {
+                trigger = {
+                    rw_scheme_evidence_view_trigger = yes
+                    scope:rw_scheme_evidence_record = { var:rw_evidence_kind = flag:participant_exposed }
+                }
+                desc = rw_scheme_evidence.participant_unavailable
+            }
+            triggered_desc = {
+                trigger = {
+                    rw_scheme_evidence_view_trigger = yes
+                    scope:rw_scheme_evidence_record = { var:rw_evidence_kind = flag:scheme_discovered }
+                }
+                desc = rw_scheme_evidence.scheme
+            }
+            desc = rw_scheme_evidence.unavailable
+        }
+    }
+    theme = intrigue
+    option = { name = rw_scheme_evidence.acknowledge }
+}

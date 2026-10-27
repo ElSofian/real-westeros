@@ -1,6 +1,10 @@
 # Native scheme/discovery source collection — RW-010
 
-The existing private war collections do not establish native scheme discovery,
+Current update: the scheme ZIP has been received and hash-verified; see
+RW010_SCHEME_EVIDENCE.md and SCHEME_SOURCE_RECEIPT.json. No further collection is
+currently requested. The instructions below remain available for later versions.
+
+The earlier private war collections did not establish native scheme discovery,
 its observer/actor scopes, agent membership or legal consequences. The collector
 prepares source inspection without inventing a callback or running CK3. It is a
 development tool, **not a Python gameplay prototype or runtime mod dependency**.

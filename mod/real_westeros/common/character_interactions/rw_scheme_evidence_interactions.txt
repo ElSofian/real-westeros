@@ -1,0 +1,15 @@
+rw_review_my_scheme_evidence_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_review_my_scheme_evidence_interaction_desc
+    auto_accept = yes
+    use_diplomatic_range = no
+    is_shown = {
+        scope:actor = {
+            is_alive = yes
+            any_owned_story = { rw_scheme_evidence_reader_trigger = { READER = scope:actor } }
+        }
+    }
+    on_accept = { rw_scheme_read_evidence_effect = yes }
+    # Notifications already inform AI and player equally; archive browsing is read-only.
+    ai_will_do = { base = 0 }
+}
