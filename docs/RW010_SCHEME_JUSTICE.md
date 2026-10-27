@@ -80,8 +80,9 @@ The native handoff is checked for exact actor/recipient, revalidation and no sen
 They do not execute CK3 or prove API/scope/description evaluation semantics.
 Final JUSTICE-01…08 scenarios remain unrun in FINAL_ENGINE_TESTS.md.
 
-Next design discretionary personal sentencing for an actual native prisoner,
-reusing native authority/interaction eligibility and preserving native penalties.
+The personal prisoner execution/release handoff is now in RW010_PRISONER_SENTENCING.md;
+it preserves native eligibility and does not send or record a completed sentence.
+Next inspect native individual confiscation/status removal before house-wide aftermath.
 The UI handoff is source-backed but not engine-proven; if its window fails, the
 normal character-menu arrest remains available without a replacement arrest
 implementation. A genuinely new personal sanction needs attributable facts,

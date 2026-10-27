@@ -221,3 +221,39 @@ RW010_SCHEME_JUSTICE.md. No arrest is performed by this examination.
   native UI rechecks before actual sending. No reason requirement is fabricated and
   no reason is attributed to this plot. AI still uses its native interaction (same
   gameplay conditions/consequences) rather than a scripted player-window send.
+
+## Personal prisoner sentencing (SENTENCE-01 to SENTENCE-09)
+
+All unrun. See RW010_PRISONER_SENTENCING.md. Use disposable saves for actual
+native confirmations and compare with the same AGOT flow without the submod.
+
+- SENTENCE-01: observer-only retained exposed-participant record plus exact current
+  native custody gives access. Generic scheme discovery, allegations, foreign/expired/
+  wrong-schema/serial records and another prisoner's substitution must not qualify.
+- SENTENCE-02: independently vary native arrest and execution reasons, including an
+  unrelated offense. Display only current execution grounds in the observer-to-subject
+  direction; no offense attribution, guilt, pardon or historical penalty inference.
+- SENTENCE-03: native execution validity: test hooks, faith/landed-knight restrictions,
+  ongoing procedures and relevant diarchy costs. Shortcut and character-menu behavior
+  agree. Native terms, methods, costs and consequences remain authoritative; a missing
+  reason is not turned into a custom UI prohibition or a lawful-execution guarantee.
+- SENTENCE-04: open execution window and cancel: no message, costs, death, native
+  reason consumption or recorded completed sentence. Confirm separately and compare
+  native method handling, player-facing follow-ups, tyranny/stress/family opinions,
+  death/succession and AGOT cleanup; no second mod penalty or premature result.
+- SENTENCE-05: open release and cancel: no release/pardon. Confirm separately with
+  available native terms and compare restrictions, follow-ups and consequences.
+  No terms are preselected or promised by the mod; no inferred unconditional pardon.
+- SENTENCE-06: leave detention unchanged, browse repeatedly, change custody, free/kill
+  the subject, imprison/kill the observer or expire the record before clicking an
+  old panel. Recheck before either window; stale actions have no penalty/result.
+  No permanent keep-imprisoned flag, extra detention, timer or duplicated effect.
+- SENTENCE-07: pay/refuse/contest/ignore/withdraw a voluntary political request, then
+  inspect: native custody/reasons/eligibility remain independent; no immunity/debt.
+- SENTENCE-08: save/reload, several records for the same/different participants,
+  delayed native execution follow-ups and observer succession. Preserve exact private
+  scope identity; no hidden organiser, relative/heir or completed result is invented.
+- SENTENCE-09: compare AI/player native prison actions, costs and conditions, logs
+  and performance. Human-only window shortcut adds no exclusive gameplay action;
+  AI retains existing native targeting/weights. No custom automatic sentencing or
+  discovery-triggered family punishment is claimed.

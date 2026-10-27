@@ -1,0 +1,30 @@
+# Character root is the observer. Current custody is not a plot-guilt verdict.
+rw_sentencing_current_prisoner_trigger = {
+    rw_scheme_justice_own_custody_trigger = yes
+    is_imprisoned = no
+}
+rw_sentencing_execution_reason_trigger = {
+    rw_sentencing_current_prisoner_trigger = yes
+    has_execute_reason = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+}
+rw_sentencing_no_execution_reason_trigger = {
+    rw_sentencing_current_prisoner_trigger = yes
+    NOT = { has_execute_reason = scope:rw_scheme_evidence_record.var:rw_evidence_participant }
+}
+# These are UI shortcuts. No arrest reason is promoted to an execution reason.
+rw_sentencing_can_open_execution_trigger = {
+    rw_sentencing_current_prisoner_trigger = yes
+    is_ai = no
+    is_character_interaction_valid = {
+        recipient = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+        interaction = execute_prisoner_interaction
+    }
+}
+rw_sentencing_can_open_release_trigger = {
+    rw_sentencing_current_prisoner_trigger = yes
+    is_ai = no
+    is_character_interaction_valid = {
+        recipient = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+        interaction = release_from_prison_interaction
+    }
+}
