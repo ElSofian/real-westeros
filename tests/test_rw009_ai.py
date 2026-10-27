@@ -16,7 +16,7 @@ def ai_contract_errors(interaction, triggers):
     errors = []
     if not re.search(r'ai_targets\s*=\s*\{\s*ai_recipients\s*=\s*liege\s*\}', interaction):
         errors.append('unbounded or changed target policy')
-    if len(re.findall(r'rw_can_petition_trigger\s*=\s*yes', interaction)) != 2:
+    if len(re.findall(r'rw_can_petition_trigger\s*=\s*yes', interaction + triggers)) != 2:
         errors.append('missing shared player/AI eligibility')
     for marker in ('rw_petition_cooldown', 'rw_petition_pending'):
         if not re.search(r'NOT\s*=\s*\{\s*has_character_flag\s*=\s*'+marker+r'\s*\}', triggers):

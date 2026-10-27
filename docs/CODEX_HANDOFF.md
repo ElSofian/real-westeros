@@ -33,3 +33,6 @@ If a Codex Goal-enabled surface supports `/goal`, the owner can use this as a bo
 ## Coordinator checks
 
 The scheduled worker prioritizes reviewing actual PR diffs, test evidence and CI results, correcting clear problems, and safely merging. It must honor task claims. If Codex is not working, it can continue independently on a safely claimed task. Green static CI does not prove CK3 gameplay. Do not substitute a paid Agents API schedule for included Plus access.
+
+## Validation timing update
+Owner requests all CK3 runs at the end. Do static/source validation now, track engine risks and add cases to docs/FINAL_ENGINE_TESTS.md. Do not require incremental manual game runs.

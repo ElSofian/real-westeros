@@ -21,8 +21,8 @@ rw_reconciliation.0001 = {
     option = {
         name = rw_reconciliation.0001.lapsed
         trigger = { NOT = { rw_petition_can_resolve_trigger = yes } }
-        # The timed pending marker expires if a party dies/loses eligibility.
-        # No native consequence is applied to stale or invalid responses.
+        # Identity-checked cleanup cannot consume a newer pending petition.
+        rw_clear_petition_effect = yes
         ai_chance = { base = 100 }
     }
 }

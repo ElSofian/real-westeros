@@ -8,19 +8,8 @@ rw_seek_reconciliation_interaction = {
         scope:recipient = { is_landed = yes }
         NOT = { scope:actor = scope:recipient }
     }
-    is_valid_showing_failures_only = {
-        scope:actor = { rw_can_petition_trigger = yes }
-        scope:recipient = { is_alive = yes is_adult = yes is_at_war = no }
-    }
-    on_accept = {
-        scope:actor = {
-            save_scope_as = rw_petitioner
-            add_character_flag = { flag = rw_petition_cooldown days = 365 }
-            add_character_flag = { flag = rw_petition_pending days = 30 }
-            set_variable = { name = rw_petition_target value = scope:recipient }
-        }
-        scope:recipient = { trigger_event = { id = rw_reconciliation.0001 } }
-    }
+    is_valid_showing_failures_only = { rw_petition_parties_valid_trigger = yes }
+    on_accept = { rw_begin_petition_effect = yes }
     # Bounded first policy: AI petitions only its direct liege, never all characters.
     # Player targeting stays free; initiation uses the same validity and effects.
     ai_potential = { scope:actor = { rw_can_petition_trigger = yes } }
