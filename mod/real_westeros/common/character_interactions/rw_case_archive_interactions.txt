@@ -2,6 +2,7 @@ rw_review_political_cases_interaction = {
     category = interaction_category_diplomacy
     desc = rw_review_political_cases_interaction_desc
     auto_accept = yes
+    use_diplomatic_range = no
     is_shown = {
         scope:actor = { is_alive = yes }
         scope:recipient = {

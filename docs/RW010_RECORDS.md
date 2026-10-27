@@ -50,7 +50,8 @@ including active ruler/repair stages or closed outcomes. Current rank is not req
 to remember a previously disclosed case, but decision effects still require current
 jurisdiction. Outsiders cannot query private cases through this interaction.
 
-Neither archive reading nor notification acknowledgement can settle, reopen,
+Reading known records does not require diplomatic range; stored-role filtering still
+applies. Neither archive reading nor notification acknowledgement can settle, reopen,
 re-sanction, charge prestige or extend deadlines. Superseded/destroyed story scopes
 render inert text. Lost participant references may make a record unreadable but must
 not reveal another case or authorize effects. AI uses the guarded political events;
