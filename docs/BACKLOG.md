@@ -12,7 +12,7 @@ A task is done only when the deliverable and verification evidence are present.
 | P1 | RW-006 | Identify a viable multi-clause negotiation UI/model or document engine limits (G2) | Done (research + 18 synthetic protocol tests; G2 UI/engine unverified) |
 | P1 | RW-007 | Create persistence model for pending political affairs and obligations | Done (offline snapshot + 16 synthetic tests; CK3 save/load unverified) |
 | P1 | RW-008 | Implement one end-to-end political incident with status as static-only until CK3 tested | Implemented experimentally — CK3 scripts; engine untested |
-| P1 | RW-009 | Add AI actor selection and negative-path tests for one end-to-end incident | Todo |
+| P1 | RW-009 | Add AI actor selection and negative-path tests for one end-to-end incident | Implemented experimentally — bounded liege targeting; engine untested |
 | P2 | RW-010 | Expand political memory, justice, diplomacy and other systems incrementally | Todo |
 
-**Next task:** RW-008 bounded political incident prototype; use RW-007 snapshot contract but do not claim CK3 save/load functionality. RW-004 remains blocked at the pinned-source/native-CB boundary. G2 UI requires target-version source inspection and in-game validation; see docs/G2_FEASIBILITY.md. Do not start the full gameplay implementation before G1 feasibility is understood; isolated proofs are allowed without claiming engine success.
+**Next task:** RW-010 bounded expansion after review of the integrated reconciliation slice; use RW-007 snapshot contract but do not claim CK3 save/load functionality. RW-004 remains blocked at the pinned-source/native-CB boundary. G2 UI requires target-version source inspection and in-game validation; see docs/G2_FEASIBILITY.md. Do not start the full gameplay implementation before G1 feasibility is understood; isolated proofs are allowed without claiming engine success.

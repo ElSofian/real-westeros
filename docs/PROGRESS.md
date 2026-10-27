@@ -16,3 +16,6 @@
 
 - RW-008: original CK3-facing reconciliation slice with accept/refuse/lapsed paths, pending/target guard, yearly cooldown, EN/FR localization and future engine scenarios in `docs/RW008_INCIDENT.md`. AI responses share effects; autonomous initiation is deferred to RW-009. Static integration fixtures added; engine scopes/save-load/replay and AGOT compatibility remain unverified.
 - RW-008 publication: PR #13 (`feat/rw-008-political-incident`); local full suite **59/59 passed**, structural validator PASS, diff whitespace check PASS. CK3 engine checks: zero executed.
+
+- RW-008: PR #13 merged after successful GitHub structural CI; exclusive claim released.
+- RW-009: bounded AI liege targeting, shared eligibility and cooldown, negative-opinion willingness; five static source-contract tests including four rejected mutations. CK3 scheduler syntax/rate, actual selection and performance unverified; see `docs/RW009_AI.md`.

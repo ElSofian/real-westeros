@@ -22,10 +22,10 @@ the flag expires and is overwritten on the next eligible petition. No global hoo
 AGOT overrides, runtime LLM or offline-ledger bridge are introduced. RW-007 informs
 the consume-before-consequence design; its JSON is not used by CK3.
 
-AI recipients have accept/refuse weights. AI initiation is deliberately disabled
-until RW-009 adds bounded target selection; this slice is experimental and does not
-yet meet full AI/player initiation parity. Both choices share the same effects for
-human and AI recipients. No performance or compatibility claim is made.
+AI recipients have accept/refuse weights. RW-009 adds AI initiation toward the direct
+liege when the actor has a negative opinion. AI and players share validity, cooldown
+and consequences. This is a deliberately bounded initial AI policy; runtime scheduling,
+performance and compatibility remain unverified. See `RW009_AI.md`.
 
 ## Verification
 
