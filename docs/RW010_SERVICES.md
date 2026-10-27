@@ -1,7 +1,8 @@
 # RW-010 — first negotiated service
 
-**Original CK3-facing scripts, experimental and not engine-tested.** This is an
-immediate exchange, not native persistence integration of the RW-007 Python ledger.
+**Original CK3-facing scripts, experimental and not engine-tested.** The original action is an
+immediate exchange; the separate deferred action is described in RW010_DEFERRED.md.
+Neither integrates the RW-007 Python ledger.
 All CK3 runs are deferred to the final campaign at the owner's request.
 
 ## Endorsement for gold
@@ -64,9 +65,9 @@ state machine or gameplay simulation runs in Python.
    Check same-tick repeated interaction attempts. Test both human/AI party directions.
 7. Run an AGOT baseline comparison and representative balance/performance observation.
 
-## Remaining RW-010 stages (todo, not delivered)
+## RW-010 stages
 
-- Deferred service promises with explicit fulfillment, refusal/breach and evidence.
+- Deferred service promises: experimental source now added, see RW010_DEFERRED.md; engine tests pending.
 - Discretionary responses to known political incidents, not compulsory punishment.
 - Dynastic sanctions/restoration gated by G3 and actual title/house APIs.
 - Unlawful wars and political responses at the war stage, resolving G1 before claiming

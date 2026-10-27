@@ -1,0 +1,4 @@
+rw_broken_service_opinion = {
+    opinion = -15
+    years = 5
+}

@@ -1,0 +1,113 @@
+# Accepting a deferred quote records consent only. No gold or prestige here.
+rw_service_accept_promise_effect = {
+    if = {
+        limit = {
+            OR = { rw_service_client_turn_trigger = yes rw_service_provider_turn_trigger = yes }
+            rw_service_deferred_trigger = yes
+            rw_service_affordable_trigger = yes
+        }
+        scope:rw_service_provider = {
+            change_variable = { name = rw_service_revision add = 1 }
+            set_variable = { name = rw_service_turn value = flag:obligation }
+            remove_character_flag = rw_service_pending
+            add_character_flag = rw_service_obligation
+            add_character_flag = { flag = rw_service_not_due days = 7 }
+            add_character_flag = { flag = rw_service_deadline days = 30 }
+        }
+        rw_service_snapshot_effect = yes
+        scope:rw_service_provider = {
+            trigger_event = { id = rw_obligations.0001 days = 8 }
+            trigger_event = { id = rw_obligations.0002 days = 31 }
+        }
+    }
+}
+# Record latest outcome only, not a universal history. Serial never reused.
+rw_service_record_receipt_effect = {
+    scope:rw_service_provider = {
+        set_variable = { name = rw_service_last_serial value = scope:rw_service_serial }
+        set_variable = { name = rw_service_last_client value = scope:rw_service_client }
+    }
+}
+rw_service_fulfill_promise_effect = {
+    if = {
+        limit = { rw_service_obligation_fulfillable_trigger = yes }
+        rw_service_record_receipt_effect = yes
+        scope:rw_service_provider = { set_variable = { name = rw_service_last_outcome value = flag:fulfilled } }
+        rw_service_clear_effect = yes
+        scope:rw_service_client = { add_gold = { value = scope:rw_service_price multiply = -1 } }
+        scope:rw_service_provider = { add_gold = scope:rw_service_price }
+        scope:rw_service_client = { add_prestige = 50 }
+    }
+}
+# Deliberate refusal or accountable timeout. No automated punishment.
+rw_service_record_breach_effect = {
+    if = {
+        limit = { rw_service_obligation_live_trigger = yes }
+        rw_service_record_receipt_effect = yes
+        scope:rw_service_provider = { set_variable = { name = rw_service_last_outcome value = flag:broken } }
+        rw_service_clear_effect = yes
+        scope:rw_service_client = { trigger_event = { id = rw_obligations.0003 } }
+    }
+}
+rw_service_break_promise_effect = {
+    if = {
+        limit = { rw_service_obligation_actionable_trigger = yes }
+        rw_service_record_breach_effect = yes
+    }
+}
+# Unavailable parties/unfunded service cancel without blaming or charging anyone.
+rw_service_cancel_promise_effect = {
+    if = {
+        limit = { rw_service_obligation_owner_matches_trigger = yes }
+        scope:rw_service_provider = {
+            set_variable = { name = rw_service_last_serial value = scope:rw_service_serial }
+            set_variable = { name = rw_service_last_outcome value = flag:cancelled }
+            if = {
+                limit = { exists = scope:rw_service_client }
+                set_variable = { name = rw_service_last_client value = scope:rw_service_client }
+            }
+            else = { remove_variable = rw_service_last_client }
+        }
+        rw_service_clear_effect = yes
+    }
+}
+rw_service_timeout_effect = {
+    if = {
+        limit = {
+            rw_service_obligation_owner_matches_trigger = yes
+            scope:rw_service_provider = { NOT = { has_character_flag = rw_service_deadline } }
+        }
+        if = {
+            limit = {
+                rw_service_obligation_live_trigger = yes
+                scope:rw_service_provider = { rw_service_party_eligible_trigger = yes }
+                scope:rw_service_client = { rw_service_party_eligible_trigger = yes }
+                rw_service_affordable_trigger = yes
+            }
+            rw_service_record_breach_effect = yes
+        }
+        else = { rw_service_cancel_promise_effect = yes }
+    }
+}
+# Client chooses its reaction; consume the receipt response before opinion effects.
+rw_service_resent_breach_effect = {
+    if = {
+        limit = { rw_service_breach_receipt_trigger = yes }
+        scope:rw_service_provider = { set_variable = { name = rw_service_reacted_serial value = scope:rw_service_serial } }
+        add_opinion = { target = scope:rw_service_provider modifier = rw_broken_service_opinion }
+    }
+}
+rw_service_forgive_breach_effect = {
+    if = {
+        limit = { rw_service_breach_receipt_trigger = yes }
+        scope:rw_service_provider = { set_variable = { name = rw_service_reacted_serial value = scope:rw_service_serial } }
+    }
+}
+
+# AI and player can reconsider a wait; no global polling or automatic fulfillment.
+rw_service_wait_promise_effect = {
+    if = {
+        limit = { rw_service_obligation_actionable_trigger = yes }
+        scope:rw_service_provider = { trigger_event = { id = rw_obligations.0001 days = 7 } }
+    }
+}

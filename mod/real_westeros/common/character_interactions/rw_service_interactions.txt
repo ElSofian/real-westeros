@@ -9,7 +9,25 @@ rw_offer_endorsement_interaction = {
         NOT = { scope:actor = scope:recipient }
     }
     is_valid_showing_failures_only = { rw_service_can_offer_trigger = yes }
-    on_accept = { rw_service_begin_effect = yes }
+    on_accept = { rw_service_begin_effect = { MODE = immediate } }
+    ai_potential = { scope:actor = { rw_service_provider_available_trigger = yes } }
+    ai_targets = { ai_recipients = liege }
+    ai_frequency = 12
+    ai_will_do = { base = 5 }
+}
+
+# Explicit deferred action is available to AI and player without send-option heuristics.
+rw_offer_deferred_endorsement_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_offer_deferred_endorsement_interaction_desc
+    auto_accept = yes
+    is_shown = {
+        scope:actor = { is_landed = yes }
+        scope:recipient = { is_landed = yes }
+        NOT = { scope:actor = scope:recipient }
+    }
+    is_valid_showing_failures_only = { rw_service_can_offer_trigger = yes }
+    on_accept = { rw_service_begin_effect = { MODE = deferred } }
     ai_potential = { scope:actor = { rw_service_provider_available_trigger = yes } }
     ai_targets = { ai_recipients = liege }
     ai_frequency = 12
