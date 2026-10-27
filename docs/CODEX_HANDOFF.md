@@ -10,8 +10,10 @@ Source inspection found no scheme/discovery entry points in the supplied war arc
 automatic assassination integration needs additional target-version source evidence.
 Mutual cancellation of a deferred promise is in RW010_MUTUAL_CANCELLATION.md.
 An experimental distribution is built from committed inputs by CI; see INTEGRATED_BUILD.md.
-Next audit cross-slice lifecycle, duplicate event opportunities and final-campaign
-observability before further feature expansion. Packaging is not engine validation. Do not invent automatic discovery hooks or
+Cross-slice source audit and versioned provider-decision reminders are in
+INTEGRATION_AUDIT.md; final LIFE-* cases remain unrun. Next prepare targeted native
+scheme/discovery source collection and inspection, without invented hooks;
+independent gameplay work remains allowed. Packaging is not engine validation. Do not invent automatic discovery hooks or
 replace original CK3 scripts with Python gameplay models.
 All engine runs are deferred until final testing per owner. G1 is todo at the
 war-feature stage, not an immediate prerequisite. Keep original scenarios and

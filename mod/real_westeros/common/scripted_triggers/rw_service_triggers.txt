@@ -87,13 +87,25 @@ rw_service_obligation_live_trigger = {
     scope:rw_service_provider = { is_alive = yes }
     scope:rw_service_client = { is_alive = yes }
 }
-rw_service_obligation_actionable_trigger = {
+rw_service_obligation_due_trigger = {
     rw_service_obligation_live_trigger = yes
     this = scope:rw_service_provider
     scope:rw_service_provider = {
         has_character_flag = rw_service_deadline
         NOT = { has_character_flag = rw_service_not_due }
     }
+}
+rw_service_decision_matches_trigger = {
+    exists = scope:rw_service_decision_serial
+    scope:rw_service_provider = {
+        has_variable = rw_service_decision_serial
+        var:rw_service_decision_serial = scope:rw_service_decision_serial
+    }
+}
+rw_service_obligation_actionable_trigger = {
+    rw_service_obligation_due_trigger = yes
+    rw_service_decision_matches_trigger = yes
+    has_character_flag = rw_service_decision_open
 }
 rw_service_obligation_fulfillable_trigger = {
     rw_service_obligation_actionable_trigger = yes

@@ -1,0 +1,34 @@
+# Internal allocator. Public callers validate the obligation, actor and deadline.
+# Never change the service revision: independent timeout/cancellation scopes need it.
+rw_service_refresh_decision_effect = {
+    scope:rw_service_provider = {
+        if = {
+            limit = { NOT = { has_variable = rw_service_decision_serial } }
+            set_variable = { name = rw_service_decision_serial value = 0 }
+        }
+        change_variable = { name = rw_service_decision_serial add = 1 }
+        save_scope_value_as = { name = rw_service_decision_serial value = var:rw_service_decision_serial }
+        remove_character_flag = rw_service_reminder_pending
+        remove_character_flag = rw_service_decision_open
+    }
+}
+rw_service_schedule_decision_effect = {
+    if = {
+        limit = {
+            rw_service_obligation_live_trigger = yes
+            this = scope:rw_service_provider
+            has_character_flag = rw_service_deadline
+        }
+        rw_service_refresh_decision_effect = yes
+        add_character_flag = rw_service_reminder_pending
+        trigger_event = { id = rw_obligations.0004 days = $DAYS$ }
+    }
+}
+rw_service_open_decision_effect = {
+    if = {
+        limit = { rw_service_obligation_due_trigger = yes }
+        rw_service_refresh_decision_effect = yes
+        add_character_flag = rw_service_decision_open
+        trigger_event = { id = rw_obligations.0001 }
+    }
+}

@@ -83,3 +83,28 @@ No cases executed. See RW010_MUTUAL_CANCELLATION.md.
 4. Update by replacing the old submod folder, not by merging obsolete scripts.
    Check a disposable fresh save separately from older experimental-save migration.
    ZIP/manifest/CI success does not count as passing any CK3 scenario.
+
+## Integrated lifecycle audit: provider decisions (LIFE-01 to LIFE-07)
+
+All unrun. See INTEGRATION_AUDIT.md for source findings and evidence to capture.
+
+- LIFE-01: accept deferred terms, observe one due decision at day eight. Wait once:
+  one live decision seven days later, no automatic payment/breach or renewed deadline.
+- LIFE-02: open review A, then review B of the same promise. Try every action on A:
+  no fulfillment, refusal, cancellation request or additional weekly chain. B remains
+  usable; choosing wait in B schedules one current reminder.
+- LIFE-03: wait, manually review before its timer fires, wait again. Old hidden timer
+  must not display another actionable decision or consume the new pending ticket.
+  Repeat within the original deadline; measure popup count and event behavior.
+- LIFE-04: propose cancellation from a provider decision, then accept/refuse/ignore
+  on the other party. A repeated/stale provider popup cannot create another request
+  or reminder chain. Separate explicit consent remains valid after provider review.
+- LIFE-05: fulfill, break or mutually release while a reminder is queued. Its hidden
+  callback must not display a new decision or affect later contracts/receipts/cases.
+- LIFE-06: ignore all decisions, or repeatedly review without acting: original expiry
+  remains accountable under the existing eligibility/funding rules at day thirty-one.
+  Test same-day review/reminder/delivery/consent orderings and reload each state.
+- LIFE-07: older experimental obligation with no decision serial/open marker:
+  stale events permit only neutral dismissal; manual review can allocate a new
+  decision without restarting dates. Original expiry still works. Also test actor
+  death, land/realm changes and scope loss; do not assume migration succeeds.
