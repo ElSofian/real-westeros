@@ -21,6 +21,16 @@ rw_seek_reconciliation_interaction = {
         }
         scope:recipient = { trigger_event = { id = rw_reconciliation.0001 } }
     }
-    # AI scheduling/target selection is RW-009; players and AI use identical effects.
-    ai_potential = { always = no }
+    # Bounded first policy: AI petitions only its direct liege, never all characters.
+    # Player targeting stays free; initiation uses the same validity and effects.
+    ai_potential = { scope:actor = { rw_can_petition_trigger = yes } }
+    ai_targets = { ai_recipients = liege }
+    ai_frequency = 12
+    ai_will_do = {
+        base = 10
+        modifier = {
+            factor = 0
+            scope:actor = { opinion = { target = scope:recipient value >= 0 } }
+        }
+    }
 }
