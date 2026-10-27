@@ -8,9 +8,13 @@ A submod for **Crusader Kings III — A Game of Thrones (AGOT)**.
 
 **Scaffold / pre-prototype.** The structural script audit and initial game-design specification exist. A local-mod descriptor and empty folder structure are committed. No gameplay feature has been implemented or tested in CK3 yet. See [installation](docs/INSTALL.md). In particular, declaring an illegal war while retaining its original casus belli is **not proven possible** and must not be advertised as working.
 
-## First milestone
+## Current milestone
 
-Build a **small, independent submod prototype** of politically forbidden warfare (G1) while preserving the original CK3/AGOT casus belli, war lifecycle, and Mega Wars hooks. Keep any engine-dependent behavior explicitly marked as unverified until tested in CK3.
+Audit and validate the integrated experimental reconciliation slice. **G1 is on hold
+by owner decision**; retain its research for possible later resumption, without
+claiming feasibility or treating it as a prerequisite for independent development.
+The original intended political-war examples still need clarification; no replacement
+definition has been adopted. CK3 behavior remains unverified until tested in game.
 
 ## Repository guide
 

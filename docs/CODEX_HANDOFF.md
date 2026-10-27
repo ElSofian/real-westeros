@@ -1,5 +1,13 @@
 # Codex implementation handoff
 
+## Current owner direction (supersedes the historical session text below)
+
+RW-008/009 source slices are integrated, not engine-tested. G1 / RW-004 is ON HOLD
+and may resume later; do not ask for its diagnostic test or gate independent work
+on it. Recover the owner's original political-war examples without substituting a
+broken-promises definition, then resume reconciliation audit and validation. Preserve
+native crown-authority/hook/faction behavior. The RW-008 launch text below is historical.
+
 Codex is the preferred code author for CK3 integration. The scheduled ChatGPT worker is responsible for coordination, review, CI, and safe merges, and can continue independent work when Codex is inactive.
 
 ## Current target: RW-008

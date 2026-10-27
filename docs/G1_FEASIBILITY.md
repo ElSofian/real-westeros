@@ -1,6 +1,14 @@
 # G1 feasibility — politically forbidden war with an authentic CB
 
-**Status: source-backed candidate identified; engine feasibility still UNVERIFIED.**
+**Current status: ON HOLD by owner decision; may resume later.**
+No engine test or additional collection is currently requested. Preserve the research
+below as historical findings, not an active instruction to implement a crown-law
+bypass. Native crown-authority, hook and faction behavior remains in scope to preserve.
+The owner has not defined illegal war as merely violating promises/agreements; original
+examples must be recovered before adopting a new definition. Engine feasibility remains
+UNVERIFIED; standby is neither completion nor a verdict of impossibility.
+
+**Research status before standby: source-backed candidate identified.**
 Updated after private source inspection on 2026-10-27. No war script spike has been
 shipped and no CK3 engine test has run. This is not a verdict of impossibility.
 
