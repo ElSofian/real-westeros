@@ -85,10 +85,10 @@ rw_cases.0003 = {
     title = rw_cases.0003.t
     desc = {
         first_valid = {
-            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_service_provider = { var:rw_case_result = flag:declined } } desc = rw_cases.result_declined }
-            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_service_provider = { var:rw_case_result = flag:admonished } } desc = rw_cases.result_admonished }
-            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_service_provider = { var:rw_case_result = flag:repaired } } desc = rw_cases.result_repaired }
-            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_service_provider = { var:rw_case_result = flag:repair_declined } } desc = rw_cases.result_repair_declined }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:declined } } desc = rw_cases.result_declined }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:admonished } } desc = rw_cases.result_admonished }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:repaired } } desc = rw_cases.result_repaired }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:repair_declined } } desc = rw_cases.result_repair_declined }
             desc = rw_cases.result_expired
         }
     }
@@ -107,10 +107,45 @@ rw_cases.0005 = {
     title = rw_cases.0003.t
     desc = {
         first_valid = {
-            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_service_provider = { var:rw_case_result = flag:declined } } desc = rw_cases.result_declined }
-            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_service_provider = { var:rw_case_result = flag:admonished } } desc = rw_cases.result_admonished }
-            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_service_provider = { var:rw_case_result = flag:repaired } } desc = rw_cases.result_repaired }
-            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_service_provider = { var:rw_case_result = flag:repair_declined } } desc = rw_cases.result_repair_declined }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:declined } } desc = rw_cases.result_declined }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:admonished } } desc = rw_cases.result_admonished }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:repaired } } desc = rw_cases.result_repaired }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:repair_declined } } desc = rw_cases.result_repair_declined }
+            desc = rw_cases.result_expired
+        }
+    }
+    theme = diplomacy
+    option = { name = rw_cases.acknowledge }
+}
+
+# Read-only record view; no choice can reopen or settle an archived matter.
+rw_cases.0006 = {
+    type = character_event
+    title = rw_cases.archive_title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_stage = flag:ruler has_variable = rw_case_pending } }
+                desc = rw_cases.archive_ruler
+            }
+            triggered_desc = {
+                trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_stage = flag:repair has_variable = rw_case_pending } }
+                desc = rw_cases.archive_repair
+            }
+            triggered_desc = {
+                trigger = {
+                    rw_case_matches_trigger = yes
+                    scope:rw_case_record = {
+                        NOT = { var:rw_case_stage = flag:closed }
+                        NOT = { has_variable = rw_case_pending }
+                    }
+                }
+                desc = rw_cases.result_expired
+            }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:declined } } desc = rw_cases.result_declined }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:admonished } } desc = rw_cases.result_admonished }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:repaired } } desc = rw_cases.result_repaired }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:repair_declined } } desc = rw_cases.result_repair_declined }
             desc = rw_cases.result_expired
         }
     }

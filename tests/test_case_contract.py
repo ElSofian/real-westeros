@@ -43,7 +43,7 @@ def case_errors(triggers, effects):
     close = block(effects, 'rw_case_close_effect')
     if 'NOT = { var:rw_case_stage = flag:closed }' not in close:
         errors.append('closure can replay')
-    if 'NOT = { has_character_flag = rw_case_pending }' not in block(effects, 'rw_case_expire_effect'):
+    if 'NOT = { has_variable = rw_case_pending }' not in block(effects, 'rw_case_expire_effect'):
         errors.append('early expiry allowed')
     if 'rw_service_last_outcome' in clean_script(effects)[0]:
         errors.append('mediation rewrites underlying breach')
@@ -89,7 +89,7 @@ class CaseContractTests(unittest.TestCase):
         self.assertIn('mediation rewrites underlying breach', case_errors(self.t, self.e + '\nrw_service_last_outcome = flag:fulfilled'))
 
     def test_early_expiry_mutation(self):
-        self.assertIn('early expiry allowed', case_errors(self.t, self.e.replace('NOT = { has_character_flag = rw_case_pending }', 'always = yes')))
+        self.assertIn('early expiry allowed', case_errors(self.t, self.e.replace('NOT = { has_variable = rw_case_pending }', 'always = yes')))
 
     def test_decline_and_refusal_are_not_automatic_penalties(self):
         for name in ('rw_case_decline_effect', 'rw_case_refuse_repair_effect',
@@ -100,7 +100,7 @@ class CaseContractTests(unittest.TestCase):
     def test_disclosure_consumes_response_before_delivery(self):
         opening = block(self.e, 'rw_case_open_effect')
         self.assertLess(opening.index('rw_service_reacted_serial'), opening.index('id = rw_cases.0001'))
-        self.assertEqual(1, self.e.count('add_character_flag = { flag = rw_case_pending days = 30 }'))
+        self.assertEqual(1, self.e.count('set_variable = { name = rw_case_pending value = flag:yes days = 30 }'))
         self.assertEqual(1, self.e.count('id = rw_cases.0004 days = 31'))
 
     def test_ruler_ai_uses_context_and_keeps_all_choices(self):
@@ -122,7 +122,8 @@ class CaseContractTests(unittest.TestCase):
     def test_display_keys_exist_in_both_languages(self):
         events = (MOD / 'events/rw_case_events.txt').read_text()
         keys = set(re.findall(r'(?:title|desc|name)\s*=\s*(rw_[\w.]+)', events))
-        keys.update(('rw_cases.refer', 'rw_case_admonished_opinion', 'rw_case_apology_opinion'))
+        keys.update(('rw_cases.refer', 'rw_case_admonished_opinion', 'rw_case_apology_opinion',
+                     'rw_review_political_cases_interaction', 'rw_review_political_cases_interaction_desc'))
         for lang in ('english', 'french'):
             p = MOD / f'localization/{lang}/rw_cases_l_{lang}.yml'
             self.assertTrue(p.read_bytes().startswith(b'\xef\xbb\xbf'))

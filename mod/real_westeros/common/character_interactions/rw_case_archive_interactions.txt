@@ -1,0 +1,22 @@
+rw_review_political_cases_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_review_political_cases_interaction_desc
+    auto_accept = yes
+    is_shown = {
+        scope:actor = { is_alive = yes }
+        scope:recipient = {
+            is_alive = yes
+            any_owned_story = {
+                story_type = story_rw_political_case
+                OR = {
+                    story_owner = scope:actor
+                    var:rw_case_client = scope:actor
+                    var:rw_case_mediator = scope:actor
+                }
+            }
+        }
+    }
+    on_accept = { rw_case_read_archive_effect = yes }
+    # Reading does not make political decisions; AI uses the same guarded case events.
+    ai_will_do = { base = 0 }
+}

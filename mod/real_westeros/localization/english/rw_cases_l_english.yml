@@ -20,3 +20,8 @@
  rw_cases.acknowledge:0 "The decision is noted."
  rw_case_admonished_opinion:0 "Disapproved of a broken promise"
  rw_case_apology_opinion:0 "Accepted a voluntary apology"
+ rw_review_political_cases_interaction:0 "Review Known Political Cases"
+ rw_review_political_cases_interaction_desc:0 "Read the separate case records associated with this provider that you already know as provider, client or mediator. Closed records are retained for five years while the provider lives. Reading makes no decision and reveals no unrelated cases."
+ rw_cases.archive_title:0 "A Recorded Political Affair"
+ rw_cases.archive_ruler:0 "This record concerns [rw_service_provider.GetTitledFirstName] and [rw_service_client.GetTitledFirstName]. The disclosed service-breach case is awaiting [rw_case_mediator.GetTitledFirstName]’s decision. Reading this record does not authorise a sanction or extend its deadline."
+ rw_cases.archive_repair:0 "This record concerns [rw_service_provider.GetTitledFirstName] and [rw_service_client.GetTitledFirstName]. [rw_case_mediator.GetTitledFirstName] has proposed voluntary repair; the provider has not yet responded. Reading does not perform the service or force an apology."
