@@ -146,3 +146,41 @@ All unrun. See RW010_SCHEME_EVIDENCE.md and the source hash receipt.
 - SCHEME-10: older save has no automatic historical backfill; future callbacks may
   initialize new records. Compare load order/DLC, native crime/secret/opinion/title
   state, performance and error logs before making any compatibility claim.
+
+## Voluntary political scheme response (RESPONSE-01 to RESPONSE-10)
+
+All unrun. See RW010_SCHEME_RESPONSE.md; these add no criminal immunity.
+
+- RESPONSE-01: new exposed-participant record initializes one 30-day window and one
+  day-one target opportunity. Generic discovery, allegations and old records without
+  metadata cannot initialize an offer or infer a participant/consent.
+- RESPONSE-02: forgo or postpone: no gold, opinion, secret, debt, pardon or new crime.
+  Postponing/browsing does not renew deadlines or create recurring reminder chains.
+- RESPONSE-03: direct vassal/courtier, both adult/alive/free, target landed/own host:
+  target sends a private 25-gold request and participant gets its precise terms.
+  Guests, unrelated rulers, indirect vassals and wrong actor/record cannot qualify.
+- RESPONSE-04: accept with sufficient funds: debit exactly 25 from participant,
+  credit exactly 25 to target, once. Target grants +5 opinion for two years only if
+  the identical benefit is absent; repeat independent agreements cannot stack or
+  refresh it, and native negative/crime opinions remain. Replay from old/duplicate/reopened popup cannot
+  charge again. Below 25, no debit/debt. Native penalties/rights remain separate.
+- RESPONSE-05: refusal, contestation or silence: no payment or new penalty. Denial
+  appears alongside the original exposed-participant observation without erasing it
+  or relabeling it as generic discovery. Payment does not constitute an admission.
+- RESPONSE-06: target withdraws before payment, including after losing authority,
+  land or freedom. No funds move; old participant payment becomes invalid. Test
+  withdrawal/payment in both same-day orders and after reload.
+- RESPONSE-07: after request, imprison/kill either party, change liege/court/host,
+  lose target land, spend funds, or expire the original window: revalidate before
+  any payment. No heir/estate substitution or retroactive window starts.
+- RESPONSE-08: target's private archive/history stays private. Participant can reopen
+  only explicitly offered current requests addressed to them, not other observations
+  or people's records. Verify per-iteration saved scopes with several simultaneous
+  requests and cross-record serial substitution.
+- RESPONSE-09: both AI and player receive the initial opportunities and one seven-day
+  reconsideration if still live. Withdrawal and participant reply use identical
+  rules. Closed/expired callbacks are inert; ignoring again schedules no new chain.
+- RESPONSE-10: end the native plot, save/reload every phase, test evidence retention
+  and observer death. Original observation, service receipts, native crimes/secrets,
+  titles and AGOT outcomes remain unchanged except the explicitly accepted gold
+  transfer and distinct agreed goodwill.

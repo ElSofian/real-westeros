@@ -1,0 +1,128 @@
+# Internal constructor amendment: only brand-new, initialized exposed-person records.
+rw_scheme_response_initialise_effect = {
+    if = {
+        limit = {
+            exists = scope:rw_scheme_evidence_record
+            exists = scope:rw_scheme_participant
+            scope:rw_scheme_evidence_record = {
+                story_type = story_rw_scheme_evidence
+                story_owner = scope:rw_scheme_observer
+                var:rw_evidence_schema = 1
+                var:rw_evidence_serial = scope:rw_scheme_evidence_serial
+                var:rw_evidence_kind = flag:participant_exposed
+                var:rw_evidence_participant = scope:rw_scheme_participant
+                NOT = { has_variable = rw_scheme_response_state }
+            }
+        }
+        scope:rw_scheme_evidence_record = {
+            set_variable = { name = rw_scheme_response_state value = flag:open }
+            set_variable = { name = rw_scheme_response_window value = flag:yes days = 30 }
+        }
+        # Let native discovery decisions run first; recheck all conditions on delivery.
+        scope:rw_scheme_observer = { trigger_event = { id = rw_scheme_response.0004 days = 1 } }
+    }
+}
+rw_scheme_response_forego_effect = {
+    if = {
+        limit = { rw_scheme_response_owner_turn_trigger = yes }
+        scope:rw_scheme_evidence_record = {
+            remove_variable = rw_scheme_response_window
+            set_variable = { name = rw_scheme_response_state value = flag:foregone }
+        }
+    }
+}
+rw_scheme_response_request_effect = {
+    if = {
+        limit = { rw_scheme_response_can_request_trigger = yes }
+        # This records consent to receive 25 gold if the other party agrees.
+        scope:rw_scheme_evidence_record = {
+            set_variable = { name = rw_scheme_response_state value = flag:offered }
+        }
+        # Keep the original response deadline; disclose only this demand to this person.
+        scope:rw_scheme_participant = { trigger_event = { id = rw_scheme_response.0002 } }
+        # One shared reconsideration opportunity, never a recurring reminder chain.
+        scope:rw_scheme_observer = { trigger_event = { id = rw_scheme_response.0005 days = 7 } }
+        scope:rw_scheme_participant = { trigger_event = { id = rw_scheme_response.0006 days = 7 } }
+    }
+}
+rw_scheme_response_pay_effect = {
+    if = {
+        limit = { rw_scheme_response_can_pay_trigger = yes }
+        scope:rw_scheme_evidence_record = {
+            remove_variable = rw_scheme_response_window
+            set_variable = { name = rw_scheme_response_state value = flag:paid }
+        }
+        # Consume the offer before the one agreed transfer. No debt, reward or immunity.
+        add_gold = -25
+        scope:rw_scheme_observer = {
+            add_gold = 25
+            if = {
+                limit = {
+                    NOT = { has_opinion_modifier = { target = scope:rw_scheme_participant modifier = rw_scheme_reparation_opinion } }
+                }
+                add_opinion = { target = scope:rw_scheme_participant modifier = rw_scheme_reparation_opinion }
+            }
+        }
+        rw_scheme_response_notify_effect = yes
+    }
+}
+# ANSWER is supplied by the two explicit participant options, never by silence.
+rw_scheme_response_decline_effect = {
+    if = {
+        limit = { rw_scheme_response_participant_turn_trigger = yes }
+        scope:rw_scheme_evidence_record = {
+            remove_variable = rw_scheme_response_window
+            set_variable = { name = rw_scheme_response_state value = flag:$ANSWER$ }
+        }
+        rw_scheme_response_notify_effect = yes
+    }
+}
+rw_scheme_response_notify_effect = {
+    scope:rw_scheme_observer = {
+        send_interface_message = {
+            type = event_generic_neutral
+            title = rw_scheme_response.notice_title
+            desc = rw_scheme_response.notice_desc
+        }
+    }
+}
+rw_scheme_response_withdraw_effect = {
+    if = {
+        limit = { rw_scheme_response_can_withdraw_trigger = yes }
+        scope:rw_scheme_evidence_record = {
+            remove_variable = rw_scheme_response_window
+            set_variable = { name = rw_scheme_response_state value = flag:withdrawn }
+        }
+        if = {
+            limit = { scope:rw_scheme_participant = { is_alive = yes } }
+            scope:rw_scheme_participant = {
+                send_interface_message = {
+                    type = event_generic_neutral
+                    title = rw_scheme_response.withdraw_notice_title
+                    desc = rw_scheme_response.withdraw_notice_desc
+                }
+            }
+        }
+    }
+}
+# Explicitly disclosed demands only; never open the observer's private journal view.
+rw_scheme_response_review_received_effect = {
+    if = {
+        limit = { scope:actor = { is_alive = yes } scope:recipient = { is_alive = yes } }
+        scope:actor = { save_scope_as = rw_scheme_participant }
+        scope:recipient = {
+            save_scope_as = rw_scheme_observer
+            every_owned_story = {
+                limit = { rw_scheme_response_received_filter_trigger = { READER = scope:rw_scheme_participant } }
+                save_scope_as = rw_scheme_evidence_record
+                save_scope_value_as = { name = rw_scheme_evidence_serial value = var:rw_evidence_serial }
+                scope:rw_scheme_participant = {
+                    if = {
+                        limit = { rw_scheme_response_participant_turn_trigger = yes }
+                        trigger_event = { id = rw_scheme_response.0002 }
+                    }
+                }
+            }
+        }
+    }
+}

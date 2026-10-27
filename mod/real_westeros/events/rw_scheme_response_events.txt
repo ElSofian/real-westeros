@@ -1,0 +1,157 @@
+namespace = rw_scheme_response
+
+# Observer opportunity, automatically offered once or explicitly opened from the journal.
+rw_scheme_response.0001 = {
+    type = character_event
+    title = rw_scheme_response.owner_title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_scheme_response_owner_turn_trigger = yes } desc = rw_scheme_response.owner_desc }
+            triggered_desc = { trigger = { rw_scheme_response_can_withdraw_trigger = yes } desc = rw_scheme_response.withdraw_desc }
+            desc = rw_scheme_response.unavailable
+        }
+    }
+    theme = intrigue
+    option = {
+        name = rw_scheme_response.forego
+        trigger = { rw_scheme_response_owner_turn_trigger = yes }
+        rw_scheme_response_forego_effect = yes
+        ai_chance = {
+            base = 40
+            modifier = { factor = 2 is_at_war = yes }
+            modifier = { factor = 2 opinion = { target = scope:rw_scheme_participant value > 25 } }
+        }
+    }
+    option = {
+        name = rw_scheme_response.request
+        trigger = { rw_scheme_response_can_request_trigger = yes }
+        rw_scheme_response_request_effect = yes
+        ai_chance = {
+            base = 30
+            modifier = { factor = 2 opinion = { target = scope:rw_scheme_participant value < -25 } }
+        }
+    }
+    option = {
+        name = rw_scheme_response.withdraw
+        trigger = { rw_scheme_response_can_withdraw_trigger = yes }
+        rw_scheme_response_withdraw_effect = yes
+        ai_chance = {
+            base = 30
+            modifier = { factor = 2 is_at_war = yes }
+            modifier = { factor = 2 opinion = { target = scope:rw_scheme_participant value > 25 } }
+        }
+    }
+    option = {
+        name = rw_scheme_response.later
+        trigger = { OR = { rw_scheme_response_owner_turn_trigger = yes rw_scheme_response_can_withdraw_trigger = yes } }
+        # Leave state and deadline alone; no new reminder or automatic response.
+        ai_chance = { base = 30 }
+    }
+    option = {
+        name = rw_scheme_response.acknowledge
+        trigger = { NOT = { OR = { rw_scheme_response_owner_turn_trigger = yes rw_scheme_response_can_withdraw_trigger = yes } } }
+        ai_chance = { base = 100 }
+    }
+}
+
+rw_scheme_response.0002 = {
+    type = character_event
+    title = rw_scheme_response.participant_title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_scheme_response_participant_turn_trigger = yes } desc = rw_scheme_response.participant_desc }
+            desc = rw_scheme_response.unavailable
+        }
+    }
+    theme = diplomacy
+    option = {
+        name = rw_scheme_response.pay
+        trigger = { rw_scheme_response_can_pay_trigger = yes }
+        rw_scheme_response_pay_effect = yes
+        ai_chance = {
+            base = 30
+            modifier = { factor = 2 opinion = { target = scope:rw_scheme_observer value > 25 } }
+            modifier = { factor = 0.5 gold < 100 }
+            modifier = {
+                factor = 0
+                scope:rw_scheme_observer = { has_opinion_modifier = { target = scope:rw_scheme_participant modifier = rw_scheme_reparation_opinion } }
+            }
+        }
+    }
+    option = {
+        name = rw_scheme_response.refuse
+        trigger = { rw_scheme_response_participant_turn_trigger = yes }
+        rw_scheme_response_decline_effect = { ANSWER = refused }
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = rw_scheme_response.contest
+        trigger = { rw_scheme_response_participant_turn_trigger = yes }
+        rw_scheme_response_decline_effect = { ANSWER = contested }
+        ai_chance = { base = 20 }
+    }
+    option = {
+        name = rw_scheme_response.ignore
+        trigger = { rw_scheme_response_participant_turn_trigger = yes }
+        ai_chance = { base = 10 }
+    }
+    option = {
+        name = rw_scheme_response.acknowledge
+        trigger = { NOT = { rw_scheme_response_participant_turn_trigger = yes } }
+        ai_chance = { base = 100 }
+    }
+}
+
+# Read-only response history. Expiry is not a refusal, admission or immunity.
+rw_scheme_response.0003 = {
+    type = character_event
+    title = rw_scheme_response.history_title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_scheme_response_can_read_trigger = yes scope:rw_scheme_evidence_record = { var:rw_scheme_response_state = flag:paid } } desc = rw_scheme_response.paid }
+            triggered_desc = { trigger = { rw_scheme_response_can_read_trigger = yes scope:rw_scheme_evidence_record = { var:rw_scheme_response_state = flag:foregone } } desc = rw_scheme_response.foregone }
+            triggered_desc = { trigger = { rw_scheme_response_can_read_trigger = yes scope:rw_scheme_evidence_record = { var:rw_scheme_response_state = flag:refused } } desc = rw_scheme_response.refused }
+            triggered_desc = { trigger = { rw_scheme_response_can_read_trigger = yes scope:rw_scheme_evidence_record = { var:rw_scheme_response_state = flag:contested } } desc = rw_scheme_response.contested }
+            triggered_desc = { trigger = { rw_scheme_response_can_read_trigger = yes scope:rw_scheme_evidence_record = { var:rw_scheme_response_state = flag:withdrawn } } desc = rw_scheme_response.withdrawn }
+            triggered_desc = { trigger = { rw_scheme_response_can_read_trigger = yes scope:rw_scheme_evidence_record = { NOT = { has_variable = rw_scheme_response_window } } } desc = rw_scheme_response.expired }
+            triggered_desc = { trigger = { rw_scheme_response_can_read_trigger = yes scope:rw_scheme_evidence_record = { var:rw_scheme_response_state = flag:offered } } desc = rw_scheme_response.offered }
+            triggered_desc = { trigger = { rw_scheme_response_can_read_trigger = yes scope:rw_scheme_evidence_record = { var:rw_scheme_response_state = flag:open } } desc = rw_scheme_response.open_state }
+            desc = rw_scheme_response.unavailable
+        }
+    }
+    theme = diplomacy
+    option = { name = rw_scheme_response.acknowledge }
+}
+
+rw_scheme_response.0004 = {
+    type = character_event
+    hidden = yes
+    immediate = {
+        if = {
+            limit = { rw_scheme_response_owner_turn_trigger = yes }
+            trigger_event = { id = rw_scheme_response.0001 }
+        }
+    }
+}
+
+# Both parties can reconsider once after seven days if the request is still open.
+rw_scheme_response.0005 = {
+    type = character_event
+    hidden = yes
+    immediate = {
+        if = {
+            limit = { rw_scheme_response_can_withdraw_trigger = yes }
+            trigger_event = { id = rw_scheme_response.0001 }
+        }
+    }
+}
+rw_scheme_response.0006 = {
+    type = character_event
+    hidden = yes
+    immediate = {
+        if = {
+            limit = { rw_scheme_response_participant_turn_trigger = yes }
+            trigger_event = { id = rw_scheme_response.0002 }
+        }
+    }
+}

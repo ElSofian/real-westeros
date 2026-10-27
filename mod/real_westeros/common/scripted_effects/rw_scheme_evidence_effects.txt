@@ -79,6 +79,7 @@ rw_scheme_create_evidence_effect = {
                 set_variable = { name = rw_evidence_participant value = scope:rw_scheme_participant }
             }
         }
+        rw_scheme_response_initialise_effect = yes
         scope:rw_scheme_observer = {
             send_interface_message = {
                 type = event_generic_bad

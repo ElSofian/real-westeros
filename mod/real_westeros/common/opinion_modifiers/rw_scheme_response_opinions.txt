@@ -1,0 +1,5 @@
+# Voluntary amends only. Existing crime opinions are never removed or replaced.
+rw_scheme_reparation_opinion = {
+    opinion = 5
+    years = 2
+}
