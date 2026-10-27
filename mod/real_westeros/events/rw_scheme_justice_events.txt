@@ -1,0 +1,33 @@
+namespace = rw_scheme_justice
+
+# Deliberate journal inspection, no scheduler, sanction or stored legal verdict.
+rw_scheme_justice.0001 = {
+    type = character_event
+    title = rw_scheme_justice.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_scheme_justice_living_trigger = yes }
+                desc = {
+                    desc = rw_scheme_justice.intro
+                    first_valid = {
+                        triggered_desc = { trigger = { rw_scheme_justice_own_custody_trigger = yes } desc = rw_scheme_justice.own_custody }
+                        triggered_desc = { trigger = { rw_scheme_justice_other_custody_trigger = yes } desc = rw_scheme_justice.other_custody }
+                        triggered_desc = { trigger = { rw_scheme_justice_free_trigger = yes } desc = rw_scheme_justice.free }
+                        desc = rw_scheme_justice.unknown_custody
+                    }
+                    first_valid = {
+                        triggered_desc = { trigger = { rw_scheme_justice_reason_trigger = yes } desc = rw_scheme_justice.reason }
+                        triggered_desc = { trigger = { rw_scheme_justice_no_reason_trigger = yes } desc = rw_scheme_justice.no_reason }
+                        desc = rw_scheme_justice.unknown_reason
+                    }
+                    desc = rw_scheme_justice.limits
+                }
+            }
+            triggered_desc = { trigger = { rw_scheme_justice_view_trigger = yes } desc = rw_scheme_justice.not_living }
+            desc = rw_scheme_justice.unavailable
+        }
+    }
+    theme = intrigue
+    option = { name = rw_scheme_justice.close }
+}

@@ -1,0 +1,232 @@
+{
+  "schema": 1,
+  "kind": "private_source_inspection_references_not_engine_evidence",
+  "archive_sha256": "4f227833b067dc285f1b0780d3c3e753a311532f17ab099c36dac33b9eb9e3cc",
+  "reviewed_references": [
+    {
+      "source": "CK3",
+      "path": "events/scheme_events/hostile_scheme_discovery_events.txt",
+      "sha256": "c5232383e70f16d125347fa124f260974cf61334ce42efa4f87981c86dde736d",
+      "size": 17313,
+      "markers": {
+        "basic_allowed_to_imprison_character_trigger": [
+          164
+        ],
+        "rightfully_imprison_character_effect": [
+          171,
+          524
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/scripted_triggers/00_scripted_triggers.txt",
+      "sha256": "490c3784ee1555a49f7a4adc9baabb8522485f1af6e1c837961e299a88695b5e",
+      "size": 14623,
+      "markers": {
+        "basic_allowed_to_imprison_character_trigger =": [
+          213,
+          284
+        ],
+        "advanced_allowed_to_imprison_character_trigger =": [
+          234,
+          283
+        ],
+        "allowed_to_imprison_character_trigger =": [
+          213,
+          234,
+          281,
+          283,
+          284
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/scripted_effects/00_prison_effects.txt",
+      "sha256": "f745201efd827eff9f4ae8bf61060fe81d1048c47f7c7b487ab5476218d26a66",
+      "size": 59488,
+      "markers": {
+        "rightfully_imprison_character_effect =": [
+          1609,
+          1979
+        ],
+        "consume_all_criminal_reasons_effect =": [
+          2020
+        ],
+        "consume_imprisonment_reasons =": [
+          2026,
+          2205
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/character_interactions/00_prison_interactions.txt",
+      "sha256": "3e05c94cdce4d42cce8256d2d79cd78feb1c9d5b79daa64aa8243aa0c658f22b",
+      "size": 201766,
+      "markers": {
+        "imprison_interaction =": [
+          1
+        ],
+        "has_imprisonment_reason =": [
+          12,
+          20,
+          179,
+          194,
+          268,
+          270,
+          310,
+          342,
+          372,
+          385,
+          679,
+          694,
+          803,
+          1012,
+          1096,
+          1103,
+          1115,
+          5625,
+          5637
+        ],
+        "on_accept =": [
+          259,
+          1541,
+          1666,
+          1778,
+          2427,
+          3512,
+          4145,
+          6596,
+          7295,
+          7374,
+          7588,
+          7770,
+          7957,
+          8349
+        ],
+        "on_decline =": [
+          436,
+          1903,
+          2705,
+          3613,
+          4921
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "events/scheme_events/hostile_scheme_discovery_events.txt",
+      "sha256": "1dce8a92f331962fe23cbcab944b15fce817d9cc0233298e0c238ce3085cdc84",
+      "size": 18440,
+      "markers": {
+        "basic_allowed_to_imprison_character_trigger": [
+          168
+        ],
+        "rightfully_imprison_character_effect": [
+          175,
+          536
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/scripted_triggers/00_scripted_triggers.txt",
+      "sha256": "b727fcf82488345cee6e060bd4592d6a96f5301c638bcf9011a920b0a165c4a8",
+      "size": 17096,
+      "markers": {
+        "basic_allowed_to_imprison_character_trigger =": [
+          217,
+          306
+        ],
+        "advanced_allowed_to_imprison_character_trigger =": [
+          256,
+          305
+        ],
+        "allowed_to_imprison_character_trigger =": [
+          217,
+          256,
+          303,
+          305,
+          306
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/scripted_effects/00_prison_effects.txt",
+      "sha256": "51b05a9721ffd3af3b94400d25962a61b84b43de8bcf662ca8211a2f702b1712",
+      "size": 62959,
+      "markers": {
+        "rightfully_imprison_character_effect =": [
+          1748,
+          2118
+        ],
+        "consume_all_criminal_reasons_effect =": [
+          2159
+        ],
+        "consume_imprisonment_reasons =": [
+          2165,
+          2344
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/character_interactions/00_prison_interactions.txt",
+      "sha256": "04d7f3975b951537b34b0cbb264e0cc2eeb7ac05c21d63c7c31d8b1d593ef750",
+      "size": 249917,
+      "markers": {
+        "imprison_interaction =": [
+          1
+        ],
+        "has_imprisonment_reason =": [
+          13,
+          21,
+          189,
+          204,
+          281,
+          283,
+          323,
+          355,
+          385,
+          398,
+          709,
+          724,
+          836,
+          1045,
+          1130,
+          1137,
+          1150,
+          6322,
+          6334,
+          6800
+        ],
+        "on_accept =": [
+          271,
+          1579,
+          1811,
+          2030,
+          2685,
+          3776,
+          4417,
+          7801,
+          8786,
+          8866,
+          9086,
+          9275,
+          9463,
+          9859
+        ],
+        "on_decline =": [
+          450,
+          2155,
+          2964,
+          3877,
+          5416
+        ]
+      }
+    }
+  ]
+}
