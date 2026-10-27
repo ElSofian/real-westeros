@@ -6,7 +6,6 @@ rw_case_can_open_trigger = {
     scope:rw_service_provider = {
         is_adult = yes
         is_landed = yes
-        NOT = { has_character_flag = rw_case_pending }
         has_variable = rw_service_last_reason
         OR = {
             var:rw_service_last_reason = flag:refusal
@@ -23,12 +22,15 @@ rw_case_can_open_trigger = {
     }
 }
 rw_case_matches_trigger = {
+    exists = scope:rw_case_record
     exists = scope:rw_service_provider
     exists = scope:rw_service_client
     exists = scope:rw_case_mediator
     exists = scope:rw_case_serial
     exists = scope:rw_case_reason
-    scope:rw_service_provider = {
+    scope:rw_case_record = {
+        story_type = story_rw_political_case
+        story_owner = scope:rw_service_provider
         has_variable = rw_case_serial
         has_variable = rw_case_client
         has_variable = rw_case_mediator
@@ -65,8 +67,8 @@ rw_case_ruler_turn_trigger = {
     rw_case_matches_trigger = yes
     rw_case_jurisdiction_trigger = yes
     this = scope:rw_case_mediator
-    scope:rw_service_provider = {
-        has_character_flag = rw_case_pending
+    scope:rw_case_record = {
+        has_variable = rw_case_pending
         var:rw_case_stage = flag:ruler
     }
 }
@@ -74,6 +76,19 @@ rw_case_provider_turn_trigger = {
     rw_case_matches_trigger = yes
     rw_case_jurisdiction_trigger = yes
     this = scope:rw_service_provider
-    has_character_flag = rw_case_pending
-    var:rw_case_stage = flag:repair
+    scope:rw_case_record = {
+        has_variable = rw_case_pending
+        var:rw_case_stage = flag:repair
+    }
+}
+
+# Historical access reflects prior disclosure, not current rank/jurisdiction.
+# Evaluated in story scope. Outsiders cannot enumerate private cases.
+rw_case_reader_allowed_trigger = {
+    story_type = story_rw_political_case
+    OR = {
+        story_owner = scope:rw_case_reader
+        var:rw_case_client = scope:rw_case_reader
+        var:rw_case_mediator = scope:rw_case_reader
+    }
 }

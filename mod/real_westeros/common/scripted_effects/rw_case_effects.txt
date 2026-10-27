@@ -3,19 +3,27 @@ rw_case_open_effect = {
         limit = { rw_case_can_open_trigger = yes }
         scope:rw_service_provider.top_liege = { save_scope_as = rw_case_mediator }
         scope:rw_service_provider = {
-            # Referral consumes this personal-response opportunity, not native rights.
-            set_variable = { name = rw_service_reacted_serial value = scope:rw_service_serial }
-            set_variable = { name = rw_case_serial value = scope:rw_service_serial }
-            set_variable = { name = rw_case_client value = scope:rw_service_client }
-            set_variable = { name = rw_case_mediator value = scope:rw_case_mediator }
-            set_variable = { name = rw_case_reason value = var:rw_service_last_reason }
-            set_variable = { name = rw_case_stage value = flag:ruler }
-            add_character_flag = { flag = rw_case_pending days = 30 }
-            save_scope_value_as = { name = rw_case_serial value = var:rw_case_serial }
-            save_scope_value_as = { name = rw_case_reason value = var:rw_case_reason }
-            trigger_event = { id = rw_cases.0004 days = 31 }
+            create_story = { type = story_rw_political_case save_scope_as = rw_case_record }
         }
-        scope:rw_case_mediator = { trigger_event = { id = rw_cases.0001 } }
+        if = {
+            limit = { exists = scope:rw_case_record }
+            scope:rw_case_record = {
+                set_variable = { name = rw_case_serial value = scope:rw_service_serial }
+                set_variable = { name = rw_case_client value = scope:rw_service_client }
+                set_variable = { name = rw_case_mediator value = scope:rw_case_mediator }
+                set_variable = { name = rw_case_reason value = scope:rw_service_provider.var:rw_service_last_reason }
+                set_variable = { name = rw_case_stage value = flag:ruler }
+                set_variable = { name = rw_case_pending value = flag:yes days = 30 }
+                save_scope_value_as = { name = rw_case_serial value = var:rw_case_serial }
+                save_scope_value_as = { name = rw_case_reason value = var:rw_case_reason }
+            }
+            scope:rw_service_provider = {
+                # Consume this receipt response only after an independent story exists.
+                set_variable = { name = rw_service_reacted_serial value = scope:rw_service_serial }
+                trigger_event = { id = rw_cases.0004 days = 31 }
+            }
+            scope:rw_case_mediator = { trigger_event = { id = rw_cases.0001 } }
+        }
     }
 }
 # Internal close helper. Public entry effects recheck the correct actor/stage.
@@ -23,10 +31,11 @@ rw_case_close_effect = {
     if = {
         limit = {
             rw_case_matches_trigger = yes
-            scope:rw_service_provider = { NOT = { var:rw_case_stage = flag:closed } }
+            scope:rw_case_record = { NOT = { var:rw_case_stage = flag:closed } }
         }
-        scope:rw_service_provider = {
-            remove_character_flag = rw_case_pending
+        scope:rw_case_record = {
+            remove_variable = rw_case_pending
+            set_variable = { name = rw_case_retained value = flag:yes days = 1825 }
             set_variable = { name = rw_case_stage value = flag:closed }
             set_variable = { name = rw_case_result value = flag:$RESULT$ }
         }
@@ -56,11 +65,9 @@ rw_case_admonish_effect = {
 rw_case_invite_repair_effect = {
     if = {
         limit = { rw_case_ruler_turn_trigger = yes }
-        scope:rw_service_provider = {
-            set_variable = { name = rw_case_stage value = flag:repair }
-            # Keep the original deadline; referral is not endlessly renewable.
-            trigger_event = { id = rw_cases.0002 }
-        }
+        scope:rw_case_record = { set_variable = { name = rw_case_stage value = flag:repair } }
+        # Keep this record's original deadline; other cases are not touched.
+        scope:rw_service_provider = { trigger_event = { id = rw_cases.0002 } }
     }
 }
 rw_case_apologise_effect = {
@@ -86,7 +93,7 @@ rw_case_expire_effect = {
     if = {
         limit = {
             rw_case_matches_trigger = yes
-            scope:rw_service_provider = { NOT = { has_character_flag = rw_case_pending } }
+            scope:rw_case_record = { NOT = { has_variable = rw_case_pending } }
         }
         rw_case_close_effect = { RESULT = expired }
     }

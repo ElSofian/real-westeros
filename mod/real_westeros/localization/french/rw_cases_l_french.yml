@@ -20,3 +20,8 @@
  rw_cases.acknowledge:0 "La décision est prise en compte."
  rw_case_admonished_opinion:0 "Désapprouve une promesse rompue"
  rw_case_apology_opinion:0 "A accepté des excuses volontaires"
+ rw_review_political_cases_interaction:0 "Consulter les affaires politiques connues"
+ rw_review_political_cases_interaction_desc:0 "Lire les dossiers distincts liés à ce prestataire que vous connaissez déjà comme prestataire, client ou médiateur. Les dossiers clos sont conservés cinq ans tant que le prestataire vit. Consulter ne prend aucune décision et ne révèle pas les affaires étrangères à ces rôles."
+ rw_cases.archive_title:0 "Une affaire politique consignée"
+ rw_cases.archive_ruler:0 "Ce dossier concerne [rw_service_provider.GetTitledFirstName] et [rw_service_client.GetTitledFirstName]. Le différend relatif au soutien promis attend la décision de [rw_case_mediator.GetTitledFirstName]. Cette consultation n’autorise aucune sanction et ne prolonge pas l’échéance."
+ rw_cases.archive_repair:0 "Ce dossier concerne [rw_service_provider.GetTitledFirstName] et [rw_service_client.GetTitledFirstName]. [rw_case_mediator.GetTitledFirstName] a proposé une réparation volontaire ; le prestataire n’a pas encore répondu. La consultation n’accomplit pas le service et n’impose pas d’excuses."

@@ -1,0 +1,33 @@
+# Original story, isolated from AGOT war stories. Engine behavior unverified.
+story_rw_political_case = {
+    on_setup = {
+        set_variable = { name = rw_case_stage value = flag:initialising }
+    }
+    # No make_story_owner, inheritance, guilt transfer or native title operation.
+    on_owner_death = { end_story = yes }
+    effect_group = {
+        days = 60
+        # Local per-record cleanup, never a global scan of character pairs.
+        # If the day-31 notification callback was lost, expire only this record
+        # without sanctions, payment, participant scopes or global hooks.
+        triggered_effect = {
+            trigger = {
+                NOT = { var:rw_case_stage = flag:initialising }
+                NOT = { var:rw_case_stage = flag:closed }
+                NOT = { has_variable = rw_case_pending }
+            }
+            effect = {
+                set_variable = { name = rw_case_stage value = flag:closed }
+                set_variable = { name = rw_case_result value = flag:expired }
+                set_variable = { name = rw_case_retained value = flag:yes days = 1825 }
+            }
+        }
+        triggered_effect = {
+            trigger = {
+                var:rw_case_stage = flag:closed
+                NOT = { has_variable = rw_case_retained }
+            }
+            effect = { end_story = yes }
+        }
+    }
+}

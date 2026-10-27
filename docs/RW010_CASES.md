@@ -23,8 +23,9 @@ Opening snapshots provider/client/mediator, contract serial and recorded reason 
 case-owned fields, then consumes the client's personal-response opportunity. The
 client delegates this slice's response rather than stacking resentment and referral.
 The breach record is not rewritten when mediation succeeds. Case state remains
-independent of later service state/outcomes, but stores only the latest case per
-provider, not a general multi-affair ledger or dynastic history.
+independent of later service state/outcomes. Each referral now has a separate CK3
+story record rather than the latest provider slot; see RW010_RECORDS.md. This is
+limited personal case history, not a general evidence ledger or dynastic history.
 
 ## Discretionary choices
 
@@ -55,11 +56,12 @@ ruler popup must not authorize effects. Transition to the repair stage invalidat
 the ruler's decision options. Closure marks the case closed before opinion/prestige
 effects and notices, preventing a source-level replay route.
 
-A thirty-day pending flag and independent day-thirty-one callback limit the case;
+A thirty-day pending variable on each story and independent day-thirty-one callback limit the case;
 asking for repair never renews the deadline. Expiry or jurisdiction loss closes
-neutrally, without adverse effects. Old notices fall back to inert text if a later
-case supersedes their identity. Lost/dead character scopes may prevent a callback
-from running; the timed flag still expires and no obligations/guilt transfer to heirs.
+neutrally, without adverse effects. Old notices keep their own record even when later cases open. Destroyed records
+render inert text. Lost/dead character scopes may prevent a callback; per-story
+cleanup closes overdue records neutrally. Closed records are retained for 1825 days,
+then cleaned periodically, or ended on owner death; no guilt transfers to heirs.
 Actual event/flag timing, saved scopes and callback behavior require final engine tests.
 No transactional crash-consistency guarantee is claimed.
 
