@@ -16,7 +16,8 @@ remains unverified and is planned for the war-feature stage.
 
 ## Current milestone
 
-Native scheme evidence integration awaits target-version discovery sources. Continue independent service/incident development; see [voluntary repair responses](docs/RW010_REPAIR_RESPONSE.md). **G1 is back
+Native scheme evidence integration awaits target-version discovery sources;
+[private source collector instructions](docs/SCHEME_SOURCE_COLLECTION.md) are available. Continue independent service/incident development; see [voluntary repair responses](docs/RW010_REPAIR_RESPONSE.md). **G1 is back
 in the development plan for the war-feature stage**, rather than the immediate task.
 Retain its research and diagnostic; establish authentic-CB feasibility before shipping
 unlawful-war gameplay. Independent development can continue. See the original scenarios
