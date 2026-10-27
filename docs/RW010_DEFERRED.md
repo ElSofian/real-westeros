@@ -28,6 +28,13 @@ RW010_MUTUAL_CANCELLATION.md adds explicit proposals by either party, accepted o
 by the other party, without payment/penalty or changing the original deadline.
 Pending requests never suspend ordinary performance, breach or timeout.
 
+## Decision lifecycle audit amendment
+
+INTEGRATION_AUDIT.md replaces direct visible reminder scheduling with a hidden,
+versioned decision ticket. Reviewing invalidates older decisions and reminders;
+waiting creates one current seven-day reminder. The independent original timeout
+and cancellation-consent identities remain unchanged. Engine behavior is unverified.
+
 ## Performance and failure
 
 - **Fulfill:** recheck exact contract/revision, parties' eligibility, delivery window

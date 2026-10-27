@@ -20,7 +20,10 @@ rw_obligations.0001 = {
     }
     option = {
         name = rw_cancellations.propose
-        trigger = { rw_cancel_event_can_propose_trigger = { PARTY = scope:rw_service_provider } }
+        trigger = {
+            rw_cancel_event_can_propose_trigger = { PARTY = scope:rw_service_provider }
+            rw_service_obligation_actionable_trigger = yes
+        }
         rw_cancel_provider_propose_effect = yes
         # A pending/rejected request never stops the ordinary due-date revisit.
         rw_service_wait_promise_effect = yes
@@ -81,5 +84,23 @@ rw_obligations.0003 = {
         name = rw_obligations.lapsed
         trigger = { NOT = { rw_service_breach_receipt_trigger = yes } }
         ai_chance = { base = 100 }
+    }
+}
+
+# Only the current reminder ticket may create a visible provider decision.
+rw_obligations.0004 = {
+    type = character_event
+    hidden = yes
+    immediate = {
+        if = {
+            limit = {
+                rw_service_obligation_due_trigger = yes
+                rw_service_decision_matches_trigger = yes
+                has_character_flag = rw_service_reminder_pending
+            }
+            remove_character_flag = rw_service_reminder_pending
+            add_character_flag = rw_service_decision_open
+            trigger_event = { id = rw_obligations.0001 }
+        }
     }
 }

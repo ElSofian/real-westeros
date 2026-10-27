@@ -31,7 +31,10 @@ rw_cancel_propose_effect = {
 }
 rw_cancel_provider_propose_effect = {
     if = {
-        limit = { rw_cancel_event_can_propose_trigger = { PARTY = scope:rw_service_provider } }
+        limit = {
+            rw_cancel_event_can_propose_trigger = { PARTY = scope:rw_service_provider }
+            rw_service_obligation_actionable_trigger = yes
+        }
         scope:rw_service_provider = { save_scope_as = rw_cancel_proposer }
         scope:rw_service_client = { save_scope_as = rw_cancel_responder }
         rw_cancel_propose_effect = yes

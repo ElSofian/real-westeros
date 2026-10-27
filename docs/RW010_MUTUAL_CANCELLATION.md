@@ -26,6 +26,12 @@ ordinary deadline. Those outcomes invalidate its pending cancellation request.
 Silence/expiry/rejection alone neither cancels the promise nor records a breach.
 Once the obligation has ended, a stale cancellation response cannot reclassify it.
 
+## Audit amendment
+
+INTEGRATION_AUDIT.md adds current-decision guards to the provider popup proposal
+and versions its ordinary wait reminder. Separate cancellation interactions and
+responder consent do not depend on that decision ticket.
+
 ## AI and state
 
 The client receives a keep/propose opportunity once when deferred terms are accepted.

@@ -69,6 +69,13 @@ for the same committed payload/toolchain (not a promise across all zlib versions
 It cannot certify authorship or detect proprietary text intentionally committed
 under an allowed script name; normal source review still applies.
 
+## Integration audit
+
+The current provider decision flow uses versioned hidden reminders to prevent
+repeated reviews/waits from creating multiple live weekly chains. See the source
+repository’s INTEGRATION_AUDIT.md and the LIFE-* cases in FINAL_ENGINE_TESTS.md.
+This is a source correction, not an observed CK3 scheduler/performance result.
+
 ## Final campaign
 
 Follow FINAL_ENGINE_TESTS.md plus TEST_PLAN_G1.md when that war stage is ready.

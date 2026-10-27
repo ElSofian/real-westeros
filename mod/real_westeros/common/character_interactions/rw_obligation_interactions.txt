@@ -32,7 +32,7 @@ rw_review_endorsement_promise_interaction = {
             scope:actor = { save_scope_as = rw_service_provider }
             scope:recipient = { save_scope_as = rw_service_client }
             rw_service_snapshot_effect = yes
-            scope:actor = { trigger_event = { id = rw_obligations.0001 } }
+            scope:actor = { rw_service_open_decision_effect = yes }
         }
     }
     ai_potential = { has_character_flag = rw_service_obligation }
