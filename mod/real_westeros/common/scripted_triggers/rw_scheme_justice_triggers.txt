@@ -39,3 +39,13 @@ rw_scheme_justice_no_reason_trigger = {
     rw_scheme_justice_living_trigger = yes
     NOT = { has_imprisonment_reason = scope:rw_scheme_evidence_record.var:rw_evidence_participant }
 }
+# UI handoff only. Native interaction remains authoritative, including tyranny.
+rw_scheme_justice_can_open_arrest_trigger = {
+    rw_scheme_justice_free_trigger = yes
+    is_ai = no
+    is_imprisoned = no
+    is_character_interaction_valid = {
+        recipient = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+        interaction = imprison_interaction
+    }
+}

@@ -19,7 +19,7 @@ are deferred to the final campaign, not waived. Prefer a disposable fresh save.
 | Affront allegation | Acknowledgment/contest/silence; withdrawal or explicit disclosure |
 | Political scheme response | Voluntary 25-gold request for non-stacking goodwill, refusal/contestation/withdrawal; no criminal pardon |
 | Native plot observations | Discovered murder plot vs exposed participant; target-only journal, no new sanction |
-| Judicial inspection | Observer-only current custody/reason check; no legal judgment or new arrest |
+| Judicial inspection | Observer-only custody/reason check and guarded native arrest-window shortcut; no automatic send |
 | Known-case archive | Independent story records, role/disclosure-filtered views, retained closed records |
 
 All rows describe intended source behavior; none has been observed in CK3 here.

@@ -13,3 +13,4 @@
  rw_scheme_justice.not_living:0 "This observation can still be read, but no current judicial examination is offered for its deceased or invalid participant. No relative or heir is substituted."
  rw_scheme_justice.unavailable:0 "This private observation is no longer accessible. No judicial grounds are inferred."
  rw_scheme_justice.close:0 "Close the examination."
+ rw_scheme_justice.review_arrest:0 "Review the normal arrest interaction (does not send)."

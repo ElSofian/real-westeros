@@ -227,6 +227,60 @@
           5416
         ]
       }
+    },
+    {
+      "source": "CK3",
+      "path": "events/dlc/tgp/tgp_interaction_events.txt",
+      "sha256": "c845ebeb53a7d80e5155af1d6fc42d03a86931c7088613cfa39a19b0df468c75",
+      "size": 26356,
+      "markers": {
+        "is_character_interaction_valid =": [
+          129,
+          149
+        ],
+        "open_interaction_window =": [
+          156,
+          225
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/character_interactions/06_ep3_laamp_interactions.txt",
+      "sha256": "03240f0b4f190be5c6a752981c8c869ebbb5c83826c5c1c65bff58ecd3f56330",
+      "size": 192576,
+      "markers": {
+        "open_interaction_window =": [
+          3534
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "events/dlc/tgp/tgp_interaction_events.txt",
+      "sha256": "dae6673ee70b3c9ce50d07d0429922546b175a8d94bfd5be4a634a290338e122",
+      "size": 26759,
+      "markers": {
+        "is_character_interaction_valid =": [
+          129,
+          149
+        ],
+        "open_interaction_window =": [
+          156,
+          225
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/character_interactions/06_ep3_laamp_interactions.txt",
+      "sha256": "f4241192f17fc6a2b238bf101e96100446281e2dfa85d98fb3ef6a986b9f6f86",
+      "size": 201671,
+      "markers": {
+        "open_interaction_window =": [
+          3768
+        ]
+      }
     }
   ]
 }

@@ -13,3 +13,4 @@
  rw_scheme_justice.not_living:0 "Cette observation reste consultable, mais aucun examen judiciaire actuel n’est proposé pour son participant décédé ou invalide. Aucun parent ni héritier ne lui est substitué."
  rw_scheme_justice.unavailable:0 "Cette observation privée n’est plus accessible. Aucun motif judiciaire n’est supposé."
  rw_scheme_justice.close:0 "Fermer cet examen."
+ rw_scheme_justice.review_arrest:0 "Examiner l’interaction habituelle d’arrestation (sans l’envoyer)."

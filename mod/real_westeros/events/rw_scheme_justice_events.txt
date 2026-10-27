@@ -29,5 +29,18 @@ rw_scheme_justice.0001 = {
         }
     }
     theme = intrigue
+    option = {
+        name = rw_scheme_justice.review_arrest
+        trigger = { rw_scheme_justice_can_open_arrest_trigger = yes }
+        if = {
+            limit = { rw_scheme_justice_can_open_arrest_trigger = yes }
+            open_interaction_window = {
+                interaction = imprison_interaction
+                actor = root
+                recipient = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+            }
+        }
+        ai_chance = { base = 0 }
+    }
     option = { name = rw_scheme_justice.close }
 }

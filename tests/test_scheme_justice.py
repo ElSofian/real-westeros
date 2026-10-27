@@ -3,6 +3,7 @@ from pathlib import Path
 import re
 import unittest
 from test_native_scheme_evidence import block
+from test_deferred_service_contract import block as nested_block
 from tools.validate_mod import clean_script
 
 MOD = Path(__file__).resolve().parents[1] / 'mod/real_westeros'
@@ -77,7 +78,7 @@ class SchemeJusticeTests(unittest.TestCase):
         self.assertIn('journal execution guard bypass', assessment_errors(self.t, self.v, self.j.replace('limit = { rw_scheme_justice_view_trigger = yes }', 'limit = { always = yes }')))
         self.assertIn('rw_scheme_justice.0001', self.j)
         self.assertNotRegex(self.v, r'\b(days|months|years|immediate|after)\s*=')
-        self.assertEqual(1, self.v.count('option = {'))
+        self.assertEqual(2, self.v.count('option = {'))
 
     def test_original_reader_keeps_owner_type_serial_retention_guards(self):
         original = (MOD / 'common/scripted_triggers/rw_scheme_evidence_triggers.txt').read_text()
@@ -87,6 +88,21 @@ class SchemeJusticeTests(unittest.TestCase):
         view = block(original, 'rw_scheme_evidence_view_trigger')
         for guard in ('this = scope:rw_scheme_observer', 'var:rw_evidence_serial = scope:rw_scheme_evidence_serial'):
             self.assertIn(guard, view)
+
+    def test_native_arrest_window_revalidates_without_sending(self):
+        gate = block(self.t, 'rw_scheme_justice_can_open_arrest_trigger')
+        for guard in ('rw_scheme_justice_free_trigger = yes', 'is_ai = no', 'is_imprisoned = no'):
+            self.assertIn(guard, gate)
+        native = nested_block(gate, 'is_character_interaction_valid')
+        self.assertIn('interaction = imprison_interaction', native)
+        self.assertIn('recipient = scope:rw_scheme_evidence_record.var:rw_evidence_participant', native)
+        self.assertIn('limit = { rw_scheme_justice_can_open_arrest_trigger = yes }', self.v)
+        window = nested_block(self.v, 'open_interaction_window')
+        self.assertIn('actor = root', window)
+        self.assertIn('interaction = imprison_interaction', window)
+        self.assertIn('recipient = scope:rw_scheme_evidence_record.var:rw_evidence_participant', window)
+        self.assertNotRegex(self.v, r'\b(send_interaction|imprison|rightfully_imprison_character_effect|set_variable)\s*=')
+        self.assertNotIn('has_imprisonment_reason', gate)
 
     def test_localization_references_and_no_hidden_names(self):
         keys = set(re.findall(r'(?:title|desc|name)\s*=\s*(rw_scheme_justice\.[\w.]+)', self.v + self.j))

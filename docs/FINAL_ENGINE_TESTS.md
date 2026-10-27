@@ -207,8 +207,17 @@ RW010_SCHEME_JUSTICE.md. No arrest is performed by this examination.
 - JUSTICE-05: pay/refuse/contest/ignore/withdraw the voluntary request, then inspect:
   no pardon, immunity, reason creation/consumption or changed original observation.
 - JUSTICE-06: kill the participant, end the plot, expire the record or kill the
-  observer; old popups remain harmless with only close. No heir substitution.
+  observer; old popups cannot open an invalid arrest window. No heir substitution.
   Save/reload, verify description concatenation, scope evaluation and privacy.
 - JUSTICE-07: browse repeatedly and compare AI/player native actions, retention,
   notifications, logs and performance: no timers, duplicated penalties, private
   disclosures or persistent cached legal judgment.
+
+- JUSTICE-08: for a human observer and an exact living/free recorded participant,
+  compare the native arrest interaction validity with the shortcut. Open then cancel:
+  no message, imprisonment, penalty or consumed reason. Confirm manually only in a
+  disposable test and compare native success/refusal/rebellion/tyranny with baseline.
+  Loss of authority, detention or invalidity between popup and click blocks handoff;
+  native UI rechecks before actual sending. No reason requirement is fabricated and
+  no reason is attributed to this plot. AI still uses its native interaction (same
+  gameplay conditions/consequences) rather than a scripted player-window send.

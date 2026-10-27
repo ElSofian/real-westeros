@@ -1,7 +1,7 @@
-# Native judicial situation — experimental read-only inspection
+# Native judicial situation — inspection and native UI handoff
 
 Static-checked only; no CK3 execution. This slice adds an explicit examination
-button to a retained exposed-participant observation. It does not implement a new
+button to a retained exposed-participant observation and a guarded native arrest-window handoff. It does not implement a new
 arrest, execution, confiscation, pardon or dynastic penalty.
 
 ## Source findings and boundary
@@ -53,24 +53,39 @@ AI privilege or gameplay effect; AI retains the same native justice actions. Thi
 read-only journal interface is manually opened, just like the existing archive.
 
 The values describe the present state when displayed; reopening queries again.
-An already visible popup is not a live historical/transactional guarantee. The only
-option closes it, so a subsequent custody/reason change cannot authorize a sanction
-through an old examination. A refused or paid voluntary request has no effect on
+An already visible popup is not a live historical/transactional guarantee. Closing
+has no effect. A second, explicitly named option can open the native arrest window
+without sending the interaction. Its shared availability/execution guard rechecks
+the exact record/participant, living/free status, observer freedom and native
+`is_character_interaction_valid` for `imprison_interaction`. It then uses the
+source-located `open_interaction_window` effect with observer actor and recorded
+participant recipient. It never invokes acceptance, arrest or refusal effects.
+No native reason is required by our UI gate: the normal interaction remains
+responsible for displaying any tyranny and other terms, rather than confusing a
+current reason with authorization. The player can cancel the native window.
+
+Only human observers get this UI shortcut (`is_ai = no`); it does not create an
+exclusive gameplay action. AI keeps the same native imprisonment interaction,
+conditions and consequences through its existing native selection logic. We do
+not fabricate an AI automatic send or claim new evidence-aware arrest weights.
+Our mod does not add an AI prison-action scheduler. A refused or paid voluntary request has no effect on
 these predicates and is not a pardon.
 
 ## Verification and next work
 
-Eight source-contract tests check reader dependencies, wrong/generic/dead identity,
+Nine source-contract tests check reader dependencies, wrong/generic/dead identity,
 reason direction, custody separation, navigation revalidation, localization and
 absence of cached judgments or punitive effects, including negative mutations.
+The native handoff is checked for exact actor/recipient, revalidation and no send.
 They do not execute CK3 or prove API/scope/description evaluation semantics.
-Final JUSTICE-01…07 scenarios remain unrun in FINAL_ENGINE_TESTS.md.
+Final JUSTICE-01…08 scenarios remain unrun in FINAL_ENGINE_TESTS.md.
 
-Next investigate a source-backed way to enter the native imprisonment interaction
-from the political flow, preserving its full conditions and refusal/resistance;
-if no supported dispatch is established, keep native character-menu arrest as the
-execution path rather than copying it or directly forcing rightful imprisonment.
-A genuinely new personal sanction needs explicit authority, attributable facts,
+Next design discretionary personal sentencing for an actual native prisoner,
+reusing native authority/interaction eligibility and preserving native penalties.
+The UI handoff is source-backed but not engine-proven; if its window fails, the
+normal character-menu arrest remains available without a replacement arrest
+implementation. A genuinely new personal sanction needs attributable facts,
 consumption/idempotency and a preserved native consequence path before activation.
-Family/house sanctions and restoration remain separate G3 work. G1 returns at the
-war stage. This examination does not complete RW-010 or the original justice goal.
+No complete per-offense punishment history is inferred. Family/house sanctions and
+restoration remain separate G3 work. G1 returns at the war stage. This examination
+does not complete RW-010 or the original justice goal.
