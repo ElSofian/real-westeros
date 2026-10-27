@@ -10,14 +10,47 @@ import tempfile
 import zipfile
 
 if __package__:
-    from .validate_mod import REQUIRED_DIRS, descriptor as parse_descriptor, validate
+    from .validate_mod import REQUIRED_DIRS, descriptor as parse_descriptor, validate, brace_errors
 else:
-    from validate_mod import REQUIRED_DIRS, descriptor as parse_descriptor, validate
+    from validate_mod import REQUIRED_DIRS, descriptor as parse_descriptor, validate, brace_errors
 
 DOCS = ('README.md', 'docs/INSTALL.md', 'docs/INTEGRATED_BUILD.md',
         'docs/FINAL_ENGINE_TESTS.md', 'docs/TEST_PLAN_G1.md',
         'docs/G3_HOUSE_SANCTIONS.md', 'docs/G3_SOURCE_RECEIPT.json')
 PREFIX = 'mod/real_westeros/'
+G3_ROOT = 'diagnostics/g3_house_trace/mod/'
+G3_FILES = tuple(G3_ROOT + name for name in (
+    'rw_g3_house_trace.mod', 'rw_g3_house_trace/descriptor.mod',
+    'rw_g3_house_trace/common/character_interactions/rw_g3_trace_interactions.txt',
+    'rw_g3_house_trace/common/on_action/rw_g3_trace_on_actions.txt',
+    'rw_g3_house_trace/common/scripted_effects/rw_g3_trace_effects.txt',
+    'rw_g3_house_trace/common/scripted_triggers/rw_g3_trace_triggers.txt',
+    'rw_g3_house_trace/localization/english/rw_g3_trace_l_english.yml',
+    'rw_g3_house_trace/localization/french/rw_g3_trace_l_french.yml',
+))
+
+
+def validate_g3_diagnostic(files):
+    """Check the separately installed original diagnostic; never load it as the base mod."""
+    errors = []
+    outer = G3_ROOT + 'rw_g3_house_trace.mod'
+    inner = G3_ROOT + 'rw_g3_house_trace/descriptor.mod'
+    external = parse_descriptor(files[outer].decode('utf-8-sig'), outer, errors)
+    internal = parse_descriptor(files[inner].decode('utf-8-sig'), inner, errors)
+    for key in ('name', 'version', 'supported_version'):
+        if external.get(key) != internal.get(key):
+            errors.append('Optional G3 diagnostic descriptor mismatch')
+    if external.get('path') != 'mod/rw_g3_house_trace' or 'path' in internal:
+        errors.append('Optional G3 diagnostic launcher path is invalid')
+    for name in G3_FILES:
+        text = files[name].decode('utf-8-sig')
+        if name.endswith(('.txt', '.mod')):
+            errors.extend(f'{name}: {error}' for error in brace_errors(text))
+        if name.endswith('.yml'):
+            lang = 'french' if '/french/' in name else 'english'
+            if not files[name].startswith(b'\xef\xbb\xbf') or not text.startswith('l_' + lang + ':'):
+                errors.append('Optional G3 diagnostic localization encoding/header is invalid')
+    return errors
 
 
 def git(root, *args):
@@ -27,11 +60,11 @@ def git(root, *args):
 def payload(root):
     """Read committed regular blobs in a narrow allowlist; never follow symlinks."""
     head = git(root, 'rev-parse', 'HEAD').decode().strip()
-    dirty = git(root, 'diff', 'HEAD', '--name-only', '--', 'mod', *DOCS)
+    dirty = git(root, 'diff', 'HEAD', '--name-only', '--', 'mod', *DOCS, *G3_FILES)
     if dirty.strip():
         raise ValueError('Commit changes to distribution inputs before building')
     files = {}
-    for row in git(root, 'ls-tree', '-r', '-z', 'HEAD', '--', 'mod', *DOCS).split(b'\0'):
+    for row in git(root, 'ls-tree', '-r', '-z', 'HEAD', '--', 'mod', *DOCS, *G3_FILES).split(b'\0'):
         if not row:
             continue
         meta, raw_name = row.split(b'\t', 1)
@@ -40,7 +73,7 @@ def payload(root):
         path = PurePosixPath(name)
         if path.is_absolute() or '..' in path.parts or '\\' in name:
             raise ValueError('Unsafe distribution path')
-        if name not in DOCS and name != 'mod/real_westeros.mod' and not name.startswith(PREFIX):
+        if name not in (*DOCS, *G3_FILES) and name != 'mod/real_westeros.mod' and not name.startswith(PREFIX):
             raise ValueError(f'Unexpected mod path: {name}')
         if kind != 'blob' or mode not in ('100644', '100755'):
             raise ValueError(f'Non-regular distribution input: {name}')
@@ -53,7 +86,7 @@ def payload(root):
             if not valid:
                 raise ValueError(f'Unexpected mod content: {name}')
         files[name] = git(root, 'cat-file', 'blob', blob)
-    for required in (*DOCS, 'mod/real_westeros.mod', PREFIX + 'descriptor.mod'):
+    for required in (*DOCS, *G3_FILES, 'mod/real_westeros.mod', PREFIX + 'descriptor.mod'):
         if required not in files:
             raise ValueError(f'Missing committed distribution input: {required}')
     return head, files
@@ -77,7 +110,7 @@ def build(root, output):
             (staged / directory).mkdir(parents=True, exist_ok=True)
         for name, data in files.items():
             (staged / name).write_bytes(data)
-        errors = validate(staged)
+        errors = validate(staged) + validate_g3_diagnostic(files)
         if errors:
             raise ValueError('Distribution structural validation failed:\n' + '\n'.join(errors))
     metadata = parse_descriptor(files[PREFIX + 'descriptor.mod'].decode('utf-8-sig'),

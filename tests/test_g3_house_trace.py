@@ -5,7 +5,8 @@ import unittest
 from test_native_scheme_evidence import block
 from tools.validate_mod import clean_script
 
-MOD = Path(__file__).resolve().parents[1] / 'mod/real_westeros'
+REPO = Path(__file__).resolve().parents[1]
+MOD = REPO / 'diagnostics/g3_house_trace/mod/rw_g3_house_trace'
 CALLBACKS = {'on_title_gain': 'gain', 'on_title_gain_inheritance': 'inheritance',
              'on_title_gain_usurpation': 'usurpation', 'on_title_lost': 'loss'}
 
@@ -121,6 +122,10 @@ class G3HouseTraceTests(unittest.TestCase):
         for path in MOD.rglob('*.txt'):
             if 'rw_g3_trace_active' in clean_script(path.read_text(encoding='utf-8-sig'))[0]:
                 self.assertIn(path.name, allowed)
+        for path in (REPO / 'mod/real_westeros').rglob('*.txt'):
+            code = clean_script(path.read_text(encoding='utf-8-sig'))[0]
+            self.assertNotIn('rw_g3_trace_active', code)
+            self.assertNotIn('rw_g3_trace_title_callback_trigger', code)
         self.assertNotRegex(self.t + self.e + self.on, r'has_trait\s*=\s*disinherited|can_be_granted_titles_by\s*=')
 
     def test_debug_localization_and_restrained_log_fields(self):

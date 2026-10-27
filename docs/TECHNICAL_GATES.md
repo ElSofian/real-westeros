@@ -33,6 +33,6 @@ G3_HOUSE_SANCTIONS.md separates four acquisition routes, personal disinheritance
 house persistence and institutional restoration. Native post-transfer callbacks are
 not a demonstrated pre-transfer veto. Existing source subsets do not establish a
 universal 50-year house landholding ban; no impossibility claim is made. Original
-opt-in debug interactions mark one chosen current house for seven days, and additive
-callback children log restricted observations only. They neither enforce a sanction
+optional standalone diagnostic interactions mark one chosen current house for seven days, and additive
+callback children log restricted observations only. The base mod loads none of these diagnostic callbacks. They neither enforce a sanction
 nor clear G3. All G3-01…12 runtime cases remain deferred; no intermediate run requested.

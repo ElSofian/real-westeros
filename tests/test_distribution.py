@@ -7,7 +7,7 @@ import subprocess
 import tempfile
 import unittest
 import zipfile
-from tools.build_distribution import DOCS, build
+from tools.build_distribution import DOCS, G3_FILES, build
 from tools.validate_mod import validate
 
 REPO = Path(__file__).resolve().parents[1]
@@ -20,7 +20,7 @@ class DistributionTests(unittest.TestCase):
         self.root = Path(self.tmp.name) / 'repo'
         self.root.mkdir()
         shutil.copytree(REPO / 'mod', self.root / 'mod')
-        for name in DOCS:
+        for name in (*DOCS, *G3_FILES):
             dest = self.root / name
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(REPO / name, dest)
@@ -122,3 +122,30 @@ class DistributionTests(unittest.TestCase):
         self.commit()
         with self.assertRaisesRegex(ValueError, 'Missing committed distribution input'):
             build(self.root, self.output)
+
+    def test_g3_diagnostic_is_separate_and_included_without_base_hooks(self):
+        build(self.root, self.output)
+        with zipfile.ZipFile(self.output) as zf:
+            for name in G3_FILES:
+                self.assertIn(name, zf.namelist())
+            for name in zf.namelist():
+                if name.startswith('mod/real_westeros/') and not name.endswith('/'):
+                    self.assertNotIn(b'rw_g3_trace', zf.read(name))
+            outer = zf.read('diagnostics/g3_house_trace/mod/rw_g3_house_trace.mod')
+            self.assertIn(b'path="mod/rw_g3_house_trace"', outer)
+
+    def test_g3_diagnostic_rejects_bad_launcher_and_unbalanced_script(self):
+        launcher = self.root / 'diagnostics/g3_house_trace/mod/rw_g3_house_trace.mod'
+        original = launcher.read_text()
+        launcher.write_text(original.replace('mod/rw_g3_house_trace', '/invalid/launcher'))
+        self.commit()
+        with self.assertRaisesRegex(ValueError, 'diagnostic launcher path'):
+            build(self.root, self.output)
+        self.assertFalse(self.output.exists())
+        launcher.write_text(original)
+        script = self.root / 'diagnostics/g3_house_trace/mod/rw_g3_house_trace/common/on_action/rw_g3_trace_on_actions.txt'
+        script.write_text(script.read_text() + '{')
+        self.commit()
+        with self.assertRaisesRegex(ValueError, 'unclosed brace'):
+            build(self.root, self.output)
+        self.assertFalse(self.output.exists())

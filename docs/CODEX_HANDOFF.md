@@ -18,6 +18,8 @@ Individual title/status review and experimental revocation/release window handof
 are in RW010_TITLE_STATUS.md. Native title-picker setup remains engine-unverified.
 G3 source-route audit, future decree/restoration contract and opt-in seven-day
 CK3 house/title trace are in G3_HOUSE_SANCTIONS.md; no collective sanction yet.
+Trace code is a separate standalone optional mod under diagnostics/g3_house_trace/;
+no G3 title hooks or debug interactions are loaded by the base mod.
 Mutual cancellation of a deferred promise is in RW010_MUTUAL_CANCELLATION.md.
 An experimental distribution is built from committed inputs by CI; see INTEGRATED_BUILD.md.
 Cross-slice source audit and versioned provider-decision reminders are in

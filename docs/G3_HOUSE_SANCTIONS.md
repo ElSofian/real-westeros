@@ -101,7 +101,16 @@ four route gates and engine evidence exist. Inspect missing grant/election defin
 before deciding whether another targeted private collection is necessary; no new
 upload or intermediate game run is requested by this investigation.
 
-## Original CK3 diagnostic included now
+## Original optional CK3 diagnostic included now
+
+The trace is a **separate optional mod**, stored under
+`diagnostics/g3_house_trace/mod/` in the source/ZIP. Copy that folder's
+`rw_g3_house_trace.mod` and `rw_g3_house_trace/` into the usual CK3 user-data `mod/`
+directory only for final testing. Add **Real Westeros G3 Diagnostic** to a test
+playset after AGOT. It is standalone; the base Real Westeros mod does not register
+these title callbacks or diagnostic UI. Installing the main `mod/real_westeros/`
+payload alone cannot load this diagnostic. Disable the separate playset entry after
+testing. Its provisional descriptor target is not engine compatibility evidence.
 
 In a disposable save launched with CK3 debug mode, right-click a living character
 with a house and choose **G3 diagnostic: trace this character's current house for
@@ -123,14 +132,14 @@ Title display names are localized and not guaranteed unique; record controlled
 save/title identity separately during testing. Actual log file and interpolation
 must be verified in CK3; this tool has not been run in the game.
 
-The trace is inactive in ordinary play and cannot be enabled through these effects
+The optional trace is inactive outside debug mode and cannot be enabled through these effects
 outside debug mode. An old marker has no logging effect outside debug mode and
 expires on its original timer. It is not a 50-year sanction, house-status mutation,
 AI policy or landholding gate. It changes no titles, dynasty/house membership,
 claims, relations, laws, obligations or native on-action effects/events. There are
 no recurring events, global house scans, automatic uploads or external services.
 
-The diagnostic dispatch is additive in source form; actual native/AGOT load
+The isolated diagnostic dispatch is additive in source form; actual native/AGOT load
 composition remains unverified. Baseline comparison is required before using traces
 to assess coverage. A missing trace may mean inactive mode/marker, changed house,
 log/scope/dispatch failure or missing callback coverage; it does not prove a ban.
@@ -139,6 +148,7 @@ log/scope/dispatch failure or missing callback coverage; it does not prove a ban
 
 Ten adversarial source-contract tests cover opt-in identity/debug guards, timeout,
 non-renewal, enable/stop revalidation, native-wrapper preservation, callback scope,
-absence of game-state/title reversal and restricted log fields. They do not execute
+absence of game-state/title reversal and restricted log fields. Two archive tests verify optional placement and reject an invalid launcher/unbalanced
+diagnostic script. These checks do not execute
 CK3, prove load order, persistent house state or clear G3. G3-01…12 in
 FINAL_ENGINE_TESTS.md remain unrun, including four-route and multi-generation cases.

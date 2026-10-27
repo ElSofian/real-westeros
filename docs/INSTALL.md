@@ -47,3 +47,13 @@ Remove the previous `real_westeros/` folder, then copy the new folder and outer
 AGOT, game files or personal saves. Older experimental-save migration is unverified.
 To stop using the submod, disable it in the playset; do not assume an existing save
 with active stories/obligations will safely migrate after removal.
+
+## Optional G3 diagnostic — final testing only
+
+The archive also contains `diagnostics/g3_house_trace/mod/`. The normal installation
+above does not load it. For the deferred final campaign, copy that directory's
+`rw_g3_house_trace.mod` and `rw_g3_house_trace/` to the same CK3 user-data `mod/`
+location and enable **Real Westeros G3 Diagnostic** after AGOT in a disposable test
+playset. Start CK3 in debug mode, then follow G3_HOUSE_SANCTIONS.md. The diagnostic
+is standalone and applies no sanction. Disable its separate playset entry afterward;
+keep baseline tests without it. No intermediate game run is requested.

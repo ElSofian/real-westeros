@@ -298,9 +298,11 @@ baseline AGOT; a successful source check is not evidence of title confiscation.
 All unrun. See G3_HOUSE_SANCTIONS.md. The included trace observes transfers only;
 collective sanctions and landholding enforcement are not implemented.
 
-- G3-01: baseline AGOT versus mod without debug/marker: same native title transfers,
+- G3-01: baseline AGOT versus base Real Westeros without the separate optional
+  diagnostic, then versus explicitly loaded/unmarked diagnostic: same native title transfers,
   lifecycle/war/Mega Wars, logs and performance; no RW_G3 callback logs or gameplay effects.
-- G3-02: debug human tester starts exact selected current house trace for seven days.
+- G3-02: separately install/enable Real Westeros G3 Diagnostic after AGOT in a
+  disposable playset, then debug human tester starts exact selected current house trace for seven days.
   Verify UI category, save/reload and house variable; no second enable refreshes it.
   Stop early or let it expire; no logs when debug is off or the marker is absent.
 - G3-03: marked AI and player holders gain/lose titles; verify actual additive native
