@@ -1,6 +1,6 @@
 # Technical feasibility gates
 
-**Current owner direction: G1 is ON HOLD and may be resumed later. It does not block independent development. No G1 engine test is currently requested.**
+**Current owner direction: G1 is restored to todo for the war-feature stage, not the immediate priority. Resolve it before shipping unlawful-war gameplay; independent development can continue.**
 
 **Status: none engine-tested.** AGOT script extracts were audited from an AGOT 0.5.2.1 installation descriptor reporting CK3 support for 1.19.0.6. The actual CK3 executable version and installed DLC set were not verified.
 
