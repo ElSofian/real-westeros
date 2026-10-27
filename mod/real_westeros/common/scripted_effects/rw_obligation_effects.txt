@@ -42,9 +42,15 @@ rw_service_fulfill_promise_effect = {
 # Deliberate refusal or accountable timeout. No automated punishment.
 rw_service_record_breach_effect = {
     if = {
-        limit = { rw_service_obligation_live_trigger = yes }
+        limit = {
+            rw_service_obligation_live_trigger = yes
+            exists = scope:rw_service_breach_reason
+        }
         rw_service_record_receipt_effect = yes
-        scope:rw_service_provider = { set_variable = { name = rw_service_last_outcome value = flag:broken } }
+        scope:rw_service_provider = {
+            set_variable = { name = rw_service_last_outcome value = flag:broken }
+            set_variable = { name = rw_service_last_reason value = scope:rw_service_breach_reason }
+        }
         rw_service_clear_effect = yes
         scope:rw_service_client = { trigger_event = { id = rw_obligations.0003 } }
     }
@@ -52,6 +58,7 @@ rw_service_record_breach_effect = {
 rw_service_break_promise_effect = {
     if = {
         limit = { rw_service_obligation_actionable_trigger = yes }
+        save_scope_value_as = { name = rw_service_breach_reason value = flag:refusal }
         rw_service_record_breach_effect = yes
     }
 }
@@ -84,6 +91,7 @@ rw_service_timeout_effect = {
                 scope:rw_service_client = { rw_service_party_eligible_trigger = yes }
                 rw_service_affordable_trigger = yes
             }
+            save_scope_value_as = { name = rw_service_breach_reason value = flag:deadline }
             rw_service_record_breach_effect = yes
         }
         else = { rw_service_cancel_promise_effect = yes }

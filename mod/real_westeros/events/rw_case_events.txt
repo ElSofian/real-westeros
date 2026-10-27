@@ -1,0 +1,119 @@
+namespace = rw_cases
+
+rw_cases.0001 = {
+    type = character_event
+    title = rw_cases.0001.t
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { scope:rw_case_reason = flag:refusal } desc = rw_cases.0001.refusal_desc }
+            desc = rw_cases.0001.deadline_desc
+        }
+    }
+    theme = diplomacy
+    left_portrait = { character = scope:rw_service_client }
+    right_portrait = { character = scope:rw_service_provider }
+    option = {
+        name = rw_cases.decline
+        trigger = { rw_case_ruler_turn_trigger = yes }
+        rw_case_decline_effect = yes
+        ai_chance = {
+            base = 50
+            modifier = { factor = 3 is_at_war = yes }
+            modifier = { factor = 2 opinion = { target = scope:rw_service_provider value > 40 } }
+        }
+    }
+    option = {
+        name = rw_cases.admonish
+        trigger = { rw_case_ruler_turn_trigger = yes }
+        rw_case_admonish_effect = yes
+        ai_chance = {
+            base = 30
+            modifier = { factor = 2 opinion = { target = scope:rw_service_provider value < -25 } }
+        }
+    }
+    option = {
+        name = rw_cases.invite_repair
+        trigger = { rw_case_ruler_turn_trigger = yes }
+        rw_case_invite_repair_effect = yes
+        ai_chance = {
+            base = 40
+            modifier = { factor = 2 opinion = { target = scope:rw_service_client value > 25 } }
+            modifier = { factor = 0.5 is_at_war = yes }
+        }
+    }
+    option = {
+        name = rw_cases.lapsed
+        trigger = { NOT = { rw_case_ruler_turn_trigger = yes } }
+        rw_case_lost_jurisdiction_effect = yes
+        rw_case_expire_effect = yes
+        ai_chance = { base = 100 }
+    }
+}
+
+rw_cases.0002 = {
+    type = character_event
+    title = rw_cases.0002.t
+    desc = rw_cases.0002.desc
+    theme = diplomacy
+    left_portrait = { character = scope:rw_case_mediator }
+    option = {
+        name = rw_cases.apologise
+        trigger = { rw_case_provider_turn_trigger = yes prestige >= 25 }
+        rw_case_apologise_effect = yes
+        ai_chance = {
+            base = 50
+            modifier = { factor = 2 opinion = { target = scope:rw_case_mediator value > 25 } }
+        }
+    }
+    option = {
+        name = rw_cases.refuse_repair
+        trigger = { rw_case_provider_turn_trigger = yes }
+        rw_case_refuse_repair_effect = yes
+        ai_chance = { base = 50 }
+    }
+    option = {
+        name = rw_cases.lapsed
+        trigger = { NOT = { rw_case_provider_turn_trigger = yes } }
+        rw_case_lost_jurisdiction_effect = yes
+        rw_case_expire_effect = yes
+        ai_chance = { base = 100 }
+    }
+}
+
+rw_cases.0003 = {
+    type = character_event
+    title = rw_cases.0003.t
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_service_provider = { var:rw_case_result = flag:declined } } desc = rw_cases.result_declined }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_service_provider = { var:rw_case_result = flag:admonished } } desc = rw_cases.result_admonished }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_service_provider = { var:rw_case_result = flag:repaired } } desc = rw_cases.result_repaired }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_service_provider = { var:rw_case_result = flag:repair_declined } } desc = rw_cases.result_repair_declined }
+            desc = rw_cases.result_expired
+        }
+    }
+    theme = diplomacy
+    option = { name = rw_cases.acknowledge }
+}
+
+rw_cases.0004 = {
+    type = character_event
+    hidden = yes
+    immediate = { rw_case_expire_effect = yes }
+}
+
+rw_cases.0005 = {
+    type = character_event
+    title = rw_cases.0003.t
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_service_provider = { var:rw_case_result = flag:declined } } desc = rw_cases.result_declined }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_service_provider = { var:rw_case_result = flag:admonished } } desc = rw_cases.result_admonished }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_service_provider = { var:rw_case_result = flag:repaired } } desc = rw_cases.result_repaired }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_service_provider = { var:rw_case_result = flag:repair_declined } } desc = rw_cases.result_repair_declined }
+            desc = rw_cases.result_expired
+        }
+    }
+    theme = diplomacy
+    option = { name = rw_cases.acknowledge }
+}

@@ -52,6 +52,15 @@ rw_obligations.0003 = {
         ai_chance = { base = 60 }
     }
     option = {
+        name = rw_cases.refer
+        trigger = { rw_case_can_open_trigger = yes }
+        rw_case_open_effect = yes
+        ai_chance = {
+            base = 20
+            modifier = { factor = 2 opinion = { target = scope:rw_service_provider value < 0 } }
+        }
+    }
+    option = {
         name = rw_obligations.forgive
         trigger = { rw_service_breach_receipt_trigger = yes }
         rw_service_forgive_breach_effect = yes
