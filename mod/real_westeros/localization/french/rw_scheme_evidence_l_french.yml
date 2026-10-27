@@ -1,0 +1,11 @@
+﻿l_french:
+ rw_review_my_scheme_evidence_interaction:0 "Consulter mes complots de meurtre découverts"
+ rw_review_my_scheme_evidence_interaction_desc:0 "Relire les observations conservées par votre personnage sur les complots de meurtre qui le visaient. Rien n’est transmis au personnage sélectionné et aucune sanction n’est autorisée."
+ rw_scheme_evidence.title:0 "Un complot de meurtre : ce que je sais"
+ rw_scheme_evidence.scheme:0 "Un complot de meurtre contre moi a été découvert dans ma propre cour. Ce dossier consigne la découverte du complot, pas l’identité de son organisateur ni des participants cachés. Il ne révèle aucun secret, n’arrête pas le complot et n’impose aucune peine. Le complot a pu prendre fin depuis cette observation."
+ rw_scheme_evidence.participant:0 "[rw_evidence_visible_participant.GetTitledFirstName] a été identifié comme participant démasqué à un complot de meurtre contre moi. Ce constat ne prouve pas que cette personne organisait le complot, ne révèle pas les autres participants et ne constitue pas un jugement juridique. Il consigne une observation sans ajouter de peine. Le complot a pu prendre fin depuis."
+ rw_scheme_evidence.participant_unavailable:0 "Un participant démasqué a été consigné dans un complot de meurtre contre moi, mais sa référence de personnage n’est plus disponible. Aucun organisateur, parent ou héritier ne lui est substitué. Ce dossier n’autorise aucune sanction."
+ rw_scheme_evidence.unavailable:0 "Cette observation n’est plus accessible à mon personnage. Aucune identité ni culpabilité n’est supposée."
+ rw_scheme_evidence.acknowledge:0 "Garder cette information en mémoire."
+ rw_scheme_evidence.notice_title:0 "Une observation de complot consignée"
+ rw_scheme_evidence.notice_desc:0 "Votre journal des complots découverts contient une nouvelle observation à la suite d’une découverte. Consultez vos propres dossiers pour la relire ; cette notification ne révèle ni organisateur ni participant caché."

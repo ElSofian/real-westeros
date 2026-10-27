@@ -6,16 +6,18 @@ RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remain
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
 and RW010_DEFERRED.md. Contextual service-breach mediation is in RW010_CASES.md. Independent case records/read-only history are in RW010_RECORDS.md. Non-contractual allegations, statements and disclosure are in RW010_ALLEGATIONS.md.
 Personal consent to conciliatory gestures is in RW010_REPAIR_RESPONSE.md.
-Source inspection found no scheme/discovery entry points in the supplied war archives;
-automatic assassination integration needs additional target-version source evidence.
+The private scheme collection is received and hash-verified. Target-version discovery
+entry points and experimental private observation records are in RW010_SCHEME_EVIDENCE.md;
+SCHEME_SOURCE_RECEIPT.json contains references/hashes only. Native dispatch, knowledge
+and persistence semantics remain engine-unverified. No new legal sanctions yet.
 Mutual cancellation of a deferred promise is in RW010_MUTUAL_CANCELLATION.md.
 An experimental distribution is built from committed inputs by CI; see INTEGRATED_BUILD.md.
 Cross-slice source audit and versioned provider-decision reminders are in
-INTEGRATION_AUDIT.md; final LIFE-* cases remain unrun. Targeted collection is prepared
-in SCHEME_SOURCE_COLLECTION.md and the complete
-Collect-RealWesteros-Schemes.ps1 script. Next receive the private installed-source ZIP,
-verify its manifest and inspect actual discovery/observer/action composition;
-no automatic assassination hook is implemented yet.
+INTEGRATION_AUDIT.md; final LIFE-* cases remain unrun. The targeted scheme collector
+was integrated via PR #29; no additional collection is currently requested.
+Next develop a discretionary response to explicitly recorded native evidence,
+keeping target knowledge, legal authority and existing native penalties separate.
+No executions, confiscations, family sanctions or dynastic restoration are implemented.
 Independent gameplay work remains allowed. Packaging is not engine validation. Do not invent automatic discovery hooks or
 replace original CK3 scripts with Python gameplay models.
 All engine runs are deferred until final testing per owner. G1 is todo at the

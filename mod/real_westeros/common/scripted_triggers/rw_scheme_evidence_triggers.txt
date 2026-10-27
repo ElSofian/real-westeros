@@ -1,0 +1,49 @@
+# Scheme scope. Narrow to a living adult landed target at their own court.
+rw_scheme_target_observer_trigger = {
+    scheme_type = murder
+    exists = scheme_target_character
+    scheme_target_character = {
+        is_alive = yes
+        is_adult = yes
+        is_landed = yes
+        is_ruler = yes
+        host = this
+    }
+}
+rw_scheme_discovery_intake_trigger = {
+    rw_scheme_target_observer_trigger = yes
+    is_scheme_exposed = yes
+}
+rw_scheme_participant_intake_trigger = {
+    rw_scheme_target_observer_trigger = yes
+    exists = scope:agent
+    scope:agent = {
+        is_alive = yes
+        is_agent_exposed_in_scheme = root
+        NOT = { this = root.scheme_target_character }
+    }
+}
+# Story scope. Missing schema/kind is not permission to infer knowledge.
+rw_scheme_evidence_reader_trigger = {
+    story_type = story_rw_scheme_evidence
+    story_owner = $READER$
+    var:rw_evidence_schema = 1
+    has_variable = rw_evidence_serial
+    has_variable = rw_evidence_retained
+    OR = {
+        var:rw_evidence_kind = flag:scheme_discovered
+        var:rw_evidence_kind = flag:participant_exposed
+    }
+}
+# Character root is the only observer, never a parent liege/relative/other reader.
+rw_scheme_evidence_view_trigger = {
+    exists = scope:rw_scheme_observer
+    exists = scope:rw_scheme_evidence_record
+    exists = scope:rw_scheme_evidence_serial
+    this = scope:rw_scheme_observer
+    is_alive = yes
+    scope:rw_scheme_evidence_record = {
+        rw_scheme_evidence_reader_trigger = { READER = scope:rw_scheme_observer }
+        var:rw_evidence_serial = scope:rw_scheme_evidence_serial
+    }
+}

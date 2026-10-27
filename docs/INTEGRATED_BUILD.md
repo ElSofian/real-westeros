@@ -17,6 +17,7 @@ are deferred to the final campaign, not waived. Prefer a disposable fresh save.
 | Mediation | Decline, evidence-gated personal reprimand, invitation to conciliatory gesture |
 | Gesture reception | Client acceptance/refusal, personal response recorded separately |
 | Affront allegation | Acknowledgment/contest/silence; withdrawal or explicit disclosure |
+| Native plot observations | Discovered murder plot vs exposed participant; target-only journal, no new sanction |
 | Known-case archive | Independent story records, role/disclosure-filtered views, retained closed records |
 
 All rows describe intended source behavior; none has been observed in CK3 here.
@@ -24,7 +25,7 @@ AI uses the same effects/guards, with bounded initiation or event-driven choices
 No LLM, paid service or runtime Python is needed. Python is used for development
 checks and packaging only. No original CK3/AGOT scripts or assets are distributed.
 
-Not included: automatic native scheme discovery, assassination justice, executions,
+Not included: automatic assassination justice, executions,
 confiscation, dynastic sanctions/restoration, unlawful war despite royal prohibition,
 a complete obligation ledger, general multi-clause negotiation or engine-proven
 save migration. G1/G2/G3/G4/G5 remain unverified. Current affairs and histories are

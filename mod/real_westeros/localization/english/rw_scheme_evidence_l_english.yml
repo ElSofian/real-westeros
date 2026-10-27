@@ -1,0 +1,11 @@
+﻿l_english:
+ rw_review_my_scheme_evidence_interaction:0 "Review My Discovered Murder Plots"
+ rw_review_my_scheme_evidence_interaction_desc:0 "Read the observations retained by your own character about murder schemes targeting them. This shares nothing with the selected character and authorises no punishment."
+ rw_scheme_evidence.title:0 "A Murder Plot: What I Know"
+ rw_scheme_evidence.scheme:0 "A murder scheme against me was discovered at my own court. This record establishes discovery of the plot, not the identity of its organiser or any hidden participant. It does not reveal a secret, stop the plot, or impose a penalty. The plot may have ended since this observation."
+ rw_scheme_evidence.participant:0 "[rw_evidence_visible_participant.GetTitledFirstName] was identified as an exposed participant in a murder scheme against me. This record does not establish that they organised the plot, reveal other participants, or make a legal judgment. It records an observation, not a second punishment. The plot may since have ended."
+ rw_scheme_evidence.participant_unavailable:0 "An exposed participant was recorded in a murder scheme against me, but their character reference is no longer available. No identity, organiser, relative or heir is substituted. This record authorises no punishment."
+ rw_scheme_evidence.unavailable:0 "This observation is no longer available to my character. No identity or guilt is inferred."
+ rw_scheme_evidence.acknowledge:0 "Keep this information in mind."
+ rw_scheme_evidence.notice_title:0 "A Murder-Plot Observation Recorded"
+ rw_scheme_evidence.notice_desc:0 "Your discovered-plot journal has a new observation following a discovery. Review your own records to read it; this notice reveals no organiser or hidden participant."

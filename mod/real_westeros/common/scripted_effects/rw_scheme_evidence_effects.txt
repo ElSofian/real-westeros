@@ -1,0 +1,105 @@
+# Native scheme root is checked again at execution; no automatic punishment.
+rw_scheme_discovery_intake_effect = {
+    if = {
+        limit = { rw_scheme_discovery_intake_trigger = yes }
+        save_scope_as = rw_observed_scheme
+        scheme_target_character = { save_scope_as = rw_scheme_observer }
+        if = {
+            limit = {
+                scope:rw_scheme_observer = {
+                    NOT = {
+                        any_owned_story = {
+                            story_type = story_rw_scheme_evidence
+                            var:rw_evidence_schema = 1
+                            var:rw_evidence_kind = flag:scheme_discovered
+                            var:rw_evidence_scheme = scope:rw_observed_scheme
+                        }
+                    }
+                }
+            }
+            rw_scheme_create_evidence_effect = { KIND = scheme_discovered }
+        }
+    }
+}
+rw_scheme_participant_intake_effect = {
+    if = {
+        limit = { rw_scheme_participant_intake_trigger = yes }
+        save_scope_as = rw_observed_scheme
+        scheme_target_character = { save_scope_as = rw_scheme_observer }
+        scope:agent = { save_scope_as = rw_scheme_participant }
+        if = {
+            limit = {
+                scope:rw_scheme_observer = {
+                    NOT = {
+                        any_owned_story = {
+                            story_type = story_rw_scheme_evidence
+                            var:rw_evidence_schema = 1
+                            var:rw_evidence_kind = flag:participant_exposed
+                            var:rw_evidence_scheme = scope:rw_observed_scheme
+                            var:rw_evidence_participant = scope:rw_scheme_participant
+                        }
+                    }
+                }
+            }
+            rw_scheme_create_evidence_effect = { KIND = participant_exposed }
+        }
+    }
+}
+# Internal constructor used only by the guarded, deduplicated native intakes.
+rw_scheme_create_evidence_effect = {
+    scope:rw_scheme_observer = {
+        create_story = { type = story_rw_scheme_evidence save_scope_as = rw_scheme_evidence_record }
+    }
+    if = {
+        limit = {
+            exists = scope:rw_scheme_evidence_record
+            scope:rw_scheme_evidence_record = {
+                story_type = story_rw_scheme_evidence
+                story_owner = scope:rw_scheme_observer
+                NOT = { has_variable = rw_evidence_schema }
+            }
+        }
+        scope:rw_scheme_observer = {
+            if = {
+                limit = { NOT = { has_variable = rw_scheme_evidence_serial } }
+                set_variable = { name = rw_scheme_evidence_serial value = 0 }
+            }
+            change_variable = { name = rw_scheme_evidence_serial add = 1 }
+            save_scope_value_as = { name = rw_scheme_evidence_serial value = var:rw_scheme_evidence_serial }
+        }
+        scope:rw_scheme_evidence_record = {
+            set_variable = { name = rw_evidence_schema value = 1 }
+            set_variable = { name = rw_evidence_serial value = scope:rw_scheme_evidence_serial }
+            set_variable = { name = rw_evidence_kind value = flag:$KIND$ }
+            # Native pointer is for live-scheme deduplication only, never for viewing.
+            set_variable = { name = rw_evidence_scheme value = scope:rw_observed_scheme }
+            set_variable = { name = rw_evidence_retained value = flag:yes days = 1825 }
+            if = {
+                limit = { var:rw_evidence_kind = flag:participant_exposed }
+                set_variable = { name = rw_evidence_participant value = scope:rw_scheme_participant }
+            }
+        }
+        scope:rw_scheme_observer = {
+            send_interface_message = {
+                type = event_generic_bad
+                title = rw_scheme_evidence.notice_title
+                desc = rw_scheme_evidence.notice_desc
+            }
+        }
+    }
+}
+# Enumerate the actor's own records; the selected interaction recipient learns nothing.
+rw_scheme_read_evidence_effect = {
+    if = {
+        limit = { scope:actor = { is_alive = yes } }
+        scope:actor = {
+            save_scope_as = rw_scheme_observer
+            every_owned_story = {
+                limit = { rw_scheme_evidence_reader_trigger = { READER = scope:rw_scheme_observer } }
+                save_scope_as = rw_scheme_evidence_record
+                save_scope_value_as = { name = rw_scheme_evidence_serial value = var:rw_evidence_serial }
+                scope:rw_scheme_observer = { trigger_event = { id = rw_scheme_evidence.0001 } }
+            }
+        }
+    }
+}
