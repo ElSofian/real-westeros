@@ -4,8 +4,9 @@
 
 RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remains
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
-and RW010_DEFERRED.md. Next is contextual political response/evidence, not further
-offline Python prototypes.
+and RW010_DEFERRED.md. Contextual service-breach mediation is in RW010_CASES.md. Next: extend incident/evidence
+handling beyond the latest single case before broader justice/dynastic work, not further
+offline Python gameplay prototypes.
 All engine runs are deferred until final testing per owner. G1 is todo at the
 war-feature stage, not an immediate prerequisite. Keep original scenarios and
 exclusive claims. The old RW-008 launch text below is historical.

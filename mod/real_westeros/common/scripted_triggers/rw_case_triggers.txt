@@ -1,0 +1,79 @@
+# Only a client with an observed, unreacted receipt may disclose this dispute.
+rw_case_can_open_trigger = {
+    rw_service_breach_receipt_trigger = yes
+    is_adult = yes
+    is_landed = yes
+    scope:rw_service_provider = {
+        is_adult = yes
+        is_landed = yes
+        NOT = { has_character_flag = rw_case_pending }
+        has_variable = rw_service_last_reason
+        OR = {
+            var:rw_service_last_reason = flag:refusal
+            var:rw_service_last_reason = flag:deadline
+        }
+        top_liege = scope:rw_service_client.top_liege
+        top_liege = {
+            is_alive = yes
+            is_adult = yes
+            is_landed = yes
+            NOT = { this = scope:rw_service_provider }
+            NOT = { this = scope:rw_service_client }
+        }
+    }
+}
+rw_case_matches_trigger = {
+    exists = scope:rw_service_provider
+    exists = scope:rw_service_client
+    exists = scope:rw_case_mediator
+    exists = scope:rw_case_serial
+    exists = scope:rw_case_reason
+    scope:rw_service_provider = {
+        has_variable = rw_case_serial
+        has_variable = rw_case_client
+        has_variable = rw_case_mediator
+        has_variable = rw_case_reason
+        var:rw_case_serial = scope:rw_case_serial
+        var:rw_case_client = scope:rw_service_client
+        var:rw_case_mediator = scope:rw_case_mediator
+        var:rw_case_reason = scope:rw_case_reason
+    }
+}
+# Revalidate jurisdiction at each decision; no ruler judges their own dispute.
+rw_case_jurisdiction_trigger = {
+    scope:rw_service_provider = {
+        is_alive = yes
+        is_adult = yes
+        is_landed = yes
+        top_liege = scope:rw_case_mediator
+    }
+    scope:rw_service_client = {
+        is_alive = yes
+        is_adult = yes
+        is_landed = yes
+        top_liege = scope:rw_case_mediator
+    }
+    scope:rw_case_mediator = {
+        is_alive = yes
+        is_adult = yes
+        is_landed = yes
+        NOT = { this = scope:rw_service_provider }
+        NOT = { this = scope:rw_service_client }
+    }
+}
+rw_case_ruler_turn_trigger = {
+    rw_case_matches_trigger = yes
+    rw_case_jurisdiction_trigger = yes
+    this = scope:rw_case_mediator
+    scope:rw_service_provider = {
+        has_character_flag = rw_case_pending
+        var:rw_case_stage = flag:ruler
+    }
+}
+rw_case_provider_turn_trigger = {
+    rw_case_matches_trigger = yes
+    rw_case_jurisdiction_trigger = yes
+    this = scope:rw_service_provider
+    has_character_flag = rw_case_pending
+    var:rw_case_stage = flag:repair
+}

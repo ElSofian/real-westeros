@@ -1,0 +1,8 @@
+rw_case_admonished_opinion = {
+    opinion = -10
+    years = 2
+}
+rw_case_apology_opinion = {
+    opinion = 5
+    years = 2
+}

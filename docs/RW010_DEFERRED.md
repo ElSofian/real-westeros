@@ -33,7 +33,8 @@ no global character scan is introduced. Actual event timing/AI behavior is unver
   If both parties remain eligible and payment is possible, record nonperformance
   as breach. Otherwise cancel neutrally without payment, prestige or blame.
 - **React:** after a recorded breach the client chooses resentment (-15 personal
-  opinion for five years) or forgiveness without penalty. The response is bound to
+  opinion for five years) or forgiveness without penalty. Contextual referral to a separate common overlord is
+  now another option (RW010_CASES.md), consuming this same personal-response opportunity. The response is bound to
   the receipt serial and consumed before the opinion effect. No compulsory execution,
   confiscation, universal reputation, criminal status or inherited guilt.
 

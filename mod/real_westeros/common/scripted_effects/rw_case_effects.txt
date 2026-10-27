@@ -1,0 +1,99 @@
+rw_case_open_effect = {
+    if = {
+        limit = { rw_case_can_open_trigger = yes }
+        scope:rw_service_provider.top_liege = { save_scope_as = rw_case_mediator }
+        scope:rw_service_provider = {
+            # Referral consumes this personal-response opportunity, not native rights.
+            set_variable = { name = rw_service_reacted_serial value = scope:rw_service_serial }
+            set_variable = { name = rw_case_serial value = scope:rw_service_serial }
+            set_variable = { name = rw_case_client value = scope:rw_service_client }
+            set_variable = { name = rw_case_mediator value = scope:rw_case_mediator }
+            set_variable = { name = rw_case_reason value = var:rw_service_last_reason }
+            set_variable = { name = rw_case_stage value = flag:ruler }
+            add_character_flag = { flag = rw_case_pending days = 30 }
+            save_scope_value_as = { name = rw_case_serial value = var:rw_case_serial }
+            save_scope_value_as = { name = rw_case_reason value = var:rw_case_reason }
+            trigger_event = { id = rw_cases.0004 days = 31 }
+        }
+        scope:rw_case_mediator = { trigger_event = { id = rw_cases.0001 } }
+    }
+}
+# Internal close helper. Public entry effects recheck the correct actor/stage.
+rw_case_close_effect = {
+    if = {
+        limit = {
+            rw_case_matches_trigger = yes
+            scope:rw_service_provider = { NOT = { var:rw_case_stage = flag:closed } }
+        }
+        scope:rw_service_provider = {
+            remove_character_flag = rw_case_pending
+            set_variable = { name = rw_case_stage value = flag:closed }
+            set_variable = { name = rw_case_result value = flag:$RESULT$ }
+        }
+        if = {
+            limit = { scope:rw_service_client = { is_alive = yes } }
+            scope:rw_service_client = { trigger_event = { id = rw_cases.0003 } }
+        }
+        if = {
+            limit = { scope:rw_service_provider = { is_alive = yes } }
+            scope:rw_service_provider = { trigger_event = { id = rw_cases.0005 } }
+        }
+    }
+}
+rw_case_decline_effect = {
+    if = {
+        limit = { rw_case_ruler_turn_trigger = yes }
+        rw_case_close_effect = { RESULT = declined }
+    }
+}
+rw_case_admonish_effect = {
+    if = {
+        limit = { rw_case_ruler_turn_trigger = yes }
+        rw_case_close_effect = { RESULT = admonished }
+        add_opinion = { target = scope:rw_service_provider modifier = rw_case_admonished_opinion }
+    }
+}
+rw_case_invite_repair_effect = {
+    if = {
+        limit = { rw_case_ruler_turn_trigger = yes }
+        scope:rw_service_provider = {
+            set_variable = { name = rw_case_stage value = flag:repair }
+            # Keep the original deadline; referral is not endlessly renewable.
+            trigger_event = { id = rw_cases.0002 }
+        }
+    }
+}
+rw_case_apologise_effect = {
+    if = {
+        limit = { rw_case_provider_turn_trigger = yes prestige >= 25 }
+        rw_case_close_effect = { RESULT = repaired }
+        add_prestige = -25
+        scope:rw_service_client = {
+            add_opinion = { target = scope:rw_service_provider modifier = rw_case_apology_opinion }
+        }
+        scope:rw_case_mediator = {
+            add_opinion = { target = scope:rw_service_provider modifier = rw_case_apology_opinion }
+        }
+    }
+}
+rw_case_refuse_repair_effect = {
+    if = {
+        limit = { rw_case_provider_turn_trigger = yes }
+        rw_case_close_effect = { RESULT = repair_declined }
+    }
+}
+rw_case_expire_effect = {
+    if = {
+        limit = {
+            rw_case_matches_trigger = yes
+            scope:rw_service_provider = { NOT = { has_character_flag = rw_case_pending } }
+        }
+        rw_case_close_effect = { RESULT = expired }
+    }
+}
+rw_case_lost_jurisdiction_effect = {
+    if = {
+        limit = { rw_case_matches_trigger = yes NOT = { rw_case_jurisdiction_trigger = yes } }
+        rw_case_close_effect = { RESULT = invalidated }
+    }
+}
