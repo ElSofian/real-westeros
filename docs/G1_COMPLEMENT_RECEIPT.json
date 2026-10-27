@@ -1,0 +1,475 @@
+{
+  "evidence": "User-supplied private subset; not effective runtime/load-order proof",
+  "files": [
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_adventurer_wars.txt",
+      "bytes": 21316,
+      "sha256": "c2ac1825d5bc6be103a8c55b23d8e09d90505cef6714eea2ff9591147db0c757"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_ambush_wars.txt",
+      "bytes": 1469,
+      "sha256": "30227392ad39c686e615696af3221233ce915f95a20d665e5217aa3c70657404"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_blackfyre_wars.txt",
+      "bytes": 6573,
+      "sha256": "78f0bae7ddd5e260476c966c15ca4de4225a432c7df99175af4b05fe3ba1e932"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_braavos_pentos_wars.txt",
+      "bytes": 11649,
+      "sha256": "5b82a4f88f6def463491e8dba175dedfa1616c1417dd81006c2b01851f4ad6e4"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_casus_belli_mega_wars.txt",
+      "bytes": 55944,
+      "sha256": "23ad5e4c156328451a495d9283b2b98a0209e795b666a79e4d5679ed343105fb"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_dragon_wars.txt",
+      "bytes": 53882,
+      "sha256": "63c53983c787502f0b75e5870e8b8500203628d2ce87e3ca9444776ab1cc2184"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_enforcement_wars.txt",
+      "bytes": 7380,
+      "sha256": "7bdeccf318672441fd43bb2c17a59767edef6f11db52023f7c6422753213504f"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_invasion_wars.txt",
+      "bytes": 20205,
+      "sha256": "d62cafcfae11c416510cb8abe608932899a8dc30adc9a351bacb5f3fbe1b66b7"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_nights_watch_wars.txt",
+      "bytes": 23117,
+      "sha256": "f261f49ceff0a26936130998d537c3a3d56549bda2a70ea38266bbca1b0a0971"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_pirate_wars.txt",
+      "bytes": 33655,
+      "sha256": "61c5f2233d2fba104a0a7bfba006f2c84fbe0c5fdbc24b9c5b2a10562760acae"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_reclaim_wall_wars.txt",
+      "bytes": 11190,
+      "sha256": "542dce27076b30bc6338b2d4e4f77522bfb77e3b3c21b29625f1b4335f7ada46"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_rv_rescue_wars.txt",
+      "bytes": 24890,
+      "sha256": "8ebf542d2212abee4b20a89759e72cc6f7fd1597bb023b85c6cfb8e01a969b20"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_rv_revenge_wars.txt",
+      "bytes": 19731,
+      "sha256": "d961e8d5b2e02bdb4c0f8f6498fc2fa5c0c2d74b41f539b7126a54df840bb901"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_scenario_after_the_spring_wars.txt",
+      "bytes": 21913,
+      "sha256": "4de9e08b30a42e2c28b43aab8ad3d56d848527bda54bb3e6f7f623ed45e96737"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_scenario_bells_of_war_wars.txt",
+      "bytes": 5342,
+      "sha256": "a265384615765b2074b264a091b6cab8be6531474e80e1510d9583e8e618a0aa"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_scenario_defiance_of_duskendale_wars.txt",
+      "bytes": 32876,
+      "sha256": "e321ea3c71a7efc014bb8effdaa0c34f1bd91b9ba6f44f602ef2bae3d6137d78"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_scenario_ninepenny_kings_wars.txt",
+      "bytes": 15328,
+      "sha256": "bf9b4cc19dad244b4e28618735c20b067aa2ce532debcb368dcd9aa4ef8bb209"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_scenario_peake_uprising_wars.txt",
+      "bytes": 3990,
+      "sha256": "9127e3a29435f3717a51e226dd9c52eac561994592cbbafc0310906689f04cbd"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_scenario_rogue_prince_wars.txt",
+      "bytes": 47546,
+      "sha256": "afef05e3fa8a6d6646c2c09787fd21d14b1041db5e9242d7dfde6b11306bf01d"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_scenario_titan_marches_wars.txt",
+      "bytes": 4093,
+      "sha256": "6d0e9b6d961d3412608bb94fe65ed5910458d2302a90b74caf6b0196b424d64f"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_shattered_world_wars.txt",
+      "bytes": 7231,
+      "sha256": "45ae0a231d338c9f411c66dbed16018e0408022019d1beae10b47a18f12d104c"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_slavery_wars.txt",
+      "bytes": 20053,
+      "sha256": "87a4971c35f861bedb022fa3698051d614a623ea1bffb4fdcfde034a0fc1ef3a"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_unstable_regions_wars.txt",
+      "bytes": 6242,
+      "sha256": "8cb9e84611c952dd0131a5a13c4e771b64b1c8ac41294214f69b363a24e9466f"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_agot_wildling_wars.txt",
+      "bytes": 6891,
+      "sha256": "4bf676bb72f6c41d04e62c8a1b64a80bd8b1ad918729fb5a1a0d5a18d3a9e752"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_casus_belli_types.txt",
+      "bytes": 4072,
+      "sha256": "93c9de9b8133765d045a4b136442dfee10e933ba397fda4a53d504929aa46718"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_civil_war.txt",
+      "bytes": 67545,
+      "sha256": "86e469647afc4955d39fc95b5304d6525ca8b0c8eac1fa0f4f728eb38c038d14"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_claim.txt",
+      "bytes": 21452,
+      "sha256": "deb9a27936f27fbb930de372d146122192612ec7e2479df9ba080382e3faf7b2"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_conquest.txt",
+      "bytes": 43939,
+      "sha256": "268b34b5dd6ca0190ec59a0ee86d92d251e956a5c868516b58eade624c92c9a8"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_dejure_war.txt",
+      "bytes": 44321,
+      "sha256": "b575880ad77b82719f51fb0058aeeed1917b2332117247ec939f004fac09af92"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_event_war.txt",
+      "bytes": 106966,
+      "sha256": "8b7795b25deae1418a0646fddaf39b5e5b5f0676ae286eb757c586fc18bfad43"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_invasion_war.txt",
+      "bytes": 58095,
+      "sha256": "0d70cdf55c9284d8434faa423ec1383e2356e0d26f58b824eb98055ac16c5bc8"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_nomadic_conquest.txt",
+      "bytes": 17653,
+      "sha256": "199f318ba691ef1652b0565ae58b69186d2a6f778556fc86bc57e629278fa603"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_peasant_war_new.txt",
+      "bytes": 6172,
+      "sha256": "95a5b3fb557f8e51787039598fd02a8ce75e4ecf687add53355ab08912b5e047"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_religious_war.txt",
+      "bytes": 125025,
+      "sha256": "81e3b13029ff5d3a59e16866cd2bf32d8f013eca37e18ae4c6bca6496c725769"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_struggle_war.txt",
+      "bytes": 9851,
+      "sha256": "cbe2831fa2f4087432ee10349a5f9d0d85f97052f3e09c2140ae23d5c12c2e90"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_subjugation.txt",
+      "bytes": 15505,
+      "sha256": "f1169c27fb379f10c0c13257028ad3b2307e05eb031f05baccb9b0ee60c4a296"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_tributarize.txt",
+      "bytes": 20544,
+      "sha256": "2b96f15da5ddc3f988441b015fe01c55384b748758ede3d8a2435ad12d16d466"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/00_vassalization.txt",
+      "bytes": 10387,
+      "sha256": "d7255b4ade677ef7350a4ca9ccfbcda8ec5f759633be74a092732bc3c678af38"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/01_ep1_wars.txt",
+      "bytes": 17526,
+      "sha256": "834a9bf0b1fc412284c6b6728ebbd5b3285ad2c2d71ac8b8dd22402bad44cad4"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/01_fp1_wars.txt",
+      "bytes": 17,
+      "sha256": "97f62d3125518db8a677e432dee07d53832d06ecb0a7b6f80188fd287b9e6577"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/03_fp2_wars.txt",
+      "bytes": 31908,
+      "sha256": "936685a3c17cff2a5777852e35ae21060e7ef4f29117f1a82abda760c2a0c9f2"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/05_fp3_wars.txt",
+      "bytes": 46783,
+      "sha256": "7b44e9c84800454862f5004e82f8b6e6891e3392010c03b96f6b1dd0f92bb06a"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/06_ce1_wars.txt",
+      "bytes": 54455,
+      "sha256": "ffa2aff42af8917fd29e549423d8dbae987ed62f0ccc8b5b1f25e82a2cfe2f27"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/07_ep3_admin_cbs.txt",
+      "bytes": 51459,
+      "sha256": "8e203319a48fde5fbedf606eca7de4ff23b89cad085cbf7dcf9729bca0fe059b"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/07_ep3_wars.txt",
+      "bytes": 185742,
+      "sha256": "66f80d4e54b3a972414ca33a21fc99cc985447b72563e6a93df03e261ee5cfc5"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/09_mpo_wars.txt",
+      "bytes": 141923,
+      "sha256": "421ba6e8195f9758bd90224238e503cc1846903160aa58b5d7f4f65cf93cff01"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/10_tgp_china_wars.txt",
+      "bytes": 17,
+      "sha256": "97f62d3125518db8a677e432dee07d53832d06ecb0a7b6f80188fd287b9e6577"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/10_tgp_faction_wars.txt",
+      "bytes": 20462,
+      "sha256": "bdd87a9a23a77b5992db5261e86a8f07bb63969ef76bb27cbe859bd79ddccef6"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/10_tgp_japan_wars.txt",
+      "bytes": 86554,
+      "sha256": "837915f007bf08aed47bce1467f8597f4bb75d8749c4dc643fffb9ecd9a46ad6"
+    },
+    {
+      "file": "AGOT/common/casus_belli_types/tgp_eastasia_wars.txt",
+      "bytes": 18349,
+      "sha256": "db43fe4a50907edcfbdf8e029a831edff4550a7ce1c2ce982190725cd150a0a8"
+    },
+    {
+      "file": "AGOT/common/laws/00_agot_pirate_laws.txt",
+      "bytes": 12174,
+      "sha256": "39c1c20c7ac938ac9b6e972bd700657aafc4c3eed6f21c5d0945d54ec0f8b6c3"
+    },
+    {
+      "file": "AGOT/common/laws/00_realm_laws.txt",
+      "bytes": 81714,
+      "sha256": "86d71101f8eee25bd0457ec4004d0a5c21577039fa1a2220ff5ef436b12a0a0e"
+    },
+    {
+      "file": "AGOT/common/laws/00_succession_laws.txt",
+      "bytes": 59359,
+      "sha256": "2f1a66ae530cf09a500874c5b4bb9e7e1ec780717a753ee081ee0236341c8167"
+    },
+    {
+      "file": "AGOT/common/laws/01_agot_realm_laws.txt",
+      "bytes": 7249,
+      "sha256": "8a646f3b58a068891aad1603196e0e30943fc93306a1d547e7cea0f84f7cb835"
+    },
+    {
+      "file": "AGOT/common/laws/01_title_succession_laws.txt",
+      "bytes": 13456,
+      "sha256": "fc27ee55c3a77692ca5f8b348209d5f9faf7e40193e7ce3dce5069467a523531"
+    },
+    {
+      "file": "AGOT/common/laws/02_admininistrative_laws.txt",
+      "bytes": 63693,
+      "sha256": "de378cc828081208da239d86b831034b16f2776bb28a6d6acb0e889317f04c85"
+    },
+    {
+      "file": "AGOT/common/laws/02_agot_free_cities_laws.txt",
+      "bytes": 11138,
+      "sha256": "25ec88492b1ffc5e409a0d0807be9a35d61d69c6b9cd2d02f46ad609fb61b038"
+    },
+    {
+      "file": "AGOT/common/laws/02_agot_kingsguard.txt",
+      "bytes": 1119,
+      "sha256": "31950aa192c420d9b0b91d3f856d91714ea89d0f32d8d6c0b750c075b12101bb"
+    },
+    {
+      "file": "AGOT/common/laws/02_agot_nw_laws.txt",
+      "bytes": 4193,
+      "sha256": "ec6224a26e205bebfd4a00e5307964ce086399a3a76c3979cbc6890168acd4cb"
+    },
+    {
+      "file": "AGOT/common/scripted_effects/00_agot_mega_wars_effects.txt",
+      "bytes": 159837,
+      "sha256": "537695d2e25062104dc07eff6183124efe8792d54f992d221adc87dfa647b0e5"
+    },
+    {
+      "file": "AGOT/common/scripted_triggers/00_war_and_peace_triggers.txt",
+      "bytes": 28011,
+      "sha256": "5f1fd8d6bfd46b5b0e43e389bd436ff06329f3072decdeb1b6d18eba0f295fd6"
+    },
+    {
+      "file": "AGOT/common/scripted_triggers/99_agot_rv_triggers.txt",
+      "bytes": 1795,
+      "sha256": "47a7e84c5a2a3c96311469dbf5b425081f18468c888fd4172dfe13d25a8021ed"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/00_casus_belli_types.txt",
+      "bytes": 3778,
+      "sha256": "091b79f82d7d437668274f34511b2e9da002b623bdbe89579dadb1566ae45a9c"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/00_civil_war.txt",
+      "bytes": 64006,
+      "sha256": "cff84009e58f5d6386a6d7501cff084cb206a542e7d0cfa221ed2cc050a9da68"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/00_claim.txt",
+      "bytes": 19745,
+      "sha256": "d9aa37bdc45f81b4f6185b2697a3ebd09404084ea0d3cf77bbe3c1d2c962e8b1"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/00_conquest.txt",
+      "bytes": 41309,
+      "sha256": "9ae97388645bd5c825a3cc7c730fb7e90f633d82d545e4074149c6560d7e29d6"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/00_dejure_war.txt",
+      "bytes": 39923,
+      "sha256": "d8737a2205116118a5ecd6efa576d316b3155730a3824dc4bd109a68b9d5b6ee"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/00_event_war.txt",
+      "bytes": 97204,
+      "sha256": "bd202ae41eba3a0e1e7e4277d09ed1e8d8c7e66b378308bb417d974331f9c707"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/00_invasion_war.txt",
+      "bytes": 53222,
+      "sha256": "d551519fad7997e92b2e59b8436e0e745f4df7fa093abc45eab7eedbaeb6ee2e"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/00_nomadic_conquest.txt",
+      "bytes": 17451,
+      "sha256": "0965e6c8b2f39402c507396099b420631cb136356a9d65ac94ebd7ba799c8a64"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/00_peasant_war_new.txt",
+      "bytes": 5688,
+      "sha256": "3429d8884aa45f09291b807b6931d7fcaa629458eccee59ae2ea682d69f46aaf"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/00_religious_war.txt",
+      "bytes": 113657,
+      "sha256": "eb547d27ec1a7f4e04b0771b9f7da8f6ad1f88378dc051142b5ff001f13145ce"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/00_struggle_war.txt",
+      "bytes": 9097,
+      "sha256": "90c96462429928c9c8362af3629b44a96d34bd76e1b05dd9a1696fd2cec3ac85"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/00_subjugation.txt",
+      "bytes": 14397,
+      "sha256": "a4a1c8dce37ab01dfb004bc4a647389a46973cd8c6bf07690ddd2b99ddccc6ec"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/00_tributarize.txt",
+      "bytes": 19460,
+      "sha256": "b0dad64c563dde6f2c3d2f2798f827275ee63f5fe7331837f5457305be7c7381"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/00_vassalization.txt",
+      "bytes": 9547,
+      "sha256": "38beb513509ab1c79aa9d6f5a50d25c2fe81168051e82cf62ec5bdc2591a1b86"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/01_ep1_wars.txt",
+      "bytes": 16699,
+      "sha256": "73c595a90b9721155e29e816b3d73cdc523d682b9dff1c7a893139b2bb2742be"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/01_fp1_wars.txt",
+      "bytes": 35128,
+      "sha256": "a3ef10442297b2f8f845d81f563e50226718f5471764254460a9bcccaa8720b6"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/03_fp2_wars.txt",
+      "bytes": 26899,
+      "sha256": "d78e7c00e9c16c0220e26b5a34c03ab6561611bd7821ab7582bb63bbe73585ac"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/05_fp3_wars.txt",
+      "bytes": 42409,
+      "sha256": "234dec6eaee859a6cf95d8d0bc66247cb22d74c69358806ca3c75e75c33c2ae9"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/06_ce1_wars.txt",
+      "bytes": 52157,
+      "sha256": "f34412a6baeb9c48855f0fad743c5fc16bd6088438918ddd818a6794b01728dc"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/07_ep3_admin_cbs.txt",
+      "bytes": 49673,
+      "sha256": "305622de1a876510380355b2328e6989e377e5d32133a03aa24d9ab35b44d5a6"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/07_ep3_wars.txt",
+      "bytes": 180372,
+      "sha256": "fad921cb9abf564c01bf2e6ac4bfeb6993b736c4dcebf2c74a8dd9f178158615"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/09_mpo_wars.txt",
+      "bytes": 140332,
+      "sha256": "e95b5bc0d8ce3f0c9f5d2b00870fad00a1ce8a4e634fe017e8ee3c8650d10eda"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/10_tgp_china_wars.txt",
+      "bytes": 83657,
+      "sha256": "666eafca4f902e1e10f36784332cd9294bbf92e0cc8516f1c67418b7ff6b381d"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/10_tgp_faction_wars.txt",
+      "bytes": 20258,
+      "sha256": "97e3523c99b7c43ab263239b517db97b7bfddf3e2baeac18becb85d276166be2"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/10_tgp_japan_wars.txt",
+      "bytes": 84248,
+      "sha256": "9489ca4570ce9959cecb19e05c70e80b258aa4c14d917481957a0a17583c5001"
+    },
+    {
+      "file": "CK3/common/casus_belli_types/tgp_eastasia_wars.txt",
+      "bytes": 18247,
+      "sha256": "84ee259db6b6e1098aa8bea028a0b4aa60b711a597e66a3d0925ac94337a3140"
+    },
+    {
+      "file": "CK3/common/laws/00_realm_laws.txt",
+      "bytes": 74009,
+      "sha256": "ec96f526706b454a883b78429161b8c19d36b6dc8a5324c5db95e73a6806e2df"
+    },
+    {
+      "file": "CK3/common/laws/00_succession_laws.txt",
+      "bytes": 49206,
+      "sha256": "f4140755ce89b2bc0c7b5bb80e9318efd7a7ae7ece2e8129119c2ebe9bb9c532"
+    },
+    {
+      "file": "CK3/common/laws/01_title_succession_laws.txt",
+      "bytes": 8891,
+      "sha256": "d398c523a190b0b05d16dac12ee91b2afbc68e323aa219b602cf260f90b8095f"
+    },
+    {
+      "file": "CK3/common/laws/02_admininistrative_laws.txt",
+      "bytes": 59536,
+      "sha256": "93912dc0aa74567eac8359a3737000f8bf0afcd53d6d667efff1cc44bd2f1115"
+    },
+    {
+      "file": "CK3/common/laws/03_imperial_policies.txt",
+      "bytes": 7598,
+      "sha256": "5d00503edf89c38ed604ed781fd750beca39671a59f4d362be45c746c68839b8"
+    },
+    {
+      "file": "CK3/common/scripted_triggers/00_war_and_peace_triggers.txt",
+      "bytes": 25137,
+      "sha256": "4e3d7db2931b313f132d5228babdbb60a67dd28e9898a337be78b2fc1def862e"
+    }
+  ]
+}

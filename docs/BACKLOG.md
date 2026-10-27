@@ -7,7 +7,7 @@ A task is done only when the deliverable and verification evidence are present.
 | P0 | RW-001 | Initialize public repository, instructions, design summary and gates | Done |
 | P0 | RW-002 | Establish independent mod directory and descriptor with conservative version metadata | Done (scaffold; engine untested) |
 | P0 | RW-003 | Build basic structural checks (file encodings, brace balance, duplicate definitions, localization keys as applicable); avoid false assurance | Done (12 local unit tests; static only) |
-| P0 | RW-004 | Investigate G1 against local AGOT/CK3 sources and create smallest safe experimental war prototype | In progress — supplied source inspected; hook-gate candidate identified; CB/call sites and engine spike pending |
+| P0 | RW-004 | Investigate G1 against local AGOT/CK3 sources and create smallest safe experimental war prototype | In progress — CB/laws inspected; private guarded diagnostic builder ready; engine spike pending |
 | P0 | RW-005 | Write reproducible engine test plan and logging for genuine CB / Mega Wars scenarios | Done (test plan only; engine execution pending) |
 | P1 | RW-006 | Identify a viable multi-clause negotiation UI/model or document engine limits (G2) | Done (research + 18 synthetic protocol tests; G2 UI/engine unverified) |
 | P1 | RW-007 | Create persistence model for pending political affairs and obligations | Done (offline snapshot + 16 synthetic tests; CK3 save/load unverified) |
