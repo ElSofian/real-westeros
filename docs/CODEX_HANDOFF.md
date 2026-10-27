@@ -11,9 +11,12 @@ automatic assassination integration needs additional target-version source evide
 Mutual cancellation of a deferred promise is in RW010_MUTUAL_CANCELLATION.md.
 An experimental distribution is built from committed inputs by CI; see INTEGRATED_BUILD.md.
 Cross-slice source audit and versioned provider-decision reminders are in
-INTEGRATION_AUDIT.md; final LIFE-* cases remain unrun. Next prepare targeted native
-scheme/discovery source collection and inspection, without invented hooks;
-independent gameplay work remains allowed. Packaging is not engine validation. Do not invent automatic discovery hooks or
+INTEGRATION_AUDIT.md; final LIFE-* cases remain unrun. Targeted collection is prepared
+in SCHEME_SOURCE_COLLECTION.md and the complete
+Collect-RealWesteros-Schemes.ps1 script. Next receive the private installed-source ZIP,
+verify its manifest and inspect actual discovery/observer/action composition;
+no automatic assassination hook is implemented yet.
+Independent gameplay work remains allowed. Packaging is not engine validation. Do not invent automatic discovery hooks or
 replace original CK3 scripts with Python gameplay models.
 All engine runs are deferred until final testing per owner. G1 is todo at the
 war-feature stage, not an immediate prerequisite. Keep original scenarios and
