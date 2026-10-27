@@ -102,3 +102,37 @@ installation paths, source code, saves, archives or game assets belong in Git.
 The source hurdle is narrower than previously known: a concrete script-level gate
 exists. G1 is neither approved as working nor rejected as impossible. The next blocker
 is missing CB/call-site evidence and engine execution, not missing war-interaction files.
+
+## Complement inspection and private diagnostic (2026-10-27)
+
+A second private upload supplies 94 script files: 76 CB files, 14 law files, three
+trigger files and one Mega War effects file. Hashes only are recorded in
+`G1_COMPLEMENT_RECEIPT.json`. The requested `common/vassal_contracts` directories
+were absent; that collector path was a lead, not a verified CK3 directory name.
+No complete installation or all-mod call-site coverage is implied.
+
+The AGOT `common/casus_belli_types/00_claim.txt` defines the original `claim_cb`.
+Its visible conditions (lines 49–58, 64 onward) include Mega War availability,
+invalid-target checks, claimant/title conditions and the normal costs. Lines 296–300
+retain claim-based targeting and the existing declaration callback. No direct
+reference to the crown-law flags or the hook helper was found in this supplied
+claim file, or in the other 75 supplied CB files. This is a source-text finding,
+not proof that delegated triggers, cost helpers or engine internals cannot reject it.
+
+AGOT `common/laws/00_realm_laws.txt:156,252` supplies the ordinary internal/all-war
+ban flags. `common/scripted_triggers/99_agot_rv_triggers.txt:59` also defines a distinct
+rescue/revenge helper using attacker/defender scopes; it is not the declaration
+interaction's actor/recipient helper and must not be silently changed with it.
+Mega War effects call `start_war` in several rebuild paths (around lines 2111–2276),
+but those calls are not evidence that a replacement declaration would retain normal
+UI, costs or callbacks. The native UI route remains the preferred test.
+
+There is now enough source evidence to build a **private diagnostic**, not a
+production bypass: `tools/build_g1_probe.py` preserves the installed helper body
+and adds a narrowly flagged feudal-peer exemption. It generates a separate mod
+outside the checkout; no installed file is modified and no proprietary helper is
+committed. See `G1_PROBE.md` for baseline, negative, declaration and cleanup checks.
+Its one-day flags are manual diagnostic controls, not a proven production intent
+or receipt mechanism. All runtime semantics and actual override loading remain
+unverified. G1 stays OPEN pending execution; no third source dump is prerequisite
+to attempting this narrow test, although a failure may reveal another dependency.
