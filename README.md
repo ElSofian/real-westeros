@@ -10,11 +10,11 @@ A submod for **Crusader Kings III — A Game of Thrones (AGOT)**.
 
 ## Current milestone
 
-Audit and validate the integrated experimental reconciliation slice. **G1 is on hold
-by owner decision**; retain its research for possible later resumption, without
-claiming feasibility or treating it as a prerequisite for independent development.
-The original intended political-war examples still need clarification; no replacement
-definition has been adopted. CK3 behavior remains unverified until tested in game.
+Audit and validate the integrated experimental reconciliation slice. **G1 is back
+in the development plan for the war-feature stage**, rather than the immediate task.
+Retain its research and diagnostic; establish authentic-CB feasibility before shipping
+unlawful-war gameplay. Independent development can continue. See the original scenarios
+in [GAME_DESIGN.md](docs/GAME_DESIGN.md). CK3 behavior remains unverified until tested.
 
 ## Repository guide
 

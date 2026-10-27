@@ -28,3 +28,25 @@ An earlier 126-entry **candidate** action catalogue informed the eight-system de
 
 ## Primary project artifacts
 The detailed GDDs v0.1, review, and v0.2 source specification were created before this repository. They should be imported selectively as **original documentation**, not confused with CK3/AGOT scripts. When importing them, retain their uncertainty labels and avoid reproducing third-party game source code.
+
+## Owner-confirmed original scenarios
+
+These are design goals, not a list of implemented or engine-verified features.
+
+1. **Defy a royal war ban.** A duke in the Reach fabricates a claim on a neighbor
+   and declares despite the king's ban on vassal wars, using the genuine CB. The
+   king may demand peace, confiscate the duchy while leaving a county, grant the
+   duchy to the attacked lord (making that lord the aggressor's new liege), or do
+   nothing based on interests, means and circumstances. None is an automatic result.
+   This is G1, restored to planned development for the war-feature stage.
+2. **Discovered assassination plot and dynastic aftermath.** The king may choose
+   among sanctions against the conspirator, family or house: execution, confiscation,
+   loss of noble status or a 50-year bar on landholding. Descendants may later restore
+   their house/status. These possibilities require engine and policy investigation;
+   do not assume universal landholding bans work or heirs inherit personal guilt.
+3. **Negotiate services for compensation.** Structured buttons/options allow parties
+   to offer a service, negotiate consideration and make promises, obligations or
+   betrayals with consequences. No runtime LLM or free-form dialogue is required.
+
+Do not replace scenario 1 with agreement-breaking alone. Preserve discretionary
+responses and equal execution rules for player and AI across all three scenarios.
