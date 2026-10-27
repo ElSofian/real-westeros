@@ -29,11 +29,11 @@ def record_errors(triggers, effects, story, archive):
     if 'make_story_owner' in clean_script(story)[0]:
         errors.append('personal guilt inherited')
     reader = block(triggers, 'rw_case_reader_allowed_trigger')
-    for comparison in ('story_owner = scope:rw_case_reader', 'var:rw_case_client = scope:rw_case_reader',
-                       'var:rw_case_mediator = scope:rw_case_reader'):
+    for comparison in ('story_owner = $READER$', 'var:rw_case_client = $READER$',
+                       'var:rw_case_mediator = $READER$'):
         if comparison not in reader:
             errors.append('reader role missing')
-    if 'every_owned_story' not in archive or 'limit = { rw_case_reader_allowed_trigger = yes }' not in archive:
+    if 'every_owned_story' not in archive or 'limit = { rw_case_reader_allowed_trigger = { READER = scope:rw_case_reader } }' not in archive:
         errors.append('archive not filtered by known records')
     if 'random_owned_story' in archive:
         errors.append('history randomly truncated')
@@ -70,7 +70,7 @@ class CaseRecordsTests(unittest.TestCase):
         self.assertIn('cleanup can delete active/retained records', self.errors(s=self.s.replace('NOT = { has_variable = rw_case_retained }', 'always = yes')))
 
     def test_unfiltered_archive_mutation(self):
-        self.assertIn('archive not filtered by known records', self.errors(a=self.a.replace('limit = { rw_case_reader_allowed_trigger = yes }', 'limit = { always = yes }')))
+        self.assertIn('archive not filtered by known records', self.errors(a=self.a.replace('limit = { rw_case_reader_allowed_trigger = { READER = scope:rw_case_reader } }', 'limit = { always = yes }')))
 
     def test_random_history_regression(self):
         self.assertIn('history randomly truncated', self.errors(a=self.a.replace('every_owned_story', 'random_owned_story')))

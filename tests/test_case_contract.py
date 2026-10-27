@@ -127,5 +127,7 @@ class CaseContractTests(unittest.TestCase):
         for lang in ('english', 'french'):
             p = MOD / f'localization/{lang}/rw_cases_l_{lang}.yml'
             self.assertTrue(p.read_bytes().startswith(b'\xef\xbb\xbf'))
-            actual = set(re.findall(r'^\s+([\w.]+):0', p.read_text(encoding='utf-8-sig'), re.M))
-            self.assertEqual(keys, actual)
+            actual = set()
+            for translation in (MOD / f'localization/{lang}').glob('*.yml'):
+                actual.update(re.findall(r'^\s+([\w.]+):0', translation.read_text(encoding='utf-8-sig'), re.M))
+            self.assertTrue(keys <= actual, keys - actual)

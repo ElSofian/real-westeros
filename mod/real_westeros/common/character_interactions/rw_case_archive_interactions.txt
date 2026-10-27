@@ -7,14 +7,7 @@ rw_review_political_cases_interaction = {
         scope:actor = { is_alive = yes }
         scope:recipient = {
             is_alive = yes
-            any_owned_story = {
-                story_type = story_rw_political_case
-                OR = {
-                    story_owner = scope:actor
-                    var:rw_case_client = scope:actor
-                    var:rw_case_mediator = scope:actor
-                }
-            }
+            any_owned_story = { rw_case_reader_allowed_trigger = { READER = scope:actor } }
         }
     }
     on_accept = { rw_case_read_archive_effect = yes }

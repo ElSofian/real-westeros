@@ -1,0 +1,67 @@
+# The claimant makes an allegation. No underlying offense is inferred or fabricated.
+# Existing party aliases: provider=respondent, client=claimant for this case kind.
+rw_allegation_begin_effect = {
+    if = {
+        limit = { rw_allegation_can_start_trigger = yes }
+        scope:actor = { save_scope_as = rw_service_client }
+        scope:recipient = {
+            save_scope_as = rw_service_provider
+            if = {
+                limit = { NOT = { has_variable = rw_allegation_serial } }
+                set_variable = { name = rw_allegation_serial value = 0 }
+            }
+            change_variable = { name = rw_allegation_serial add = 1 }
+            save_scope_value_as = { name = rw_case_serial value = var:rw_allegation_serial }
+            create_story = { type = story_rw_political_case save_scope_as = rw_case_record }
+        }
+        if = {
+            limit = { exists = scope:rw_case_record }
+            scope:recipient.top_liege = { save_scope_as = rw_case_mediator }
+            save_scope_value_as = { name = rw_case_reason value = flag:allegation }
+            save_scope_value_as = { name = rw_case_kind value = flag:allegation }
+            scope:rw_case_record = {
+                set_variable = { name = rw_case_serial value = scope:rw_case_serial }
+                set_variable = { name = rw_case_client value = scope:rw_service_client }
+                set_variable = { name = rw_case_mediator value = scope:rw_case_mediator }
+                set_variable = { name = rw_case_reason value = flag:allegation }
+                set_variable = { name = rw_case_kind value = flag:allegation }
+                set_variable = { name = rw_case_evidence value = flag:unanswered }
+                set_variable = { name = rw_case_stage value = flag:respondent }
+                set_variable = { name = rw_case_pending value = flag:yes days = 30 }
+                # No rw_case_disclosed: the planned mediator has not been told.
+            }
+            scope:actor = { add_character_flag = { flag = rw_allegation_cooldown days = 90 } }
+            scope:rw_service_provider = {
+                trigger_event = { id = rw_allegations.0001 }
+                trigger_event = { id = rw_cases.0004 days = 31 }
+            }
+        }
+    }
+}
+# Record the actual reply, not a verdict on the underlying truth.
+rw_allegation_answer_effect = {
+    if = {
+        limit = { rw_allegation_respondent_turn_trigger = yes }
+        scope:rw_case_record = {
+            set_variable = { name = rw_case_evidence value = flag:$ANSWER$ }
+            set_variable = { name = rw_case_stage value = flag:claimant }
+        }
+        scope:rw_service_client = { trigger_event = { id = rw_allegations.0002 } }
+    }
+}
+rw_allegation_refer_effect = {
+    if = {
+        limit = { rw_allegation_claimant_turn_trigger = yes }
+        scope:rw_case_record = {
+            set_variable = { name = rw_case_disclosed value = flag:yes }
+            set_variable = { name = rw_case_stage value = flag:ruler }
+        }
+        scope:rw_case_mediator = { trigger_event = { id = rw_cases.0001 } }
+    }
+}
+rw_allegation_withdraw_effect = {
+    if = {
+        limit = { rw_allegation_claimant_turn_trigger = yes }
+        rw_case_close_effect = { RESULT = withdrawn }
+    }
+}
