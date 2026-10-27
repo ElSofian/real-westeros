@@ -5,7 +5,7 @@
 - RW-003: implemented stdlib-only validator, 12 positive/negative unit tests, and GitHub Actions CI. Local tests: **12 passed**; local scaffold structural check: **PASS**. See `docs/STATIC_VALIDATION.md`.
 - **Static verification:** descriptor consistency, UTF-8, braces, selected top-level definitions, localization keys, and forbidden archive/save extensions. CI results must be checked separately after PR publication.
 - **Engine test:** none. Actual CK3 executable, DLC and live AGOT version remain unverified; CK3 1.19.* descriptor target is provisional.
-- Gameplay implemented: none. No CK3/AGOT scripts or assets added.
+- Gameplay source: original experimental reconciliation interaction, event, triggers, effects and opinion modifiers (RW-008); no proprietary assets. No engine run.
 - RW-005: documented 16 reproducible G1 scenarios in `docs/TEST_PLAN_G1.md`, including real CB integrity, Mega Wars, AI parity, succession and save/reload. **Test plan only; zero scenarios executed in CK3.**
 - RW-004: created `docs/G1_FEASIBILITY.md` with versioned evidence, alternatives, rejected fake-CB workarounds and **BLOCKED** gate; added private-source locator `tools/audit_g1_sources.py` and 8 synthetic positive/negative tests. The source locator reports only relative paths/identifier line numbers; no CK3/AGOT assets were copied. The 1.20.1.2 third-party source index is not validation of target 1.19.* / AGOT 0.5.2.1.
 - RW-006: documented G2 multi-clause UI options and the **unverified** CK3 engine gates in `docs/G2_FEASIBILITY.md`. Added a pure-Python, immutable, versioned offer protocol probe and in-memory revision authority (`tools/g2_offer_probe.py`). **18/18 synthetic positive/negative tests passed locally**, including stale counteroffers, duplicate responses and failed preconditions. This executes no CK3 effects and is not persistence or an in-game UI. Full project CI must be checked on the PR.
@@ -13,3 +13,6 @@
 - Next: RW-008 isolated political incident prototype; G1 native war/CB spike remains blocked and G2 UI/engine unverified.
 - Agent coordination: established an atomic GitHub Contents claim protocol in `docs/TASK_CLAIMS.md`, validated same-path double-create rejection on an isolated branch (HTTP 422); manual and scheduled agents must claim before task work. The protocol is cooperative and CK3 gameplay remains untested.
 - Budget: ChatGPT Plus only, no paid extras.
+
+- RW-008: original CK3-facing reconciliation slice with accept/refuse/lapsed paths, pending/target guard, yearly cooldown, EN/FR localization and future engine scenarios in `docs/RW008_INCIDENT.md`. AI responses share effects; autonomous initiation is deferred to RW-009. Static integration fixtures added; engine scopes/save-load/replay and AGOT compatibility remain unverified.
+- RW-008 publication: PR #13 (`feat/rw-008-political-incident`); local full suite **59/59 passed**, structural validator PASS, diff whitespace check PASS. CK3 engine checks: zero executed.

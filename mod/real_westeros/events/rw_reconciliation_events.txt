@@ -1,0 +1,28 @@
+namespace = rw_reconciliation
+
+rw_reconciliation.0001 = {
+    type = character_event
+    title = rw_reconciliation.0001.t
+    desc = rw_reconciliation.0001.desc
+    theme = diplomacy
+    left_portrait = { character = scope:rw_petitioner }
+    option = {
+        name = rw_reconciliation.0001.accept
+        trigger = { rw_petition_can_resolve_trigger = yes }
+        rw_accept_reconciliation_effect = yes
+        ai_chance = { base = 50 }
+    }
+    option = {
+        name = rw_reconciliation.0001.refuse
+        trigger = { rw_petition_can_resolve_trigger = yes }
+        rw_decline_reconciliation_effect = yes
+        ai_chance = { base = 50 }
+    }
+    option = {
+        name = rw_reconciliation.0001.lapsed
+        trigger = { NOT = { rw_petition_can_resolve_trigger = yes } }
+        # The timed pending marker expires if a party dies/loses eligibility.
+        # No native consequence is applied to stale or invalid responses.
+        ai_chance = { base = 100 }
+    }
+}

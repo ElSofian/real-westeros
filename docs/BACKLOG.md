@@ -11,7 +11,7 @@ A task is done only when the deliverable and verification evidence are present.
 | P0 | RW-005 | Write reproducible engine test plan and logging for genuine CB / Mega Wars scenarios | Done (test plan only; engine execution pending) |
 | P1 | RW-006 | Identify a viable multi-clause negotiation UI/model or document engine limits (G2) | Done (research + 18 synthetic protocol tests; G2 UI/engine unverified) |
 | P1 | RW-007 | Create persistence model for pending political affairs and obligations | Done (offline snapshot + 16 synthetic tests; CK3 save/load unverified) |
-| P1 | RW-008 | Implement one end-to-end political incident with status as static-only until CK3 tested | Todo |
+| P1 | RW-008 | Implement one end-to-end political incident with status as static-only until CK3 tested | Implemented experimentally — CK3 scripts; engine untested |
 | P1 | RW-009 | Add AI actor selection and negative-path tests for one end-to-end incident | Todo |
 | P2 | RW-010 | Expand political memory, justice, diplomacy and other systems incrementally | Todo |
 

@@ -1,0 +1,10 @@
+﻿l_english:
+ rw_seek_reconciliation_interaction:0 "Seek Reconciliation (Experimental)"
+ rw_seek_reconciliation_interaction_desc:0 "Send a personal appeal to mend relations. Acceptance improves mutual opinion for two years; refusal disappoints the petitioner for one year. One appeal per year. This feature has not been tested in CK3."
+ rw_reconciliation.0001.t:0 "An Offered Olive Branch"
+ rw_reconciliation.0001.desc:0 "[rw_petitioner.GetTitledFirstName] asks that we set aside our grievances. No oath, title or debt is at stake: only the prospect of a less bitter future."
+ rw_reconciliation.0001.accept:0 "Let us begin anew."
+ rw_reconciliation.0001.refuse:0 "I will not forget so easily."
+ rw_reconciliation.0001.lapsed:0 "The moment has passed."
+ rw_reconciliation_accepted_opinion:0 "Accepted an olive branch"
+ rw_reconciliation_refused_opinion:0 "Refused an olive branch"

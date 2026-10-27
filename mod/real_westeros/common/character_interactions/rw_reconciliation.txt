@@ -1,0 +1,26 @@
+# Experimental vertical slice; not engine-tested.
+rw_seek_reconciliation_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_seek_reconciliation_interaction_desc
+    auto_accept = yes
+    is_shown = {
+        scope:actor = { is_landed = yes }
+        scope:recipient = { is_landed = yes }
+        NOT = { scope:actor = scope:recipient }
+    }
+    is_valid_showing_failures_only = {
+        scope:actor = { rw_can_petition_trigger = yes }
+        scope:recipient = { is_alive = yes is_adult = yes is_at_war = no }
+    }
+    on_accept = {
+        scope:actor = {
+            save_scope_as = rw_petitioner
+            add_character_flag = { flag = rw_petition_cooldown days = 365 }
+            add_character_flag = { flag = rw_petition_pending days = 30 }
+            set_variable = { name = rw_petition_target value = scope:recipient }
+        }
+        scope:recipient = { trigger_event = { id = rw_reconciliation.0001 } }
+    }
+    # AI scheduling/target selection is RW-009; players and AI use identical effects.
+    ai_potential = { always = no }
+}
