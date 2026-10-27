@@ -12,3 +12,5 @@
 10. Keep reports to the owner concise; normal engineering choices are delegated.
 
 **Note:** The owner currently expects broad in-game testing at the end; this introduces risk. Static validation cannot prove mod compatibility, so mark critical gameplay features as provisional until those tests.
+
+For the current Codex engineering handoff and reviewer responsibilities, see `docs/CODEX_HANDOFF.md`.
