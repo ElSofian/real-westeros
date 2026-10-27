@@ -1,0 +1,65 @@
+namespace = rw_title_status
+
+# No specific title or release term is preselected, and no punishment is sent.
+rw_title_status.0001 = {
+    type = character_event
+    title = rw_title_status.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_title_status_view_trigger = yes }
+                desc = {
+                    desc = rw_title_status.intro
+                    first_valid = {
+                        triggered_desc = { trigger = { rw_title_status_revoke_reason_trigger = yes } desc = rw_title_status.reason }
+                        triggered_desc = { trigger = { rw_title_status_no_revoke_reason_trigger = yes } desc = rw_title_status.no_reason }
+                        desc = rw_title_status.unknown_reason
+                    }
+                    first_valid = {
+                        triggered_desc = { trigger = { rw_title_status_knight_trigger = yes } desc = rw_title_status.knight }
+                        desc = rw_title_status.not_knight
+                    }
+                    triggered_desc = { trigger = { rw_title_status_stripped_knight_trigger = yes } desc = rw_title_status.stripped_knight }
+                    first_valid = {
+                        triggered_desc = { trigger = { rw_title_status_landed_knight_contract_trigger = yes } desc = rw_title_status.landed_knight }
+                        desc = rw_title_status.no_landed_knight_contract
+                    }
+                    desc = rw_title_status.terms
+                }
+            }
+            desc = rw_title_status.unavailable
+        }
+    }
+    right_portrait = {
+        trigger = { rw_title_status_view_trigger = yes }
+        character = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+    }
+    theme = intrigue
+    option = {
+        name = rw_title_status.review_revocation
+        trigger = { rw_title_status_can_open_revocation_trigger = yes }
+        if = {
+            limit = { rw_title_status_can_open_revocation_trigger = yes }
+            open_interaction_window = {
+                interaction = revoke_title_interaction
+                actor = root
+                recipient = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+            }
+        }
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = rw_title_status.review_release
+        trigger = { rw_title_status_can_open_release_trigger = yes }
+        if = {
+            limit = { rw_title_status_can_open_release_trigger = yes }
+            open_interaction_window = {
+                interaction = release_from_prison_interaction
+                actor = root
+                recipient = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+            }
+        }
+        ai_chance = { base = 0 }
+    }
+    option = { name = rw_title_status.close }
+}

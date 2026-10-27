@@ -257,3 +257,38 @@ native confirmations and compare with the same AGOT flow without the submod.
   and performance. Human-only window shortcut adds no exclusive gameplay action;
   AI retains existing native targeting/weights. No custom automatic sentencing or
   discovery-triggered family punishment is claimed.
+
+## Individual title/status review (TITLE-01 to TITLE-09)
+
+All unrun. See RW010_TITLE_STATUS.md. Compare disposable-save confirmations with
+baseline AGOT; a successful source check is not evidence of title confiscation.
+
+- TITLE-01: exact observer/private retained participant/current custody/free observer
+  gates parent navigation and portrait; generic discovery, stale/foreign/wrong-serial
+  records, another ruler's prisoner, dead participant and heirs never substitute.
+- TITLE-02: independently vary arrest/execution/revocation grounds, including unrelated
+  offenses. Current character-level revocation grounds are not attributed to this
+  plot, a selected title's legality, innocence, pardon or completed punishment.
+- TITLE-03: native knight/squire recognition, stripped-knight trait, ordinary and
+  landed-knight contracts, no-liege characters: inspect independent current statuses.
+  No automatic offense provenance, noble-status verdict or house landholding ban.
+- TITLE-04: landed direct vassal with native-valid revocation: does the generic window
+  opener populate the native title picker without a target? Does the validity query
+  require one? Record this explicitly; if it fails, retain character-menu fallback,
+  not force-send/target selection. Choose/cancel titles: no transfer, cost or result.
+- TITLE-05: change authority, contract, hook, revocation laws or title ownership before
+  clicking/confirmation. Native protection/title exclusions/selection validity govern;
+  no bypass, preselected title, fabricated reason or forced duchy confiscation.
+- TITLE-06: confirm a native revocation on a disposable save; compare costs, tyranny,
+  reason consumption, acceptance/resistance, claims, vassals, succession and cleanup.
+  No second mod transfer/penalty and no completed-result cache from simply browsing.
+- TITLE-07: native release terms: inspect/cancel/confirm permitted knighthood or
+  lordship removal separately. Compare exact native restrictions, duchy/contract/
+  trait/memory/opinion/house consequences. Preserve existing AGOT human-only lordship
+  eligibility; do not claim new AI parity or a universal 50-year family land ban.
+- TITLE-08: repeat inspection, pay/refuse voluntary contributions, leave unchanged,
+  lose custody or expire a record with old popups visible. No immunity, debt, extra
+  penalty/timer, renewed retention or invented sanction outcome. Save/reload all phases.
+- TITLE-09: native AI targeting/terms, other AGOT prison/title flows, performance/logs
+  and observer succession: no new forced scheduler, inherited personal guilt or
+  hidden organiser. Native title/status interactions stay authoritative.

@@ -21,6 +21,7 @@ are deferred to the final campaign, not waived. Prefer a disposable fresh save.
 | Native plot observations | Discovered murder plot vs exposed participant; target-only journal, no new sanction |
 | Judicial inspection | Observer-only custody/reason check and guarded native arrest-window shortcut; no automatic send |
 | Personal prisoner sentencing | Native execution/release terms or unchanged detention; no automatic send/result |
+| Individual title/status review | Current grounds, knight/contract status; experimental native revocation/release terms, no forced transfer |
 | Known-case archive | Independent story records, role/disclosure-filtered views, retained closed records |
 
 All rows describe intended source behavior; none has been observed in CK3 here.

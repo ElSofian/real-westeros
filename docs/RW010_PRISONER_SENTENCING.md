@@ -79,8 +79,8 @@ check absence of cached outcomes, family scans, reminder scheduling and unrelate
 service/voluntary-response writes. They do not execute the game. Final
 SENTENCE-01…09 scenarios are recorded in FINAL_ENGINE_TESTS.md, all unrun.
 
-Next inspect native individual confiscation and AGOT status-removal options before
-introducing house-wide consequences/restoration (G3). Keep personal responsibility,
+Individual title/status review and experimental native revocation/release handoffs
+are now in RW010_TITLE_STATUS.md. Next scope house-wide consequences/restoration (G3). Keep personal responsibility,
 political family fallout and legal landholding constraints distinct. A universal
 50-year title ban must not be claimed from a marker that does not guard all title
 acquisition paths. G1 stays planned for the war stage. This integration does not

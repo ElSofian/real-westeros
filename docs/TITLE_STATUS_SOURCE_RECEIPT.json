@@ -1,0 +1,201 @@
+{
+  "schema": 1,
+  "kind": "private_source_inspection_references_not_engine_evidence",
+  "archive_sha256": "4f227833b067dc285f1b0780d3c3e753a311532f17ab099c36dac33b9eb9e3cc",
+  "reviewed_references": [
+    {
+      "source": "CK3",
+      "path": "common/character_interactions/00_revoke_title_interaction.txt",
+      "sha256": "3eb2798781aa721f70952fdde988db6009a5b2167cbb45b12fe0b38ec3999178",
+      "size": 41821,
+      "markers": {
+        "revoke_title_interaction = {": [
+          1
+        ],
+        "target_type = title": [
+          57
+        ],
+        "can_be_picked_title = {": [
+          208
+        ],
+        "has_valid_target = {": [
+          226
+        ],
+        "revoke_title_interaction_effect = yes": [
+          523
+        ],
+        "on_decline = {": [
+          562
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/character_interactions/00_prison_interactions.txt",
+      "sha256": "3e05c94cdce4d42cce8256d2d79cd78feb1c9d5b79daa64aa8243aa0c658f22b",
+      "size": 201766,
+      "markers": {
+        "flag = agot_strip_knighthood": [],
+        "flag = agot_strip_lordship": [],
+        "agot_can_revoke_lordship_punishment_trigger =": []
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/scripted_effects/00_interaction_effects.txt",
+      "sha256": "7b426465fced71a6d6aa96b34c8924b91990d0be144fe4bfaa57681bb7fa6ea5",
+      "size": 122109,
+      "markers": {
+        "revoke_title_interaction_effect = {": [
+          3425
+        ],
+        "consume_revoke_title_reason =": [
+          911,
+          1006,
+          3296,
+          3360,
+          3469
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/character_interactions/00_revoke_title_interaction.txt",
+      "sha256": "56253a3875e6b7097a690d60002dda3bbadb1062fa508873963af2f55af2d456",
+      "size": 43218,
+      "markers": {
+        "revoke_title_interaction = {": [
+          1
+        ],
+        "target_type = title": [
+          57
+        ],
+        "can_be_picked_title = {": [
+          215
+        ],
+        "has_valid_target = {": [
+          233
+        ],
+        "revoke_title_interaction_effect = yes": [
+          530
+        ],
+        "on_decline = {": [
+          570
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/character_interactions/00_prison_interactions.txt",
+      "sha256": "04d7f3975b951537b34b0cbb264e0cc2eeb7ac05c21d63c7c31d8b1d593ef750",
+      "size": 249917,
+      "markers": {
+        "flag = agot_strip_knighthood": [
+          6091
+        ],
+        "flag = agot_strip_lordship": [
+          6103
+        ],
+        "agot_can_revoke_lordship_punishment_trigger =": [
+          6108
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/scripted_effects/00_interaction_effects.txt",
+      "sha256": "dfde92191c93bf93a074dc475fe1a188d8d17f7f4515c22b4f903bb2d6cfff91",
+      "size": 130434,
+      "markers": {
+        "revoke_title_interaction_effect = {": [
+          3740
+        ],
+        "consume_revoke_title_reason =": [
+          938,
+          1033,
+          3607,
+          3674,
+          3784
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/scripted_triggers/00_agot_knighting_triggers.txt",
+      "sha256": "df1811326cfd4295cdc0dc628d98fead4b8d1a48ae58d12f71a9f7f0ffa03487",
+      "size": 4862,
+      "markers": {
+        "is_agot_knight_trigger = {": [
+          73
+        ],
+        "agot_can_revoke_knighthood_punishment_trigger = {": [
+          201
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/scripted_triggers/00_agot_landed_knight_triggers.txt",
+      "sha256": "aacb029343c9d9372b3dc370e63842419580e0994a38c3714ff6b38f3ec34837",
+      "size": 384,
+      "markers": {
+        "agot_can_revoke_lordship_punishment_trigger = {": [
+          1
+        ],
+        "is_ai = no": [
+          4
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/scripted_effects/00_agot_knighthood_effects.txt",
+      "sha256": "b432ff5b67bb267654dbbb6214689fcb9ea5c3d66409aa5659eb7956f0f584f6",
+      "size": 18172,
+      "markers": {
+        "agot_strip_knighthood_as_punishment_effect = {": [
+          599
+        ],
+        "add_character_flag = cannot_be_knighted": [
+          656
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/scripted_effects/00_agot_landed_knight_effects.txt",
+      "sha256": "48a2a2bd0a7e926ea1bb5627a047686279f0780c4910e05ff6f4fb996ebc35bb",
+      "size": 1292,
+      "markers": {
+        "agot_strip_lordship_as_punishment_effect = {": [
+          1
+        ],
+        "destroy_title =": [
+          19
+        ],
+        "vassal_contract_set_obligation_level =": [
+          22
+        ],
+        "change_house_relation_effect = {": [
+          40
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "events/agot_filler/00_agot_nights_watch_filler_events.txt",
+      "sha256": "2d5a16dc4a0c98ee2aea4ee0197d9e98c881969f67eda8cbb757ab02603de994",
+      "size": 99003,
+      "markers": {
+        "interaction = revoke_title_interaction": [
+          763,
+          919
+        ],
+        "execute_threshold = decline": [
+          767,
+          923
+        ]
+      }
+    }
+  ]
+}

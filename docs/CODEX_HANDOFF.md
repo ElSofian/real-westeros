@@ -14,6 +14,8 @@ and persistence semantics remain engine-unverified. Voluntary political response
 Current judicial inspection and guarded native arrest-window handoff are in
 RW010_SCHEME_JUSTICE.md. Personal prisoner execution/release window handoffs are
 in RW010_PRISONER_SENTENCING.md; no automatic send or replacement prison effect.
+Individual title/status review and experimental revocation/release window handoffs
+are in RW010_TITLE_STATUS.md. Native title-picker setup remains engine-unverified.
 Mutual cancellation of a deferred promise is in RW010_MUTUAL_CANCELLATION.md.
 An experimental distribution is built from committed inputs by CI; see INTEGRATED_BUILD.md.
 Cross-slice source audit and versioned provider-decision reminders are in
@@ -23,11 +25,14 @@ Native eligibility/prior-consequence review distinguishes current reasons/custod
 from per-offense history; the latter is not established. A source-backed
 validity-checked window handoff preserves native sending/refusal/resistance. Personal
 sentencing now opens native execution/release terms for the actual prisoner
-without claiming the sentence completed. Next inspect native individual
-confiscation/status-removal options before house-wide consequences/restoration (G3);
+without claiming the sentence completed. Individual title/status source review is
+complete as a bounded source inspection, not engine proof. Next scope G3 house
+sanctions/restoration and audit grant/inheritance/election/conquest separately;
 never force the no-tyranny imprisonment helper as a legality check. Keep knowledge,
 legal authority and existing
 native penalties separate; the implemented contribution is voluntary, not immunity.
+Native lordship removal is contract conversion, not a universal house land ban;
+its existing human-only eligibility is preserved, not advertised as AI parity.
 No custom executions, confiscations, family sanctions or dynastic restoration are implemented.
 Independent gameplay work remains allowed. Packaging is not engine validation. Do not invent automatic discovery hooks or
 replace original CK3 scripts with Python gameplay models.

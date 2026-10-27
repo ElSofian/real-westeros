@@ -41,7 +41,7 @@ def sentencing_errors(t, v, journal):
         errors.append('absence of execution reason invented')
     if journal.count('limit = { rw_sentencing_current_prisoner_trigger = yes }') != 1:
         errors.append('journal navigation bypass')
-    code = clean_script(t + v)[0]
+    code = clean_script(t + v)[0].replace('trigger_event = { id = rw_title_status.0001 }', '')
     if re.search(r'\b(death|execute_prisoner_effect|release_from_prison|imprison|send_interaction|consume_imprisonment_reasons|consume_execute_reasons|add_opinion|add_gold|set_variable|remove_variable|add_character_flag|trigger_event)\s*=', code):
         errors.append('sentence or cached result applied by navigation')
     return errors
@@ -109,6 +109,8 @@ class PrisonerSentencingTests(unittest.TestCase):
         self.assertNotIn('rw_scheme_response_state', code)
         self.assertNotIn('rw_service_', code)
         self.assertEqual(2, self.v.count('open_interaction_window = {'))
+        self.assertEqual(1, self.v.count('trigger_event = { id = rw_title_status.0001 }'))
+        self.assertIn('limit = { rw_title_status_view_trigger = yes }', self.v)
         portrait = nested_block(self.v, 'right_portrait')
         self.assertIn('trigger = { rw_sentencing_current_prisoner_trigger = yes }', portrait)
         self.assertIn(f'character = {PARTICIPANT}', portrait)
