@@ -1,0 +1,134 @@
+{
+  "schema": 1,
+  "kind": "native_api_call_sites_not_ownership_lifecycle_or_engine_proof",
+  "archive_sha256": "4f227833b067dc285f1b0780d3c3e753a311532f17ab099c36dac33b9eb9e3cc",
+  "reviewed_references": [
+    {
+      "source": "AGOT",
+      "path": "common/scripted_effects/00_agot_dragon_effects.txt",
+      "sha256": "23470b227bde04d955c13ba2bf8e4f67a8b03ed3b7aecd239d4cf243b306f525",
+      "size": 81340,
+      "markers": {
+        "target = scope:dragon_var_story": [
+          2281
+        ],
+        "target = scope:story": [
+          2670
+        ],
+        "variable = gl_dragon_variable_storage": [
+          707,
+          2038
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/on_action/agot_on_actions/agot_title_on_actions.txt",
+      "sha256": "91b48a24fe48a5acc22424fe7c81dc506b8fc86c5607ec1679572408dbd8e3fa",
+      "size": 105197,
+      "markers": {
+        "make_story_owner = scope:new_holder": [
+          3275
+        ],
+        "make_story_owner = scope:mw_new_rebel_leader": [
+          3330
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/scripted_effects/00_animal_effects.txt",
+      "sha256": "ce9c2755399e0089c143673e78dc82128f3716d6640ceea92ac8a9e81adb3cc9",
+      "size": 61732,
+      "markers": {
+        "make_story_owner = $CHARACTER$": [
+          399,
+          705
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/scripted_effects/00_animal_effects.txt",
+      "sha256": "dd03e2b1dac7aafaf3f0f8689d0a89467fe7a6c374d68e4504f37a6bb6c203b4",
+      "size": 64164,
+      "markers": {
+        "make_story_owner = $CHARACTER$": [
+          402,
+          708
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/scripted_effects/00_agot_house_heads_effects.txt",
+      "sha256": "a8781ea49bf02946156a8132ebc16cd84a6a9cc9cc5b9c7708b8558413e34dfb",
+      "size": 1938,
+      "markers": {
+        "random_house_member = {": [
+          22
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/on_action/diarchy_on_action.txt",
+      "sha256": "c951d13ff0af6fd31af4201cb83c17582745df3bd22a1cbd85f31031943869fb",
+      "size": 19701,
+      "markers": {
+        "remove_list_global_variable = {": [
+          207,
+          217,
+          227,
+          237
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/on_action/diarchy_on_action.txt",
+      "sha256": "b31a485a3ab7b0ab754b4cca2fe6ee3ecdcdc3a93614a3c6f59c31e6cf46a487",
+      "size": 20634,
+      "markers": {
+        "remove_list_global_variable = {": [
+          211,
+          221,
+          231,
+          241
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/on_action/travel_on_actions.txt",
+      "sha256": "7e433a0d6969e09cfed1d9dc50fb5276d944354024d6d2e045b314355f41040c",
+      "size": 67698,
+      "markers": {
+        "name = travel_plan_start_date": [
+          1147,
+          1152
+        ],
+        "value = current_date": [
+          1148,
+          1153
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/on_action/travel_on_actions.txt",
+      "sha256": "8729ee3f1c9218684ee694968d0f72be44be5ce482a4b0f93fe8d42b4ba76a73",
+      "size": 75487,
+      "markers": {
+        "name = travel_plan_start_date": [
+          1231,
+          1236
+        ],
+        "value = current_date": [
+          1232,
+          1237
+        ]
+      }
+    }
+  ]
+}

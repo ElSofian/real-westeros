@@ -1,0 +1,10 @@
+story_rw_house_affair = {
+    on_owner_death = { rw_house_owner_died_effect = yes }
+    effect_group = {
+        days = 60
+        triggered_effect = {
+            trigger = { rw_house_record_valid_trigger = yes }
+            effect = { rw_house_maintenance_effect = yes }
+        }
+    }
+}

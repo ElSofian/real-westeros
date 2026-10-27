@@ -1,0 +1,160 @@
+# Story scope: a political decree, never a native legal conviction or land ban.
+rw_house_record_valid_trigger = {
+    story_type = story_rw_house_affair
+    var:rw_house_schema = 1
+    var:rw_house_kind = flag:political_disfavor
+    has_variable = rw_house_serial
+    has_variable = rw_house_revision
+    exists = var:rw_house_target
+    exists = var:rw_house_authority
+    exists = var:rw_house_issuer
+    has_variable = rw_house_issued_on
+    var:rw_house_basis_kind = flag:exposed_participant_observation
+    has_variable = rw_house_basis_serial
+    OR = {
+        var:rw_house_state = flag:active
+        var:rw_house_state = flag:restored
+        var:rw_house_state = flag:withdrawn
+        var:rw_house_state = flag:expired
+    }
+}
+rw_house_record_active_trigger = {
+    rw_house_record_valid_trigger = yes
+    var:rw_house_state = flag:active
+    has_variable = rw_house_term
+}
+rw_house_reader_allowed_trigger = {
+    rw_house_record_valid_trigger = yes
+    $READER$ = { is_alive = yes }
+    OR = { var:rw_house_state = flag:active has_variable = rw_house_retained }
+    OR = {
+        var:rw_house_issuer = $READER$
+        var:rw_house_authority = { exists = holder holder = $READER$ }
+        AND = { $READER$ = { exists = house } var:rw_house_target = $READER$.house }
+    }
+}
+# Character root; every popup carries exact record/house/title/serial/revision.
+rw_house_view_trigger = {
+    exists = scope:rw_house_record
+    exists = scope:rw_house_target
+    exists = scope:rw_house_authority
+    exists = scope:rw_house_serial
+    exists = scope:rw_house_revision
+    scope:rw_house_record = {
+        rw_house_reader_allowed_trigger = { READER = root }
+        var:rw_house_target = scope:rw_house_target
+        var:rw_house_authority = scope:rw_house_authority
+        var:rw_house_serial = scope:rw_house_serial
+        var:rw_house_revision = scope:rw_house_revision
+    }
+}
+rw_house_sovereign_trigger = {
+    is_alive = yes
+    is_adult = yes
+    is_landed = yes
+    is_imprisoned = no
+    is_independent_ruler = yes
+    highest_held_title_tier >= tier_kingdom
+    exists = primary_title
+}
+# Current private evidence and custody are required to consider this political act.
+rw_house_can_consider_censure_trigger = {
+    rw_scheme_justice_own_custody_trigger = yes
+    exists = house
+    rw_house_sovereign_trigger = yes
+    prestige >= 50
+    scope:rw_scheme_evidence_record = { NOT = { has_variable = rw_house_filed } }
+    scope:rw_scheme_evidence_record.var:rw_evidence_participant = {
+        is_adult = yes
+        exists = house
+        OR = { liege = scope:rw_scheme_observer is_courtier_of = scope:rw_scheme_observer }
+        NOT = { house = scope:rw_scheme_observer.house }
+    }
+    trigger_if = {
+        limit = { has_global_variable_list = rw_house_affairs }
+        NOT = {
+            any_in_global_list = {
+                variable = rw_house_affairs
+                rw_house_record_active_trigger = yes
+                var:rw_house_target = scope:rw_scheme_evidence_record.var:rw_evidence_participant.house
+                var:rw_house_authority = scope:rw_scheme_observer.primary_title
+            }
+        }
+    }
+}
+rw_house_censure_turn_trigger = {
+    rw_house_can_consider_censure_trigger = yes
+    exists = scope:rw_house_target
+    exists = scope:rw_house_authority
+    scope:rw_house_target = scope:rw_scheme_evidence_record.var:rw_evidence_participant.house
+    scope:rw_house_authority = primary_title
+}
+rw_house_current_ruler_trigger = {
+    rw_house_view_trigger = yes
+    rw_house_sovereign_trigger = yes
+    scope:rw_house_authority = { exists = holder holder = root }
+}
+rw_house_can_withdraw_trigger = {
+    rw_house_current_ruler_trigger = yes
+    scope:rw_house_record = { rw_house_record_active_trigger = yes }
+}
+rw_house_current_head_trigger = {
+    rw_house_view_trigger = yes
+    is_alive = yes
+    is_adult = yes
+    is_imprisoned = no
+    exists = house
+    house = scope:rw_house_target
+    scope:rw_house_target = { exists = house_head house_head = root }
+}
+# Story scope, administrative check: role changes invalidate an old pending petition.
+rw_house_pending_roles_valid_trigger = {
+    rw_house_record_active_trigger = yes
+    has_variable = rw_house_request_window
+    exists = var:rw_house_petitioner
+    exists = var:rw_house_requested_ruler
+    var:rw_house_petitioner = {
+        is_alive = yes
+        is_adult = yes
+        exists = house
+        house = prev.var:rw_house_target
+        house.house_head = this
+        NOT = { is_at_war_with = prev.var:rw_house_requested_ruler }
+    }
+    var:rw_house_authority = { exists = holder holder = prev.var:rw_house_requested_ruler }
+    var:rw_house_requested_ruler = { is_alive = yes }
+}
+rw_house_can_petition_trigger = {
+    rw_house_current_head_trigger = yes
+    exists = scope:rw_house_ruler
+    scope:rw_house_authority = { exists = holder holder = scope:rw_house_ruler }
+    scope:rw_house_ruler = { rw_house_sovereign_trigger = yes }
+    NOT = { this = scope:rw_house_ruler }
+    NOT = { is_at_war_with = scope:rw_house_ruler }
+    scope:rw_house_record = {
+        rw_house_record_active_trigger = yes
+        NOT = { rw_house_pending_roles_valid_trigger = yes }
+        OR = {
+            NOT = { has_variable = rw_house_petition_cooldown }
+            AND = { exists = var:rw_house_petitioner NOT = { var:rw_house_petitioner = root } }
+            AND = { exists = var:rw_house_requested_ruler NOT = { var:rw_house_requested_ruler = scope:rw_house_ruler } }
+        }
+    }
+}
+rw_house_ruler_reply_trigger = {
+    rw_house_current_ruler_trigger = yes
+    scope:rw_house_record = {
+        rw_house_pending_roles_valid_trigger = yes
+        var:rw_house_requested_ruler = root
+    }
+}
+
+# Story storage can be carried by a living authority, current head or house member.
+rw_house_has_live_custodian_trigger = {
+    rw_house_record_valid_trigger = yes
+    OR = {
+        var:rw_house_authority = { exists = holder holder = { is_alive = yes } }
+        var:rw_house_target = { any_house_member = { is_alive = yes } }
+        AND = { exists = story_owner story_owner = { is_alive = yes } }
+    }
+}

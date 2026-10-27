@@ -1,0 +1,17 @@
+rw_review_house_affairs_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_review_house_affairs_interaction_desc
+    use_diplomatic_range = no
+    common_interaction = yes
+    auto_accept = yes
+    is_shown = {
+        scope:actor = { is_alive = yes }
+        has_global_variable_list = rw_house_affairs
+        any_in_global_list = {
+            variable = rw_house_affairs
+            rw_house_reader_allowed_trigger = { READER = scope:actor }
+        }
+    }
+    on_accept = { rw_house_read_register_effect = yes }
+    ai_will_do = { base = 0 }
+}

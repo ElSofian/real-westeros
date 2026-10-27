@@ -22,7 +22,9 @@ remains unverified and is planned for the war-feature stage.
 Target-version scheme sources have been received and verified. Experimental
 [discovery intake and private observation records](docs/RW010_SCHEME_EVIDENCE.md)
 and [voluntary political responses](docs/RW010_SCHEME_RESPONSE.md) are implemented;
-coercive justice and dynastic consequences remain to develop.
+personal coercive justice and legal dynastic consequences remain to develop.
+A first [political house-affair register and rehabilitation flow](docs/RW010_HOUSE_AFFAIRS.md)
+is experimental; it changes political favor, not native landholding rights.
 [G3 source investigation and an opt-in debug trace](docs/G3_HOUSE_SANCTIONS.md)
 prepare final testing; no house landholding ban is implemented.
 **G1 is back

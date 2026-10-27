@@ -1,0 +1,294 @@
+# Shared snapshot, story scope. No changes to the decree or its original term.
+rw_house_snapshot_effect = {
+    save_scope_as = rw_house_record
+    var:rw_house_target = { save_scope_as = rw_house_target }
+    var:rw_house_authority = { save_scope_as = rw_house_authority }
+    save_scope_value_as = { name = rw_house_serial value = var:rw_house_serial }
+    save_scope_value_as = { name = rw_house_revision value = var:rw_house_revision }
+    # Every action checks this alias against the exact title's current holder.
+    if = {
+        limit = { var:rw_house_authority = { exists = holder } }
+        var:rw_house_authority.holder = { save_scope_as = rw_house_ruler }
+    }
+}
+rw_house_consider_censure_effect = {
+    if = {
+        limit = { rw_house_can_consider_censure_trigger = yes }
+        scope:rw_scheme_evidence_record.var:rw_evidence_participant.house = { save_scope_as = rw_house_target }
+        primary_title = { save_scope_as = rw_house_authority }
+        trigger_event = { id = rw_house_affairs.0001 }
+    }
+}
+rw_house_issue_censure_effect = {
+    if = {
+        limit = { rw_house_censure_turn_trigger = yes }
+        save_scope_as = rw_house_issuer
+        create_story = { type = story_rw_house_affair save_scope_as = rw_house_record }
+        if = {
+            limit = {
+                exists = scope:rw_house_record
+                scope:rw_house_record = {
+                    story_type = story_rw_house_affair
+                    story_owner = scope:rw_house_issuer
+                    NOT = { has_variable = rw_house_schema }
+                }
+            }
+            scope:rw_house_target = {
+                if = { limit = { NOT = { has_variable = rw_house_affair_serial } } set_variable = { name = rw_house_affair_serial value = 0 } }
+                change_variable = { name = rw_house_affair_serial add = 1 }
+                save_scope_value_as = { name = rw_house_serial value = var:rw_house_affair_serial }
+            }
+            scope:rw_house_record = {
+                set_variable = { name = rw_house_schema value = 1 }
+                set_variable = { name = rw_house_kind value = flag:political_disfavor }
+                set_variable = { name = rw_house_serial value = scope:rw_house_serial }
+                set_variable = { name = rw_house_revision value = 1 }
+                set_variable = { name = rw_house_last_response value = flag:none }
+                set_variable = { name = rw_house_target value = scope:rw_house_target }
+                set_variable = { name = rw_house_authority value = scope:rw_house_authority }
+                set_variable = { name = rw_house_issuer value = scope:rw_house_issuer }
+                set_variable = { name = rw_house_basis_serial value = scope:rw_scheme_evidence_serial }
+                set_variable = { name = rw_house_issued_on value = current_date }
+                set_variable = { name = rw_house_basis_kind value = flag:exposed_participant_observation }
+                set_variable = { name = rw_house_state value = flag:active }
+                set_variable = { name = rw_house_term value = flag:yes years = 50 }
+                set_variable = { name = rw_house_last_ruler value = scope:rw_house_issuer }
+            }
+            # Register and consume this observation before costs/notifications.
+            add_to_global_variable_list = { name = rw_house_affairs target = scope:rw_house_record }
+            if = {
+                limit = {
+                    has_global_variable_list = rw_house_affairs
+                    any_in_global_list = { variable = rw_house_affairs this = scope:rw_house_record }
+                }
+                scope:rw_scheme_evidence_record = { set_variable = { name = rw_house_filed value = flag:yes } }
+                add_prestige = -50
+                if = {
+                    limit = { scope:rw_house_target = { exists = house_head house_head = { is_alive = yes } } }
+                    scope:rw_house_target.house_head = {
+                        if = {
+                            limit = {
+                            house = scope:rw_house_target
+                            NOT = { this = scope:rw_house_issuer }
+                            NOT = { has_opinion_modifier = { target = scope:rw_house_issuer modifier = rw_house_censured_opinion } }
+                        }
+                            add_opinion = { target = scope:rw_house_issuer modifier = rw_house_censured_opinion }
+                        }
+                    }
+                }
+                scope:rw_house_record = { rw_house_offer_opportunities_effect = yes }
+            }
+            else = {
+                if = { limit = { has_global_variable_list = rw_house_affairs } remove_list_global_variable = { name = rw_house_affairs target = scope:rw_house_record } }
+                scope:rw_house_record = { end_story = yes }
+            }
+        }
+    }
+}
+# Move storage only; permissions always derive from title/house, never custody.
+rw_house_rehome_effect = {
+    if = {
+        limit = { rw_house_record_valid_trigger = yes }
+        if = {
+            limit = { var:rw_house_authority = { exists = holder holder = { is_alive = yes } } }
+            if = { limit = { NOT = { story_owner = var:rw_house_authority.holder } } make_story_owner = var:rw_house_authority.holder }
+        }
+        else_if = {
+            limit = { var:rw_house_target = { exists = house_head house_head = { is_alive = yes } } }
+            if = { limit = { NOT = { story_owner = var:rw_house_target.house_head } } make_story_owner = var:rw_house_target.house_head }
+        }
+        else_if = {
+            limit = { NOT = { story_owner = { is_alive = yes } } var:rw_house_target = { any_house_member = { is_alive = yes } } }
+            var:rw_house_target = { random_house_member = { limit = { is_alive = yes } save_scope_as = rw_house_custodian } }
+            make_story_owner = scope:rw_house_custodian
+        }
+        else_if = {
+            limit = { NOT = { rw_house_has_live_custodian_trigger = yes } }
+            save_scope_as = rw_house_record
+            remove_list_global_variable = { name = rw_house_affairs target = scope:rw_house_record }
+            end_story = yes
+        }
+    }
+}
+# Story-local notification opportunities, once per head/ruler identity.
+rw_house_offer_opportunities_effect = {
+    if = {
+        limit = { rw_house_record_active_trigger = yes }
+        if = {
+            limit = {
+                rw_house_record_active_trigger = yes
+                var:rw_house_target = { exists = house_head house_head = { is_alive = yes is_adult = yes is_imprisoned = no } }
+                var:rw_house_target.house_head.house = var:rw_house_target
+                OR = { NOT = { exists = var:rw_house_last_head } NOT = { var:rw_house_last_head = var:rw_house_target.house_head } }
+            }
+            set_variable = { name = rw_house_last_head value = var:rw_house_target.house_head }
+            rw_house_snapshot_effect = yes
+            var:rw_house_target.house_head = { trigger_event = { id = rw_house_affairs.0002 } }
+        }
+        if = {
+            limit = {
+                rw_house_record_active_trigger = yes
+                var:rw_house_authority = { exists = holder holder = { rw_house_sovereign_trigger = yes } }
+                OR = { NOT = { exists = var:rw_house_last_ruler } NOT = { var:rw_house_last_ruler = var:rw_house_authority.holder } }
+            }
+            set_variable = { name = rw_house_last_ruler value = var:rw_house_authority.holder }
+            rw_house_snapshot_effect = yes
+            var:rw_house_authority.holder = { trigger_event = { id = rw_house_affairs.0002 } }
+        }
+    }
+}
+rw_house_petition_effect = {
+    if = {
+        limit = { rw_house_can_petition_trigger = yes }
+        scope:rw_house_record = {
+            change_variable = { name = rw_house_revision add = 1 }
+            set_variable = { name = rw_house_petitioner value = root }
+            set_variable = { name = rw_house_requested_ruler value = scope:rw_house_ruler }
+            set_variable = { name = rw_house_requested_on value = current_date }
+            set_variable = { name = rw_house_request_window value = flag:yes days = 30 }
+            set_variable = { name = rw_house_petition_cooldown value = flag:yes days = 365 }
+            set_variable = { name = rw_house_last_response value = flag:pending }
+            rw_house_snapshot_effect = yes
+        }
+        scope:rw_house_ruler = { trigger_event = { id = rw_house_affairs.0003 } }
+    }
+}
+# Internal closure only; public actions verify exact reader/role/revision first.
+rw_house_close_effect = {
+    if = {
+        limit = { scope:rw_house_record = { rw_house_record_valid_trigger = yes var:rw_house_state = flag:active } }
+        scope:rw_house_record = {
+            set_variable = { name = rw_house_state value = flag:$RESULT$ }
+            set_variable = { name = rw_house_closed_on value = current_date }
+            remove_variable = rw_house_term
+            remove_variable = rw_house_request_window
+            remove_variable = rw_house_petition_cooldown
+            change_variable = { name = rw_house_revision add = 1 }
+            set_variable = { name = rw_house_retained value = flag:yes years = 50 }
+        }
+    }
+}
+
+rw_house_restore_effect = {
+    if = {
+        limit = { rw_house_ruler_reply_trigger = yes }
+        scope:rw_house_record.var:rw_house_petitioner = { save_scope_as = rw_house_petitioner }
+        rw_house_close_effect = { RESULT = restored }
+        scope:rw_house_record = { set_variable = { name = rw_house_closed_by value = root } }
+        if = {
+            limit = { NOT = { has_opinion_modifier = { target = scope:rw_house_petitioner modifier = rw_house_restored_opinion } } }
+            add_opinion = { target = scope:rw_house_petitioner modifier = rw_house_restored_opinion }
+        }
+        scope:rw_house_record = { rw_house_snapshot_effect = yes }
+        scope:rw_house_petitioner = { trigger_event = { id = rw_house_affairs.0002 } }
+    }
+}
+rw_house_refuse_effect = {
+    if = {
+        limit = { rw_house_ruler_reply_trigger = yes }
+        scope:rw_house_record = {
+            remove_variable = rw_house_request_window
+            set_variable = { name = rw_house_last_response value = flag:refused }
+            change_variable = { name = rw_house_revision add = 1 }
+            rw_house_snapshot_effect = yes
+        }
+        scope:rw_house_record.var:rw_house_petitioner = { trigger_event = { id = rw_house_affairs.0002 } }
+    }
+}
+rw_house_withdraw_effect = {
+    if = {
+        limit = { rw_house_can_withdraw_trigger = yes }
+        rw_house_close_effect = { RESULT = withdrawn }
+        scope:rw_house_record = { set_variable = { name = rw_house_closed_by value = root } }
+    }
+}
+# Registry scans inspect records, not all character pairs. Read paths never write state.
+rw_house_read_register_effect = {
+    if = {
+        limit = { scope:actor = { is_alive = yes } has_global_variable_list = rw_house_affairs }
+        scope:actor = { save_scope_as = rw_house_reader }
+        every_in_global_list = {
+            variable = rw_house_affairs
+            limit = { rw_house_reader_allowed_trigger = { READER = scope:rw_house_reader } }
+            rw_house_snapshot_effect = yes
+            scope:rw_house_reader = { trigger_event = { id = rw_house_affairs.0002 } }
+        }
+    }
+}
+rw_house_maintenance_effect = {
+    if = {
+        limit = { rw_house_record_valid_trigger = yes }
+        save_scope_as = rw_house_record
+        if = {
+            limit = { var:rw_house_state = flag:active NOT = { has_variable = rw_house_term } }
+            rw_house_close_effect = { RESULT = expired }
+        }
+        if = {
+            limit = {
+                OR = {
+                    AND = { NOT = { var:rw_house_state = flag:active } NOT = { has_variable = rw_house_retained } }
+                    NOT = { rw_house_has_live_custodian_trigger = yes }
+                }
+            }
+            remove_list_global_variable = { name = rw_house_affairs target = scope:rw_house_record }
+            end_story = yes
+        }
+        else = {
+            rw_house_rehome_effect = yes
+            rw_house_offer_opportunities_effect = yes
+        }
+    }
+}
+# Fresh intake schedules two fixed opportunities, without a recurring chain.
+rw_house_schedule_censure_review_effect = {
+    if = {
+        limit = {
+            exists = scope:rw_scheme_evidence_record
+            scope:rw_scheme_evidence_record = {
+                story_type = story_rw_scheme_evidence
+                story_owner = scope:rw_scheme_observer
+                var:rw_evidence_schema = 1
+                var:rw_evidence_kind = flag:participant_exposed
+                var:rw_evidence_serial = scope:rw_scheme_evidence_serial
+                exists = var:rw_evidence_participant
+                NOT = { has_variable = rw_house_review_scheduled }
+            }
+        }
+        scope:rw_scheme_evidence_record = { set_variable = { name = rw_house_review_scheduled value = flag:yes } }
+        scope:rw_scheme_observer = {
+            trigger_event = { id = rw_house_affairs.0004 days = 2 }
+            trigger_event = { id = rw_house_affairs.0004 days = 30 }
+        }
+    }
+}
+
+# Do not depend on whether is_alive has already changed during owner-death dispatch.
+rw_house_owner_died_effect = {
+    if = {
+        limit = { rw_house_record_valid_trigger = yes }
+        save_scope_as = rw_house_record
+        story_owner = { save_scope_as = rw_house_departed_custodian }
+        if = {
+            limit = { var:rw_house_authority = { exists = holder holder = { is_alive = yes NOT = { this = scope:rw_house_departed_custodian } } } }
+            make_story_owner = var:rw_house_authority.holder
+        }
+        else_if = {
+            limit = { var:rw_house_target = { exists = house_head house_head = { is_alive = yes NOT = { this = scope:rw_house_departed_custodian } } } }
+            make_story_owner = var:rw_house_target.house_head
+        }
+        else_if = {
+            limit = { var:rw_house_target = { any_house_member = { is_alive = yes NOT = { this = scope:rw_house_departed_custodian } } } }
+            var:rw_house_target = {
+                random_house_member = {
+                    limit = { is_alive = yes NOT = { this = scope:rw_house_departed_custodian } }
+                    save_scope_as = rw_house_custodian
+                }
+            }
+            make_story_owner = scope:rw_house_custodian
+        }
+        else = {
+            remove_list_global_variable = { name = rw_house_affairs target = scope:rw_house_record }
+            end_story = yes
+        }
+    }
+}

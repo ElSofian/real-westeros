@@ -1,10 +1,11 @@
 # G3 — house sanctions and restoration: scoped contract and transfer trace
 
-**Status: source-audited subset; no engine run; no collective sanction or enforced
-landholding ban implemented.** This is a prerequisite investigation and an opt-in
-CK3 diagnostic, not a substitute political marker presented as the owner's ban.
-The 50-year ban remains an intended gameplay goal. Its feasibility is unresolved,
-not disproved. All manual runs remain deferred to the final campaign.
+**Status: source-audited subset; no engine run; landholding enforcement unresolved.**
+A subsequent experimental political censure/register/rehabilitation slice is in
+RW010_HOUSE_AFFAIRS.md. This investigation and optional diagnostic do not clear G3
+or replace the intended fifty-year landholding ban with a political marker. Its
+feasibility is unresolved, not disproved. Manual runs remain deferred to the final
+campaign.
 
 ## Sources and route coverage
 
@@ -95,8 +96,9 @@ This is the selected engineering direction, not fields that already exist at run
   institutional targeting. Diagnostic UI is not a new gameplay privilege or an AI
   sanctions policy. No paid service, runtime Python or language model.
 
-Next implement a first explicitly scoped house-affair persistence/restoration slice
-under this contract, while keeping **landholding enforcement unresolved** until its
+The first explicitly scoped political house-affair persistence/restoration slice is
+now in RW010_HOUSE_AFFAIRS.md. Harden its succession/request lifecycle before stronger
+sanctions, while keeping **landholding enforcement unresolved** until its
 four route gates and engine evidence exist. Inspect missing grant/election definitions
 before deciding whether another targeted private collection is necessary; no new
 upload or intermediate game run is requested by this investigation.

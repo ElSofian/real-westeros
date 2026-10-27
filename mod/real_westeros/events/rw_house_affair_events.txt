@@ -1,0 +1,104 @@
+namespace = rw_house_affairs
+
+rw_house_affairs.0001 = {
+    type = character_event
+    title = rw_house_affairs.censure_title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_house_censure_turn_trigger = yes } desc = rw_house_affairs.censure_terms }
+            desc = rw_house_affairs.unavailable
+        }
+    }
+    right_portrait = {
+        trigger = { rw_house_censure_turn_trigger = yes }
+        character = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+    }
+    theme = intrigue
+    option = {
+        name = rw_house_affairs.censure
+        trigger = { rw_house_censure_turn_trigger = yes }
+        rw_house_issue_censure_effect = yes
+        ai_chance = {
+            base = 20
+            modifier = { factor = 2 has_trait = vengeful }
+            modifier = { factor = 0.5 has_trait = compassionate }
+        }
+    }
+    option = { name = rw_house_affairs.leave_unchanged ai_chance = { base = 80 } }
+}
+
+rw_house_affairs.0002 = {
+    type = character_event
+    title = rw_house_affairs.record_title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_house_view_trigger = yes scope:rw_house_record = { var:rw_house_state = flag:restored } } desc = rw_house_affairs.restored }
+            triggered_desc = { trigger = { rw_house_view_trigger = yes scope:rw_house_record = { var:rw_house_state = flag:withdrawn } } desc = rw_house_affairs.withdrawn }
+            triggered_desc = { trigger = { rw_house_view_trigger = yes scope:rw_house_record = { NOT = { has_variable = rw_house_term } } } desc = rw_house_affairs.expired }
+            triggered_desc = {
+                trigger = { rw_house_view_trigger = yes }
+                desc = {
+                    desc = rw_house_affairs.active
+                    triggered_desc = { trigger = { scope:rw_house_record = { var:rw_house_last_response = flag:refused } } desc = rw_house_affairs.last_refused }
+                    triggered_desc = { trigger = { scope:rw_house_record = { var:rw_house_last_response = flag:pending NOT = { has_variable = rw_house_request_window } } } desc = rw_house_affairs.last_unanswered }
+                }
+            }
+            desc = rw_house_affairs.unavailable
+        }
+    }
+    theme = diplomacy
+    option = {
+        name = rw_house_affairs.petition
+        trigger = { rw_house_can_petition_trigger = yes }
+        rw_house_petition_effect = yes
+        ai_chance = { base = 50 }
+    }
+    option = {
+        name = rw_house_affairs.answer
+        trigger = { rw_house_ruler_reply_trigger = yes }
+        if = { limit = { rw_house_ruler_reply_trigger = yes } trigger_event = { id = rw_house_affairs.0003 } }
+        ai_chance = { base = 50 }
+    }
+    option = {
+        name = rw_house_affairs.withdraw
+        trigger = { rw_house_can_withdraw_trigger = yes }
+        rw_house_withdraw_effect = yes
+        ai_chance = { base = 10 }
+    }
+    option = { name = rw_house_affairs.leave_unchanged ai_chance = { base = 50 } }
+}
+
+rw_house_affairs.0003 = {
+    type = character_event
+    title = rw_house_affairs.petition_title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_house_ruler_reply_trigger = yes } desc = rw_house_affairs.petition_terms }
+            desc = rw_house_affairs.unavailable
+        }
+    }
+    right_portrait = {
+        trigger = { rw_house_ruler_reply_trigger = yes }
+        character = scope:rw_house_record.var:rw_house_petitioner
+    }
+    theme = diplomacy
+    option = {
+        name = rw_house_affairs.restore
+        trigger = { rw_house_ruler_reply_trigger = yes }
+        rw_house_restore_effect = yes
+        ai_chance = { base = 40 modifier = { factor = 2 has_trait = forgiving } modifier = { factor = 0.5 has_trait = vengeful } }
+    }
+    option = {
+        name = rw_house_affairs.refuse
+        trigger = { rw_house_ruler_reply_trigger = yes }
+        rw_house_refuse_effect = yes
+        ai_chance = { base = 40 }
+    }
+    option = { name = rw_house_affairs.leave_unchanged ai_chance = { base = 20 } }
+}
+
+rw_house_affairs.0004 = {
+    hidden = yes
+    trigger = { rw_house_can_consider_censure_trigger = yes }
+    immediate = { rw_house_consider_censure_effect = yes }
+}
