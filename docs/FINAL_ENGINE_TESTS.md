@@ -47,3 +47,27 @@ No cases executed. See RW010_REPAIR_RESPONSE.md.
 8. Observe AI accepting/refusing through the same event/effects; ensure an unfunded
    provider cannot make a gesture, retention stays unchanged, and statements,
    native crimes/secrets, titles and service receipts are untouched.
+
+## Mutual release of a deferred endorsement (RW-010)
+
+No cases executed. See RW010_MUTUAL_CANCELLATION.md.
+
+1. Provider asks/client accepts, then client offers/provider accepts: verify explicit
+   consent, distinct mutual-release receipt, no gold/prestige/opinion/service/breach.
+2. Reject or ignore until request expiry: obligation remains, no penalty or deadline
+   extension. War/poverty do not block consenting to a neutral release; dead/minor/
+   unlanded parties and an overdue promise cannot authorize it.
+3. Fulfill or break while a request is pending. Old acceptance/rejection, weekly
+   reminders and deadline callbacks must not undo that outcome, duplicate effects
+   or erase its breach receipt. Test both action orders on the same day.
+4. Old request expires; make a new request after the seven-day cooldown. Replay the
+   old response with identical parties/contract: no effect on the newer request.
+5. Change provider/client/serial/revision/price/mode in a stale test context: no
+   cancellation or cleanup of another obligation; no immediate-mode cancellation.
+6. At original day-thirty-one expiry the normal funded/eligible accountability
+   still applies even if cancellation was requested at the last moment.
+7. AI client gets the initial opportunity; AI provider can propose in a due event,
+   then still revisits weekly after rejection/silence. Compare player costs/guards.
+8. Save/reload before/after requests and decisions, provider/client death, lost
+   land, old experimental saves, and later receipt replacement. Notices must never
+   claim release for a different receipt; independent case evidence stays intact.

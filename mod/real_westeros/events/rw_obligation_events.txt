@@ -19,6 +19,17 @@ rw_obligations.0001 = {
         ai_chance = { base = 10 }
     }
     option = {
+        name = rw_cancellations.propose
+        trigger = { rw_cancel_event_can_propose_trigger = { PARTY = scope:rw_service_provider } }
+        rw_cancel_provider_propose_effect = yes
+        # A pending/rejected request never stops the ordinary due-date revisit.
+        rw_service_wait_promise_effect = yes
+        ai_chance = {
+            base = 5
+            modifier = { factor = 3 is_at_war = yes }
+        }
+    }
+    option = {
         name = rw_obligations.wait
         trigger = { rw_service_obligation_actionable_trigger = yes }
         # Leave it live and revisit in a week, for AI and human alike.

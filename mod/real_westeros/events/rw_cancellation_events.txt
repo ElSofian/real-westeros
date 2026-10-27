@@ -1,0 +1,69 @@
+namespace = rw_cancellations
+
+rw_cancellations.0001 = {
+    type = character_event
+    title = rw_cancellations.0001.t
+    desc = rw_cancellations.0001.desc
+    theme = diplomacy
+    left_portrait = { character = scope:rw_cancel_proposer }
+    option = {
+        name = rw_cancellations.accept
+        trigger = { rw_cancel_responder_turn_trigger = yes }
+        rw_cancel_accept_effect = yes
+        ai_chance = {
+            base = 40
+            modifier = { factor = 2 is_at_war = yes }
+            modifier = { factor = 2 opinion = { target = scope:rw_cancel_proposer value > 25 } }
+        }
+    }
+    option = {
+        name = rw_cancellations.reject
+        trigger = { rw_cancel_responder_turn_trigger = yes }
+        rw_cancel_reject_effect = yes
+        ai_chance = { base = 60 }
+    }
+    option = {
+        name = rw_cancellations.ignore
+        trigger = { rw_cancel_responder_turn_trigger = yes }
+        # Silence is not consent; the request window lapses independently.
+        ai_chance = { base = 10 }
+    }
+    option = {
+        name = rw_cancellations.lapsed
+        trigger = { NOT = { rw_cancel_responder_turn_trigger = yes } }
+        ai_chance = { base = 100 }
+    }
+}
+
+rw_cancellations.0002 = {
+    type = character_event
+    title = rw_cancellations.0002.t
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_cancel_release_receipt_trigger = yes } desc = rw_cancellations.released }
+            desc = rw_cancellations.unavailable
+        }
+    }
+    theme = diplomacy
+    option = { name = rw_cancellations.acknowledge }
+}
+
+# One client opportunity per accepted promise, without scanning character pairs.
+rw_cancellations.0003 = {
+    type = character_event
+    title = rw_cancellations.0003.t
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_cancel_obligation_live_trigger = yes this = scope:rw_service_client } desc = rw_cancellations.promise_received }
+            desc = rw_cancellations.unavailable
+        }
+    }
+    theme = diplomacy
+    option = {
+        name = rw_cancellations.propose
+        trigger = { rw_cancel_event_can_propose_trigger = { PARTY = scope:rw_service_client } }
+        rw_cancel_client_propose_effect = yes
+        ai_chance = { base = 5 }
+    }
+    option = { name = rw_cancellations.keep ai_chance = { base = 95 } }
+}

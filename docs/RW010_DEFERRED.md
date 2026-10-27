@@ -22,6 +22,12 @@ AI and humans get the same decision effects and outcomes. AI review interaction
 initiation is disabled because scheduled reconsideration supplies its opportunities;
 no global character scan is introduced. Actual event timing/AI behavior is unverified.
 
+## Mutual cancellation amendment
+
+RW010_MUTUAL_CANCELLATION.md adds explicit proposals by either party, accepted only
+by the other party, without payment/penalty or changing the original deadline.
+Pending requests never suspend ordinary performance, breach or timeout.
+
 ## Performance and failure
 
 - **Fulfill:** recheck exact contract/revision, parties' eligibility, delivery window
