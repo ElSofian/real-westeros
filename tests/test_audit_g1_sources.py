@@ -6,7 +6,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
-from audit_g1_sources import SourceReference, audit, main, marker_line_numbers  # noqa: E402
+from audit_g1_sources import REFERENCES, SourceReference, audit, main, marker_line_numbers  # noqa: E402
 
 
 class G1SourceAuditTests(unittest.TestCase):
@@ -33,6 +33,29 @@ class G1SourceAuditTests(unittest.TestCase):
         self.assertEqual(result[0]["status"], "LOCATED_UNVERIFIED")
         self.assertEqual(result[0]["markers"]["declare_war_interaction"], [1])
         self.assertEqual(result[0]["markers"]["has_any_display_cb_on"], [2])
+
+    def test_observed_target_identifiers_not_newer_index(self):
+        # Original synthetic fixtures: identifiers only, no installed source copied.
+        for ref in REFERENCES:
+            path = (self.ck3 if ref.source == 'CK3' else self.agot) / ref.relative_path
+            path.parent.mkdir(parents=True, exist_ok=True)
+            if 'character_interactions' in ref.relative_path:
+                text = ('declare_war_interaction = {\n'
+                        ' can_attack_in_hierarchy = scope:recipient\n'
+                        ' has_any_display_cb_on = scope:recipient\n'
+                        ' war_declarer_needs_hook_on_liege = no\n}\n')
+            elif ref.relative_path.endswith('00_war_and_peace_triggers.txt'):
+                text = 'war_declarer_needs_hook_on_liege = { always = no }\n'
+            else:
+                text = 'synthetic_reference = { always = yes }\n'
+            path.write_text(text, encoding='utf-8')
+        results = audit(self.ck3, self.agot)
+        self.assertTrue(all(r['status'] == 'LOCATED_UNVERIFIED' for r in results))
+        # A newer-version identifier cannot silently substitute for the observed gate.
+        helper = self.agot / 'common/scripted_triggers/00_war_and_peace_triggers.txt'
+        helper.write_text('allows_declaring_war_against_target_trigger = { always = yes }\n')
+        changed = audit(self.ck3, self.agot)
+        self.assertTrue(any(r['status'] == 'REVIEW_MARKERS' for r in changed))
 
     def test_missing_source_is_not_success(self):
         result = audit(self.ck3, self.agot, (self.reference,))
