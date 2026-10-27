@@ -5,7 +5,7 @@ simulation, external database, paid service or changed AGOT story is used.
 
 ## Scope
 
-Each approved service-breach referral now creates its own `story_rw_political_case`,
+Each approved service-breach referral or separately raised affront allegation creates its own `story_rw_political_case`,
 owned by the provider. Its serial, client, mediator, reason, stage, deadline and
 result belong to that story. New records do not overwrite earlier records. Each
 callback carries the actual story scope plus the expected provider/serial/parties/
@@ -13,8 +13,9 @@ reason. Matching checks type and owner as well as these identifiers. This suppor
 multiple retained referrals without a count cap; the current service pipeline still
 has one active offer/obligation per provider and a yearly offer cooldown.
 
-Only referred mediation cases are archived here. The service engine still stores
-its latest service receipt, so this is not an archive of every unreferred promise,
+Service referrals and the separate allegation kind are archived here; allegation
+records exist before ruler disclosure and restrict access accordingly. The service
+engine still stores its latest service receipt, so this is not an archive of every unreferred promise,
 a general evidence ledger, a house history or dynastic persistence implementation.
 
 ## Creation, closure and expiry
@@ -46,7 +47,7 @@ death/house restoration is future G3 work, not a claimed feature of this slice.
 **Review Known Political Cases** targets a provider. It enumerates only that
 provider's case stories and filters by the reader's stored role: provider, original
 client or original mediator. It then delivers a read-only notice per known record,
-including active ruler/repair stages or closed outcomes. Current rank is not required
+including active ruler/repair stages or closed outcomes. The planned mediator role requires recorded disclosure (RW010_ALLEGATIONS.md). Current rank is not required
 to remember a previously disclosed case, but decision effects still require current
 jurisdiction. Outsiders cannot query private cases through this interaction.
 
@@ -100,3 +101,5 @@ Final campaign must verify:
    Lost/purged client/mediator references remain inert. Check legacy/fresh saves.
 8. Compare AGOT-only baseline, logs, save size and performance before claiming any
    compatibility, persistence guarantee or acceptable long-term archive overhead.
+
+Format update: decision/archive guards now require explicit kind provenance. Old stories lacking kind are not assumed to be service/disclosed facts; no migration was engine-tested. See RW010_ALLEGATIONS.md.

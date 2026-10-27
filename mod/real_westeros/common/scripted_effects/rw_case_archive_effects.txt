@@ -9,13 +9,14 @@ rw_case_read_archive_effect = {
         scope:actor = { save_scope_as = rw_case_reader }
         scope:recipient = {
             every_owned_story = {
-                limit = { rw_case_reader_allowed_trigger = yes }
+                limit = { rw_case_reader_allowed_trigger = { READER = scope:rw_case_reader } }
                 save_scope_as = rw_case_record
                 story_owner = { save_scope_as = rw_service_provider }
                 var:rw_case_client = { save_scope_as = rw_service_client }
                 var:rw_case_mediator = { save_scope_as = rw_case_mediator }
                 save_scope_value_as = { name = rw_case_serial value = var:rw_case_serial }
                 save_scope_value_as = { name = rw_case_reason value = var:rw_case_reason }
+                save_scope_value_as = { name = rw_case_kind value = var:rw_case_kind }
                 scope:rw_case_reader = { trigger_event = { id = rw_cases.0006 } }
             }
         }

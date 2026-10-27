@@ -1,0 +1,51 @@
+rw_allegation_can_start_trigger = {
+    scope:actor = {
+        is_alive = yes
+        is_adult = yes
+        is_landed = yes
+        NOT = { has_character_flag = rw_allegation_cooldown }
+    }
+    scope:recipient = {
+        is_alive = yes
+        is_adult = yes
+        is_landed = yes
+        top_liege = scope:actor.top_liege
+        top_liege = {
+            is_alive = yes is_adult = yes is_landed = yes
+            NOT = { this = scope:actor }
+            NOT = { this = scope:recipient }
+        }
+    }
+    NOT = { scope:actor = scope:recipient }
+}
+rw_allegation_respondent_turn_trigger = {
+    rw_case_matches_trigger = yes
+    rw_case_jurisdiction_trigger = yes
+    this = scope:rw_service_provider
+    scope:rw_case_record = {
+        var:rw_case_kind = flag:allegation
+        var:rw_case_stage = flag:respondent
+        var:rw_case_evidence = flag:unanswered
+        has_variable = rw_case_pending
+    }
+}
+rw_allegation_claimant_turn_trigger = {
+    rw_case_matches_trigger = yes
+    rw_case_jurisdiction_trigger = yes
+    this = scope:rw_service_client
+    scope:rw_case_record = {
+        var:rw_case_kind = flag:allegation
+        var:rw_case_stage = flag:claimant
+        has_variable = rw_case_pending
+        OR = { var:rw_case_evidence = flag:admitted var:rw_case_evidence = flag:contested }
+    }
+}
+rw_allegation_can_read_statement_trigger = {
+    rw_case_matches_trigger = yes
+    exists = scope:rw_case_reader
+    this = scope:rw_case_reader
+    scope:rw_case_record = {
+        var:rw_case_kind = flag:allegation
+        rw_case_reader_allowed_trigger = { READER = scope:rw_case_reader }
+    }
+}

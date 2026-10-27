@@ -1,0 +1,84 @@
+namespace = rw_allegations
+
+rw_allegations.0001 = {
+    type = character_event
+    title = rw_allegations.0001.t
+    desc = rw_allegations.0001.desc
+    theme = diplomacy
+    left_portrait = { character = scope:rw_service_client }
+    option = {
+        name = rw_allegations.admit
+        trigger = { rw_allegation_respondent_turn_trigger = yes }
+        rw_allegation_answer_effect = { ANSWER = admitted }
+        ai_chance = { base = 25 }
+    }
+    option = {
+        name = rw_allegations.contest
+        trigger = { rw_allegation_respondent_turn_trigger = yes }
+        rw_allegation_answer_effect = { ANSWER = contested }
+        ai_chance = { base = 60 }
+    }
+    option = {
+        name = rw_allegations.ignore
+        trigger = { rw_allegation_respondent_turn_trigger = yes }
+        # Silence changes no evidence. Independent expiry remains neutral.
+        ai_chance = { base = 15 }
+    }
+    option = {
+        name = rw_cases.lapsed
+        trigger = { NOT = { rw_allegation_respondent_turn_trigger = yes } }
+        rw_case_lost_jurisdiction_effect = yes
+        rw_case_expire_effect = yes
+        ai_chance = { base = 100 }
+    }
+}
+rw_allegations.0002 = {
+    type = character_event
+    title = rw_allegations.0002.t
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { scope:rw_case_record = { var:rw_case_evidence = flag:admitted } } desc = rw_allegations.reply_admitted }
+            desc = rw_allegations.reply_contested
+        }
+    }
+    theme = diplomacy
+    left_portrait = { character = scope:rw_service_provider }
+    option = {
+        name = rw_allegations.refer
+        trigger = { rw_allegation_claimant_turn_trigger = yes }
+        rw_allegation_refer_effect = yes
+        ai_chance = {
+            base = 40
+            modifier = { factor = 2 scope:rw_case_record = { var:rw_case_evidence = flag:admitted } }
+        }
+    }
+    option = {
+        name = rw_allegations.withdraw
+        trigger = { rw_allegation_claimant_turn_trigger = yes }
+        rw_allegation_withdraw_effect = yes
+        ai_chance = { base = 60 }
+    }
+    option = {
+        name = rw_cases.lapsed
+        trigger = { NOT = { rw_allegation_claimant_turn_trigger = yes } }
+        rw_case_lost_jurisdiction_effect = yes
+        rw_case_expire_effect = yes
+        ai_chance = { base = 100 }
+    }
+}
+
+# Statement history is read-only and independently checks the viewer's knowledge.
+rw_allegations.0003 = {
+    type = character_event
+    title = rw_allegations.statement_title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_allegation_can_read_statement_trigger = yes scope:rw_case_record = { var:rw_case_evidence = flag:admitted } } desc = rw_allegations.statement_admitted }
+            triggered_desc = { trigger = { rw_allegation_can_read_statement_trigger = yes scope:rw_case_record = { var:rw_case_evidence = flag:contested } } desc = rw_allegations.statement_contested }
+            triggered_desc = { trigger = { rw_allegation_can_read_statement_trigger = yes scope:rw_case_record = { var:rw_case_evidence = flag:unanswered } } desc = rw_allegations.statement_unanswered }
+            desc = rw_allegations.statement_unavailable
+        }
+    }
+    theme = diplomacy
+    option = { name = rw_cases.acknowledge }
+}

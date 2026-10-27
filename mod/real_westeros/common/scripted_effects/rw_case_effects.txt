@@ -13,6 +13,9 @@ rw_case_open_effect = {
                 set_variable = { name = rw_case_mediator value = scope:rw_case_mediator }
                 set_variable = { name = rw_case_reason value = scope:rw_service_provider.var:rw_service_last_reason }
                 set_variable = { name = rw_case_stage value = flag:ruler }
+                set_variable = { name = rw_case_kind value = flag:service }
+                set_variable = { name = rw_case_disclosed value = flag:yes }
+                save_scope_value_as = { name = rw_case_kind value = flag:service }
                 set_variable = { name = rw_case_pending value = flag:yes days = 30 }
                 save_scope_value_as = { name = rw_case_serial value = var:rw_case_serial }
                 save_scope_value_as = { name = rw_case_reason value = var:rw_case_reason }
@@ -57,7 +60,7 @@ rw_case_decline_effect = {
 }
 rw_case_admonish_effect = {
     if = {
-        limit = { rw_case_ruler_turn_trigger = yes }
+        limit = { rw_case_can_admonish_trigger = yes }
         rw_case_close_effect = { RESULT = admonished }
         add_opinion = { target = scope:rw_service_provider modifier = rw_case_admonished_opinion }
     }

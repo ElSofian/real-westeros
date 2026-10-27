@@ -5,6 +5,8 @@ rw_cases.0001 = {
     title = rw_cases.0001.t
     desc = {
         first_valid = {
+            triggered_desc = { trigger = { scope:rw_case_kind = flag:allegation scope:rw_case_record = { var:rw_case_evidence = flag:admitted } } desc = rw_allegations.ruler_admitted_desc }
+            triggered_desc = { trigger = { scope:rw_case_kind = flag:allegation } desc = rw_allegations.ruler_contested_desc }
             triggered_desc = { trigger = { scope:rw_case_reason = flag:refusal } desc = rw_cases.0001.refusal_desc }
             desc = rw_cases.0001.deadline_desc
         }
@@ -24,7 +26,7 @@ rw_cases.0001 = {
     }
     option = {
         name = rw_cases.admonish
-        trigger = { rw_case_ruler_turn_trigger = yes }
+        trigger = { rw_case_can_admonish_trigger = yes }
         rw_case_admonish_effect = yes
         ai_chance = {
             base = 30
@@ -53,7 +55,12 @@ rw_cases.0001 = {
 rw_cases.0002 = {
     type = character_event
     title = rw_cases.0002.t
-    desc = rw_cases.0002.desc
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { scope:rw_case_kind = flag:allegation } desc = rw_allegations.repair_desc }
+            desc = rw_cases.0002.desc
+        }
+    }
     theme = diplomacy
     left_portrait = { character = scope:rw_case_mediator }
     option = {
@@ -85,6 +92,7 @@ rw_cases.0003 = {
     title = rw_cases.0003.t
     desc = {
         first_valid = {
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:withdrawn } } desc = rw_allegations.result_withdrawn }
             triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:declined } } desc = rw_cases.result_declined }
             triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:admonished } } desc = rw_cases.result_admonished }
             triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:repaired } } desc = rw_cases.result_repaired }
@@ -107,6 +115,7 @@ rw_cases.0005 = {
     title = rw_cases.0003.t
     desc = {
         first_valid = {
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:withdrawn } } desc = rw_allegations.result_withdrawn }
             triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:declined } } desc = rw_cases.result_declined }
             triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:admonished } } desc = rw_cases.result_admonished }
             triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:repaired } } desc = rw_cases.result_repaired }
@@ -124,6 +133,8 @@ rw_cases.0006 = {
     title = rw_cases.archive_title
     desc = {
         first_valid = {
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_stage = flag:respondent has_variable = rw_case_pending } } desc = rw_allegations.archive_respondent }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_stage = flag:claimant has_variable = rw_case_pending } } desc = rw_allegations.archive_claimant }
             triggered_desc = {
                 trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_stage = flag:ruler has_variable = rw_case_pending } }
                 desc = rw_cases.archive_ruler
@@ -142,6 +153,7 @@ rw_cases.0006 = {
                 }
                 desc = rw_cases.result_expired
             }
+            triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:withdrawn } } desc = rw_allegations.result_withdrawn }
             triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:declined } } desc = rw_cases.result_declined }
             triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:admonished } } desc = rw_cases.result_admonished }
             triggered_desc = { trigger = { rw_case_matches_trigger = yes scope:rw_case_record = { var:rw_case_result = flag:repaired } } desc = rw_cases.result_repaired }
@@ -150,5 +162,13 @@ rw_cases.0006 = {
         }
     }
     theme = diplomacy
+    option = {
+        name = rw_allegations.read_statement
+        trigger = { rw_allegation_can_read_statement_trigger = yes }
+        if = {
+            limit = { rw_allegation_can_read_statement_trigger = yes }
+            trigger_event = { id = rw_allegations.0003 }
+        }
+    }
     option = { name = rw_cases.acknowledge }
 }

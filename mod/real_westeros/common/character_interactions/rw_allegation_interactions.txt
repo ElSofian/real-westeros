@@ -1,0 +1,19 @@
+rw_raise_affront_allegation_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_raise_affront_allegation_interaction_desc
+    auto_accept = yes
+    is_shown = {
+        scope:actor = { is_landed = yes }
+        scope:recipient = { is_landed = yes }
+        NOT = { scope:actor = scope:recipient }
+    }
+    is_valid_showing_failures_only = { rw_allegation_can_start_trigger = yes }
+    on_accept = { rw_allegation_begin_effect = yes }
+    ai_potential = { scope:actor = { NOT = { has_character_flag = rw_allegation_cooldown } } }
+    ai_targets = { ai_recipients = liege }
+    ai_frequency = 12
+    ai_will_do = {
+        base = 5
+        modifier = { factor = 0 scope:actor = { opinion = { target = scope:recipient value >= -25 } } }
+    }
+}
