@@ -1,0 +1,74 @@
+# Both interaction directions share this mapping and snapshot routine.
+rw_cancel_prepare_effect = {
+    if = {
+        limit = { rw_cancel_interaction_allowed_trigger = { PROVIDER = $PROVIDER$ CLIENT = $CLIENT$ } }
+        $PROVIDER$ = { save_scope_as = rw_service_provider }
+        $CLIENT$ = { save_scope_as = rw_service_client }
+        scope:actor = { save_scope_as = rw_cancel_proposer }
+        scope:recipient = { save_scope_as = rw_cancel_responder }
+        rw_service_snapshot_effect = yes
+        scope:rw_cancel_proposer = { rw_cancel_propose_effect = yes }
+    }
+}
+rw_cancel_propose_effect = {
+    if = {
+        limit = { rw_cancel_can_propose_trigger = yes }
+        scope:rw_service_provider = {
+            if = {
+                limit = { NOT = { has_variable = rw_cancel_serial } }
+                set_variable = { name = rw_cancel_serial value = 0 }
+            }
+            change_variable = { name = rw_cancel_serial add = 1 }
+            save_scope_value_as = { name = rw_cancel_serial value = var:rw_cancel_serial }
+            set_variable = { name = rw_cancel_proposer value = scope:rw_cancel_proposer }
+            set_variable = { name = rw_cancel_responder value = scope:rw_cancel_responder }
+            add_character_flag = { flag = rw_cancel_pending days = 7 }
+            add_character_flag = { flag = rw_cancel_cooldown days = 7 }
+        }
+        # Original obligation revision, due date and deadline remain unchanged.
+        scope:rw_cancel_responder = { trigger_event = { id = rw_cancellations.0001 } }
+    }
+}
+rw_cancel_provider_propose_effect = {
+    if = {
+        limit = { rw_cancel_event_can_propose_trigger = { PARTY = scope:rw_service_provider } }
+        scope:rw_service_provider = { save_scope_as = rw_cancel_proposer }
+        scope:rw_service_client = { save_scope_as = rw_cancel_responder }
+        rw_cancel_propose_effect = yes
+    }
+}
+rw_cancel_client_propose_effect = {
+    if = {
+        limit = { rw_cancel_event_can_propose_trigger = { PARTY = scope:rw_service_client } }
+        scope:rw_service_client = { save_scope_as = rw_cancel_proposer }
+        scope:rw_service_provider = { save_scope_as = rw_cancel_responder }
+        rw_cancel_propose_effect = yes
+    }
+}
+rw_cancel_accept_effect = {
+    if = {
+        limit = { rw_cancel_responder_turn_trigger = yes }
+        rw_service_record_receipt_effect = yes
+        scope:rw_service_provider = {
+            set_variable = { name = rw_service_last_outcome value = flag:mutually_released }
+            set_variable = { name = rw_service_last_cancel_serial value = scope:rw_cancel_serial }
+            set_variable = { name = rw_service_last_cancel_proposer value = scope:rw_cancel_proposer }
+            remove_variable = rw_service_last_reason
+        }
+        # Terminal consumption precedes notifications; stale timeout/delivery cannot run.
+        rw_service_clear_effect = yes
+        scope:rw_service_provider = { trigger_event = { id = rw_cancellations.0002 } }
+        scope:rw_service_client = { trigger_event = { id = rw_cancellations.0002 } }
+    }
+}
+rw_cancel_reject_effect = {
+    if = {
+        limit = { rw_cancel_responder_turn_trigger = yes }
+        scope:rw_service_provider = {
+            remove_character_flag = rw_cancel_pending
+            remove_variable = rw_cancel_proposer
+            remove_variable = rw_cancel_responder
+        }
+        # No breach, transfer, reschedule, deadline extension or opinion penalty.
+    }
+}

@@ -19,6 +19,7 @@ rw_service_accept_promise_effect = {
             trigger_event = { id = rw_obligations.0001 days = 8 }
             trigger_event = { id = rw_obligations.0002 days = 31 }
         }
+        scope:rw_service_client = { trigger_event = { id = rw_cancellations.0003 } }
     }
 }
 # Record latest outcome only, not a universal history. Serial never reused.

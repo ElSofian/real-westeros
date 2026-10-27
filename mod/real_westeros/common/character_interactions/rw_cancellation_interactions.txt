@@ -1,0 +1,29 @@
+# auto_accept opens the other party's decision, never grants their consent.
+rw_request_release_endorsement_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_request_release_endorsement_interaction_desc
+    auto_accept = yes
+    is_shown = {
+        scope:actor = { has_character_flag = rw_service_obligation var:rw_service_target = scope:recipient }
+    }
+    is_valid_showing_failures_only = {
+        rw_cancel_interaction_allowed_trigger = { PROVIDER = scope:actor CLIENT = scope:recipient }
+    }
+    on_accept = { rw_cancel_prepare_effect = { PROVIDER = scope:actor CLIENT = scope:recipient } }
+    # Scheduled obligation decision offers this to AI without pair scanning.
+    ai_will_do = { base = 0 }
+}
+rw_offer_release_endorsement_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_offer_release_endorsement_interaction_desc
+    auto_accept = yes
+    is_shown = {
+        scope:recipient = { has_character_flag = rw_service_obligation var:rw_service_target = scope:actor }
+    }
+    is_valid_showing_failures_only = {
+        rw_cancel_interaction_allowed_trigger = { PROVIDER = scope:recipient CLIENT = scope:actor }
+    }
+    on_accept = { rw_cancel_prepare_effect = { PROVIDER = scope:recipient CLIENT = scope:actor } }
+    # Promise-acceptance event supplies an explicit AI/client opportunity.
+    ai_will_do = { base = 0 }
+}

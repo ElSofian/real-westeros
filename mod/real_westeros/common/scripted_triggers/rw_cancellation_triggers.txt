@@ -1,0 +1,93 @@
+# Interaction entry has no saved quote yet: check the actual current obligation.
+rw_cancel_interaction_allowed_trigger = {
+    NOT = { $PROVIDER$ = $CLIENT$ }
+    $PROVIDER$ = {
+        is_alive = yes
+        is_adult = yes
+        is_landed = yes
+        has_character_flag = rw_service_obligation
+        has_character_flag = rw_service_deadline
+        var:rw_service_turn = flag:obligation
+        var:rw_service_mode = flag:deferred
+        var:rw_service_target = $CLIENT$
+        NOT = { has_character_flag = rw_cancel_pending }
+        NOT = { has_character_flag = rw_cancel_cooldown }
+    }
+    $CLIENT$ = { is_alive = yes is_adult = yes is_landed = yes }
+}
+# Consent may be requested during war or poverty; no performance/payment occurs.
+rw_cancel_obligation_live_trigger = {
+    rw_service_obligation_live_trigger = yes
+    rw_service_deferred_trigger = yes
+    scope:rw_service_provider = {
+        is_adult = yes
+        is_landed = yes
+        has_character_flag = rw_service_deadline
+    }
+    scope:rw_service_client = { is_adult = yes is_landed = yes }
+}
+rw_cancel_parties_trigger = {
+    exists = scope:rw_cancel_proposer
+    exists = scope:rw_cancel_responder
+    OR = {
+        AND = {
+            scope:rw_cancel_proposer = scope:rw_service_provider
+            scope:rw_cancel_responder = scope:rw_service_client
+        }
+        AND = {
+            scope:rw_cancel_proposer = scope:rw_service_client
+            scope:rw_cancel_responder = scope:rw_service_provider
+        }
+    }
+    NOT = { scope:rw_service_provider = scope:rw_service_client }
+}
+rw_cancel_can_propose_trigger = {
+    rw_cancel_obligation_live_trigger = yes
+    rw_cancel_parties_trigger = yes
+    this = scope:rw_cancel_proposer
+    scope:rw_service_provider = {
+        NOT = { has_character_flag = rw_cancel_pending }
+        NOT = { has_character_flag = rw_cancel_cooldown }
+    }
+}
+# Event options have the obligation snapshot but no proposal scopes yet.
+rw_cancel_event_can_propose_trigger = {
+    rw_cancel_obligation_live_trigger = yes
+    this = $PARTY$
+    scope:rw_service_provider = {
+        NOT = { has_character_flag = rw_cancel_pending }
+        NOT = { has_character_flag = rw_cancel_cooldown }
+    }
+}
+rw_cancel_request_matches_trigger = {
+    rw_cancel_obligation_live_trigger = yes
+    rw_cancel_parties_trigger = yes
+    exists = scope:rw_cancel_serial
+    scope:rw_service_provider = {
+        has_character_flag = rw_cancel_pending
+        has_variable = rw_cancel_serial
+        var:rw_cancel_serial = scope:rw_cancel_serial
+        var:rw_cancel_proposer = scope:rw_cancel_proposer
+        var:rw_cancel_responder = scope:rw_cancel_responder
+    }
+}
+rw_cancel_responder_turn_trigger = {
+    rw_cancel_request_matches_trigger = yes
+    this = scope:rw_cancel_responder
+}
+# Closed receipt identity; a later contract cannot masquerade as this release.
+rw_cancel_release_receipt_trigger = {
+    exists = scope:rw_service_provider
+    exists = scope:rw_service_client
+    exists = scope:rw_service_serial
+    exists = scope:rw_cancel_serial
+    rw_cancel_parties_trigger = yes
+    OR = { this = scope:rw_service_provider this = scope:rw_service_client }
+    scope:rw_service_provider = {
+        var:rw_service_last_serial = scope:rw_service_serial
+        var:rw_service_last_client = scope:rw_service_client
+        var:rw_service_last_outcome = flag:mutually_released
+        var:rw_service_last_cancel_serial = scope:rw_cancel_serial
+        var:rw_service_last_cancel_proposer = scope:rw_cancel_proposer
+    }
+}

@@ -8,8 +8,9 @@ and RW010_DEFERRED.md. Contextual service-breach mediation is in RW010_CASES.md.
 Personal consent to conciliatory gestures is in RW010_REPAIR_RESPONSE.md.
 Source inspection found no scheme/discovery entry points in the supplied war archives;
 automatic assassination integration needs additional target-version source evidence.
-Next independent slice: mutual cancellation of a deferred promise, preserving
-separate consent and receipt identity. Do not invent automatic discovery hooks or
+Mutual cancellation of a deferred promise is in RW010_MUTUAL_CANCELLATION.md.
+Next consolidate an installable experimental distribution and audit its manifest
+and installation instructions before further feature expansion. Do not invent automatic discovery hooks or
 replace original CK3 scripts with Python gameplay models.
 All engine runs are deferred until final testing per owner. G1 is todo at the
 war-feature stage, not an immediate prerequisite. Keep original scenarios and
