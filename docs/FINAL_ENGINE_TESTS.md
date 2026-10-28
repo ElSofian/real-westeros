@@ -495,3 +495,49 @@ not a prohibition on grants/inheritance/election/conquest or removal of nobility
   eligibility/funds/effects and full terms. Immediate service and existing breach
   mediation/cancellation still work; AGOT wars/titles/banking unchanged. All engine,
   UI/migration/atomicity/balance/performance claims require these final observations.
+
+### Bilateral price amendments (all unrun)
+
+- AMEND-01: provider/client directions propose 50→25 on a due 50-gold deferred promise;
+  both names, both prices, no immediate payment and unchanged 14/30-day clause shown.
+  Only the other party can accept/refuse; proposer can review/withdraw, never self-accept.
+- AMEND-02: accept with ≥25 client gold, including 25–49 after original consent. No gold,
+  prestige or performance now; original serial/revision/due flag/timeout unchanged.
+  New provider decision shows 25. Fulfillment later transfers 25 and grants 50 client
+  prestige exactly once, with current-price receipt before cleanup.
+- AMEND-03: propose/refuse/withdraw/ignore seven days; original price remains 50 until
+  valid acceptance, no penalty or renewed deadline. Review does not restart the window;
+  current request serial cannot be replayed against a later request/contract.
+- AMEND-04: before day seven, at/after original due expiry, immediate mode, already 25,
+  missing funds, dead/changed parties, war, land loss and old snapshots fail appropriately.
+  An insolvent/warring responder can refuse and free the cancellation lane; proposer
+  withdrawal likewise stays distinct from performance eligibility.
+- AMEND-05: amendment accepted then original timeout fires with captured price 50 while
+  client holds 25–49: exact owner/actor/serial/revision and expired flag checked before
+  scalar refresh. Current 25 determines accountable breach; no obsolete-price neutral
+  cancellation. Current funds <25/unavailable party still follow existing neutral rules.
+- AMEND-06: early/stale/foreign timeout, newer accepted contract, missing stored price/
+  mode or orphaned client: no unauthorized refresh, payment, renewed clock or false
+  blame. Save/reload before acceptance and around original day fifteen/thirty-one.
+- AMEND-07: old visible 50-gold panel and weekly ticket after amendment cannot perform
+  or duplicate payment. New snapshot and ticket permit one price-25 decision. The
+  provider's three-day revisit is allocated before offer; immediate AI consent replaces
+  it without a later continuation overwriting the fresh ticket.
+- AMEND-08: ignored amendment on fourteen-day promise: provider gets another ordinary
+  performance opportunity via three-day revisit when still in time. A late request
+  never delays expiry; waits and silence can still lead to original breach/timeout.
+- AMEND-09: fulfillment/break/timeout or mutual release wins before amendment reply:
+  cleanup removes pending request/parties/cooldown, never the monotonic amendment serial.
+  Late acceptance cannot alter a terminal or newer contract; neutral cancellation clears
+  uncertain price metadata, and latest outcome retains actual terms when recorded.
+- AMEND-10: pending cancellation prevents price proposal and vice versa in every menu/
+  event direction. After rejection/withdrawal/expiry, the other lane can open under its
+  normal cooldown. Ordinary performance/breach remain available under current terms.
+- AMEND-11: player↔AI and AI↔AI proposal/accept/refuse/withdraw/ignore share exact rules.
+  One fixed day-eight client opportunity plus provider decisions, no global scan,
+  no proposal recurrence or parallel weekly chain; existing promises receive no retroactive
+  client timer. Count notices/tickets and verify same-day orderings in both directions.
+- AMEND-12: original price/deadline quote counters, immediate services, deferred breach
+  mediation, mutual cancellation, house affairs and native AGOT wars/titles/banking
+  remain distinct. UI/scalar persistence, old saves, event order, atomicity and long-run
+  behavior require direct final engine observations, not source-contract tests.

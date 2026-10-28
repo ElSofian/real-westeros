@@ -1,0 +1,79 @@
+namespace = rw_amendments
+
+rw_amendments.0001 = {
+    type = character_event
+    title = rw_amendments.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_amend_request_matches_trigger = yes OR = { this = scope:rw_amend_proposer this = scope:rw_amend_responder } }
+                desc = {
+                    desc = rw_amendments.terms
+                    triggered_desc = { trigger = { rw_service_short_delivery_trigger = yes } desc = rw_delivery.days_14 }
+                    triggered_desc = { trigger = { rw_service_long_delivery_trigger = yes } desc = rw_delivery.days_30 }
+                }
+            }
+            desc = rw_amendments.unavailable
+        }
+    }
+    theme = diplomacy
+    option = {
+        name = rw_amendments.accept
+        trigger = { rw_amend_accept_trigger = yes }
+        rw_amend_accept_effect = yes
+        ai_chance = { base = 40 modifier = { factor = 0.5 this = scope:rw_service_provider has_trait = greedy } }
+    }
+    option = {
+        name = rw_amendments.refuse
+        trigger = { rw_amend_responder_turn_trigger = yes }
+        rw_amend_refuse_effect = yes
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = rw_amendments.withdraw
+        trigger = { rw_amend_withdraw_trigger = yes }
+        rw_amend_withdraw_effect = yes
+        ai_chance = { base = 20 }
+    }
+    option = { name = rw_amendments.leave ai_chance = { base = 20 } }
+}
+# One fixed client opportunity, no recurring proposal or global target scan.
+rw_amendments.0002 = {
+    hidden = yes
+    immediate = {
+        if = {
+            limit = { rw_amend_can_start_trigger = yes this = scope:rw_service_client }
+            trigger_event = { id = rw_amendments.0004 }
+        }
+    }
+}
+rw_amendments.0003 = {
+    type = character_event
+    title = rw_amendments.title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_amend_result_trigger = yes } desc = rw_amendments.accepted }
+            desc = rw_amendments.unavailable
+        }
+    }
+    theme = diplomacy
+    option = { name = rw_amendments.leave ai_chance = { base = 100 } }
+}
+rw_amendments.0004 = {
+    type = character_event
+    title = rw_amendments.title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_amend_can_start_trigger = yes this = scope:rw_service_client } desc = rw_amendments.opportunity }
+            desc = rw_amendments.unavailable
+        }
+    }
+    theme = diplomacy
+    option = {
+        name = rw_amendments.propose
+        trigger = { rw_amend_can_start_trigger = yes this = scope:rw_service_client }
+        rw_amend_client_propose_effect = yes
+        ai_chance = { base = 30 }
+    }
+    option = { name = rw_amendments.leave ai_chance = { base = 70 } }
+}

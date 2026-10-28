@@ -26,6 +26,14 @@ AI and humans get the same decision effects and outcomes. AI review interaction
 initiation is disabled because scheduled reconsideration supplies its opportunities;
 no global character scan is introduced. Actual event timing/AI behavior is unverified.
 
+## Mutual price amendment
+
+RW010_PRICE_AMENDMENTS.md adds explicit bilateral reduction of a due accepted promise
+from 50 to 25 gold without payment or a deadline reset. Original timer/identity stay;
+only a current-price snapshot after exact expired-owner validation can classify its
+timeout. A pending price amendment and mutual-cancellation proposal are separate
+exclusive negotiation lanes; ordinary performance/breach/deadline keep running.
+
 ## Mutual cancellation amendment
 
 RW010_MUTUAL_CANCELLATION.md adds explicit proposals by either party, accepted only

@@ -69,3 +69,11 @@ obligations, effect-entry bypass, unilateral release/payment, serial reuse, dela
 consumption and changed obligation timing. Graph/localization checks include EN/FR.
 These are static source checks, not engine execution or atomicity/persistence proof.
 See FINAL_ENGINE_TESTS.md for the final campaign cases.
+
+## Concurrent price amendments
+
+RW010_PRICE_AMENDMENTS.md adds a separate voluntary 50→25 amendment. A live price
+request blocks starting a cancellation request, and vice versa. Reject/withdraw/expire
+the outstanding request before starting the other; performance and original timeout
+remain active. Terminal service cleanup clears either request without resetting its
+monotonic identity counters. No implicit cancellation consent follows a price change.

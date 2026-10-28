@@ -1,0 +1,105 @@
+# Review maps only the two current parties of a due deferred 50-gold obligation.
+rw_amend_interaction_pair_trigger = {
+    NOT = { $PROVIDER$ = $CLIENT$ }
+    $PROVIDER$ = {
+        is_alive = yes
+        has_character_flag = rw_service_obligation
+        has_variable = rw_service_serial
+        has_variable = rw_service_revision
+        has_variable = rw_service_price
+        has_variable = rw_service_mode
+        has_character_flag = rw_service_deadline
+        NOT = { has_character_flag = rw_service_not_due }
+        var:rw_service_turn = flag:obligation
+        var:rw_service_mode = flag:deferred
+        var:rw_service_price = 50
+        var:rw_service_target = $CLIENT$
+    }
+    $CLIENT$ = { is_alive = yes }
+    OR = {
+        $PROVIDER$ = {
+            has_character_flag = rw_amend_pending
+            has_variable = rw_amend_serial
+            exists = var:rw_amend_proposer
+            exists = var:rw_amend_responder
+        }
+        AND = {
+            $PROVIDER$ = {
+                rw_service_party_eligible_trigger = yes
+                NOT = { has_character_flag = rw_amend_pending }
+                NOT = { has_character_flag = rw_amend_cooldown }
+                NOT = { has_character_flag = rw_cancel_pending }
+            }
+            $CLIENT$ = { rw_service_party_eligible_trigger = yes gold >= 25 }
+        }
+    }
+}
+rw_amend_context_trigger = {
+    rw_service_obligation_live_trigger = yes
+    rw_service_deferred_trigger = yes
+    OR = { this = scope:rw_service_provider this = scope:rw_service_client }
+    scope:rw_service_provider = {
+        rw_service_party_eligible_trigger = yes
+        has_character_flag = rw_service_deadline
+        NOT = { has_character_flag = rw_service_not_due }
+        var:rw_service_price = 50
+    }
+    scope:rw_service_client = { rw_service_party_eligible_trigger = yes }
+}
+rw_amend_can_start_trigger = {
+    rw_amend_context_trigger = yes
+    scope:rw_service_client = { gold >= 25 }
+    scope:rw_service_provider = {
+        NOT = { has_character_flag = rw_amend_pending }
+        NOT = { has_character_flag = rw_amend_cooldown }
+        NOT = { has_character_flag = rw_cancel_pending }
+    }
+}
+rw_amend_parties_trigger = {
+    exists = scope:rw_amend_proposer
+    exists = scope:rw_amend_responder
+    NOT = { scope:rw_service_provider = scope:rw_service_client }
+    OR = {
+        AND = { scope:rw_amend_proposer = scope:rw_service_provider scope:rw_amend_responder = scope:rw_service_client }
+        AND = { scope:rw_amend_proposer = scope:rw_service_client scope:rw_amend_responder = scope:rw_service_provider }
+    }
+}
+rw_amend_request_matches_trigger = {
+    rw_service_obligation_matches_trigger = yes
+    rw_service_deferred_trigger = yes
+    rw_amend_parties_trigger = yes
+    exists = scope:rw_amend_serial
+    scope:rw_service_provider = {
+        has_character_flag = rw_amend_pending
+        var:rw_service_price = 50
+        var:rw_amend_serial = scope:rw_amend_serial
+        var:rw_amend_proposer = scope:rw_amend_proposer
+        var:rw_amend_responder = scope:rw_amend_responder
+    }
+}
+# Refusal only retires this request; war/poverty must not trap the cancellation lane.
+rw_amend_responder_turn_trigger = {
+    rw_amend_request_matches_trigger = yes
+    this = scope:rw_amend_responder
+    is_alive = yes
+}
+rw_amend_accept_trigger = {
+    rw_amend_responder_turn_trigger = yes
+    rw_amend_context_trigger = yes
+    scope:rw_service_client = { gold >= 25 }
+}
+rw_amend_withdraw_trigger = {
+    rw_amend_request_matches_trigger = yes
+    this = scope:rw_amend_proposer
+    is_alive = yes
+}
+rw_amend_result_trigger = {
+    rw_service_obligation_live_trigger = yes
+    OR = { this = scope:rw_service_provider this = scope:rw_service_client }
+    scope:rw_service_provider = {
+        var:rw_service_price = 25
+        has_character_flag = rw_service_deadline
+        var:rw_amend_last_contract = scope:rw_service_serial
+        var:rw_amend_last_response = flag:accepted
+    }
+}

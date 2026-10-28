@@ -11,7 +11,8 @@ RW010_DELIVERY_TERMS.md adds an original CK3 authored two-clause offer: deferred
 endorsement price (25/50 gold) and delivery (14/30 days) can be countered independently,
 reviewed together and accepted only as a complete latest revision. Accepted deadlines
 are applied to the original obligation, without payment at consent. This is not the
-arbitrary dynamic clause composer, a port of the Python probe, or engine proof. The
+arbitrary dynamic clause composer, a port of the Python probe, or engine proof. RW010_PRICE_AMENDMENTS.md adds a separately consented price amendment on an accepted
+due obligation while retaining its original clock. The
 G2 gate stays open; historical research/protocol discussion follows.
 
 ## Question

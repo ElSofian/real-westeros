@@ -51,7 +51,12 @@ collector and unresolved G3 work for later. Independent negotiation now adds pri
 and delivery clauses (RW010_DELIVERY_TERMS.md): current deferred parties can counter
 25/50 gold and 14/30 days independently, review both captured clauses, then accept
 the whole latest revision. Delivery flags/timeouts follow accepted terms; no payment
-on consent or deadline extension on waits/counters. Continue independent negotiation/
+on consent or deadline extension on waits/counters. Accepted due promises can now
+receive an explicit bilateral 50→25 price amendment (RW010_PRICE_AMENDMENTS.md).
+The original clock/accepted identity remain; separate request serial and fresh price/
+decision ticket invalidate stale consent. Only an exact expired owner callback refreshes
+current price before timeout classification. One client opportunity and existing provider
+decisions supply AI parity; no money on amendment, no parallel cancellation request. Continue independent negotiation/
 obligation work without requiring the standby sources. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;

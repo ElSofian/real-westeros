@@ -31,7 +31,10 @@ rw_service_accept_promise_effect = {
             }
             else = { trigger_event = { id = rw_obligations.0002 days = 31 } }
         }
-        scope:rw_service_client = { trigger_event = { id = rw_cancellations.0003 } }
+        scope:rw_service_client = {
+            trigger_event = { id = rw_cancellations.0003 }
+            trigger_event = { id = rw_amendments.0002 days = 8 }
+        }
     }
 }
 # Record latest outcome only, not a universal history. Serial never reused.
@@ -39,6 +42,7 @@ rw_service_record_receipt_effect = {
     scope:rw_service_provider = {
         set_variable = { name = rw_service_last_serial value = scope:rw_service_serial }
         set_variable = { name = rw_service_last_client value = scope:rw_service_client }
+        set_variable = { name = rw_service_last_price value = scope:rw_service_price }
         set_variable = { name = rw_service_last_delivery_days value = 30 }
         if = {
             limit = { exists = scope:rw_service_delivery_days }
@@ -87,6 +91,7 @@ rw_service_cancel_promise_effect = {
         scope:rw_service_provider = {
             set_variable = { name = rw_service_last_serial value = scope:rw_service_serial }
             set_variable = { name = rw_service_last_outcome value = flag:cancelled }
+            remove_variable = rw_service_last_price
             if = {
                 limit = { exists = scope:rw_service_client }
                 set_variable = { name = rw_service_last_client value = scope:rw_service_client }
@@ -100,7 +105,14 @@ rw_service_timeout_effect = {
     if = {
         limit = {
             rw_service_obligation_owner_matches_trigger = yes
+            this = scope:rw_service_provider
             scope:rw_service_provider = { NOT = { has_character_flag = rw_service_deadline } }
+        }
+        # Only this expired immutable contract may refresh authoritative terms.
+        # A consensual price amendment must not turn an affordable timeout into cancellation.
+        if = {
+            limit = { scope:rw_service_provider = { has_variable = rw_service_price has_variable = rw_service_mode } }
+            rw_service_snapshot_effect = yes
         }
         if = {
             limit = {

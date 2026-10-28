@@ -59,3 +59,6 @@ This repository is intended to be the single source of truth for code, task prog
 Deferred services now support [independent price and delivery clauses](docs/RW010_DELIVERY_TERMS.md):
 25/50 gold and 14/30 days, with complete-offer consent and no payment until performance.
 This remains experimental; the G3 title-source collection is currently on standby.
+
+Accepted deferred endorsements can also receive a [mutually agreed price reduction](docs/RW010_PRICE_AMENDMENTS.md)
+from 50 to 25 gold while the original deadline keeps running. Consent moves no money.
