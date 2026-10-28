@@ -50,9 +50,13 @@ bytes verified. Collection is no longer on standby; no further upload or interme
 game test is requested. TITLE_ROUTE_AUDIT.md and TITLE_ROUTE_SOURCE_RECEIPT.json
 record native grant alternatives, actual election lists and the separate AGOT Night
 Watch succession route. Neither a universal veto nor an additive title-ban extension
-is established. Next on G3: a bounded native individual-title remedy contract,
-preserving authority, eligibility and current title/holder identity; opening terms
-is not a completed transfer. Independent negotiation now adds price
+is established. RW010_TITLE_REMEDIES.md now adds read-only land review from an
+exact retained restored record for its current sovereign/head. Captured current
+roles, record identity and native validity guard a sovereign-only grant-window
+shortcut; no title selection/send, payment, new AI policy or completed remedy.
+Targetless special-picker behavior stays engine-unverified. Next audit individual
+title legality/provenance before coercive remedies; opening terms is not a transfer.
+Independent negotiation now adds price
 and delivery clauses (RW010_DELIVERY_TERMS.md): current deferred parties can counter
 25/50 gold and 14/30 days independently, review both captured clauses, then accept
 the whole latest revision. Delivery flags/timeouts follow accepted terms; no payment

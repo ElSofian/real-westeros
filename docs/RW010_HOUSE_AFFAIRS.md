@@ -164,3 +164,11 @@ Next review cross-system political consequences and the remaining G3 sanction ro
 before attaching stronger house sanctions. Native loss of status and an
 enforced title ban remain separate G3 work; do not advertise political disfavor as
 the completed landholding-ban goal. G1 remains planned for the war-feature stage.
+
+## Post-rehabilitation land review
+
+RW010_TITLE_REMEDIES.md adds a guarded read-only view from retained restored
+records for the current sovereign/head, and a sovereign-only native grant-window
+shortcut. Opening terms does not restore an ancestral title, establish noble status,
+charge again or record a transfer. Exact current parties/native eligibility are
+rechecked; AI retains native title behavior. Special-picker behavior is engine-unverified.

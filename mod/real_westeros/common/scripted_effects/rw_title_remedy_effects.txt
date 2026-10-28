@@ -1,0 +1,9 @@
+# Temporary popup aliases only: no decree/payment/transfer receipt is written.
+rw_title_remedy_open_review_effect = {
+    if = {
+        limit = { rw_title_remedy_can_review_trigger = yes }
+        scope:rw_house_authority.holder = { save_scope_as = rw_title_remedy_ruler }
+        scope:rw_house_target.house_head = { save_scope_as = rw_title_remedy_head }
+        trigger_event = { id = rw_title_remedies.0001 }
+    }
+}

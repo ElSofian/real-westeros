@@ -1,0 +1,12 @@
+﻿l_french:
+ rw_title_remedies.review:0 "Examiner une attribution de terres après réhabilitation."
+ rw_title_remedies.title:0 "Réhabilitation et possession de terres"
+ rw_title_remedies.context:0 "[rw_title_remedy_ruler.GetShortUIName] détient actuellement [rw_house_authority.GetName] ; [rw_title_remedy_head.GetShortUIName] dirige actuellement [rw_house_target.GetName]. Cette censure politique précise a été levée. Cette décision ne promettait aucune terre et n’établissait aucun droit sur un titre ancestral."
+ rw_title_remedies.landed:0 "Le chef actuel de la maison détient déjà des terres. Des titres supplémentaires relèveraient d’une attribution habituelle distincte."
+ rw_title_remedies.landless:0 "Le chef actuel de la maison ne détient pas de terres. La réhabilitation politique ne lui en a pas accordé."
+ rw_title_remedies.ruler_terms:0 "Je peux examiner la fenêtre habituelle d’attribution à ce chef de maison si l’interaction native le permet. J’y choisirai un titre admissible et confirmerai séparément. Si ce raccourci est indisponible, le menu habituel du personnage reste accessible."
+ rw_title_remedies.head_terms:0 "Seul le souverain actuel décide d’une éventuelle attribution de titre. Cet examen n’envoie aucune demande, ne sélectionne aucune terre et ne crée aucun engagement."
+ rw_title_remedies.boundaries:0 "Ouvrir ou fermer cet examen n’accorde rien et ne coûte rien. Il ne déclenche ni confiscation, ni restitution ancestrale, ni changement de noblesse, ni grâce, ni interdiction foncière collective. Les autres décrets et les restrictions habituelles sur les titres restent distincts."
+ rw_title_remedies.review_grant:0 "Examiner les conditions habituelles d’attribution de titres."
+ rw_title_remedies.unavailable:0 "Le dossier, le souverain actuel ou le chef actuel de la maison a changé. Rouvrez le dossier actuel avant d’envisager une attribution ; aucun titre n’a été transféré."
+ rw_title_remedies.close:0 "Laisser la possession des terres inchangée."

@@ -87,9 +87,14 @@ normal character menu is the fallback; do not bypass validity or invent a target
 to make the button appear. Native status terms must be compared to baseline AGOT.
 
 G3 source investigation and opt-in final-campaign tracing are now in
-G3_HOUSE_SANCTIONS.md. Next implement explicitly scoped house-affair persistence
-and restoration under that contract; landholding enforcement remains unresolved. Audit grant,
-inheritance, election and conquest separately before claiming an enforced ban on
-holding land. A political house marker alone cannot satisfy the owner's 50-year
-landholding-ban scenario. Collective sanctions and restoration remain unimplemented;
-G1 remains for the later unlawful-war stage. RW-010 stays in progress.
+G3_HOUSE_SANCTIONS.md. Political house-affair persistence/rehabilitation is now
+implemented experimentally in RW010_HOUSE_AFFAIRS.md, with conditional payment
+in RW010_HOUSE_TERMS.md; it changes political censure only. Audit grant, inheritance,
+election and conquest separately before claiming an enforced ban on holding land.
+A political marker cannot satisfy the owner's 50-year landholding-ban scenario.
+Coercive house sanctions, loss/restoration of native noble status and enforced title
+bans remain unimplemented. G1 remains for the later war stage; RW-010 stays in progress.
+
+The subsequent post-rehabilitation land review (RW010_TITLE_REMEDIES.md) can open
+native grant terms for the exact current house head. It does not connect a past
+revocation to a particular title or implement confiscation/restitution automatically.

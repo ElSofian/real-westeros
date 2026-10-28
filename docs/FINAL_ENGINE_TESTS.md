@@ -547,3 +547,37 @@ not a prohibition on grants/inheritance/election/conquest or removal of nobility
   mediation, mutual cancellation, house affairs and native AGOT wars/titles/banking
   remain distinct. UI/scalar persistence, old saves, event order, atomicity and long-run
   behavior require direct final engine observations, not source-contract tests.
+
+
+## Post-rehabilitation land review (LAND-01 to LAND-08)
+
+All unrun. RW010_TITLE_REMEDIES.md describes navigation, not completed restitution.
+
+- LAND-01: on the exact retained restored record, current sovereign and current
+  head can review; an old issuer, other house member or storage custodian cannot
+  use the new option solely through archive access. Active/withdrawn/expired/purged
+  records expose no review. Free/paid restoration take the same path with no new cost.
+- LAND-02: landed versus landless heads show correct current standing and named
+  house/authority/ruler/head; nothing asserts noble status or ancestral ownership.
+  A head who is also sovereign, dead, a minor or imprisoned does not qualify.
+- LAND-03: replace the head, change their house, replace the authority holder or
+  change record revision while the review is open. Stale description/portrait and
+  native click become unavailable; reopening captures current people. No old receipt
+  is overwritten and no previous payment or goodwill is repeated.
+- LAND-04: the head can read but cannot open a grant as the sovereign. Only the
+  exact current free qualified ruler opens native grant terms for the captured head.
+  Compare ordinary/theocratic/co-ruler validity and all AGOT restrictions to baseline.
+- LAND-05: verify the targetless validity query and special title picker actually
+  open/populate. Pick an eligible single title, then multiple titles where native
+  rules permit; no selection is prefilled. If unavailable use the native character
+  menu and record the shortcut failure; do not bypass validation or force a target.
+- LAND-06: cancel review, cancel native terms, and separately confirm a native grant
+  in a disposable save. Only native confirmation transfers land and applies its own
+  consequences; this mod writes no completed-remedy history, payment or legal pardon.
+- LAND-07: save/reload open panels and retained records, expire retention, change
+  authority/roles/custody before clicking; no stale native handoff or secret/evidence
+  disclosure. No new native title callbacks, reminders or scan chains appear.
+- LAND-08: compare AI/player native title grants, revocations, succession, wars/Mega
+  Wars and performance to baseline. This human UI does not introduce a new gameplay
+  action/cost, automatic AI land gift or inherited obligation. Other decrees and
+  native restrictions remain independent; no collective land ban is claimed.

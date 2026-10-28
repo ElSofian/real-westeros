@@ -1,0 +1,45 @@
+# Read-only navigation from one exact rehabilitated political record.
+# No native title, nobility or hereditary right is created by that record.
+rw_title_remedy_can_review_trigger = {
+    rw_house_view_trigger = yes
+    is_ai = no
+    scope:rw_house_record = {
+        var:rw_house_state = flag:restored
+        has_variable = rw_house_retained
+    }
+    OR = {
+        rw_house_current_ruler_trigger = yes
+        rw_house_current_head_trigger = yes
+    }
+    scope:rw_house_authority = {
+        exists = holder
+        holder = { rw_house_sovereign_trigger = yes }
+    }
+    scope:rw_house_target = {
+        exists = house_head
+        house_head = {
+            is_alive = yes
+            is_adult = yes
+            is_imprisoned = no
+            house = scope:rw_house_target
+            NOT = { this = scope:rw_house_authority.holder }
+        }
+    }
+}
+# Captured recipients cannot silently become a new head or a new sovereign.
+rw_title_remedy_view_trigger = {
+    rw_title_remedy_can_review_trigger = yes
+    exists = scope:rw_title_remedy_ruler
+    exists = scope:rw_title_remedy_head
+    scope:rw_house_authority = { holder = scope:rw_title_remedy_ruler }
+    scope:rw_house_target = { house_head = scope:rw_title_remedy_head }
+}
+rw_title_remedy_can_open_grant_trigger = {
+    rw_title_remedy_view_trigger = yes
+    rw_house_current_ruler_trigger = yes
+    this = scope:rw_title_remedy_ruler
+    is_character_interaction_valid = {
+        interaction = grant_titles_interaction
+        recipient = scope:rw_title_remedy_head
+    }
+}
