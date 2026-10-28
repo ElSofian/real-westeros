@@ -390,3 +390,35 @@ not a prohibition on grants/inheritance/election/conquest or removal of nobility
   notice without losing a later legitimate role-change opportunity. No annual AI
   retry chain or all-pairs scan. Compare
   native wars, succession, banking/house relations, logs and long-run performance.
+
+### House succession/request hardening (all unrun)
+
+- HOUSE-15: same living head, new sovereign A→B: after the normal sixty-day pass,
+  both receive their current opportunity once, not every pass. Head may replace the
+  petition despite the former pair's cooldown. New sovereign cannot answer the old
+  request. Overlapping head/sovereign gets only one notice and can withdraw, not
+  petition themselves. Missing schema-1 cache gives at most one initial reminder.
+- HOUSE-16: new holder is a child, captive, dependent ruler or at war with head:
+  extra head/ruler-pair reminder is not consumed while unavailable; becoming eligible
+  delivers it once. Replace the head during unavailability with the same ruler: the
+  former head's cached pair must not consume the new head's later opportunity. Distinguish that from the initial head information notice and
+  from annual retries (not implemented). Count notices across save/reload.
+- HOUSE-17: pending head imprisoned/changed house/dead/replaced, ruler imprisoned,
+  dependent or displaced, or parties at war. Replies fail current guards immediately.
+  If observed within the thirty-day window, maintenance marks invalidated, removes
+  only the window, increments revision once and preserves term/cooldown/dates.
+  A later return to the same roles cannot revive a retired request or waive cooldown.
+  A new head/ruler can issue a versioned replacement; old reply cannot touch it.
+- HOUSE-18: request times out before maintenance/death: record unanswered rather than
+  inventing a later cause; refusal/restoration/withdrawal remain distinct. Matching
+  custodian-party death with still-alive native flags invalidates an open request
+  before transfer; an unrelated custodian's death does not cancel a valid petition.
+- HOUSE-19: obsolete .0002/.0003 panels explicitly refresh only their exact readable
+  story/house/title/serial, even if revision changed or another request replaced it.
+  Refresh opens current record without submitting/answering, cost, favor or state
+  change. Forged/wrong pointer/house/title/serial, unrelated reader, expired retention
+  and former ruler/custodian actions fail; old issuer may still read without judging.
+- HOUSE-20: role/war/imprisonment change and reversal entirely between story passes:
+  capture the known observation limit, not a supposed complete history. No new
+  native callback or timer is installed. Check fifty-year expiry, pure archive,
+  native succession/AGOT behaviors and long-run record/notification cost unchanged.

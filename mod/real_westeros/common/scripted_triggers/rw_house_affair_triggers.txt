@@ -48,6 +48,19 @@ rw_house_view_trigger = {
         var:rw_house_revision = scope:rw_house_revision
     }
 }
+# Exact identity without an obsolete revision: read-only recovery, never consent.
+rw_house_refresh_allowed_trigger = {
+    exists = scope:rw_house_record
+    exists = scope:rw_house_target
+    exists = scope:rw_house_authority
+    exists = scope:rw_house_serial
+    scope:rw_house_record = {
+        rw_house_reader_allowed_trigger = { READER = root }
+        var:rw_house_target = scope:rw_house_target
+        var:rw_house_authority = scope:rw_house_authority
+        var:rw_house_serial = scope:rw_house_serial
+    }
+}
 rw_house_sovereign_trigger = {
     is_alive = yes
     is_adult = yes
@@ -111,18 +124,20 @@ rw_house_current_head_trigger = {
 rw_house_pending_roles_valid_trigger = {
     rw_house_record_active_trigger = yes
     has_variable = rw_house_request_window
+    var:rw_house_last_response = flag:pending
     exists = var:rw_house_petitioner
     exists = var:rw_house_requested_ruler
     var:rw_house_petitioner = {
         is_alive = yes
         is_adult = yes
         exists = house
+        is_imprisoned = no
         house = prev.var:rw_house_target
         house.house_head = this
         NOT = { is_at_war_with = prev.var:rw_house_requested_ruler }
     }
     var:rw_house_authority = { exists = holder holder = prev.var:rw_house_requested_ruler }
-    var:rw_house_requested_ruler = { is_alive = yes }
+    var:rw_house_requested_ruler = { rw_house_sovereign_trigger = yes }
 }
 rw_house_can_petition_trigger = {
     rw_house_current_head_trigger = yes
@@ -157,4 +172,11 @@ rw_house_has_live_custodian_trigger = {
         var:rw_house_target = { any_house_member = { is_alive = yes } }
         AND = { exists = story_owner story_owner = { is_alive = yes } }
     }
+}
+
+# Story scope: postpone an additional ruler-change notice while action is unavailable.
+rw_house_head_ruler_available_trigger = {
+    var:rw_house_authority = { exists = holder holder = { rw_house_sovereign_trigger = yes } }
+    var:rw_house_target = { exists = house_head }
+    var:rw_house_target.house_head = { NOT = { is_at_war_with = prev.var:rw_house_authority.holder } }
 }

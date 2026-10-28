@@ -36,8 +36,12 @@ complete as a bounded source inspection, not engine proof. G3 now has a scoped
 four-route source audit and inactive-by-default final-campaign trace. A first
 political register now uses independent stories/index, current authority-title/head
 roles, owner-death custody reassignment, fifty-year censure and explicit rehabilitation.
-All continuity remains engine-unverified. Next harden role succession/request
-replacement before stronger sanctions; universal landholding enforcement remains
+All continuity remains engine-unverified. Succession/request hardening adds a same-head
+new-ruler opportunity, observed invalid-request retirement, current free/sovereign reply
+guards and exact-identity read-only refresh of obsolete panels. There are no new native
+hooks or timers; a transient role change and reversal between observations can be missed.
+Next review cross-system consequences and remaining G3 routes before stronger sanctions;
+universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;
 never force the no-tyranny imprisonment helper as a legality check. Keep knowledge,
 legal authority and existing

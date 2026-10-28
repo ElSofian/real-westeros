@@ -110,7 +110,42 @@ rw_house_rehome_effect = {
         }
     }
 }
-# Story-local notification opportunities, once per head/ruler identity.
+# Retire an observed invalid petition once; keep original term and cooldown.
+# Story scope; this changes neither the censure nor any native character state.
+rw_house_invalidate_request_effect = {
+    if = {
+        limit = { rw_house_record_active_trigger = yes var:rw_house_last_response = flag:pending has_variable = rw_house_request_window }
+        set_variable = { name = rw_house_last_response value = flag:invalidated }
+        remove_variable = rw_house_request_window
+        change_variable = { name = rw_house_revision add = 1 }
+    }
+}
+rw_house_reconcile_request_effect = {
+    if = {
+        limit = {
+            rw_house_record_active_trigger = yes
+            var:rw_house_last_response = flag:pending
+            NOT = { rw_house_pending_roles_valid_trigger = yes }
+        }
+        if = {
+            limit = { has_variable = rw_house_request_window }
+            rw_house_invalidate_request_effect = yes
+        }
+        else = {
+            set_variable = { name = rw_house_last_response value = flag:unanswered }
+            change_variable = { name = rw_house_revision add = 1 }
+        }
+    }
+}
+# Explicit read-only refresh of this exact record; no automatic reply or petition.
+rw_house_refresh_effect = {
+    if = {
+        limit = { rw_house_refresh_allowed_trigger = yes }
+        scope:rw_house_record = { rw_house_snapshot_effect = yes }
+        trigger_event = { id = rw_house_affairs.0002 }
+    }
+}
+# Story-local opportunities, once per observed head/authority-holder pair.
 rw_house_offer_opportunities_effect = {
     if = {
         limit = { rw_house_record_active_trigger = yes }
@@ -120,9 +155,25 @@ rw_house_offer_opportunities_effect = {
                 rw_house_record_active_trigger = yes
                 var:rw_house_target = { exists = house_head house_head = { is_alive = yes is_adult = yes is_imprisoned = no } }
                 var:rw_house_target.house_head.house = var:rw_house_target
-                OR = { NOT = { exists = var:rw_house_last_head } NOT = { var:rw_house_last_head = var:rw_house_target.house_head } }
+                OR = {
+                    NOT = { exists = var:rw_house_last_head }
+                    NOT = { var:rw_house_last_head = var:rw_house_target.house_head }
+                    AND = {
+                        rw_house_head_ruler_available_trigger = yes
+                        OR = {
+                            NOT = { exists = var:rw_house_last_head_ruler }
+                            NOT = { var:rw_house_last_head_ruler = var:rw_house_authority.holder }
+                        }
+                    }
+                }
             }
             set_variable = { name = rw_house_last_head value = var:rw_house_target.house_head }
+            if = {
+                limit = { rw_house_head_ruler_available_trigger = yes }
+                set_variable = { name = rw_house_last_head_ruler value = var:rw_house_authority.holder }
+            }
+            # A new head must not inherit the former head's already-consumed pair.
+            else = { remove_variable = rw_house_last_head_ruler }
             rw_house_snapshot_effect = yes
             save_scope_value_as = { name = rw_house_head_notified value = 1 }
             var:rw_house_target.house_head = { trigger_event = { id = rw_house_affairs.0002 } }
@@ -244,6 +295,7 @@ rw_house_maintenance_effect = {
             end_story = yes
         }
         else = {
+            rw_house_reconcile_request_effect = yes
             rw_house_rehome_effect = yes
             rw_house_offer_opportunities_effect = yes
         }
@@ -278,6 +330,16 @@ rw_house_owner_died_effect = {
         limit = { rw_house_record_valid_trigger = yes }
         save_scope_as = rw_house_record
         story_owner = { save_scope_as = rw_house_departed_custodian }
+        # The owner's death is known even before native alive/role flags settle.
+        if = {
+            limit = {
+                OR = {
+                    AND = { exists = var:rw_house_petitioner var:rw_house_petitioner = scope:rw_house_departed_custodian }
+                    AND = { exists = var:rw_house_requested_ruler var:rw_house_requested_ruler = scope:rw_house_departed_custodian }
+                }
+            }
+            rw_house_invalidate_request_effect = yes
+        }
         if = {
             limit = { var:rw_house_authority = { exists = holder holder = { is_alive = yes NOT = { this = scope:rw_house_departed_custodian } } } }
             make_story_owner = var:rw_house_authority.holder
