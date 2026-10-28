@@ -1,8 +1,18 @@
 # G2 feasibility — multi-clause political negotiation
 
-**Assessment date: 2026-10-26. Protocol: STATIC-CHECKED (synthetic Python only).**
+**Original assessment: 2026-10-26. Offline protocol proof: static-checked Python.**
+**Current authored CK3 price/delivery extension: static-checked, experimental.**
 **CK3 UI, persistence and native-effect execution: UNVERIFIED / NOT ENGINE-TESTED.**
-No CK3/AGOT scripts or assets were copied or executed.
+No third-party scripts/assets are copied into the repository; no CK3 engine run.
+
+## Current script extension
+
+RW010_DELIVERY_TERMS.md adds an original CK3 authored two-clause offer: deferred
+endorsement price (25/50 gold) and delivery (14/30 days) can be countered independently,
+reviewed together and accepted only as a complete latest revision. Accepted deadlines
+are applied to the original obligation, without payment at consent. This is not the
+arbitrary dynamic clause composer, a port of the Python probe, or engine proof. The
+G2 gate stays open; historical research/protocol discussion follows.
 
 ## Question
 

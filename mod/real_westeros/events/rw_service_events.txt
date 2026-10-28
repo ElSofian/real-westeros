@@ -8,7 +8,11 @@ rw_services.0001 = {
         first_valid = {
             triggered_desc = {
                 trigger = { rw_service_deferred_trigger = yes }
-                desc = rw_services.0001.deferred_desc
+                desc = {
+                    desc = rw_services.0001.deferred_desc
+                    triggered_desc = { trigger = { rw_service_short_delivery_trigger = yes } desc = rw_delivery.days_14 }
+                    triggered_desc = { trigger = { rw_service_long_delivery_trigger = yes } desc = rw_delivery.days_30 }
+                }
             }
             desc = rw_services.0001.desc
         }
@@ -34,6 +38,12 @@ rw_services.0001 = {
         ai_chance = { base = 40 }
     }
     option = {
+        name = rw_delivery.shorten
+        trigger = { rw_service_can_shorten_delivery_trigger = yes }
+        rw_service_shorten_delivery_effect = yes
+        ai_chance = { base = 20 }
+    }
+    option = {
         name = rw_services.refuse
         trigger = { rw_service_client_turn_trigger = yes }
         rw_service_clear_effect = yes
@@ -55,7 +65,11 @@ rw_services.0002 = {
         first_valid = {
             triggered_desc = {
                 trigger = { rw_service_deferred_trigger = yes }
-                desc = rw_services.0002.deferred_desc
+                desc = {
+                    desc = rw_services.0002.deferred_desc
+                    triggered_desc = { trigger = { rw_service_short_delivery_trigger = yes } desc = rw_delivery.days_14 }
+                    triggered_desc = { trigger = { rw_service_long_delivery_trigger = yes } desc = rw_delivery.days_30 }
+                }
             }
             desc = rw_services.0002.desc
         }
@@ -78,6 +92,12 @@ rw_services.0002 = {
         name = rw_services.requote_50
         trigger = { rw_service_provider_turn_trigger = yes }
         rw_service_requote_effect = yes
+        ai_chance = { base = 20 }
+    }
+    option = {
+        name = rw_delivery.extend
+        trigger = { rw_service_can_extend_delivery_trigger = yes }
+        rw_service_extend_delivery_effect = yes
         ai_chance = { base = 20 }
     }
     option = {

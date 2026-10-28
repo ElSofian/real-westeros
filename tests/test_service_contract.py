@@ -80,4 +80,6 @@ class ServiceContractTests(unittest.TestCase):
             p = ROOT / f'localization/{lang}/rw_services_l_{lang}.yml'
             self.assertTrue(p.read_bytes().startswith(b'\xef\xbb\xbf'))
             actual = set(re.findall(r'^\s+([\w.]+):0', p.read_text(encoding='utf-8-sig'), re.M))
-            self.assertEqual(keys, actual)
+            shared = (ROOT / f'localization/{lang}/rw_delivery_l_{lang}.yml').read_text(encoding='utf-8-sig')
+            delivery_keys = set(re.findall(r'^\s+([\w.]+):0', shared, re.M))
+            self.assertEqual(keys, actual | (delivery_keys & keys))

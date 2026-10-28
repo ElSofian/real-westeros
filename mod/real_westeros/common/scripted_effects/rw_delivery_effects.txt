@@ -1,0 +1,25 @@
+# Change only the proposed delivery clause, preserving price/mode/original quote expiry.
+rw_service_shorten_delivery_effect = {
+    if = {
+        limit = { rw_service_can_shorten_delivery_trigger = yes }
+        scope:rw_service_provider = {
+            change_variable = { name = rw_service_revision add = 1 }
+            set_variable = { name = rw_service_delivery_days value = 14 }
+            set_variable = { name = rw_service_turn value = flag:provider }
+        }
+        rw_service_snapshot_effect = yes
+        scope:rw_service_provider = { trigger_event = { id = rw_delivery.0001 } }
+    }
+}
+rw_service_extend_delivery_effect = {
+    if = {
+        limit = { rw_service_can_extend_delivery_trigger = yes }
+        scope:rw_service_provider = {
+            change_variable = { name = rw_service_revision add = 1 }
+            set_variable = { name = rw_service_delivery_days value = 30 }
+            set_variable = { name = rw_service_turn value = flag:client }
+        }
+        rw_service_snapshot_effect = yes
+        scope:rw_service_client = { trigger_event = { id = rw_delivery.0001 } }
+    }
+}

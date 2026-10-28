@@ -3,7 +3,11 @@ namespace = rw_obligations
 rw_obligations.0001 = {
     type = character_event
     title = rw_obligations.0001.t
-    desc = rw_obligations.0001.desc
+    desc = {
+        desc = rw_obligations.0001.desc
+        triggered_desc = { trigger = { rw_service_short_delivery_trigger = yes } desc = rw_delivery.days_14 }
+        triggered_desc = { trigger = { rw_service_long_delivery_trigger = yes } desc = rw_delivery.days_30 }
+    }
     theme = diplomacy
     left_portrait = { character = scope:rw_service_client }
     option = {

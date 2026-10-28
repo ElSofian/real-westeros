@@ -1,0 +1,11 @@
+﻿l_french:
+ rw_delivery.title:0 "Le prix et le délai d’un soutien public"
+ rw_delivery.summary:0 "[rw_service_provider.GetTitledFirstName] propose un soutien public différé à [rw_service_client.GetTitledFirstName]. Voici les deux clauses actuelles. Accepter enregistre seulement une promesse : aucun or ni prestige ne change maintenant. Le client paie uniquement à l’accomplissement et reçoit alors 50 points de prestige. Le prestataire reste libre d’attendre ou de rompre sa promesse. La négociation initiale expire après trente jours et les contre-propositions ne la renouvellent pas. Modifier une clause exige que l’autre partie accepte l’ensemble de l’offre ainsi révisée."
+ rw_delivery.price_25:0 "Clause de paiement : 25 pièces d’or du client au prestataire à l’accomplissement."
+ rw_delivery.price_50:0 "Clause de paiement : 50 pièces d’or du client au prestataire à l’accomplissement."
+ rw_delivery.days_14:0 "Clause de délai : après sept jours et avant quatorze jours à compter de l’acceptation. Attendre ou discuter d’une annulation ne prolonge jamais cette échéance."
+ rw_delivery.days_30:0 "Clause de délai : après sept jours et avant trente jours à compter de l’acceptation. Attendre ou discuter d’une annulation ne prolonge jamais cette échéance."
+ rw_delivery.shorten:0 "Contre-proposer quatorze jours, au prix actuellement proposé."
+ rw_delivery.extend:0 "Contre-proposer trente jours, au prix actuellement proposé."
+ rw_delivery.accept:0 "Accepter ensemble le prix et le délai actuels."
+ rw_delivery.unavailable:0 "Ces conditions ou notre capacité à nous accorder ont changé. Aucun nouvel accord ni paiement n’est enregistré."

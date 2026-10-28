@@ -27,6 +27,9 @@ these are not measured behavioral rates. One outstanding offer per provider and 
 one-year offer cooldown prevent concurrent state collisions and bound spam in this
 slice, not the eventual number of useful services or clauses.
 
+Deferred price and delivery clauses can now be countered independently; see
+RW010_DELIVERY_TERMS.md. Immediate services retain their original immediate effects.
+
 ## State and boundaries
 
 Provider stores a monotonic `rw_service_serial`, quote revision, client, price and

@@ -1,0 +1,67 @@
+namespace = rw_delivery
+
+# Whole current offer: independent price and delivery clauses, not four preset bundles.
+rw_delivery.0001 = {
+    type = character_event
+    title = rw_delivery.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_service_delivery_turn_trigger = yes }
+                desc = {
+                    desc = rw_delivery.summary
+                    triggered_desc = { trigger = { scope:rw_service_price = 25 } desc = rw_delivery.price_25 }
+                    triggered_desc = { trigger = { scope:rw_service_price = 50 } desc = rw_delivery.price_50 }
+                    triggered_desc = { trigger = { rw_service_short_delivery_trigger = yes } desc = rw_delivery.days_14 }
+                    triggered_desc = { trigger = { rw_service_long_delivery_trigger = yes } desc = rw_delivery.days_30 }
+                }
+            }
+            desc = rw_delivery.unavailable
+        }
+    }
+    theme = diplomacy
+    left_portrait = { trigger = { rw_service_delivery_turn_trigger = yes } character = scope:rw_service_provider }
+    right_portrait = { trigger = { rw_service_delivery_turn_trigger = yes } character = scope:rw_service_client }
+    option = {
+        name = rw_delivery.accept
+        trigger = { rw_service_delivery_turn_trigger = yes rw_service_affordable_trigger = yes }
+        rw_service_accept_promise_effect = yes
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = rw_services.counter_25
+        trigger = { rw_service_delivery_turn_trigger = yes rw_service_client_turn_trigger = yes scope:rw_service_client = { gold >= 25 } }
+        rw_service_counter_effect = yes
+        ai_chance = { base = 20 }
+    }
+    option = {
+        name = rw_services.requote_50
+        trigger = { rw_service_delivery_turn_trigger = yes rw_service_provider_turn_trigger = yes }
+        rw_service_requote_effect = yes
+        ai_chance = { base = 20 }
+    }
+    option = {
+        name = rw_delivery.shorten
+        trigger = { rw_service_can_shorten_delivery_trigger = yes }
+        rw_service_shorten_delivery_effect = yes
+        ai_chance = { base = 20 }
+    }
+    option = {
+        name = rw_delivery.extend
+        trigger = { rw_service_can_extend_delivery_trigger = yes }
+        rw_service_extend_delivery_effect = yes
+        ai_chance = { base = 20 }
+    }
+    option = {
+        name = rw_services.refuse
+        trigger = { rw_service_delivery_turn_trigger = yes }
+        rw_service_clear_effect = yes
+        ai_chance = { base = 30 }
+    }
+    option = {
+        name = rw_delivery.unavailable
+        trigger = { NOT = { rw_service_delivery_turn_trigger = yes } }
+        rw_service_clear_effect = yes
+        ai_chance = { base = 100 }
+    }
+}

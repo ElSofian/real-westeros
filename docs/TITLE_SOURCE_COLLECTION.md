@@ -1,5 +1,9 @@
 # Missing title-grant and election sources — private G3 collection
 
+**On standby per owner:** they are away from their installation and cannot provide
+files now. Keep the collector available; continue independent development and do
+not repeat the collection request until the owner is available or resumes this track.
+
 The received 1,724-file scheme collection and earlier G1 complement contain neither
 native title-grant interaction definitions nor the complete election-type directory.
 They do contain grant eligibility helpers and election references, which are not
