@@ -1,0 +1,28 @@
+namespace = rw_title_provenance
+
+rw_title_provenance.0001 = {
+    type = character_event
+    title = rw_title_provenance.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_tp_view_trigger = yes }
+                desc = {
+                    desc = rw_title_provenance.observed
+                    first_valid = {
+                        triggered_desc = { trigger = { rw_tp_still_held_trigger = yes } desc = rw_title_provenance.still_held }
+                        desc = rw_title_provenance.no_longer_held
+                    }
+                    desc = rw_title_provenance.boundaries
+                }
+            }
+            desc = rw_title_provenance.unavailable
+        }
+    }
+    right_portrait = {
+        trigger = { rw_tp_view_trigger = yes }
+        character = scope:rw_tp_former_holder
+    }
+    theme = diplomacy
+    option = { name = rw_title_provenance.close }
+}

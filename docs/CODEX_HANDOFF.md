@@ -21,7 +21,9 @@ CK3 house/title trace are in G3_HOUSE_SANCTIONS.md. First political house disfav
 independent institutional records and rehabilitation petitions are now in
 RW010_HOUSE_AFFAIRS.md; these do not implement a landholding ban.
 Trace code is a separate standalone optional mod under diagnostics/g3_house_trace/;
-no G3 title hooks or debug interactions are loaded by the base mod.
+no G3 diagnostic children or debug interactions are loaded by the base mod.
+The base now has a separate narrowly guarded on_title_gain provenance child;
+see RW010_TITLE_PROVENANCE.md, not the optional diagnostic.
 Mutual cancellation of a deferred promise is in RW010_MUTUAL_CANCELLATION.md.
 An experimental distribution is built from committed inputs by CI; see INTEGRATED_BUILD.md.
 Cross-slice source audit and versioned provider-decision reminders are in
@@ -55,7 +57,16 @@ exact retained restored record for its current sovereign/head. Captured current
 roles, record identity and native validity guard a sovereign-only grant-window
 shortcut; no title selection/send, payment, new AI policy or completed remedy.
 Targetless special-picker behavior stays engine-unverified. Next audit individual
-title legality/provenance before coercive remedies; opening terms is not a transfer.
+title legality/provenance work is in RW010_TITLE_PROVENANCE.md: source-reviewed
+authority, per-title exclusions and refusal are kept native. A conditional native
+revocation-context transfer creates a private five-year title/former/new-holder
+observation, with one-day exact-tuple coalescing and no per-offense verdict. Both
+AI/player use the same intake; missing actor/recipient/selected-title/acceptance
+marker fails closed. Callback propagation/order is not established; no entry may
+be produced until that contract is verified. Personal records end on owner death,
+not institutional restitution provenance. Next explicit affair association and
+public-fact institutional provenance, after final context evidence. Native opening
+is not a transfer; custom coercive confiscation remains unimplemented.
 Independent negotiation now adds price
 and delivery clauses (RW010_DELIVERY_TERMS.md): current deferred parties can counter
 25/50 gold and 14/30 days independently, review both captured clauses, then accept

@@ -1,0 +1,10 @@
+﻿l_english:
+ rw_review_title_provenance_interaction:0 "Review my observed title transfers"
+ rw_review_title_provenance_interaction_desc:0 "Read my private observations of native title transfers in a revocation context. The selected character receives nothing."
+ rw_title_provenance.title:0 "The provenance of a title"
+ rw_title_provenance.observed:0 "[rw_tp_title.GetName] passed from [rw_tp_former_holder.GetShortUIName] to [rw_tp_new_holder.GetShortUIName] while a matching native revocation context was present. This is an observation of that transfer, not a new sentence."
+ rw_title_provenance.still_held:0 "I still hold this exact title. A future restitution would require a separate current decision and the ordinary title-grant rules."
+ rw_title_provenance.no_longer_held:0 "I no longer hold this exact title, or it has no holder. This observation gives me no power to take it from its present holder."
+ rw_title_provenance.boundaries:0 "This entry identifies no particular plot as the reason for the transfer and establishes no lawful judgment, pardon, ancestral entitlement or house-wide land ban. Ordinary title history and restrictions remain authoritative."
+ rw_title_provenance.unavailable:0 "This private observation is no longer accessible. No title or sentence is changed."
+ rw_title_provenance.close:0 "Close this observation."

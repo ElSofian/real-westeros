@@ -1,0 +1,11 @@
+# Private personal observations; no hereditary judgment or title entitlement.
+story_rw_title_provenance = {
+    on_owner_death = { end_story = yes }
+    effect_group = {
+        days = 60
+        triggered_effect = {
+            trigger = { var:rw_tp_schema = 1 NOT = { has_variable = rw_tp_retained } }
+            effect = { end_story = yes }
+        }
+    }
+}

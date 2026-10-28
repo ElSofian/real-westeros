@@ -124,8 +124,11 @@ The trace is a **separate optional mod**, stored under
 `diagnostics/g3_house_trace/mod/` in the source/ZIP. Copy that folder's
 `rw_g3_house_trace.mod` and `rw_g3_house_trace/` into the usual CK3 user-data `mod/`
 directory only for final testing. Add **Real Westeros G3 Diagnostic** to a test
-playset after AGOT. It is standalone; the base Real Westeros mod does not register
-these title callbacks or diagnostic UI. Installing the main `mod/real_westeros/`
+playset after AGOT. It is standalone; the base Real Westeros mod does not load
+these diagnostic child actions or debug UI. The base now has a separate narrow
+`on_title_gain` provenance observer (RW010_TITLE_PROVENANCE.md), with no trace
+logging, title effect or ban. Native load composition needs final testing with
+both observers. Installing the main `mod/real_westeros/`
 payload alone cannot load this diagnostic. Disable the separate playset entry after
 testing. Its provisional descriptor target is not engine compatibility evidence.
 

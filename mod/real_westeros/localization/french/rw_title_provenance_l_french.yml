@@ -1,0 +1,10 @@
+﻿l_french:
+ rw_review_title_provenance_interaction:0 "Consulter mes transferts de titres observés"
+ rw_review_title_provenance_interaction_desc:0 "Relire mes observations privées de transferts natifs dans un contexte de révocation. Le personnage sélectionné ne reçoit rien."
+ rw_title_provenance.title:0 "La provenance d’un titre"
+ rw_title_provenance.observed:0 "[rw_tp_title.GetName] est passé de [rw_tp_former_holder.GetShortUIName] à [rw_tp_new_holder.GetShortUIName] alors qu’un contexte natif de révocation correspondant était présent. Cette entrée constate ce transfert ; elle ne prononce aucune nouvelle peine."
+ rw_title_provenance.still_held:0 "Je détiens encore ce titre précis. Une restitution ultérieure demanderait une décision distincte et le respect des règles habituelles d’attribution."
+ rw_title_provenance.no_longer_held:0 "Je ne détiens plus ce titre précis, ou il n’a plus de titulaire. Cette observation ne me donne aucun pouvoir pour le prendre à son détenteur actuel."
+ rw_title_provenance.boundaries:0 "Cette entrée n’attribue pas le transfert à un complot précis et n’établit ni jugement légal, ni grâce, ni droit ancestral, ni interdiction foncière collective. L’histoire et les restrictions habituelles des titres restent déterminantes."
+ rw_title_provenance.unavailable:0 "Cette observation privée n’est plus accessible. Aucun titre ni aucune peine n’est modifié."
+ rw_title_provenance.close:0 "Fermer cette observation."
