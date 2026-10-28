@@ -1,6 +1,6 @@
 ﻿l_english:
  rw_review_endorsement_promise_interaction:0 "Review My Endorsement Promise"
- rw_review_endorsement_promise_interaction_desc:0 "Reopen your agreed endorsement after seven days and before the thirty-day deadline. Performance pays the agreed price and grants the client 50 prestige. You can wait or break the promise instead."
+ rw_review_endorsement_promise_interaction_desc:0 "Reopen your agreed endorsement after seven days and before the agreed fourteen- or thirty-day deadline. Performance pays the agreed price and grants the client 50 prestige. You can wait or break the promise instead."
  rw_obligations.0001.t:0 "A Promise Comes Due"
  rw_obligations.0001.desc:0 "I promised public support to [rw_service_client.GetTitledFirstName]. I may now give the endorsement for the agreed gold, wait another week, or break my word. If I remain able to perform and let the deadline pass, the client will learn of the broken commitment. If either party is unavailable or payment is impossible at expiry, the agreement ends without blame."
  rw_obligations.fulfill:0 "Give the endorsement and receive the agreed payment."

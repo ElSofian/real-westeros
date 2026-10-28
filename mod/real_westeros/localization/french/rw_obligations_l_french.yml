@@ -1,6 +1,6 @@
 ﻿l_french:
  rw_review_endorsement_promise_interaction:0 "Revoir ma promesse de soutien"
- rw_review_endorsement_promise_interaction_desc:0 "Reprendre votre engagement après sept jours et avant l’échéance de trente jours. L’accomplissement transfère le prix convenu et donne 50 points de prestige au client. Vous pouvez aussi attendre ou rompre votre promesse."
+ rw_review_endorsement_promise_interaction_desc:0 "Reprendre votre engagement après sept jours et avant l’échéance convenue de quatorze ou trente jours. L’accomplissement transfère le prix convenu et donne 50 points de prestige au client. Vous pouvez aussi attendre ou rompre votre promesse."
  rw_obligations.0001.t:0 "Une promesse à tenir"
  rw_obligations.0001.desc:0 "J’ai promis mon soutien public à [rw_service_client.GetTitledFirstName]. Je peux maintenant l’apporter contre la somme convenue, attendre une semaine ou manquer à ma parole. Si je reste en mesure d’agir et laisse passer l’échéance, le client sera informé de mon manquement. Si une partie est indisponible ou le paiement impossible à l’échéance, l’accord prend fin sans faute imputée."
  rw_obligations.fulfill:0 "Apporter mon soutien et recevoir le paiement convenu."

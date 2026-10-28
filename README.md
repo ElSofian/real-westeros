@@ -55,3 +55,7 @@ in [GAME_DESIGN.md](docs/GAME_DESIGN.md). CK3 behavior remains unverified until 
 - Static checks are not a substitute for running CK3. In-game validation remains outstanding.
 
 This repository is intended to be the single source of truth for code, task progress, and development decisions.
+
+Deferred services now support [independent price and delivery clauses](docs/RW010_DELIVERY_TERMS.md):
+25/50 gold and 14/30 days, with complete-offer consent and no payment until performance.
+This remains experimental; the G3 title-source collection is currently on standby.

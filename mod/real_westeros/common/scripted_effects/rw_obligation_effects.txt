@@ -7,17 +7,29 @@ rw_service_accept_promise_effect = {
             rw_service_affordable_trigger = yes
         }
         scope:rw_service_provider = {
+            if = {
+                limit = { NOT = { has_variable = rw_service_delivery_days } }
+                set_variable = { name = rw_service_delivery_days value = 30 }
+            }
             change_variable = { name = rw_service_revision add = 1 }
             set_variable = { name = rw_service_turn value = flag:obligation }
             remove_character_flag = rw_service_pending
             add_character_flag = rw_service_obligation
             add_character_flag = { flag = rw_service_not_due days = 7 }
-            add_character_flag = { flag = rw_service_deadline days = 30 }
+            if = {
+                limit = { var:rw_service_delivery_days = 14 }
+                add_character_flag = { flag = rw_service_deadline days = 14 }
+            }
+            else = { add_character_flag = { flag = rw_service_deadline days = 30 } }
         }
         rw_service_snapshot_effect = yes
         scope:rw_service_provider = {
             rw_service_schedule_decision_effect = { DAYS = 8 }
-            trigger_event = { id = rw_obligations.0002 days = 31 }
+            if = {
+                limit = { var:rw_service_delivery_days = 14 }
+                trigger_event = { id = rw_obligations.0002 days = 15 }
+            }
+            else = { trigger_event = { id = rw_obligations.0002 days = 31 } }
         }
         scope:rw_service_client = { trigger_event = { id = rw_cancellations.0003 } }
     }
@@ -27,6 +39,11 @@ rw_service_record_receipt_effect = {
     scope:rw_service_provider = {
         set_variable = { name = rw_service_last_serial value = scope:rw_service_serial }
         set_variable = { name = rw_service_last_client value = scope:rw_service_client }
+        set_variable = { name = rw_service_last_delivery_days value = 30 }
+        if = {
+            limit = { exists = scope:rw_service_delivery_days }
+            set_variable = { name = rw_service_last_delivery_days value = scope:rw_service_delivery_days }
+        }
     }
 }
 rw_service_fulfill_promise_effect = {

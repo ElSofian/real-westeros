@@ -23,6 +23,7 @@ rw_service_matches_trigger = {
     exists = scope:rw_service_revision
     exists = scope:rw_service_price
     exists = scope:rw_service_mode
+    rw_service_delivery_matches_trigger = yes
     scope:rw_service_provider = {
         has_variable = rw_service_target
         has_variable = rw_service_serial

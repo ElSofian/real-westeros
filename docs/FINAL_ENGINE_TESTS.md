@@ -461,3 +461,37 @@ not a prohibition on grants/inheritance/election/conquest or removal of nobility
   paid political restoration from native title/status restoration, dynasty disinheritance
   and celestial family extinction. Baseline AGOT wars, titles, succession, banking,
   release terms, AI and optional-diagnostic isolation remain unchanged in final runs.
+
+### Negotiated delivery clauses (all unrun)
+
+- DELIV-01: deferred default 50 gold/30 days; client counters delivery to 14 preserving
+  price, provider accepts. Both names, exact price/deadline, consent-only and future
+  effects visible together. No gold/prestige at consent; new obligation has 14 days.
+- DELIV-02: combine both clause changes in both orders: 25/14, 25/30, 50/14, 50/30.
+  Provider counters duration to 30 without changing price; price requote preserves
+  14. Every change revises/reverses turn; no preset bundle or implicit partial consent.
+- DELIV-03: original price-only panels append the captured current delivery term.
+  Stale price/deadline popups, missing/invalid scalar, wrong party/revision/mode or
+  unsupported day count cannot accept, mutate, pay or clear a newer record.
+- DELIV-04: fourteen-day promise: no fulfillment before seven days; first decision day
+  eight, payable performance once before day fourteen; due flag blocks at expiry,
+  timeout at day fifteen. Thirty-day promise retains deadline thirty/timeout thirty-one.
+- DELIV-05: wait from day eight into/after fourteen-day expiry; pending weekly ticket,
+  timeout and review/cancellation events collide. Only current ticket acts; no deadline
+  renewal, duplicate payment/breach receipt or continuing reminder chain after cleanup.
+- DELIV-06: counter repeatedly near original thirty-day negotiation expiry; neither
+  clause change renews the pending flag/cooldown. Save/reload before either clause
+  counter, acceptance and timeout preserves price/deadline/serial/revision together.
+- DELIV-07: funds spent, death, loss of land or war before consent/performance: no
+  prepayment, unfunded transfer or inherited obligation. Accountable timeout versus
+  neutral cancellation follows existing rules, not a newly automatic punishment.
+- DELIV-08: new 14-day field with missing/old scalar fails; legacy field-less quote and
+  legacy obligation default to original 30 under exact old identity. New snapshots
+  capture actual value; fallback never overwrites a 14-day field or its flags.
+- DELIV-09: complete, deliberately break, mutually cancel or time out; receipt retains
+  accepted delivery when appropriate. Cleanup removes active clause, not counters.
+  New offer gets fresh serial/default 30; old timeout cannot consume it.
+- DELIV-10: AI↔AI and both player/AI directions negotiate either clause with identical
+  eligibility/funds/effects and full terms. Immediate service and existing breach
+  mediation/cancellation still work; AGOT wars/titles/banking unchanged. All engine,
+  UI/migration/atomicity/balance/performance claims require these final observations.

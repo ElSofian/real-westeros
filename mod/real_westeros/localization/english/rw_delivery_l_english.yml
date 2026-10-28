@@ -1,0 +1,11 @@
+﻿l_english:
+ rw_delivery.title:0 "Price and delivery of an endorsement"
+ rw_delivery.summary:0 "[rw_service_provider.GetTitledFirstName] offers a deferred public endorsement to [rw_service_client.GetTitledFirstName]. Here are both current clauses. Acceptance records a promise only: no gold or prestige moves now. The client pays only on performance and then gains 50 prestige. The provider remains free to wait or break the promise. The original negotiation expires after thirty days and counters do not renew it. Changing either clause requires the other party to accept the resulting whole offer."
+ rw_delivery.price_25:0 "Payment clause: 25 gold from client to provider on performance."
+ rw_delivery.price_50:0 "Payment clause: 50 gold from client to provider on performance."
+ rw_delivery.days_14:0 "Delivery clause: after seven days and before fourteen days from acceptance. Waiting and cancellation talks never extend that deadline."
+ rw_delivery.days_30:0 "Delivery clause: after seven days and before thirty days from acceptance. Waiting and cancellation talks never extend that deadline."
+ rw_delivery.shorten:0 "Counter: delivery within fourteen days; keep the quoted price."
+ rw_delivery.extend:0 "Counter: delivery within thirty days; keep the quoted price."
+ rw_delivery.accept:0 "Accept both the current price and delivery clause."
+ rw_delivery.unavailable:0 "These terms or our ability to agree have changed. No new consent or payment is recorded."

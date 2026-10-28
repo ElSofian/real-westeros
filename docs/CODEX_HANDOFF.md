@@ -45,10 +45,14 @@ Conditional rehabilitation (RW010_HOUSE_TERMS.md) now lets a sovereign counterof
 50 personal gold for closure of this exact political decree, with explicit current-head
 accept/refuse/inaction, current funds/roles/revision guards and no native immunity.
 Free rehabilitation/withdrawal remain available. No extra goodwill for paid settlement.
-A new source collector profile targets missing grant/election definitions, keeps
-scheme defaults and reports definitions separately from callers/helpers. Next receive
-and hash-verify its private ZIP (TITLE_SOURCE_COLLECTION.md), then inspect source
-contracts before stronger title/status sanctions. No gameplay change in this slice;
+The title-route collection/stronger title-source adapters are **on standby per owner**
+while away from their installation. Do not repeat upload/game-test requests; keep the
+collector and unresolved G3 work for later. Independent negotiation now adds price
+and delivery clauses (RW010_DELIVERY_TERMS.md): current deferred parties can counter
+25/50 gold and 14/30 days independently, review both captured clauses, then accept
+the whole latest revision. Delivery flags/timeouts follow accepted terms; no payment
+on consent or deadline extension on waits/counters. Continue independent negotiation/
+obligation work without requiring the standby sources. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;
 never force the no-tyranny imprisonment helper as a legality check. Keep knowledge,

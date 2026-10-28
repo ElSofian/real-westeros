@@ -1,0 +1,41 @@
+# New records bind delivery as a quote clause. Legacy records alone default to 30.
+rw_service_delivery_matches_trigger = {
+    scope:rw_service_provider = {
+        trigger_if = {
+            limit = { has_variable = rw_service_delivery_days }
+            exists = scope:rw_service_delivery_days
+            var:rw_service_delivery_days = scope:rw_service_delivery_days
+            OR = { var:rw_service_delivery_days = 14 var:rw_service_delivery_days = 30 }
+        }
+        trigger_else = {
+            trigger_if = {
+                limit = { exists = scope:rw_service_delivery_days }
+                scope:rw_service_delivery_days = 30
+            }
+        }
+    }
+}
+rw_service_short_delivery_trigger = {
+    exists = scope:rw_service_delivery_days
+    scope:rw_service_delivery_days = 14
+}
+rw_service_long_delivery_trigger = {
+    OR = { NOT = { exists = scope:rw_service_delivery_days } scope:rw_service_delivery_days = 30 }
+}
+rw_service_delivery_turn_trigger = {
+    rw_service_deferred_trigger = yes
+    OR = { rw_service_client_turn_trigger = yes rw_service_provider_turn_trigger = yes }
+    OR = { scope:rw_service_price = 25 scope:rw_service_price = 50 }
+}
+rw_service_can_shorten_delivery_trigger = {
+    rw_service_delivery_turn_trigger = yes
+    rw_service_client_turn_trigger = yes
+    scope:rw_service_provider = {
+        OR = { NOT = { has_variable = rw_service_delivery_days } var:rw_service_delivery_days = 30 }
+    }
+}
+rw_service_can_extend_delivery_trigger = {
+    rw_service_delivery_turn_trigger = yes
+    rw_service_provider_turn_trigger = yes
+    scope:rw_service_provider = { var:rw_service_delivery_days = 14 }
+}

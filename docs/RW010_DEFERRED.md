@@ -5,6 +5,10 @@ to the final campaign per owner. No Python model performs or simulates these eff
 
 ## Consent and terms
 
+Delivery-term extension: RW010_DELIVERY_TERMS.md adds independent price/delivery
+counters and 14/30-day accepted deadlines. The original thirty-day default described
+below is retained; fourteen-day obligations expire sooner under their accepted terms.
+
 The existing immediate endorsement remains available. A separate **Promise a Future
 Endorsement** interaction offers deferred delivery, so player and AI can initiate
 it without an implicit checkbox policy. Both use the same eligibility, 25/50-gold
