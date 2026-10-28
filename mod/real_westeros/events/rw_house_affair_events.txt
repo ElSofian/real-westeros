@@ -40,7 +40,18 @@ rw_house_affairs.0002 = {
                 desc = {
                     desc = rw_house_affairs.active
                     triggered_desc = { trigger = { scope:rw_house_record = { var:rw_house_last_response = flag:refused } } desc = rw_house_affairs.last_refused }
-                    triggered_desc = { trigger = { scope:rw_house_record = { var:rw_house_last_response = flag:pending NOT = { has_variable = rw_house_request_window } } } desc = rw_house_affairs.last_unanswered }
+                    triggered_desc = {
+                        trigger = {
+                            scope:rw_house_record = {
+                                OR = {
+                                    var:rw_house_last_response = flag:unanswered
+                                    AND = { var:rw_house_last_response = flag:pending NOT = { has_variable = rw_house_request_window } }
+                                }
+                            }
+                        }
+                        desc = rw_house_affairs.last_unanswered
+                    }
+                    triggered_desc = { trigger = { scope:rw_house_record = { var:rw_house_last_response = flag:invalidated } } desc = rw_house_affairs.last_invalidated }
                 }
             }
             desc = rw_house_affairs.unavailable
@@ -64,6 +75,12 @@ rw_house_affairs.0002 = {
         trigger = { rw_house_can_withdraw_trigger = yes }
         rw_house_withdraw_effect = yes
         ai_chance = { base = 10 }
+    }
+    option = {
+        name = rw_house_affairs.refresh
+        trigger = { rw_house_refresh_allowed_trigger = yes NOT = { rw_house_view_trigger = yes } }
+        rw_house_refresh_effect = yes
+        ai_chance = { base = 50 }
     }
     option = { name = rw_house_affairs.leave_unchanged ai_chance = { base = 50 } }
 }
@@ -93,6 +110,12 @@ rw_house_affairs.0003 = {
         trigger = { rw_house_ruler_reply_trigger = yes }
         rw_house_refuse_effect = yes
         ai_chance = { base = 40 }
+    }
+    option = {
+        name = rw_house_affairs.refresh
+        trigger = { rw_house_refresh_allowed_trigger = yes NOT = { rw_house_ruler_reply_trigger = yes } }
+        rw_house_refresh_effect = yes
+        ai_chance = { base = 50 }
     }
     option = { name = rw_house_affairs.leave_unchanged ai_chance = { base = 20 } }
 }

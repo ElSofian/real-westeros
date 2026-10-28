@@ -75,7 +75,9 @@ are **unverified in CK3**. Source call sites are not engine proof.
 
 The current head may request rehabilitation from the authority title's current
 living adult free independent sovereign, while not at war with that person.
-Petitioning is free. A request captures the exact ruler/head and a new revision,
+Petitioning is free. A pending request also requires a free current head and a
+current adult free independent sovereign; imprisonment, war, role loss or a new
+revision blocks replies immediately. A request captures the exact ruler/head and a new revision,
 lasts thirty days, and starts a one-year institutional petition cooldown. A change
 of head or title holder invalidates the old petition and permits a fresh one under
 the new roles; it does not renew the decree's original fifty-year term. Requesting
@@ -86,6 +88,31 @@ closes only this exact record before granting +10 sovereign opinion of the curre
 petitioner for two years, only if the identical goodwill is absent. It cannot
 stack/refresh through multiple records. Refusal/silence adds no penalty or debt.
 The latest petition response is retained, not a full log of every petition.
+
+The existing sixty-day maintenance pass retires an observed invalid pending request,
+removes its window and increments the record revision once. A request whose window
+has already expired is instead recorded as unanswered. Neither path resets the
+institutional cooldown, dates or original decree term, charges money/prestige, or
+sends another event. Losing and regaining the same role after recorded invalidation
+cannot revive that request. On story-owner death, a still-open request naming that
+owner as petitioner/addressee is invalidated before custody transfer, even if the
+native alive/head flags have not settled. A bystander custodian's death alone does
+not invalidate the parties' request; a timed-out request is not relabeled as a death.
+
+This observes changes at the own-story callback/pass, not every native transition.
+A role/war/imprisonment change and reversal between observations is not guaranteed
+to leave a historical trace. No universal succession hook or engine ordering proof
+is claimed. Passive retirement can lag up to sixty days; current action guards apply
+immediately. Current-head/ruler replacement still gets a fresh revision and may bypass
+the old pair's cooldown; temporary unavailability of the same pair does not waive it.
+
+A stale record/reply panel may explicitly reopen the **same** readable record using
+its exact story pointer, house, authority and serial. Only this read-only refresh
+ignores the old revision. The refreshed panel takes a current snapshot and requires
+another explicit choice; it never answers a replacement petition or submits one,
+charges a cost, grants favor, changes storage, or writes persistent state. An
+unrelated reader, wrong identity or expired retention cannot use refresh. A former
+sovereign may read as original issuer but gains no successor's decision rights.
 
 A current sovereign may instead withdraw the decree without a pending petition;
 that closes it without a goodwill reward. Neither route grants land, restores a
@@ -102,16 +129,21 @@ until retention expires; cleanup can lag up to sixty days but access is gated.
 
 Fresh exposed-participant intake schedules at most two independent consideration
 opportunities, at day two and day thirty, with the same eligibility/costs as players.
-A scheduling marker prevents duplicate timer chains. Each house head gets one
-initial or changed-head opportunity; a new sovereign gets an opportunity to review
-inherited political disfavor. The 60-day record pass caches recipients before notices and sends only one notice
+A scheduling marker prevents duplicate timer chains. Each head gets an initial or
+changed-head opportunity. The same head also gets a new opportunity when the recorded
+authority's holder changes; the delivery cache records both identities before sending.
+An additional ruler-change notice waits until that ruler is a qualified sovereign
+and the head is not at war with them. Cache updates obey the same availability check,
+so a child, captive, dependent ruler or war does not consume that opportunity; a later
+pass can deliver it when available. This is not an annual retry for a refused petition.
+A new sovereign also gets an opportunity to review inherited political disfavor. The 60-day record pass caches recipients before notices and sends only one notice
 when head/ruler roles overlap in the same pass; the ruler cache still advances.
 Refusal/restoration notices do not restart requests; cooldown/revision guards still
 apply. AI and player use the same effects; traits affect weights, not prerequisites.
 Players can also reopen known affairs explicitly. Proactive annual AI re-petitioning
 is not implemented; G4 behavior/performance remains unverified.
 
-Twenty new adversarial source-contract tests cover identity, proof/custody/funds,
+Twenty original register tests plus ten succession/refresh source-contract tests cover identity, proof/custody/funds,
 registration/cost ordering, independent pairs, ownership versus authority, current
 roles/revisions, expiry, replay/non-stacking, privacy and absence of native property/
 guilt effects. They do not simulate or execute CK3 or prove transaction atomicity.
@@ -120,7 +152,12 @@ HOUSE_REGISTER_SOURCE_RECEIPT.json holds only hashes/relative API call-site mark
 No private original code or full manifest is distributed. Target metadata remains
 AGOT 0.5.2.1 / CK3 1.19.*; actual executable and compatibility unverified.
 
-Next audit and harden this registry across authority/house succession and request
-replacement before attaching more severe sanctions. Native loss of status and an
+Succession/request hardening is source-checked, not an engine guarantee. Existing
+schema-1 records need no identity/term rewrite; a missing head/ruler delivery cache
+can cause one initial reminder, then is cached. Old pending states settle on ordinary
+maintenance. Old-save migration itself remains untested.
+
+Next review cross-system political consequences and the remaining G3 sanction routes
+before attaching stronger house sanctions. Native loss of status and an
 enforced title ban remain separate G3 work; do not advertise political disfavor as
 the completed landholding-ban goal. G1 remains planned for the war-feature stage.

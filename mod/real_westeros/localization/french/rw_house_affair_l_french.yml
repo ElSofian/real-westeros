@@ -23,3 +23,5 @@
  rw_house_affairs.unavailable:0 "Le dossier ou mon autorité pour faire ce choix a changé. Aucune nouvelle décision n’est prise."
  rw_house_affairs.last_refused:0 "La dernière pétition a été refusée. Cela n’a ajouté aucune peine ; le terme initial reste inchangé."
  rw_house_affairs.last_unanswered:0 "La dernière pétition n’a reçu aucune décision dans son délai de trente jours. Cela n’a ajouté aucune peine ; une nouvelle demande suit le délai habituel de la maison."
+ rw_house_affairs.refresh:0 "Relire le dossier actuel avant de décider."
+ rw_house_affairs.last_invalidated:0 "La dernière pétition est devenue caduque après un changement des parties ou de leur capacité à agir. Elle ne peut plus recevoir de réponse. Cela n’ajoute aucune peine et ne renouvelle pas la censure ; un nouveau chef ou souverain peut permettre une nouvelle demande."

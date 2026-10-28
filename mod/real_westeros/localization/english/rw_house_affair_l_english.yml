@@ -23,3 +23,5 @@
  rw_house_affairs.unavailable:0 "The record or my authority to make this choice has changed. No new decision is taken."
  rw_house_affairs.last_refused:0 "The latest petition was refused. It created no further penalty; the original term remains unchanged."
  rw_house_affairs.last_unanswered:0 "The latest petition received no decision within its thirty-day window. It created no further penalty; a new petition follows the house’s normal waiting period."
+ rw_house_affairs.refresh:0 "Review the current record before deciding."
+ rw_house_affairs.last_invalidated:0 "The last petition became void when the parties or their ability to petition changed. It cannot be answered again. This adds no penalty and does not renew the censure; a new head or sovereign may allow a fresh petition."
