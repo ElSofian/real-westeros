@@ -85,7 +85,7 @@ class SchemeCollectorTests(unittest.TestCase):
             self.assertEqual(expected, set(zf.namelist()))
             for path in ('CK3/common/scripted_effects/alpha.txt', 'AGOT/common/scripted_effects/alpha.txt',
                          'CK3/common/scripted_triggers/beta.txt', 'CK3/common/scripted_effects/gamma.txt',
-                         'CK3/events/related.txt'):
+                         'CK3/events/related.txt', 'CK3/common/on_action/find.txt'):
                 self.assertIn(path, expected)
             self.assertNotIn('CK3/events/unrelated.txt', expected)
             self.assertNotIn('CK3/events/private.ck3', expected)

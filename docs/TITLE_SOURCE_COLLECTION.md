@@ -7,7 +7,9 @@ substitutes for those definitions. G3's universal landholding gate remains unres
 
 A new `TitleRoutes` profile in the **same standalone collector** prepares the missing
 source inspection. Its legacy filename is retained for existing users and tests.
-The default `Schemes` profile keeps its prior selection and depth of three. This is
+The default `Schemes` profile keeps its intended seeds and depth of three. A shared
+pattern/boolean variable collision is corrected so later marker-only files are no
+longer accidentally ignored; a scheme regression assertion covers this as well. This is
 source tooling, not runtime Python, new gameplay or an engine test.
 
 ## Windows: one downloaded file, no game launch
@@ -26,7 +28,8 @@ Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/ElSofian/r
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File $rwCollector -Profile TitleRoutes
 ```
 
-The collector prompts for the CK3 installation (or `game` folder) and installed AGOT
+`-Profile` is an alias for `-CollectionProfile`, avoiding the automatic PowerShell
+profile variable. The collector prompts for the CK3 installation (or `game` folder) and installed AGOT
 folder. Parameters `-CK3Path`, `-AGOTPath` and `-OutputDirectory` can supply them instead.
 It requires CK3's `common/character_interactions`, not the scheme folder. CK3/AGOT
 stay read-only; no CK3 launch, network or upload occurs inside the collector. The

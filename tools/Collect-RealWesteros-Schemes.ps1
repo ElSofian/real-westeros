@@ -8,14 +8,14 @@ param(
     [string]$CK3Path = '',
     [string]$AGOTPath = '',
     [string]$OutputDirectory = (Get-Location).Path,
-    [ValidateSet('Schemes', 'TitleRoutes')][string]$Profile = 'Schemes',
+    [Alias('Profile')][ValidateSet('Schemes', 'TitleRoutes')][string]$CollectionProfile = 'Schemes',
     [ValidateRange(0, 8)][int]$DependencyDepth = 3,
     [ValidateRange(1, 512)][int]$MaxSourceMiB = 128
 )
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $script:Utf8 = [System.Text.UTF8Encoding]::new($false, $true)
-$script:Relevant = '(?i)\b\w*(scheme|murder|assassin|conspir|regicid)\w*\b|\b\w*(secret\w*(expos|discover)|(expos|discover)\w*secret)\w*\b'
+$script:RelevantPattern = '(?i)\b\w*(scheme|murder|assassin|conspir|regicid)\w*\b|\b\w*(secret\w*(expos|discover)|(expos|discover)\w*secret)\w*\b'
 $script:Groups = @('common/schemes', 'common/secret_types', 'common/on_action',
     'common/scripted_effects', 'common/scripted_triggers', 'common/script_values',
     'common/character_interactions', 'events')
@@ -23,14 +23,14 @@ $script:SeedGroups = @('common/schemes', 'common/secret_types')
 $script:SeedReason = 'scheme_or_secret_definition'
 $script:ArchiveLabel = 'Schemes'
 $script:ManifestKind = 'private_scheme_source_candidates'
-if ($Profile -eq 'TitleRoutes') {
+if ($CollectionProfile -eq 'TitleRoutes') {
     # Candidate directories/identifiers, not proof of engine coverage or load order.
     $script:Groups = @('common/character_interactions', 'common/succession_election',
         'common/laws', 'common/scripted_effects', 'common/scripted_triggers',
         'common/script_values', 'common/on_action', 'common/story_cycles', 'events')
     $script:SeedGroups = @('common/succession_election', 'common/laws')
     $script:SeedReason = 'election_or_law_definition'
-    $script:Relevant = '(?i)\b(grant_titles?_interaction|can_be_granted_titles_by|revoke_title_interaction|disinherit_interaction|restore_inheritance_interaction|election_type)\b|\b\w*(elective|election|succession|inheritance)\w*_(trigger|effect)\b'
+    $script:RelevantPattern = '(?i)\b(grant_titles?_interaction|can_be_granted_titles_by|revoke_title_interaction|disinherit_interaction|restore_inheritance_interaction|election_type)\b|\b\w*(elective|election|succession|inheritance)\w*_(trigger|effect)\b'
     $script:ArchiveLabel = 'TitleRoutes'
     $script:ManifestKind = 'private_title_route_source_candidates'
     if (-not $PSBoundParameters.ContainsKey('DependencyDepth')) { $DependencyDepth = 1 }
@@ -122,7 +122,7 @@ try {
     if ([string]::IsNullOrWhiteSpace($AGOTPath)) { $AGOTPath = Read-Host 'Dossier du mod AGOT installe' }
     $roots = [ordered]@{ CK3 = (Get-SourceRoot $CK3Path 'CK3'); AGOT = (Get-SourceRoot $AGOTPath 'AGOT') }
     if ($roots.CK3 -eq $roots.AGOT) { throw 'CK3 et AGOT doivent etre deux dossiers distincts.' }
-    $requiredGroup = $(if ($Profile -eq 'TitleRoutes') { 'common/character_interactions' } else { 'common/schemes' })
+    $requiredGroup = $(if ($CollectionProfile -eq 'TitleRoutes') { 'common/character_interactions' } else { 'common/schemes' })
     if (-not (Test-Path -LiteralPath (Join-Path $roots.CK3 $requiredGroup) -PathType Container)) {
         throw "Les definitions $requiredGroup de CK3 sont absentes. Verifiez le dossier du jeu complet."
     }
@@ -161,11 +161,11 @@ try {
                 $bytes = [IO.File]::ReadAllBytes($file.FullName)
                 $clean = Get-CleanScript ($script:Utf8.GetString($bytes).TrimStart([char]0xFEFF))
                 $seed = $group -in $script:SeedGroups
-                $relevant = $seed -or ($relative -match $script:Relevant) -or ($clean -match $script:Relevant)
+                $isCandidate = $seed -or ($relative -match $script:RelevantPattern) -or ($clean -match $script:RelevantPattern)
                 $entry = [pscustomobject]@{
                     Key = "$label/$relative"; Source = $label; Relative = $relative
                     FullPath = $file.FullName; Hash = (Get-Sha256 $bytes)
-                    Size = $bytes.Length; Selected = $relevant; Depth = 0
+                    Size = $bytes.Length; Selected = $isCandidate; Depth = 0
                     Reason = $(if ($seed) { $script:SeedReason } else { 'candidate_marker' })
                     Definitions = @(Get-Definitions $clean)
                 }
@@ -218,7 +218,7 @@ try {
     $remainingFrontier = @($frontier | Where-Object { -not $selectedKeys.Contains($_) } | Sort-Object)
     $manifest = [ordered]@{
         schema = 1; kind = $script:ManifestKind
-        profile = $Profile; scanned_groups = $script:Groups
+        profile = $CollectionProfile; scanned_groups = $script:Groups
         collected_at_utc = [DateTime]::UtcNow.ToString('o')
         status = 'candidates_only_not_engine_evidence'
         expected_targets = @{ CK3 = '1.19.*'; AGOT = '0.5.2.1' }
@@ -229,7 +229,7 @@ try {
         dependency_frontier = $remainingFrontier; unresolved_identifiers = @($unresolved | Sort-Object)
         files = @()
     }
-    if ($Profile -eq 'TitleRoutes') {
+    if ($CollectionProfile -eq 'TitleRoutes') {
         $grantDefinitions = [Collections.Generic.List[object]]::new()
         $grantEligibility = [Collections.Generic.List[object]]::new()
         $electionDefinitions = [Collections.Generic.List[object]]::new()
