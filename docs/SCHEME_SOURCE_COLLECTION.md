@@ -2,8 +2,8 @@
 
 Current update: the scheme ZIP has been received and hash-verified; see
 RW010_SCHEME_EVIDENCE.md and SCHEME_SOURCE_RECEIPT.json. No further scheme collection is
-requested. A separate `TitleRoutes` profile now targets missing grant/election sources;
-see TITLE_SOURCE_COLLECTION.md. The instructions below describe the default scheme
+requested. The separate `TitleRoutes` collection is also received and verified;
+see TITLE_ROUTE_AUDIT.md. TITLE_SOURCE_COLLECTION.md retains the collection instructions. The instructions below describe the default scheme
 profile and remain available for later versions.
 
 The earlier private war collections did not establish native scheme discovery,

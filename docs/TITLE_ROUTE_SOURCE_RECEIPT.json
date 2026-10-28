@@ -1,0 +1,641 @@
+{
+  "schema": 1,
+  "kind": "verified_private_title_route_subset_not_engine_or_full_coverage_evidence",
+  "archive_sha256": "9d6b622a41d0b640568d6f220aa99045d9994db3b8f0fdc98bfb2ff8bfa3ac69",
+  "verified_intake": {
+    "files": 719,
+    "bytes": 46140537,
+    "by_source": {
+      "CK3": 301,
+      "AGOT": 418
+    },
+    "profile": "TitleRoutes",
+    "dependency_depth": 1,
+    "dependency_frontier_count": 716,
+    "missing_groups": [],
+    "all_manifest_hashes_and_sizes_verified": true
+  },
+  "versions": {
+    "agot_descriptor": "0.5.2.1",
+    "agot_supported_ck3": "1.19.0.6",
+    "ck3_executable": "not_collected"
+  },
+  "election_catalog": [
+    {
+      "source": "AGOT",
+      "path": "common/succession_election/00_agot_free_cities_elective.txt",
+      "uncommented_definitions": [
+        "magisterial_life_elective",
+        "magisterial_limited_elective"
+      ]
+    },
+    {
+      "source": "AGOT",
+      "path": "common/succession_election/00_agot_kingsguard_elective.txt",
+      "uncommented_definitions": [
+        "kingsguard_elective"
+      ]
+    },
+    {
+      "source": "AGOT",
+      "path": "common/succession_election/00_agot_nights_watch_elective.txt",
+      "uncommented_definitions": [
+        "nights_watch_elective"
+      ]
+    },
+    {
+      "source": "AGOT",
+      "path": "common/succession_election/00_agot_pirate_elective.txt",
+      "uncommented_definitions": [
+        "pirate_elective"
+      ]
+    },
+    {
+      "source": "AGOT",
+      "path": "common/succession_election/00_agot_silent_sisterhood_elective.txt",
+      "uncommented_definitions": [
+        "silent_sisterhood_elective"
+      ]
+    },
+    {
+      "source": "AGOT",
+      "path": "common/succession_election/01_princely_elective.txt",
+      "uncommented_definitions": []
+    },
+    {
+      "source": "AGOT",
+      "path": "common/succession_election/02_gaelic_elective.txt",
+      "uncommented_definitions": []
+    },
+    {
+      "source": "AGOT",
+      "path": "common/succession_election/04_saxon_elective.txt",
+      "uncommented_definitions": []
+    },
+    {
+      "source": "AGOT",
+      "path": "common/succession_election/05_scandinavian_elective.txt",
+      "uncommented_definitions": []
+    },
+    {
+      "source": "CK3",
+      "path": "common/succession_election/00_feudal_elective.txt",
+      "uncommented_definitions": [
+        "feudal_elective"
+      ]
+    },
+    {
+      "source": "CK3",
+      "path": "common/succession_election/01_princely_elective.txt",
+      "uncommented_definitions": [
+        "princely_elective"
+      ]
+    },
+    {
+      "source": "CK3",
+      "path": "common/succession_election/02_gaelic_elective.txt",
+      "uncommented_definitions": [
+        "gaelic_elective"
+      ]
+    },
+    {
+      "source": "CK3",
+      "path": "common/succession_election/04_saxon_elective.txt",
+      "uncommented_definitions": [
+        "saxon_elective"
+      ]
+    },
+    {
+      "source": "CK3",
+      "path": "common/succession_election/05_scandinavian_elective.txt",
+      "uncommented_definitions": [
+        "scandinavian_elective"
+      ]
+    },
+    {
+      "source": "CK3",
+      "path": "common/succession_election/06_tribal_elective.txt",
+      "uncommented_definitions": [
+        "tribal_elective"
+      ]
+    },
+    {
+      "source": "CK3",
+      "path": "common/succession_election/09_confederation_elective.txt",
+      "uncommented_definitions": [
+        "confederation_elective"
+      ]
+    }
+  ],
+  "reviewed_references": [
+    {
+      "source": "AGOT",
+      "path": "common/character_interactions/00_grant_titles_interaction.txt",
+      "sha256": "56d1544e86c378853518997cd2dd09e940806827a865a66880d919f4e453f707",
+      "size": 66529,
+      "markers": {
+        "grant_titles_interaction = {": [
+          2
+        ],
+        "special_interaction = grant_titles_interaction": [
+          9,
+          1589
+        ],
+        "interface = grant_titles": [
+          10,
+          1611
+        ],
+        "target_type = title": [
+          11,
+          1612
+        ],
+        "can_be_granted_titles_by = {": [
+          92
+        ],
+        "can_be_granted_theocratic_titles_by = {": [
+          93
+        ],
+        "diarchy_is_co_rulership": [
+          96
+        ],
+        "can_be_picked_title = {": [
+          232,
+          1817
+        ],
+        "auto_accept = yes": [
+          398,
+          1588,
+          1965
+        ],
+        "on_accept = {": [
+          406,
+          1976
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/laws/00_succession_laws.txt",
+      "sha256": "2f1a66ae530cf09a500874c5b4bb9e7e1ec780717a753ee081ee0236341c8167",
+      "size": 59359,
+      "markers": {
+        "order_of_succession = inheritance": [
+          69,
+          156,
+          219,
+          301,
+          370,
+          432,
+          510,
+          719,
+          851,
+          907,
+          974,
+          1026,
+          1079,
+          1470,
+          1758
+        ],
+        "title_division = partition": [
+          72,
+          159,
+          222,
+          854,
+          910,
+          977,
+          1029,
+          1082
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/laws/01_title_succession_laws.txt",
+      "sha256": "fc27ee55c3a77692ca5f8b348209d5f9faf7e40193e7ce3dce5069467a523531",
+      "size": 13456,
+      "markers": {
+        "election_type = feudal_elective": [
+          22
+        ],
+        "election_type = tribal_elective": [
+          192
+        ],
+        "election_type = confederation_elective": [
+          274
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/on_action/agot_on_actions/agot_wall_on_actions.txt",
+      "sha256": "58a22108b53a9c1f1aad9fd3fdec9168b0dec13cc3b2b9ab282bed09c5339fca",
+      "size": 16266,
+      "markers": {
+        "on_nw_lord_commander_death = {": [
+          607
+        ],
+        "agot_nw_elect_lc = yes": [
+          614
+        ],
+        "resolve_title_and_vassal_change = scope:change": [
+          164,
+          602
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/scripted_effects/00_agot_nw_btw_effects.txt",
+      "sha256": "f5016105155f6da5d8456b27dedbcc3fcc990014d55515ddfe3eb73fee4fb44e",
+      "size": 13578,
+      "markers": {
+        "agot_nw_elect_lc = {": [
+          320
+        ],
+        "has_trait = disinherited": [
+          459
+        ],
+        "set_designated_heir_unsafe = scope:nw_new_holder": [
+          534
+        ],
+        "add_realm_law_skip_effects = nights_watch_temp_realm_succession_law": [
+          533
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/scripted_triggers/00_agot_elective_triggers.txt",
+      "sha256": "6d8e35a0b4b5b99bcf15433086f818c5a345a6065689a16b36e35a1ebde4c63a",
+      "size": 2747,
+      "markers": {
+        "pirate_elective_potential_landless_dynastic_candidate_trigger = {": [
+          1
+        ],
+        "agot_valid_general_elector_candidates_trigger = {": [
+          96
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/scripted_triggers/00_elective_triggers.txt",
+      "sha256": "04dffa426024135d41445936cc255f1f08f977ae114f81b51205b3f1c7773f4d",
+      "size": 8745,
+      "markers": {
+        "has_unelectable_trait_trigger = {": [
+          16
+        ],
+        "has_trait = disinherited": [
+          18
+        ],
+        "feudal_elective_potential_landed_candidate_trigger = {": [
+          156
+        ],
+        "feudal_elective_potential_landless_claimant_candidate_trigger = {": [
+          191
+        ],
+        "feudal_elective_potential_landless_dynastic_candidate_trigger = {": [
+          233
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/scripted_triggers/00_scripted_triggers.txt",
+      "sha256": "b727fcf82488345cee6e060bd4592d6a96f5301c638bcf9011a920b0a165c4a8",
+      "size": 17096,
+      "markers": {
+        "can_be_granted_titles_by = {": [
+          309
+        ],
+        "can_be_granted_theocratic_titles_by = {": [
+          450
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/succession_election/00_agot_free_cities_elective.txt",
+      "sha256": "cc25e0e0b64d7caa0c91193b1eb47a53f4059a25a904fa024efb20ab0a3b4a84",
+      "size": 3268,
+      "markers": {
+        "magisterial_life_elective = {": [
+          1
+        ],
+        "magisterial_limited_elective = {": [
+          63
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/succession_election/00_agot_kingsguard_elective.txt",
+      "sha256": "e44b6fd97bfc0b4a49f803dd3d60158abc9aad419a5a2a58f4a5de50bfce9a04",
+      "size": 1854,
+      "markers": {
+        "kingsguard_elective = {": [
+          9
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/succession_election/00_agot_nights_watch_elective.txt",
+      "sha256": "d672ef3567e715d388affdf1db1c8c15e0805e03d9d8bd7a71d831d9de288f34",
+      "size": 2789,
+      "markers": {
+        "nights_watch_elective = {": [
+          9
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/succession_election/00_agot_pirate_elective.txt",
+      "sha256": "78b59201032066ac0c0cb8187a4644d721cae11169582a572127f37f0389b853",
+      "size": 5182,
+      "markers": {
+        "pirate_elective = {": [
+          9
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/succession_election/00_agot_silent_sisterhood_elective.txt",
+      "sha256": "4782df34ebf7a678ebed5f37d2a51e8d19bf80351380fb3b18414ef7b8d8eafe",
+      "size": 2721,
+      "markers": {
+        "silent_sisterhood_elective = {": [
+          9
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/succession_election/01_princely_elective.txt",
+      "sha256": "97f62d3125518db8a677e432dee07d53832d06ecb0a7b6f80188fd287b9e6577",
+      "size": 17,
+      "markers": {}
+    },
+    {
+      "source": "AGOT",
+      "path": "common/succession_election/02_gaelic_elective.txt",
+      "sha256": "97f62d3125518db8a677e432dee07d53832d06ecb0a7b6f80188fd287b9e6577",
+      "size": 17,
+      "markers": {}
+    },
+    {
+      "source": "AGOT",
+      "path": "common/succession_election/04_saxon_elective.txt",
+      "sha256": "97f62d3125518db8a677e432dee07d53832d06ecb0a7b6f80188fd287b9e6577",
+      "size": 17,
+      "markers": {}
+    },
+    {
+      "source": "AGOT",
+      "path": "common/succession_election/05_scandinavian_elective.txt",
+      "sha256": "97f62d3125518db8a677e432dee07d53832d06ecb0a7b6f80188fd287b9e6577",
+      "size": 17,
+      "markers": {}
+    },
+    {
+      "source": "AGOT",
+      "path": "events/agot_events/agot_nights_watch_events.txt",
+      "sha256": "2c7664168c14bc3224caa044290ee2950363bb6600600f66b7fb968cbac9e628",
+      "size": 81987,
+      "markers": {
+        "agot_nights_watch.0028 = {": [
+          1706
+        ],
+        "agot_nights_watch.0030 = {": [
+          1722
+        ],
+        "resolve_title_and_vassal_change = scope:change": [
+          1254,
+          1502,
+          1740,
+          3253,
+          3753
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/character_interactions/00_grant_titles_interaction.txt",
+      "sha256": "a506859b5260d6e923fb26922c6247cec6fe62699fde1d101ebbbb3b3524fe9d",
+      "size": 55250,
+      "markers": {
+        "grant_titles_interaction = {": [
+          2
+        ],
+        "special_interaction = grant_titles_interaction": [
+          9,
+          1313
+        ],
+        "interface = grant_titles": [
+          10,
+          1335
+        ],
+        "target_type = title": [
+          11,
+          1336
+        ],
+        "can_be_granted_titles_by = {": [
+          54
+        ],
+        "can_be_granted_theocratic_titles_by = {": [
+          55
+        ],
+        "diarchy_is_co_rulership": [
+          58
+        ],
+        "can_be_picked_title = {": [
+          137,
+          1537
+        ],
+        "auto_accept = yes": [
+          266,
+          1312,
+          1684
+        ],
+        "on_accept = {": [
+          274,
+          1695
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/laws/00_succession_laws.txt",
+      "sha256": "f4140755ce89b2bc0c7b5bb80e9318efd7a7ae7ece2e8129119c2ebe9bb9c532",
+      "size": 49206,
+      "markers": {
+        "order_of_succession = inheritance": [
+          64,
+          149,
+          210,
+          292,
+          358,
+          420,
+          496,
+          694,
+          826,
+          882,
+          949,
+          1001,
+          1054,
+          1438
+        ],
+        "title_division = partition": [
+          67,
+          152,
+          213,
+          829,
+          885,
+          952,
+          1004,
+          1057
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/laws/01_title_succession_laws.txt",
+      "sha256": "d398c523a190b0b05d16dac12ee91b2afbc68e323aa219b602cf260f90b8095f",
+      "size": 8891,
+      "markers": {
+        "election_type = feudal_elective": [
+          21
+        ],
+        "election_type = tribal_elective": [
+          185
+        ],
+        "election_type = confederation_elective": [
+          267
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/scripted_triggers/00_elective_triggers.txt",
+      "sha256": "606464399eb4666763e81a4174ab0b10ac129a54b01ace329922fd7c1eafec85",
+      "size": 8701,
+      "markers": {
+        "has_unelectable_trait_trigger = {": [
+          16
+        ],
+        "has_trait = disinherited": [
+          18
+        ],
+        "feudal_elective_potential_landed_candidate_trigger = {": [
+          154
+        ],
+        "feudal_elective_potential_landless_claimant_candidate_trigger = {": [
+          189
+        ],
+        "feudal_elective_potential_landless_dynastic_candidate_trigger = {": [
+          231
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/scripted_triggers/00_scripted_triggers.txt",
+      "sha256": "490c3784ee1555a49f7a4adc9baabb8522485f1af6e1c837961e299a88695b5e",
+      "size": 14623,
+      "markers": {
+        "can_be_granted_titles_by = {": [
+          287
+        ],
+        "can_be_granted_theocratic_titles_by = {": [
+          350
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/succession_election/00_feudal_elective.txt",
+      "sha256": "55ad601f06719441521caf618c69ee6c8251bca41b64220350dc4ec82edeb9a8",
+      "size": 5479,
+      "markers": {
+        "feudal_elective = {": [
+          9
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/succession_election/01_princely_elective.txt",
+      "sha256": "9d8ae173904cb9501279bc6173c3ff7d431517273fe217029f27ae2e535a464a",
+      "size": 7165,
+      "markers": {
+        "princely_elective = {": [
+          9
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/succession_election/02_gaelic_elective.txt",
+      "sha256": "6b3157054aaddb605517a50e5a0823563d25f1035c4ed38e0fd0b26590901ad5",
+      "size": 4168,
+      "markers": {
+        "gaelic_elective = {": [
+          9
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/succession_election/04_saxon_elective.txt",
+      "sha256": "0a44b42520cbbef1e3f4ec5a7186688596cfe61f7be651207f4ba97f9a250872",
+      "size": 4325,
+      "markers": {
+        "saxon_elective = {": [
+          9
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/succession_election/05_scandinavian_elective.txt",
+      "sha256": "5d8e9da7d0f11fc940d9cac249be02cdcf2b9346eba93eb380868591ad2efe8a",
+      "size": 4507,
+      "markers": {
+        "scandinavian_elective = {": [
+          9
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/succession_election/06_tribal_elective.txt",
+      "sha256": "6ffb653ef89b354ad973c9563a014d13e685ccaec159938a2dc0044763a0c46b",
+      "size": 4604,
+      "markers": {
+        "tribal_elective = {": [
+          11
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/succession_election/09_confederation_elective.txt",
+      "sha256": "212f4d9076a5e9dc8806c42e209ce60cebe737529a79c704555c3dc604a2423e",
+      "size": 4729,
+      "markers": {
+        "confederation_elective = {": [
+          11
+        ]
+      }
+    }
+  ],
+  "limits": [
+    "Subset only; dependency frontier remains unresolved.",
+    "Comment-only AGOT election files do not establish effective load order or fallback.",
+    "No universal pre-transfer veto, engine compatibility or landholding enforcement established.",
+    "No original sources or full private manifest published."
+  ]
+}

@@ -1,7 +1,7 @@
 # Two-clause service negotiation — original CK3 scripts, experimental
 
-**Static-checked; not engine-tested.** Title-route collection/stronger G3 source
-adapters are on standby per owner while away from their installation. This independent
+**Static-checked; not engine-tested.** The title-route ZIP was subsequently received
+and verified (TITLE_ROUTE_AUDIT.md); G3 enforcement remains unresolved. This independent
 slice expands the existing deferred endorsement, without new source uploads, native
 title/war effects, runtime Python, paid services or a replacement diplomacy GUI.
 
@@ -69,5 +69,4 @@ order, independent counters, exact role/mode, deadline/timeout pairing, no prepa
 no renewal, receipts, full summary/localization and AI parity. They execute no CK3
 simulation. DELIV-01…10 in FINAL_ENGINE_TESTS.md remain unrun. G2's arbitrary-clause UI,
 engine consent/persistence and G3's title enforcement gates stay open. Next continue
-independent negotiation/obligation work; do not request the standby title ZIP until
-the owner is available or brings it back.
+independent negotiation/obligation work alongside the resumed G3 investigation.

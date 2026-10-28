@@ -10,7 +10,12 @@ campaign.
 
 ## Sources and route coverage
 
-The received scheme subset and the earlier private G1 complement were reviewed.
+The initial scheme subset and earlier private G1 complement were reviewed. The
+subsequent TitleRoutes collection is now received and verified (719 files); see
+TITLE_ROUTE_AUDIT.md and TITLE_ROUTE_SOURCE_RECEIPT.json. Collection is no longer
+on standby and no further upload is requested. The table below reflects the
+earlier subset; the new audit resolves the absent grant/election definitions,
+while universal enforcement remains unresolved.
 G3_SOURCE_RECEIPT.json publishes only relative names, hashes and marker lines.
 The complement's 94 text files were safely unpacked separately; selected reviewed
 files match G1_COMPLEMENT_RECEIPT.json. The scheme subset's reviewed bytes match its
@@ -107,11 +112,11 @@ This is the selected engineering direction, not fields that already exist at run
 The first explicitly scoped political house-affair persistence/restoration slice is
 now in RW010_HOUSE_AFFAIRS.md. Its succession/request lifecycle is source-hardened, and conditional financial
 rehabilitation joins political restoration to personal consent while keeping **landholding enforcement unresolved** until its
-four route gates and engine evidence exist. Inspect missing grant/election definitions
-before attempting stronger title/status adapters. The received subsets lack those
-definitions; TITLE_SOURCE_COLLECTION.md now supplies a targeted private collector
-profile with an explicit missing-definition probe. Its new ZIP is the next source
-input for this track; no intermediate game run is requested.
+four route gates and engine evidence exist. The targeted ZIP now supplies the
+grant/election definitions: the grant recipient check has alternative branches,
+election types use different candidate lists, and the Night Watch uses a separate
+succession effect. See TITLE_ROUTE_AUDIT.md before attempting stronger adapters.
+No universal pre-transfer extension is established; no intermediate game run is requested.
 
 ## Original optional CK3 diagnostic included now
 
