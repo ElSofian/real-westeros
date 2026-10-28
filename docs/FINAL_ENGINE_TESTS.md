@@ -624,3 +624,58 @@ All unrun. RW010_TITLE_PROVENANCE.md adds metadata only; no new confiscation act
   behavior/performance. No pair/world scan, notifications or new decision chain; only
   relevant callback owner's stories are searched. No universal land ban, lawful
   verdict, institutional provenance or multi-generation restitution is claimed.
+
+
+## Exact-affair title intentions (INTENT-01 to INTENT-12)
+
+All unrun. RW010_REVOCATION_INTENTS.md distinguishes selection, intention and transfer.
+
+- INTENT-01: open the generic recipient-domain title picker on an eligible direct
+  vassal/prisoner. Choose county/duchy/kingdom and non-primary titles where eligible;
+  no hard title/affair count cap. Noble-family/landless/wrong-holder titles do not
+  qualify. Selection alone creates no intention, request, payment or transfer.
+- INTENT-02: two retained private exposed-participant observations for one subject
+  yield separate exact confirmations. Verify title, person, captured observation
+  number rendering, original-observation inspection and explicit confirmation; a
+  generic discovery, foreign observer or different participant cannot supply basis.
+- INTENT-03: change custody, liege, title holder, observer readiness or source
+  retention/serial before confirming. Stale confirmation fails without cost. Native
+  laws, protections, title-specific restrictions and refusal remain authoritative;
+  a generic character-validity result is not a per-title lawful judgment.
+- INTENT-04: confirm once, double-click/reopen/confirm another affair for the same
+  issuer/title: only one live pending intention. Other titles remain available;
+  withdrawing permits a new intention with a new serial and explicit chosen basis.
+- INTENT-05: read/reopen native terms/change custody or war state. No clock refresh
+  or automatic native send. Withdraw without current custody/readiness/basis even
+  after the thirty-day window, while owned pending history remains readable; no
+  penalty. Withdrawn/observed states cannot be reactivated.
+- INTENT-06: human and AI receive at most the two fixed day-two/day-thirty initial
+  opportunities per new exposed observation; both use the same selectable-title
+  and confirm/withdraw effects. Empty candidate sets clear stale title aliases.
+  No recurring reminders, world scan or automatic native AI revocation is added.
+- INTENT-07: native-window opening/cancellation/refusal and revoking a different
+  title create no execution link for this intention. Intended title is not prefilled;
+  verify explicit native selection and confirmation separately. A native transfer
+  without the required TP context may produce no observation/link; preserve guards.
+- INTENT-08: within the original window, a fresh exact native-context TP observation
+  matches one pending intention with its retained original basis/serial. Verify
+  consume-before-link order, both pointers/serials and title/subject/issuer identity.
+  Duplicate callbacks cannot repeat linkage. This is declared-basis correspondence,
+  not proof the native action was caused by or lawfully punished that offense.
+- INTENT-09: expired/withdrawn/stale-basis/wrong-title/wrong-holder/ambiguous pending
+  records and previously linked TP entries do not attach. An old observation cannot
+  be linked after an intention is created. TP one-day coalescing remains: a genuine
+  repeated same-tuple transfer can have no new entry, never reuse its older entry.
+- INTENT-10: view linked provenance through actor-only archives. Both retained
+  records, serials, pointers, title, subject and observed state must match. Wrong
+  or expired links hide the basis line, including stale scalar aliases; no foreign
+  plot or private observation is disclosed to the selected character.
+- INTENT-11: save/reload pending, withdrawn, observed and expired records/counters.
+  Original thirty-day/five-year clocks remain; reading/linking never renews them.
+  Personal records end on issuer death and sixty-day cleanup removes expired storage.
+  No successor inherits private evidence or title entitlement.
+- INTENT-12: baseline comparison for native grants/revocations, title lifecycle,
+  imprisonment/reasons, succession, wars/Mega Wars, AI, performance and optional G3
+  diagnostic. No native cost, tyranny, claim or penalty is duplicated. Verify
+  generic-picker scopes, callback propagation/order and scalar-format UI; all remain
+  experimental until observed, with no custom confiscation/restoration claim.

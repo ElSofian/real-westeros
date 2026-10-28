@@ -26,6 +26,7 @@ are deferred to the final campaign, not waived. Prefer a disposable fresh save.
 | Political house affairs | Fifty-year political disfavor, independent institutional records, head petitions/sovereign rehabilitation; no title ban |
 | Post-rehabilitation land review | Current sovereign/head review; guarded native grant terms, no automatic transfer or restitution |
 | Personal title provenance | Conditional native revocation-context observation; exact parties/title, private five-year records, no new sanction or inherited entitlement |
+| Exact-affair revocation intentions | Generic title choice plus explicit private-basis confirmation; thirty-day withdrawal/match window; no forced sanction |
 | Known-case archive | Independent story records, role/disclosure-filtered views, retained closed records |
 
 All rows describe intended source behavior; none has been observed in CK3 here.

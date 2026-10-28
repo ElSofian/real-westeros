@@ -1,0 +1,33 @@
+# A generic native title picker, not the native revoke-title special interaction.
+rw_consider_title_revocation_interaction = {
+    category = interaction_category_vassal
+    desc = rw_consider_title_revocation_interaction_desc
+    common_interaction = yes
+    target_type = title
+    target_filter = recipient_domain_titles
+    auto_accept = yes
+    is_shown = {
+        scope:actor = {
+            any_owned_story = {
+                rw_scheme_evidence_reader_trigger = { READER = scope:actor }
+                var:rw_evidence_kind = flag:participant_exposed
+                var:rw_evidence_participant = scope:recipient
+            }
+        }
+        scope:recipient = { liege = scope:actor is_imprisoned_by = scope:actor }
+    }
+    can_be_picked_title = { rw_ri_selectable_trigger = { ACTOR = scope:actor SUBJECT = scope:recipient TITLE = scope:target } }
+    has_valid_target_showing_failures_only = { rw_ri_selectable_trigger = { ACTOR = scope:actor SUBJECT = scope:recipient TITLE = scope:target } }
+    on_accept = { rw_ri_select_effect = yes }
+    ai_will_do = { base = 0 }
+}
+rw_review_revocation_intents_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_review_revocation_intents_interaction_desc
+    common_interaction = yes
+    use_diplomatic_range = no
+    auto_accept = yes
+    is_shown = { scope:actor = { is_alive = yes any_owned_story = { rw_ri_reader_trigger = { READER = scope:actor } } } }
+    on_accept = { rw_ri_read_effect = yes }
+    ai_will_do = { base = 0 }
+}

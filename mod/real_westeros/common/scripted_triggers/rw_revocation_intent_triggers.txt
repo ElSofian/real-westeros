@@ -1,0 +1,159 @@
+# Current readiness to consider a title, not a historical legal verdict.
+rw_ri_title_context_trigger = {
+    exists = $ACTOR$
+    exists = $SUBJECT$
+    exists = $TITLE$
+    $ACTOR$ = {
+        is_alive = yes
+        is_adult = yes
+        is_imprisoned = no
+        is_landed = yes
+        NOT = { this = $SUBJECT$ }
+        is_character_interaction_valid = { interaction = revoke_title_interaction recipient = $SUBJECT$ }
+    }
+    $SUBJECT$ = {
+        is_alive = yes
+        is_adult = yes
+        liege = $ACTOR$
+        is_imprisoned_by = $ACTOR$
+    }
+    $TITLE$ = {
+        exists = holder
+        holder = $SUBJECT$
+        tier >= tier_county
+        is_noble_family_title = no
+        is_landless_type_title = no
+    }
+}
+rw_ri_selectable_trigger = {
+    rw_ri_title_context_trigger = { ACTOR = $ACTOR$ SUBJECT = $SUBJECT$ TITLE = $TITLE$ }
+    $ACTOR$ = {
+        NOT = {
+            any_owned_story = {
+                story_type = story_rw_revocation_intent
+                var:rw_ri_schema = 1
+                var:rw_ri_issuer = $ACTOR$
+                var:rw_ri_state = flag:pending
+                has_variable = rw_ri_window
+                var:rw_ri_title = $TITLE$
+            }
+        }
+    }
+}
+rw_ri_candidate_trigger = {
+    rw_scheme_justice_own_custody_trigger = yes
+    exists = scope:rw_ri_title
+    exists = scope:rw_ri_subject
+    scope:rw_scheme_evidence_record.var:rw_evidence_participant = scope:rw_ri_subject
+    rw_ri_selectable_trigger = { ACTOR = scope:rw_scheme_observer SUBJECT = scope:rw_ri_subject TITLE = scope:rw_ri_title }
+}
+rw_ri_reader_trigger = {
+    story_type = story_rw_revocation_intent
+    story_owner = $READER$
+    var:rw_ri_schema = 1
+    var:rw_ri_issuer = $READER$
+    has_variable = rw_ri_serial
+    has_variable = rw_ri_retained
+    has_variable = rw_ri_issued_on
+    has_variable = rw_ri_basis_serial
+    exists = var:rw_ri_title
+    exists = var:rw_ri_subject
+    OR = { var:rw_ri_state = flag:pending var:rw_ri_state = flag:withdrawn var:rw_ri_state = flag:observed }
+}
+rw_ri_view_trigger = {
+    exists = scope:rw_ri_record
+    exists = scope:rw_ri_serial
+    exists = scope:rw_ri_basis_serial
+    exists = scope:rw_ri_title
+    exists = scope:rw_ri_subject
+    is_alive = yes
+    scope:rw_ri_record = {
+        rw_ri_reader_trigger = { READER = root }
+        var:rw_ri_serial = scope:rw_ri_serial
+        var:rw_ri_basis_serial = scope:rw_ri_basis_serial
+        var:rw_ri_title = scope:rw_ri_title
+        var:rw_ri_subject = scope:rw_ri_subject
+    }
+}
+rw_ri_pending_trigger = {
+    rw_ri_view_trigger = yes
+    scope:rw_ri_record = { var:rw_ri_state = flag:pending has_variable = rw_ri_window }
+}
+rw_ri_can_withdraw_trigger = {
+    rw_ri_view_trigger = yes
+    scope:rw_ri_record = { var:rw_ri_state = flag:pending }
+}
+rw_ri_can_open_native_trigger = {
+    rw_ri_pending_trigger = yes
+    is_ai = no
+    scope:rw_ri_record = { rw_ri_basis_valid_trigger = { READER = root } }
+    rw_ri_title_context_trigger = { ACTOR = root SUBJECT = scope:rw_ri_subject TITLE = scope:rw_ri_title }
+}
+# Called only after a fresh typed TP observation. Does not relax its native guard.
+rw_ri_receipt_linkable_trigger = {
+    is_alive = yes
+    is_adult = yes
+    exists = scope:rw_tp_record
+    exists = scope:rw_tp_serial
+    exists = scope:rw_ri_fresh_receipt
+    scope:rw_ri_fresh_receipt = scope:rw_tp_record
+    exists = scope:actor
+    exists = scope:recipient
+    exists = scope:landed_title
+    exists = scope:revoke_title_interaction
+    this = scope:actor
+    scope:recipient = scope:previous_holder
+    scope:landed_title = scope:title
+    exists = scope:title
+    exists = scope:previous_holder
+    this = scope:rw_tp_observer
+    scope:title = { exists = holder holder = root }
+    scope:rw_tp_record = {
+        rw_tp_reader_trigger = { READER = root }
+        var:rw_tp_serial = scope:rw_tp_serial
+        var:rw_tp_title = scope:title
+        var:rw_tp_former_holder = scope:previous_holder
+        var:rw_tp_new_holder = root
+        NOT = { has_variable = rw_tp_intent }
+    }
+    any_owned_story = { rw_ri_matches_receipt_trigger = yes }
+    NOT = { any_owned_story = { count > 1 rw_ri_matches_receipt_trigger = yes } }
+}
+# Story scope; basis is still the exact issuer-private retained observation.
+rw_ri_matches_receipt_trigger = {
+    rw_ri_reader_trigger = { READER = scope:rw_tp_observer }
+    var:rw_ri_state = flag:pending
+    has_variable = rw_ri_window
+    var:rw_ri_title = scope:title
+    var:rw_ri_subject = scope:previous_holder
+    rw_ri_basis_valid_trigger = { READER = scope:rw_tp_observer }
+}
+rw_ri_basis_valid_trigger = {
+    exists = var:rw_ri_basis
+    has_variable = rw_ri_basis_serial
+    var:rw_ri_basis = {
+        rw_scheme_evidence_reader_trigger = { READER = $READER$ }
+        var:rw_evidence_kind = flag:participant_exposed
+        var:rw_evidence_serial = prev.var:rw_ri_basis_serial
+        var:rw_evidence_participant = prev.var:rw_ri_subject
+    }
+}
+rw_ri_tp_link_visible_trigger = {
+    rw_tp_view_trigger = yes
+    exists = scope:rw_ri_basis_serial
+    scope:rw_tp_record = {
+        exists = var:rw_tp_intent
+        has_variable = rw_tp_intent_serial
+        var:rw_tp_basis_serial = scope:rw_ri_basis_serial
+        var:rw_tp_intent = {
+            rw_ri_reader_trigger = { READER = root }
+            var:rw_ri_serial = prev.var:rw_tp_intent_serial
+            var:rw_ri_basis_serial = scope:rw_ri_basis_serial
+            var:rw_ri_title = scope:rw_tp_title
+            var:rw_ri_subject = scope:rw_tp_former_holder
+            var:rw_ri_state = flag:observed
+            var:rw_ri_receipt = scope:rw_tp_record
+            var:rw_ri_receipt_serial = scope:rw_tp_serial
+        }
+    }
+}

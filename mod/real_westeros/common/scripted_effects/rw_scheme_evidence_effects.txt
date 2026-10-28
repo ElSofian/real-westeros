@@ -81,6 +81,7 @@ rw_scheme_create_evidence_effect = {
         }
         rw_scheme_response_initialise_effect = yes
         rw_house_schedule_censure_review_effect = yes
+        rw_ri_schedule_effect = yes
         scope:rw_scheme_observer = {
             send_interface_message = {
                 type = event_generic_bad

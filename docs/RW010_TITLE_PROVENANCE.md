@@ -56,8 +56,10 @@ as proof, or replay native effects to obtain a receipt. Engine evidence must als
 exclude stale inherited context in unrelated same-event transfers.
 
 Thus the stored kind is explicitly `native_revocation_context_transfer`, not a
-per-offense conviction or universally certified revocation transaction. No scheme
-pointer, particular allegation, plot attribution, legal verdict or pardon is stored.
+per-offense conviction or universally certified revocation transaction. The original
+transfer facts contain no scheme pointer, per-offense legal verdict or pardon.
+The subsequent optional private intention link (RW010_REVOCATION_INTENTS.md) records
+the issuer's declared basis, not a native causal attribution.
 Having relevant private evidence explains why this observer keeps the note; it
 does not establish why the native action occurred.
 
@@ -94,9 +96,11 @@ callback's relevant owner's stories are inspected; no global provenance index or
 per-title native state is changed. The effect writes only new RW metadata and its
 own counter; it consumes no reason and repeats no native costs or sanctions.
 
-Next required work: prove the callback context in the final campaign, then design
-an explicit association to a chosen affair and an institutional **public-fact**
-provenance contract for long-term restitution. A later restitution must recheck the
+The subsequent explicit association is in RW010_REVOCATION_INTENTS.md: one fresh
+transfer observation can match a previously confirmed exact-affair/title intention,
+with private bidirectional serial/pointer checks and no retroactive link. Native
+callback context still needs final evidence. Next design an institutional
+**public-fact** provenance contract for long-term restitution. A later restitution must recheck the
 exact current title/holder, authority, recipient, consent and native grant rules;
 it must never seize land from a third party on an old note's authority. G3's house
 ban/status restoration and G1 remain unresolved. No full confiscation/restoration
