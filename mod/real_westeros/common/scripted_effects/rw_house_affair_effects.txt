@@ -172,6 +172,8 @@ rw_house_offer_opportunities_effect = {
                 limit = { rw_house_head_ruler_available_trigger = yes }
                 set_variable = { name = rw_house_last_head_ruler value = var:rw_house_authority.holder }
             }
+            # A new head must not inherit the former head's already-consumed pair.
+            else = { remove_variable = rw_house_last_head_ruler }
             rw_house_snapshot_effect = yes
             save_scope_value_as = { name = rw_house_head_notified value = 1 }
             var:rw_house_target.house_head = { trigger_event = { id = rw_house_affairs.0002 } }

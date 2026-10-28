@@ -135,7 +135,9 @@ authority's holder changes; the delivery cache records both identities before se
 An additional ruler-change notice waits until that ruler is a qualified sovereign
 and the head is not at war with them. Cache updates obey the same availability check,
 so a child, captive, dependent ruler or war does not consume that opportunity; a later
-pass can deliver it when available. This is not an annual retry for a refused petition.
+pass can deliver it when available. If a new head's initial notice occurs while the
+ruler is unavailable, clear the former head's delivery pair rather than treating it
+as the new head's delivered opportunity. This is not an annual retry for a refused petition.
 A new sovereign also gets an opportunity to review inherited political disfavor. The 60-day record pass caches recipients before notices and sends only one notice
 when head/ruler roles overlap in the same pass; the ruler cache still advances.
 Refusal/restoration notices do not restart requests; cooldown/revision guards still

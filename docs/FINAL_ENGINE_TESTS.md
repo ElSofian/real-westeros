@@ -400,7 +400,8 @@ not a prohibition on grants/inheritance/election/conquest or removal of nobility
   petition themselves. Missing schema-1 cache gives at most one initial reminder.
 - HOUSE-16: new holder is a child, captive, dependent ruler or at war with head:
   extra head/ruler-pair reminder is not consumed while unavailable; becoming eligible
-  delivers it once. Distinguish that from the initial head information notice and
+  delivers it once. Replace the head during unavailability with the same ruler: the
+  former head's cached pair must not consume the new head's later opportunity. Distinguish that from the initial head information notice and
   from annual retries (not implemented). Count notices across save/reload.
 - HOUSE-17: pending head imprisoned/changed house/dead/replaced, ruler imprisoned,
   dependent or displaced, or parties at war. Replies fail current guards immediately.

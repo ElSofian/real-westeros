@@ -55,6 +55,8 @@ def succession_errors(t, e, v):
                   'NOT = { var:rw_house_last_head_ruler = var:rw_house_authority.holder }'):
         if guard not in offers:
             errors.append('same head misses successor opportunity')
+    if 'else = { remove_variable = rw_house_last_head_ruler }' not in offers:
+        errors.append('new head inherits unavailable former pair')
     if offers.count('rw_house_head_ruler_available_trigger = yes') != 2:
         errors.append('successor opportunity consumed before available')
     if not 0 <= offers.find('set_variable = { name = rw_house_last_head_ruler') < offers.find('trigger_event'):
@@ -113,6 +115,7 @@ class HouseSuccessionContractTests(unittest.TestCase):
                       'NOT = { var:rw_house_last_head_ruler = var:rw_house_authority.holder }'):
             self.assertIn('same head misses successor opportunity', self.errors(e=self.e.replace(guard, 'always = yes')))
         self.assertIn('successor opportunity can loop', self.errors(e=self.e.replace('set_variable = { name = rw_house_last_head_ruler value = var:rw_house_authority.holder }', '')))
+        self.assertIn('new head inherits unavailable former pair', self.errors(e=self.e.replace('else = { remove_variable = rw_house_last_head_ruler }', '')))
         for guard in ('rw_house_sovereign_trigger = yes', 'NOT = { is_at_war_with = prev.var:rw_house_authority.holder }'):
             self.assertIn('successor opportunity consumed before available', self.errors(t=self.t.replace(guard, 'always = yes')))
         self.assertIn('successor opportunity consumed before available', self.errors(e=self.e.replace('rw_house_head_ruler_available_trigger = yes', 'always = yes', 1)))
