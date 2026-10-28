@@ -35,4 +35,7 @@ not a demonstrated pre-transfer veto. Existing source subsets do not establish a
 universal 50-year house landholding ban; no impossibility claim is made. Original
 optional standalone diagnostic interactions mark one chosen current house for seven days, and additive
 callback children log restricted observations only. The base mod loads none of these diagnostic callbacks. They neither enforce a sanction
-nor clear G3. All G3-01…12 runtime cases remain deferred; no intermediate run requested.
+nor clear G3. The targeted TitleRoutes ZIP is now verified; TITLE_ROUTE_AUDIT.md
+locates grant alternatives, actual election lists and separate AGOT succession
+without establishing universal enforcement. All G3-01…12 runtime cases remain
+deferred; no intermediate run requested.

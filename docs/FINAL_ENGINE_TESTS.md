@@ -310,12 +310,18 @@ collective sanctions and landholding enforcement are not implemented.
   Multiple callback labels may describe one transfer. No secret/full-scope dump.
 - G3-04: grant a title to a marked member using the normal native path; document
   selection, acceptance and resulting callback(s). A helper or trace does not prove
-  a pre-transfer ban; inspect missing initiating grant/caller definitions if needed.
+  a pre-transfer ban. Use TITLE_ROUTE_AUDIT.md to cover ordinary, theocratic and
+  co-ruler recipient alternatives where applicable, multi-title selection and
+  scripted grants separately; retain all native AGOT eligibility.
 - G3-05: partition and single-heir succession with deceased old holders: capture
   title gain/loss/inheritance order, split titles, heirs, claims and native cleanup.
   No title is moved back, no personal guilt transferred or reason created/consumed.
 - G3-06: elective succession across applicable types: record eligibility/winner and
-  observed callbacks separately from hereditary succession; no guessed election tag.
+  observed callbacks separately from hereditary succession. Resolve active laws and
+  file overlays rather than counting comment-only AGOT definitions as active. Cover
+  feudal/pirate/magisterial candidate lists where applicable, then the separate Night
+  Watch succession effect; a score penalty or feudal filter is not universal exclusion.
+  Preserve regional institutions; no guessed election tag or forced succession.
 - G3-07: claim/conquest and usurpation separately: capture genuine native war/vassal
   resolution and callback coverage. Usurpation is not a synonym for conquest; do not
   infer all CB coverage or ban enforcement from one callback or one successful war.

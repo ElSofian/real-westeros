@@ -84,6 +84,6 @@ Fifteen new adversarial source-contract tests cover stale roles/revisions, funds
 price, consent, two-leg ordering/receipts, refusal, silence, death/replacement,
 fixed deadlines, AI/player graph and absence of native mutation. TERM-01…10 final
 scenarios remain unrun. Target metadata stays CK3 1.19.* / AGOT 0.5.2.1; no runtime
-compatibility claim. Next review native grant/election entry definitions still absent
-from the received subset before prototyping stronger title/status sanctions. G3's
+compatibility claim. The subsequent title-route intake reviews native grant/election
+entry definitions absent from the earlier subset; see TITLE_ROUTE_AUDIT.md. G3's
 four acquisition-route gate remains unresolved; G1 stays for the war stage.

@@ -63,7 +63,7 @@ needed to build, and the ZIP contains no Python gameplay runtime.
 ## Integrity and limits
 
 The ZIP has `mod/real_westeros.mod`, `mod/real_westeros/`, selected instructions
-(including the G3 diagnostic notice and hash-only source receipt),
+(including the G3 diagnostic notice, resumed title-route audit and hash-only source receipts),
 and `MANIFEST.json`. The manifest identifies HEAD, provisional version metadata,
 and each payload file's SHA-256/size. It excludes itself from its file list; directory
 entries have no payload checksum. The adjacent `.sha256` hashes the whole mod ZIP.

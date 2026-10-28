@@ -1,10 +1,12 @@
 # Missing title-grant and election sources — private G3 collection
 
-**On standby per owner:** they are away from their installation and cannot provide
-files now. Keep the collector available; continue independent development and do
-not repeat the collection request until the owner is available or resumes this track.
+**Received and verified:** the owner returned and supplied the targeted ZIP. All
+719 files / 46,140,537 bytes match its manifest. See TITLE_ROUTE_AUDIT.md and
+TITLE_ROUTE_SOURCE_RECEIPT.json for the resumed inspection. No further upload or
+intermediate game run is requested. The instructions below are retained for later
+versions, not a pending collection request.
 
-The received 1,724-file scheme collection and earlier G1 complement contain neither
+Before this new intake, the 1,724-file scheme collection and earlier G1 complement contained neither
 native title-grant interaction definitions nor the complete election-type directory.
 They do contain grant eligibility helpers and election references, which are not
 substitutes for those definitions. G3's universal landholding gate remains unresolved.
@@ -84,7 +86,7 @@ comment/string masking, unchanged sources/non-overwrite, failure bounds and link
 They run alongside the original nine scheme tests on PowerShell/Linux and Windows
 PowerShell 5.1 CI. Local hosts without PowerShell report skips explicitly.
 
-After receiving the ZIP, verify every hash/size before source inspection and keep
+For a future collection, verify every hash/size before source inspection and keep
 originals outside Git. Resolve the grant sender/recipient/title-picker/conditions,
 election candidate predicates and referenced dependency frontier. Inspect actual
 inheritance and conquest separately; a grant helper or post-transfer reversal cannot
