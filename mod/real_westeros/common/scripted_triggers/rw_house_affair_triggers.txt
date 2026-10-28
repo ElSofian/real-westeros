@@ -149,6 +149,7 @@ rw_house_can_petition_trigger = {
     scope:rw_house_record = {
         rw_house_record_active_trigger = yes
         NOT = { rw_house_pending_roles_valid_trigger = yes }
+        NOT = { rw_house_terms_valid_trigger = yes }
         OR = {
             NOT = { has_variable = rw_house_petition_cooldown }
             AND = { exists = var:rw_house_petitioner NOT = { var:rw_house_petitioner = root } }

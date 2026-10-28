@@ -2,7 +2,8 @@
 
 **Status: source-audited subset; no engine run; landholding enforcement unresolved.**
 A subsequent experimental political censure/register/rehabilitation slice is in
-RW010_HOUSE_AFFAIRS.md. This investigation and optional diagnostic do not clear G3
+RW010_HOUSE_AFFAIRS.md. Conditional 50-gold political rehabilitation is in RW010_HOUSE_TERMS.md.
+This investigation and optional diagnostic do not clear G3
 or replace the intended fifty-year landholding ban with a political marker. Its
 feasibility is unresolved, not disproved. Manual runs remain deferred to the final
 campaign.
@@ -51,6 +52,13 @@ branch and a set of blood relatives are different identities. A current-house
 marker cannot silently answer how later births, cadets, adoption, legitimacy,
 bastard branches or AGOT house changes should be treated.
 
+A later source review located celestial family extinction with celestial supreme-ruler,
+noble-family-title, human-actor and AI-recipient restrictions. It is not a generic
+Westerosi house sanction or proved parity path; do not bypass those native gates.
+Native inheritance restoration also retains dynasty-head/renown and AGOT
+human-recipient conditions. Hash/relative markers are added to G3_SOURCE_RECEIPT.json;
+these definitions are neither copied nor force-run by Real Westeros.
+
 House-scoped variables, including a timed house variable in a native coronation
 flow, are source-located persistence candidates. This does not establish a complete
 sanction registry, legal enforcement or engine persistence proof. The existing
@@ -97,8 +105,8 @@ This is the selected engineering direction, not fields that already exist at run
   sanctions policy. No paid service, runtime Python or language model.
 
 The first explicitly scoped political house-affair persistence/restoration slice is
-now in RW010_HOUSE_AFFAIRS.md. Harden its succession/request lifecycle before stronger
-sanctions, while keeping **landholding enforcement unresolved** until its
+now in RW010_HOUSE_AFFAIRS.md. Its succession/request lifecycle is source-hardened, and conditional financial
+rehabilitation joins political restoration to personal consent while keeping **landholding enforcement unresolved** until its
 four route gates and engine evidence exist. Inspect missing grant/election definitions
 before deciding whether another targeted private collection is necessary; no new
 upload or intermediate game run is requested by this investigation.

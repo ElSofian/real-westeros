@@ -93,3 +93,8 @@ Follow FINAL_ENGINE_TESTS.md plus TEST_PLAN_G1.md when that war stage is ready.
 Record actual CK3/AGOT versions, DLC, playset, source commit, manifest, logs and
 observed results. Launcher visibility or a clean build does not make a scenario
 pass. Keep unsupported features distinct from the implemented experimental slices.
+
+The experimental house register also includes a sovereign's conditional 50-gold
+rehabilitation offer (RW010_HOUSE_TERMS.md): current-head consent and funds are required,
+free restoration/withdrawal remain separate, and no native title/status sanction is
+implemented. Payment/closure ordering and persistence still require final CK3 tests.

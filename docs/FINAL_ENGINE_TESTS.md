@@ -422,3 +422,42 @@ not a prohibition on grants/inheritance/election/conquest or removal of nobility
   capture the known observation limit, not a supposed complete history. No new
   native callback or timer is installed. Check fifty-year expiry, pure archive,
   native succession/AGOT behaviors and long-run record/notification cost unchanged.
+
+### Conditional rehabilitation terms (all unrun)
+
+- TERM-01: actual exposed-prisoner political decree → free head petition → sovereign
+  offers 50-gold rehabilitation. Exact price/payer/payee, closure, thirty-day deadline,
+  refusal/inaction and no native pardon/land/status are shown together. Offering costs
+  nothing, consumes the old reply window and revises before delivery.
+- TERM-02: head accepts with ≥50 personal gold; verify head -50/current addressed
+  sovereign +50 once, exact decree restored, closed-by and payer/payee/date receipt,
+  existing retained history, no extra +10 goodwill and no native/old resentment removal.
+- TERM-03: two response popups, old ruler reply, old head offer, archive reopens,
+  save/reload before/after choice and two same-day choices: no repeat charge, stale
+  closure, wrong-payee transfer, receipt overwrite or cross-authority settlement.
+- TERM-04: gold falls below 50 after opening, exact 50 boundary, zero/negative balance:
+  acceptance fails without debt/partial closure. Refusal/inaction still available.
+  Inspect both balances, closure and receipt for engine errors/partial effects;
+  no automatic rollback/atomicity is assumed or proved by the source ordering.
+- TERM-05: reject, ignore until thirty days, original fifty-year decree expires before
+  terms deadline, or sovereign withdraws while offer outstanding: no payment, extra
+  penalty, renewed term or revived old acceptance. Unanswered/refused/invalidated and
+  paid receipts remain distinct; retirement occurs once on existing maintenance.
+- TERM-06: head dies, changes house, is replaced/imprisoned, or goes to war; current
+  sovereign dies, loses exact title/independence or is imprisoned. Existing acceptance
+  fails immediately; no debt/consent inherited by either successor. Owner-party death
+  with unsettled alive/head flags invalidates open terms before custody transfer.
+- TERM-07: new head/ruler submits replacement via role-change exception; old terms,
+  price/date/window cleared, new offer requires fresh explicit consent. Same eligible
+  pair cannot overwrite a valid counteroffer or evade original petition cooldown.
+  Change/reversal entirely between observations remains a documented limit.
+- TERM-08: stale terms panel refreshes the exact still-readable record only, never
+  accepts a replacement. Stranger/former custodian/old ruler cannot pay, collect or
+  decide for successors; browsing is actor-only and discloses no private plot data.
+- TERM-09: player↔AI and AI↔AI offer/accept/refuse/ignore with identical guards, funds,
+  costs and results. Free rehabilitation and sovereign withdrawal remain choices.
+  Count notifications/records across repeated passes; no extra timer or annual retry.
+- TERM-10: legacy schema-1 record without terms fields works unchanged; distinguish
+  paid political restoration from native title/status restoration, dynasty disinheritance
+  and celestial family extinction. Baseline AGOT wars, titles, succession, banking,
+  release terms, AI and optional-diagnostic isolation remain unchanged in final runs.

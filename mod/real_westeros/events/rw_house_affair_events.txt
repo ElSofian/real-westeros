@@ -32,6 +32,7 @@ rw_house_affairs.0002 = {
     title = rw_house_affairs.record_title
     desc = {
         first_valid = {
+            triggered_desc = { trigger = { rw_house_view_trigger = yes scope:rw_house_record = { var:rw_house_state = flag:restored var:rw_house_last_response = flag:terms_settled } } desc = rw_house_terms.settled }
             triggered_desc = { trigger = { rw_house_view_trigger = yes scope:rw_house_record = { var:rw_house_state = flag:restored } } desc = rw_house_affairs.restored }
             triggered_desc = { trigger = { rw_house_view_trigger = yes scope:rw_house_record = { var:rw_house_state = flag:withdrawn } } desc = rw_house_affairs.withdrawn }
             triggered_desc = { trigger = { rw_house_view_trigger = yes scope:rw_house_record = { NOT = { has_variable = rw_house_term } } } desc = rw_house_affairs.expired }
@@ -52,6 +53,13 @@ rw_house_affairs.0002 = {
                         desc = rw_house_affairs.last_unanswered
                     }
                     triggered_desc = { trigger = { scope:rw_house_record = { var:rw_house_last_response = flag:invalidated } } desc = rw_house_affairs.last_invalidated }
+                    triggered_desc = { trigger = { scope:rw_house_record = { var:rw_house_last_response = flag:terms_offered has_variable = rw_house_terms_window } } desc = rw_house_terms.pending }
+                    triggered_desc = { trigger = { scope:rw_house_record = { var:rw_house_last_response = flag:terms_refused } } desc = rw_house_terms.refused }
+                    triggered_desc = { trigger = { scope:rw_house_record = { var:rw_house_last_response = flag:terms_invalidated } } desc = rw_house_terms.invalidated }
+                    triggered_desc = {
+                        trigger = { scope:rw_house_record = { OR = { var:rw_house_last_response = flag:terms_unanswered AND = { var:rw_house_last_response = flag:terms_offered NOT = { has_variable = rw_house_terms_window } } } } }
+                        desc = rw_house_terms.unanswered
+                    }
                 }
             }
             desc = rw_house_affairs.unavailable
@@ -75,6 +83,12 @@ rw_house_affairs.0002 = {
         trigger = { rw_house_can_withdraw_trigger = yes }
         rw_house_withdraw_effect = yes
         ai_chance = { base = 10 }
+    }
+    option = {
+        name = rw_house_terms.review
+        trigger = { rw_house_terms_turn_trigger = yes }
+        rw_house_review_terms_effect = yes
+        ai_chance = { base = 50 }
     }
     option = {
         name = rw_house_affairs.refresh
@@ -104,6 +118,12 @@ rw_house_affairs.0003 = {
         trigger = { rw_house_ruler_reply_trigger = yes }
         rw_house_restore_effect = yes
         ai_chance = { base = 40 modifier = { factor = 2 has_trait = forgiving } modifier = { factor = 0.5 has_trait = vengeful } }
+    }
+    option = {
+        name = rw_house_terms.offer
+        trigger = { rw_house_ruler_reply_trigger = yes }
+        rw_house_offer_terms_effect = yes
+        ai_chance = { base = 20 modifier = { factor = 2 has_trait = greedy } modifier = { factor = 0.5 has_trait = compassionate } }
     }
     option = {
         name = rw_house_affairs.refuse
