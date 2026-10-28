@@ -1,0 +1,10 @@
+story_rw_revocation_intent = {
+    on_owner_death = { end_story = yes }
+    effect_group = {
+        days = 60
+        triggered_effect = {
+            trigger = { NOT = { has_variable = rw_ri_retained } }
+            effect = { end_story = yes }
+        }
+    }
+}

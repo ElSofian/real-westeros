@@ -1,0 +1,135 @@
+# Generic title selection only opens case confirmations. Auto-accept is not consent.
+rw_ri_select_effect = {
+    if = {
+        limit = { rw_ri_selectable_trigger = { ACTOR = scope:actor SUBJECT = scope:recipient TITLE = scope:target } }
+        scope:target = { save_scope_as = rw_ri_title }
+        scope:recipient = { save_scope_as = rw_ri_subject }
+        scope:actor = {
+            save_scope_as = rw_scheme_observer
+            every_owned_story = {
+                limit = {
+                    rw_scheme_evidence_reader_trigger = { READER = scope:rw_scheme_observer }
+                    var:rw_evidence_kind = flag:participant_exposed
+                    var:rw_evidence_participant = scope:rw_ri_subject
+                }
+                save_scope_as = rw_scheme_evidence_record
+                save_scope_value_as = { name = rw_scheme_evidence_serial value = var:rw_evidence_serial }
+                scope:rw_scheme_observer = { rw_ri_open_candidate_effect = yes }
+            }
+        }
+    }
+}
+rw_ri_open_candidate_effect = {
+    if = { limit = { rw_ri_candidate_trigger = yes } trigger_event = { id = rw_revocation_intents.0001 } }
+}
+rw_ri_create_effect = {
+    if = {
+        limit = { rw_ri_candidate_trigger = yes }
+        create_story = { type = story_rw_revocation_intent save_scope_as = rw_ri_record }
+        if = {
+            limit = {
+                exists = scope:rw_ri_record
+                scope:rw_ri_record = { story_type = story_rw_revocation_intent story_owner = scope:rw_scheme_observer NOT = { has_variable = rw_ri_schema } }
+            }
+            if = { limit = { NOT = { has_variable = rw_ri_counter } } set_variable = { name = rw_ri_counter value = 0 } }
+            change_variable = { name = rw_ri_counter add = 1 }
+            save_scope_value_as = { name = rw_ri_serial value = var:rw_ri_counter }
+            scope:rw_ri_record = {
+                set_variable = { name = rw_ri_schema value = 1 }
+                set_variable = { name = rw_ri_serial value = scope:rw_ri_serial }
+                set_variable = { name = rw_ri_issuer value = scope:rw_scheme_observer }
+                set_variable = { name = rw_ri_title value = scope:rw_ri_title }
+                set_variable = { name = rw_ri_subject value = scope:rw_ri_subject }
+                set_variable = { name = rw_ri_basis value = scope:rw_scheme_evidence_record }
+                set_variable = { name = rw_ri_basis_serial value = scope:rw_scheme_evidence_serial }
+                set_variable = { name = rw_ri_state value = flag:pending }
+                set_variable = { name = rw_ri_issued_on value = current_date }
+                set_variable = { name = rw_ri_window value = flag:yes days = 30 }
+                set_variable = { name = rw_ri_retained value = flag:yes years = 5 }
+            }
+            save_scope_value_as = { name = rw_ri_basis_serial value = scope:rw_scheme_evidence_serial }
+            trigger_event = { id = rw_revocation_intents.0002 }
+        }
+    }
+}
+rw_ri_withdraw_effect = {
+    if = {
+        limit = { rw_ri_can_withdraw_trigger = yes }
+        scope:rw_ri_record = {
+            remove_variable = rw_ri_window
+            set_variable = { name = rw_ri_state value = flag:withdrawn }
+        }
+    }
+}
+rw_ri_link_transfer_effect = {
+    if = {
+        limit = { rw_ri_receipt_linkable_trigger = yes }
+        every_owned_story = {
+            limit = { rw_ri_matches_receipt_trigger = yes }
+            save_scope_as = rw_ri_record
+            # Consume this intention before writing the two metadata links.
+            remove_variable = rw_ri_window
+            set_variable = { name = rw_ri_state value = flag:observed }
+            set_variable = { name = rw_ri_receipt value = scope:rw_tp_record }
+            set_variable = { name = rw_ri_receipt_serial value = scope:rw_tp_serial }
+            save_scope_value_as = { name = rw_ri_serial value = var:rw_ri_serial }
+            save_scope_value_as = { name = rw_ri_basis_serial value = var:rw_ri_basis_serial }
+            scope:rw_tp_record = {
+                set_variable = { name = rw_tp_intent value = scope:rw_ri_record }
+                set_variable = { name = rw_tp_intent_serial value = scope:rw_ri_serial }
+                set_variable = { name = rw_tp_basis_serial value = scope:rw_ri_basis_serial }
+            }
+        }
+    }
+}
+rw_ri_read_effect = {
+    if = {
+        limit = { scope:actor = { is_alive = yes } }
+        scope:actor = {
+            every_owned_story = {
+                limit = { rw_ri_reader_trigger = { READER = scope:actor } }
+                save_scope_as = rw_ri_record
+                var:rw_ri_title = { save_scope_as = rw_ri_title }
+                var:rw_ri_subject = { save_scope_as = rw_ri_subject }
+                save_scope_value_as = { name = rw_ri_serial value = var:rw_ri_serial }
+                save_scope_value_as = { name = rw_ri_basis_serial value = var:rw_ri_basis_serial }
+                scope:actor = { trigger_event = { id = rw_revocation_intents.0002 } }
+            }
+        }
+    }
+}
+# Shared bounded opportunity; both AI and human may confirm, inspect or leave.
+rw_ri_offer_title_effect = {
+    if = {
+        limit = { rw_scheme_justice_own_custody_trigger = yes }
+        scope:rw_scheme_evidence_record.var:rw_evidence_participant = { save_scope_as = rw_ri_subject }
+        clear_saved_scope = rw_ri_title
+        scope:rw_ri_subject = {
+            random_held_title = {
+                limit = {
+                    save_temporary_scope_as = rw_ri_trial_title
+                    rw_ri_selectable_trigger = { ACTOR = scope:rw_scheme_observer SUBJECT = scope:rw_ri_subject TITLE = scope:rw_ri_trial_title }
+                }
+                save_scope_as = rw_ri_title
+            }
+        }
+        rw_ri_open_candidate_effect = yes
+    }
+}
+rw_ri_schedule_effect = {
+    if = {
+        limit = {
+            scope:rw_scheme_evidence_record = {
+                rw_scheme_evidence_reader_trigger = { READER = scope:rw_scheme_observer }
+                var:rw_evidence_kind = flag:participant_exposed
+                var:rw_evidence_serial = scope:rw_scheme_evidence_serial
+                NOT = { has_variable = rw_ri_scheduled }
+            }
+        }
+        scope:rw_scheme_evidence_record = { set_variable = { name = rw_ri_scheduled value = flag:yes } }
+        scope:rw_scheme_observer = {
+            trigger_event = { id = rw_revocation_intents.0003 days = 2 }
+            trigger_event = { id = rw_revocation_intents.0003 days = 30 }
+        }
+    }
+}

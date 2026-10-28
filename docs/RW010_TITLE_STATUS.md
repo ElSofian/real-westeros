@@ -103,3 +103,8 @@ Native authority/title-picker/refusal source findings and a conditional private
 post-transfer provenance journal are now in RW010_TITLE_PROVENANCE.md. The journal
 is not proof that this plot was punished; it neither bypasses native revocation nor
 reconstructs a lost source context or a lawful historical judgment.
+
+RW010_REVOCATION_INTENTS.md now adds generic title selection and explicit
+confirmation of a private observation as the issuer's intended basis. Native terms
+remain unselected/unsent; only a fresh matching conditional transfer observation
+can be linked. An intention is not a completed confiscation or lawful conviction.

@@ -27,6 +27,9 @@ rw_tp_observe_effect = {
                 set_variable = { name = rw_tp_repeat_window value = flag:yes days = 1 }
                 set_variable = { name = rw_tp_retained value = flag:yes years = 5 }
             }
+            scope:rw_tp_record = { save_scope_as = rw_ri_fresh_receipt }
+            rw_ri_link_transfer_effect = yes
+            clear_saved_scope = rw_ri_fresh_receipt
         }
     }
 }
@@ -43,6 +46,7 @@ rw_tp_read_effect = {
                 var:rw_tp_title = { save_scope_as = rw_tp_title }
                 var:rw_tp_former_holder = { save_scope_as = rw_tp_former_holder }
                 var:rw_tp_new_holder = { save_scope_as = rw_tp_new_holder }
+                if = { limit = { has_variable = rw_tp_basis_serial } save_scope_value_as = { name = rw_ri_basis_serial value = var:rw_tp_basis_serial } }
                 scope:rw_tp_observer = { trigger_event = { id = rw_title_provenance.0001 } }
             }
         }

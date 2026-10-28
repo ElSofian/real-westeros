@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "kind": "private_generic_title_selection_references_not_engine_or_native_send_evidence",
+  "archive_sha256": "9d6b622a41d0b640568d6f220aa99045d9994db3b8f0fdc98bfb2ff8bfa3ac69",
+  "reviewed_references": [
+    {
+      "source": "AGOT",
+      "path": "common/character_interactions/06_ep3_interactions.txt",
+      "sha256": "7cb2344b17b8b7eb7b0bebb0ecd9262b5a4207dc4ce57984dc87071de533f736",
+      "size": 333571,
+      "markers": {
+        "force_step_down_interaction = {": [
+          7791
+        ],
+        "target_type = title": [
+          20,
+          793,
+          1469,
+          1867,
+          2932,
+          4186,
+          7801,
+          8538,
+          9669,
+          9907,
+          10417,
+          11508
+        ],
+        "target_filter = recipient_domain_titles": [
+          2933,
+          7802,
+          9670
+        ],
+        "can_be_picked_title = {": [
+          59,
+          796,
+          1472,
+          1907,
+          3045,
+          4238,
+          7803,
+          8541,
+          9993,
+          11510
+        ],
+        "has_valid_target_showing_failures_only = {": [
+          70,
+          804,
+          1479,
+          1930,
+          3057,
+          3762,
+          7809,
+          8598,
+          9754,
+          9981,
+          10488
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/scripted_triggers/00_agot_colonization_triggers.txt",
+      "sha256": "41a340a6fccbc9ba5fbffb81686349b4400240d54765c7c339670610730356da",
+      "size": 2576,
+      "markers": {
+        "save_temporary_scope_as = region_title": [
+          79,
+          94
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/scripted_effects/00_interaction_effects.txt",
+      "sha256": "dfde92191c93bf93a074dc475fe1a188d8d17f7f4515c22b4f903bb2d6cfff91",
+      "size": 130434,
+      "markers": {
+        "clear_saved_scope = lost_primary_title": [
+          3985
+        ]
+      }
+    }
+  ],
+  "limits": [
+    "Generic title selection is source-located, not engine-tested for the new interaction.",
+    "No native special interaction, administrative rules, title effects or thresholds copied.",
+    "Native revocation callback propagation/order remains unverified; missing context creates no association."
+  ]
+}

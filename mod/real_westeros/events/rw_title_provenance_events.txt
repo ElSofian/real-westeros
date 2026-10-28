@@ -13,6 +13,7 @@ rw_title_provenance.0001 = {
                         triggered_desc = { trigger = { rw_tp_still_held_trigger = yes } desc = rw_title_provenance.still_held }
                         desc = rw_title_provenance.no_longer_held
                     }
+                    triggered_desc = { trigger = { rw_ri_tp_link_visible_trigger = yes } desc = rw_revocation_intents.provenance_link }
                     desc = rw_title_provenance.boundaries
                 }
             }
