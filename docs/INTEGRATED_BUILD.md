@@ -23,6 +23,7 @@ are deferred to the final campaign, not waived. Prefer a disposable fresh save.
 | Personal prisoner sentencing | Native execution/release terms or unchanged detention; no automatic send/result |
 | Individual title/status review | Current grounds, knight/contract status; experimental native revocation/release terms, no forced transfer |
 | Optional G3 diagnostic | Separate mod under `diagnostics/g3_house_trace/`; debug-only seven-day house/title trace, no sanction |
+| Political house affairs | Fifty-year political disfavor, independent institutional records, head petitions/sovereign rehabilitation; no title ban |
 | Known-case archive | Independent story records, role/disclosure-filtered views, retained closed records |
 
 All rows describe intended source behavior; none has been observed in CK3 here.
@@ -31,10 +32,10 @@ No LLM, paid service or runtime Python is needed. Python is used for development
 checks and packaging only. No original CK3/AGOT scripts or assets are distributed.
 
 Not included: automatic assassination justice, custom executions,
-confiscation, dynastic sanctions/restoration, unlawful war despite royal prohibition,
+confiscation, loss of noble status, enforced house landholding bans, unlawful war despite royal prohibition,
 a complete obligation ledger, general multi-clause negotiation or engine-proven
-save migration. G1/G2/G3/G4/G5 remain unverified. Current affairs and histories are
-personal, not a universal reputation score or inherited personal guilt.
+save migration. G1/G2/G3/G4/G5 remain unverified. Personal histories stay personal; the house register carries institutional political
+affairs, not a universal reputation score or inherited personal guilt.
 
 ## Obtain a ZIP
 

@@ -334,3 +334,59 @@ collective sanctions and landholding enforcement are not implemented.
 - G3-12: compare native AGOT dynastic stability, title laws, disinheritance/restoration,
   banking, house relations, regional institutions and performance before declaring G3
   cleared. Trace output is diagnostic evidence only, not completed gameplay validation.
+
+## Political house-affair register (HOUSE-01 to HOUSE-14)
+
+All unrun. See RW010_HOUSE_AFFAIRS.md. This is political disfavor/rehabilitation,
+not a prohibition on grants/inheritance/election/conquest or removal of nobility.
+
+- HOUSE-01: generic discovery/allegation/foreign or stale observation, hidden owner,
+  wrong source serial, no custody, non-sovereign, wrong jurisdiction/house or below
+  50 prestige cannot issue. Confirm exact house/title snapshot and recheck after
+  house/crown/custody/funds change before click; no automatic legal judgment.
+- HOUSE-02: successful explicit issue registers one fresh typed record, consumes only
+  that observation, costs exactly 50 prestige and applies current-head -20 opinion
+  for five years once/non-renewing. Failed registration has no cost/filing. Replay
+  and two same-tick confirmation popups cannot double-charge or duplicate the affair.
+- HOUSE-03: active exact house/authority dedup; distinct authorities and later distinct
+  observations create separate records/house serials. No latest-slot overwrite,
+  arbitrary cap or accidental cross-record closure; gaps in serials are acceptable.
+- HOUSE-04: current house versus house at later issue, cadet change, birth, foreign
+  members and another dynasty house: exact stored house identity governs political
+  access. No inherited criminal trait, automatic guilt or hidden plot identity leak.
+- HOUSE-05: issuer dies while new authority holder is/is not already assigned, dying
+  ruler still reports alive or is still house head, and surviving target-house members:
+  verify owner-death story scope, explicit exclusion, living storage transfer and
+  native lifecycle preservation. Storage custody conveys no power to judge.
+- HOUSE-06: authority conquered/granted/usurped, primary title changed, target head
+  dies/is replaced, house membership changes or carrier dies later. Role authority is
+  computed from the stored title/current head immediately; maintenance rehomes within
+  sixty days. Old issuer/custodian/old-head popups cannot decide for successors.
+- HOUSE-07: landless later adult head can petition current sovereign, never themselves
+  or while at war. Thirty-day request, one-year cooldown and request revision are
+  separate from original fifty-year term. Repeat/cross-record/stale popups fail.
+- HOUSE-08: head/ruler changes while pending: old addressee/head cannot accept/reply;
+  fresh legitimate roles can submit a versioned replacement without restarting the
+  decree. Save/reload at each role change and test two request/response orders.
+- HOUSE-09: acceptance closes the matching record before +10 ruler opinion of the
+  petitioner for two years; same benefit cannot stack or refresh through another
+  decree. No native pardon, title grant, disinheritance removal or unrelated closure.
+- HOUSE-10: refusal/silence adds no penalty/debt; latest refused/unanswered receipt
+  remains readable. Sovereign withdrawal needs no pending petition and gives no
+  goodwill. Neither renews original term or clears native/old custom resentment.
+- HOUSE-11: exact original fifty-year expiry blocks actions immediately, later passive
+  pass marks expired; fifty-year closed retention then prunes index before ending.
+  Browsing neither writes/renews terms nor restores consumed native rights.
+- HOUSE-12: extinction/vacancy with no surviving custodian retires safely; no dangling
+  global story entry, dummy character or assumed cadet restoration. Document limits
+  before claiming universal multi-generation continuity or old-save migration.
+- HOUSE-13: actor-only register interaction, multiple same-owner records and per-event
+  snapshot scopes: original living issuer/current authority/exact-house members only;
+  selected unrelated character is not informed. Private scheme pointer/agents/secrets
+  and original source facts are not copied or rewritten. No diagnostic add-on needed.
+- HOUSE-14: AI/player issue/consider/decline/petition/accept/refuse/withdraw with identical
+  prerequisites/costs. Intake gives only two fixed opportunities; current head/new
+  ruler opportunities are cached, and overlapping roles receive only one same-pass
+  notice without losing a later legitimate role-change opportunity. No annual AI
+  retry chain or all-pairs scan. Compare
+  native wars, succession, banking/house relations, logs and long-run performance.

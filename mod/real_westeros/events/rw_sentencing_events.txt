@@ -62,6 +62,12 @@ rw_sentencing.0001 = {
         ai_chance = { base = 0 }
     }
     option = {
+        name = rw_house_affairs.consider
+        trigger = { rw_house_can_consider_censure_trigger = yes }
+        rw_house_consider_censure_effect = yes
+        ai_chance = { base = 0 }
+    }
+    option = {
         name = rw_sentencing.leave_unchanged
         trigger = { rw_sentencing_current_prisoner_trigger = yes }
         # No keep-imprisoned flag, pardon, timer or new sanction.
