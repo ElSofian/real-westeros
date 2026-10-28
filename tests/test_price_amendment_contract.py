@@ -24,6 +24,11 @@ def amendment_errors(t, e, obligation, service):
                   'var:rw_service_price = 50', 'rw_service_party_eligible_trigger = yes'):
         if guard not in context:
             errors.append('early expired or unavailable contract amended')
+    acceptance = block(t, 'rw_amend_accept_trigger')
+    for guard in ('rw_amend_responder_turn_trigger = yes', 'rw_amend_context_trigger = yes',
+                  'scope:rw_service_client = { gold >= 25 }'):
+        if guard not in acceptance:
+            errors.append('acceptance bypasses current eligibility or funds')
     for name, gate in (('rw_amend_accept_effect', 'rw_amend_accept_trigger'),
                        ('rw_amend_refuse_effect', 'rw_amend_responder_turn_trigger'),
                        ('rw_amend_withdraw_effect', 'rw_amend_withdraw_trigger')):
@@ -92,13 +97,18 @@ class PriceAmendmentContractTests(unittest.TestCase):
                       'NOT = { has_character_flag = rw_service_not_due }', 'rw_service_party_eligible_trigger = yes'):
             self.assertIn('early expired or unavailable contract amended', self.errors(t=self.t.replace(guard, 'always = yes')))
         self.assertIn('this = scope:rw_amend_responder', block(self.t, 'rw_amend_responder_turn_trigger'))
-        self.assertIn('rw_amend_context_trigger = yes', block(self.t, 'rw_amend_responder_turn_trigger'))
+        self.assertIn('rw_amend_context_trigger = yes', block(self.t, 'rw_amend_accept_trigger'))
 
     def test_affordability_at_acceptance_not_a_refusal_prerequisite(self):
+        for guard in ('rw_amend_responder_turn_trigger = yes', 'rw_amend_context_trigger = yes',
+                      'scope:rw_service_client = { gold >= 25 }'):
+            self.assertIn('acceptance bypasses current eligibility or funds', self.errors(t=self.t.replace(guard, 'always = yes')))
         accept = block(self.t, 'rw_amend_accept_trigger')
         self.assertIn('rw_amend_responder_turn_trigger = yes', accept)
         self.assertIn('scope:rw_service_client = { gold >= 25 }', accept)
         self.assertNotIn('gold', block(self.t, 'rw_amend_responder_turn_trigger'))
+        self.assertNotIn('rw_amend_context_trigger', block(self.t, 'rw_amend_responder_turn_trigger'))
+        self.assertIn('is_alive = yes', block(self.t, 'rw_amend_responder_turn_trigger'))
         self.assertNotIn('gold', block(self.t, 'rw_amend_withdraw_trigger'))
         self.assertIn('this = scope:rw_amend_proposer', block(self.t, 'rw_amend_withdraw_trigger'))
 

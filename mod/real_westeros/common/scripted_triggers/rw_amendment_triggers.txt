@@ -77,13 +77,15 @@ rw_amend_request_matches_trigger = {
         var:rw_amend_responder = scope:rw_amend_responder
     }
 }
+# Refusal only retires this request; war/poverty must not trap the cancellation lane.
 rw_amend_responder_turn_trigger = {
     rw_amend_request_matches_trigger = yes
-    rw_amend_context_trigger = yes
     this = scope:rw_amend_responder
+    is_alive = yes
 }
 rw_amend_accept_trigger = {
     rw_amend_responder_turn_trigger = yes
+    rw_amend_context_trigger = yes
     scope:rw_service_client = { gold >= 25 }
 }
 rw_amend_withdraw_trigger = {

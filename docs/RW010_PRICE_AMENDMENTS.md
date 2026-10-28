@@ -17,7 +17,9 @@ mapped interaction; only the responder can accept/refuse, only the proposer can
 withdraw. The interaction's automatic acceptance merely opens this negotiation.
 
 New requests require current eligible parties and at least 25 client gold. Acceptance
-rechecks those current funds; refusal does not require money. War, death, loss of
+rechecks those current funds and performance eligibility. Refusal/withdrawal require
+only this current request/party identity and a living actor, so war or poverty cannot
+trap the other party in the amendment lane. War, death, loss of
 eligibility, contract change, request expiry or delivery expiry block consent.
 Proposer withdrawal is identity-checked separately and need not pass performance
 eligibility. A party's heir inherits neither this offer nor personal consent.

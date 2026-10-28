@@ -510,7 +510,8 @@ not a prohibition on grants/inheritance/election/conquest or removal of nobility
   current request serial cannot be replayed against a later request/contract.
 - AMEND-04: before day seven, at/after original due expiry, immediate mode, already 25,
   missing funds, dead/changed parties, war, land loss and old snapshots fail appropriately.
-  An insolvent responder can refuse; proposer withdrawal stays distinct from performance.
+  An insolvent/warring responder can refuse and free the cancellation lane; proposer
+  withdrawal likewise stays distinct from performance eligibility.
 - AMEND-05: amendment accepted then original timeout fires with captured price 50 while
   client holds 25–49: exact owner/actor/serial/revision and expired flag checked before
   scalar refresh. Current 25 determines accountable breach; no obsolete-price neutral
