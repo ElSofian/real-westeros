@@ -91,6 +91,12 @@ rw_house_affairs.0002 = {
         ai_chance = { base = 50 }
     }
     option = {
+        name = rw_title_remedies.review
+        trigger = { rw_title_remedy_can_review_trigger = yes }
+        rw_title_remedy_open_review_effect = yes
+        ai_chance = { base = 0 }
+    }
+    option = {
         name = rw_house_affairs.refresh
         trigger = { rw_house_refresh_allowed_trigger = yes NOT = { rw_house_view_trigger = yes } }
         rw_house_refresh_effect = yes

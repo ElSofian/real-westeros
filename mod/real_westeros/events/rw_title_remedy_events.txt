@@ -1,0 +1,48 @@
+namespace = rw_title_remedies
+
+rw_title_remedies.0001 = {
+    type = character_event
+    title = rw_title_remedies.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_title_remedy_view_trigger = yes }
+                desc = {
+                    desc = rw_title_remedies.context
+                    first_valid = {
+                        triggered_desc = {
+                            trigger = { scope:rw_title_remedy_head = { is_landed = yes } }
+                            desc = rw_title_remedies.landed
+                        }
+                        desc = rw_title_remedies.landless
+                    }
+                    first_valid = {
+                        triggered_desc = { trigger = { rw_house_current_ruler_trigger = yes } desc = rw_title_remedies.ruler_terms }
+                        desc = rw_title_remedies.head_terms
+                    }
+                    desc = rw_title_remedies.boundaries
+                }
+            }
+            desc = rw_title_remedies.unavailable
+        }
+    }
+    right_portrait = {
+        trigger = { rw_title_remedy_view_trigger = yes }
+        character = scope:rw_title_remedy_head
+    }
+    theme = diplomacy
+    option = {
+        name = rw_title_remedies.review_grant
+        trigger = { rw_title_remedy_can_open_grant_trigger = yes }
+        if = {
+            limit = { rw_title_remedy_can_open_grant_trigger = yes }
+            open_interaction_window = {
+                interaction = grant_titles_interaction
+                actor = root
+                recipient = scope:rw_title_remedy_head
+            }
+        }
+        ai_chance = { base = 0 }
+    }
+    option = { name = rw_title_remedies.close }
+}

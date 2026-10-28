@@ -84,7 +84,9 @@ ineligibility or apply personal disinheritance to a whole house.
 
 Next on this track: design a bounded, explicitly authorized **individual title
 remedy** using native revocation/grant eligibility and genuine native UI/AI behavior
-before considering stronger adapters. Opening terms is not a completed transfer;
+before considering stronger adapters. The subsequent read-only bridge to native
+grant terms is in RW010_TITLE_REMEDIES.md; it is not that full remedy contract.
+Opening terms is not a completed transfer;
 confiscation and voluntary restitution must remain distinct, with current title,
 holder, authority and consent rechecked. No forced native sanction or universal
 house-ban implementation follows from this audit. The independent revised-promise /

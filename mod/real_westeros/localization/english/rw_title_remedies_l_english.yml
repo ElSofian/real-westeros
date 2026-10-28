@@ -1,0 +1,12 @@
+﻿l_english:
+ rw_title_remedies.review:0 "Examine a possible land grant after rehabilitation."
+ rw_title_remedies.title:0 "Rehabilitation and landed standing"
+ rw_title_remedies.context:0 "[rw_title_remedy_ruler.GetShortUIName] currently holds [rw_house_authority.GetName]; [rw_title_remedy_head.GetShortUIName] currently leads [rw_house_target.GetName]. This exact political censure was lifted. That decision did not promise land or establish ownership of any ancestral title."
+ rw_title_remedies.landed:0 "The current house head already holds land. Additional titles would be a separate native grant."
+ rw_title_remedies.landless:0 "The current house head is landless. Political rehabilitation alone did not grant landed status."
+ rw_title_remedies.ruler_terms:0 "I may examine the ordinary grant window for this house head when the native interaction permits it. I choose any eligible title and confirm separately there. If this shortcut is unavailable, the ordinary character menu remains the fallback."
+ rw_title_remedies.head_terms:0 "Only the current sovereign can decide whether to grant a title. This inspection sends no request, selects no land and creates no obligation."
+ rw_title_remedies.boundaries:0 "Opening or closing this view grants nothing and charges nothing. There is no automatic confiscation, ancestral restitution, noble-status change, pardon or house-wide landholding ban. Other decrees and native title restrictions remain separate."
+ rw_title_remedies.review_grant:0 "Examine native title-grant terms."
+ rw_title_remedies.unavailable:0 "The record, current sovereign or current house head has changed. Reopen the current house record before considering land; no title has been transferred."
+ rw_title_remedies.close:0 "Leave land ownership unchanged."

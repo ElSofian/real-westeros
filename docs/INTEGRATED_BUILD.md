@@ -24,6 +24,7 @@ are deferred to the final campaign, not waived. Prefer a disposable fresh save.
 | Individual title/status review | Current grounds, knight/contract status; experimental native revocation/release terms, no forced transfer |
 | Optional G3 diagnostic | Separate mod under `diagnostics/g3_house_trace/`; debug-only seven-day house/title trace, no sanction |
 | Political house affairs | Fifty-year political disfavor, independent institutional records, head petitions/sovereign rehabilitation; no title ban |
+| Post-rehabilitation land review | Current sovereign/head review; guarded native grant terms, no automatic transfer or restitution |
 | Known-case archive | Independent story records, role/disclosure-filtered views, retained closed records |
 
 All rows describe intended source behavior; none has been observed in CK3 here.
