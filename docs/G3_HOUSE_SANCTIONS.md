@@ -108,8 +108,10 @@ The first explicitly scoped political house-affair persistence/restoration slice
 now in RW010_HOUSE_AFFAIRS.md. Its succession/request lifecycle is source-hardened, and conditional financial
 rehabilitation joins political restoration to personal consent while keeping **landholding enforcement unresolved** until its
 four route gates and engine evidence exist. Inspect missing grant/election definitions
-before deciding whether another targeted private collection is necessary; no new
-upload or intermediate game run is requested by this investigation.
+before attempting stronger title/status adapters. The received subsets lack those
+definitions; TITLE_SOURCE_COLLECTION.md now supplies a targeted private collector
+profile with an explicit missing-definition probe. Its new ZIP is the next source
+input for this track; no intermediate game run is requested.
 
 ## Original optional CK3 diagnostic included now
 

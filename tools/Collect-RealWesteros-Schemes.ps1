@@ -1,6 +1,6 @@
 ﻿#Requires -Version 5.1
 <#
-Collect private, installed scheme-source candidates. Does not run or modify CK3.
+Collect private installed scheme or title-route source candidates. Does not run or modify CK3.
 All helper functions are defined before execution. No network or upload operation.
 #>
 [CmdletBinding()]
@@ -8,6 +8,7 @@ param(
     [string]$CK3Path = '',
     [string]$AGOTPath = '',
     [string]$OutputDirectory = (Get-Location).Path,
+    [ValidateSet('Schemes', 'TitleRoutes')][string]$Profile = 'Schemes',
     [ValidateRange(0, 8)][int]$DependencyDepth = 3,
     [ValidateRange(1, 512)][int]$MaxSourceMiB = 128
 )
@@ -18,6 +19,22 @@ $script:Relevant = '(?i)\b\w*(scheme|murder|assassin|conspir|regicid)\w*\b|\b\w*
 $script:Groups = @('common/schemes', 'common/secret_types', 'common/on_action',
     'common/scripted_effects', 'common/scripted_triggers', 'common/script_values',
     'common/character_interactions', 'events')
+$script:SeedGroups = @('common/schemes', 'common/secret_types')
+$script:SeedReason = 'scheme_or_secret_definition'
+$script:ArchiveLabel = 'Schemes'
+$script:ManifestKind = 'private_scheme_source_candidates'
+if ($Profile -eq 'TitleRoutes') {
+    # Candidate directories/identifiers, not proof of engine coverage or load order.
+    $script:Groups = @('common/character_interactions', 'common/succession_election',
+        'common/laws', 'common/scripted_effects', 'common/scripted_triggers',
+        'common/script_values', 'common/on_action', 'common/story_cycles', 'events')
+    $script:SeedGroups = @('common/succession_election', 'common/laws')
+    $script:SeedReason = 'election_or_law_definition'
+    $script:Relevant = '(?i)\b(grant_titles?_interaction|can_be_granted_titles_by|revoke_title_interaction|disinherit_interaction|restore_inheritance_interaction|election_type)\b|\b\w*(elective|election|succession|inheritance)\w*_(trigger|effect)\b'
+    $script:ArchiveLabel = 'TitleRoutes'
+    $script:ManifestKind = 'private_title_route_source_candidates'
+    if (-not $PSBoundParameters.ContainsKey('DependencyDepth')) { $DependencyDepth = 1 }
+}
 
 function Get-SourceRoot([string]$Path, [string]$Label) {
     if ([string]::IsNullOrWhiteSpace($Path)) { throw "Dossier $Label manquant." }
@@ -105,8 +122,9 @@ try {
     if ([string]::IsNullOrWhiteSpace($AGOTPath)) { $AGOTPath = Read-Host 'Dossier du mod AGOT installe' }
     $roots = [ordered]@{ CK3 = (Get-SourceRoot $CK3Path 'CK3'); AGOT = (Get-SourceRoot $AGOTPath 'AGOT') }
     if ($roots.CK3 -eq $roots.AGOT) { throw 'CK3 et AGOT doivent etre deux dossiers distincts.' }
-    if (-not (Test-Path -LiteralPath (Join-Path $roots.CK3 'common/schemes') -PathType Container)) {
-        throw 'Les definitions common/schemes de CK3 sont absentes. Verifiez le dossier du jeu complet.'
+    $requiredGroup = $(if ($Profile -eq 'TitleRoutes') { 'common/character_interactions' } else { 'common/schemes' })
+    if (-not (Test-Path -LiteralPath (Join-Path $roots.CK3 $requiredGroup) -PathType Container)) {
+        throw "Les definitions $requiredGroup de CK3 sont absentes. Verifiez le dossier du jeu complet."
     }
     if (-not [IO.Path]::IsPathRooted($OutputDirectory)) {
         $OutputDirectory = Join-Path (Get-Location).Path $OutputDirectory
@@ -142,16 +160,17 @@ try {
                 if ($scannedBytes -gt 512MB) { throw 'Limite de lecture de 512 Mio atteinte. Aucune archive partielle ne sera publiee.' }
                 $bytes = [IO.File]::ReadAllBytes($file.FullName)
                 $clean = Get-CleanScript ($script:Utf8.GetString($bytes).TrimStart([char]0xFEFF))
-                $seed = $group -in @('common/schemes', 'common/secret_types')
+                $seed = $group -in $script:SeedGroups
                 $relevant = $seed -or ($relative -match $script:Relevant) -or ($clean -match $script:Relevant)
                 $entry = [pscustomobject]@{
                     Key = "$label/$relative"; Source = $label; Relative = $relative
                     FullPath = $file.FullName; Hash = (Get-Sha256 $bytes)
                     Size = $bytes.Length; Selected = $relevant; Depth = 0
-                    Reason = $(if ($seed) { 'scheme_or_secret_definition' } else { 'candidate_marker' })
+                    Reason = $(if ($seed) { $script:SeedReason } else { 'candidate_marker' })
+                    Definitions = @(Get-Definitions $clean)
                 }
                 [void]$entries.Add($entry)
-                foreach ($name in @(Get-Definitions $clean)) {
+                foreach ($name in $entry.Definitions) {
                     if (-not $definitions.ContainsKey($name)) { $definitions[$name] = [Collections.Generic.List[object]]::new() }
                     [void]$definitions[$name].Add($entry)
                 }
@@ -198,7 +217,8 @@ try {
     }
     $remainingFrontier = @($frontier | Where-Object { -not $selectedKeys.Contains($_) } | Sort-Object)
     $manifest = [ordered]@{
-        schema = 1; kind = 'private_scheme_source_candidates'
+        schema = 1; kind = $script:ManifestKind
+        profile = $Profile; scanned_groups = $script:Groups
         collected_at_utc = [DateTime]::UtcNow.ToString('o')
         status = 'candidates_only_not_engine_evidence'
         expected_targets = @{ CK3 = '1.19.*'; AGOT = '0.5.2.1' }
@@ -209,11 +229,49 @@ try {
         dependency_frontier = $remainingFrontier; unresolved_identifiers = @($unresolved | Sort-Object)
         files = @()
     }
+    if ($Profile -eq 'TitleRoutes') {
+        $grantDefinitions = [Collections.Generic.List[object]]::new()
+        $grantEligibility = [Collections.Generic.List[object]]::new()
+        $electionDefinitions = [Collections.Generic.List[object]]::new()
+        $electionReferences = [Collections.Generic.List[object]]::new()
+        $electionNames = [Collections.Generic.HashSet[string]]::new()
+        $referencedNames = [Collections.Generic.HashSet[string]]::new()
+        foreach ($entry in $selected) {
+            $bytes = [IO.File]::ReadAllBytes($entry.FullPath)
+            if ((Get-Sha256 $bytes) -ne $entry.Hash) { throw 'Des sources ont change pendant la collecte. Relancez le script.' }
+            $clean = Get-CleanScript ($script:Utf8.GetString($bytes).TrimStart([char]0xFEFF))
+            foreach ($name in $entry.Definitions) {
+                $reference = [ordered]@{ source = $entry.Source; path = $entry.Relative; identifier = $name }
+                if ($entry.Relative.StartsWith('common/character_interactions/') -and $name -match '^grant_titles?_interaction$') {
+                    [void]$grantDefinitions.Add($reference)
+                }
+                if ($name -eq 'can_be_granted_titles_by') { [void]$grantEligibility.Add($reference) }
+                if ($entry.Relative.StartsWith('common/succession_election/')) {
+                    [void]$electionDefinitions.Add($reference); [void]$electionNames.Add($name)
+                }
+            }
+            foreach ($match in [regex]::Matches($clean, '\belection_type\s*=\s*([A-Za-z_][\w.]*)')) {
+                $name = $match.Groups[1].Value
+                [void]$referencedNames.Add($name)
+                [void]$electionReferences.Add([ordered]@{ source = $entry.Source; path = $entry.Relative; identifier = $name })
+            }
+        }
+        $manifest['title_route_probe'] = [ordered]@{
+            status = 'lexical_candidates_not_enforcement_or_load_order_evidence'
+            grant_interaction_definitions = @($grantDefinitions.ToArray())
+            grant_eligibility_definitions = @($grantEligibility.ToArray())
+            election_definitions = @($electionDefinitions.ToArray())
+            election_references = @($electionReferences.ToArray())
+            missing_election_identifiers = @($referencedNames | Where-Object { -not $electionNames.Contains($_) } | Sort-Object)
+        }
+        if ($grantDefinitions.Count -eq 0) { Write-Warning 'Definition d attribution de titres introuvable dans les candidats. Ce manque reste ouvert.' }
+        if ($electionDefinitions.Count -eq 0) { Write-Warning 'Aucune definition d election candidate trouvee. Ce manque reste ouvert.' }
+    }
     $records = [Collections.Generic.List[object]]::new()
     [void][IO.Directory]::CreateDirectory($outputRoot)
     $id = [Guid]::NewGuid().ToString('N')
-    $finalZip = Join-Path $outputRoot "RealWesteros-Schemes-PRIVATE-$id.zip"
-    $tempZip = Join-Path ([IO.Path]::GetTempPath()) "rw-schemes-$id.zip"
+    $finalZip = Join-Path $outputRoot "RealWesteros-$($script:ArchiveLabel)-PRIVATE-$id.zip"
+    $tempZip = Join-Path ([IO.Path]::GetTempPath()) "rw-sources-$id.zip"
     Add-Type -AssemblyName System.IO.Compression
     $stream = [IO.File]::Open($tempZip, [IO.FileMode]::CreateNew, [IO.FileAccess]::ReadWrite, [IO.FileShare]::None)
     try {

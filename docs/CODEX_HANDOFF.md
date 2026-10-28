@@ -26,7 +26,8 @@ Mutual cancellation of a deferred promise is in RW010_MUTUAL_CANCELLATION.md.
 An experimental distribution is built from committed inputs by CI; see INTEGRATED_BUILD.md.
 Cross-slice source audit and versioned provider-decision reminders are in
 INTEGRATION_AUDIT.md; final LIFE-* cases remain unrun. The targeted scheme collector
-was integrated via PR #29; no additional collection is currently requested.
+was integrated via PR #29. Missing grant/election definitions now have a targeted
+`TitleRoutes` collection profile; see TITLE_SOURCE_COLLECTION.md.
 Native eligibility/prior-consequence review distinguishes current reasons/custody
 from per-offense history; the latter is not established. A source-backed
 validity-checked window handoff preserves native sending/refusal/resistance. Personal
@@ -44,7 +45,10 @@ Conditional rehabilitation (RW010_HOUSE_TERMS.md) now lets a sovereign counterof
 50 personal gold for closure of this exact political decree, with explicit current-head
 accept/refuse/inaction, current funds/roles/revision guards and no native immunity.
 Free rehabilitation/withdrawal remain available. No extra goodwill for paid settlement.
-Next locate missing grant/election definitions before stronger title/status sanctions;
+A new source collector profile targets missing grant/election definitions, keeps
+scheme defaults and reports definitions separately from callers/helpers. Next receive
+and hash-verify its private ZIP (TITLE_SOURCE_COLLECTION.md), then inspect source
+contracts before stronger title/status sanctions. No gameplay change in this slice;
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;
 never force the no-tyranny imprisonment helper as a legality check. Keep knowledge,
