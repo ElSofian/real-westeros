@@ -77,6 +77,11 @@ def affair_errors(t, e, story):
         errors.append('dead record left in register')
     if e.count('name = rw_house_term value = flag:yes years = 50') != 1:
         errors.append('original decree term renewed')
+    offers = block(e, 'rw_house_offer_opportunities_effect')
+    for guard in ('name = rw_house_head_notified value = 0', 'name = rw_house_head_notified value = 1',
+                  'scope:rw_house_head_notified = 0', 'NOT = { var:rw_house_authority.holder = var:rw_house_target.house_head }'):
+        if guard not in offers:
+            errors.append('overlapping role notices duplicated')
     code = clean_script(t + e + story)[0]
     if re.search(r'\b(death|imprison|change_title_holder|destroy_title|set_house|set_dynasty|add_trait|remove_trait|run_interaction|consume_revoke_title_reason|add_secret|expose_scheme_agent)\s*=', code):
         errors.append('political record changes native guilt or property')
@@ -207,6 +212,8 @@ class HouseAffairRegisterTests(unittest.TestCase):
         offers = block(self.e, 'rw_house_offer_opportunities_effect')
         self.assertIn('name = rw_house_last_head', offers)
         self.assertIn('name = rw_house_last_ruler', offers)
+        self.assertIn('overlapping role notices duplicated', self.errors(e=self.e.replace('scope:rw_house_head_notified = 0', 'always = yes')))
+        self.assertIn('overlapping role notices duplicated', self.errors(e=self.e.replace('NOT = { var:rw_house_authority.holder = var:rw_house_target.house_head }', 'always = yes')))
         self.assertNotRegex(self.e + self.s, r'\b(every_living_character|every_house_member|every_dynasty_member|every_held_title)\s*=')
 
     def test_provenance_and_dates_never_rewritten_on_restoration(self):

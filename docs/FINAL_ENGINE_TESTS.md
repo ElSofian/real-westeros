@@ -386,5 +386,7 @@ not a prohibition on grants/inheritance/election/conquest or removal of nobility
   and original source facts are not copied or rewritten. No diagnostic add-on needed.
 - HOUSE-14: AI/player issue/consider/decline/petition/accept/refuse/withdraw with identical
   prerequisites/costs. Intake gives only two fixed opportunities; current head/new
-  ruler opportunities are cached, no annual AI retry chain or all-pairs scan. Compare
+  ruler opportunities are cached, and overlapping roles receive only one same-pass
+  notice without losing a later legitimate role-change opportunity. No annual AI
+  retry chain or all-pairs scan. Compare
   native wars, succession, banking/house relations, logs and long-run performance.

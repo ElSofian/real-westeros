@@ -114,6 +114,7 @@ rw_house_rehome_effect = {
 rw_house_offer_opportunities_effect = {
     if = {
         limit = { rw_house_record_active_trigger = yes }
+        save_scope_value_as = { name = rw_house_head_notified value = 0 }
         if = {
             limit = {
                 rw_house_record_active_trigger = yes
@@ -123,6 +124,7 @@ rw_house_offer_opportunities_effect = {
             }
             set_variable = { name = rw_house_last_head value = var:rw_house_target.house_head }
             rw_house_snapshot_effect = yes
+            save_scope_value_as = { name = rw_house_head_notified value = 1 }
             var:rw_house_target.house_head = { trigger_event = { id = rw_house_affairs.0002 } }
         }
         if = {
@@ -132,8 +134,16 @@ rw_house_offer_opportunities_effect = {
                 OR = { NOT = { exists = var:rw_house_last_ruler } NOT = { var:rw_house_last_ruler = var:rw_house_authority.holder } }
             }
             set_variable = { name = rw_house_last_ruler value = var:rw_house_authority.holder }
-            rw_house_snapshot_effect = yes
-            var:rw_house_authority.holder = { trigger_event = { id = rw_house_affairs.0002 } }
+            if = {
+                limit = {
+                    OR = {
+                        scope:rw_house_head_notified = 0
+                        NOT = { var:rw_house_authority.holder = var:rw_house_target.house_head }
+                    }
+                }
+                rw_house_snapshot_effect = yes
+                var:rw_house_authority.holder = { trigger_event = { id = rw_house_affairs.0002 } }
+            }
         }
     }
 }

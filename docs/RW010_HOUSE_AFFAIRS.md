@@ -104,7 +104,8 @@ Fresh exposed-participant intake schedules at most two independent consideration
 opportunities, at day two and day thirty, with the same eligibility/costs as players.
 A scheduling marker prevents duplicate timer chains. Each house head gets one
 initial or changed-head opportunity; a new sovereign gets an opportunity to review
-inherited political disfavor. The 60-day record pass caches recipients before notices.
+inherited political disfavor. The 60-day record pass caches recipients before notices and sends only one notice
+when head/ruler roles overlap in the same pass; the ruler cache still advances.
 Refusal/restoration notices do not restart requests; cooldown/revision guards still
 apply. AI and player use the same effects; traits affect weights, not prerequisites.
 Players can also reopen known affairs explicitly. Proactive annual AI re-petitioning
