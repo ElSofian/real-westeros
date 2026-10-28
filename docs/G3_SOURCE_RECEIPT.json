@@ -450,6 +450,39 @@
           594
         ]
       }
+    },
+    {
+      "collection": "schemes",
+      "source": "AGOT",
+      "path": "common/character_interactions/10_tgp_interactions.txt",
+      "sha256": "403bdb5cc74ad796428e00b8bee5722844a3c15f45249587d7fb1057d152ef2c",
+      "size": 275928,
+      "markers": {
+        "celestial_extinguish_noble_family_interaction = {": [
+          11277
+        ],
+        "government_has_flag = government_is_celestial": [
+          1140,
+          2269,
+          5334,
+          5346,
+          5370,
+          5380,
+          5389,
+          5400,
+          5828,
+          6230,
+          6973,
+          10865,
+          10889,
+          11287
+        ],
+        "is_noble_family_title = yes": [
+          10851,
+          11306,
+          11616
+        ]
+      }
     }
   ]
 }

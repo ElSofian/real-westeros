@@ -1,0 +1,13 @@
+﻿l_french:
+ rw_house_terms.title:0 "Les conditions de la réhabilitation d’une maison"
+ rw_house_terms.offer:0 "Proposer la réhabilitation contre 50 pièces d’or."
+ rw_house_terms.review:0 "Examiner les conditions financières de la réhabilitation."
+ rw_house_terms.conditions:0 "Le souverain actuel de [rw_house_authority.GetName] propose de clore cette censure politique précise de [rw_house_target.GetName] contre 50 pièces d’or prises dans ma trésorerie personnelle. Les deux termes prennent effet seulement si j’accepte sous trente jours et si nous restons les mêmes parties habilitées. Je peux refuser ou ignorer l’offre. Le paiement n’accorde ni terres, ni statut nobiliaire, ni grâce criminelle, ni faveur personnelle supplémentaire ; les peines existantes et les autres décrets restent distincts."
+ rw_house_terms.unaffordable:0 "Je ne dispose pas actuellement des 50 pièces d’or nécessaires. Aucune dette n’est créée et rien n’est prélevé."
+ rw_house_terms.accept:0 "Payer 50 pièces d’or et régler cette réhabilitation politique."
+ rw_house_terms.refuse:0 "Refuser ces conditions financières."
+ rw_house_terms.pending:0 "Le souverain a proposé la réhabilitation contre un paiement personnel de 50 pièces d’or par le pétitionnaire actuel. Rien n’a été payé ; le chef peut examiner, accepter, refuser ou ignorer l’offre de trente jours."
+ rw_house_terms.refused:0 "Le pétitionnaire a refusé les conditions financières. Aucun or n’a été prélevé et aucune peine n’a été ajoutée ; cette censure conserve son terme initial."
+ rw_house_terms.invalidated:0 "L’offre financière est devenue caduque après un changement des parties ou de leur capacité à agir. Rien n’a été payé. Une offre constatée caduque ne peut pas renaître ; une nouvelle demande suit le délai applicable et les rôles actuels."
+ rw_house_terms.unanswered:0 "L’offre financière a expiré sans réponse. Rien n’a été payé, aucune peine n’a été ajoutée et le terme initial de la censure n’a pas été renouvelé."
+ rw_house_terms.settled:0 "Le pétitionnaire a payé 50 pièces d’or au souverain destinataire en échange de la clôture de cette censure politique précise de [rw_house_target.GetName] auprès de [rw_house_authority.GetName]. Ce règlement n’accorde ni terres, ni statut habituel, ni grâce, ni faveur personnelle supplémentaire et n’annule aucun décret d’une autre autorité."

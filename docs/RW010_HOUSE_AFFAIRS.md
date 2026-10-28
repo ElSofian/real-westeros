@@ -83,7 +83,8 @@ of head or title holder invalidates the old petition and permits a fresh one und
 the new roles; it does not renew the decree's original fifty-year term. Requesting
 oneself as sovereign is disallowed; that sovereign can withdraw the censure directly.
 
-The addressed sovereign may accept, refuse or leave it unanswered. Acceptance
+The addressed sovereign may accept, refuse, leave it unanswered or counteroffer a
+50-gold conditional rehabilitation (RW010_HOUSE_TERMS.md). Gratuitous acceptance
 closes only this exact record before granting +10 sovereign opinion of the current
 petitioner for two years, only if the identical goodwill is absent. It cannot
 stack/refresh through multiple records. Refusal/silence adds no penalty or debt.
@@ -149,7 +150,7 @@ Twenty original register tests plus ten succession/refresh source-contract tests
 registration/cost ordering, independent pairs, ownership versus authority, current
 roles/revisions, expiry, replay/non-stacking, privacy and absence of native property/
 guilt effects. They do not simulate or execute CK3 or prove transaction atomicity.
-HOUSE-01…14 final scenarios are in FINAL_ENGINE_TESTS.md, all unrun.
+HOUSE-01…20 final scenarios are in FINAL_ENGINE_TESTS.md, all unrun.
 HOUSE_REGISTER_SOURCE_RECEIPT.json holds only hashes/relative API call-site markers.
 No private original code or full manifest is distributed. Target metadata remains
 AGOT 0.5.2.1 / CK3 1.19.*; actual executable and compatibility unverified.

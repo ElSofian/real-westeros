@@ -1,0 +1,42 @@
+namespace = rw_house_terms
+
+rw_house_terms.0001 = {
+    type = character_event
+    title = rw_house_terms.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_house_terms_turn_trigger = yes }
+                desc = {
+                    desc = rw_house_terms.conditions
+                    triggered_desc = { trigger = { gold < 50 } desc = rw_house_terms.unaffordable }
+                }
+            }
+            desc = rw_house_affairs.unavailable
+        }
+    }
+    right_portrait = {
+        trigger = { rw_house_terms_turn_trigger = yes }
+        character = scope:rw_house_record.var:rw_house_requested_ruler
+    }
+    theme = diplomacy
+    option = {
+        name = rw_house_terms.accept
+        trigger = { rw_house_terms_affordable_trigger = yes }
+        rw_house_accept_terms_effect = yes
+        ai_chance = { base = 40 modifier = { factor = 0.5 has_trait = greedy } modifier = { factor = 2 has_trait = humble } }
+    }
+    option = {
+        name = rw_house_terms.refuse
+        trigger = { rw_house_terms_turn_trigger = yes }
+        rw_house_refuse_terms_effect = yes
+        ai_chance = { base = 40 modifier = { factor = 2 has_trait = arrogant } }
+    }
+    option = {
+        name = rw_house_affairs.refresh
+        trigger = { rw_house_refresh_allowed_trigger = yes NOT = { rw_house_terms_turn_trigger = yes } }
+        rw_house_refresh_effect = yes
+        ai_chance = { base = 40 }
+    }
+    option = { name = rw_house_affairs.leave_unchanged ai_chance = { base = 20 } }
+}

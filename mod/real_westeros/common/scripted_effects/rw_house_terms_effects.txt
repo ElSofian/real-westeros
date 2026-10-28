@@ -1,0 +1,84 @@
+# Character scope. No payment, renewed decree or new recurring notification chain.
+rw_house_offer_terms_effect = {
+    if = {
+        limit = { rw_house_ruler_reply_trigger = yes }
+        scope:rw_house_record = {
+            remove_variable = rw_house_request_window
+            change_variable = { name = rw_house_revision add = 1 }
+            set_variable = { name = rw_house_last_response value = flag:terms_offered }
+            set_variable = { name = rw_house_terms_price value = 50 }
+            set_variable = { name = rw_house_terms_window value = flag:yes days = 30 }
+            set_variable = { name = rw_house_terms_offered_on value = current_date }
+            rw_house_snapshot_effect = yes
+        }
+        scope:rw_house_record.var:rw_house_petitioner = { trigger_event = { id = rw_house_terms.0001 } }
+    }
+}
+# Explicit navigation only; original consent/identity is always rechecked at acceptance.
+rw_house_review_terms_effect = {
+    if = {
+        limit = { rw_house_terms_turn_trigger = yes }
+        trigger_event = { id = rw_house_terms.0001 }
+    }
+}
+rw_house_accept_terms_effect = {
+    if = {
+        limit = { rw_house_terms_affordable_trigger = yes }
+        scope:rw_house_record.var:rw_house_requested_ruler = { save_scope_as = rw_house_terms_payee }
+        # Consume the live decision before money. No assumed engine transaction/rollback.
+        rw_house_close_effect = { RESULT = restored }
+        scope:rw_house_record = { set_variable = { name = rw_house_closed_by value = scope:rw_house_terms_payee } }
+        add_gold = -50
+        scope:rw_house_terms_payee = { add_gold = 50 }
+        scope:rw_house_record = {
+            set_variable = { name = rw_house_last_response value = flag:terms_settled }
+            set_variable = { name = rw_house_terms_paid_by value = root }
+            set_variable = { name = rw_house_terms_paid_to value = scope:rw_house_terms_payee }
+            set_variable = { name = rw_house_terms_paid_on value = current_date }
+        }
+        scope:rw_house_record = { rw_house_snapshot_effect = yes }
+        scope:rw_house_terms_payee = { trigger_event = { id = rw_house_affairs.0002 } }
+    }
+}
+rw_house_refuse_terms_effect = {
+    if = {
+        limit = { rw_house_terms_turn_trigger = yes }
+        scope:rw_house_record = {
+            remove_variable = rw_house_terms_window
+            set_variable = { name = rw_house_last_response value = flag:terms_refused }
+            change_variable = { name = rw_house_revision add = 1 }
+            rw_house_snapshot_effect = yes
+        }
+        scope:rw_house_record.var:rw_house_requested_ruler = { trigger_event = { id = rw_house_affairs.0002 } }
+    }
+}
+# Story-local retirement; no payment, penalty, notice, cooldown or decree renewal.
+rw_house_invalidate_terms_effect = {
+    if = {
+        limit = {
+            rw_house_record_active_trigger = yes
+            var:rw_house_last_response = flag:terms_offered
+            has_variable = rw_house_terms_window
+        }
+        remove_variable = rw_house_terms_window
+        set_variable = { name = rw_house_last_response value = flag:terms_invalidated }
+        change_variable = { name = rw_house_revision add = 1 }
+    }
+}
+rw_house_reconcile_terms_effect = {
+    if = {
+        limit = {
+            rw_house_record_active_trigger = yes
+            var:rw_house_last_response = flag:terms_offered
+            NOT = { rw_house_terms_valid_trigger = yes }
+        }
+        if = {
+            limit = { has_variable = rw_house_terms_window }
+            rw_house_invalidate_terms_effect = yes
+        }
+        else = {
+            set_variable = { name = rw_house_last_response value = flag:terms_unanswered }
+            change_variable = { name = rw_house_revision add = 1 }
+        }
+    }
+}

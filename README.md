@@ -27,6 +27,9 @@ A first [political house-affair register and rehabilitation flow](docs/RW010_HOU
 is experimental; it changes political favor, not native landholding rights.
 [G3 source investigation and an opt-in debug trace](docs/G3_HOUSE_SANCTIONS.md)
 prepare final testing; no house landholding ban is implemented.
+A [conditional rehabilitation offer](docs/RW010_HOUSE_TERMS.md) can exchange 50 personal
+gold for ending one political censure, with explicit consent and current-role/funds
+checks; native status, titles and criminal consequences remain separate.
 **G1 is back
 in the development plan for the war-feature stage**, rather than the immediate task.
 Retain its research and diagnostic; establish authentic-CB feasibility before shipping

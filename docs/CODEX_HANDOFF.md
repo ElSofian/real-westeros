@@ -40,7 +40,11 @@ All continuity remains engine-unverified. Succession/request hardening adds a sa
 new-ruler opportunity, observed invalid-request retirement, current free/sovereign reply
 guards and exact-identity read-only refresh of obsolete panels. There are no new native
 hooks or timers; a transient role change and reversal between observations can be missed.
-Next review cross-system consequences and remaining G3 routes before stronger sanctions;
+Conditional rehabilitation (RW010_HOUSE_TERMS.md) now lets a sovereign counteroffer
+50 personal gold for closure of this exact political decree, with explicit current-head
+accept/refuse/inaction, current funds/roles/revision guards and no native immunity.
+Free rehabilitation/withdrawal remain available. No extra goodwill for paid settlement.
+Next locate missing grant/election definitions before stronger title/status sanctions;
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;
 never force the no-tyranny imprisonment helper as a legality check. Keep knowledge,

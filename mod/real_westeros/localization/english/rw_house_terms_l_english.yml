@@ -1,0 +1,13 @@
+﻿l_english:
+ rw_house_terms.title:0 "Terms for a house’s rehabilitation"
+ rw_house_terms.offer:0 "Offer rehabilitation in exchange for 50 gold."
+ rw_house_terms.review:0 "Review the financial terms of rehabilitation."
+ rw_house_terms.conditions:0 "The current sovereign of [rw_house_authority.GetName] offers to end this exact political censure of [rw_house_target.GetName] in exchange for 50 gold from my personal treasury. Both terms take effect only if I accept within thirty days while we remain the same eligible parties. I can refuse or ignore the offer. Payment grants no land, noble status, criminal pardon or additional personal goodwill; existing penalties and other decrees remain separate."
+ rw_house_terms.unaffordable:0 "I cannot currently afford 50 gold. No debt is created and nothing is taken."
+ rw_house_terms.accept:0 "Pay 50 gold and settle this political rehabilitation."
+ rw_house_terms.refuse:0 "Refuse these financial terms."
+ rw_house_terms.pending:0 "The sovereign has offered rehabilitation for a personal payment of 50 gold by the current petitioner. Nothing has been paid; the head may review, accept, refuse or ignore the thirty-day offer."
+ rw_house_terms.refused:0 "The petitioner refused the financial terms. No gold was taken and no penalty was added; this censure and its original expiry remain."
+ rw_house_terms.invalidated:0 "The financial offer became void after a change of parties or eligibility. Nothing was paid. A recorded invalid offer cannot be revived; a new request follows the applicable cooldown and current roles."
+ rw_house_terms.unanswered:0 "The financial offer expired unanswered. Nothing was paid, no penalty was added and the original censure term was not renewed."
+ rw_house_terms.settled:0 "The petitioner paid 50 gold to the addressed sovereign in exchange for closing this exact political censure of [rw_house_target.GetName] under [rw_house_authority.GetName]. This settlement grants no land, native status, pardon or extra personal goodwill and does not cancel another authority’s decree."

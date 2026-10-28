@@ -203,6 +203,9 @@ rw_house_petition_effect = {
         limit = { rw_house_can_petition_trigger = yes }
         scope:rw_house_record = {
             change_variable = { name = rw_house_revision add = 1 }
+            remove_variable = rw_house_terms_window
+            remove_variable = rw_house_terms_price
+            remove_variable = rw_house_terms_offered_on
             set_variable = { name = rw_house_petitioner value = root }
             set_variable = { name = rw_house_requested_ruler value = scope:rw_house_ruler }
             set_variable = { name = rw_house_requested_on value = current_date }
@@ -223,6 +226,7 @@ rw_house_close_effect = {
             set_variable = { name = rw_house_closed_on value = current_date }
             remove_variable = rw_house_term
             remove_variable = rw_house_request_window
+            remove_variable = rw_house_terms_window
             remove_variable = rw_house_petition_cooldown
             change_variable = { name = rw_house_revision add = 1 }
             set_variable = { name = rw_house_retained value = flag:yes years = 50 }
@@ -296,6 +300,7 @@ rw_house_maintenance_effect = {
         }
         else = {
             rw_house_reconcile_request_effect = yes
+            rw_house_reconcile_terms_effect = yes
             rw_house_rehome_effect = yes
             rw_house_offer_opportunities_effect = yes
         }
@@ -339,6 +344,7 @@ rw_house_owner_died_effect = {
                 }
             }
             rw_house_invalidate_request_effect = yes
+            rw_house_invalidate_terms_effect = yes
         }
         if = {
             limit = { var:rw_house_authority = { exists = holder holder = { is_alive = yes NOT = { this = scope:rw_house_departed_custodian } } } }
