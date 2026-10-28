@@ -581,3 +581,46 @@ All unrun. RW010_TITLE_REMEDIES.md describes navigation, not completed restituti
   Wars and performance to baseline. This human UI does not introduce a new gameplay
   action/cost, automatic AI land gift or inherited obligation. Other decrees and
   native restrictions remain independent; no collective land ban is claimed.
+
+
+## Native revocation-context provenance (PROV-01 to PROV-10)
+
+All unrun. RW010_TITLE_PROVENANCE.md adds metadata only; no new confiscation action.
+
+- PROV-01: compare AGOT-only/base/optional diagnostic playsets. Confirm additive
+  native title effects/events and the separate provenance child both compose; base
+  loads no G3 debug/log child. Test AI and human native actors with identical guards.
+- PROV-02: after a real accepted native revocation involving an already privately
+  exposed participant, inspect whether native actor/recipient/landed_title and
+  revoke_title_interaction marker reach on_title_gain together and in time. Confirm
+  the callback's previous/current holders and exact title. If missing, no entry is
+  expected; record this intake as unsupported, never weaken guards to force a receipt.
+- PROV-03: opening/cancelling/refusing revocation and a failed native action create
+  no completed-transfer entry. Unrelated grant, inheritance, conquest, usurpation,
+  scripted title movement and same-event transfers with stale marker/scopes must not
+  be mislabeled. A positive false match invalidates the adapter's source contract.
+- PROV-04: enforce native laws/contracts, strong hooks, allied-vassal/truce rules,
+  title protections, contested/recently granted titles, administrative/religious
+  exceptions and refusal/resistance as in baseline. This observer consumes no reason
+  or duplicate tyranny, control, claim, opinion, prestige, stress or prison effect.
+- PROV-05: reject wrong actor, recipient, selected title, previous/current holder,
+  self-transfer and baronies. Hidden participants and another observer's exposed
+  record do not qualify. A typed retained own observation is required; no plot ID
+  or assertion of that offense's punishment is added.
+- PROV-06: repeat the same title/former/new-holder tuple inside one day: one
+  coalesced entry and no renewed clocks/counter. Different titles/former holders
+  remain separate. A genuine same-tuple repeat inside that window is deliberately
+  coalesced too; after expiry a new observation gets a fresh serial. Not a full ledger.
+- PROV-07: reopen journal through another selected character; only actor's own
+  records appear, selected character gets no notice. Swap record/serial/title/parties
+  or expire retention while a popup is open: portrait/text become unavailable.
+- PROV-08: move/destroy the title after observation. The original facts remain;
+  current ownership is separate and no entitlement to seize from the new holder is
+  created. Reading changes no state or costs. Verify all EN/FR names and descriptions.
+- PROV-09: save/reload counters/records, one-day coalescing and original five-year
+  retention; no reset/renewal on read. At expiry access stops and sixty-day maintenance
+  cleans storage; owner death ends personal records, with no heir/house-head access.
+- PROV-10: compare AI/player and long-run native title/war/Mega War/succession
+  behavior/performance. No pair/world scan, notifications or new decision chain; only
+  relevant callback owner's stories are searched. No universal land ban, lawful
+  verdict, institutional provenance or multi-generation restitution is claimed.

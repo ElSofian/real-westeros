@@ -1,0 +1,50 @@
+# No native effect is replayed; missing callback context fails closed.
+rw_tp_observe_effect = {
+    if = {
+        limit = { rw_tp_native_context_trigger = yes }
+        save_scope_as = rw_tp_observer
+        create_story = { type = story_rw_title_provenance save_scope_as = rw_tp_record }
+        if = {
+            limit = {
+                exists = scope:rw_tp_record
+                scope:rw_tp_record = {
+                    story_type = story_rw_title_provenance
+                    story_owner = scope:rw_tp_observer
+                    NOT = { has_variable = rw_tp_schema }
+                }
+            }
+            if = { limit = { NOT = { has_variable = rw_tp_serial_counter } } set_variable = { name = rw_tp_serial_counter value = 0 } }
+            change_variable = { name = rw_tp_serial_counter add = 1 }
+            save_scope_value_as = { name = rw_tp_serial value = var:rw_tp_serial_counter }
+            scope:rw_tp_record = {
+                set_variable = { name = rw_tp_schema value = 1 }
+                set_variable = { name = rw_tp_kind value = flag:native_revocation_context_transfer }
+                set_variable = { name = rw_tp_serial value = scope:rw_tp_serial }
+                set_variable = { name = rw_tp_title value = scope:title }
+                set_variable = { name = rw_tp_former_holder value = scope:previous_holder }
+                set_variable = { name = rw_tp_new_holder value = scope:rw_tp_observer }
+                set_variable = { name = rw_tp_observed_on value = current_date }
+                set_variable = { name = rw_tp_repeat_window value = flag:yes days = 1 }
+                set_variable = { name = rw_tp_retained value = flag:yes years = 5 }
+            }
+        }
+    }
+}
+# Interactions supply scope:actor. Selected recipients receive no notification.
+rw_tp_read_effect = {
+    if = {
+        limit = { scope:actor = { is_alive = yes } }
+        scope:actor = {
+            save_scope_as = rw_tp_observer
+            every_owned_story = {
+                limit = { rw_tp_reader_trigger = { READER = scope:rw_tp_observer } }
+                save_scope_as = rw_tp_record
+                save_scope_value_as = { name = rw_tp_serial value = var:rw_tp_serial }
+                var:rw_tp_title = { save_scope_as = rw_tp_title }
+                var:rw_tp_former_holder = { save_scope_as = rw_tp_former_holder }
+                var:rw_tp_new_holder = { save_scope_as = rw_tp_new_holder }
+                scope:rw_tp_observer = { trigger_event = { id = rw_title_provenance.0001 } }
+            }
+        }
+    }
+}

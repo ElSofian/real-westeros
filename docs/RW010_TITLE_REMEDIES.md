@@ -73,3 +73,7 @@ Next: audit native individual-title legality/provenance before any coercive reme
 independent revised-promise/receipt/mediation integration can continue. All CK3 runs
 remain in the owner's final campaign. No further source upload is required for
 this navigation slice.
+
+Subsequent source legality review and conditional transfer provenance are in
+RW010_TITLE_PROVENANCE.md. Those private personal observations do not identify a
+particular plot's punishment or provide multi-generation restitution authority.

@@ -1,0 +1,67 @@
+# Native new-holder root. No untyped gain/loss is promoted to a revocation.
+rw_tp_native_context_trigger = {
+    exists = scope:title
+    exists = scope:previous_holder
+    exists = scope:actor
+    exists = scope:recipient
+    exists = scope:landed_title
+    exists = scope:revoke_title_interaction
+    this = scope:actor
+    scope:recipient = scope:previous_holder
+    scope:landed_title = scope:title
+    is_alive = yes
+    is_adult = yes
+    scope:title = { exists = holder holder = root tier >= tier_county }
+    NOT = { this = scope:previous_holder }
+    # Relevance uses only this actor's already known, retained observations.
+    any_owned_story = {
+        rw_scheme_evidence_reader_trigger = { READER = root }
+        var:rw_evidence_kind = flag:participant_exposed
+        var:rw_evidence_participant = scope:previous_holder
+    }
+    # Coalesce this exact tuple for one day, without renewing either clock.
+    NOT = {
+        any_owned_story = {
+            rw_tp_reader_trigger = { READER = root }
+            has_variable = rw_tp_repeat_window
+            var:rw_tp_title = scope:title
+            var:rw_tp_former_holder = scope:previous_holder
+            var:rw_tp_new_holder = root
+        }
+    }
+}
+# Personal record scope, no authority or guilt inherited by a relative.
+rw_tp_reader_trigger = {
+    story_type = story_rw_title_provenance
+    story_owner = $READER$
+    var:rw_tp_schema = 1
+    var:rw_tp_kind = flag:native_revocation_context_transfer
+    has_variable = rw_tp_serial
+    has_variable = rw_tp_retained
+    has_variable = rw_tp_observed_on
+    exists = var:rw_tp_title
+    exists = var:rw_tp_former_holder
+    exists = var:rw_tp_new_holder
+    var:rw_tp_new_holder = $READER$
+}
+rw_tp_view_trigger = {
+    exists = scope:rw_tp_observer
+    exists = scope:rw_tp_record
+    exists = scope:rw_tp_serial
+    exists = scope:rw_tp_title
+    exists = scope:rw_tp_former_holder
+    exists = scope:rw_tp_new_holder
+    this = scope:rw_tp_observer
+    is_alive = yes
+    scope:rw_tp_record = {
+        rw_tp_reader_trigger = { READER = root }
+        var:rw_tp_serial = scope:rw_tp_serial
+        var:rw_tp_title = scope:rw_tp_title
+        var:rw_tp_former_holder = scope:rw_tp_former_holder
+        var:rw_tp_new_holder = scope:rw_tp_new_holder
+    }
+}
+rw_tp_still_held_trigger = {
+    rw_tp_view_trigger = yes
+    scope:rw_tp_record.var:rw_tp_title = { exists = holder holder = root }
+}

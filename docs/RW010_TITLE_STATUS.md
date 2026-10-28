@@ -98,3 +98,8 @@ bans remain unimplemented. G1 remains for the later war stage; RW-010 stays in p
 The subsequent post-rehabilitation land review (RW010_TITLE_REMEDIES.md) can open
 native grant terms for the exact current house head. It does not connect a past
 revocation to a particular title or implement confiscation/restitution automatically.
+
+Native authority/title-picker/refusal source findings and a conditional private
+post-transfer provenance journal are now in RW010_TITLE_PROVENANCE.md. The journal
+is not proof that this plot was punished; it neither bypasses native revocation nor
+reconstructs a lost source context or a lawful historical judgment.

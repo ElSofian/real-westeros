@@ -19,7 +19,8 @@ DOCS = ('README.md', 'docs/INSTALL.md', 'docs/INTEGRATED_BUILD.md',
         'docs/G3_HOUSE_SANCTIONS.md', 'docs/G3_SOURCE_RECEIPT.json',
         'docs/TITLE_ROUTE_AUDIT.md', 'docs/TITLE_ROUTE_SOURCE_RECEIPT.json',
         'docs/RW010_HOUSE_AFFAIRS.md', 'docs/RW010_HOUSE_TERMS.md',
-        'docs/RW010_TITLE_REMEDIES.md',
+        'docs/RW010_TITLE_REMEDIES.md', 'docs/RW010_TITLE_PROVENANCE.md',
+        'docs/TITLE_PROVENANCE_SOURCE_RECEIPT.json',
         'docs/RW010_DELIVERY_TERMS.md', 'docs/RW010_PRICE_AMENDMENTS.md')
 PREFIX = 'mod/real_westeros/'
 G3_ROOT = 'diagnostics/g3_house_trace/mod/'
