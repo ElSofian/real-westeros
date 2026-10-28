@@ -18,7 +18,7 @@ DOCS = ('README.md', 'docs/INSTALL.md', 'docs/INTEGRATED_BUILD.md',
         'docs/FINAL_ENGINE_TESTS.md', 'docs/TEST_PLAN_G1.md',
         'docs/G3_HOUSE_SANCTIONS.md', 'docs/G3_SOURCE_RECEIPT.json',
         'docs/RW010_HOUSE_AFFAIRS.md', 'docs/RW010_HOUSE_TERMS.md',
-        'docs/RW010_DELIVERY_TERMS.md')
+        'docs/RW010_DELIVERY_TERMS.md', 'docs/RW010_PRICE_AMENDMENTS.md')
 PREFIX = 'mod/real_westeros/'
 G3_ROOT = 'diagnostics/g3_house_trace/mod/'
 G3_FILES = tuple(G3_ROOT + name for name in (

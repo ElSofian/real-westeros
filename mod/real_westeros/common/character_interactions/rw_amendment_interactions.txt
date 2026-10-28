@@ -1,0 +1,19 @@
+# Both directions can propose, review, answer or withdraw their one current request.
+rw_provider_price_amendment_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_amendments.interaction_desc
+    auto_accept = yes
+    is_shown = { scope:actor = { has_character_flag = rw_service_obligation var:rw_service_target = scope:recipient } }
+    is_valid_showing_failures_only = { rw_amend_interaction_pair_trigger = { PROVIDER = scope:actor CLIENT = scope:recipient } }
+    on_accept = { rw_amend_prepare_effect = { PROVIDER = scope:actor CLIENT = scope:recipient } }
+    ai_will_do = { base = 0 }
+}
+rw_client_price_amendment_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_amendments.interaction_desc
+    auto_accept = yes
+    is_shown = { scope:recipient = { has_character_flag = rw_service_obligation var:rw_service_target = scope:actor } }
+    is_valid_showing_failures_only = { rw_amend_interaction_pair_trigger = { PROVIDER = scope:recipient CLIENT = scope:actor } }
+    on_accept = { rw_amend_prepare_effect = { PROVIDER = scope:recipient CLIENT = scope:actor } }
+    ai_will_do = { base = 0 }
+}

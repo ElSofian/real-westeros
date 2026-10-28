@@ -24,7 +24,8 @@ The original thirty-day **negotiation** expiry never changes during counters. Th
 accepted **delivery** deadline instead starts at consent; the seven-day minimum
 wait stays fixed. All current party, pending flag, serial, revision, mode, price and
 delivery checks apply before mutation; accepted promises cannot be renegotiated
-through these quote-only actions. Changing either clause needs renewed explicit
+through these quote-only actions. A separate mutually accepted 50→25 price amendment
+for due promises is in RW010_PRICE_AMENDMENTS.md; it preserves the delivery deadline. Changing either clause needs renewed explicit
 acceptance of the entire resulting offer, not partial consent.
 
 ## Promise, performance and timeout

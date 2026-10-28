@@ -11,6 +11,7 @@ rw_cancel_interaction_allowed_trigger = {
         var:rw_service_mode = flag:deferred
         var:rw_service_target = $CLIENT$
         NOT = { has_character_flag = rw_cancel_pending }
+        NOT = { has_character_flag = rw_amend_pending }
         NOT = { has_character_flag = rw_cancel_cooldown }
     }
     $CLIENT$ = { is_alive = yes is_adult = yes is_landed = yes }
@@ -47,6 +48,7 @@ rw_cancel_can_propose_trigger = {
     this = scope:rw_cancel_proposer
     scope:rw_service_provider = {
         NOT = { has_character_flag = rw_cancel_pending }
+        NOT = { has_character_flag = rw_amend_pending }
         NOT = { has_character_flag = rw_cancel_cooldown }
     }
 }
@@ -56,6 +58,7 @@ rw_cancel_event_can_propose_trigger = {
     this = $PARTY$
     scope:rw_service_provider = {
         NOT = { has_character_flag = rw_cancel_pending }
+        NOT = { has_character_flag = rw_amend_pending }
         NOT = { has_character_flag = rw_cancel_cooldown }
     }
 }

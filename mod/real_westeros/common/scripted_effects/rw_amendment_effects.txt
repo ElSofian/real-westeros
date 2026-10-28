@@ -1,0 +1,89 @@
+# Interaction maps known parties; auto_accept opens negotiation, never consent.
+rw_amend_prepare_effect = {
+    if = {
+        limit = { rw_amend_interaction_pair_trigger = { PROVIDER = $PROVIDER$ CLIENT = $CLIENT$ } }
+        $PROVIDER$ = { save_scope_as = rw_service_provider }
+        $CLIENT$ = { save_scope_as = rw_service_client }
+        rw_service_snapshot_effect = yes
+        if = {
+            limit = { scope:rw_service_provider = { has_character_flag = rw_amend_pending } }
+            scope:rw_service_provider = {
+                save_scope_value_as = { name = rw_amend_serial value = var:rw_amend_serial }
+                var:rw_amend_proposer = { save_scope_as = rw_amend_proposer }
+                var:rw_amend_responder = { save_scope_as = rw_amend_responder }
+            }
+            scope:actor = { trigger_event = { id = rw_amendments.0001 } }
+        }
+        else = {
+            scope:actor = { save_scope_as = rw_amend_proposer }
+            scope:recipient = { save_scope_as = rw_amend_responder }
+            scope:actor = { rw_amend_propose_effect = yes }
+        }
+    }
+}
+rw_amend_propose_effect = {
+    if = {
+        limit = { rw_amend_can_start_trigger = yes rw_amend_parties_trigger = yes this = scope:rw_amend_proposer }
+        scope:rw_service_provider = {
+            if = { limit = { NOT = { has_variable = rw_amend_serial } } set_variable = { name = rw_amend_serial value = 0 } }
+            change_variable = { name = rw_amend_serial add = 1 }
+            save_scope_value_as = { name = rw_amend_serial value = var:rw_amend_serial }
+            set_variable = { name = rw_amend_proposer value = scope:rw_amend_proposer }
+            set_variable = { name = rw_amend_responder value = scope:rw_amend_responder }
+            set_variable = { name = rw_amend_last_contract value = scope:rw_service_serial }
+            set_variable = { name = rw_amend_last_response value = flag:pending }
+            add_character_flag = { flag = rw_amend_pending days = 7 }
+            add_character_flag = { flag = rw_amend_cooldown days = 7 }
+        }
+        scope:rw_amend_responder = { trigger_event = { id = rw_amendments.0001 } }
+    }
+}
+rw_amend_provider_propose_effect = {
+    if = {
+        limit = { rw_amend_can_start_trigger = yes this = scope:rw_service_provider }
+        scope:rw_service_provider = { save_scope_as = rw_amend_proposer }
+        scope:rw_service_client = { save_scope_as = rw_amend_responder }
+        rw_amend_propose_effect = yes
+    }
+}
+rw_amend_client_propose_effect = {
+    if = {
+        limit = { rw_amend_can_start_trigger = yes this = scope:rw_service_client }
+        scope:rw_service_client = { save_scope_as = rw_amend_proposer }
+        scope:rw_service_provider = { save_scope_as = rw_amend_responder }
+        rw_amend_propose_effect = yes
+    }
+}
+rw_amend_accept_effect = {
+    if = {
+        limit = { rw_amend_accept_trigger = yes }
+        scope:rw_service_provider = {
+            # Consume this request before the one term change; keep contract clock/identity.
+            remove_character_flag = rw_amend_pending
+            set_variable = { name = rw_amend_last_response value = flag:accepted }
+            set_variable = { name = rw_service_price value = 25 }
+        }
+        rw_service_snapshot_effect = yes
+        # Fresh price and decision ticket invalidate old visible/pending decisions.
+        scope:rw_service_provider = { rw_service_open_decision_effect = yes }
+        scope:rw_service_client = { trigger_event = { id = rw_amendments.0003 } }
+    }
+}
+rw_amend_refuse_effect = {
+    if = {
+        limit = { rw_amend_responder_turn_trigger = yes }
+        scope:rw_service_provider = {
+            remove_character_flag = rw_amend_pending
+            set_variable = { name = rw_amend_last_response value = flag:refused }
+        }
+    }
+}
+rw_amend_withdraw_effect = {
+    if = {
+        limit = { rw_amend_withdraw_trigger = yes }
+        scope:rw_service_provider = {
+            remove_character_flag = rw_amend_pending
+            set_variable = { name = rw_amend_last_response value = flag:withdrawn }
+        }
+    }
+}
