@@ -89,7 +89,7 @@ def errors(t, e, on, events, story, menu):
     if re.search(r'\b(set_variable|change_variable|remove_variable|days|years|send_interface_message)\s*=', read_code):
         out.append('reading mutates or renews record')
     code = clean_script(t+e+on+events+story+menu)[0]
-    if re.search(r'\b(run_interaction|send_interaction|open_interaction_window|change_title_holder|change_title_holder_include_vassals|resolve_title_and_vassal_change|create_title_and_vassal_change|destroy_title|add_pressed_claim|consume_revoke_title_reason|add_trait|remove_trait|add_gold|add_opinion|add_prestige|imprison|death|set_house|make_story_owner|add_to_global_variable_list)\s*=', code):
+    if re.search(r'\b(run_interaction|send_interaction|open_interaction_window|change_title_holder|change_title_holder_include_vassals|resolve_title_and_vassal_change|create_title_and_vassal_change|destroy_title|add_pressed_claim|revoke_title_interaction_effect|revocation_tyranny_effect|title_revocation_stress_effect|consume_revoke_title_reason|add_trait|remove_trait|add_gold|add_opinion|add_prestige|imprison|death|set_house|make_story_owner|add_to_global_variable_list)\s*=', code):
         out.append('native consequence replayed or private history transferred')
     if re.search(r'\b(scheme_owner|every_living_character|any_living_character|every_house_member|is_ai|rw_evidence_scheme)\b', code):
         out.append('hidden source world scan or AI exception')
@@ -171,7 +171,7 @@ class TitleProvenanceTests(unittest.TestCase):
         self.assertIn('reading mutates or renews record',self.check(v=self.v+'\nset_variable = yes'))
 
     def test_no_forced_title_penalty_or_reconstruction(self):
-        for effect in ('run_interaction','change_title_holder','consume_revoke_title_reason','add_gold','make_story_owner'):
+        for effect in ('run_interaction','change_title_holder','revoke_title_interaction_effect','revocation_tyranny_effect','title_revocation_stress_effect','consume_revoke_title_reason','add_gold','make_story_owner'):
             self.assertIn('native consequence replayed or private history transferred',self.check(e=self.e+'\n'+effect+' = yes'))
         for token in ('is_ai','scheme_owner','every_living_character'):
             self.assertIn('hidden source world scan or AI exception',self.check(t=self.t+'\n'+token+' = yes'))
