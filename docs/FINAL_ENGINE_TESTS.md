@@ -796,3 +796,35 @@ All unrun. RW010_RESTITUTION_DIALOGUES.md creates discussion, not promised resti
   succession/banks, house stability, optional G3 diagnostic and performance. Measure
   registry changed-pair/index costs and private per-record maintenance at scale;
   verify EN/FR/event scopes and no extra recurring requests or doubled native effects.
+
+
+## Exact service clauses in private mediation (all unrun)
+
+- CASE-TERMS-01: negotiate and breach each 25/50-gold × 14/30-day deferred
+  endorsement; refer to a separate common overlord. All original informed parties
+  read the exact copied clauses from ruler/repair/result/history panels. Merely
+  reading changes no resources, opinions, stages, deadlines or outcomes.
+- CASE-TERMS-02: accept a due 50→25 amendment, then explicitly refuse or let the
+  original timeout fire with only 25–49 client gold. Receipt/case must say 25;
+  original delivery clause/revision remain. A pending/refused/ignored amendment
+  must still yield price 50. No second payment, timer reset or false insolvency.
+- CASE-TERMS-03: refer A, then create/finish B for the same provider, with another
+  client/price/delivery. Old A notices/history still show A; A's copied fields
+  do not alter B. Repeated browsing/clicks cannot copy a new receipt into A.
+- CASE-TERMS-04: replay old referral after response consumption, new receipt,
+  different case serial/client, ended story or wrong owner/type/kind. No foreign
+  clauses, duplicate referral or response consumption. Probe same-tick construction.
+- CASE-TERMS-05: known provider/client/disclosed mediator can read; unrelated
+  characters, an undisclosed planned mediator in an allegation, later rulers and
+  heirs cannot learn private clauses. Loss of current authority does not erase an
+  already informed original mediator's memory or grant a new decision right.
+- CASE-TERMS-06: old case/receipt without schema, missing term/date/revision or
+  unsupported price/delivery stays explicitly unknown. A later contract never
+  backfills it; normal old-case decisions remain eligible under original guards.
+  A neutral orphan cancellation after a typed receipt cannot inherit its metadata.
+- CASE-TERMS-07: save/reload before/after receipt, referral, mediation closure and
+  browse. Verify independent stories, notice scopes, original retention/death
+  cleanup and EN/FR fallback rendering. No heir receives personal consent or guilt.
+- CASE-TERMS-08: compare AI/player receipt/referral paths, AI political choices,
+  AGOT-only baseline, logs and archive performance. No extra automatic request,
+  world scan, effect replay or native title/war/justice behavior should be added.

@@ -1,0 +1,33 @@
+# Character scope. This certificate is about one terminal receipt, not today's offer.
+rw_service_receipt_terms_trigger = {
+    var:rw_service_last_terms_schema = 1
+    has_variable = rw_service_last_serial
+    has_variable = rw_service_last_client
+    has_variable = rw_service_last_revision
+    has_variable = rw_service_last_recorded_on
+    var:rw_service_last_mode = flag:deferred
+    var:rw_service_last_service = flag:endorsement
+    OR = { var:rw_service_last_price = 25 var:rw_service_last_price = 50 }
+    OR = { var:rw_service_last_delivery_days = 14 var:rw_service_last_delivery_days = 30 }
+}
+# Story scope; immutable copied terms may outlive the provider's latest receipt.
+rw_case_service_terms_trigger = {
+    story_type = story_rw_political_case
+    var:rw_case_kind = flag:service
+    var:rw_case_terms_schema = 1
+    has_variable = rw_case_service_revision
+    has_variable = rw_case_service_recorded_on
+    var:rw_case_service_mode = flag:deferred
+    var:rw_case_service_kind = flag:endorsement
+    OR = { var:rw_case_service_price = 25 var:rw_case_service_price = 50 }
+    OR = { var:rw_case_service_delivery_days = 14 var:rw_case_service_delivery_days = 30 }
+}
+# Event character scope. Keep the original private reader roles, not current rank.
+rw_case_can_read_service_terms_trigger = {
+    rw_case_matches_trigger = yes
+    is_alive = yes
+    scope:rw_case_record = {
+        var:rw_case_kind = flag:service
+        rw_case_reader_allowed_trigger = { READER = root }
+    }
+}

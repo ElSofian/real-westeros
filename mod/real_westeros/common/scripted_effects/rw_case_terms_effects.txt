@@ -1,0 +1,39 @@
+# No old receipt can leave its certificate on a new or neutral terminal outcome.
+rw_service_clear_receipt_terms_effect = {
+    remove_variable = rw_service_last_terms_schema
+    remove_variable = rw_service_last_revision
+    remove_variable = rw_service_last_mode
+    remove_variable = rw_service_last_service
+    remove_variable = rw_service_last_recorded_on
+}
+# Called only during explicit fresh service referral, before consuming its response.
+rw_case_capture_service_terms_effect = {
+    if = {
+        limit = {
+            rw_case_can_open_trigger = yes
+            exists = scope:rw_case_record
+            scope:rw_case_record = {
+                story_type = story_rw_political_case
+                story_owner = scope:rw_service_provider
+                var:rw_case_kind = flag:service
+                var:rw_case_serial = scope:rw_service_serial
+                var:rw_case_client = scope:rw_service_client
+                NOT = { has_variable = rw_case_terms_schema }
+            }
+            scope:rw_service_provider = {
+                rw_service_receipt_terms_trigger = yes
+                var:rw_service_last_serial = scope:rw_service_serial
+                var:rw_service_last_client = scope:rw_service_client
+            }
+        }
+        scope:rw_case_record = {
+            set_variable = { name = rw_case_service_revision value = scope:rw_service_provider.var:rw_service_last_revision }
+            set_variable = { name = rw_case_service_price value = scope:rw_service_provider.var:rw_service_last_price }
+            set_variable = { name = rw_case_service_delivery_days value = scope:rw_service_provider.var:rw_service_last_delivery_days }
+            set_variable = { name = rw_case_service_mode value = scope:rw_service_provider.var:rw_service_last_mode }
+            set_variable = { name = rw_case_service_kind value = scope:rw_service_provider.var:rw_service_last_service }
+            set_variable = { name = rw_case_service_recorded_on value = scope:rw_service_provider.var:rw_service_last_recorded_on }
+            set_variable = { name = rw_case_terms_schema value = 1 }
+        }
+    }
+}
