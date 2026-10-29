@@ -1,0 +1,133 @@
+# Fresh TP construction only. Never backfill an authority/house from today's state.
+rw_lr_capture_effect = {
+    if = {
+        limit = { rw_lr_capture_trigger = yes }
+        scope:rw_tp_record = {
+            set_variable = { name = rw_tp_land_authority value = scope:rw_tp_observer.primary_title }
+            set_variable = { name = rw_tp_former_house value = scope:previous_holder.house }
+            set_variable = { name = rw_lr_offer_scheduled value = flag:yes }
+            var:rw_tp_title = { save_scope_as = rw_tp_title }
+            var:rw_tp_former_holder = { save_scope_as = rw_tp_former_holder }
+            var:rw_tp_new_holder = { save_scope_as = rw_tp_new_holder }
+        }
+        trigger_event = { id = rw_land_registry.0002 days = 1 }
+    }
+}
+rw_lr_open_deposit_effect = {
+    if = {
+        limit = { rw_lr_can_consider_trigger = yes }
+        scope:rw_tp_record.var:rw_tp_land_authority = { save_scope_as = rw_lr_authority }
+        scope:rw_tp_record.var:rw_tp_former_house = { save_scope_as = rw_lr_house }
+        trigger_event = { id = rw_land_registry.0001 }
+    }
+}
+rw_lr_deposit_effect = {
+    if = {
+        limit = { rw_lr_deposit_turn_trigger = yes }
+        create_story = { type = story_rw_land_register save_scope_as = rw_lr_record }
+        if = {
+            limit = {
+                exists = scope:rw_lr_record
+                scope:rw_lr_record = { story_type = story_rw_land_register story_owner = scope:rw_tp_observer NOT = { has_variable = rw_lr_schema } }
+            }
+            scope:rw_lr_authority = {
+                if = { limit = { NOT = { has_variable = rw_lr_counter } } set_variable = { name = rw_lr_counter value = 0 } }
+                change_variable = { name = rw_lr_counter add = 1 }
+                save_scope_value_as = { name = rw_lr_serial value = var:rw_lr_counter }
+            }
+            scope:rw_lr_record = {
+                set_variable = { name = rw_lr_schema value = 1 }
+                set_variable = { name = rw_lr_kind value = flag:title_transfer_observation }
+                set_variable = { name = rw_lr_serial value = scope:rw_lr_serial }
+                set_variable = { name = rw_lr_source_serial value = scope:rw_tp_serial }
+                set_variable = { name = rw_lr_issuer value = scope:rw_tp_observer }
+                set_variable = { name = rw_lr_title value = scope:rw_tp_title }
+                set_variable = { name = rw_lr_former_holder value = scope:rw_tp_former_holder }
+                set_variable = { name = rw_lr_new_holder value = scope:rw_tp_new_holder }
+                set_variable = { name = rw_lr_authority value = scope:rw_lr_authority }
+                set_variable = { name = rw_lr_former_house value = scope:rw_lr_house }
+                set_variable = { name = rw_lr_observed_on value = scope:rw_tp_record.var:rw_tp_observed_on }
+                set_variable = { name = rw_lr_filed_on value = current_date }
+                set_variable = { name = rw_lr_retained value = flag:yes years = 100 }
+            }
+            add_to_global_variable_list = { name = rw_land_register target = scope:rw_lr_record }
+            if = {
+                limit = { has_global_variable_list = rw_land_register any_in_global_list = { variable = rw_land_register this = scope:rw_lr_record } }
+                scope:rw_tp_record = { set_variable = { name = rw_tp_land_deposited value = flag:yes } }
+                scope:rw_lr_record = { rw_lr_snapshot_effect = yes }
+                trigger_event = { id = rw_land_registry.0003 }
+            }
+            else = { scope:rw_lr_record = { rw_lr_retire_effect = yes } }
+        }
+    }
+}
+# All retirement removes the exact index entry before ending its storage story.
+rw_lr_retire_effect = {
+    if = {
+        limit = { story_type = story_rw_land_register }
+        save_scope_as = rw_lr_record
+        if = { limit = { has_global_variable_list = rw_land_register } remove_list_global_variable = { name = rw_land_register target = scope:rw_lr_record } }
+        end_story = yes
+    }
+}
+# Story storage moves; access is always calculated from current roles/public parties.
+rw_lr_rehome_effect = {
+    if = {
+        limit = { rw_lr_record_valid_trigger = yes has_variable = rw_lr_retained }
+        if = {
+            limit = { var:rw_lr_authority = { exists = holder holder = { rw_lr_can_carry_trigger = yes } } }
+            if = { limit = { NOT = { story_owner = var:rw_lr_authority.holder } } make_story_owner = var:rw_lr_authority.holder }
+        }
+        else_if = {
+            limit = { var:rw_lr_title = { exists = holder holder = { rw_lr_can_carry_trigger = yes } } }
+            if = { limit = { NOT = { story_owner = var:rw_lr_title.holder } } make_story_owner = var:rw_lr_title.holder }
+        }
+        else_if = {
+            limit = { var:rw_lr_former_house = { exists = house_head house_head = { rw_lr_can_carry_trigger = yes } } }
+            if = { limit = { NOT = { story_owner = var:rw_lr_former_house.house_head } } make_story_owner = var:rw_lr_former_house.house_head }
+        }
+        else_if = {
+            limit = { var:rw_lr_former_holder = { rw_lr_can_carry_trigger = yes } }
+            if = { limit = { NOT = { story_owner = var:rw_lr_former_holder } } make_story_owner = var:rw_lr_former_holder }
+        }
+        else_if = {
+            limit = { var:rw_lr_new_holder = { rw_lr_can_carry_trigger = yes } }
+            if = { limit = { NOT = { story_owner = var:rw_lr_new_holder } } make_story_owner = var:rw_lr_new_holder }
+        }
+        else_if = {
+            limit = { var:rw_lr_former_house = { any_house_member = { rw_lr_can_carry_trigger = yes } } }
+            var:rw_lr_former_house = { random_house_member = { limit = { rw_lr_can_carry_trigger = yes } save_scope_as = rw_lr_custodian } }
+            make_story_owner = scope:rw_lr_custodian
+        }
+        else = { rw_lr_retire_effect = yes }
+    }
+    else = { rw_lr_retire_effect = yes }
+}
+rw_lr_owner_died_effect = {
+    story_owner = { save_scope_as = rw_lr_departed }
+    rw_lr_rehome_effect = yes
+}
+rw_lr_maintenance_effect = {
+    clear_saved_scope = rw_lr_departed
+    rw_lr_rehome_effect = yes
+}
+rw_lr_snapshot_effect = {
+    save_scope_as = rw_lr_record
+    save_scope_value_as = { name = rw_lr_serial value = var:rw_lr_serial }
+    var:rw_lr_authority = { save_scope_as = rw_lr_authority }
+    var:rw_lr_former_house = { save_scope_as = rw_lr_house }
+    var:rw_lr_title = { save_scope_as = rw_lr_title }
+    var:rw_lr_former_holder = { save_scope_as = rw_lr_former_holder }
+    var:rw_lr_new_holder = { save_scope_as = rw_lr_new_holder }
+}
+rw_lr_read_effect = {
+    if = {
+        limit = { scope:actor = { is_alive = yes } has_global_variable_list = rw_land_register }
+        every_in_global_list = {
+            variable = rw_land_register
+            limit = { rw_lr_reader_trigger = { READER = scope:actor } }
+            rw_lr_snapshot_effect = yes
+            scope:actor = { trigger_event = { id = rw_land_registry.0003 } }
+        }
+    }
+}

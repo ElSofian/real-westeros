@@ -1,0 +1,14 @@
+rw_review_land_register_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_review_land_register_interaction_desc
+    common_interaction = yes
+    use_diplomatic_range = no
+    auto_accept = yes
+    is_shown = {
+        scope:actor = { is_alive = yes }
+        has_global_variable_list = rw_land_register
+        any_in_global_list = { variable = rw_land_register rw_lr_reader_trigger = { READER = scope:actor } }
+    }
+    on_accept = { rw_lr_read_effect = yes }
+    ai_will_do = { base = 0 }
+}

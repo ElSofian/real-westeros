@@ -1,0 +1,117 @@
+# Public title facts only, never a legal verdict or private-case inheritance.
+rw_lr_capture_trigger = {
+    exists = scope:rw_ri_fresh_receipt
+    scope:rw_ri_fresh_receipt = scope:rw_tp_record
+    this = scope:rw_tp_observer
+    rw_house_sovereign_trigger = yes
+    exists = scope:previous_holder
+    exists = scope:title
+    exists = scope:actor
+    exists = scope:recipient
+    exists = scope:landed_title
+    exists = scope:revoke_title_interaction
+    this = scope:actor
+    scope:recipient = scope:previous_holder
+    scope:landed_title = scope:title
+    scope:title = { exists = holder holder = root }
+    scope:previous_holder = { exists = house }
+    scope:rw_tp_record = {
+        rw_tp_reader_trigger = { READER = root }
+        var:rw_tp_serial = scope:rw_tp_serial
+        var:rw_tp_title = scope:title
+        var:rw_tp_new_holder = root
+        var:rw_tp_former_holder = scope:previous_holder
+        NOT = { has_variable = rw_lr_offer_scheduled }
+        NOT = { has_variable = rw_tp_land_authority }
+        NOT = { has_variable = rw_tp_former_house }
+    }
+}
+rw_lr_can_consider_trigger = {
+    rw_tp_view_trigger = yes
+    rw_house_sovereign_trigger = yes
+    scope:rw_tp_record = {
+        exists = var:rw_tp_land_authority
+        exists = var:rw_tp_former_house
+        var:rw_tp_land_authority = { exists = holder holder = root }
+        NOT = { has_variable = rw_tp_land_deposited }
+    }
+    trigger_if = {
+        limit = { has_global_variable_list = rw_land_register }
+        NOT = {
+            any_in_global_list = {
+                variable = rw_land_register
+                rw_lr_record_valid_trigger = yes
+                var:rw_lr_issuer = root
+                var:rw_lr_source_serial = scope:rw_tp_serial
+            }
+        }
+    }
+}
+rw_lr_deposit_turn_trigger = {
+    rw_lr_can_consider_trigger = yes
+    exists = scope:rw_lr_authority
+    exists = scope:rw_lr_house
+    scope:rw_tp_record = {
+        var:rw_tp_land_authority = scope:rw_lr_authority
+        var:rw_tp_former_house = scope:rw_lr_house
+    }
+}
+# Registry record scope. These fields describe a filed observation, not title rights.
+rw_lr_record_valid_trigger = {
+    story_type = story_rw_land_register
+    var:rw_lr_schema = 1
+    var:rw_lr_kind = flag:title_transfer_observation
+    has_variable = rw_lr_serial
+    has_variable = rw_lr_source_serial
+    has_variable = rw_lr_observed_on
+    has_variable = rw_lr_filed_on
+    exists = var:rw_lr_issuer
+    exists = var:rw_lr_title
+    exists = var:rw_lr_former_holder
+    exists = var:rw_lr_new_holder
+    var:rw_lr_issuer = var:rw_lr_new_holder
+    exists = var:rw_lr_authority
+    exists = var:rw_lr_former_house
+}
+rw_lr_reader_trigger = {
+    rw_lr_record_valid_trigger = yes
+    has_variable = rw_lr_retained
+    $READER$ = { is_alive = yes }
+    OR = {
+        var:rw_lr_authority = { exists = holder holder = $READER$ }
+        var:rw_lr_title = { exists = holder holder = $READER$ }
+        var:rw_lr_former_holder = $READER$
+        var:rw_lr_new_holder = $READER$
+        AND = { $READER$ = { exists = house } var:rw_lr_former_house = $READER$.house }
+    }
+}
+rw_lr_view_trigger = {
+    exists = scope:rw_lr_record
+    exists = scope:rw_lr_serial
+    exists = scope:rw_lr_authority
+    exists = scope:rw_lr_house
+    exists = scope:rw_lr_title
+    exists = scope:rw_lr_former_holder
+    exists = scope:rw_lr_new_holder
+    scope:rw_lr_record = {
+        rw_lr_reader_trigger = { READER = root }
+        var:rw_lr_serial = scope:rw_lr_serial
+        var:rw_lr_authority = scope:rw_lr_authority
+        var:rw_lr_former_house = scope:rw_lr_house
+        var:rw_lr_title = scope:rw_lr_title
+        var:rw_lr_former_holder = scope:rw_lr_former_holder
+        var:rw_lr_new_holder = scope:rw_lr_new_holder
+    }
+}
+rw_lr_original_owner_still_holds_trigger = {
+    rw_lr_view_trigger = yes
+    scope:rw_lr_title = { exists = holder holder = scope:rw_lr_new_holder }
+}
+# Character scope. Known departing custodian is excluded before native flags settle.
+rw_lr_can_carry_trigger = {
+    is_alive = yes
+    trigger_if = {
+        limit = { exists = scope:rw_lr_departed }
+        NOT = { this = scope:rw_lr_departed }
+    }
+}

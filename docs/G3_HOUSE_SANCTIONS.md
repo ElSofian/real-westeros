@@ -172,3 +172,14 @@ absence of game-state/title reversal and restricted log fields. Two archive test
 diagnostic script. These checks do not execute
 CK3, prove load order, persistent house state or clear G3. G3-01…12 in
 FINAL_ENGINE_TESTS.md remain unrun, including four-route and multi-generation cases.
+
+## Separate public land-fact archive
+
+RW010_LAND_REGISTER.md adds optional filing of a sovereign's exact observed title
+transfer into a new crown-scoped story/index. Its original parties, title, dates
+and former house can remain accessible to current crown/land holders and exact
+house members after personal journals end, with experimental owner-death custody
+and fixed maximum hundred-year archival retention. No private case/intent pointer,
+crime, inherited guilt or title entitlement is copied. This is not the fifty-year
+landholding ban or restored noble status. All persistence/permission/continuity
+claims still require the final engine campaign.

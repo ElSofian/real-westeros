@@ -104,8 +104,9 @@ Old observations receive no retroactive timers; the chooser remains available.
 
 Sixty-day story maintenance removes expired storage; retention gates access at the
 actual expiry. Serial counters are never reset by cleanup, withdrawal or observation.
-Public institutional provenance without private inherited evidence is the next
-development track, alongside eventual individual restitution. Custom coercive title
+Optional independent institutional provenance without private inherited evidence is
+now in RW010_LAND_REGISTER.md. Personal intentions are not copied into it; exact-entry
+individual restitution is next. Custom coercive title
 effects, universal landholding bans and G1 remain unimplemented/unresolved.
 
 Seventeen adversarial source-contract tests cover readiness, exact affairs/titles,
