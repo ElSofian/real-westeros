@@ -94,9 +94,18 @@ Review acceptance is not a promise or transfer; native grant terms remain separa
 Refusal/withdrawal/inaction are distinct; optional requester rancour is once-only,
 non-stacking/non-renewing −10 personal opinion for two years, within seven days of
 refusal, or acknowledgment without penalty. Current-role offers use public-role
-pair caches; replies stay participant-private and are never inherited. Next general
-consideration/commitments and actual native performance observation, keeping the
-whole eight-system roadmap. Native context, custody, persistence, privacy, events,
+pair caches; replies stay participant-private and are never inherited. Personal
+restitution commitments now exist in RW010_RESTITUTION_PLEDGES.md: explicit
+14/30-day versioned offers, current-responder consent, independent accepted due
+window, free beneficiary release and explicit holder renunciation. Seven-day offers
+never reset; one-day replies bound AI counter loops. Optional once-only −15 opinion
+for two years follows only a beneficiary choice after explicit renunciation, not
+expiry. Native title transfer stays separate; beneficiary confirmation plus current
+ownership is a personal statement, never a proven grant/cause or automatic reward.
+Unresolved expiry is neutral; closing the conversation never cancels an accepted
+promise or adds its old refusal reaction. Existing private retention/death/cadence
+are reused. Next safe native transfer observation/causality and broader voluntary
+consideration/service commitments, keeping the full eight-system roadmap. Native context, custody, persistence, privacy, events,
 opinion duration, picker/scalar rendering and performance await final evidence. Native opening
 is not a transfer; custom coercive confiscation remains unimplemented.
 Independent negotiation now adds price

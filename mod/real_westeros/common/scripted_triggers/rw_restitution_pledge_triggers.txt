@@ -1,0 +1,117 @@
+# All event guards retain the full participant-private request identity.
+rw_rp_view_trigger = {
+    rw_rs_view_trigger = yes
+    exists = scope:rw_rp_revision
+    exists = scope:rw_rp_days
+    scope:rw_rs_record = {
+        var:rw_rp_schema = 1
+        has_variable = rw_rp_proposed_on
+        var:rw_rp_revision = scope:rw_rp_revision
+        var:rw_rp_days = scope:rw_rp_days
+        OR = { var:rw_rp_days = 14 var:rw_rp_days = 30 }
+        OR = {
+            var:rw_rp_state = flag:offered var:rw_rp_state = flag:offer_closed
+            var:rw_rp_state = flag:offer_lapsed var:rw_rp_state = flag:promised
+            var:rw_rp_state = flag:renounced var:rw_rp_state = flag:released
+            var:rw_rp_state = flag:unresolved var:rw_rp_state = flag:invalidated
+            var:rw_rp_state = flag:acknowledged var:rw_rp_state = flag:acknowledged_late
+        }
+        trigger_if = {
+            limit = { NOR = {
+                var:rw_rp_state = flag:offered var:rw_rp_state = flag:offer_closed var:rw_rp_state = flag:offer_lapsed
+            } }
+            has_variable = rw_rp_accepted_on
+        }
+    }
+}
+rw_rp_can_propose_trigger = {
+    rw_rs_view_trigger = yes
+    this = scope:rw_rs_holder
+    scope:rw_rs_record = {
+        var:rw_rs_state = flag:talks
+        has_variable = rw_rs_window
+        rw_rs_current_context_trigger = yes
+        NOT = { has_variable = rw_rp_schema }
+    }
+}
+rw_rp_offer_live_trigger = {
+    rw_rp_view_trigger = yes
+    scope:rw_rs_record = {
+        var:rw_rp_state = flag:offered
+        has_variable = rw_rp_offer_window
+        var:rw_rs_state = flag:talks
+        has_variable = rw_rs_window
+        rw_rs_current_context_trigger = yes
+    }
+}
+rw_rp_responder_trigger = {
+    rw_rp_offer_live_trigger = yes
+    OR = {
+        AND = { this = scope:rw_rs_requester scope:rw_rs_record = { var:rw_rp_turn = flag:requester } }
+        AND = { this = scope:rw_rs_holder scope:rw_rs_record = { var:rw_rp_turn = flag:holder } }
+    }
+}
+rw_rp_can_counter_trigger = {
+    rw_rp_responder_trigger = yes
+    OR = {
+        AND = { this = scope:rw_rs_requester scope:rw_rp_days = 30 }
+        AND = { this = scope:rw_rs_holder scope:rw_rp_days = 14 }
+    }
+}
+rw_rp_can_close_offer_trigger = {
+    rw_rp_view_trigger = yes
+    scope:rw_rs_record = { var:rw_rp_state = flag:offered }
+}
+# Post-consent capacity is personal; no later house head/crown/source substitutes.
+rw_rp_parties_trigger = {
+    scope:rw_rs_requester = { is_alive = yes is_adult = yes is_imprisoned = no }
+    scope:rw_rs_holder = { is_alive = yes is_adult = yes is_imprisoned = no NOT = { is_at_war_with = scope:rw_rs_requester } }
+    scope:rw_rs_title = { exists = holder tier >= tier_county is_noble_family_title = no is_landless_type_title = no }
+}
+rw_rp_pending_trigger = {
+    rw_rp_view_trigger = yes
+    scope:rw_rs_record = { var:rw_rp_state = flag:promised has_variable = rw_rp_accepted_on has_variable = rw_rp_due }
+}
+rw_rp_can_renounce_trigger = {
+    rw_rp_pending_trigger = yes
+    this = scope:rw_rs_holder
+    scope:rw_rs_requester = { is_alive = yes }
+    scope:rw_rs_title = { holder = scope:rw_rs_holder }
+}
+rw_rp_can_release_trigger = {
+    rw_rp_view_trigger = yes
+    this = scope:rw_rs_requester
+    scope:rw_rs_record = {
+        has_variable = rw_rp_accepted_on
+        OR = { var:rw_rp_state = flag:promised var:rw_rp_state = flag:unresolved }
+    }
+}
+rw_rp_can_acknowledge_trigger = {
+    rw_rp_view_trigger = yes
+    this = scope:rw_rs_requester
+    rw_rp_parties_trigger = yes
+    scope:rw_rs_record = {
+        has_variable = rw_rp_accepted_on
+        OR = { var:rw_rp_state = flag:promised var:rw_rp_state = flag:unresolved }
+    }
+    scope:rw_rs_title = { holder = scope:rw_rs_requester }
+}
+rw_rp_can_open_grant_trigger = {
+    rw_rp_pending_trigger = yes
+    this = scope:rw_rs_holder
+    is_ai = no
+    rw_rp_parties_trigger = yes
+    scope:rw_rs_title = { holder = scope:rw_rs_holder }
+    is_character_interaction_valid = { interaction = grant_titles_interaction recipient = scope:rw_rs_requester }
+}
+rw_rp_can_react_trigger = {
+    rw_rp_view_trigger = yes
+    this = scope:rw_rs_requester
+    rw_rp_parties_trigger = yes
+    scope:rw_rs_title = { holder = scope:rw_rs_holder }
+    scope:rw_rs_record = {
+        var:rw_rp_state = flag:renounced
+        has_variable = rw_rp_response_window
+        NOT = { has_variable = rw_rp_response_done }
+    }
+}

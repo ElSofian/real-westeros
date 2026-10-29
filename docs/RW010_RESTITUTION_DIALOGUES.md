@@ -131,7 +131,12 @@ creation/custody, event/scalar snapshots, special grant UI, opinion duration, ac
 AI rates, compatibility and performance all require the final campaign. The archived
 public provenance is not an enforced ban or a universal restitution right.
 
-Next: negotiated consideration/commitments and safe observation of an actual native
-grant, keeping examination, promise, performance and refusal distinct. The eight
+Personal commitments are now added separately in RW010_RESTITUTION_PLEDGES.md:
+explicit 14/30-day offers/consent, independent accepted deadlines, free beneficiary
+release, explicit renunciation and optional response. Merely closing discussion does
+not release an accepted promise or add the former refusal reaction. Present ownership
+and personal satisfaction statements still do not prove a native grant/cause.
+Next: safe native observation/causality, voluntary consideration and other commitments,
+keeping examination, promise, performance and refusal distinct. The eight
 systems remain the project scope; three original scenarios are non-exhaustive tests.
 No runtime Python, LLM, paid service or further source upload is needed for this slice.

@@ -1,0 +1,198 @@
+# Story scope; counteroffers invalidate all older proposal panels/callbacks.
+rw_rp_snapshot_effect = {
+    rw_rs_snapshot_effect = yes
+    save_scope_value_as = { name = rw_rp_revision value = var:rw_rp_revision }
+    save_scope_value_as = { name = rw_rp_days value = var:rw_rp_days }
+}
+rw_rp_open_effect = {
+    if = {
+        limit = {
+            rw_rs_view_trigger = yes
+            scope:rw_rs_record = { var:rw_rp_schema = 1 has_variable = rw_rp_revision has_variable = rw_rp_days }
+        }
+        scope:rw_rs_record = { rw_rp_snapshot_effect = yes }
+        trigger_event = { id = rw_restitution_pledge.0001 }
+    }
+}
+# Notification only, after state consumption. Never read a newer proposal here.
+rw_rp_notify_effect = {
+    scope:rw_rs_requester = { if = { limit = { is_alive = yes } trigger_event = { id = rw_restitution_pledge.0001 } } }
+    scope:rw_rs_holder = { if = { limit = { is_alive = yes } trigger_event = { id = rw_restitution_pledge.0001 } } }
+}
+rw_rp_propose_effect = {
+    if = {
+        limit = { rw_rp_can_propose_trigger = yes }
+        scope:rw_rs_record = {
+            set_variable = { name = rw_rp_revision value = 0 }
+            set_variable = { name = rw_rp_days value = 30 }
+            set_variable = { name = rw_rp_state value = flag:offered }
+            set_variable = { name = rw_rp_turn value = flag:requester }
+            set_variable = { name = rw_rp_proposed_on value = current_date }
+            set_variable = { name = rw_rp_offer_window value = flag:yes days = 7 }
+            set_variable = { name = rw_rp_schema value = 1 }
+            rw_rp_snapshot_effect = yes
+        }
+        scope:rw_rs_requester = { trigger_event = { id = rw_restitution_pledge.0001 days = 1 } }
+    }
+}
+rw_rp_counter_effect = {
+    if = {
+        limit = { rw_rp_can_counter_trigger = yes }
+        scope:rw_rs_record = {
+            change_variable = { name = rw_rp_revision add = 1 }
+            if = {
+                limit = { var:rw_rp_days = 30 }
+                set_variable = { name = rw_rp_days value = 14 }
+                set_variable = { name = rw_rp_turn value = flag:holder }
+            }
+            else = {
+                set_variable = { name = rw_rp_days value = 30 }
+                set_variable = { name = rw_rp_turn value = flag:requester }
+            }
+            rw_rp_snapshot_effect = yes
+        }
+        # One-day dispatch bounds AI ping-pong inside the unchanged seven-day window.
+        if = {
+            limit = { this = scope:rw_rs_requester }
+            scope:rw_rs_holder = { trigger_event = { id = rw_restitution_pledge.0001 days = 1 } }
+        }
+        else = { scope:rw_rs_requester = { trigger_event = { id = rw_restitution_pledge.0001 days = 1 } } }
+    }
+}
+rw_rp_accept_effect = {
+    if = {
+        limit = { rw_rp_responder_trigger = yes }
+        scope:rw_rs_record = {
+            remove_variable = rw_rp_offer_window
+            remove_variable = rw_rp_turn
+            set_variable = { name = rw_rp_accepted_on value = current_date }
+            set_variable = { name = rw_rp_state value = flag:promised }
+            if = {
+                limit = { var:rw_rp_days = 14 }
+                set_variable = { name = rw_rp_due value = flag:yes days = 14 }
+            }
+            else = { set_variable = { name = rw_rp_due value = flag:yes days = 30 } }
+        }
+        # Schedule the sole timeout before notices; no continuation can reset its clock.
+        if = {
+            limit = { scope:rw_rp_days = 14 }
+            scope:rw_rs_requester = { trigger_event = { id = rw_restitution_pledge.0002 days = 15 } }
+        }
+        else = { scope:rw_rs_requester = { trigger_event = { id = rw_restitution_pledge.0002 days = 31 } } }
+        rw_rp_notify_effect = yes
+    }
+}
+rw_rp_close_offer_effect = {
+    if = {
+        limit = { rw_rp_can_close_offer_trigger = yes }
+        scope:rw_rs_record = {
+            remove_variable = rw_rp_offer_window
+            remove_variable = rw_rp_turn
+            set_variable = { name = rw_rp_state value = flag:offer_closed }
+        }
+        rw_rp_notify_effect = yes
+    }
+}
+rw_rp_renounce_effect = {
+    if = {
+        limit = { rw_rp_can_renounce_trigger = yes }
+        scope:rw_rs_record = {
+            remove_variable = rw_rp_due
+            set_variable = { name = rw_rp_state value = flag:renounced }
+            set_variable = { name = rw_rp_response_window value = flag:yes days = 7 }
+        }
+        rw_rp_notify_effect = yes
+    }
+}
+rw_rp_release_effect = {
+    if = {
+        limit = { rw_rp_can_release_trigger = yes }
+        scope:rw_rs_record = {
+            remove_variable = rw_rp_due
+            set_variable = { name = rw_rp_state value = flag:released }
+        }
+        rw_rp_notify_effect = yes
+    }
+}
+# Recipient statement plus current ownership, not proof of the native transfer route.
+rw_rp_acknowledge_effect = {
+    if = {
+        limit = { rw_rp_can_acknowledge_trigger = yes }
+        scope:rw_rs_record = {
+            if = {
+                limit = { has_variable = rw_rp_due }
+                set_variable = { name = rw_rp_state value = flag:acknowledged }
+            }
+            else = { set_variable = { name = rw_rp_state value = flag:acknowledged_late } }
+            set_variable = { name = rw_rp_acknowledged_on value = current_date }
+            remove_variable = rw_rp_due
+        }
+        rw_rp_notify_effect = yes
+    }
+}
+rw_rp_resent_effect = {
+    if = {
+        limit = { rw_rp_can_react_trigger = yes }
+        scope:rw_rs_record = { set_variable = { name = rw_rp_response_done value = flag:resented } }
+        if = {
+            limit = { NOT = { has_opinion_modifier = { target = scope:rw_rs_holder modifier = rw_restitution_renounced_opinion } } }
+            add_opinion = { target = scope:rw_rs_holder modifier = rw_restitution_renounced_opinion }
+        }
+    }
+}
+rw_rp_accept_renunciation_effect = {
+    if = {
+        limit = { rw_rp_can_react_trigger = yes }
+        scope:rw_rs_record = { set_variable = { name = rw_rp_response_done value = flag:acknowledged } }
+    }
+}
+# Only the original requester/tuple/version, after actual expiry, can run this callback.
+rw_rp_timeout_effect = {
+    if = {
+        limit = {
+            rw_rp_view_trigger = yes
+            this = scope:rw_rs_requester
+            scope:rw_rs_record = { var:rw_rp_state = flag:promised NOT = { has_variable = rw_rp_due } }
+        }
+        scope:rw_rs_record = { set_variable = { name = rw_rp_state value = flag:unresolved } }
+        rw_rp_notify_effect = yes
+    }
+}
+# Story scope. Reuse the existing private sixty-day cadence; no native callback.
+rw_rp_maintenance_effect = {
+    if = {
+        limit = { var:rw_rp_schema = 1 }
+        save_temporary_scope_as = rw_rp_check
+        if = {
+            limit = { var:rw_rp_state = flag:offered }
+            if = {
+                limit = { OR = {
+                    NOT = { has_variable = rw_rp_offer_window }
+                    NOT = { has_variable = rw_rs_window }
+                    NOT = { var:rw_rs_state = flag:talks }
+                    NOT = { rw_rs_current_context_trigger = yes }
+                } }
+                remove_variable = rw_rp_offer_window
+                remove_variable = rw_rp_turn
+                set_variable = { name = rw_rp_state value = flag:offer_lapsed }
+            }
+        }
+        else_if = {
+            limit = { var:rw_rp_state = flag:promised }
+            if = {
+                limit = { NOT = { has_variable = rw_rp_due } }
+                set_variable = { name = rw_rp_state value = flag:unresolved }
+            }
+            else_if = {
+                limit = { OR = {
+                    var:rw_rs_requester = { is_alive = no }
+                    var:rw_rs_holder = { is_alive = no }
+                    var:rw_rs_title = { NOT = { exists = holder } }
+                    var:rw_rs_title = { NOR = { holder = scope:rw_rp_check.var:rw_rs_requester holder = scope:rw_rp_check.var:rw_rs_holder } }
+                } }
+                remove_variable = rw_rp_due
+                set_variable = { name = rw_rp_state value = flag:invalidated }
+            }
+        }
+    }
+}

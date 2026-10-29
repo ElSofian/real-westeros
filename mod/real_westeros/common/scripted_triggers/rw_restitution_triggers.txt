@@ -148,6 +148,7 @@ rw_rs_can_react_trigger = {
     scope:rw_rs_title = { NOT = { holder = scope:rw_rs_requester } }
     scope:rw_rs_record = {
         var:rw_rs_state = flag:refused
+        NOT = { has_variable = rw_rp_accepted_on }
         has_variable = rw_rs_response_window
         NOT = { has_variable = rw_rs_response_done }
     }

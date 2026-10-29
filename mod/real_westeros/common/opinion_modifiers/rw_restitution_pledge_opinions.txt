@@ -1,0 +1,4 @@
+rw_restitution_renounced_opinion = {
+    opinion = -15
+    years = 2
+}
