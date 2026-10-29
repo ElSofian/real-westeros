@@ -103,6 +103,7 @@ rw_rs_retire_effect = {
 rw_rs_maintenance_effect = {
     if = {
         limit = { rw_rs_record_valid_trigger = yes has_variable = rw_rs_retained }
+        rw_rp_maintenance_effect = yes
         if = {
             limit = { OR = { var:rw_rs_state = flag:pending var:rw_rs_state = flag:talks } }
             if = {

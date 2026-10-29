@@ -29,6 +29,7 @@ are deferred to the final campaign, not waived. Prefer a disposable fresh save.
 | Exact-affair revocation intentions | Generic title choice plus explicit private-basis confirmation; thirty-day withdrawal/match window; no forced sanction |
 | Crown land register | Voluntary public title-fact filing; scoped successor/house access and custody, max hundred-year archive; no private guilt or title right |
 | Restitution discussions | Exact public-entry request to current holder; private review/refusal/withdrawal and optional bounded personal rancour; no promised/automatic land transfer |
+| Personal restitution promises | Explicit 14/30-day offers and bilateral consent; separate deadline, release/renunciation, optional personal response; beneficiary satisfaction is a statement plus ownership, no forced or proven grant |
 | Known-case archive | Independent story records, role/disclosure-filtered views, retained closed records |
 
 All rows describe intended source behavior; none has been observed in CK3 here.

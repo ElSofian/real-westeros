@@ -828,3 +828,53 @@ All unrun. RW010_RESTITUTION_DIALOGUES.md creates discussion, not promised resti
 - CASE-TERMS-08: compare AI/player receipt/referral paths, AI political choices,
   AGOT-only baseline, logs and archive performance. No extra automatic request,
   world scan, effect replay or native title/war/justice behavior should be added.
+
+
+## Personal restitution promises (all unrun)
+
+- PLEDGE-01: eligible talks allow only the captured actual holder to explicitly
+  propose thirty days. Examining talks/opening native terms alone creates no
+  promise. Repeat initiation cannot reset the one offer per discussion; unrelated
+  requests/titles remain possible under their existing pair/title cooldowns.
+- PLEDGE-02: beneficiary counters fourteen, holder counters thirty, then either
+  responder accepts the exact latest version. Replay old/wrong-party panels: no
+  acceptance or counter. Verify one-day replies and unchanged original seven-day
+  offer and thirty-day discussion windows for humans and AI, without instant loops.
+- PLEDGE-03: either party closes an unaccepted offer after war, prison, source/role
+  loss or deadline; no promise/penalty. Expired/current-mismatch proposals cannot be
+  accepted. No automatic reconstruction from old requests or absent pledge data.
+- PLEDGE-04: acceptance starts one fourteen/thirty-day due window, consumes offer,
+  schedules original exact requester/tuple/revision callback on day fifteen/thirty-one
+  before notices. Reentry/reload cannot renew it, pay, transfer or create an heir duty.
+- PLEDGE-05: close/refuse/withdraw discussion or let its earlier window/source expire
+  after acceptance. The private personal promise retains its own clock/outcome;
+  no implicit release/renunciation or additional old refusal opinion applies.
+- PLEDGE-06: holder's native window requires exact unexpired promise, original
+  available parties/current actual owner and fresh native validity. Choose intended
+  title and confirm manually; opening never selects/sends it. Check native laws,
+  special title restrictions/AI grants, AGOT institutions, wars and succession.
+- PLEDGE-07: beneficiary ownership from grant, inheritance, war or another route
+  alone writes no acknowledgment/reward. Only beneficiary's explicit confirmation
+  while actually holding this exact title records personal satisfaction. Wrong
+  title/third party/stale revision cannot confirm. Confirm after deadline: late
+  confirmation, never inferred late acquisition or proof of voluntary grant/cause.
+- PLEDGE-08: beneficiary freely releases promised/unresolved commitment despite loss
+  of grant eligibility or current authority; no cost or penalty. Holder explicitly
+  renounces only a live accepted promise while still owning that title. Both consume
+  the due marker before notifications; old timeout/replies become inert.
+- PLEDGE-09: renunciation creates no automatic penalty. Within seven days the original
+  beneficiary may acknowledge or choose −15 opinion/two years once, with current
+  original parties available and holder still owning the title. Repeated/different
+  title reactions cannot stack/renew it; later ownership/successors cannot be targets.
+- PLEDGE-10: stale/early/other-owner timeout cannot affect another promise. Actual
+  expiry without confirmation records unresolved, not blame; lost callback fallback
+  at sixty-day maintenance is also neutral. Probe missing party/title, third-party
+  ownership, death and rapid role/title reversals between observations.
+- PLEDGE-11: save/reload every offer/counter/accepted/renounced/released/unresolved/
+  acknowledgment state; inspect exact request private role filtering, source pointer
+  loss, original five-year retention, requester death/index cleanup and holder death.
+  No heir/crown/house successor inherits private replies, consent or guilt.
+- PLEDGE-12: measure AI choices/native grants, EN/FR event scope/statement rendering,
+  same-tick order, save size, private reconciliation cost and AGOT-only baseline.
+  No new native hook/world scan/recurring reminder or native transfer replay should
+  load; optional G3 trace stays separate. No compatibility/performance claim yet.

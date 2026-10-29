@@ -30,6 +30,7 @@ rw_restitution.0002 = {
                     desc = rw_restitution.identity
                     triggered_desc = { trigger = { rw_rs_now_held_trigger = yes } desc = rw_restitution.now_held }
                     first_valid = {
+                        triggered_desc = { trigger = { scope:rw_rs_record = { has_variable = rw_rp_accepted_on NOT = { var:rw_rs_state = flag:talks } } } desc = rw_restitution_pledge.discussion_closed }
                         triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rs_state = flag:refused } } desc = rw_restitution.refused }
                         triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rs_state = flag:withdrawn } } desc = rw_restitution.withdrawn }
                         triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rs_state = flag:invalidated } } desc = rw_restitution.invalidated }
@@ -85,6 +86,23 @@ rw_restitution.0002 = {
         trigger = { rw_rs_can_react_trigger = yes }
         rw_rs_accept_refusal_effect = yes
         ai_chance = { base = 70 }
+    }
+    option = {
+        name = rw_restitution_pledge.propose
+        trigger = { rw_rp_can_propose_trigger = yes }
+        rw_rp_propose_effect = yes
+        ai_chance = {
+            base = 3
+            modifier = { factor = 2 has_trait = generous }
+            modifier = { factor = 0.2 has_trait = greedy }
+            modifier = { factor = 0 scope:rw_rs_holder = { primary_title = scope:rw_rs_title } }
+        }
+    }
+    option = {
+        name = rw_restitution_pledge.review
+        trigger = { rw_rs_view_trigger = yes scope:rw_rs_record = { var:rw_rp_schema = 1 } }
+        rw_rp_open_effect = yes
+        ai_chance = { base = 0 }
     }
     option = { name = rw_restitution.leave ai_chance = { base = 30 } }
 }

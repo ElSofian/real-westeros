@@ -1,0 +1,101 @@
+namespace = rw_restitution_pledge
+
+rw_restitution_pledge.0001 = {
+    type = character_event
+    title = rw_restitution_pledge.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_rp_view_trigger = yes }
+                desc = {
+                    desc = rw_restitution_pledge.identity
+                    triggered_desc = { trigger = { scope:rw_rp_days = 14 } desc = rw_restitution_pledge.days_14 }
+                    triggered_desc = { trigger = { scope:rw_rp_days = 30 } desc = rw_restitution_pledge.days_30 }
+                    first_valid = {
+                        triggered_desc = { trigger = { rw_rp_offer_live_trigger = yes } desc = rw_restitution_pledge.offered }
+                        triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rp_state = flag:offered } } desc = rw_restitution_pledge.offer_lapsed }
+                        triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rp_state = flag:offer_closed } } desc = rw_restitution_pledge.offer_closed }
+                        triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rp_state = flag:offer_lapsed } } desc = rw_restitution_pledge.offer_lapsed }
+                        triggered_desc = { trigger = { rw_rp_pending_trigger = yes } desc = rw_restitution_pledge.promised }
+                        triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rp_state = flag:renounced } } desc = rw_restitution_pledge.renounced }
+                        triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rp_state = flag:released } } desc = rw_restitution_pledge.released }
+                        triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rp_state = flag:invalidated } } desc = rw_restitution_pledge.invalidated }
+                        triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rp_state = flag:acknowledged } } desc = rw_restitution_pledge.acknowledged }
+                        triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rp_state = flag:acknowledged_late } } desc = rw_restitution_pledge.acknowledged_late }
+                        desc = rw_restitution_pledge.unresolved
+                    }
+                    triggered_desc = { trigger = { rw_rs_now_held_trigger = yes } desc = rw_restitution.now_held }
+                    triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rp_response_done = flag:resented } } desc = rw_restitution_pledge.resented_history }
+                    triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rp_response_done = flag:acknowledged } } desc = rw_restitution_pledge.response_history }
+                    desc = rw_restitution_pledge.boundaries
+                }
+            }
+            desc = rw_restitution_pledge.unavailable
+        }
+    }
+    theme = diplomacy
+    option = {
+        name = rw_restitution_pledge.accept
+        trigger = { rw_rp_responder_trigger = yes }
+        rw_rp_accept_effect = yes
+        ai_chance = { base = 60 modifier = { factor = 0.5 has_trait = cynical } }
+    }
+    option = {
+        name = rw_restitution_pledge.counter
+        trigger = { rw_rp_can_counter_trigger = yes }
+        rw_rp_counter_effect = yes
+        ai_chance = { base = 10 }
+    }
+    option = {
+        name = rw_restitution_pledge.close_offer
+        trigger = { rw_rp_can_close_offer_trigger = yes }
+        rw_rp_close_offer_effect = yes
+        ai_chance = { base = 10 }
+    }
+    option = {
+        name = rw_restitution_pledge.acknowledge
+        trigger = { rw_rp_can_acknowledge_trigger = yes }
+        rw_rp_acknowledge_effect = yes
+        ai_chance = { base = 80 }
+    }
+    option = {
+        name = rw_restitution_pledge.renounce
+        trigger = { rw_rp_can_renounce_trigger = yes }
+        rw_rp_renounce_effect = yes
+        ai_chance = { base = 5 modifier = { factor = 2 has_trait = deceitful } modifier = { factor = 0.2 has_trait = honest } }
+    }
+    option = {
+        name = rw_restitution_pledge.release
+        trigger = { rw_rp_can_release_trigger = yes }
+        rw_rp_release_effect = yes
+        ai_chance = { base = 5 modifier = { factor = 2 has_trait = forgiving } }
+    }
+    option = {
+        name = rw_restitution.open_grant
+        trigger = { rw_rp_can_open_grant_trigger = yes }
+        if = {
+            limit = { rw_rp_can_open_grant_trigger = yes }
+            open_interaction_window = { interaction = grant_titles_interaction actor = root recipient = scope:rw_rs_requester }
+        }
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = rw_restitution_pledge.resent
+        trigger = { rw_rp_can_react_trigger = yes }
+        rw_rp_resent_effect = yes
+        ai_chance = { base = 30 modifier = { factor = 2 has_trait = vengeful } modifier = { factor = 0.5 has_trait = forgiving } }
+    }
+    option = {
+        name = rw_restitution_pledge.accept_renunciation
+        trigger = { rw_rp_can_react_trigger = yes }
+        rw_rp_accept_renunciation_effect = yes
+        ai_chance = { base = 60 }
+    }
+    option = { name = rw_restitution.leave ai_chance = { base = 30 } }
+}
+
+rw_restitution_pledge.0002 = {
+    type = character_event
+    hidden = yes
+    immediate = { rw_rp_timeout_effect = yes }
+}
