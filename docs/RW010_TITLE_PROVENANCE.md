@@ -99,8 +99,11 @@ own counter; it consumes no reason and repeats no native costs or sanctions.
 The subsequent explicit association is in RW010_REVOCATION_INTENTS.md: one fresh
 transfer observation can match a previously confirmed exact-affair/title intention,
 with private bidirectional serial/pointer checks and no retroactive link. Native
-callback context still needs final evidence. Next design an institutional
-**public-fact** provenance contract for long-term restitution. A later restitution must recheck the
+callback context still needs final evidence. A subsequent optional independent
+**public-fact** crown archive is in RW010_LAND_REGISTER.md: only fresh sovereign
+observations capture authority/former house, and explicit filing copies title facts
+without private case pointers. Its successor custody/long retention is experimental;
+individual restitution remains next. A later restitution must recheck the
 exact current title/holder, authority, recipient, consent and native grant rules;
 it must never seize land from a third party on an old note's authority. G3's house
 ban/status restoration and G1 remain unresolved. No full confiscation/restoration

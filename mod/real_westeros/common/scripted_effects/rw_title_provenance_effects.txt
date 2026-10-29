@@ -29,6 +29,7 @@ rw_tp_observe_effect = {
             }
             scope:rw_tp_record = { save_scope_as = rw_ri_fresh_receipt }
             rw_ri_link_transfer_effect = yes
+            rw_lr_capture_effect = yes
             clear_saved_scope = rw_ri_fresh_receipt
         }
     }

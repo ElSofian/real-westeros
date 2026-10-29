@@ -1,0 +1,48 @@
+namespace = rw_land_registry
+
+rw_land_registry.0001 = {
+    type = character_event
+    title = rw_land_registry.deposit_title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_lr_deposit_turn_trigger = yes } desc = rw_land_registry.deposit_terms }
+            desc = rw_land_registry.unavailable
+        }
+    }
+    theme = diplomacy
+    option = {
+        name = rw_land_registry.deposit
+        trigger = { rw_lr_deposit_turn_trigger = yes }
+        rw_lr_deposit_effect = yes
+        ai_chance = { base = 40 modifier = { factor = 2 has_trait = just } }
+    }
+    option = { name = rw_land_registry.leave ai_chance = { base = 60 } }
+}
+rw_land_registry.0002 = {
+    hidden = yes
+    trigger = { rw_lr_can_consider_trigger = yes }
+    immediate = { rw_lr_open_deposit_effect = yes }
+}
+rw_land_registry.0003 = {
+    type = character_event
+    title = rw_land_registry.record_title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_lr_view_trigger = yes }
+                desc = {
+                    desc = rw_land_registry.facts
+                    first_valid = {
+                        triggered_desc = { trigger = { rw_lr_original_owner_still_holds_trigger = yes } desc = rw_land_registry.still_held }
+                        desc = rw_land_registry.changed_holder
+                    }
+                    desc = rw_land_registry.limits
+                }
+            }
+            desc = rw_land_registry.unavailable
+        }
+    }
+    right_portrait = { trigger = { rw_lr_view_trigger = yes } character = scope:rw_lr_former_holder }
+    theme = diplomacy
+    option = { name = rw_land_registry.close }
+}

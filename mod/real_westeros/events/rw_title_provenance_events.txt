@@ -25,5 +25,11 @@ rw_title_provenance.0001 = {
         character = scope:rw_tp_former_holder
     }
     theme = diplomacy
+    option = {
+        name = rw_land_registry.consider
+        trigger = { rw_lr_can_consider_trigger = yes }
+        rw_lr_open_deposit_effect = yes
+        ai_chance = { base = 0 }
+    }
     option = { name = rw_title_provenance.close }
 }

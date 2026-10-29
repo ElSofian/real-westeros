@@ -679,3 +679,54 @@ All unrun. RW010_REVOCATION_INTENTS.md distinguishes selection, intention and tr
   diagnostic. No native cost, tyranny, claim or penalty is duplicated. Verify
   generic-picker scopes, callback propagation/order and scalar-format UI; all remain
   experimental until observed, with no custom confiscation/restoration claim.
+
+
+## Institutional public land register (ARCHIVE-01 to ARCHIVE-12)
+
+All unrun. RW010_LAND_REGISTER.md describes metadata custody, not land restitution.
+
+- ARCHIVE-01: create a qualifying fresh sovereign TP observation with the actual
+  native context. Freeze its original primary crown and former holder's observed
+  house. Missing context, no former house or non-sovereign origin creates no offer.
+  Legacy TP observations without capture fields cannot be backfilled from today.
+- ARCHIVE-02: one fixed day-one offer for both AI and human, or manually review
+  from the private TP journal. Opening/declining costs nothing and publishes nothing;
+  no recurring offer or additional native title callback. Same effect/guards for AI.
+- ARCHIVE-03: confirm with the original observer still qualified and holding the
+  captured crown. Losing it or swapping record/serial/crown/house invalidates the
+  popup. A successor cannot read or file the predecessor's private TP record.
+- ARCHIVE-04: verify exact independent public payload in the filed story/save: only
+  schema/kind, crown serial, numeric source identity, original issuer/title/parties,
+  frozen former house, authority, observation/filing dates and retention. No TP,
+  evidence, intent, plot or declared-reason pointer/content is exported or inherited.
+- ARCHIVE-05: double-click/reopen/reload and repeat filing with a missing source
+  filed marker: the typed issuer/source-serial index still prevents duplicates.
+  Verify fresh constructor, monotonic crown counter, register/membership-before-
+  source-consumption order and failed-registration retirement. No reward/payment.
+- ARCHIVE-06: current crown holder, current transferred-title holder, original
+  parties and current members of the exact frozen former house can read. A whole
+  dynasty/cadet/new house does not qualify by blood; custody alone grants no access.
+  A selected unrelated interaction recipient receives no journal or notification.
+- ARCHIVE-07: let the depositing sovereign die before native alive/title flags
+  settle. The departing custodian must be excluded; storage passes to a living
+  eligible carrier, then sixty-day maintenance follows settled native roles.
+  Successor reads public facts only after private source journals end.
+- ARCHIVE-08: lose/destroy/recreate the crown; transfer the land again; replace the
+  house head, change house/cadet membership and test original-party fallbacks.
+  Check carrier priority and current-role access separately. The fixed original
+  former house/date/parties never follow a new house or become inherited guilt.
+- ARCHIVE-09: title/current holder changes after filing: historical tuple remains
+  unchanged and current ownership is shown separately. No claim, native title
+  effect, legal right against a later holder or automatic ancestral restitution.
+- ARCHIVE-10: save/reload, read and rehome records. Original observation/filing
+  dates, crown serial and hundred-year archival expiry persist without renewal.
+  Check pointer validity over generations; missing immutable pointers can retire
+  a record, so no eternal-history guarantee or engine proof is inferred.
+- ARCHIVE-11: expiry, malformed entries and no eligible living custodian retire
+  the exact index entry before ending the story. Access stops at retention expiry
+  even before cleanup; no unrelated custodian, counter reset or dangling journal.
+  Stale/foreign record/crown/house/title/party popup tuples disclose no entry.
+- ARCHIVE-12: compare native war/Mega War, title/succession, prison, banks, house
+  stability and optional G3 diagnostic with baseline. Benchmark index reads and
+  sixty-day per-record maintenance at sustained load. Verify EN/FR and scalar
+  serial rendering; no new world/pair scan, native sanction or recurring AI policy.

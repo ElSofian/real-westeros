@@ -1,0 +1,10 @@
+story_rw_land_register = {
+    on_owner_death = { rw_lr_owner_died_effect = yes }
+    effect_group = {
+        days = 60
+        triggered_effect = {
+            trigger = { always = yes }
+            effect = { rw_lr_maintenance_effect = yes }
+        }
+    }
+}

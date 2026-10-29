@@ -27,6 +27,7 @@ are deferred to the final campaign, not waived. Prefer a disposable fresh save.
 | Post-rehabilitation land review | Current sovereign/head review; guarded native grant terms, no automatic transfer or restitution |
 | Personal title provenance | Conditional native revocation-context observation; exact parties/title, private five-year records, no new sanction or inherited entitlement |
 | Exact-affair revocation intentions | Generic title choice plus explicit private-basis confirmation; thirty-day withdrawal/match window; no forced sanction |
+| Crown land register | Voluntary public title-fact filing; scoped successor/house access and custody, max hundred-year archive; no private guilt or title right |
 | Known-case archive | Independent story records, role/disclosure-filtered views, retained closed records |
 
 All rows describe intended source behavior; none has been observed in CK3 here.

@@ -72,8 +72,18 @@ use the same title rules. Only a freshly created exact TP observation may consum
 one unique matching pending intent and write guarded bidirectional metadata links.
 Cancelled, expired, wrong-title or ambiguous matches do not attach; declared basis
 is not native proof of causation/guilt. No forced native action or new title hook.
-Next public-fact institutional provenance and individual restitution, with native
-context/picker/scalar rendering still awaiting final evidence. Native opening
+Institutional public-fact provenance now exists experimentally in RW010_LAND_REGISTER.md:
+fresh sovereign TP observations freeze crown/former house, then offer optional
+explicit filing. A separate typed/indexed story copies only title/parties/dates,
+crown/house and numeric source identity for a fixed maximum hundred-year archive;
+no private TP/evidence/intent pointer or guilt is copied. Current crown/land holders,
+original parties and exact former-house members may read; custody alone grants
+nothing. Owner-death exclusion and sixty-day reconciliation move storage among
+eligible living carriers; malformed/expired/orphan entries leave the index before
+ending. Source filing and registry identity prevent duplicate publication. Current
+role/tuple views and immutable retention/counters are source-checked, not engine
+proof. Next exact-entry individual restitution requests; native context, custody,
+persistence, privacy, picker/scalar rendering and performance await final evidence. Native opening
 is not a transfer; custom coercive confiscation remains unimplemented.
 Independent negotiation now adds price
 and delivery clauses (RW010_DELIVERY_TERMS.md): current deferred parties can counter
