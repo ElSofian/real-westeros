@@ -56,6 +56,7 @@ rw_lr_deposit_effect = {
                 scope:rw_tp_record = { set_variable = { name = rw_tp_land_deposited value = flag:yes } }
                 scope:rw_lr_record = { rw_lr_snapshot_effect = yes }
                 trigger_event = { id = rw_land_registry.0003 }
+                scope:rw_lr_record = { rw_rs_offer_opportunity_effect = yes }
             }
             else = { scope:rw_lr_record = { rw_lr_retire_effect = yes } }
         }
@@ -109,6 +110,7 @@ rw_lr_owner_died_effect = {
 }
 rw_lr_maintenance_effect = {
     clear_saved_scope = rw_lr_departed
+    if = { limit = { rw_lr_record_valid_trigger = yes has_variable = rw_lr_retained } rw_rs_offer_opportunity_effect = yes }
     rw_lr_rehome_effect = yes
 }
 rw_lr_snapshot_effect = {

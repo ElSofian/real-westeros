@@ -44,5 +44,11 @@ rw_land_registry.0003 = {
     }
     right_portrait = { trigger = { rw_lr_view_trigger = yes } character = scope:rw_lr_former_holder }
     theme = diplomacy
+    option = {
+        name = rw_restitution.consider
+        trigger = { rw_rs_can_consider_trigger = yes }
+        rw_rs_open_request_effect = yes
+        ai_chance = { base = 0 }
+    }
     option = { name = rw_land_registry.close }
 }

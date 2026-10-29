@@ -22,7 +22,7 @@ DOCS = ('README.md', 'docs/INSTALL.md', 'docs/INTEGRATED_BUILD.md',
         'docs/RW010_TITLE_REMEDIES.md', 'docs/RW010_TITLE_PROVENANCE.md',
         'docs/TITLE_PROVENANCE_SOURCE_RECEIPT.json',
         'docs/RW010_REVOCATION_INTENTS.md', 'docs/REVOCATION_INTENT_SOURCE_RECEIPT.json',
-        'docs/RW010_LAND_REGISTER.md',
+        'docs/RW010_LAND_REGISTER.md', 'docs/RW010_RESTITUTION_DIALOGUES.md',
         'docs/RW010_DELIVERY_TERMS.md', 'docs/RW010_PRICE_AMENDMENTS.md')
 PREFIX = 'mod/real_westeros/'
 G3_ROOT = 'diagnostics/g3_house_trace/mod/'

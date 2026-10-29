@@ -1,0 +1,7 @@
+story_rw_restitution_request = {
+    on_owner_death = { rw_rs_retire_effect = yes }
+    effect_group = {
+        days = 60
+        triggered_effect = { trigger = { always = yes } effect = { rw_rs_maintenance_effect = yes } }
+    }
+}

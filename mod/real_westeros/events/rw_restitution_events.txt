@@ -1,0 +1,90 @@
+namespace = rw_restitution
+
+rw_restitution.0001 = {
+    type = character_event
+    title = rw_restitution.title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_rs_request_turn_trigger = yes } desc = rw_restitution.request_terms }
+            desc = rw_restitution.unavailable
+        }
+    }
+    right_portrait = { trigger = { rw_rs_request_turn_trigger = yes } character = scope:rw_rs_holder }
+    theme = diplomacy
+    option = {
+        name = rw_restitution.send
+        trigger = { rw_rs_request_turn_trigger = yes }
+        rw_rs_create_effect = yes
+        ai_chance = { base = 40 modifier = { factor = 2 has_trait = ambitious } modifier = { factor = 0.5 has_trait = content } }
+    }
+    option = { name = rw_restitution.leave ai_chance = { base = 60 } }
+}
+rw_restitution.0002 = {
+    type = character_event
+    title = rw_restitution.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_rs_view_trigger = yes }
+                desc = {
+                    desc = rw_restitution.identity
+                    triggered_desc = { trigger = { rw_rs_now_held_trigger = yes } desc = rw_restitution.now_held }
+                    first_valid = {
+                        triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rs_state = flag:refused } } desc = rw_restitution.refused }
+                        triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rs_state = flag:withdrawn } } desc = rw_restitution.withdrawn }
+                        triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rs_state = flag:invalidated } } desc = rw_restitution.invalidated }
+                        triggered_desc = { trigger = { scope:rw_rs_record = { rw_rs_active_trigger = yes rw_rs_current_context_trigger = yes var:rw_rs_state = flag:talks } } desc = rw_restitution.talks }
+                        triggered_desc = { trigger = { scope:rw_rs_record = { rw_rs_active_trigger = yes rw_rs_current_context_trigger = yes } } desc = rw_restitution.pending }
+                        desc = rw_restitution.unavailable_terms
+                    }
+                    triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rs_response_done = flag:resented } } desc = rw_restitution.resented_history }
+                    triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rs_response_done = flag:acknowledged } } desc = rw_restitution.acknowledged_history }
+                    desc = rw_restitution.boundaries
+                }
+            }
+            desc = rw_restitution.unavailable
+        }
+    }
+    right_portrait = { trigger = { rw_rs_view_trigger = yes } character = scope:rw_rs_holder }
+    theme = diplomacy
+    option = {
+        name = rw_restitution.accept_review
+        trigger = { rw_rs_can_accept_trigger = yes }
+        rw_rs_accept_effect = yes
+        ai_chance = { base = 40 modifier = { factor = 2 has_trait = generous } modifier = { factor = 0.5 has_trait = greedy } }
+    }
+    option = {
+        name = rw_restitution.refuse
+        trigger = { rw_rs_can_refuse_trigger = yes }
+        rw_rs_refuse_effect = yes
+        ai_chance = { base = 50 }
+    }
+    option = {
+        name = rw_restitution.withdraw
+        trigger = { rw_rs_can_withdraw_trigger = yes }
+        rw_rs_withdraw_effect = yes
+        ai_chance = { base = 10 }
+    }
+    option = {
+        name = rw_restitution.open_grant
+        trigger = { rw_rs_can_open_grant_trigger = yes }
+        if = {
+            limit = { rw_rs_can_open_grant_trigger = yes }
+            open_interaction_window = { interaction = grant_titles_interaction actor = root recipient = scope:rw_rs_requester }
+        }
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = rw_restitution.resent
+        trigger = { rw_rs_can_react_trigger = yes }
+        rw_rs_resent_effect = yes
+        ai_chance = { base = 30 modifier = { factor = 2 has_trait = vengeful } modifier = { factor = 0.5 has_trait = forgiving } }
+    }
+    option = {
+        name = rw_restitution.accept_refusal
+        trigger = { rw_rs_can_react_trigger = yes }
+        rw_rs_accept_refusal_effect = yes
+        ai_chance = { base = 70 }
+    }
+    option = { name = rw_restitution.leave ai_chance = { base = 30 } }
+}

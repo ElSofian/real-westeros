@@ -24,6 +24,12 @@
 - Existing features of AGOT should be reused, not reconstructed.
 
 ## Scope and status
+
+The original three scenarios are non-exhaustive examples within the eight-system
+vision. Completing those examples would not complete Real Westeros. Overall progress
+must not be inferred from PR counts, static test counts or completed backlog rows;
+no measured global completion percentage is currently defined.
+
 An earlier 126-entry **candidate** action catalogue informed the eight-system design; the entries are not 126 mandatory buttons or proven implementations. All design principles are decisions delegated by the owner; all engine-dependent feasibility claims remain open.
 
 ## Primary project artifacts
