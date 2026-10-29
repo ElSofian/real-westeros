@@ -1,0 +1,187 @@
+rw_rs_open_request_effect = {
+    if = {
+        limit = { rw_rs_can_consider_trigger = yes }
+        scope:rw_lr_title.holder = { save_scope_as = rw_rs_holder }
+        trigger_event = { id = rw_restitution.0001 }
+    }
+}
+rw_rs_create_effect = {
+    if = {
+        limit = { rw_rs_request_turn_trigger = yes }
+        save_scope_as = rw_rs_requester
+        create_story = { type = story_rw_restitution_request save_scope_as = rw_rs_record }
+        if = {
+            limit = {
+                exists = scope:rw_rs_record
+                scope:rw_rs_record = { story_type = story_rw_restitution_request story_owner = scope:rw_rs_requester NOT = { has_variable = rw_rs_schema } }
+            }
+            if = { limit = { NOT = { has_variable = rw_rs_counter } } set_variable = { name = rw_rs_counter value = 0 } }
+            change_variable = { name = rw_rs_counter add = 1 }
+            save_scope_value_as = { name = rw_rs_serial value = var:rw_rs_counter }
+            scope:rw_rs_record = {
+                set_variable = { name = rw_rs_schema value = 1 }
+                set_variable = { name = rw_rs_kind value = flag:restitution_review }
+                set_variable = { name = rw_rs_serial value = scope:rw_rs_serial }
+                set_variable = { name = rw_rs_requester value = scope:rw_rs_requester }
+                set_variable = { name = rw_rs_holder value = scope:rw_rs_holder }
+                set_variable = { name = rw_rs_title value = scope:rw_lr_title }
+                set_variable = { name = rw_rs_authority value = scope:rw_lr_authority }
+                set_variable = { name = rw_rs_house value = scope:rw_lr_house }
+                set_variable = { name = rw_rs_former value = scope:rw_lr_former_holder }
+                set_variable = { name = rw_rs_entry value = scope:rw_lr_record }
+                set_variable = { name = rw_rs_entry_serial value = scope:rw_lr_serial }
+                set_variable = { name = rw_rs_state value = flag:pending }
+                set_variable = { name = rw_rs_issued_on value = current_date }
+                set_variable = { name = rw_rs_window value = flag:yes days = 30 }
+                set_variable = { name = rw_rs_cooldown value = flag:yes days = 365 }
+                set_variable = { name = rw_rs_retained value = flag:yes years = 5 }
+            }
+            add_to_global_variable_list = { name = rw_restitution_requests target = scope:rw_rs_record }
+            if = {
+                limit = { has_global_variable_list = rw_restitution_requests any_in_global_list = { variable = rw_restitution_requests this = scope:rw_rs_record } }
+                scope:rw_rs_record = { rw_rs_snapshot_effect = yes }
+                scope:rw_rs_holder = { trigger_event = { id = rw_restitution.0002 } }
+                trigger_event = { id = rw_restitution.0002 }
+            }
+            else = { scope:rw_rs_record = { rw_rs_retire_effect = yes } }
+        }
+    }
+}
+rw_rs_accept_effect = {
+    if = {
+        limit = { rw_rs_can_accept_trigger = yes }
+        scope:rw_rs_record = { set_variable = { name = rw_rs_state value = flag:talks } }
+        scope:rw_rs_requester = { if = { limit = { is_alive = yes } trigger_event = { id = rw_restitution.0002 } } }
+        trigger_event = { id = rw_restitution.0002 }
+    }
+}
+rw_rs_refuse_effect = {
+    if = {
+        limit = { rw_rs_can_refuse_trigger = yes }
+        scope:rw_rs_record = {
+            remove_variable = rw_rs_window
+            set_variable = { name = rw_rs_state value = flag:refused }
+            set_variable = { name = rw_rs_response_window value = flag:yes days = 7 }
+        }
+        scope:rw_rs_requester = { if = { limit = { is_alive = yes } trigger_event = { id = rw_restitution.0002 } } }
+    }
+}
+rw_rs_withdraw_effect = {
+    if = {
+        limit = { rw_rs_can_withdraw_trigger = yes }
+        scope:rw_rs_record = {
+            remove_variable = rw_rs_window
+            set_variable = { name = rw_rs_state value = flag:withdrawn }
+        }
+        scope:rw_rs_holder = { if = { limit = { is_alive = yes } trigger_event = { id = rw_restitution.0002 } } }
+    }
+}
+rw_rs_resent_effect = {
+    if = {
+        limit = { rw_rs_can_react_trigger = yes }
+        scope:rw_rs_record = { set_variable = { name = rw_rs_response_done value = flag:resented } }
+        if = {
+            limit = { NOT = { has_opinion_modifier = { target = scope:rw_rs_holder modifier = rw_restitution_refused_opinion } } }
+            add_opinion = { target = scope:rw_rs_holder modifier = rw_restitution_refused_opinion }
+        }
+    }
+}
+rw_rs_accept_refusal_effect = {
+    if = {
+        limit = { rw_rs_can_react_trigger = yes }
+        scope:rw_rs_record = { set_variable = { name = rw_rs_response_done value = flag:acknowledged } }
+    }
+}
+rw_rs_retire_effect = {
+    if = {
+        limit = { story_type = story_rw_restitution_request }
+        save_scope_as = rw_rs_record
+        if = { limit = { has_global_variable_list = rw_restitution_requests } remove_list_global_variable = { name = rw_restitution_requests target = scope:rw_rs_record } }
+        end_story = yes
+    }
+}
+rw_rs_maintenance_effect = {
+    if = {
+        limit = { rw_rs_record_valid_trigger = yes has_variable = rw_rs_retained }
+        if = {
+            limit = { OR = { var:rw_rs_state = flag:pending var:rw_rs_state = flag:talks } }
+            if = {
+                limit = { NOT = { has_variable = rw_rs_window } }
+                set_variable = { name = rw_rs_state value = flag:expired }
+            }
+            else_if = {
+                limit = { NOT = { rw_rs_current_context_trigger = yes } }
+                remove_variable = rw_rs_window
+                set_variable = { name = rw_rs_state value = flag:invalidated }
+            }
+        }
+    }
+    else = { rw_rs_retire_effect = yes }
+}
+rw_rs_snapshot_effect = {
+    save_scope_as = rw_rs_record
+    save_scope_value_as = { name = rw_rs_serial value = var:rw_rs_serial }
+    save_scope_value_as = { name = rw_rs_entry_serial value = var:rw_rs_entry_serial }
+    var:rw_rs_requester = { save_scope_as = rw_rs_requester }
+    var:rw_rs_holder = { save_scope_as = rw_rs_holder }
+    var:rw_rs_title = { save_scope_as = rw_rs_title }
+    var:rw_rs_authority = { save_scope_as = rw_rs_authority }
+    var:rw_rs_house = { save_scope_as = rw_rs_house }
+    var:rw_rs_former = { save_scope_as = rw_rs_former }
+}
+rw_rs_read_effect = {
+    if = {
+        limit = { scope:actor = { is_alive = yes } has_global_variable_list = rw_restitution_requests }
+        every_in_global_list = {
+            variable = rw_restitution_requests
+            limit = { rw_rs_reader_trigger = { READER = scope:actor } }
+            rw_rs_snapshot_effect = yes
+            scope:actor = { trigger_event = { id = rw_restitution.0002 } }
+        }
+    }
+}
+# Registry scope. Pair caches are public-role notification metadata, not negotiation.
+rw_rs_offer_opportunity_effect = {
+    if = {
+        limit = { rw_lr_record_valid_trigger = yes has_variable = rw_lr_retained var:rw_lr_title = { exists = holder } }
+        rw_lr_snapshot_effect = yes
+        clear_saved_scope = rw_rs_candidate
+        if = {
+            limit = { var:rw_lr_former_holder = { is_alive = yes } }
+            var:rw_lr_former_holder = { save_scope_as = rw_rs_candidate }
+        }
+        else_if = {
+            limit = { var:rw_lr_former_house = { exists = house_head } }
+            var:rw_lr_former_house.house_head = { save_scope_as = rw_rs_candidate }
+        }
+        if = {
+            limit = {
+                exists = scope:rw_rs_candidate
+                OR = {
+                    NOT = { exists = var:rw_rs_notice_requester }
+                    NOT = { exists = var:rw_rs_notice_holder }
+                    NOT = { var:rw_rs_notice_requester = scope:rw_rs_candidate }
+                    NOT = { var:rw_rs_notice_holder = var:rw_lr_title.holder }
+                }
+            }
+            # Unchanged cached pairs never rescan the private request index.
+            if = {
+                limit = {
+                    scope:rw_lr_record = { rw_lr_reader_trigger = { READER = scope:rw_rs_candidate } }
+                    rw_rs_context_trigger = {
+                        ENTRY = scope:rw_lr_record ENTRY_SERIAL = scope:rw_lr_serial TITLE = scope:rw_lr_title
+                        AUTHORITY = scope:rw_lr_authority HOUSE = scope:rw_lr_house FORMER = scope:rw_lr_former_holder
+                        REQUESTER = scope:rw_rs_candidate HOLDER = scope:rw_lr_title.holder
+                    }
+                }
+                if = {
+                    limit = { rw_rs_no_cooldown_trigger = { REQUESTER = scope:rw_rs_candidate HOLDER = scope:rw_lr_title.holder TITLE = scope:rw_lr_title } }
+                    set_variable = { name = rw_rs_notice_requester value = scope:rw_rs_candidate }
+                    set_variable = { name = rw_rs_notice_holder value = var:rw_lr_title.holder }
+                    var:rw_lr_title.holder = { save_scope_as = rw_rs_holder }
+                    scope:rw_rs_candidate = { trigger_event = { id = rw_restitution.0001 } }
+                }
+            }
+        }
+    }
+}

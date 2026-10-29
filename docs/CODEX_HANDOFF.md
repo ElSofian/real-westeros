@@ -2,6 +2,10 @@
 
 ## Current owner direction (supersedes the historical session text below)
 
+The owner reaffirmed the full eight-system vision. The three original scenarios
+are non-exhaustive examples, not the project's scope or completion criterion.
+Earlier conversational percentages are estimates, not measured repository metrics.
+
 RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remains
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
 and RW010_DEFERRED.md. Contextual service-breach mediation is in RW010_CASES.md. Independent case records/read-only history are in RW010_RECORDS.md. Non-contractual allegations, statements and disclosure are in RW010_ALLEGATIONS.md.
@@ -82,8 +86,18 @@ nothing. Owner-death exclusion and sixty-day reconciliation move storage among
 eligible living carriers; malformed/expired/orphan entries leave the index before
 ending. Source filing and registry identity prevent duplicate publication. Current
 role/tuple views and immutable retention/counters are source-checked, not engine
-proof. Next exact-entry individual restitution requests; native context, custody,
-persistence, privacy, picker/scalar rendering and performance await final evidence. Native opening
+proof. Exact-entry restitution discussions now exist experimentally in
+RW010_RESTITUTION_DIALOGUES.md: original former holder, or exact-house head after
+their death, may ask the actual current holder. Private captured-party records have
+thirty-day review windows, year-long pair/title cooldowns and five-year retention.
+Review acceptance is not a promise or transfer; native grant terms remain separate.
+Refusal/withdrawal/inaction are distinct; optional requester rancour is once-only,
+non-stacking/non-renewing −10 personal opinion for two years, within seven days of
+refusal, or acknowledgment without penalty. Current-role offers use public-role
+pair caches; replies stay participant-private and are never inherited. Next general
+consideration/commitments and actual native performance observation, keeping the
+whole eight-system roadmap. Native context, custody, persistence, privacy, events,
+opinion duration, picker/scalar rendering and performance await final evidence. Native opening
 is not a transfer; custom coercive confiscation remains unimplemented.
 Independent negotiation now adds price
 and delivery clauses (RW010_DELIVERY_TERMS.md): current deferred parties can counter

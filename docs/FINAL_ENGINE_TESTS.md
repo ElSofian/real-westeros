@@ -697,8 +697,10 @@ All unrun. RW010_LAND_REGISTER.md describes metadata custody, not land restituti
   popup. A successor cannot read or file the predecessor's private TP record.
 - ARCHIVE-04: verify exact independent public payload in the filed story/save: only
   schema/kind, crown serial, numeric source identity, original issuer/title/parties,
-  frozen former house, authority, observation/filing dates and retention. No TP,
-  evidence, intent, plot or declared-reason pointer/content is exported or inherited.
+  frozen former house, authority, observation/filing dates and retention. The
+  restitution extension adds only two public-role notification caches, never a
+  private request/reply pointer. No TP, evidence, intent, plot or declared-reason
+  pointer/content is exported or inherited.
 - ARCHIVE-05: double-click/reopen/reload and repeat filing with a missing source
   filed marker: the typed issuer/source-serial index still prevents duplicates.
   Verify fresh constructor, monotonic crown counter, register/membership-before-
@@ -730,3 +732,67 @@ All unrun. RW010_LAND_REGISTER.md describes metadata custody, not land restituti
   stability and optional G3 diagnostic with baseline. Benchmark index reads and
   sixty-day per-record maintenance at sustained load. Verify EN/FR and scalar
   serial rendering; no new world/pair scan, native sanction or recurring AI policy.
+
+
+## Restitution discussion and personal response (REST-01 to REST-14)
+
+All unrun. RW010_RESTITUTION_DIALOGUES.md creates discussion, not promised restitution.
+
+- REST-01: from an exact retained public entry, a living adult free original former
+  holder may ask. After their death, the current adult free head of the exact
+  frozen house may ask for themselves. A living minor/prisoner is not bypassed by
+  a house head. Wrong house/dynasty/cadet/current-crown authority grants no claim.
+- REST-02: capture the actual current land holder, not an old recipient or sovereign
+  who does not own it. Ownership, source retention/serial/title/house/crown changes
+  before confirmation reject the stale popup. No title/claim/payment is created.
+- REST-03: confirm once; registration precedes both captured-party notifications.
+  Repeat/double-click/reload and alternate public entries for the same pair/title
+  cannot evade the one-year cooldown. Other titles and new party identities remain
+  independent. Fresh serials are not reset by refusal, cleanup or succession.
+- REST-04: only the two original participants can read replies/history, through
+  captured record/serial/title/source-serial/crown/house/former/party identity.
+  The arbitrary character selected for the archive receives no information. Public
+  crown/house successors and storage custodians inherit no private request/consent.
+- REST-05: accept examination only as the captured holder while both parties and
+  source/current ownership remain eligible and the original thirty-day window lives.
+  State changes to talks before notice; no payment, title grant, promise, completion
+  reward or deadline/cooldown/retention renewal. Repeat acceptance fails.
+- REST-06: original holder refuses/closes or requester withdraws, even after role,
+  custody, war, source or title changes while typed history is readable. This does
+  not speak for a new holder. Consume before notice; silence, withdrawal and
+  observed invalidation produce no automatic penalty or recurring reminder.
+- REST-07: only original requester can react to actual refusal within seven days,
+  once, with the original refuser alive and requester not already holding the title.
+  Acknowledge adds no penalty and removes no earlier opinion; resentment targets
+  that person alone, −10 for two years only if same modifier absent. It neither
+  stacks nor refreshes across other titles/requests. No inherited guilt/crime.
+- REST-08: accept review, then verify native grant validity and window opening with
+  current exact holder/requester/title. No title/hook/terms are preselected or sent.
+  Pick/confirm intended title separately; cancellation/another grant is not labeled
+  fulfillment. A blocked native query keeps the shortcut absent, with native menu
+  fallback. AI native grant policy remains authoritative, without a forced gift.
+- REST-09: requester acquires the title by gift, inheritance, war or another route.
+  View shows current ownership without attributing cause to the discussion. Moving
+  title to a third party blocks old native handoff; historical entry is no right to
+  confiscate from that person. No restored/fulfilled cache is written.
+- REST-10: at filing and sixty-day public maintenance, offer the actual current
+  eligible claimant/holder pair, never the public story ROOT or custodian. The pair
+  cache advances before event; unchanged pairs skip private-index cooldown scans.
+  Ineligible adulthood/release transitions can allow a first later opportunity;
+  transient changes/reversals can be missed. No request is sent without confirmation.
+- REST-11: public entry's extension fields contain only two public-role notice IDs,
+  not private request pointers/replies/reaction/consent. Request stories have their
+  own private index and owner; no private plot/evidence/intent material is imported.
+  Public reads send no offers and private reads mutate no flags, costs or clocks.
+- REST-12: source expiry, holder/requester death, head/house change, war/custody
+  change and expired windows disable acceptance/transfer before maintenance.
+  Observed invalidation is neutral; a new holder/head needs a new request and
+  captured consent. Death/expiry retirement removes the private index before end.
+- REST-13: save/reload pending/talks/refused/withdrawn/expired/invalidated histories,
+  original thirty-day/one-year/five-year/seven-day flags, serials and opinion expiry.
+  Pointer loss may retire/invalidate history; do not assume universal long-term
+  preservation. Successors keep only public facts, never personal rancour/consent.
+- REST-14: baseline native titles/AI grants/revocation/laws/refusal, Mega Wars,
+  succession/banks, house stability, optional G3 diagnostic and performance. Measure
+  registry changed-pair/index costs and private per-record maintenance at scale;
+  verify EN/FR/event scopes and no extra recurring requests or doubled native effects.

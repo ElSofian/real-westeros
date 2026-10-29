@@ -46,7 +46,9 @@ A fresh, separately owned story contains only:
 - Original one-hundred-year archival retention, starting at filing.
 
 No pointer to a TP record, private evidence, scheme, allegation, intention or declared
-reason is stored in the institutional story. The internal numeric source serial is
+reason is stored in the institutional story. The subsequent restitution module may
+add two public-role notification caches (current candidate and current title holder);
+these are opportunity metadata, not private request pointers, replies or consent. The internal numeric source serial is
 not an offense identifier and is not shown as a private case number. The original
 observer is also the recorded new holder; neither is changed to a later sovereign.
 
@@ -106,8 +108,9 @@ operations inspect their own index or the current record's house as a custody
 fallback; there is no world/pair scan. Global history reads/deduplication and
 sixty-day per-record maintenance still need long-run performance evidence.
 
-Next: an individual restitution request referencing an exact filed public entry,
-with current holder/authority/recipient/consent/native grant checks. A historical
+The subsequent individual request/review flow is in RW010_RESTITUTION_DIALOGUES.md,
+with exact source/current holder/claimant/consent checks and a separately guarded
+native grant-window handoff. Acceptance is examination, not promised land. A historical
 entry must not authorize taking land from a third party or restoring an ancestor's
 private guilt. No automatic ancestral restitution or noble-status restoration is
 implemented, and G3's universal fifty-year land ban remains unresolved.

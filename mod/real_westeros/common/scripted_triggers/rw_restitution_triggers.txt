@@ -1,0 +1,158 @@
+# A historical entry supports asking, never an entitlement against today's holder.
+rw_rs_context_trigger = {
+    exists = $ENTRY$
+    exists = $REQUESTER$
+    exists = $HOLDER$
+    $ENTRY$ = {
+        rw_lr_record_valid_trigger = yes
+        has_variable = rw_lr_retained
+        var:rw_lr_serial = $ENTRY_SERIAL$
+        var:rw_lr_title = $TITLE$
+        var:rw_lr_authority = $AUTHORITY$
+        var:rw_lr_former_house = $HOUSE$
+        var:rw_lr_former_holder = $FORMER$
+    }
+    $TITLE$ = { exists = holder holder = $HOLDER$ tier >= tier_county is_noble_family_title = no is_landless_type_title = no }
+    $REQUESTER$ = { is_alive = yes is_adult = yes is_imprisoned = no NOT = { this = $HOLDER$ } }
+    $HOLDER$ = { is_alive = yes is_adult = yes is_imprisoned = no is_landed = yes NOT = { is_at_war_with = $REQUESTER$ } }
+    trigger_if = {
+        limit = { $FORMER$ = { is_alive = yes } }
+        $REQUESTER$ = $FORMER$
+    }
+    trigger_else = {
+        $REQUESTER$ = { exists = house house = $HOUSE$ }
+        $HOUSE$ = { exists = house_head house_head = $REQUESTER$ }
+    }
+}
+rw_rs_can_consider_trigger = {
+    rw_lr_view_trigger = yes
+    scope:rw_lr_title = { exists = holder }
+    rw_rs_context_trigger = {
+        ENTRY = scope:rw_lr_record ENTRY_SERIAL = scope:rw_lr_serial TITLE = scope:rw_lr_title
+        AUTHORITY = scope:rw_lr_authority HOUSE = scope:rw_lr_house FORMER = scope:rw_lr_former_holder
+        REQUESTER = root HOLDER = scope:rw_lr_title.holder
+    }
+    rw_rs_no_cooldown_trigger = { REQUESTER = root HOLDER = scope:rw_lr_title.holder TITLE = scope:rw_lr_title }
+}
+rw_rs_no_cooldown_trigger = {
+    trigger_if = {
+        limit = { has_global_variable_list = rw_restitution_requests }
+        NOT = {
+            any_in_global_list = {
+                variable = rw_restitution_requests
+                rw_rs_record_valid_trigger = yes
+                has_variable = rw_rs_cooldown
+                var:rw_rs_requester = $REQUESTER$
+                var:rw_rs_holder = $HOLDER$
+                var:rw_rs_title = $TITLE$
+            }
+        }
+    }
+}
+rw_rs_request_turn_trigger = {
+    rw_rs_can_consider_trigger = yes
+    exists = scope:rw_rs_holder
+    scope:rw_lr_title = { holder = scope:rw_rs_holder }
+}
+rw_rs_record_valid_trigger = {
+    story_type = story_rw_restitution_request
+    var:rw_rs_schema = 1
+    var:rw_rs_kind = flag:restitution_review
+    has_variable = rw_rs_serial
+    has_variable = rw_rs_issued_on
+    has_variable = rw_rs_entry
+    has_variable = rw_rs_entry_serial
+    exists = var:rw_rs_requester
+    exists = var:rw_rs_holder
+    exists = var:rw_rs_title
+    exists = var:rw_rs_authority
+    exists = var:rw_rs_house
+    exists = var:rw_rs_former
+    story_owner = var:rw_rs_requester
+    OR = {
+        var:rw_rs_state = flag:pending var:rw_rs_state = flag:talks
+        var:rw_rs_state = flag:refused var:rw_rs_state = flag:withdrawn
+        var:rw_rs_state = flag:expired var:rw_rs_state = flag:invalidated
+    }
+}
+rw_rs_reader_trigger = {
+    rw_rs_record_valid_trigger = yes
+    has_variable = rw_rs_retained
+    $READER$ = { is_alive = yes }
+    OR = { var:rw_rs_requester = $READER$ var:rw_rs_holder = $READER$ }
+}
+rw_rs_view_trigger = {
+    exists = scope:rw_rs_record
+    exists = scope:rw_rs_serial
+    exists = scope:rw_rs_requester
+    exists = scope:rw_rs_holder
+    exists = scope:rw_rs_title
+    exists = scope:rw_rs_entry_serial
+    exists = scope:rw_rs_authority
+    exists = scope:rw_rs_house
+    exists = scope:rw_rs_former
+    scope:rw_rs_record = {
+        rw_rs_reader_trigger = { READER = root }
+        var:rw_rs_serial = scope:rw_rs_serial
+        var:rw_rs_requester = scope:rw_rs_requester
+        var:rw_rs_holder = scope:rw_rs_holder
+        var:rw_rs_title = scope:rw_rs_title
+        var:rw_rs_entry_serial = scope:rw_rs_entry_serial
+        var:rw_rs_authority = scope:rw_rs_authority
+        var:rw_rs_house = scope:rw_rs_house
+        var:rw_rs_former = scope:rw_rs_former
+    }
+}
+# Story scope. The temporary alias prevents parameter values resolving in the entry.
+rw_rs_current_context_trigger = {
+    rw_rs_record_valid_trigger = yes
+    save_temporary_scope_as = rw_rs_check
+    rw_rs_context_trigger = {
+        ENTRY = scope:rw_rs_check.var:rw_rs_entry ENTRY_SERIAL = scope:rw_rs_check.var:rw_rs_entry_serial
+        TITLE = scope:rw_rs_check.var:rw_rs_title AUTHORITY = scope:rw_rs_check.var:rw_rs_authority
+        HOUSE = scope:rw_rs_check.var:rw_rs_house FORMER = scope:rw_rs_check.var:rw_rs_former
+        REQUESTER = scope:rw_rs_check.var:rw_rs_requester HOLDER = scope:rw_rs_check.var:rw_rs_holder
+    }
+}
+rw_rs_active_trigger = {
+    rw_rs_record_valid_trigger = yes
+    has_variable = rw_rs_window
+    OR = { var:rw_rs_state = flag:pending var:rw_rs_state = flag:talks }
+}
+rw_rs_can_accept_trigger = {
+    rw_rs_view_trigger = yes
+    this = scope:rw_rs_holder
+    scope:rw_rs_record = { var:rw_rs_state = flag:pending has_variable = rw_rs_window rw_rs_current_context_trigger = yes }
+}
+rw_rs_can_refuse_trigger = {
+    rw_rs_view_trigger = yes
+    this = scope:rw_rs_holder
+    scope:rw_rs_record = { OR = { var:rw_rs_state = flag:pending var:rw_rs_state = flag:talks } }
+}
+rw_rs_can_withdraw_trigger = {
+    rw_rs_view_trigger = yes
+    this = scope:rw_rs_requester
+    scope:rw_rs_record = { OR = { var:rw_rs_state = flag:pending var:rw_rs_state = flag:talks } }
+}
+rw_rs_can_open_grant_trigger = {
+    rw_rs_view_trigger = yes
+    this = scope:rw_rs_holder
+    is_ai = no
+    scope:rw_rs_record = { var:rw_rs_state = flag:talks has_variable = rw_rs_window rw_rs_current_context_trigger = yes }
+    is_character_interaction_valid = { interaction = grant_titles_interaction recipient = scope:rw_rs_requester }
+}
+rw_rs_can_react_trigger = {
+    rw_rs_view_trigger = yes
+    this = scope:rw_rs_requester
+    scope:rw_rs_holder = { is_alive = yes }
+    scope:rw_rs_title = { NOT = { holder = scope:rw_rs_requester } }
+    scope:rw_rs_record = {
+        var:rw_rs_state = flag:refused
+        has_variable = rw_rs_response_window
+        NOT = { has_variable = rw_rs_response_done }
+    }
+}
+rw_rs_now_held_trigger = {
+    rw_rs_view_trigger = yes
+    scope:rw_rs_title = { exists = holder holder = scope:rw_rs_requester }
+}

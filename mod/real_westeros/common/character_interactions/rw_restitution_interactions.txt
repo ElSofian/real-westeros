@@ -1,0 +1,14 @@
+rw_review_restitution_requests_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_review_restitution_requests_interaction_desc
+    common_interaction = yes
+    use_diplomatic_range = no
+    auto_accept = yes
+    is_shown = {
+        scope:actor = { is_alive = yes }
+        has_global_variable_list = rw_restitution_requests
+        any_in_global_list = { variable = rw_restitution_requests rw_rs_reader_trigger = { READER = scope:actor } }
+    }
+    on_accept = { rw_rs_read_effect = yes }
+    ai_will_do = { base = 0 }
+}
