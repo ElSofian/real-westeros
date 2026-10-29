@@ -1,0 +1,29 @@
+namespace = rw_case_terms
+
+# Read-only clauses. Missing old data is explicit, never reconstructed from a new deal.
+rw_case_terms.0001 = {
+    type = character_event
+    title = rw_case_terms.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    rw_case_can_read_service_terms_trigger = yes
+                    scope:rw_case_record = { rw_case_service_terms_trigger = yes }
+                }
+                desc = {
+                    desc = rw_case_terms.identity
+                    triggered_desc = { trigger = { scope:rw_case_record = { var:rw_case_service_price = 25 } } desc = rw_case_terms.price_25 }
+                    triggered_desc = { trigger = { scope:rw_case_record = { var:rw_case_service_price = 50 } } desc = rw_case_terms.price_50 }
+                    triggered_desc = { trigger = { scope:rw_case_record = { var:rw_case_service_delivery_days = 14 } } desc = rw_case_terms.days_14 }
+                    triggered_desc = { trigger = { scope:rw_case_record = { var:rw_case_service_delivery_days = 30 } } desc = rw_case_terms.days_30 }
+                    desc = rw_case_terms.boundaries
+                }
+            }
+            triggered_desc = { trigger = { rw_case_can_read_service_terms_trigger = yes } desc = rw_case_terms.unknown }
+            desc = rw_case_terms.unavailable
+        }
+    }
+    theme = diplomacy
+    option = { name = rw_cases.acknowledge }
+}

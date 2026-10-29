@@ -13,6 +13,10 @@ reason. Matching checks type and owner as well as these identifiers. This suppor
 multiple retained referrals without a count cap; the current service pipeline still
 has one active offer/obligation per provider and a yearly offer cooldown.
 
+New service referrals now copy complete typed terminal terms for private read-only
+review (RW010_CASE_SERVICE_TERMS.md). Later contracts cannot replace those clauses;
+legacy or incomplete case terms stay unknown without blocking existing decisions.
+
 Service referrals and the separate allegation kind are archived here; allegation
 records exist before ruler disclosure and restrict access accordingly. The service
 engine still stores its latest service receipt, so this is not an archive of every unreferred promise,

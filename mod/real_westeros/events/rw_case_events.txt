@@ -50,6 +50,15 @@ rw_cases.0001 = {
         rw_case_expire_effect = yes
         ai_chance = { base = 100 }
     }
+    option = {
+        name = rw_case_terms.read
+        trigger = { rw_case_can_read_service_terms_trigger = yes }
+        if = {
+            limit = { rw_case_can_read_service_terms_trigger = yes }
+            trigger_event = { id = rw_case_terms.0001 }
+        }
+        ai_chance = { base = 0 }
+    }
 }
 
 rw_cases.0002 = {
@@ -84,6 +93,15 @@ rw_cases.0002 = {
         rw_case_lost_jurisdiction_effect = yes
         rw_case_expire_effect = yes
         ai_chance = { base = 100 }
+    }
+    option = {
+        name = rw_case_terms.read
+        trigger = { rw_case_can_read_service_terms_trigger = yes }
+        if = {
+            limit = { rw_case_can_read_service_terms_trigger = yes }
+            trigger_event = { id = rw_case_terms.0001 }
+        }
+        ai_chance = { base = 0 }
     }
 }
 
@@ -122,6 +140,15 @@ rw_cases.0003 = {
         trigger = { NOT = { rw_repair_client_turn_trigger = yes } }
         ai_chance = { base = 100 }
     }
+    option = {
+        name = rw_case_terms.read
+        trigger = { rw_case_can_read_service_terms_trigger = yes }
+        if = {
+            limit = { rw_case_can_read_service_terms_trigger = yes }
+            trigger_event = { id = rw_case_terms.0001 }
+        }
+        ai_chance = { base = 0 }
+    }
 }
 
 rw_cases.0004 = {
@@ -145,6 +172,15 @@ rw_cases.0005 = {
     }
     theme = diplomacy
     option = { name = rw_cases.acknowledge }
+    option = {
+        name = rw_case_terms.read
+        trigger = { rw_case_can_read_service_terms_trigger = yes }
+        if = {
+            limit = { rw_case_can_read_service_terms_trigger = yes }
+            trigger_event = { id = rw_case_terms.0001 }
+        }
+        ai_chance = { base = 0 }
+    }
 }
 
 # Read-only record view; no choice can reopen or settle an archived matter.
@@ -199,6 +235,15 @@ rw_cases.0006 = {
         }
     }
     option = { name = rw_cases.acknowledge }
+    option = {
+        name = rw_case_terms.read
+        trigger = { rw_case_can_read_service_terms_trigger = yes }
+        if = {
+            limit = { rw_case_can_read_service_terms_trigger = yes }
+            trigger_event = { id = rw_case_terms.0001 }
+        }
+        ai_chance = { base = 0 }
+    }
 }
 
 # Read-only statement of personal response, without guessing consent from silence.

@@ -109,7 +109,13 @@ The original clock/accepted identity remain; separate request serial and fresh p
 decision ticket invalidate stale consent. Only an exact expired owner callback refreshes
 current price before timeout classification. One client opportunity and existing provider
 decisions supply AI parity; no money on amendment, no parallel cancellation request. Continue independent negotiation/
-obligation work, including revised-promise/receipt/mediation integration. All G2 engine behavior and
+obligation work. Revised-promise/receipt/mediation integration is now in
+RW010_CASE_SERVICE_TERMS.md: new terminal receipts certify only complete current
+deferred terms, and explicit fresh referrals copy exact terminal price/delivery/
+revision/date into independent cases before response consumption/notices. Existing
+known-participant roles guard read-only terms; later offers/receipts cannot replace
+them. Old/missing clauses are explicit unknown data, never inferred or backfilled.
+Next voluntary consideration and explicit commitments across the broader systems. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;
 never force the no-tyranny imprisonment helper as a legality check. Keep knowledge,

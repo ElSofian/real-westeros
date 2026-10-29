@@ -1,0 +1,11 @@
+﻿l_english:
+ rw_case_terms.read:0 "Read the clauses recorded for this promise."
+ rw_case_terms.title:0 "The Agreed Endorsement"
+ rw_case_terms.identity:0 "This case concerns a deferred endorsement promised by [rw_service_provider.GetTitledFirstName] to [rw_service_client.GetTitledFirstName]. These clauses were copied from that exact service receipt when the dispute was disclosed."
+ rw_case_terms.price_25:0 "The agreed price was 25 gold, payable only if the service was performed."
+ rw_case_terms.price_50:0 "The agreed price was 50 gold, payable only if the service was performed."
+ rw_case_terms.days_14:0 "The original delivery period was fourteen days from acceptance of the promise, with performance possible after seven days."
+ rw_case_terms.days_30:0 "The original delivery period was thirty days from acceptance of the promise, with performance possible after seven days."
+ rw_case_terms.boundaries:0 "Reading does not take payment, deliver the service, reopen the promise or extend a deadline. A later agreement cannot change these recorded clauses. The recorded breach remains separate from the mediator’s response and does not itself establish a crime."
+ rw_case_terms.unknown:0 "This known service case has no complete record of its agreed clauses. The price and delivery period are unavailable. A current or later agreement cannot fill that gap; this does not cancel the existing case."
+ rw_case_terms.unavailable:0 "This service case or my identity as a participant with knowledge of it is no longer valid. No clauses are revealed and no decision is made."

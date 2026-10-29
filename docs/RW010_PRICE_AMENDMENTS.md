@@ -1,7 +1,8 @@
 # Mutual price amendments to accepted promises
 
 **Original CK3 scripts; static-checked, not engine-tested.** The title-source
-collection stays on standby. This independent slice lets either existing party
+collection has since been received and verified; see TITLE_ROUTE_AUDIT.md.
+This independent slice lets either existing party
 propose a reduction from 50 to 25 gold on a due deferred endorsement. It is a single
 authored amendment type, not an arbitrary multi-clause composer or a limit on future
 useful types. There is no runtime Python, native title/war change or paid service.
@@ -85,5 +86,8 @@ Sixteen adversarial source-contract tests cover exact identity/roles/funds, once
 consent, immutable clock, current-price timeout, old decisions, separate cancellation
 lane, cleanup/receipts, full terms/localization and bounded shared AI opportunities.
 AMEND-01…12 final scenarios remain unrun. G2/G4/G5 and runtime compatibility remain
-open. Next audit integration of revised obligations, receipts and mediated disputes
-without requesting the standby title sources or intermediate CK3 runs.
+open. Revised obligation/receipt/mediation clauses now integrate through
+RW010_CASE_SERVICE_TERMS.md. New referrals preserve the actual agreed terminal
+price and original delivery clause independently of later contracts; no old
+case backfill is performed. Continue broader negotiation/obligation work without
+requesting further source uploads or intermediate CK3 runs.

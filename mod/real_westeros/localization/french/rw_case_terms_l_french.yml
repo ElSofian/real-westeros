@@ -1,0 +1,11 @@
+﻿l_french:
+ rw_case_terms.read:0 "Lire les clauses conservées pour cette promesse."
+ rw_case_terms.title:0 "Le soutien convenu"
+ rw_case_terms.identity:0 "Cette affaire concerne un soutien différé promis par [rw_service_provider.GetTitledFirstName] à [rw_service_client.GetTitledFirstName]. Ces clauses ont été copiées depuis le reçu exact de ce service lors du renvoi du différend."
+ rw_case_terms.price_25:0 "Le prix convenu était de 25 pièces d’or, payables uniquement lors de l’exécution du service."
+ rw_case_terms.price_50:0 "Le prix convenu était de 50 pièces d’or, payables uniquement lors de l’exécution du service."
+ rw_case_terms.days_14:0 "Le délai initial était de quatorze jours à compter de l’acceptation de la promesse, avec une exécution possible après sept jours."
+ rw_case_terms.days_30:0 "Le délai initial était de trente jours à compter de l’acceptation de la promesse, avec une exécution possible après sept jours."
+ rw_case_terms.boundaries:0 "Cette lecture ne prélève rien, n’exécute aucun service, ne rouvre pas la promesse et ne prolonge aucun délai. Un accord ultérieur ne modifie pas ces clauses conservées. Le manquement enregistré reste distinct de la réponse du médiateur et ne constitue pas, à lui seul, un crime."
+ rw_case_terms.unknown:0 "Cette affaire de service connue ne possède pas de relevé complet des clauses convenues. Le prix et le délai sont indisponibles. Aucun accord actuel ou ultérieur ne peut combler cette lacune ; cela n’annule pas l’affaire existante."
+ rw_case_terms.unavailable:0 "Cette affaire de service ou mon identité de participant qui en a connaissance n’est plus valide. Aucune clause n’est révélée et aucune décision n’est prise."

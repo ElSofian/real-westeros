@@ -40,6 +40,8 @@ rw_service_accept_promise_effect = {
 # Record latest outcome only, not a universal history. Serial never reused.
 rw_service_record_receipt_effect = {
     scope:rw_service_provider = {
+        # Invalidate any prior certificate before writing this terminal receipt.
+        rw_service_clear_receipt_terms_effect = yes
         set_variable = { name = rw_service_last_serial value = scope:rw_service_serial }
         set_variable = { name = rw_service_last_client value = scope:rw_service_client }
         set_variable = { name = rw_service_last_price value = scope:rw_service_price }
@@ -47,6 +49,23 @@ rw_service_record_receipt_effect = {
         if = {
             limit = { exists = scope:rw_service_delivery_days }
             set_variable = { name = rw_service_last_delivery_days value = scope:rw_service_delivery_days }
+        }
+        # Certify only complete current deferred terms, never a legacy default.
+        if = {
+            limit = {
+                rw_service_obligation_matches_trigger = yes
+                rw_service_deferred_trigger = yes
+                exists = scope:rw_service_delivery_days
+                has_variable = rw_service_delivery_days
+                var:rw_service_delivery_days = scope:rw_service_delivery_days
+                OR = { var:rw_service_price = 25 var:rw_service_price = 50 }
+                OR = { var:rw_service_delivery_days = 14 var:rw_service_delivery_days = 30 }
+            }
+            set_variable = { name = rw_service_last_revision value = scope:rw_service_revision }
+            set_variable = { name = rw_service_last_mode value = flag:deferred }
+            set_variable = { name = rw_service_last_service value = flag:endorsement }
+            set_variable = { name = rw_service_last_recorded_on value = current_date }
+            set_variable = { name = rw_service_last_terms_schema value = 1 }
         }
     }
 }
@@ -89,6 +108,7 @@ rw_service_cancel_promise_effect = {
     if = {
         limit = { rw_service_obligation_owner_matches_trigger = yes }
         scope:rw_service_provider = {
+            rw_service_clear_receipt_terms_effect = yes
             set_variable = { name = rw_service_last_serial value = scope:rw_service_serial }
             set_variable = { name = rw_service_last_outcome value = flag:cancelled }
             remove_variable = rw_service_last_price

@@ -14,7 +14,7 @@ are deferred to the final campaign, not waived. Prefer a disposable fresh save.
 | Deferred endorsement | Consent without payment, due delivery, refusal, wait and expiry |
 | Mutual promise release | Either party proposes; other accepts/refuses/ignores; original deadline retained |
 | Breach response | Personal resentment/forgiveness or explicit referral to common overlord |
-| Mediation | Decline, evidence-gated personal reprimand, invitation to conciliatory gesture |
+| Mediation | Decline, evidence-gated personal reprimand, invitation to conciliatory gesture; immutable exact service price/delivery clauses with private read-only review |
 | Gesture reception | Client acceptance/refusal, personal response recorded separately |
 | Affront allegation | Acknowledgment/contest/silence; withdrawal or explicit disclosure |
 | Political scheme response | Voluntary 25-gold request for non-stacking goodwill, refusal/contestation/withdrawal; no criminal pardon |
