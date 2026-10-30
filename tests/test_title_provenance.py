@@ -12,7 +12,7 @@ MOD = Path(__file__).resolve().parents[1] / 'mod/real_westeros'
 def errors(t, e, on, events, story, menu):
     out = []
     native = block(on, 'on_title_gain')
-    if native.strip() != 'on_actions = { rw_on_title_revocation_context }':
+    if native.strip() != 'on_actions = { rw_on_title_revocation_context rw_on_pledged_title_gain_context }':
         out.append('native callback replaced')
     child = block(on, 'rw_on_title_revocation_context')
     if 'trigger = { rw_tp_native_context_trigger = yes }' not in child or 'effect = { rw_tp_observe_effect = yes }' not in child:

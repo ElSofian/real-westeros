@@ -1,0 +1,52 @@
+# Native new-holder character ROOT. Callback context is not a voluntary-grant verdict.
+rw_rg_native_context_trigger = {
+    is_alive = yes
+    has_variable = rw_rs_counter
+    exists = scope:title
+    exists = scope:previous_holder
+    NOT = { this = scope:previous_holder }
+    scope:previous_holder = { is_alive = yes }
+    scope:title = { exists = holder holder = root tier >= tier_county is_noble_family_title = no is_landless_type_title = no }
+    any_owned_story = {
+        rw_rg_candidate_trigger = { RECEIVER = root GIVER = scope:previous_holder TITLE = scope:title }
+        NOT = { has_variable = rw_rg_schema }
+    }
+    # Ambiguous commitments are not selected arbitrarily, even if one already has a note.
+    NOT = {
+        any_owned_story = {
+            count > 1
+            rw_rg_candidate_trigger = { RECEIVER = root GIVER = scope:previous_holder TITLE = scope:title }
+        }
+    }
+}
+# Story scope. No house/crown/source-role substitution or current event-root inference.
+rw_rg_candidate_trigger = {
+    rw_rs_record_valid_trigger = yes
+    has_variable = rw_rs_retained
+    story_owner = $RECEIVER$
+    var:rw_rs_requester = $RECEIVER$
+    var:rw_rs_holder = $GIVER$
+    var:rw_rs_title = $TITLE$
+    var:rw_rp_schema = 1
+    has_variable = rw_rp_proposed_on
+    has_variable = rw_rp_accepted_on
+    has_variable = rw_rp_revision
+    OR = { var:rw_rp_days = 14 var:rw_rp_days = 30 }
+    var:rw_rp_state = flag:promised
+    has_variable = rw_rp_due
+}
+# Event character scope. Only the original private parties can read the immutable note.
+rw_rg_view_trigger = {
+    rw_rp_view_trigger = yes
+    scope:rw_rs_record = {
+        var:rw_rg_schema = 1
+        var:rw_rg_kind = flag:native_title_gain_context
+        has_variable = rw_rg_observed_on
+        var:rw_rg_request_serial = scope:rw_rs_serial
+        var:rw_rg_pledge_revision = scope:rw_rp_revision
+        var:rw_rg_pledge_days = scope:rw_rp_days
+        var:rw_rg_title = scope:rw_rs_title
+        var:rw_rg_former_holder = scope:rw_rs_holder
+        var:rw_rg_new_holder = scope:rw_rs_requester
+    }
+}

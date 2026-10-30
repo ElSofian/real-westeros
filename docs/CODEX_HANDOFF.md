@@ -104,8 +104,15 @@ expiry. Native title transfer stays separate; beneficiary confirmation plus curr
 ownership is a personal statement, never a proven grant/cause or automatic reward.
 Unresolved expiry is neutral; closing the conversation never cancels an accepted
 promise or adds its old refusal reaction. Existing private retention/death/cadence
-are reused. Next safe native transfer observation/causality and broader voluntary
-consideration/service commitments, keeping the full eight-system roadmap. Native context, custody, persistence, privacy, events,
+are reused. Conditional native transfer notes now exist in
+RW010_PLEDGED_TITLE_OBSERVATIONS.md: an additional child in the existing native
+title-gain wrapper searches only receiver-owned stories for one exact live accepted
+promise. First directed title/former/new-holder/request/revision/delivery/date context
+is immutable and participant-private. No state/clock, reward/payment, popup or
+confirmation changes; no voluntary-grant route or causal performance is certified.
+Missing/ambiguous/old context is never backfilled. Original revocation child/native
+effects and optional diagnostic stay separate. Next broader voluntary
+consideration/service commitments, with reliable grant/causal receipts unresolved, keeping the full eight-system roadmap. Native context, custody, persistence, privacy, events,
 opinion duration, picker/scalar rendering and performance await final evidence. Native opening
 is not a transfer; custom coercive confiscation remains unimplemented.
 Independent negotiation now adds price

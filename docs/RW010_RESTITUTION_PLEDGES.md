@@ -116,6 +116,14 @@ promise or missed notification is reconstructed. Private retention remains the
 original five years from request, never renewed by the pledge. No crash consistency,
 save migration, native-event ordering, performance or privacy guarantee is claimed.
 
+Conditional title-gain observations are now added separately in
+RW010_PLEDGED_TITLE_OBSERVATIONS.md. A unique live accepted pledge may retain a
+participant-private directed transfer context, without changing this slice’s
+consent, deadline, acknowledgment or effects. This is not a proven voluntary grant
+or a causal performance receipt. The additional callback child and its limitations
+are documented there; the original no-new-hook statement above describes this
+personal-pledge slice only.
+
 PLEDGE-01…12 in FINAL_ENGINE_TESTS.md all remain unrun. All engine tests stay in the
 owner's final campaign. Next safely separate observable native transfers from their
 causes and integrate voluntary consideration/other service commitments across the

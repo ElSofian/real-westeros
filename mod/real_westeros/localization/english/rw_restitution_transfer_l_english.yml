@@ -1,0 +1,3 @@
+﻿l_english:
+ rw_restitution_transfer.observed:0 "While this exact accepted promise was still open, a native title-gain callback reported the title passing directly from the captured holder to the beneficiary. This note records that context and its observation date. It does not identify a voluntary grant, prove the promise caused the acquisition, guarantee present ownership or confirm satisfaction. No payment, reward or sanction follows."
+ rw_restitution_transfer.unobserved:0 "No valid direct-transfer observation is recorded for these promise terms. Absence of a note does not prove the title never moved or the promise was broken. Beneficiary confirmation remains a separate personal statement."
