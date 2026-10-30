@@ -878,3 +878,42 @@ All unrun. RW010_RESTITUTION_DIALOGUES.md creates discussion, not promised resti
   same-tick order, save size, private reconciliation cost and AGOT-only baseline.
   No new native hook/world scan/recurring reminder or native transfer replay should
   load; optional G3 trace stays separate. No compatibility/performance claim yet.
+
+
+## Conditional pledged-title transfer context (all unrun)
+
+- TRANSFER-01: accept exact-title 14/30-day pledge, then use native grant while
+  original parties live and due marker remains. Validate actual callback ROOT,
+  title/previous holder/current holder, exact first note and unchanged native grant.
+  Observation is not automatic confirmation, payment or proof of voluntary cause.
+- TRANSFER-02: acquire matching title through another native route with living
+  previous holder. If callback/context matches, note stays route-unknown. Death
+  inheritance/absent previous holder/noble-family/landless/wrong/currently unowned
+  title or reversed parties must not yield this authored note.
+- TRANSFER-03: missing actor/recipient/interaction marker must not be required by
+  this generic context intake. Missing actual title/previous holder/new-holder or
+  premature callback before ownership settles yields no note, never a fallback.
+  Absence does not block independent beneficiary acknowledgment or native UI.
+- TRANSFER-04: wrong owner/retention, unaccepted/expired/released/renounced/acknowledged/
+  invalidated promise, missing schema/revision or wrong 14/30-day clause is rejected.
+  Late native transfer cannot backfill a now-unresolved promise's missing note.
+- TRANSFER-05: two matching live candidates cause no selection or write, including
+  one already observed candidate. Repeated same callback leaves the original date,
+  all fact fields, consent, due marker and parent retention unchanged.
+- TRANSFER-06: move title onward after a valid note. Known original participants
+  still see its historical context and separate current ownership. Another title,
+  request/revision/delivery or party tuple cannot display or rewrite the note.
+- TRANSFER-07: outsider, house/crown successor and heir cannot read private notes;
+  public archive gains no pointer/reply. Source expiry/head change cannot silently
+  substitute a new personal beneficiary or rewrite accepted consent.
+- TRANSFER-08: save/reload before/after intake, acknowledgment and original five-year
+  expiry. Requester death removes original private index/story; no inherited duty,
+  renewed retention, transfer replay or automatic reward/penalty follows.
+- TRANSFER-09: both original revocation and new pledge children compose with native
+  effects in the actual AGOT playset. Probe special/batched multiple-title grants,
+  tyranny/revocation, wars/Mega Wars, succession, laws and optional separate G3 trace.
+  No popup, native override, second title transfer or changed promise state is added.
+- TRANSFER-10: compare recipient-owned scan cost with/without a request counter,
+  many owned stories and unrelated title changes, AI/player parity, EN/FR warnings,
+  logs and AGOT-only baseline. Callback composition/order, performance and knowledge
+  semantics remain unverified until these cases are actually run.

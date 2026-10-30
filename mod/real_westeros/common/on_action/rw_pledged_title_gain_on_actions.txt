@@ -1,0 +1,5 @@
+# Appended by the existing on_title_gain wrapper; never replace native effects.
+rw_on_pledged_title_gain_context = {
+    trigger = { rw_rg_native_context_trigger = yes }
+    effect = { rw_rg_observe_effect = yes }
+}

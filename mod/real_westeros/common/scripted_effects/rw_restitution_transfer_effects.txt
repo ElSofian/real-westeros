@@ -1,0 +1,26 @@
+# Observe one unique current pledge from a native title-gain callback only.
+# No native effect, fulfillment, response, notification or clock is replayed here.
+rw_rg_observe_effect = {
+    if = {
+        limit = { rw_rg_native_context_trigger = yes }
+        save_scope_as = rw_rg_receiver
+        scope:previous_holder = { save_scope_as = rw_rg_giver }
+        scope:title = { save_scope_as = rw_rg_title }
+        every_owned_story = {
+            limit = {
+                rw_rg_candidate_trigger = { RECEIVER = scope:rw_rg_receiver GIVER = scope:rw_rg_giver TITLE = scope:rw_rg_title }
+                NOT = { has_variable = rw_rg_schema }
+            }
+            set_variable = { name = rw_rg_kind value = flag:native_title_gain_context }
+            set_variable = { name = rw_rg_request_serial value = var:rw_rs_serial }
+            set_variable = { name = rw_rg_pledge_revision value = var:rw_rp_revision }
+            set_variable = { name = rw_rg_pledge_days value = var:rw_rp_days }
+            set_variable = { name = rw_rg_title value = scope:rw_rg_title }
+            set_variable = { name = rw_rg_former_holder value = scope:rw_rg_giver }
+            set_variable = { name = rw_rg_new_holder value = scope:rw_rg_receiver }
+            set_variable = { name = rw_rg_observed_on value = current_date }
+            # Stamp last; repeated callbacks never renew the first note or any term.
+            set_variable = { name = rw_rg_schema value = 1 }
+        }
+    }
+}

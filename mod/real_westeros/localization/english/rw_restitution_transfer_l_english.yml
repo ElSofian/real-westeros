@@ -1,0 +1,3 @@
+﻿l_english:
+ rw_restitution_transfer.observed:0 "During this accepted promise’s delivery period, a direct change of holder was recorded for [rw_rs_title.GetName], from [rw_rs_holder.GetShortUIName] to [rw_rs_requester.GetShortUIName]. This does not establish a voluntary grant or prove the promise caused that acquisition. The record neither guarantees present ownership nor replaces the beneficiary’s confirmation. No payment, reward or sanction follows."
+ rw_restitution_transfer.unobserved:0 "No direct change of holder matching these promise terms has been recorded. This absence does not prove the title never moved or the promise was broken. Beneficiary confirmation remains a separate personal statement."

@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "kind": "private_title_gain_context_inspection_not_voluntary_grant_or_engine_evidence",
+  "archive_sha256": "9d6b622a41d0b640568d6f220aa99045d9994db3b8f0fdc98bfb2ff8bfa3ac69",
+  "reviewed_references": [
+    {
+      "source": "AGOT",
+      "path": "common/on_action/title_on_actions.txt",
+      "sha256": "b16a4ee1697d90081f7b0e9869b9796ec43753416315c70bb3405938f6ab40f8",
+      "size": 135746,
+      "markers": {
+        "on_title_gain = {": [
+          200
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/on_action/title_on_actions.txt",
+      "sha256": "6e9823c47b8c8427b509ad6e4b9c62a30ead0392940452c3ded8c669e751e8fe",
+      "size": 124292,
+      "markers": {
+        "on_title_gain = {": [
+          187
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/character_interactions/00_grant_titles_interaction.txt",
+      "sha256": "56d1544e86c378853518997cd2dd09e940806827a865a66880d919f4e453f707",
+      "size": 66529,
+      "markers": {
+        "special_interaction = grant_titles_interaction": [
+          9,
+          1589
+        ],
+        "on_accept = {": [
+          406,
+          1976
+        ]
+      }
+    }
+  ],
+  "limits": [
+    "Actual executable/DLC and native callback composition/order are unverified.",
+    "New-holder root/title/previous-holder context does not establish grant route or causation.",
+    "Source-located native granting occurs in engine code; no native transfer ID or voluntary-grant receipt is established.",
+    "Observation records only one unique live accepted personal promise; missing/ambiguous/replayed context fails closed."
+  ]
+}

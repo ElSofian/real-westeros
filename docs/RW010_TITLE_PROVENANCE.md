@@ -33,7 +33,10 @@ recorded as completed confiscation.
 
 ## Conditional post-transfer intake
 
-The base mod now appends **one named child** to source-located `on_title_gain`.
+The original provenance slice appends **one named child** to source-located
+`on_title_gain`. The wrapper now also dispatches an independent conditional
+pledged-title observation child (RW010_PLEDGED_TITLE_OBSERVATIONS.md); it does not
+change this revocation-context child or prove a native transfer route.
 This is separate from the optional G3 diagnostic: no debug marker, log or trace UI
 is added to the base. Existing native effect/event fields are not replaced.
 

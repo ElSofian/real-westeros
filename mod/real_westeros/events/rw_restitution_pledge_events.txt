@@ -27,6 +27,8 @@ rw_restitution_pledge.0001 = {
                     triggered_desc = { trigger = { rw_rs_now_held_trigger = yes } desc = rw_restitution.now_held }
                     triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rp_response_done = flag:resented } } desc = rw_restitution_pledge.resented_history }
                     triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rp_response_done = flag:acknowledged } } desc = rw_restitution_pledge.response_history }
+                    triggered_desc = { trigger = { rw_rg_view_trigger = yes } desc = rw_restitution_transfer.observed }
+                    triggered_desc = { trigger = { NOT = { rw_rg_view_trigger = yes } } desc = rw_restitution_transfer.unobserved }
                     desc = rw_restitution_pledge.boundaries
                 }
             }

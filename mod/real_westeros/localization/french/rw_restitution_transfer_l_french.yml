@@ -1,0 +1,3 @@
+﻿l_french:
+ rw_restitution_transfer.observed:0 "Pendant le délai de cette promesse acceptée, un passage direct de [rw_rs_title.GetName] de [rw_rs_holder.GetShortUIName] à [rw_rs_requester.GetShortUIName] a été relevé. Cela ne prouve ni une concession volontaire ni un lien causal avec la promesse. Ce relevé ne garantit pas la propriété actuelle et ne remplace pas la confirmation du bénéficiaire. Il n’entraîne aucun paiement, avantage ou sanction."
+ rw_restitution_transfer.unobserved:0 "Aucun passage direct correspondant à ces clauses n’a été relevé. Cette absence ne prouve ni que le titre n’a jamais changé de mains ni que la promesse a été rompue. La confirmation du bénéficiaire reste une déclaration personnelle distincte."
