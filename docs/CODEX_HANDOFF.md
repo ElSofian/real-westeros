@@ -131,7 +131,17 @@ deferred terms, and explicit fresh referrals copy exact terminal price/delivery/
 revision/date into independent cases before response consumption/notices. Existing
 known-participant roles guard read-only terms; later offers/receipts cannot replace
 them. Old/missing clauses are explicit unknown data, never inferred or backfilled.
-Next voluntary consideration and explicit commitments across the broader systems. All G2 engine behavior and
+Voluntary case compensation now exists in RW010_CASE_COMPENSATION.md: either
+original service party can propose 25/50 gold for an exact retained closed affair.
+Versioned current-responder consent and actual provider funds settle once, with
+paid receipt/terminal consumption before debit/credit/notices. A fixed seven-day
+window, one-day counters and free identity-only closure do not change original
+case facts, apology, justice, private retention or active service terms. Only the
+two original parties see this separate financial dialogue; the mediator does not.
+Archive navigation is read-only; fresh review snapshots current terms separately
+from old reply events, which never refresh consent on load. Existing result notices
+supply shared bounded AI/player opportunities; no new hook/index/polling or escrow.
+Next other structured consideration and service/obligation types across the systems. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;
 never force the no-tyranny imprisonment helper as a legality check. Keep knowledge,

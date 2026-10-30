@@ -17,6 +17,11 @@ New service referrals now copy complete typed terminal terms for private read-on
 review (RW010_CASE_SERVICE_TERMS.md). Later contracts cannot replace those clauses;
 legacy or incomplete case terms stay unknown without blocking existing decisions.
 
+Closed retained service records now support a separate private financial dialogue
+(RW010_CASE_COMPENSATION.md). Archive navigation itself stays read-only; only
+original provider/client can negotiate or view compensation, not the mediator.
+Payment never changes the archived result, facts, apology response or retention.
+
 Service referrals and the separate allegation kind are archived here; allegation
 records exist before ruler disclosure and restrict access accordingly. The service
 engine still stores its latest service receipt, so this is not an archive of every unreferred promise,

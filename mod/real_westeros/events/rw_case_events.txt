@@ -149,6 +149,15 @@ rw_cases.0003 = {
         }
         ai_chance = { base = 0 }
     }
+    option = {
+        name = rw_case_compensation.review
+        trigger = { rw_cc_base_trigger = yes }
+        if = {
+            limit = { rw_cc_base_trigger = yes }
+            trigger_event = { id = rw_case_compensation.0002 }
+        }
+        ai_chance = { base = 2 }
+    }
 }
 
 rw_cases.0004 = {
@@ -171,7 +180,7 @@ rw_cases.0005 = {
         }
     }
     theme = diplomacy
-    option = { name = rw_cases.acknowledge }
+    option = { name = rw_cases.acknowledge ai_chance = { base = 50 } }
     option = {
         name = rw_case_terms.read
         trigger = { rw_case_can_read_service_terms_trigger = yes }
@@ -180,6 +189,15 @@ rw_cases.0005 = {
             trigger_event = { id = rw_case_terms.0001 }
         }
         ai_chance = { base = 0 }
+    }
+    option = {
+        name = rw_case_compensation.review
+        trigger = { rw_cc_base_trigger = yes }
+        if = {
+            limit = { rw_cc_base_trigger = yes }
+            trigger_event = { id = rw_case_compensation.0002 }
+        }
+        ai_chance = { base = 2 }
     }
 }
 
@@ -241,6 +259,15 @@ rw_cases.0006 = {
         if = {
             limit = { rw_case_can_read_service_terms_trigger = yes }
             trigger_event = { id = rw_case_terms.0001 }
+        }
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = rw_case_compensation.review
+        trigger = { rw_cc_base_trigger = yes }
+        if = {
+            limit = { rw_cc_base_trigger = yes }
+            trigger_event = { id = rw_case_compensation.0002 }
         }
         ai_chance = { base = 0 }
     }

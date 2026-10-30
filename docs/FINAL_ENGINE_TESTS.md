@@ -917,3 +917,50 @@ All unrun. RW010_RESTITUTION_DIALOGUES.md creates discussion, not promised resti
   many owned stories and unrelated title changes, AI/player parity, EN/FR warnings,
   logs and AGOT-only baseline. Callback composition/order, performance and knowledge
   semantics remain unverified until these cases are actually run.
+
+
+## Voluntary private compensation for closed service cases (all unrun)
+
+- COMP-01: original provider offers 25/50; original client separately requests 25/50
+  on different retained closed service cases. Opening result/archive dialogue moves
+  no money. Mediator, outsider, active/expired/ended/allegation/unknown-kind cases
+  cannot initiate or read private financial data; current rank is not a substitute.
+- COMP-02: provider offer → client counter → provider consent, and client request →
+  provider counter → client consent. Only latest exact responder/revision/amount
+  can settle; counter never charges. Replay proposer/older/wrong-case panels.
+- COMP-03: let the payer spend below 25/50 before consent; acceptance must disappear
+  and explain current inability to pay. Counter lower or close, with no debt,
+  borrowing, refund, automatic sanction or silent transfer. Restore funds within
+  the original window and explicitly accept exact current terms.
+- COMP-04: accepted 25/50 debits original provider and credits original client by
+  exactly the same amount once, regardless of clicking actor/proposer. Compare
+  receipt amount/revision/date, same-tick double clicks, save/reload and stale reply
+  after payment. No extra gold, prestige, opinion, pardon or title effect.
+- COMP-05: fixed seven-day offer window survives counters, reviews and waits without
+  reset. Replies arrive after one day, with no immediate AI counter loop. Silence
+  and expiry pay nothing; expired offers cannot reopen as a new window for that case.
+  Other cases retain independent offers/receipts with no global count truncation.
+- COMP-06: detention, death, war between parties, reference loss and expired case
+  retention disable settlement. Either original living party can close after poverty/
+  war/detention while the exact parent remains retained. No escrow or heir debt.
+- COMP-07: fresh result/archive entry displays current terms but changes no stored
+  data. An old delayed reply never refreshes itself into a newer consent ticket.
+  Queue A/B cases for same provider with different clients/amounts; notices and
+  payments must keep their own captured story/serial/parties/reason/kind.
+- COMP-08: original known mediator can still read affair history but cannot see or
+  receive compensation terms, counteroffers or paid receipts. Crown/house/ruler
+  successors and unrelated characters cannot inherit either party's private consent.
+- COMP-09: after compensation, original service breach, copied clauses, closed result,
+  legal reasons and existing resentment remain unchanged. Separately accept/refuse
+  a prior apology within its own unchanged window; payment is not forgiveness.
+  A newer live service/receipt for the provider must remain untouched.
+- COMP-10: save/reload proposed/countered/paid/closed/expired offers, parent original
+  1825-day retention and sixty-day cleanup. Provider death ends personal stories;
+  neither reading nor compensation extends memory or creates an inherited obligation.
+- COMP-11: compare AI/player paths and actual payer/recipient balances, trait/funds
+  preferences, refusal/inaction and economic abuse over multiple cases. Existing
+  result notices provide opportunities; no new global scan, hook or timer should run.
+- COMP-12: compare AGOT-only baseline, errors, native banking/debt inheritance,
+  justice/war/title behavior, EN/FR rendering, event order and performance. Ordered
+  script consumption is not crash consistency; probe partial-effect cases safely
+  and never automatically replay a payment after a crash or missing confirmation.

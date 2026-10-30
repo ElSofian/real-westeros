@@ -1,0 +1,106 @@
+# Only a fresh menu entry refreshes terms. Delayed reply panels keep their versions.
+rw_cc_prepare_effect = {
+    if = {
+        limit = { rw_cc_base_trigger = yes }
+        clear_saved_scope = rw_cc_revision
+        clear_saved_scope = rw_cc_price
+        if = {
+            limit = { scope:rw_case_record = { var:rw_cc_schema = 1 has_variable = rw_cc_revision has_variable = rw_cc_price } }
+            scope:rw_case_record = { rw_cc_snapshot_effect = yes }
+        }
+        trigger_event = { id = rw_case_compensation.0001 }
+    }
+}
+# Story scope, read-only; case/party identity stays in the original captured frame.
+rw_cc_snapshot_effect = {
+    save_scope_value_as = { name = rw_cc_revision value = var:rw_cc_revision }
+    save_scope_value_as = { name = rw_cc_price value = var:rw_cc_price }
+}
+rw_cc_propose_effect = {
+    save_scope_value_as = { name = rw_cc_start_price value = $PRICE$ }
+    if = {
+        limit = {
+            rw_cc_can_propose_trigger = yes
+            OR = { scope:rw_cc_start_price = 25 scope:rw_cc_start_price = 50 }
+        }
+        scope:rw_case_record = {
+            set_variable = { name = rw_cc_revision value = 0 }
+            set_variable = { name = rw_cc_price value = scope:rw_cc_start_price }
+            set_variable = { name = rw_cc_state value = flag:offered }
+            set_variable = { name = rw_cc_issued_on value = current_date }
+            set_variable = { name = rw_cc_window value = flag:yes days = 7 }
+        }
+        if = {
+            limit = { this = scope:rw_service_provider }
+            scope:rw_case_record = { set_variable = { name = rw_cc_turn value = flag:client } }
+        }
+        else = { scope:rw_case_record = { set_variable = { name = rw_cc_turn value = flag:provider } } }
+        scope:rw_case_record = {
+            set_variable = { name = rw_cc_schema value = 1 }
+            rw_cc_snapshot_effect = yes
+        }
+        rw_cc_send_reply_effect = yes
+    }
+}
+# Caller is the proposer/counterer; only the other original party receives the reply.
+rw_cc_send_reply_effect = {
+    if = {
+        limit = { this = scope:rw_service_provider }
+        scope:rw_service_client = { trigger_event = { id = rw_case_compensation.0001 days = 1 } }
+    }
+    else = { scope:rw_service_provider = { trigger_event = { id = rw_case_compensation.0001 days = 1 } } }
+}
+rw_cc_counter_effect = {
+    if = {
+        limit = { rw_cc_responder_trigger = yes }
+        scope:rw_case_record = {
+            change_variable = { name = rw_cc_revision add = 1 }
+            if = {
+                limit = { var:rw_cc_price = 25 }
+                set_variable = { name = rw_cc_price value = 50 }
+            }
+            else = { set_variable = { name = rw_cc_price value = 25 } }
+            if = {
+                limit = { var:rw_cc_turn = flag:client }
+                set_variable = { name = rw_cc_turn value = flag:provider }
+            }
+            else = { set_variable = { name = rw_cc_turn value = flag:client } }
+            rw_cc_snapshot_effect = yes
+        }
+        # Neither original offer deadline nor case retention is renewed.
+        rw_cc_send_reply_effect = yes
+    }
+}
+rw_cc_settle_effect = {
+    if = {
+        limit = { rw_cc_can_settle_trigger = yes }
+        scope:rw_case_record = {
+            remove_variable = rw_cc_window
+            remove_variable = rw_cc_turn
+            set_variable = { name = rw_cc_paid_amount value = scope:rw_cc_price }
+            set_variable = { name = rw_cc_paid_revision value = scope:rw_cc_revision }
+            set_variable = { name = rw_cc_paid_on value = current_date }
+            # Terminal state before native gold effects or notifications: no replay.
+            set_variable = { name = rw_cc_state value = flag:paid }
+        }
+        scope:rw_service_provider = { add_gold = { value = scope:rw_cc_price multiply = -1 } }
+        scope:rw_service_client = { add_gold = scope:rw_cc_price }
+        rw_cc_notify_effect = yes
+    }
+}
+rw_cc_close_effect = {
+    if = {
+        limit = { rw_cc_can_close_trigger = yes }
+        scope:rw_case_record = {
+            remove_variable = rw_cc_window
+            remove_variable = rw_cc_turn
+            set_variable = { name = rw_cc_state value = flag:closed }
+        }
+        rw_cc_notify_effect = yes
+    }
+}
+# No mediator notice, native pardon, apology response or rewritten case outcome.
+rw_cc_notify_effect = {
+    scope:rw_service_provider = { if = { limit = { is_alive = yes } trigger_event = { id = rw_case_compensation.0001 } } }
+    scope:rw_service_client = { if = { limit = { is_alive = yes } trigger_event = { id = rw_case_compensation.0001 } } }
+}
