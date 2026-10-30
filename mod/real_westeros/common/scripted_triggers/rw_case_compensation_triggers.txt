@@ -1,0 +1,66 @@
+# Exact retained closed service case, and its original two private parties only.
+rw_cc_base_trigger = {
+    rw_case_matches_trigger = yes
+    is_alive = yes
+    OR = { this = scope:rw_service_provider this = scope:rw_service_client }
+    NOT = { scope:rw_service_provider = scope:rw_service_client }
+    scope:rw_case_record = {
+        var:rw_case_kind = flag:service
+        var:rw_case_stage = flag:closed
+        has_variable = rw_case_retained
+    }
+}
+# No present rank, legal authority or old contract affordability is inferred.
+rw_cc_context_trigger = {
+    scope:rw_service_provider = { is_alive = yes is_adult = yes is_imprisoned = no NOT = { is_at_war_with = scope:rw_service_client } }
+    scope:rw_service_client = { is_alive = yes is_adult = yes is_imprisoned = no }
+}
+rw_cc_can_propose_trigger = {
+    rw_cc_base_trigger = yes
+    rw_cc_context_trigger = yes
+    scope:rw_case_record = { NOT = { has_variable = rw_cc_schema } }
+}
+rw_cc_view_trigger = {
+    rw_cc_base_trigger = yes
+    exists = scope:rw_cc_revision
+    exists = scope:rw_cc_price
+    scope:rw_case_record = {
+        var:rw_cc_schema = 1
+        has_variable = rw_cc_issued_on
+        var:rw_cc_revision = scope:rw_cc_revision
+        var:rw_cc_price = scope:rw_cc_price
+        OR = { var:rw_cc_price = 25 var:rw_cc_price = 50 }
+        OR = { var:rw_cc_state = flag:offered var:rw_cc_state = flag:closed var:rw_cc_state = flag:paid }
+        trigger_if = {
+            limit = { var:rw_cc_state = flag:offered }
+            OR = { var:rw_cc_turn = flag:provider var:rw_cc_turn = flag:client }
+        }
+        trigger_if = {
+            limit = { var:rw_cc_state = flag:paid }
+            has_variable = rw_cc_paid_on
+            var:rw_cc_paid_amount = scope:rw_cc_price
+            var:rw_cc_paid_revision = scope:rw_cc_revision
+        }
+    }
+}
+rw_cc_offer_live_trigger = {
+    rw_cc_view_trigger = yes
+    rw_cc_context_trigger = yes
+    scope:rw_case_record = { var:rw_cc_state = flag:offered has_variable = rw_cc_window }
+}
+rw_cc_responder_trigger = {
+    rw_cc_offer_live_trigger = yes
+    OR = {
+        AND = { this = scope:rw_service_client scope:rw_case_record = { var:rw_cc_turn = flag:client } }
+        AND = { this = scope:rw_service_provider scope:rw_case_record = { var:rw_cc_turn = flag:provider } }
+    }
+}
+rw_cc_can_settle_trigger = {
+    rw_cc_responder_trigger = yes
+    scope:rw_service_provider = { gold >= scope:rw_cc_price }
+}
+# Either original party can close an unaccepted offer after capacity/funds change.
+rw_cc_can_close_trigger = {
+    rw_cc_view_trigger = yes
+    scope:rw_case_record = { var:rw_cc_state = flag:offered }
+}
