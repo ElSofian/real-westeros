@@ -999,3 +999,48 @@ All unrun. RW010_RESTITUTION_DIALOGUES.md creates discussion, not promised resti
   native opinion expiry, EN/FR rendering, same-tick callback order and AGOT-only
   baseline. Economic/political balance, privacy/persistence and performance remain
   engine-unverified; no service, bank, title, native justice or war is replayed.
+
+
+## Native-favor or negotiated-gold immediate endorsement (all unrun)
+
+- FAVOR-01: new interaction auto-accept opens only a proposal. Client explicit favor
+  acceptance gives original provider one native favor over client and client 50
+  prestige once, with no gold. Verify actual native eligibility, direction/type and
+  original serial/revision/term, not merely metadata saying fulfilled.
+- FAVOR-02: client counters 25 gold, provider accepts current version with client
+  funds >=25: client −25/provider +25/client +50 prestige, no new hook. Swap initiation
+  contexts/ranks and replay proposer/client/old-version/old-term panels: no exchange.
+- FAVOR-03: provider restates favor, requiring client consent again. All counters
+  increment revision/change turn and delay replies one day without resetting original
+  thirty-day pending window or shared annual cooldown. No immediate AI counter loop.
+- FAVOR-04: existing weak/strong/different-type/pending/unusable/cooling-down hooks
+  must not be overwritten or refreshed. Acquire a hook between proposal/acceptance
+  and reject favor terms at fresh checks; counter gold or close without touching it.
+  Native predicate/type semantics require direct proof, not assumed coverage.
+- FAVOR-05: native can_add_hook failure, lost rank, war, prison, death, reference loss,
+  self-target and expired pending marker block performance. Poverty blocks gold
+  agreement but not proposal/counter/free closure. No forced payment or debt appears.
+- FAVOR-06: close either role after expiry/war/prison/native favor ineligibility.
+  Only current exact offered ticket clears; replay after a newer serial cannot
+  close it or grant a service. Shared cooldown remains; no refund/automatic sanction.
+- FAVOR-07: before favor start, retain an old ignored/expired financial quote and
+  its saved panels. Starting favor never re-adds rw_service_pending/obligation or
+  changes old serial/target/mode. Replay old financial accept/clear/timeout: no
+  payment, prestige or cancellation of the new independent favor ticket.
+- FAVOR-08: exercise gold/deferred→favor and favor→gold/deferred availability. One
+  active provider pool and shared year cooldown prevent bypass by switching types.
+  Current native favor use outside this mod and unrelated financial cases remain.
+- FAVOR-09: private latest review by provider/client does not renew, pay or grant.
+  Outsider/former client/new heir cannot see a replacement serial. After fulfillment
+  consume/expire the favor natively: old receipt never claims it is still active or
+  creates another. No complete historical/dynastic ledger is implied.
+- FAVOR-10: save/reload offered/countered/closed/fulfilled and old/new serials;
+  verify original offer/cooldown dates, native favor identity/expiry, root/saved-value
+  scopes and no duplicate prestige/hook/gold. Never retry partial/crashed effects.
+- FAVOR-11: compare AI/player eligibility/effects, bounded liege initiation, trait/
+  gold preferences, refusals and realistic native favor value/prestige economy.
+  Review-only AI is disabled; reactive latest-version reply paths must still work.
+- FAVOR-12: compare AGOT-only baseline, hook-type/playset/DLC behavior, existing bank
+  debts, native favor uses/law/war restrictions and institutions. No automatic hook
+  spend, sent interaction, realm-law change, title/war operation or new callback
+  should occur. Record actual timing, EN/FR logs, save growth and performance.

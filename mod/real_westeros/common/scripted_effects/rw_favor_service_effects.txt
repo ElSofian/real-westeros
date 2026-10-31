@@ -1,0 +1,104 @@
+rw_fv_snapshot_effect = {
+    scope:rw_fv_provider = {
+        save_scope_value_as = { name = rw_fv_serial value = var:rw_fv_serial }
+        save_scope_value_as = { name = rw_fv_revision value = var:rw_fv_revision }
+        save_scope_value_as = { name = rw_fv_term value = var:rw_fv_term }
+    }
+}
+rw_fv_begin_effect = {
+    if = {
+        limit = { rw_fv_can_offer_trigger = yes }
+        scope:actor = { save_scope_as = rw_fv_provider }
+        scope:recipient = { save_scope_as = rw_fv_client }
+        scope:rw_fv_provider = {
+            if = { limit = { NOT = { has_variable = rw_fv_serial } } set_variable = { name = rw_fv_serial value = 0 } }
+            change_variable = { name = rw_fv_serial add = 1 }
+            set_variable = { name = rw_fv_revision value = 0 }
+            set_variable = { name = rw_fv_client value = scope:rw_fv_client }
+            set_variable = { name = rw_fv_term value = flag:favor }
+            set_variable = { name = rw_fv_turn value = flag:client }
+            set_variable = { name = rw_fv_state value = flag:offered }
+            set_variable = { name = rw_fv_issued_on value = current_date }
+            remove_variable = rw_fv_finished_on
+            add_character_flag = { flag = rw_fv_pending days = 30 }
+            # Share the existing service cooldown, never reactivate an old quote flag.
+            add_character_flag = { flag = rw_service_cooldown days = 365 }
+            set_variable = { name = rw_fv_schema value = 1 }
+        }
+        rw_fv_snapshot_effect = yes
+        scope:rw_fv_client = { trigger_event = { id = rw_favor_service.0001 days = 1 } }
+    }
+}
+rw_fv_counter_gold_effect = {
+    if = {
+        limit = { rw_fv_client_turn_trigger = yes }
+        scope:rw_fv_provider = {
+            change_variable = { name = rw_fv_revision add = 1 }
+            set_variable = { name = rw_fv_term value = flag:gold25 }
+            set_variable = { name = rw_fv_turn value = flag:provider }
+        }
+        rw_fv_snapshot_effect = yes
+        scope:rw_fv_provider = { trigger_event = { id = rw_favor_service.0001 days = 1 } }
+    }
+}
+rw_fv_restate_effect = {
+    if = {
+        limit = { rw_fv_can_restate_trigger = yes }
+        scope:rw_fv_provider = {
+            change_variable = { name = rw_fv_revision add = 1 }
+            set_variable = { name = rw_fv_term value = flag:favor }
+            set_variable = { name = rw_fv_turn value = flag:client }
+        }
+        rw_fv_snapshot_effect = yes
+        scope:rw_fv_client = { trigger_event = { id = rw_favor_service.0001 days = 1 } }
+    }
+}
+# A fixed immediate service, not an inherited or deferred obligation.
+rw_fv_settle_effect = {
+    if = {
+        limit = { OR = { rw_fv_can_accept_favor_trigger = yes rw_fv_can_accept_gold_trigger = yes } }
+        scope:rw_fv_provider = {
+            remove_character_flag = rw_fv_pending
+            remove_variable = rw_fv_turn
+            set_variable = { name = rw_fv_finished_on value = current_date }
+            set_variable = { name = rw_fv_state value = flag:fulfilled }
+        }
+        # Consume before native effects. Do not retry partial/crashed native exchanges.
+        if = {
+            limit = { scope:rw_fv_term = flag:favor }
+            scope:rw_fv_provider = { add_hook = { type = favor_hook target = scope:rw_fv_client } }
+        }
+        else = {
+            scope:rw_fv_client = { add_gold = -25 }
+            scope:rw_fv_provider = { add_gold = 25 }
+        }
+        scope:rw_fv_client = { add_prestige = 50 }
+        rw_fv_notify_effect = yes
+    }
+}
+rw_fv_close_effect = {
+    if = {
+        limit = { rw_fv_can_close_trigger = yes }
+        scope:rw_fv_provider = {
+            remove_character_flag = rw_fv_pending
+            remove_variable = rw_fv_turn
+            set_variable = { name = rw_fv_finished_on value = current_date }
+            set_variable = { name = rw_fv_state value = flag:closed }
+        }
+        rw_fv_notify_effect = yes
+    }
+}
+rw_fv_notify_effect = {
+    scope:rw_fv_provider = { if = { limit = { is_alive = yes } trigger_event = { id = rw_favor_service.0001 } } }
+    scope:rw_fv_client = { if = { limit = { is_alive = yes } trigger_event = { id = rw_favor_service.0001 } } }
+}
+
+rw_fv_review_effect = {
+    if = {
+        limit = { rw_fv_review_allowed_trigger = yes }
+        scope:recipient = { save_scope_as = rw_fv_provider }
+        scope:recipient.var:rw_fv_client = { save_scope_as = rw_fv_client }
+        rw_fv_snapshot_effect = yes
+        scope:actor = { trigger_event = { id = rw_favor_service.0001 } }
+    }
+}

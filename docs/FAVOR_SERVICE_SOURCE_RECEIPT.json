@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "kind": "private_native_favor_api_source_inspection_not_engine_evidence",
+  "archive_sha256": "9d6b622a41d0b640568d6f220aa99045d9994db3b8f0fdc98bfb2ff8bfa3ac69",
+  "reviewed_references": [
+    {
+      "source": "AGOT",
+      "path": "common/character_interactions/00_grant_titles_interaction.txt",
+      "sha256": "56d1544e86c378853518997cd2dd09e940806827a865a66880d919f4e453f707",
+      "size": 66529,
+      "markers": {
+        "can_add_hook = {": [
+          1266,
+          2400
+        ],
+        "add_hook = {": [
+          1266,
+          1271,
+          2400,
+          2405
+        ],
+        "type = favor_hook": [
+          1268,
+          1272,
+          2402,
+          2406
+        ]
+      }
+    },
+    {
+      "source": "CK3",
+      "path": "common/character_interactions/00_grant_titles_interaction.txt",
+      "sha256": "a506859b5260d6e923fb26922c6247cec6fe62699fde1d101ebbbb3b3524fe9d",
+      "size": 55250,
+      "markers": {
+        "can_add_hook = {": [
+          1068,
+          2113
+        ],
+        "add_hook = {": [
+          1068,
+          1073,
+          2113,
+          2118
+        ],
+        "type = favor_hook": [
+          1070,
+          1074,
+          2115,
+          2119
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/character_interactions/00_diarch_interactions.txt",
+      "sha256": "266ec3b35af8f94ce6f5100367df87d1db5de1567daa2c3ef1aabd4c1ace234d",
+      "size": 301093,
+      "markers": {
+        "has_hook = scope:recipient": [
+          640,
+          650,
+          3093,
+          3103
+        ]
+      }
+    }
+  ],
+  "limits": [
+    "Actual executable/DLC/playset and effective native favor definition unverified.",
+    "Source locates favor_hook usage, can_add_hook, add_hook and has_hook; it does not prove runtime acceptance or no-refresh semantics for every hook state.",
+    "Native hook strength/duration/use/expiry remain native; no custom hook type, spend, forced interaction or war exception is implemented.",
+    "Ordered immediate exchange is not an atomic transaction or crash recovery; never retry partial native effects automatically."
+  ]
+}

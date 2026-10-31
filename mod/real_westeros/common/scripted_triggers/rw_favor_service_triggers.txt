@@ -1,0 +1,80 @@
+# Native favor eligibility; never intentionally overwrite/refresh a detected hook.
+rw_fv_favor_available_trigger = {
+    $PROVIDER$ = {
+        NOT = { has_hook = $CLIENT$ }
+        can_add_hook = { type = favor_hook target = $CLIENT$ }
+    }
+}
+rw_fv_can_offer_trigger = {
+    scope:actor = { rw_service_provider_available_trigger = yes is_imprisoned = no }
+    scope:recipient = { rw_service_party_eligible_trigger = yes is_imprisoned = no }
+    NOT = { scope:actor = scope:recipient }
+    rw_fv_favor_available_trigger = { PROVIDER = scope:actor CLIENT = scope:recipient }
+}
+# Immutable offer identity; independent of obsolete financial-service ticket fields.
+rw_fv_view_trigger = {
+    exists = scope:rw_fv_provider
+    exists = scope:rw_fv_client
+    exists = scope:rw_fv_serial
+    exists = scope:rw_fv_revision
+    exists = scope:rw_fv_term
+    is_alive = yes
+    OR = { this = scope:rw_fv_provider this = scope:rw_fv_client }
+    NOT = { scope:rw_fv_provider = scope:rw_fv_client }
+    scope:rw_fv_provider = {
+        var:rw_fv_schema = 1
+        var:rw_fv_serial = scope:rw_fv_serial
+        var:rw_fv_revision = scope:rw_fv_revision
+        var:rw_fv_client = scope:rw_fv_client
+        var:rw_fv_term = scope:rw_fv_term
+        has_variable = rw_fv_issued_on
+        OR = { var:rw_fv_term = flag:favor var:rw_fv_term = flag:gold25 }
+        OR = { var:rw_fv_state = flag:offered var:rw_fv_state = flag:closed var:rw_fv_state = flag:fulfilled }
+        trigger_if = { limit = { NOT = { var:rw_fv_state = flag:offered } } has_variable = rw_fv_finished_on }
+    }
+}
+rw_fv_live_trigger = {
+    rw_fv_view_trigger = yes
+    scope:rw_fv_provider = { rw_service_party_eligible_trigger = yes is_imprisoned = no has_character_flag = rw_fv_pending var:rw_fv_state = flag:offered }
+    scope:rw_fv_client = { rw_service_party_eligible_trigger = yes is_imprisoned = no }
+}
+rw_fv_client_turn_trigger = {
+    rw_fv_live_trigger = yes
+    this = scope:rw_fv_client
+    scope:rw_fv_provider = { var:rw_fv_turn = flag:client var:rw_fv_term = flag:favor }
+}
+rw_fv_provider_turn_trigger = {
+    rw_fv_live_trigger = yes
+    this = scope:rw_fv_provider
+    scope:rw_fv_provider = { var:rw_fv_turn = flag:provider var:rw_fv_term = flag:gold25 }
+}
+rw_fv_can_accept_favor_trigger = {
+    rw_fv_client_turn_trigger = yes
+    rw_fv_favor_available_trigger = { PROVIDER = scope:rw_fv_provider CLIENT = scope:rw_fv_client }
+}
+rw_fv_can_accept_gold_trigger = {
+    rw_fv_provider_turn_trigger = yes
+    scope:rw_fv_client = { gold >= 25 }
+}
+rw_fv_can_restate_trigger = {
+    rw_fv_provider_turn_trigger = yes
+    rw_fv_favor_available_trigger = { PROVIDER = scope:rw_fv_provider CLIENT = scope:rw_fv_client }
+}
+# Either original party may close even after expiry, war, poverty or capacity loss.
+rw_fv_can_close_trigger = {
+    rw_fv_view_trigger = yes
+    scope:rw_fv_provider = { var:rw_fv_state = flag:offered }
+}
+
+rw_fv_review_allowed_trigger = {
+    scope:actor = { is_alive = yes }
+    scope:recipient = {
+        is_alive = yes
+        var:rw_fv_schema = 1
+        exists = var:rw_fv_client
+        has_variable = rw_fv_serial
+        has_variable = rw_fv_revision
+        has_variable = rw_fv_term
+    }
+    OR = { scope:actor = scope:recipient scope:actor = scope:recipient.var:rw_fv_client }
+}

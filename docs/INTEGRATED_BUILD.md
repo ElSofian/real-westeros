@@ -11,6 +11,7 @@ are deferred to the final campaign, not waived. Prefer a disposable fresh save.
 |---|---|
 | Reconciliation interaction | Accept/refuse/lapsed, shared AI liege targeting |
 | Immediate endorsement | 50/25-gold negotiation; payment and prestige at performance |
+| Favor-backed endorsement | Native favor for immediate support, or versioned 25-gold counteroffer; shared provider pool, native eligibility/detected-hook protection and one performance, private latest review |
 | Deferred endorsement | Consent without payment, due delivery, refusal, wait and expiry |
 | Mutual promise release | Either party proposes; other accepts/refuses/ignores; original deadline retained |
 | Breach response | Personal resentment/forgiveness or explicit referral to common overlord |

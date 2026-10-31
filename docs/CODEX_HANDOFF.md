@@ -148,6 +148,16 @@ guard appreciation (+5 opinion/two years only if absent, never stacked/refreshed
 or neutral acknowledgment. Payment itself creates no personal consent; old/missing
 metadata is never backfilled. Private payer notice follows consumption; no mediator,
 heir, money replay, automatic pardon, erased resentment or renewed case retention.
+Favor-backed endorsements now exist in RW010_FAVOR_SERVICE.md: explicit client
+consent to a native favor or versioned 25-gold counteroffer for provider acceptance,
+current native can_add_hook/NOT has_hook rechecks, separate latest-ticket metadata
+and once-only favor-or-gold then prestige performance. Existing provider service
+availability/year cooldown is shared; original financial pending/obligation/serial/
+quote fields are never reactivated or rewritten. Private latest review, fixed
+thirty-day window, one-day counter replies and bounded liege AI use the same guards.
+Three selected source hashes verify APIs, not hook-type/lifecycle or engine behavior.
+Native strength/duration/use remain native; no hook spending, native action send,
+war/law bypass, inherited service promise or partial-effect retry is added.
 Next other structured consideration and service/obligation types across the systems. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;
