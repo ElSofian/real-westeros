@@ -1,0 +1,24 @@
+# Full private case/payment identity precedes any financial-response access.
+rw_cp_view_trigger = {
+    rw_cc_view_trigger = yes
+    scope:rw_case_record = {
+        var:rw_cc_state = flag:paid
+        var:rw_cp_schema = 1
+        var:rw_cp_paid_revision = scope:rw_cc_revision
+        var:rw_cp_paid_amount = scope:rw_cc_price
+        has_variable = rw_cp_paid_on
+        var:rw_cp_paid_on = var:rw_cc_paid_on
+        OR = { var:rw_cp_state = flag:pending var:rw_cp_state = flag:appreciated var:rw_cp_state = flag:noted }
+        trigger_if = {
+            limit = { NOT = { var:rw_cp_state = flag:pending } }
+            has_variable = rw_cp_responded_on
+        }
+    }
+}
+# A personal statement after payment is not another transfer or grant of authority.
+rw_cp_can_respond_trigger = {
+    rw_cp_view_trigger = yes
+    this = scope:rw_service_client
+    scope:rw_service_provider = { is_alive = yes }
+    scope:rw_case_record = { var:rw_cp_state = flag:pending has_variable = rw_cp_window }
+}

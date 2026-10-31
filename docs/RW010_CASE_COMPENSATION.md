@@ -35,7 +35,7 @@ Settlement repeats full private case/quote/role/current-capacity checks and requ
 **actual provider gold >= the current agreed amount**. It consumes the offer window
 and turn, writes paid amount/revision/date, and marks terminal `paid` **before** the
 two native gold effects and receipt notices. Provider loses the selected 25/50 and
-client gains the same amount. No actor-relative debit, prestige/opinion reward,
+client gains the same amount. No actor-relative debit, automatic prestige/opinion reward,
 third-party recipient, banking operation, title change or native penalty is added.
 The provider's active/latest service contract and original receipt are untouched.
 
@@ -74,6 +74,14 @@ apology acceptance. The client can receive money without forgiving. An existing
 apology response retains its own original consent window and conditions. No promise
 of restitution, native title-gain context or uncertain grant cause authorizes money.
 This independent financial slice does not resolve voluntary-grant causal receipts.
+
+## Independent personal response after a new payment
+
+RW010_COMPENSATION_RESPONSE.md adds a separate original-beneficiary choice after a
+new payment: appreciate the gesture (+5 personal opinion/two years only if absent,
+without stacking/renewal) or acknowledge without rapprochement. The fresh thirty-day
+window never changes financial consent, the original affair, resentment or pardon.
+Old paid receipts get no invented response window; silence is not gratitude.
 
 ## AI, checks and remaining work
 

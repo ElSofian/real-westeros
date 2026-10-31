@@ -1,0 +1,4 @@
+rw_compensation_appreciated_opinion = {
+    opinion = 5
+    years = 2
+}

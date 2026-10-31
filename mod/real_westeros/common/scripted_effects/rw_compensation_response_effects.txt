@@ -1,0 +1,51 @@
+# Fresh same-call payment token only. History/old receipts cannot create new consent.
+rw_cp_begin_effect = {
+    if = {
+        limit = {
+            rw_cc_view_trigger = yes
+            exists = scope:rw_cp_fresh_payment
+            scope:rw_cp_fresh_payment = scope:rw_case_record
+            scope:rw_case_record = { var:rw_cc_state = flag:paid NOT = { has_variable = rw_cp_schema } }
+        }
+        scope:rw_case_record = {
+            set_variable = { name = rw_cp_paid_revision value = scope:rw_cc_revision }
+            set_variable = { name = rw_cp_paid_amount value = scope:rw_cc_price }
+            set_variable = { name = rw_cp_paid_on value = var:rw_cc_paid_on }
+            set_variable = { name = rw_cp_state value = flag:pending }
+            set_variable = { name = rw_cp_window value = flag:yes days = 30 }
+            set_variable = { name = rw_cp_schema value = 1 }
+        }
+    }
+}
+rw_cp_appreciate_effect = {
+    if = {
+        limit = { rw_cp_can_respond_trigger = yes }
+        scope:rw_case_record = {
+            remove_variable = rw_cp_window
+            set_variable = { name = rw_cp_state value = flag:appreciated }
+            set_variable = { name = rw_cp_responded_on value = current_date }
+        }
+        if = {
+            limit = { NOT = { has_opinion_modifier = { target = scope:rw_service_provider modifier = rw_compensation_appreciated_opinion } } }
+            add_opinion = { target = scope:rw_service_provider modifier = rw_compensation_appreciated_opinion }
+        }
+        rw_cp_notify_payer_effect = yes
+    }
+}
+rw_cp_note_effect = {
+    if = {
+        limit = { rw_cp_can_respond_trigger = yes }
+        scope:rw_case_record = {
+            remove_variable = rw_cp_window
+            set_variable = { name = rw_cp_state value = flag:noted }
+            set_variable = { name = rw_cp_responded_on value = current_date }
+        }
+        rw_cp_notify_payer_effect = yes
+    }
+}
+# Only the original payer learns the response, never a mediator or successor.
+rw_cp_notify_payer_effect = {
+    scope:rw_service_provider = {
+        if = { limit = { is_alive = yes } trigger_event = { id = rw_case_compensation.0001 } }
+    }
+}

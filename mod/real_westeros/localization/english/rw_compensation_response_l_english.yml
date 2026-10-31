@@ -1,0 +1,9 @@
+﻿l_english:
+ rw_compensation_appreciated_opinion:0 "Appreciated a voluntary financial gesture"
+ rw_compensation_response.pending:0 "The original beneficiary has thirty days from this new payment to appreciate the financial gesture or acknowledge it without rapprochement. Only the beneficiary decides; receiving money alone supplies neither response nor forgiveness. Silence changes nothing."
+ rw_compensation_response.appreciated:0 "The beneficiary chose to appreciate this financial gesture. That response offered a bounded personal opinion benefit; it did not erase existing resentment, accept an apology or grant a pardon. This records a past choice and does not renew or guarantee a currently active modifier."
+ rw_compensation_response.noted:0 "The beneficiary acknowledged the payment without a gesture of rapprochement. No new opinion benefit or penalty followed; the money and original facts remain unchanged."
+ rw_compensation_response.unanswered:0 "No personal response is recorded and the response window is no longer available. Absence of a response means neither appreciation nor refusal and creates no new penalty."
+ rw_compensation_response.unknown:0 "No valid personal-response record exists for this payment. A receipt alone does not establish reconciliation; an older receipt cannot create a new response window."
+ rw_compensation_response.appreciate:0 "Appreciate this gesture: my opinion +5 for two years if absent, without stacking or renewal; no pardon."
+ rw_compensation_response.note:0 "Acknowledge the payment without rapprochement, benefit or penalty."
