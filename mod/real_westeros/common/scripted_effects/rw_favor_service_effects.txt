@@ -3,6 +3,11 @@ rw_fv_snapshot_effect = {
         save_scope_value_as = { name = rw_fv_serial value = var:rw_fv_serial }
         save_scope_value_as = { name = rw_fv_revision value = var:rw_fv_revision }
         save_scope_value_as = { name = rw_fv_term value = var:rw_fv_term }
+        save_scope_value_as = { name = rw_fv_mode value = flag:immediate }
+        if = {
+            limit = { has_variable = rw_fv_mode }
+            save_scope_value_as = { name = rw_fv_mode value = var:rw_fv_mode }
+        }
     }
 }
 rw_fv_begin_effect = {
@@ -15,7 +20,9 @@ rw_fv_begin_effect = {
             change_variable = { name = rw_fv_serial add = 1 }
             set_variable = { name = rw_fv_revision value = 0 }
             set_variable = { name = rw_fv_client value = scope:rw_fv_client }
+            set_variable = { name = rw_fv_provider value = scope:rw_fv_provider }
             set_variable = { name = rw_fv_term value = flag:favor }
+            set_variable = { name = rw_fv_mode value = flag:$MODE$ }
             set_variable = { name = rw_fv_turn value = flag:client }
             set_variable = { name = rw_fv_state value = flag:offered }
             set_variable = { name = rw_fv_issued_on value = current_date }
@@ -56,7 +63,7 @@ rw_fv_restate_effect = {
 # A fixed immediate service, not an inherited or deferred obligation.
 rw_fv_settle_effect = {
     if = {
-        limit = { OR = { rw_fv_can_accept_favor_trigger = yes rw_fv_can_accept_gold_trigger = yes } }
+        limit = { OR = { rw_fv_can_accept_favor_trigger = yes rw_fv_can_accept_gold_trigger = yes } NOT = { rw_fd_deferred_trigger = yes } }
         scope:rw_fv_provider = {
             remove_character_flag = rw_fv_pending
             remove_variable = rw_fv_turn

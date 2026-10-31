@@ -9,11 +9,17 @@ rw_favor_service.0001 = {
                 trigger = { rw_fv_view_trigger = yes }
                 desc = {
                     desc = rw_favor_service.parties
+                    triggered_desc = { trigger = { NOT = { rw_fd_deferred_trigger = yes } } desc = rw_deferred_favor.immediate_timing }
+                    triggered_desc = { trigger = { rw_fd_deferred_trigger = yes } desc = rw_deferred_favor.timing }
                     triggered_desc = { trigger = { scope:rw_fv_term = flag:favor } desc = rw_favor_service.favor_terms }
                     triggered_desc = { trigger = { scope:rw_fv_term = flag:gold25 } desc = rw_favor_service.gold_terms }
                     first_valid = {
                         triggered_desc = { trigger = { scope:rw_fv_provider = { var:rw_fv_state = flag:fulfilled } } desc = rw_favor_service.fulfilled }
                         triggered_desc = { trigger = { scope:rw_fv_provider = { var:rw_fv_state = flag:closed } } desc = rw_favor_service.closed }
+                        triggered_desc = { trigger = { rw_fd_pending_trigger = yes scope:rw_fv_provider = { has_character_flag = rw_fd_due } } desc = rw_deferred_favor.promised }
+                        triggered_desc = { trigger = { scope:rw_fv_provider = { var:rw_fv_state = flag:provider_renounced } } desc = rw_deferred_favor.renounced }
+                        triggered_desc = { trigger = { scope:rw_fv_provider = { var:rw_fv_state = flag:client_withdrew } } desc = rw_deferred_favor.withdrawn }
+                        triggered_desc = { trigger = { scope:rw_fv_provider = { OR = { var:rw_fv_state = flag:unresolved var:rw_fv_state = flag:promised } } } desc = rw_deferred_favor.unresolved }
                         triggered_desc = { trigger = { rw_fv_live_trigger = yes } desc = rw_favor_service.offered }
                         desc = rw_favor_service.inactive
                     }
@@ -26,6 +32,16 @@ rw_favor_service.0001 = {
                         desc = rw_favor_service.unfunded
                     }
                     desc = rw_favor_service.boundaries
+                    triggered_desc = {
+                        trigger = {
+                            rw_fd_pending_trigger = yes
+                            OR = {
+                                AND = { scope:rw_fv_term = flag:gold25 scope:rw_fv_client = { gold < 25 } }
+                                AND = { scope:rw_fv_term = flag:favor NOT = { rw_fv_favor_available_trigger = { PROVIDER = scope:rw_fv_provider CLIENT = scope:rw_fv_client } } }
+                            }
+                        }
+                        desc = rw_deferred_favor.consideration_unavailable
+                    }
                 }
             }
             desc = rw_favor_service.unavailable
@@ -34,7 +50,7 @@ rw_favor_service.0001 = {
     theme = diplomacy
     option = {
         name = rw_favor_service.accept_favor
-        trigger = { rw_fv_can_accept_favor_trigger = yes }
+        trigger = { rw_fv_can_accept_favor_trigger = yes NOT = { rw_fd_deferred_trigger = yes } }
         rw_fv_settle_effect = yes
         ai_chance = { base = 20 modifier = { factor = 2 has_trait = trusting } modifier = { factor = 0.2 has_trait = paranoid } }
     }
@@ -46,7 +62,7 @@ rw_favor_service.0001 = {
     }
     option = {
         name = rw_favor_service.accept_gold
-        trigger = { rw_fv_can_accept_gold_trigger = yes }
+        trigger = { rw_fv_can_accept_gold_trigger = yes NOT = { rw_fd_deferred_trigger = yes } }
         rw_fv_settle_effect = yes
         ai_chance = { base = 50 modifier = { factor = 2 has_trait = greedy } }
     }
@@ -61,6 +77,30 @@ rw_favor_service.0001 = {
         trigger = { rw_fv_can_close_trigger = yes }
         rw_fv_close_effect = yes
         ai_chance = { base = 30 }
+    }
+    option = {
+        name = rw_deferred_favor.accept
+        trigger = { rw_fd_can_accept_trigger = yes }
+        rw_fd_accept_effect = yes
+        ai_chance = { base = 40 modifier = { factor = 0.5 has_trait = cynical } }
+    }
+    option = {
+        name = rw_deferred_favor.perform
+        trigger = { rw_fd_can_perform_trigger = yes }
+        rw_fd_perform_effect = yes
+        ai_chance = { base = 70 modifier = { factor = 2 has_trait = honest } }
+    }
+    option = {
+        name = rw_deferred_favor.renounce
+        trigger = { rw_fd_can_renounce_trigger = yes }
+        rw_fd_renounce_effect = yes
+        ai_chance = { base = 5 modifier = { factor = 0.2 has_trait = honest } modifier = { factor = 2 has_trait = deceitful } }
+    }
+    option = {
+        name = rw_deferred_favor.withdraw
+        trigger = { rw_fd_can_withdraw_trigger = yes }
+        rw_fd_withdraw_effect = yes
+        ai_chance = { base = 5 }
     }
     option = { name = rw_favor_service.leave ai_chance = { base = 30 } }
 }

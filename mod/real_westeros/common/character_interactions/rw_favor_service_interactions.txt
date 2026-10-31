@@ -9,7 +9,7 @@ rw_offer_favor_endorsement_interaction = {
     }
     is_valid_showing_failures_only = { rw_fv_can_offer_trigger = yes }
     # Native auto-accept opens an explicit offer; it grants no favor or prestige.
-    on_accept = { rw_fv_begin_effect = yes }
+    on_accept = { rw_fv_begin_effect = { MODE = immediate } }
     ai_potential = { scope:actor = { rw_service_provider_available_trigger = yes is_imprisoned = no } }
     ai_targets = { ai_recipients = liege }
     ai_frequency = 12
@@ -26,4 +26,23 @@ rw_review_favor_endorsement_interaction = {
     is_shown = { rw_fv_review_allowed_trigger = yes }
     on_accept = { rw_fv_review_effect = yes }
     ai_will_do = { base = 0 }
+}
+
+# Explicit deferred mode is a distinct choice for AI and player.
+rw_offer_deferred_favor_endorsement_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_offer_deferred_favor_endorsement_interaction_desc
+    auto_accept = yes
+    is_shown = {
+        scope:actor = { is_landed = yes }
+        scope:recipient = { is_landed = yes }
+        NOT = { scope:actor = scope:recipient }
+    }
+    is_valid_showing_failures_only = { rw_fv_can_offer_trigger = yes }
+    # Native auto-accept opens an explicit offer; it grants no favor or prestige.
+    on_accept = { rw_fv_begin_effect = { MODE = deferred } }
+    ai_potential = { scope:actor = { rw_service_provider_available_trigger = yes is_imprisoned = no } }
+    ai_targets = { ai_recipients = liege }
+    ai_frequency = 12
+    ai_will_do = { base = 3 modifier = { factor = 2 has_trait = ambitious } }
 }

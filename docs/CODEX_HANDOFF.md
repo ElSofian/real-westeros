@@ -158,6 +158,15 @@ thirty-day window, one-day counter replies and bounded liege AI use the same gua
 Three selected source hashes verify APIs, not hook-type/lifecycle or engine behavior.
 Native strength/duration/use remain native; no hook spending, native action send,
 war/law bypass, inherited service promise or partial-effect retry is added.
+Deferred favor-backed support now exists in RW010_DEFERRED_FAVOR.md: explicit
+new mode and stored original provider bind current consent; no consideration moves
+at acceptance. Seven-day minimum/thirty-day due window, fixed day-8/day-22 provider
+opportunities, fresh native favor/funds performance checks and explicit client
+withdrawal/provider renunciation are separate. Original day-31 owner-only callback
+closes expired orphaned duties neutrally; 32-day slot expiry prevents indefinite
+blocking without extending performance. Immediate settlement rejects deferred mode;
+legacy missing mode stays immediate only. Existing latest-private review/provider
+pool is reused, without old financial ticket flags or recurring reminder chains.
 Next other structured consideration and service/obligation types across the systems. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;

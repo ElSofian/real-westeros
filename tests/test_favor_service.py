@@ -103,7 +103,7 @@ class FavorServiceTests(unittest.TestCase):
             self.assertIn('unavailable or wrong initiating parties',self.errors(t=self.t.replace(g,'always = yes')))
         begin=block(self.e,'rw_fv_begin_effect')
         self.assertNotRegex(begin,r'\b(add_gold|add_hook|add_prestige)\s*=')
-        self.assertIn('on_accept = { rw_fv_begin_effect = yes }',self.i)
+        self.assertIn('on_accept = { rw_fv_begin_effect = { MODE = immediate } }',self.i)
 
     def test_ticket_binds_original_provider_client_serial_revision_and_consideration(self):
         for g in ('exists = scope:rw_fv_serial','exists = scope:rw_fv_revision','var:rw_fv_schema = 1',
@@ -188,7 +188,7 @@ class FavorServiceTests(unittest.TestCase):
         self.assertIn('limit = { rw_fv_review_allowed_trigger = yes }',review)
         self.assertNotRegex(review+block(self.e,'rw_fv_snapshot_effect'),r'\b(set_variable|add_character_flag|add_gold|add_hook|add_prestige)\s*=')
         self.assertIn('is_shown = { rw_fv_review_allowed_trigger = yes }',self.i)
-        self.assertNotIn('immediate',self.v)
+        self.assertNotRegex(clean_script(self.v)[0],r'\bimmediate\s*=')
 
     def test_existing_native_hook_types_use_expiry_and_war_laws_are_not_replaced(self):
         for command in ('remove_hook = {}','use_hook = {}','run_interaction = {}','change_title_holder = root','every_living_character = {}'):
@@ -224,5 +224,7 @@ class FavorServiceTests(unittest.TestCase):
         for lang in ('english','french'):
             p=MOD/f'localization/{lang}/rw_favor_service_l_{lang}.yml'
             self.assertTrue(p.read_bytes().startswith(b'\xef\xbb\xbf'))
-            actual=set(re.findall(r'^\s+([\w.]+):0',p.read_text(encoding='utf-8-sig'),re.M))
+            actual=set()
+            for locale in (MOD/f'localization/{lang}').glob('*.yml'):
+                actual.update(re.findall(r'^\s+([\w.]+):0',locale.read_text(encoding='utf-8-sig'),re.M))
             self.assertTrue(keys<=actual,keys-actual)

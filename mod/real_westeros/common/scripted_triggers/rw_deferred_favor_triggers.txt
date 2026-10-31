@@ -1,0 +1,61 @@
+# Legacy mode-less tickets are immediate only, never inferred deferred duties.
+rw_fv_mode_matches_trigger = {
+    exists = scope:rw_fv_mode
+    OR = { scope:rw_fv_mode = flag:immediate scope:rw_fv_mode = flag:deferred }
+    scope:rw_fv_provider = {
+        trigger_if = {
+            limit = { has_variable = rw_fv_mode }
+            var:rw_fv_mode = scope:rw_fv_mode
+            var:rw_fv_provider = scope:rw_fv_provider
+        }
+        trigger_else = { scope:rw_fv_mode = flag:immediate }
+    }
+}
+rw_fd_deferred_trigger = { scope:rw_fv_mode = flag:deferred }
+rw_fd_can_accept_trigger = {
+    rw_fd_deferred_trigger = yes
+    OR = { rw_fv_can_accept_favor_trigger = yes rw_fv_can_accept_gold_trigger = yes }
+}
+# Owner-only immutable identity can retire an expired orphan, never pay or create a hook.
+rw_fd_owner_matches_trigger = {
+    exists = scope:rw_fv_provider
+    exists = scope:rw_fv_serial
+    exists = scope:rw_fv_revision
+    exists = scope:rw_fv_term
+    exists = scope:rw_fv_mode
+    scope:rw_fv_mode = flag:deferred
+    scope:rw_fv_provider = {
+        var:rw_fv_schema = 1
+        var:rw_fv_provider = scope:rw_fv_provider
+        var:rw_fv_serial = scope:rw_fv_serial
+        var:rw_fv_revision = scope:rw_fv_revision
+        var:rw_fv_term = scope:rw_fv_term
+        var:rw_fv_mode = flag:deferred
+        var:rw_fv_state = flag:promised
+        has_variable = rw_fd_accepted_on
+        has_character_flag = rw_fv_obligation
+    }
+}
+rw_fd_pending_trigger = {
+    rw_fv_view_trigger = yes
+    rw_fd_owner_matches_trigger = yes
+}
+rw_fd_due_trigger = {
+    rw_fd_pending_trigger = yes
+    scope:rw_fv_provider = { has_character_flag = rw_fd_due NOT = { has_character_flag = rw_fd_not_due } }
+}
+rw_fd_can_perform_trigger = {
+    rw_fd_due_trigger = yes
+    this = scope:rw_fv_provider
+    scope:rw_fv_provider = { rw_service_party_eligible_trigger = yes is_imprisoned = no }
+    scope:rw_fv_client = { rw_service_party_eligible_trigger = yes is_imprisoned = no }
+    OR = {
+        AND = {
+            scope:rw_fv_term = flag:favor
+            rw_fv_favor_available_trigger = { PROVIDER = scope:rw_fv_provider CLIENT = scope:rw_fv_client }
+        }
+        AND = { scope:rw_fv_term = flag:gold25 scope:rw_fv_client = { gold >= 25 } }
+    }
+}
+rw_fd_can_renounce_trigger = { rw_fd_pending_trigger = yes this = scope:rw_fv_provider }
+rw_fd_can_withdraw_trigger = { rw_fd_pending_trigger = yes this = scope:rw_fv_client }

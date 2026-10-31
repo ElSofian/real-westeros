@@ -84,6 +84,15 @@ readers/panels become inert. No complete archive or dynastic transfer is promise
 Death/reference loss disables performance; no scripted obligation transfers to an
 heir. Actual native hook lifecycle remains the native type's responsibility.
 
+## Separate deferred-mode extension
+
+RW010_DEFERRED_FAVOR.md now adds a distinct personal promise interaction. New
+records bind explicit original provider/mode; legacy missing-mode rows are treated
+as immediate only, with no inferred future duty. Immediate acceptance keeps its
+existing effects and explicitly excludes deferred tickets. Shared availability
+also blocks active deferred favor obligations. Deferred consent, later execution,
+withdrawal/renunciation and neutral cleanup are described separately there.
+
 ## AI, checks and final campaign
 
 AI/player share every effect and execution guard. Bounded liege targeting and

@@ -18,6 +18,7 @@ rw_fv_view_trigger = {
     exists = scope:rw_fv_serial
     exists = scope:rw_fv_revision
     exists = scope:rw_fv_term
+    rw_fv_mode_matches_trigger = yes
     is_alive = yes
     OR = { this = scope:rw_fv_provider this = scope:rw_fv_client }
     NOT = { scope:rw_fv_provider = scope:rw_fv_client }
@@ -29,8 +30,13 @@ rw_fv_view_trigger = {
         var:rw_fv_term = scope:rw_fv_term
         has_variable = rw_fv_issued_on
         OR = { var:rw_fv_term = flag:favor var:rw_fv_term = flag:gold25 }
-        OR = { var:rw_fv_state = flag:offered var:rw_fv_state = flag:closed var:rw_fv_state = flag:fulfilled }
-        trigger_if = { limit = { NOT = { var:rw_fv_state = flag:offered } } has_variable = rw_fv_finished_on }
+        OR = {
+            var:rw_fv_state = flag:offered var:rw_fv_state = flag:closed var:rw_fv_state = flag:fulfilled
+            var:rw_fv_state = flag:promised var:rw_fv_state = flag:provider_renounced
+            var:rw_fv_state = flag:client_withdrew var:rw_fv_state = flag:unresolved
+        }
+        trigger_if = { limit = { NOR = { var:rw_fv_state = flag:offered var:rw_fv_state = flag:promised } } has_variable = rw_fv_finished_on }
+        trigger_if = { limit = { var:rw_fv_state = flag:promised } has_variable = rw_fd_accepted_on }
     }
 }
 rw_fv_live_trigger = {
@@ -75,6 +81,7 @@ rw_fv_review_allowed_trigger = {
         has_variable = rw_fv_serial
         has_variable = rw_fv_revision
         has_variable = rw_fv_term
+        trigger_if = { limit = { has_variable = rw_fv_mode } var:rw_fv_provider = scope:recipient }
     }
     OR = { scope:actor = scope:recipient scope:actor = scope:recipient.var:rw_fv_client }
 }
