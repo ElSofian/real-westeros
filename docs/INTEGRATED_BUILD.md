@@ -32,6 +32,7 @@ are deferred to the final campaign, not waived. Prefer a disposable fresh save.
 | Personal restitution promises | Explicit 14/30-day offers and bilateral consent; separate deadline, release/renunciation, optional personal response; beneficiary satisfaction is a statement plus ownership, no forced or proven grant |
 | Pledged title observations | Conditional exact native title-gain context for one unique live accepted promise; participant-private first note, no automatic fulfillment or proved grant/cause |
 | Voluntary case compensation | Private 25/50-gold offers/counters for an exact closed service affair; current consent/funds and one payment from provider to client, without pardon or rewritten case facts |
+| Compensation reception | Original beneficiary may appreciate a new paid gesture or acknowledge neutrally within thirty days; private bounded opinion response, no automatic pardon or payment replay |
 | Known-case archive | Independent story records, role/disclosure-filtered views, retained closed records |
 
 All rows describe intended source behavior; none has been observed in CK3 here.

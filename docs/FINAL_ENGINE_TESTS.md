@@ -964,3 +964,38 @@ All unrun. RW010_RESTITUTION_DIALOGUES.md creates discussion, not promised resti
   justice/war/title behavior, EN/FR rendering, event order and performance. Ordered
   script consumption is not crash consistency; probe partial-effect cases safely
   and never automatically replay a payment after a crash or missing confirmation.
+
+
+## Personal response to a new paid compensation (all unrun)
+
+- COMP-REACT-01: settle new 25/50 compensation in both initiation/acceptance directions.
+  Response metadata is created once after both gold calls and before receipt notices,
+  binding exact case, paid revision/amount/date. Cash alone sets no appreciation.
+- COMP-REACT-02: only original beneficiary may appreciate or neutrally acknowledge
+  pending response within thirty days. Wrong payer/client/case/revision/amount/date,
+  mediator, successor, ended/expired parent or dead payer cannot authorize a response.
+- COMP-REACT-03: appreciate consumes response before +5 opinion/two years and payer
+  notice. Double click, replay, read/reload and old receipt cannot renew a choice,
+  pay again or add a second modifier. Missing schema/date/receipt fields fail closed.
+- COMP-REACT-04: pay another distinct case while the same pair modifier exists.
+  Beneficiary may record appreciation but its value/expiry neither stacks nor
+  refreshes. After actual natural expiry, a later new eligible response may add it.
+- COMP-REACT-05: neutral acknowledgment records statement/date with no benefit,
+  penalty, refund, legal reason, erased resentment or accepted apology. Paid amounts,
+  case result/evidence, current service terms and original personal grudge stay.
+- COMP-REACT-06: leave undecided, let thirty days lapse or kill beneficiary. No
+  automatic gratitude/refusal/blame; unavailable status is explicit. Old paid records
+  without metadata get no backfill window and no inference of personal consent.
+- COMP-REACT-07: after payment change rank, funds, war or detention. Personal response
+  is separate from financial-transfer eligibility and current judicial authority;
+  living exact original parties may still record it without paying or reopening.
+- COMP-REACT-08: original payer alone receives the new response notice. Original
+  financial parties can read private history; mediator/house/crown/heirs cannot
+  discover it through case history or inherit personal consent/opinion effects.
+- COMP-REACT-09: save/reload all response states and test original parent retention,
+  provider death and cleanup. No timer/index/story/new native hook, renewed retention
+  or global scan. Do not retry/refund money after missing response/partial effects.
+- COMP-REACT-10: compare AI/player receipt choices, trait/existing-opinion weights,
+  native opinion expiry, EN/FR rendering, same-tick callback order and AGOT-only
+  baseline. Economic/political balance, privacy/persistence and performance remain
+  engine-unverified; no service, bank, title, native justice or war is replayed.

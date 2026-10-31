@@ -85,6 +85,9 @@ rw_cc_settle_effect = {
         }
         scope:rw_service_provider = { add_gold = { value = scope:rw_cc_price multiply = -1 } }
         scope:rw_service_client = { add_gold = scope:rw_cc_price }
+        scope:rw_case_record = { save_scope_as = rw_cp_fresh_payment }
+        rw_cp_begin_effect = yes
+        clear_saved_scope = rw_cp_fresh_payment
         rw_cc_notify_effect = yes
     }
 }

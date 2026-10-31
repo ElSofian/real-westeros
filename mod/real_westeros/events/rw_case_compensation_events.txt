@@ -22,6 +22,18 @@ rw_case_compensation.0001 = {
                         triggered_desc = { trigger = { scope:rw_case_record = { var:rw_cc_state = flag:closed } } desc = rw_case_compensation.closed }
                         desc = rw_case_compensation.inactive
                     }
+                    triggered_desc = {
+                        trigger = { scope:rw_case_record = { var:rw_cc_state = flag:paid } }
+                        desc = {
+                            first_valid = {
+                                triggered_desc = { trigger = { rw_cp_view_trigger = yes scope:rw_case_record = { var:rw_cp_state = flag:appreciated } } desc = rw_compensation_response.appreciated }
+                                triggered_desc = { trigger = { rw_cp_view_trigger = yes scope:rw_case_record = { var:rw_cp_state = flag:noted } } desc = rw_compensation_response.noted }
+                                triggered_desc = { trigger = { rw_cp_view_trigger = yes scope:rw_service_client = { is_alive = yes } scope:rw_service_provider = { is_alive = yes } scope:rw_case_record = { has_variable = rw_cp_window } } desc = rw_compensation_response.pending }
+                                triggered_desc = { trigger = { rw_cp_view_trigger = yes } desc = rw_compensation_response.unanswered }
+                                desc = rw_compensation_response.unknown
+                            }
+                        }
+                    }
                     desc = rw_case_compensation.boundaries
                 }
             }
@@ -75,7 +87,24 @@ rw_case_compensation.0001 = {
         rw_cc_close_effect = yes
         ai_chance = { base = 10 }
     }
-    option = { name = rw_cases.acknowledge ai_chance = { base = 50 } }
+    option = {
+        name = rw_compensation_response.appreciate
+        trigger = { rw_cp_can_respond_trigger = yes }
+        rw_cp_appreciate_effect = yes
+        ai_chance = {
+            base = 50
+            modifier = { factor = 2 has_trait = forgiving }
+            modifier = { factor = 0.5 has_trait = vengeful }
+            modifier = { factor = 0.5 opinion = { target = scope:rw_service_provider value < -25 } }
+        }
+    }
+    option = {
+        name = rw_compensation_response.note
+        trigger = { rw_cp_can_respond_trigger = yes }
+        rw_cp_note_effect = yes
+        ai_chance = { base = 50 modifier = { factor = 2 has_trait = vengeful } }
+    }
+    option = { name = rw_case_compensation.leave ai_chance = { base = 50 } }
 }
 
 # Fresh navigation only. Saved versioned replies never execute this refresh path.

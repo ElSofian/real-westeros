@@ -17,3 +17,4 @@
  rw_case_compensation.counter:0 "Proposer l’autre montant : 25 pièces d’or au lieu de 50, ou 50 au lieu de 25."
  rw_case_compensation.close:0 "Clore cette offre sans paiement ni malus."
  rw_case_compensation.unfunded:0 "Le prestataire ne peut actuellement pas payer ce montant. L’offre ne peut pas être acceptée maintenant ; une contre-offre inférieure ou la clôture restent possibles si les autres conditions le permettent."
+ rw_case_compensation.leave:0 "Quitter sans prendre de nouvelle décision."

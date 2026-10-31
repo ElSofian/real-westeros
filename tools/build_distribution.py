@@ -26,7 +26,7 @@ DOCS = ('README.md', 'docs/INSTALL.md', 'docs/INTEGRATED_BUILD.md',
         'docs/RW010_DELIVERY_TERMS.md', 'docs/RW010_PRICE_AMENDMENTS.md',
         'docs/RW010_CASE_SERVICE_TERMS.md', 'docs/RW010_RESTITUTION_PLEDGES.md',
         'docs/RW010_PLEDGED_TITLE_OBSERVATIONS.md', 'docs/RESTITUTION_TRANSFER_SOURCE_RECEIPT.json',
-        'docs/RW010_CASE_COMPENSATION.md')
+        'docs/RW010_CASE_COMPENSATION.md', 'docs/RW010_COMPENSATION_RESPONSE.md')
 PREFIX = 'mod/real_westeros/'
 G3_ROOT = 'diagnostics/g3_house_trace/mod/'
 G3_FILES = tuple(G3_ROOT + name for name in (

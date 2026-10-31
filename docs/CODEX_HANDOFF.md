@@ -141,6 +141,13 @@ two original parties see this separate financial dialogue; the mediator does not
 Archive navigation is read-only; fresh review snapshots current terms separately
 from old reply events, which never refresh consent on load. Existing result notices
 supply shared bounded AI/player opportunities; no new hook/index/polling or escrow.
+Personal paid-compensation responses now exist in RW010_COMPENSATION_RESPONSE.md:
+a fresh same-call payment token creates one thirty-day window only after both gold
+effects and before notices. Exact paid amount/revision/date and original beneficiary
+guard appreciation (+5 opinion/two years only if absent, never stacked/refreshed)
+or neutral acknowledgment. Payment itself creates no personal consent; old/missing
+metadata is never backfilled. Private payer notice follows consumption; no mediator,
+heir, money replay, automatic pardon, erased resentment or renewed case retention.
 Next other structured consideration and service/obligation types across the systems. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;

@@ -1,0 +1,9 @@
+﻿l_french:
+ rw_compensation_appreciated_opinion:0 "Geste financier volontaire apprécié"
+ rw_compensation_response.pending:0 "Le bénéficiaire initial dispose de trente jours après ce nouveau paiement pour apprécier le geste financier ou en prendre acte sans rapprochement. Lui seul décide ; recevoir de l’argent ne vaut ni réponse ni pardon. Le silence ne change rien."
+ rw_compensation_response.appreciated:0 "Le bénéficiaire a choisi d’apprécier ce geste financier. Cette réponse proposait un avantage personnel d’opinion limité ; elle n’effaçait pas la rancœur existante, n’acceptait pas des excuses et n’accordait aucun pardon. Ce relevé conserve un choix passé et ne renouvelle ni ne garantit un modificateur encore actif."
+ rw_compensation_response.noted:0 "Le bénéficiaire a pris acte du paiement sans démarche de rapprochement. Aucun nouvel avantage d’opinion ni malus n’en a découlé ; l’argent et les faits initiaux restent inchangés."
+ rw_compensation_response.unanswered:0 "Aucune réponse personnelle n’est conservée et la fenêtre de réponse n’est plus disponible. L’absence de réponse ne signifie ni appréciation ni refus et ne crée aucun nouveau malus."
+ rw_compensation_response.unknown:0 "Aucun relevé valide de réponse personnelle n’existe pour ce paiement. Un reçu ne prouve pas un rapprochement ; un ancien reçu ne peut pas ouvrir une nouvelle fenêtre de réponse."
+ rw_compensation_response.appreciate:0 "Apprécier ce geste : mon opinion +5 pendant deux ans si absente, sans cumul ni renouvellement ; aucun pardon."
+ rw_compensation_response.note:0 "Prendre acte du paiement sans rapprochement, avantage ou malus."

@@ -17,3 +17,4 @@
  rw_case_compensation.counter:0 "Counter with the other amount: 25 instead of 50, or 50 instead of 25 gold."
  rw_case_compensation.close:0 "Close this offer without payment or penalty."
  rw_case_compensation.unfunded:0 "The provider cannot currently pay this amount. It cannot be accepted now; a lower counteroffer or closing remains possible while the other conditions permit."
+ rw_case_compensation.leave:0 "Leave without making another decision."
