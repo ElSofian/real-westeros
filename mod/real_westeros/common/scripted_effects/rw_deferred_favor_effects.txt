@@ -1,0 +1,82 @@
+# Both current parties consent to deferred terms; no native consideration now.
+rw_fd_accept_effect = {
+    if = {
+        limit = { rw_fd_can_accept_trigger = yes }
+        scope:rw_fv_provider = {
+            remove_character_flag = rw_fv_pending
+            remove_variable = rw_fv_turn
+            change_variable = { name = rw_fv_revision add = 1 }
+            set_variable = { name = rw_fd_accepted_on value = current_date }
+            set_variable = { name = rw_fv_state value = flag:promised }
+            # Long-stop slot expiry is not permission to perform beyond day thirty.
+            add_character_flag = { flag = rw_fv_obligation days = 32 }
+            add_character_flag = { flag = rw_fd_not_due days = 7 }
+            add_character_flag = { flag = rw_fd_due days = 30 }
+        }
+        rw_fv_snapshot_effect = yes
+        scope:rw_fv_provider = {
+            # Two fixed opportunities, not a recurring/manual reminder chain.
+            trigger_event = { id = rw_deferred_favor.0002 days = 8 }
+            trigger_event = { id = rw_deferred_favor.0002 days = 22 }
+            trigger_event = { id = rw_deferred_favor.0003 days = 31 }
+        }
+        rw_fv_notify_effect = yes
+    }
+}
+# Internal terminal helper. Public callers separately guard performer/withdrawer/timer.
+rw_fd_finish_effect = {
+    if = {
+        limit = { rw_fd_owner_matches_trigger = yes }
+        scope:rw_fv_provider = {
+            remove_character_flag = rw_fv_obligation
+            remove_character_flag = rw_fd_due
+            remove_character_flag = rw_fd_not_due
+            set_variable = { name = rw_fv_finished_on value = current_date }
+            set_variable = { name = rw_fv_state value = flag:$RESULT$ }
+        }
+    }
+}
+rw_fd_perform_effect = {
+    if = {
+        limit = { rw_fd_can_perform_trigger = yes }
+        rw_fd_finish_effect = { RESULT = fulfilled }
+        # Preserve native eligibility and consume before the one selected effect branch.
+        if = {
+            limit = { scope:rw_fv_term = flag:favor }
+            scope:rw_fv_provider = { add_hook = { type = favor_hook target = scope:rw_fv_client } }
+        }
+        else = {
+            scope:rw_fv_client = { add_gold = -25 }
+            scope:rw_fv_provider = { add_gold = 25 }
+        }
+        scope:rw_fv_client = { add_prestige = 50 }
+        rw_fv_notify_effect = yes
+    }
+}
+rw_fd_renounce_effect = {
+    if = {
+        limit = { rw_fd_can_renounce_trigger = yes }
+        rw_fd_finish_effect = { RESULT = provider_renounced }
+        rw_fv_notify_effect = yes
+    }
+}
+rw_fd_withdraw_effect = {
+    if = {
+        limit = { rw_fd_can_withdraw_trigger = yes }
+        rw_fd_finish_effect = { RESULT = client_withdrew }
+        rw_fv_notify_effect = yes
+    }
+}
+# Only the original provider/accepted identity after real expiry can release the slot.
+rw_fd_timeout_effect = {
+    if = {
+        limit = {
+            rw_fd_owner_matches_trigger = yes
+            this = scope:rw_fv_provider
+            scope:rw_fv_provider = { NOT = { has_character_flag = rw_fd_due } }
+        }
+        rw_fd_finish_effect = { RESULT = unresolved }
+        # A purged client needs neutral owner cleanup, not an invalid-scope popup.
+        if = { limit = { rw_fv_view_trigger = yes } rw_fv_notify_effect = yes }
+    }
+}

@@ -1044,3 +1044,46 @@ All unrun. RW010_RESTITUTION_DIALOGUES.md creates discussion, not promised resti
   debts, native favor uses/law/war restrictions and institutions. No automatic hook
   spend, sent interaction, realm-law change, title/war operation or new callback
   should occur. Record actual timing, EN/FR logs, save growth and performance.
+
+
+## Deferred native-favor or agreed-gold support (all unrun)
+
+- DFAVOR-01: choose distinct immediate/deferred interactions, negotiate favor/25-gold
+  terms and accept exact current responder/version. Deferred consent moves no hook,
+  gold or prestige, invalidates quote panels and schedules accepted identity only.
+- DFAVOR-02: immediate offers still perform immediately and cannot spend a deferred
+  quote. Legacy mode-less rows reopen as immediate only; old panels without captured
+  mode stay inert. Copied new-mode records cannot replace the stored original provider.
+- DFAVOR-03: before seven days no provider performance; after minimum and before
+  thirty-day due expiry perform one agreed branch and client +50 prestige. Duplicate
+  clicks/replies, client-as-performer and other mode/serial/revision/term cannot pay.
+- DFAVOR-04: acquire another native hook between consent/performance; detected hook
+  is never replaced/refreshed. Native can_add_hook failure blocks favor performance.
+  Later insolvency blocks gold performance. Neither silently switches consideration.
+- DFAVOR-05: original provider may renounce and original client may withdraw before
+  performance, including war/detention/poverty/capacity loss. No payment, hook
+  removal, debt, refund, penalty or inherited guilt. Old opportunities become inert.
+- DFAVOR-06: exactly two provider opportunities at day eight/twenty-two, with active
+  due guard and identical AI/player decisions. Leave/review repeatedly: no new timer,
+  extended due marker or recursive decision chain. Native favor/gold terms stay fixed.
+- DFAVOR-07: original day-thirty-one callback needs actual expiry, original provider,
+  accepted mode/serial/revision/term and slot. Early/stale/wrong-owner/newer-ticket
+  callbacks cannot clear it. Expiry is neutral unresolved, not a crime or blame.
+- DFAVOR-08: purge/kill client or lose their reference: no transfer to substitute/heir;
+  owner-only expiry still releases valid original slot without requiring full client
+  view or sending invalid-scope notices. Provider death authorizes no successor.
+- DFAVOR-09: suppress timeout in a disposable test save: technical slot long-stop
+  expires at thirty-two days and cannot block future availability forever. It grants
+  no extra performance time beyond the separate thirty-day due flag. History may
+  remain promised metadata but displays expired/unresolved without inferring blame.
+- DFAVOR-10: immediate favor, monetary immediate/deferred and deferred-favor pools
+  share availability/cooldown without reviving original financial pending/obligation/
+  serial/target flags. Terminal paths clear only their exact own accepted slot.
+- DFAVOR-11: save/reload mode, accepted revision, minimum/due/long-stop flags, both
+  fixed decisions, withdrawal/renunciation/unresolved/fulfilled states; inspect
+  exact participant privacy, late callbacks and native effect order. No automatic
+  retry after interruption or claim of atomic hook/gold/prestige exchange.
+- DFAVOR-12: compare actual AI native favor willingness, economy, old-hook semantics,
+  bank debt/inheritance, law/war/title behavior, EN/FR, timing/flag expiry and AGOT-only
+  baseline/performance. No extra native hook type, forced hook spend, on_action,
+  global scan, inherited scripted service or automatic sanction is added.

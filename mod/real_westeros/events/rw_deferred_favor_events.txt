@@ -1,0 +1,18 @@
+namespace = rw_deferred_favor
+
+# An obsolete/early/terminal opportunity never opens a new decision chain.
+rw_deferred_favor.0002 = {
+    type = character_event
+    hidden = yes
+    immediate = {
+        if = {
+            limit = { rw_fd_due_trigger = yes this = scope:rw_fv_provider }
+            trigger_event = { id = rw_favor_service.0001 }
+        }
+    }
+}
+rw_deferred_favor.0003 = {
+    type = character_event
+    hidden = yes
+    immediate = { rw_fd_timeout_effect = yes }
+}
