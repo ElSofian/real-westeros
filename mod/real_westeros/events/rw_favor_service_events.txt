@@ -1,0 +1,66 @@
+namespace = rw_favor_service
+
+rw_favor_service.0001 = {
+    type = character_event
+    title = rw_favor_service.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_fv_view_trigger = yes }
+                desc = {
+                    desc = rw_favor_service.parties
+                    triggered_desc = { trigger = { scope:rw_fv_term = flag:favor } desc = rw_favor_service.favor_terms }
+                    triggered_desc = { trigger = { scope:rw_fv_term = flag:gold25 } desc = rw_favor_service.gold_terms }
+                    first_valid = {
+                        triggered_desc = { trigger = { scope:rw_fv_provider = { var:rw_fv_state = flag:fulfilled } } desc = rw_favor_service.fulfilled }
+                        triggered_desc = { trigger = { scope:rw_fv_provider = { var:rw_fv_state = flag:closed } } desc = rw_favor_service.closed }
+                        triggered_desc = { trigger = { rw_fv_live_trigger = yes } desc = rw_favor_service.offered }
+                        desc = rw_favor_service.inactive
+                    }
+                    triggered_desc = {
+                        trigger = { rw_fv_client_turn_trigger = yes NOT = { rw_fv_can_accept_favor_trigger = yes } }
+                        desc = rw_favor_service.favor_unavailable
+                    }
+                    triggered_desc = {
+                        trigger = { rw_fv_provider_turn_trigger = yes scope:rw_fv_client = { gold < 25 } }
+                        desc = rw_favor_service.unfunded
+                    }
+                    desc = rw_favor_service.boundaries
+                }
+            }
+            desc = rw_favor_service.unavailable
+        }
+    }
+    theme = diplomacy
+    option = {
+        name = rw_favor_service.accept_favor
+        trigger = { rw_fv_can_accept_favor_trigger = yes }
+        rw_fv_settle_effect = yes
+        ai_chance = { base = 20 modifier = { factor = 2 has_trait = trusting } modifier = { factor = 0.2 has_trait = paranoid } }
+    }
+    option = {
+        name = rw_favor_service.counter_gold
+        trigger = { rw_fv_client_turn_trigger = yes }
+        rw_fv_counter_gold_effect = yes
+        ai_chance = { base = 40 modifier = { factor = 0.2 gold < 25 } }
+    }
+    option = {
+        name = rw_favor_service.accept_gold
+        trigger = { rw_fv_can_accept_gold_trigger = yes }
+        rw_fv_settle_effect = yes
+        ai_chance = { base = 50 modifier = { factor = 2 has_trait = greedy } }
+    }
+    option = {
+        name = rw_favor_service.restate
+        trigger = { rw_fv_can_restate_trigger = yes }
+        rw_fv_restate_effect = yes
+        ai_chance = { base = 15 modifier = { factor = 2 has_trait = ambitious } }
+    }
+    option = {
+        name = rw_favor_service.close
+        trigger = { rw_fv_can_close_trigger = yes }
+        rw_fv_close_effect = yes
+        ai_chance = { base = 30 }
+    }
+    option = { name = rw_favor_service.leave ai_chance = { base = 30 } }
+}
