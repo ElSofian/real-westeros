@@ -1087,3 +1087,16 @@ All unrun. RW010_RESTITUTION_DIALOGUES.md creates discussion, not promised resti
   bank debt/inheritance, law/war/title behavior, EN/FR, timing/flag expiry and AGOT-only
   baseline/performance. No extra native hook type, forced hook spend, on_action,
   global scan, inherited scripted service or automatic sanction is added.
+
+## Deferred support renunciation responses (all unrun)
+
+| ID | Final campaign scenario | Expected observation, not demonstrated |
+|---|---|---|
+| FREN-01 | Accept deferred favor/gold terms, then provider explicitly renounces | Closed unperformed promise; original client receives a fixed thirty-day personal choice, with no hook/gold/prestige exchange |
+| FREN-02 | Client chooses resentment; replay same popup and fresh review | One −15 opinion/two-year modifier; one response/date/provider notice; replay cannot choose again |
+| FREN-03 | New later promise is explicitly renounced while pair's modifier remains active | New personal choice is possible, but resentment neither stacks nor renews existing modifier; other grievances stay intact |
+| FREN-04 | Client takes note, or waits past day thirty | Neutral statement or expired silence respectively; no opinion removal/addition, pardon or new legal fact |
+| FREN-05 | Timeout, client withdrawal, offer closure, actual performance, or pre-update renunciation | No response opportunity created or retrospectively backfilled; no payment/hook replay |
+| FREN-06 | Save/load before and after response; reopen an older panel after a new serial/revision/mode/term | Exact terminal-date and ticket matching; no renewed window, stale response or changed newer record |
+| FREN-07 | Client/provider death, copied successor data, unrelated actor or mediator | No inherited personal response, leaked private notice or actor substitution; original identity guards apply |
+| FREN-08 | AI↔AI and AI↔player, including imprisonment/poverty/war after renunciation | Same personal response guards/costs; ordinary incapacity does not prevent taking note; no new scan/reminder spam or native-state change |

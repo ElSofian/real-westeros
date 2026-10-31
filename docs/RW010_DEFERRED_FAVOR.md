@@ -94,3 +94,9 @@ scheduling, flag expiry, date/scalar snapshots, native effects, save/load, AI/ec
 and performance remain unverified until the owner's final campaign. No paid service,
 runtime Python/LLM, new file upload or intermediate CK3 run is requested. Next wider
 service/consideration types and contextual consequences with explicit personal consent.
+
+## Optional personal consequence extension
+
+RW010_FAVOR_RENUNCIATION.md adds a separate fresh original-client choice after
+explicit renunciation: neutral acknowledgment or limited personal rancour, never
+an automatic penalty. Old rows, silence, timeout and client withdrawal stay neutral.

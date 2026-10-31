@@ -57,6 +57,9 @@ rw_fd_renounce_effect = {
     if = {
         limit = { rw_fd_can_renounce_trigger = yes }
         rw_fd_finish_effect = { RESULT = provider_renounced }
+        save_scope_as = rw_fr_fresh_renunciation
+        rw_fr_begin_effect = yes
+        clear_saved_scope = rw_fr_fresh_renunciation
         rw_fv_notify_effect = yes
     }
 }
