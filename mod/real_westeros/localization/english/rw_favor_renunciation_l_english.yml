@@ -1,0 +1,8 @@
+﻿l_english:
+ rw_favor_renounced_opinion:0 "Renounced a promise of support"
+ rw_favor_renunciation.pending:0 "After this explicit renunciation, the original client may personally resent the provider or take note without a new grievance. This choice remains open for thirty days from renunciation. Silence creates no reaction or legal judgment."
+ rw_favor_renunciation.resented:0 "The original client chose to resent this explicit renunciation. Their opinion falls by 15 for two years if this grievance is not already active between them; an existing grievance is neither stacked nor renewed. No payment, native hook or legal fact is changed."
+ rw_favor_renunciation.noted:0 "The original client took note without adding a grievance. Existing opinions and legal facts remain unchanged; this does not erase the provider’s renunciation or forgive another affair."
+ rw_favor_renunciation.expired:0 "The original thirty-day response window has ended without a recorded personal choice. Silence is neither consent nor resentment. Consultation cannot reopen it."
+ rw_favor_renunciation.resent:0 "Resent this renunciation: −15 opinion for two years, only if this grievance is absent."
+ rw_favor_renunciation.note:0 "Take note without adding a grievance or erasing other disputes."

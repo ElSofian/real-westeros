@@ -1,0 +1,8 @@
+﻿l_french:
+ rw_favor_renounced_opinion:0 "A renié sa promesse de soutien"
+ rw_favor_renunciation.pending:0 "Après ce reniement explicite, le client initial peut personnellement en vouloir au prestataire ou en prendre acte sans nouvelle rancune. Ce choix reste ouvert pendant trente jours depuis le reniement. Le silence ne crée ni réaction ni jugement juridique."
+ rw_favor_renunciation.resented:0 "Le client initial a choisi de garder rancune de ce reniement explicite. Son opinion baisse de 15 pendant deux ans si cette rancœur n’est pas déjà active entre eux ; une rancœur existante n’est ni cumulée ni prolongée. Aucun paiement, hook natif ou fait juridique ne change."
+ rw_favor_renunciation.noted:0 "Le client initial en a pris acte sans ajouter de rancune. Les opinions et faits juridiques existants restent inchangés ; cela n’efface ni le reniement du prestataire ni un autre différend."
+ rw_favor_renunciation.expired:0 "Le délai initial de trente jours s’est terminé sans choix personnel conservé. Le silence ne vaut ni consentement ni rancune. Consulter ne peut pas rouvrir ce délai."
+ rw_favor_renunciation.resent:0 "Garder rancune de ce reniement : −15 d’opinion pendant deux ans, seulement si cette rancœur est absente."
+ rw_favor_renunciation.note:0 "En prendre acte sans ajouter de rancune ni effacer les autres différends."

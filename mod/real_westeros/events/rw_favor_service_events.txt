@@ -31,6 +31,17 @@ rw_favor_service.0001 = {
                         trigger = { rw_fv_provider_turn_trigger = yes scope:rw_fv_client = { gold < 25 } }
                         desc = rw_favor_service.unfunded
                     }
+                    triggered_desc = {
+                        trigger = { rw_fr_view_trigger = yes }
+                        desc = {
+                            first_valid = {
+                                triggered_desc = { trigger = { scope:rw_fv_provider = { var:rw_fr_state = flag:resented } } desc = rw_favor_renunciation.resented }
+                                triggered_desc = { trigger = { scope:rw_fv_provider = { var:rw_fr_state = flag:noted } } desc = rw_favor_renunciation.noted }
+                                triggered_desc = { trigger = { scope:rw_fv_provider = { has_variable = rw_fr_window } } desc = rw_favor_renunciation.pending }
+                                desc = rw_favor_renunciation.expired
+                            }
+                        }
+                    }
                     desc = rw_favor_service.boundaries
                     triggered_desc = {
                         trigger = {
@@ -101,6 +112,18 @@ rw_favor_service.0001 = {
         trigger = { rw_fd_can_withdraw_trigger = yes }
         rw_fd_withdraw_effect = yes
         ai_chance = { base = 5 }
+    }
+    option = {
+        name = rw_favor_renunciation.resent
+        trigger = { rw_fr_can_respond_trigger = yes }
+        rw_fr_resent_effect = yes
+        ai_chance = { base = 30 modifier = { factor = 2 has_trait = vengeful } modifier = { factor = 0.2 has_trait = forgiving } }
+    }
+    option = {
+        name = rw_favor_renunciation.note
+        trigger = { rw_fr_can_respond_trigger = yes }
+        rw_fr_note_effect = yes
+        ai_chance = { base = 40 modifier = { factor = 2 has_trait = forgiving } }
     }
     option = { name = rw_favor_service.leave ai_chance = { base = 30 } }
 }

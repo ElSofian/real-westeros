@@ -1,0 +1,57 @@
+# Called only after a fresh explicit renunciation, never on review or timeout.
+rw_fr_begin_effect = {
+    if = {
+        limit = {
+            rw_fv_view_trigger = yes
+            rw_fd_deferred_trigger = yes
+            this = scope:rw_fv_provider
+            exists = scope:rw_fr_fresh_renunciation
+            scope:rw_fr_fresh_renunciation = scope:rw_fv_provider
+            scope:rw_fv_provider = {
+                var:rw_fv_state = flag:provider_renounced
+                NOT = { AND = { has_variable = rw_fr_serial var:rw_fr_serial = scope:rw_fv_serial } }
+            }
+        }
+        scope:rw_fv_provider = {
+            set_variable = { name = rw_fr_serial value = scope:rw_fv_serial }
+            set_variable = { name = rw_fr_revision value = scope:rw_fv_revision }
+            set_variable = { name = rw_fr_term value = scope:rw_fv_term }
+            set_variable = { name = rw_fr_finished_on value = var:rw_fv_finished_on }
+            set_variable = { name = rw_fr_state value = flag:pending }
+            remove_variable = rw_fr_responded_on
+            set_variable = { name = rw_fr_window value = flag:yes days = 30 }
+            set_variable = { name = rw_fr_schema value = 1 }
+        }
+    }
+}
+rw_fr_resent_effect = {
+    if = {
+        limit = { rw_fr_can_respond_trigger = yes }
+        scope:rw_fv_provider = {
+            remove_variable = rw_fr_window
+            set_variable = { name = rw_fr_state value = flag:resented }
+            set_variable = { name = rw_fr_responded_on value = current_date }
+        }
+        # Consume first; a different promise cannot stack or refresh this pair's grudge.
+        if = {
+            limit = { NOT = { has_opinion_modifier = { target = scope:rw_fv_provider modifier = rw_favor_renounced_opinion } } }
+            add_opinion = { target = scope:rw_fv_provider modifier = rw_favor_renounced_opinion }
+        }
+        rw_fr_notify_provider_effect = yes
+    }
+}
+rw_fr_note_effect = {
+    if = {
+        limit = { rw_fr_can_respond_trigger = yes }
+        scope:rw_fv_provider = {
+            remove_variable = rw_fr_window
+            set_variable = { name = rw_fr_state value = flag:noted }
+            set_variable = { name = rw_fr_responded_on value = current_date }
+        }
+        rw_fr_notify_provider_effect = yes
+    }
+}
+# One private notice after an explicit choice; no new scheduling or mediator.
+rw_fr_notify_provider_effect = {
+    scope:rw_fv_provider = { if = { limit = { is_alive = yes } trigger_event = { id = rw_favor_service.0001 } } }
+}

@@ -1,0 +1,24 @@
+# Full current private ticket, explicit renunciation and exact fresh receipt only.
+rw_fr_view_trigger = {
+    rw_fv_view_trigger = yes
+    rw_fd_deferred_trigger = yes
+    scope:rw_fv_provider = {
+        var:rw_fv_state = flag:provider_renounced
+        var:rw_fr_schema = 1
+        var:rw_fr_serial = scope:rw_fv_serial
+        var:rw_fr_revision = scope:rw_fv_revision
+        var:rw_fr_term = scope:rw_fv_term
+        has_variable = rw_fr_finished_on
+        var:rw_fr_finished_on = var:rw_fv_finished_on
+        OR = { var:rw_fr_state = flag:pending var:rw_fr_state = flag:resented var:rw_fr_state = flag:noted }
+        trigger_if = {
+            limit = { NOT = { var:rw_fr_state = flag:pending } }
+            has_variable = rw_fr_responded_on
+        }
+    }
+}
+rw_fr_can_respond_trigger = {
+    rw_fr_view_trigger = yes
+    this = scope:rw_fv_client
+    scope:rw_fv_provider = { is_alive = yes var:rw_fr_state = flag:pending has_variable = rw_fr_window }
+}

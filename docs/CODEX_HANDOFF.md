@@ -167,6 +167,13 @@ closes expired orphaned duties neutrally; 32-day slot expiry prevents indefinite
 blocking without extending performance. Immediate settlement rejects deferred mode;
 legacy missing mode stays immediate only. Existing latest-private review/provider
 pool is reused, without old financial ticket flags or recurring reminder chains.
+Explicit deferred-provider renunciation now offers the original client a separate
+personal response (RW010_FAVOR_RENUNCIATION.md): exact fresh terminal serial/revision/
+term/date and same-call token precede a fixed thirty-day window. Once-only neutral
+acknowledgment or −15 opinion/two years consumes before effect/notice; an existing
+pair modifier never stacks or refreshes. Silence/expiry/client withdrawal/old rows
+create no reaction. Existing private notices offer identical AI/player actions;
+no new native state, reminders, global scan or inherited duty.
 Next other structured consideration and service/obligation types across the systems. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;
