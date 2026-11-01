@@ -1228,3 +1228,11 @@ with the final G4/G5 campaign: direction of decider opinion, current cost/reserv
 commitments, war burden, independent allegations/service cases, player/AI symmetry,
 save/reload, stale/missing/foreign context, native isolation and observed performance.
 Source credit does not clear any runtime gate.
+
+## Native individual arrest requests — J2
+
+No cases executed. Run NARREST-01…10 from RW010_NATIVE_JUSTICE_ACTIONS.md in the
+final G4/G5 campaign: sender/target/record freshness, native cost/default options,
+acceptance/refusal/resistance, human/AI symmetry, dispatch-attempt versus outcome,
+save/reload, excluded diarchy/hook modes and duplicate/spam regression. Source credit
+does not certify a successful native send or custody.

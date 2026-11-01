@@ -1,0 +1,24 @@
+# Conservative original-party native arrest route, not a verdict about the plot.
+rw_ja_can_open_trigger = {
+    rw_scheme_justice_free_trigger = yes
+    is_imprisoned = no
+    has_active_diarchy = no
+    NOT = { has_character_flag = flag_hostile_actions_disabled_delay }
+    scope:rw_scheme_evidence_record = { NOT = { has_variable = rw_ja_dispatched_on } }
+    has_imprisonment_reason = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+    NOT = { has_usable_hook = scope:rw_scheme_evidence_record.var:rw_evidence_participant }
+    is_character_interaction_valid = {
+        recipient = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+        interaction = imprison_interaction
+    }
+}
+# Confirmation freezes the displayed target; no reinterpretation of stale UI.
+rw_ja_view_trigger = {
+    rw_scheme_justice_living_trigger = yes
+    exists = scope:rw_ja_target
+    scope:rw_scheme_evidence_record = { var:rw_evidence_participant = scope:rw_ja_target }
+}
+rw_ja_can_attempt_trigger = {
+    rw_ja_view_trigger = yes
+    rw_ja_can_open_trigger = yes
+}

@@ -90,3 +90,7 @@ consumption/idempotency and a preserved native consequence path before activatio
 No complete per-offense punishment history is inferred. Family/house sanctions and
 restoration remain separate G3 work. G1 returns at the war stage. This examination
 does not complete RW-010 or the original justice goal.
+
+A separate experimental actual native arrest-request path is now described in
+[RW010_NATIVE_JUSTICE_ACTIONS.md](RW010_NATIVE_JUSTICE_ACTIONS.md). It does not change
+this read-only panel or execution/release shortcut into an automatic sanction.

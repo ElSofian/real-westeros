@@ -1,0 +1,7 @@
+﻿l_french:
+ rw_justice_action.title:0 "Envisager une arrestation"
+ rw_justice_action.confirm_desc:0 "Je peux demander l’arrestation de [rw_ja_target.GetTitledFirstName] selon les règles en vigueur. Les motifs actuels ne prouvent pas sa culpabilité dans ce complot. Cette demande peut être refusée et entraîner une résistance, voire une rébellion. Décider de l’envoyer ne garantit pas que ce personnage sera emprisonné."
+ rw_justice_action.unavailable:0 "Ce dossier ou la situation actuelle ne permet plus d’envoyer cette demande. Cela ne prouve ni culpabilité ni sanction accomplie."
+ rw_justice_action.attempt:0 "Envoyer la demande d’arrestation"
+ rw_justice_action.leave:0 "Laisser cette affaire pour l’instant"
+ rw_justice_action.open:0 "Envisager une arrestation"

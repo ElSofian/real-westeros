@@ -85,3 +85,7 @@ political family fallout and legal landholding constraints distinct. A universal
 50-year title ban must not be claimed from a marker that does not guard all title
 acquisition paths. G1 stays planned for the war stage. This integration does not
 complete custom coercive justice, dynastic aftermath, RW-010 or the original mod.
+
+A separate experimental actual native arrest-request path is now described in
+[RW010_NATIVE_JUSTICE_ACTIONS.md](RW010_NATIVE_JUSTICE_ACTIONS.md). It does not change
+this read-only panel or execution/release shortcut into an automatic sanction.

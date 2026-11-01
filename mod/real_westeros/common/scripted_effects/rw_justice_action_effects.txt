@@ -1,0 +1,43 @@
+# Explicit entry used by both the original observer and the bounded AI opportunity.
+rw_ja_open_effect = {
+    if = {
+        limit = { rw_ja_can_open_trigger = yes }
+        scope:rw_scheme_evidence_record.var:rw_evidence_participant = { save_scope_as = rw_ja_target }
+        trigger_event = { id = rw_justice_actions.0001 }
+    }
+}
+# One native request at most per exact personal observation. This receipt records
+# a dispatch attempt ONLY; native refusal, pending resolution or no send is not guilt.
+rw_ja_attempt_effect = {
+    if = {
+        limit = { rw_ja_can_attempt_trigger = yes }
+        scope:rw_scheme_evidence_record = {
+            set_variable = { name = rw_ja_dispatched_on value = current_date }
+            set_variable = { name = rw_ja_actor value = scope:rw_scheme_observer }
+            set_variable = { name = rw_ja_target value = scope:rw_ja_target }
+        }
+        run_interaction = {
+            interaction = imprison_interaction
+            actor = root
+            recipient = scope:rw_ja_target
+            send_threshold = decline
+        }
+    }
+}
+# Called only after a fresh participant record has been fully initialized. Never
+# enumerate characters, reschedule on archive reads or attach to generic discovery.
+rw_ja_schedule_effect = {
+    scope:rw_scheme_observer = {
+        if = {
+            limit = {
+                rw_scheme_justice_view_trigger = yes
+                scope:rw_scheme_evidence_record = {
+                    NOT = { has_variable = rw_ja_scheduled }
+                    NOT = { has_variable = rw_ja_dispatched_on }
+                }
+            }
+            scope:rw_scheme_evidence_record = { set_variable = { name = rw_ja_scheduled value = flag:yes } }
+            trigger_event = { id = rw_justice_actions.0002 days = 1 }
+        }
+    }
+}

@@ -1,7 +1,7 @@
 # Suivi de la première version intégrée — v0.1-plan-1
 
-**État courant : 40/100 (+2), dont 40/80 source et 0/20 moteur.**
-AI3 est implémenté dans les scripts ; prochaine cible J2.
+**État courant : 43/100 (+3), dont 43/80 source et 0/20 moteur.**
+AI3 et J2 sont implémentés dans les scripts ; prochaine cible W1/W2.
 Vitesse encore non mesurable : relevés du même jour.
 
 Relevé initial : **1 novembre 2026, 38/100**, évalué sur le code de
@@ -25,7 +25,7 @@ coût. Les trois scénarios initiaux ne limitent pas le périmètre ; le catalog
 | Affaires politiques | 6 | 8 |
 | Négociation | 6 | 10 |
 | Promesses et obligations | 8 | 10 |
-| Justice et sanctions | 2 | 12 |
+| Justice et sanctions | 5 | 12 |
 | Information et preuves | 6 | 8 |
 | Mémoire politique | 6 | 10 |
 | IA politique | 6 | 10 |
@@ -89,7 +89,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 | ID | Points | Critère de fin | État / preuve principale |
 |---|---:|---|---|
 | J1 | 2 | Inspection des raisons natives et de la détention, sans fausse immunité ni verdict rétroactif | Source seulement : [RW010_SCHEME_JUSTICE.md](RW010_SCHEME_JUSTICE.md), [rw_scheme_justice_triggers.txt](../mod/real_westeros/common/scripted_triggers/rw_scheme_justice_triggers.txt) |
-| J2 | 3 | Sanction individuelle réellement exécutée via chemin natif joueur/IA, avec refus et résistance | À développer / valider |
+| J2 | 3 | Sanction individuelle réellement exécutée via chemin natif joueur/IA, avec refus et résistance | Source seulement : [RW010_NATIVE_JUSTICE_ACTIONS.md](RW010_NATIVE_JUSTICE_ACTIONS.md), [rw_justice_action_effects.txt](../mod/real_westeros/common/scripted_effects/rw_justice_action_effects.txt) |
 | J3 | 3 | Pouvoir arbitraire/légal et sanctions discrétionnaires distinctes sans double peine native | À développer / valider |
 | J4 | 2 | Mesures coercitives familiales/dynastiques de terres ou statut couvrant les routes G3 | À développer / valider |
 | J5 | 2 | Restauration après sanction coercitive effective, au-delà de la réhabilitation politique | À développer / valider |
@@ -139,9 +139,9 @@ le critère est rempli. La qualification est une revue humaine explicite du code
    par au moins deux familles d’actions, utilisant trois facteurs concrets parmi
    enjeux, risques, moyens, informations connues et obligations. Des poids aléatoires
    fondés uniquement sur les traits ou une nouvelle variante de dialogue ne suffisent pas.
-2. **J2 — cible suivante, +3 possibles** : chemin de sanction individuelle effectif, natif et accessible
+2. **J2 — voie d’arrestation livrée dans les sources, +3 acquis** : chemin de sanction individuelle effectif, natif et accessible
    à l’IA ; préserver droit, coût, refus et résistance. Une simple fenêtre ne suffit pas.
-3. **W1/W2 — +2/+4 possibles** : qualification au moment de l’acte et véritable guerre
+3. **W1/W2 — cibles suivantes, +2/+4 possibles** : qualification au moment de l’acte et véritable guerre
    interdite intégrée. Réserver RW-004 séparément. Ne pas livrer le diagnostic privé
    comme solution ; si un point moteur empêche une implémentation sûre, conserver le
    manque visible et travailler sur un critère indépendant, sans demander un test intermédiaire.

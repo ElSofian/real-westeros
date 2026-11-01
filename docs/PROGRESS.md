@@ -252,3 +252,27 @@
   structural validator, readiness report and whitespace PASS. All non-AI option code
   in both modified event files is unchanged against the baseline. CI and committed-source
   archive will be checked before integration; no engine evidence claimed.
+
+- PR #64 AI3 integrated: PR CI 41339660064 and main CI 41347124141 passed;
+  270-file main distribution checksum/manifest/extracted structure, all evidence and
+  four changed original CK3 inputs verified. Source readiness 40/100 (+2), engine 0/20;
+  exclusive claim released. No game run.
+- RW-010 / J2 (`feat/native-individual-sanctions`, 2026-11-01): real original-script
+  native arrest-request path from retained exposed-participant records, explicit
+  target-bound choice for player/AI, current native reason/validity and free parties,
+  conservative no-hook/no-active-diarchy/no-hostile-delay route. One delayed fresh-record
+  opportunity, no recurring scan/retry; neutral nonintervention remains. Exact record
+  dispatch date/actor/target consumed before one native run_interaction with decline
+  send threshold, no forced acceptance/helper/cost copy or duplicate punishment.
+  Receipt means attempt, not successful custody, guilt, pardon or completed sanction.
+  Existing read-only panels/native UI remain; no reason is attributed to this plot.
+  Nine adversarial source tests plus existing reader/justice checks, EN/FR, guide,
+  source-reference-only receipt and ten unrun final scenarios. **40 → 43/100 (+3 source)**
+  for the individual arrest path; engine **0/20**. No weekly rate inferred from same-day
+  checkpoints. Native run/default-option/cost/refusal/root/save behavior and compatibility
+  await the final campaign. Other individual sanctions and J3/J4/J5 are not claimed.
+  Next W1/W2 genuine CB/illegal war via separate RW-004 reservation; never ship a fake
+  CB or private diagnostic as the feature. **696 local unit/static tests passed,
+  nineteen PowerShell tests skipped (715 discovered)**; structural validation,
+  frozen readiness report and whitespace PASS. CI and committed-source distribution
+  checked before integration; no engine test claimed.

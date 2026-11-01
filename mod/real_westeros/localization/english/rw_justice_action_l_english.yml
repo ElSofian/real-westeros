@@ -1,0 +1,7 @@
+﻿l_english:
+ rw_justice_action.title:0 "Consider an arrest request"
+ rw_justice_action.confirm_desc:0 "I may request the arrest of [rw_ja_target.GetTitledFirstName] under the current rules. The present grounds do not prove guilt for this plot. This request may be refused and lead to resistance or rebellion. Choosing to send it does not guarantee imprisonment."
+ rw_justice_action.unavailable:0 "This record or the present circumstances no longer allow this request. No guilt or completed punishment follows from that."
+ rw_justice_action.attempt:0 "Send the arrest request"
+ rw_justice_action.leave:0 "Leave the matter for now"
+ rw_justice_action.open:0 "Consider an arrest request"
