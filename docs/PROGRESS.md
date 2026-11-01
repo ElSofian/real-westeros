@@ -224,4 +224,5 @@
   Seven metric tests cover evidence requirements, engine/source separation, frozen
   rubric/denominator, ledger consistency and zero/same-day/stale timing; **677 local unit/static tests passed, nineteen PowerShell tests skipped (696 discovered)**;
   structural validation, readiness report and whitespace checks PASS. CI and committed-source
-  distribution will be verified before merge. No engine run or new compatibility claim.
+  distribution will be verified before merge. The archive includes the roadmap, baseline and all cited assessment guides.
+  No engine run or new compatibility claim.
