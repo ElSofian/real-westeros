@@ -101,7 +101,7 @@ def payload(root):
             continue
         if name.startswith(PREFIX) and name != PREFIX + 'descriptor.mod':
             relative = name[len(PREFIX):]
-            valid = (re.fullmatch(r'(common/(character_interactions|scripted_triggers|scripted_effects|script_values|opinion_modifiers|story_cycles|on_action)|events)/rw_[\w]+\.txt', relative)
+            valid = (re.fullmatch(r'(common/(character_interactions|character_memory_types|scripted_triggers|scripted_effects|script_values|opinion_modifiers|story_cycles|on_action)|events)/rw_[\w]+\.txt', relative)
                      or re.fullmatch(r'localization/(english|french)/rw_[\w]+\.yml', relative))
             if not valid:
                 raise ValueError(f'Unexpected mod content: {name}')

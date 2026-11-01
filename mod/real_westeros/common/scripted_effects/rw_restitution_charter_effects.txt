@@ -73,6 +73,7 @@ rw_ch_assume_effect = {
             set_variable = { name = rw_ch_recognized_on value = current_date }
             rw_ch_snapshot_effect = yes
         }
+        rw_pm_crown_recognition_effect = yes
         rw_ch_notify_effect = yes
     }
 }

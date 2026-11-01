@@ -80,6 +80,7 @@ rw_fv_settle_effect = {
             scope:rw_fv_provider = { add_gold = 25 }
         }
         scope:rw_fv_client = { add_prestige = 50 }
+        rw_pm_public_support_effect = { PROVIDER = scope:rw_fv_provider CLIENT = scope:rw_fv_client }
         rw_fv_notify_effect = yes
     }
 }

@@ -78,6 +78,7 @@ rw_service_fulfill_promise_effect = {
         scope:rw_service_client = { add_gold = { value = scope:rw_service_price multiply = -1 } }
         scope:rw_service_provider = { add_gold = scope:rw_service_price }
         scope:rw_service_client = { add_prestige = 50 }
+        rw_pm_public_support_effect = { PROVIDER = scope:rw_service_provider CLIENT = scope:rw_service_client }
     }
 }
 # Deliberate refusal or accountable timeout. No automated punishment.
