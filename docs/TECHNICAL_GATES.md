@@ -39,3 +39,12 @@ nor clear G3. The targeted TitleRoutes ZIP is now verified; TITLE_ROUTE_AUDIT.md
 locates grant alternatives, actual election lists and separate AGOT succession
 without establishing universal enforcement. All G3-01…12 runtime cases remain
 deferred; no intermediate run requested.
+
+## G1 exact-target diagnostic preparation
+
+RW-004 now has a separate opt-in private build mode (G1_INTENT_PROBE.md), with
+exact source hashes, target/liege/serial confirmation and bounded cleanup/conditional
+native claim-CB observations. No bypass is shipped in the base mod. This does not
+clear G1 or establish costs, UI-cancel/AI behavior, unlawful-war classification or
+AGOT lifecycle compatibility. All game checks remain deferred to the final campaign;
+independent development continues without a new G1-first requirement.

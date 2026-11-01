@@ -1,0 +1,83 @@
+# Character scope; snapshot current owned ticket, also bind native helper aliases.
+rw_g1p_snapshot_effect = {
+    save_scope_as = rw_g1p_actor
+    save_scope_as = actor
+    var:rw_g1p_target = { save_scope_as = rw_g1p_target save_scope_as = recipient }
+    var:rw_g1p_liege = { save_scope_as = rw_g1p_liege }
+    save_scope_value_as = { name = rw_g1p_serial value = var:rw_g1p_serial }
+}
+rw_g1p_stage_effect = {
+    if = {
+        limit = { rw_g1p_can_stage_trigger = yes }
+        scope:actor = {
+            if = { limit = { NOT = { has_variable = rw_g1p_serial_counter } } set_variable = { name = rw_g1p_serial_counter value = 0 } }
+            change_variable = { name = rw_g1p_serial_counter add = 1 }
+            set_variable = { name = rw_g1p_serial value = var:rw_g1p_serial_counter }
+            set_variable = { name = rw_g1p_owner value = scope:actor }
+            set_variable = { name = rw_g1p_target value = scope:recipient }
+            set_variable = { name = rw_g1p_liege value = scope:actor.liege }
+            set_variable = { name = rw_g1p_phase value = flag:offered }
+            set_variable = { name = rw_g1p_schema value = 1 }
+            add_character_flag = { flag = rw_g1p_offer_window days = 1 }
+            rw_g1p_snapshot_effect = yes
+            trigger_event = { id = rw_g1_intent.0001 }
+        }
+    }
+}
+rw_g1p_arm_effect = {
+    if = {
+        limit = { rw_g1p_can_arm_trigger = yes }
+        remove_character_flag = rw_g1p_offer_window
+        set_variable = { name = rw_g1p_phase value = flag:armed }
+        add_character_flag = { flag = rw_g1p_armed days = 1 }
+        debug_log = "RW_G1P exact-target diagnostic armed; not a declaration"
+    }
+}
+# Owner-only cleanup needs no surviving target, eligibility or native UI cancel hook.
+rw_g1p_clear_effect = {
+    remove_character_flag = rw_g1p_offer_window
+    remove_character_flag = rw_g1p_armed
+    set_variable = { name = rw_g1p_phase value = flag:$STATE$ }
+}
+rw_g1p_cancel_effect = {
+    if = { limit = { rw_g1p_can_cancel_trigger = yes } rw_g1p_clear_effect = { STATE = cleared } }
+}
+rw_g1p_read_effect = {
+    if = {
+        limit = { var:rw_g1p_schema = 1 this = var:rw_g1p_owner has_variable = rw_g1p_serial exists = var:rw_g1p_target exists = var:rw_g1p_liege }
+        rw_g1p_snapshot_effect = yes
+        trigger_event = { id = rw_g1_intent.0001 }
+    }
+}
+rw_g1p_observe_effect = {
+    if = {
+        limit = { rw_g1p_native_context_trigger = yes }
+        scope:attacker = {
+            if = {
+                limit = { var:rw_g1p_schema = 1 has_character_flag = rw_g1p_armed }
+                if = {
+                    limit = { rw_g1p_claim_observation_trigger = yes }
+                    # Consume first, then retain only current callback facts; no war ref.
+                    rw_g1p_clear_effect = { STATE = observed }
+                    set_variable = { name = rw_g1p_last_serial value = var:rw_g1p_serial }
+                    set_variable = { name = rw_g1p_last_target value = scope:defender }
+                    set_variable = { name = rw_g1p_last_liege value = scope:attacker.liege }
+                    set_variable = { name = rw_g1p_last_observed_on value = current_date }
+                    set_variable = { name = rw_g1p_last_kind value = flag:native_claim_cb_context }
+                    debug_log = "RW_G1P native claim_cb pair/ban context observed; NOT a legal verdict"
+                }
+                else = {
+                    rw_g1p_clear_effect = { STATE = cleared }
+                    debug_log = "RW_G1P other target/CB/context; armed ticket cleared without observation"
+                }
+            }
+        }
+        scope:defender = {
+            if = {
+                limit = { var:rw_g1p_schema = 1 has_character_flag = rw_g1p_armed }
+                rw_g1p_clear_effect = { STATE = cleared }
+                debug_log = "RW_G1P defender context cleared; no attacking-intent observation"
+            }
+        }
+    }
+}

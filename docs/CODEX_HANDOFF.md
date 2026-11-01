@@ -229,6 +229,14 @@ agreed 365/1825-day marker; no active amendment or financial/native effect. Lega
 field-free five-year rows get read-only default snapshots, old no-term popups are
 inert, and new/partial/unknown protocol fields fail closed. Accepted deadlines never
 reconstructed; succession/recognition/free exits and compensation parent guards remain.
+War-track preparation resumed in a bounded RW-004 increment (G1_INTENT_PROBE.md):
+private generated exact-target/liege/serial context, explicit confirmation, one-day
+expiry/owner cleanup and conditional genuine claim_cb callback facts. Reviewed
+helper/claim hashes are required; original helper body remains in private output
+only. Base-mod files are unchanged. No native-window cancel hook, working engine/AI
+route, unlawful-war verdict or successful CB/cost/Mega War lifecycle is established.
+All game tests stay in the final campaign. This is not a new G1-first blocker for
+independent development. Read the new guide before generating/installing the probe.
 Next wider institutional clauses and contextual consequences across systems. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;

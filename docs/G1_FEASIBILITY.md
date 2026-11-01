@@ -1,6 +1,6 @@
 # G1 feasibility — politically forbidden war with an authentic CB
 
-**Current status: TODO for the war-feature stage; feasibility UNVERIFIED.**
+**Current status: source/diagnostic preparation IN PROGRESS for the war-feature stage; feasibility UNVERIFIED.**
 The owner restored G1 to planned development after confirming the original scenario:
 a duke may deliberately declare a genuine claim war despite the king's ban, with
 variable royal reactions. This supersedes the earlier standby decision without
@@ -144,3 +144,15 @@ Its one-day flags are manual diagnostic controls, not a proven production intent
 or receipt mechanism. All runtime semantics and actual override loading remain
 unverified. G1 stays OPEN pending execution; no third source dump is prerequisite
 to attempting this narrow test, although a failure may reveal another dependency.
+
+## Exact-target intent diagnostic extension
+
+G1_INTENT_PROBE.md documents a separate opt-in generator mode with exact pinned
+helper/claim hashes, original staged/confirmed target+liege+serial scripts, owner
+cleanup and conditional native claim-CB/primary-role/ban observations. The base mod
+loads none of it; original native helper code exists only in private generated
+output. Native selection/declaration remain manual and unchanged. Cancellation of
+the native window is still not observable through a verified hook, and no working
+engine/AI or legality/cost/lifecycle result is claimed. All final-campaign tests
+remain unrun. This source increment neither closes G1 nor makes it a prerequisite
+for unrelated development.

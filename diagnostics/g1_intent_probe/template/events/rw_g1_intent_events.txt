@@ -1,0 +1,27 @@
+namespace = rw_g1_intent
+rw_g1_intent.0001 = {
+    type = character_event
+    title = rw_g1p.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_g1p_ticket_trigger = yes }
+                desc = {
+                    desc = rw_g1p.parties
+                    first_valid = {
+                        triggered_desc = { trigger = { has_character_flag = rw_g1p_armed } desc = rw_g1p.armed }
+                        triggered_desc = { trigger = { has_character_flag = rw_g1p_offer_window } desc = rw_g1p.offered }
+                        triggered_desc = { trigger = { var:rw_g1p_phase = flag:observed } desc = rw_g1p.observed }
+                        desc = rw_g1p.inactive
+                    }
+                    desc = rw_g1p.limits
+                }
+            }
+            desc = rw_g1p.unavailable
+        }
+    }
+    theme = diplomacy
+    option = { name = rw_g1p.arm trigger = { rw_g1p_can_arm_trigger = yes } rw_g1p_arm_effect = yes ai_chance = { base = 0 } }
+    option = { name = rw_g1p.cancel trigger = { rw_g1p_can_cancel_trigger = yes } rw_g1p_cancel_effect = yes ai_chance = { base = 100 } }
+    option = { name = rw_g1p.leave ai_chance = { base = 100 } }
+}

@@ -1,0 +1,6 @@
+# Add a named observation child only; do not replace native/AGOT war lifecycle.
+on_war_started = { on_actions = { rw_g1p_on_war_started } }
+rw_g1p_on_war_started = {
+    trigger = { rw_g1p_native_context_trigger = yes }
+    effect = { rw_g1p_observe_effect = yes }
+}

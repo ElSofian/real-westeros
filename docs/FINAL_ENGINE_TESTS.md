@@ -1200,3 +1200,23 @@ All unrun. RW010_RESTITUTION_DIALOGUES.md creates discussion, not promised resti
 | CTERM-10 | Public compensation on accepted one-year/five-year charter; stale parent/term windows | Existing parent identity/version/due/funds rules; once-only monetary release independent from duration negotiation |
 | CTERM-11 | Save/load every turn and terminal history; registry retention/rehome/ref loss | Exact scalar/schema/role/story identity preserved where supported, no renewed retention or deadline; missing context grants nothing |
 | CTERM-12 | AI↔AI and player↔AI across patience traits, many records, AGOT baseline | Same clause/role/effect rules, bounded one-day replies; measure actual UI/date/AI/spam/performance without native title/war/justice lifecycle change |
+
+## Isolated G1 exact-target intent diagnostic (all unrun)
+
+Use only the privately generated intent probe after AGOT, with base Real Westeros,
+other probes/submods disabled; never distribute its generated native helper.
+
+| ID | Final campaign scenario | Expected observation, not demonstrated |
+|---|---|---|
+| G1INT-01 | Legal genuine-claim baseline vs banned/no-hook baseline, then unmarked intent-probe playset | Original native CB/title/claimant/cost, hierarchy/restrictions remain unchanged without armed exact context |
+| G1INT-02 | Stage A→B, inspect before confirmation, explicitly arm and open normal native war terms | Staging itself grants no exemption; exact confirmed pair may test the scripted gate only; genuine claim_cb and all native blockers still inspected |
+| G1INT-03 | A→C, changed liege/law/government, current usable hook/contract route, imprisonment or other failed prerequisite | No general bypass or altered legal route; negative gate and native claim/cost checks remain |
+| G1INT-04 | Stale confirmation/cancel after superseding an expired ticket; read repeatedly | Exact serial/target/liege required; old view cannot arm/clear newer ticket, no TTL/counter renewal |
+| G1INT-05 | Cancel native window or abandon staged test, use self-clear or let one day expire | Explicit cleanup works after reference/eligibility loss; no claimed automatic UI-cancel hook; no lasting/general context |
+| G1INT-06 | Actual native claim_cb starts for exact pair with current common-liege ban and armed ticket | Consume before latest debug fact; inspect actual CB/cost/hook state separately, context fact is no illegality/causal-bypass proof |
+| G1INT-07 | Duplicate callback, different CB/target, marked defender, missing/reversed/secondary native scopes | No false claim-CB observation/repeated receipt; conservative cleanup where native context valid, otherwise TTL/explicit cleanup |
+| G1INT-08 | Save/load stage/armed/cleared/observed, target/liege death or lost references | No stale arming, wrong-party cleanup or retained native-war object; review/expiry grants no offense or successful declaration |
+| G1INT-09 | Native hook/contract changes between confirmation, native selection and callback | Observe real native path/hook spend and helper order; diagnostic context cannot alone classify illegality |
+| G1INT-10 | Resolve genuine claim wars by victory/defeat/white peace/invalidation/transfer | Compare native titles/realm/truce/cleanup/logs to AGOT baseline; observer adds no lifecycle effects |
+| G1INT-11 | Peer claim vs independently Mega-War-eligible case; actual helper loading/order | Do not reclassify peer war; verify Mega War initialization/cleanup and effective override; failures do not prove universal impossibility |
+| G1INT-12 | Manual AI test setup and normal AI legal declarations, baseline performance/privacy/error logs | No production AI declaration flow claimed; establish equal actual access/costs separately before G1 gameplay; base mod still unaffected |
