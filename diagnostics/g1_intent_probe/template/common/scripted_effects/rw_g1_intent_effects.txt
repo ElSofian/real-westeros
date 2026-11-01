@@ -13,6 +13,7 @@ rw_g1p_stage_effect = {
             if = { limit = { NOT = { has_variable = rw_g1p_serial_counter } } set_variable = { name = rw_g1p_serial_counter value = 0 } }
             change_variable = { name = rw_g1p_serial_counter add = 1 }
             set_variable = { name = rw_g1p_serial value = var:rw_g1p_serial_counter }
+            set_variable = { name = rw_g1p_owner value = scope:actor }
             set_variable = { name = rw_g1p_target value = scope:recipient }
             set_variable = { name = rw_g1p_liege value = scope:actor.liege }
             set_variable = { name = rw_g1p_phase value = flag:offered }
@@ -43,7 +44,7 @@ rw_g1p_cancel_effect = {
 }
 rw_g1p_read_effect = {
     if = {
-        limit = { var:rw_g1p_schema = 1 has_variable = rw_g1p_serial exists = var:rw_g1p_target exists = var:rw_g1p_liege }
+        limit = { var:rw_g1p_schema = 1 this = var:rw_g1p_owner has_variable = rw_g1p_serial exists = var:rw_g1p_target exists = var:rw_g1p_liege }
         rw_g1p_snapshot_effect = yes
         trigger_event = { id = rw_g1_intent.0001 }
     }

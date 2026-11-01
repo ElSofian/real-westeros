@@ -21,7 +21,7 @@ def intent_errors(t,e):
         if any(x not in b for x in parts):errors.append(msg)
     need(block(t,'rw_g1p_ticket_trigger'),('exists = scope:rw_g1p_actor','exists = scope:rw_g1p_target',
         'exists = scope:rw_g1p_liege','exists = scope:rw_g1p_serial','this = scope:rw_g1p_actor',
-        'var:rw_g1p_schema = 1','var:rw_g1p_serial = scope:rw_g1p_serial',
+        'var:rw_g1p_schema = 1','var:rw_g1p_owner = scope:rw_g1p_actor','var:rw_g1p_serial = scope:rw_g1p_serial',
         'var:rw_g1p_target = scope:rw_g1p_target','var:rw_g1p_liege = scope:rw_g1p_liege'),
         'stale actor target liege or serial')
     need(block(t,'rw_g1p_can_stage_trigger'),('NOT = { has_character_flag = rw_g1p_offer_window }',
@@ -35,7 +35,7 @@ def intent_errors(t,e):
     need(block(t,'rw_g1p_bound_context_trigger'),('exists = scope:actor exists = scope:recipient',
         'rw_g1p_peer_setup_trigger = { ACTOR = scope:actor TARGET = scope:recipient }',
         'var:rw_g1p_schema = 1','has_variable = rw_g1p_serial','has_character_flag = rw_g1p_armed',
-        'var:rw_g1p_phase = flag:armed','var:rw_g1p_target = scope:recipient','var:rw_g1p_liege = scope:actor.liege'),
+        'var:rw_g1p_phase = flag:armed','var:rw_g1p_owner = scope:actor','var:rw_g1p_target = scope:recipient','var:rw_g1p_liege = scope:actor.liege'),
         'general target or liege bypass')
     peer=block(t,'rw_g1p_peer_setup_trigger')
     need(peer,('liege = $TARGET$.liege','NOT = { has_hook = $ACTOR$.liege }',
@@ -45,7 +45,7 @@ def intent_errors(t,e):
         errors.append('unrelated realm hook or law context bypass')
     observe=block(t,'rw_g1p_claim_observation_trigger')
     need(observe,('rw_g1p_native_context_trigger = yes','scope:war = { using_cb = claim_cb }',
-        'has_character_flag = rw_g1p_armed','var:rw_g1p_phase = flag:armed','var:rw_g1p_target = scope:defender',
+        'has_character_flag = rw_g1p_armed','var:rw_g1p_phase = flag:armed','var:rw_g1p_owner = scope:attacker','var:rw_g1p_target = scope:defender',
         'var:rw_g1p_liege = scope:attacker.liege','liege = scope:defender.liege'),
         'wrong CB pair or declaration context observed')
     native=block(t,'rw_g1p_native_context_trigger')
@@ -53,7 +53,7 @@ def intent_errors(t,e):
         'this = scope:war.primary_attacker','this = scope:war.primary_defender'), 'secondary or missing native roles observed')
     stage=block(e,'rw_g1p_stage_effect')
     need(stage,('limit = { rw_g1p_can_stage_trigger = yes }','change_variable = { name = rw_g1p_serial_counter add = 1 }',
-        'name = rw_g1p_target value = scope:recipient','name = rw_g1p_liege value = scope:actor.liege',
+        'name = rw_g1p_owner value = scope:actor','name = rw_g1p_target value = scope:recipient','name = rw_g1p_liege value = scope:actor.liege',
         'flag = rw_g1p_offer_window days = 1','rw_g1p_snapshot_effect = yes'), 'bad staging identity or clocks')
     arm=block(e,'rw_g1p_arm_effect')
     need(arm,('limit = { rw_g1p_can_arm_trigger = yes }','remove_character_flag = rw_g1p_offer_window',
@@ -82,11 +82,11 @@ class G1IntentScriptTests(unittest.TestCase):
     def errors(self,t=None,e=None):return intent_errors(self.t if t is None else t,self.e if e is None else e)
     def test_source_contract(self):self.assertEqual([],self.errors())
     def test_immutable_ticket_guards_old_confirmations_and_cancellation(self):
-        for g in ('var:rw_g1p_serial = scope:rw_g1p_serial','var:rw_g1p_target = scope:rw_g1p_target','var:rw_g1p_liege = scope:rw_g1p_liege','this = scope:rw_g1p_actor'):
+        for g in ('var:rw_g1p_owner = scope:rw_g1p_actor','var:rw_g1p_serial = scope:rw_g1p_serial','var:rw_g1p_target = scope:rw_g1p_target','var:rw_g1p_liege = scope:rw_g1p_liege','this = scope:rw_g1p_actor'):
             self.assertIn('stale actor target liege or serial',self.errors(t=self.t.replace(g,'always = yes')))
         self.assertIn('rw_g1p_ticket_trigger = yes',block(self.t,'rw_g1p_can_cancel_trigger'))
     def test_only_fresh_confirmed_exact_pair_same_liege_receives_exemption(self):
-        for g in ('has_character_flag = rw_g1p_armed','var:rw_g1p_target = scope:recipient','var:rw_g1p_liege = scope:actor.liege'):
+        for g in ('var:rw_g1p_owner = scope:actor','has_character_flag = rw_g1p_armed','var:rw_g1p_target = scope:recipient','var:rw_g1p_liege = scope:actor.liege'):
             self.assertIn('general target or liege bypass',self.errors(t=self.t.replace(g,'always = yes')))
         for g in ('scope:actor = scope:rw_g1p_actor','has_character_flag = rw_g1p_offer_window','war_declarer_needs_hook_on_liege = yes'):
             self.assertIn('invalid stale or replayed confirmation',self.errors(t=self.t.replace(g,'always = yes')))
@@ -103,7 +103,7 @@ class G1IntentScriptTests(unittest.TestCase):
         for name in ('rw_g1p_read_effect','rw_g1p_snapshot_effect','rw_g1p_cancel_effect'):
             self.assertNotIn('add_character_flag',block(self.e,name))
     def test_native_claim_primary_roles_and_current_ban_required_for_fact_only(self):
-        for g in ('scope:war = { using_cb = claim_cb }','var:rw_g1p_target = scope:defender','var:rw_g1p_liege = scope:attacker.liege'):
+        for g in ('var:rw_g1p_owner = scope:attacker','scope:war = { using_cb = claim_cb }','var:rw_g1p_target = scope:defender','var:rw_g1p_liege = scope:attacker.liege'):
             self.assertIn('wrong CB pair or declaration context observed',self.errors(t=self.t.replace(g,'always = yes')))
         self.assertIn('secondary or missing native roles observed',self.errors(t=self.t.replace('this = scope:war.primary_attacker','always = yes')))
         self.assertNotIn('is_at_war = no',block(self.t,'rw_g1p_claim_observation_trigger'))

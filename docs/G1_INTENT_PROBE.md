@@ -67,7 +67,7 @@ Native claim availability and all other restrictions remain the native UI's job.
    The original behavior must remain. Any unmarked change fails isolation.
 3. Select the target's **PRIVATE G1 test: stage this exact opponent** interaction.
    Auto-accept opens a confirmation only. Staging captures immutable target/liege,
-   monotonic serial and a one-day offer window; it arms no exemption.
+   stored original-actor identity, monotonic serial and a one-day offer window; it arms no exemption.
 4. Explicitly confirm while the same original ticket, peer roles, current liege/
    ban/native helper and no-hook conditions still match. This consumes the offer
    and arms the exact pair for one day from confirmation. Old confirmations cannot
@@ -82,6 +82,10 @@ Native claim availability and all other restrictions remain the native UI's job.
    **No native-window cancellation callback is verified.** The marker can remain
    for that exact pair until explicit cleanup or one-day expiry after UI cancellation.
    This unresolved gap alone prevents treating the probe as production gameplay.
+
+Copied actor metadata/flags cannot authorize a different character: ticket, helper
+guard, self-review and observation bind the stored original actor. Self-clear still
+removes the current character’s own flags without requiring surviving references.
 
 Changing target, liege, law, government, peace/eligibility or acquiring a detected
 liege hook removes the contextual exemption at evaluation. Metadata may remain inert
