@@ -220,6 +220,15 @@ monetary names/amount/actor/date to the released parent revision. Role/version c
 require fresh explicit proposal; no inherited financial consent or renewed charter.
 Free repudiation/release/satisfaction remain, refusal only closes talks, public
 receipt access follows existing registry and no private/native bank/title state changes.
+Charter duration clauses now negotiate one/five years before acceptance
+(RW010_CHARTER_TERMS.md): original head requests one year, original sovereign accepts
+or maintains five for renewed head consent. Explicit sub-schema/term/turn and parent
+revision bind each reply; current original role identities remain mandatory and
+counters never reset the original seven-day window. Acceptance alone writes the
+agreed 365/1825-day marker; no active amendment or financial/native effect. Legacy
+field-free five-year rows get read-only default snapshots, old no-term popups are
+inert, and new/partial/unknown protocol fields fail closed. Accepted deadlines never
+reconstructed; succession/recognition/free exits and compensation parent guards remain.
 Next wider institutional clauses and contextual consequences across systems. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;

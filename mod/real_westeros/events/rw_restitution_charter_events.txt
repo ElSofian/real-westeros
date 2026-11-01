@@ -10,6 +10,8 @@ rw_restitution_charter.0001 = {
                 trigger = { rw_ch_view_trigger = yes }
                 desc = {
                     desc = rw_restitution_charter.terms
+                    triggered_desc = { trigger = { scope:rw_ct_term = flag:year1 } desc = rw_charter_terms.year1 }
+                    triggered_desc = { trigger = { scope:rw_ct_term = flag:year5 } desc = rw_charter_terms.year5 }
                     first_valid = {
                         triggered_desc = { trigger = { scope:rw_lr_record = { var:rw_ch_state = flag:satisfied } } desc = rw_restitution_charter.satisfied }
                         triggered_desc = { trigger = { scope:rw_lr_record = { var:rw_ch_state = flag:renounced } } desc = rw_restitution_charter.renounced }
@@ -37,6 +39,18 @@ rw_restitution_charter.0001 = {
     theme = diplomacy
     option = { name = rw_restitution_charter.propose trigger = { rw_ch_can_propose_trigger = yes } rw_ch_propose_effect = yes ai_chance = { base = 5 modifier = { factor = 2 has_trait = just } } }
     option = { name = rw_restitution_charter.accept trigger = { rw_ch_can_accept_trigger = yes } rw_ch_accept_effect = yes ai_chance = { base = 50 } }
+    option = {
+        name = rw_charter_terms.shorten
+        trigger = { rw_ct_can_shorten_trigger = yes }
+        rw_ct_shorten_effect = yes
+        ai_chance = { base = 35 modifier = { factor = 2 has_trait = impatient } }
+    }
+    option = {
+        name = rw_charter_terms.restate
+        trigger = { rw_ct_can_restate_trigger = yes }
+        rw_ct_restate_effect = yes
+        ai_chance = { base = 35 modifier = { factor = 2 has_trait = patient } }
+    }
     option = { name = rw_restitution_charter.assume trigger = { rw_ch_can_assume_trigger = yes } rw_ch_assume_effect = yes ai_chance = { base = 40 modifier = { factor = 2 has_trait = honest } } }
     option = { name = rw_restitution_charter.renounce trigger = { rw_ch_can_renounce_trigger = yes } rw_ch_renounce_effect = yes ai_chance = { base = 5 modifier = { factor = 2 has_trait = deceitful } } }
     option = { name = rw_restitution_charter.release trigger = { rw_ch_can_release_trigger = yes } rw_ch_release_effect = yes ai_chance = { base = 5 } }

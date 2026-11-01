@@ -17,7 +17,7 @@ the exact current amount/version can settle. The sovereign is always payer and t
 house head always personal recipient, regardless of which one clicks acceptance.
 
 The financial window is **seven days from proposal**, also constrained by the
-charter's original five-year deadline and registry retention. Counter, read, refusal
+charter's original agreed deadline (one or five years) and registry retention. Counter, read, refusal
 or waiting renews neither deadline. One dialogue is permitted for the same charter
 version and monetary-party tuple. A real representative or charter-version change
 can permit a new explicit proposal: it increments the same monotonic financial

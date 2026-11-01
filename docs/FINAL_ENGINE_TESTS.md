@@ -1183,3 +1183,20 @@ All unrun. RW010_RESTITUTION_DIALOGUES.md creates discussion, not promised resti
 | CCOMP-10 | Missing/wrong story, parties, amount, quote/parent/result revision, actor/date or stale saved reply | Fail closed; no incomplete paid-release claim, native transfer/retry, private pledge rewrite or consent refresh |
 | CCOMP-11 | Save/load each turn and terminal state; inspect gold and accepted charter fields | Original version/date/actor preserved; source order is not atomic crash recovery; never retry an interrupted native exchange |
 | CCOMP-12 | AI↔AI and player↔AI, public observers, many records and AGOT baseline | Same role/funds/effect rules, bounded reply notices and existing public access; measure incentives/economy/privacy/performance, no bank/title/war/justice lifecycle changes |
+
+## Charter duration negotiation (all unrun)
+
+| ID | Final campaign scenario | Expected observation, not demonstrated |
+|---|---|---|
+| CTERM-01 | New five-year proposal, original head accepts directly | Captured five-year/head turn, explicit agreement, 1825-day accepted marker; no money/title effect |
+| CTERM-02 | Original head counters one year, original sovereign accepts | Version/term/turn change first; sovereign alone accepts counterpart's one-year proposal; 365-day marker starts once at acceptance |
+| CTERM-03 | Sovereign maintains five years, head accepts or counters again | New version requires new counterpart consent; old head five-year and ruler one-year panels cannot act |
+| CTERM-04 | Attempt head acceptance of own short counter or ruler acceptance of own long offer | Wrong actor/turn denied; unknown schema/term/turn cannot create consent |
+| CTERM-05 | Repeated counters until original day-seven offer expiry; leave/read old panel | Original issue date/window never renew; expiry/silence is neutral and no accepted due marker created |
+| CTERM-06 | Crown/head succession or changed roles before agreement, including returning identities | Current original representatives required; no successor consent; identity guards do not assert complete per-reign history |
+| CTERM-07 | Accept one year, then read/recognize as successor, renounce/release, or attempt counter | Original accepted deadline unchanged; no active duration amendment; normal free institutional exits remain |
+| CTERM-08 | Earlier field-free fixed-five-year offered/active/closed record and old no-term popup | Fresh review captures five years read-only; stale popup inert; active/closed due data never reconstructed |
+| CTERM-09 | Explicitly counter a legacy unaccepted offer vs malformed/partial/new missing duration fields | Former becomes a new explicit counter requiring counterpart agreement; latter fails closed without inferred legacy consent |
+| CTERM-10 | Public compensation on accepted one-year/five-year charter; stale parent/term windows | Existing parent identity/version/due/funds rules; once-only monetary release independent from duration negotiation |
+| CTERM-11 | Save/load every turn and terminal history; registry retention/rehome/ref loss | Exact scalar/schema/role/story identity preserved where supported, no renewed retention or deadline; missing context grants nothing |
+| CTERM-12 | AI↔AI and player↔AI across patience traits, many records, AGOT baseline | Same clause/role/effect rules, bounded one-day replies; measure actual UI/date/AI/spam/performance without native title/war/justice lifecycle change |

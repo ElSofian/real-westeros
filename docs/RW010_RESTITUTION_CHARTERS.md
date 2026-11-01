@@ -104,3 +104,10 @@ RW010_CHARTER_COMPENSATION.md adds public twenty-five/fifty personal-gold terms
 for release of an accepted charter. Exact current counterpart consent/current funds
 and versioned paired consumption are required; free charter exits remain. The
 financial parties are named individuals, never a house bank or inherited debt.
+
+## Duration clause extension
+
+RW010_CHARTER_TERMS.md now allows the original head to counter one year before
+acceptance; the sovereign may agree or maintain five for renewed head agreement.
+Only acceptance starts the agreed deadline. Existing accepted charters and original
+offer windows are not rewritten or renewed; missing/legacy UI is not new consent.

@@ -1,0 +1,32 @@
+# Legacy fixed-five-year rows have no duration protocol fields at all.
+rw_ct_term_matches_trigger = {
+    exists = scope:rw_ct_term
+    OR = { scope:rw_ct_term = flag:year1 scope:rw_ct_term = flag:year5 }
+    scope:rw_lr_record = {
+        trigger_if = {
+            limit = { has_variable = rw_ct_schema }
+            var:rw_ct_schema = 1
+            has_variable = rw_ct_term
+            var:rw_ct_term = scope:rw_ct_term
+        }
+        trigger_else = {
+            NOT = { has_variable = rw_ct_term }
+            NOT = { has_variable = rw_ct_turn }
+            scope:rw_ct_term = flag:year5
+        }
+    }
+}
+# These are term/turn predicates; the parent acceptance guard supplies phase/roles.
+rw_ct_head_offer_trigger = {
+    scope:rw_ct_term = flag:year5
+    scope:rw_lr_record = {
+        trigger_if = { limit = { has_variable = rw_ct_schema } var:rw_ct_schema = 1 var:rw_ct_turn = flag:head }
+        trigger_else = { NOT = { has_variable = rw_ct_term } NOT = { has_variable = rw_ct_turn } }
+    }
+}
+rw_ct_ruler_offer_trigger = {
+    scope:rw_ct_term = flag:year1
+    scope:rw_lr_record = { var:rw_ct_schema = 1 var:rw_ct_turn = flag:ruler }
+}
+rw_ct_can_shorten_trigger = { rw_ch_can_accept_trigger = yes this = scope:rw_ch_head scope:rw_ct_term = flag:year5 }
+rw_ct_can_restate_trigger = { rw_ch_can_accept_trigger = yes this = scope:rw_ch_ruler scope:rw_ct_term = flag:year1 }
