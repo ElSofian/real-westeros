@@ -351,12 +351,12 @@
   variable-list and range syntax source-located, actual StoryScope semantics unverified.
   Private source reply/settlement/case pointer/contract data never exported, planned
   mediator gets no dossier disclosure merely from hearsay, no native secret/proof/
-  sanction/opinion/gold/public memory added. Fourteen adversarial source tests, preserved
+  sanction/opinion/gold/public memory added. Fifteen adversarial source tests, preserved
   allegation reader/evidence checks, EN/FR and twelve unrun final cases added.
   **47 → 49/100 (+2 source)** for I3, engine **0/20**; frozen grid/history retained.
   No complete belief system, retraction protocol, AI/performance or CK3 compatibility
-  claimed. Next M5; G1/G3 and other criteria stay open. **734 local unit/static tests
-  passed, nineteen PowerShell tests skipped (753 discovered)**; structural validator,
+  claimed. Next M5; G1/G3 and other criteria stay open. **735 local unit/static tests
+  passed, nineteen PowerShell tests skipped (754 discovered)**; structural validator,
   frozen progress report and whitespace PASS. Sender-facing gates consult only owned
   attempts, not another character's hidden receipt; duplicate handling returns no new-
   knowledge signal to sender. CI and committed-source distribution checked before merge.

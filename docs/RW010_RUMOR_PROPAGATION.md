@@ -46,6 +46,10 @@ and the set of informed characters. A recipient receives at most one packet from
 that lineage: an A→B→C→A attempt or repeated telling by different messengers creates
 no extra receipt, renewed hearing date or independent evidence. The internal recipient
 set is consulted only when constructing knowledge, never as a sender-facing query.
+No sender-facing condition consults the global holder set, even for membership; the
+owned personal packet is the authority for that character’s knowledge. Internal
+construction/notification effects are hidden from previews, with one invariant
+localized tooltip describing only the attempt and its known thirty-day cooldown.
 A sender remembers their own attempted targets and cooldown equally whether the
 recipient was new or already knew the story through someone else. Therefore the menu
 cannot reveal B→C to an uninformed A. Different source cases remain separately identified, never
@@ -87,10 +91,10 @@ range. No original native source/assets are committed. Existing story/owner/pack
 patterns do not prove variable-list scope, save/load, event snapshot or callback
 semantics on target CK3 1.19.* / AGOT 0.5.2.1. All compatibility remains unverified.
 
-Fourteen adversarial source tests cover claimant-only seeding, personal access, stale
+Fifteen adversarial source tests cover claimant-only seeding, personal access, stale
 snapshots, stable original/relay/recipient provenance, A→B→C→A echo rejection, fresh
 range/cooldown/lifetime checks, direct effects, no private truth/financial export,
-attempt/cooldown-before-notice ordering, no hidden-audience queries, informed-only custody and EN/FR references. Existing
+attempt/cooldown-before-notice ordering, no hidden-audience queries or conditional effect-preview leaks, informed-only custody and EN/FR references. Existing
 allegation evidence/disclosure/read-only checks remain. These tests do not execute CK3.
 
 I3 source credit: **47 → 49/100 (+2)**; engine **0/20**. The frozen rubric and old
@@ -104,7 +108,7 @@ choices), a complete information system or proof of actual performance. Next: **
 | RUMOR-01 | Valid original answered-allegation claimant prepares one account. No disclosure to anyone else, no case deadline renewal or reply/evidence change; existing decision resumes. Respondent/mediator/outsider/wrong kind/stale claimant cannot seed. |
 | RUMOR-02 | A selects B, confirms: B gains exactly one personal packet with A as original speaker and immediate sender, same lineage/publication date, hearing date now and one hop. Cancel/keep changes nothing. |
 | RUMOR-03 | B tells C: C keeps A as original speaker and B as actual immediate relay, same origin/date, incremented hops. No wording calls this verified or an admission. |
-| RUMOR-04 | C→A and other senders→already informed B create no new packet/notice/date or corroboration. A sender cannot infer another sender’s audience from menu validity or cooldown. Own repeated targets and stale confirmations are blocked. |
+| RUMOR-04 | C→A and other senders→already informed B create no new packet/notice/date or corroboration. A sender cannot infer another sender’s audience from menu validity, effect preview or cooldown. Own repeated targets and stale confirmations are blocked. |
 | RUMOR-05 | Receiver moves out of range, dies/is imprisoned, subject dies, source/packet expires or ownership/serial/metadata changes before confirmation: no new delivery or fabricated replacement/heir. |
 | RUMOR-06 | A claimed in an admitted/contested or later withdrawn/settled case: outgoing text contains neither reply nor finances/outcome. Planned mediator who hears rumor still cannot browse the original undisclosed case. |
 | RUMOR-07 | Packet owner can read; original speaker/custodian/liege/heir/stranger cannot read someone else's receipt or see/query the global listener set through sender menus. Native duplicate handling gives no different sender success signal or cooldown. No native evidence/reason/secret/public memory or penalty is created. |

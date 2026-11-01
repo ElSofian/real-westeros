@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "ca71eefba9bd4e115c3c74301db6a46fafb07381",
+  "assessed_commit": "e0aacd13578a626eee5b30fb37b5a38389848a1d",
   "lots": [
     {
       "id": "W",
@@ -666,7 +666,7 @@
         "I3"
       ],
       "score": 49,
-      "reference": "ca71eefba9bd4e115c3c74301db6a46fafb07381",
+      "reference": "e0aacd13578a626eee5b30fb37b5a38389848a1d",
       "note": "I3 source : transmission personnelle de récits non vérifiés, auteur initial/dernier relais/destinataire et dates conservés, diffusion bornée, déduplication des échos et aucun accès au dossier privé ni preuve native. +2 source ; moteur non testé."
     }
   ]
