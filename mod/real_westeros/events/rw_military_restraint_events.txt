@@ -18,6 +18,23 @@ rw_military_restraint.0001 = {
                         triggered_desc = { trigger = { scope:rw_mr_record = { var:rw_mr_state = flag:offered has_variable = rw_mr_offer_window } } desc = rw_military_restraint.offered }
                         desc = rw_military_restraint.elapsed
                     }
+                    triggered_desc = {
+                        trigger = { rw_mb_view_trigger = yes }
+                        desc = {
+                            first_valid = {
+                                triggered_desc = { trigger = { scope:rw_mr_record = { var:rw_mb_statement = flag:acknowledged } } desc = rw_restraint_response.acknowledged }
+                                triggered_desc = { trigger = { scope:rw_mr_record = { var:rw_mb_statement = flag:contested } } desc = rw_restraint_response.contested }
+                                triggered_desc = { trigger = { scope:rw_mr_record = { has_variable = rw_mb_requested_on } } desc = rw_restraint_response.unanswered }
+                                desc = rw_restraint_response.not_requested
+                            }
+                            first_valid = {
+                                triggered_desc = { trigger = { scope:rw_mr_record = { var:rw_mb_state = flag:resented } } desc = rw_restraint_response.resented }
+                                triggered_desc = { trigger = { scope:rw_mr_record = { var:rw_mb_state = flag:noted } } desc = rw_restraint_response.noted }
+                                triggered_desc = { trigger = { scope:rw_mr_record = { has_variable = rw_mb_window } } desc = rw_restraint_response.pending }
+                                desc = rw_restraint_response.expired
+                            }
+                        }
+                    }
                     desc = rw_military_restraint.boundaries
                 }
             }
@@ -48,6 +65,41 @@ rw_military_restraint.0001 = {
         trigger = { rw_mr_can_release_trigger = yes }
         rw_mr_release_effect = yes
         ai_chance = { base = 2 modifier = { factor = 2 has_trait = forgiving } }
+    }
+    option = {
+        name = rw_restraint_response.request
+        trigger = { rw_mb_can_request_trigger = yes }
+        rw_mb_request_effect = yes
+        ai_chance = { base = 40 modifier = { factor = 2 has_trait = just } }
+    }
+    option = {
+        name = rw_restraint_response.acknowledge
+        trigger = { rw_mb_can_answer_trigger = yes }
+        rw_mb_answer_effect = { ANSWER = acknowledged }
+        ai_chance = { base = 25 modifier = { factor = 2 has_trait = honest } }
+    }
+    option = {
+        name = rw_restraint_response.contest
+        trigger = { rw_mb_can_answer_trigger = yes }
+        rw_mb_answer_effect = { ANSWER = contested }
+        ai_chance = { base = 40 modifier = { factor = 2 has_trait = deceitful } }
+    }
+    option = {
+        name = rw_restraint_response.resent
+        trigger = { rw_mb_can_react_trigger = yes }
+        rw_mb_resent_effect = yes
+        ai_chance = {
+            base = 20
+            modifier = { factor = 2 has_trait = vengeful }
+            modifier = { factor = 0.2 has_trait = forgiving }
+            modifier = { factor = 2 scope:rw_mr_record = { var:rw_mb_statement = flag:acknowledged } }
+        }
+    }
+    option = {
+        name = rw_restraint_response.note
+        trigger = { rw_mb_can_react_trigger = yes }
+        rw_mb_note_effect = yes
+        ai_chance = { base = 25 modifier = { factor = 2 has_trait = forgiving } }
     }
     option = { name = rw_military_restraint.leave ai_chance = { base = 40 } }
 }

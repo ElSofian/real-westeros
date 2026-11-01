@@ -192,7 +192,15 @@ stories owned by the actual attacker. It consumes before recording role/date and
 private notices; no inference of voluntary initiation, guilt, successful fulfillment
 or inherited duty. No native CB, law, truce, declaration, Mega War or outcome changes;
 G1 remains separate/unresolved. Missing/inconsistent callback context fails closed.
-Next wider contextual political responses and undertaking types across systems. All G2 engine behavior and
+Private role-observation responses now exist (RW010_RESTRAINT_RESPONSES.md): a
+fresh same-call exact record/serial/observed-date token opens one thirty-day window
+before initial notices. Beneficiary may request one explanation; original promisor
+can acknowledge responsibility or contest voluntary breach. Beneficiary independently
+chooses neutral note or −15 opinion/two years only if absent, never stacked/refreshed;
+consume before effect/notice. Statement, role fact and personal judgment remain
+separate; silence/expiry/old rows create no admission, reaction or pardon. No new
+native callback/war/legal state or record deadline/retention extension.
+Next wider territorial/institutional commitments and structured consideration across systems. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;
 never force the no-tyranny imprisonment helper as a legality check. Keep knowledge,

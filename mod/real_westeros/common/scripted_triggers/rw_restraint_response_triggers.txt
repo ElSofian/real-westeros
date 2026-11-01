@@ -1,0 +1,38 @@
+# Fact, personal statement and reaction are distinct; exact retained story first.
+rw_mb_view_trigger = {
+    rw_mr_view_trigger = yes
+    scope:rw_mr_record = {
+        var:rw_mr_state = flag:war_observed
+        var:rw_mb_schema = 1
+        var:rw_mb_serial = scope:rw_mr_serial
+        has_variable = rw_mb_observed_on
+        var:rw_mb_observed_on = var:rw_mr_observed_on
+        OR = { var:rw_mb_state = flag:pending var:rw_mb_state = flag:resented var:rw_mb_state = flag:noted }
+        OR = { var:rw_mb_statement = flag:unanswered var:rw_mb_statement = flag:acknowledged var:rw_mb_statement = flag:contested }
+        trigger_if = {
+            limit = { NOT = { var:rw_mb_statement = flag:unanswered } }
+            has_variable = rw_mb_requested_on
+            has_variable = rw_mb_answered_on
+        }
+        trigger_if = {
+            limit = { NOT = { var:rw_mb_state = flag:pending } }
+            has_variable = rw_mb_reacted_on
+        }
+    }
+}
+rw_mb_live_trigger = {
+    rw_mb_view_trigger = yes
+    scope:rw_mr_provider = { is_alive = yes }
+    scope:rw_mr_beneficiary = { is_alive = yes }
+    scope:rw_mr_record = { var:rw_mb_state = flag:pending has_variable = rw_mb_window }
+}
+rw_mb_can_react_trigger = { rw_mb_live_trigger = yes this = scope:rw_mr_beneficiary }
+rw_mb_can_request_trigger = {
+    rw_mb_can_react_trigger = yes
+    scope:rw_mr_record = { NOT = { has_variable = rw_mb_requested_on } var:rw_mb_statement = flag:unanswered }
+}
+rw_mb_can_answer_trigger = {
+    rw_mb_live_trigger = yes
+    this = scope:rw_mr_provider
+    scope:rw_mr_record = { has_variable = rw_mb_requested_on var:rw_mb_statement = flag:unanswered }
+}

@@ -1,0 +1,4 @@
+rw_restraint_resented_opinion = {
+    opinion = -15
+    years = 2
+}

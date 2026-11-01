@@ -92,6 +92,9 @@ rw_mr_observe_effect = {
             set_variable = { name = rw_mr_finished_on value = current_date }
             set_variable = { name = rw_mr_observed_on value = current_date }
             set_variable = { name = rw_mr_state value = flag:war_observed }
+            save_scope_as = rw_mb_fresh_observation
+            scope:rw_mr_provider = { rw_mb_begin_effect = yes }
+            clear_saved_scope = rw_mb_fresh_observation
             scope:rw_mr_provider = { rw_mr_notify_effect = yes }
         }
     }
