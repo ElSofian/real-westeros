@@ -24,6 +24,7 @@ rw_ch_can_propose_trigger = {
 rw_ch_view_trigger = {
     rw_lr_view_trigger = yes
     exists = scope:rw_ch_revision
+    rw_ct_term_matches_trigger = yes
     scope:rw_lr_record = {
         var:rw_ch_schema = 1
         var:rw_ch_revision = scope:rw_ch_revision
@@ -47,7 +48,10 @@ rw_ch_view_trigger = {
 rw_ch_can_accept_trigger = {
     rw_ch_view_trigger = yes
     rw_ch_roles_trigger = yes
-    this = scope:rw_ch_head
+    OR = {
+        AND = { this = scope:rw_ch_head rw_ct_head_offer_trigger = yes }
+        AND = { this = scope:rw_ch_ruler rw_ct_ruler_offer_trigger = yes }
+    }
     scope:rw_lr_record = {
         var:rw_ch_state = flag:offered
         has_variable = rw_ch_offer_window

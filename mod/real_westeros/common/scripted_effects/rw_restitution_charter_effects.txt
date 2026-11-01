@@ -5,6 +5,7 @@ rw_ch_prepare_effect = {
         clear_saved_scope = rw_ch_ruler
         clear_saved_scope = rw_ch_head
         clear_saved_scope = rw_ch_revision
+        clear_saved_scope = rw_ct_term
         if = {
             limit = { rw_ch_roles_available_trigger = yes }
             scope:rw_lr_authority.holder = { save_scope_as = rw_ch_ruler }
@@ -17,12 +18,19 @@ rw_ch_prepare_effect = {
         trigger_event = { id = rw_restitution_charter.0001 }
     }
 }
-rw_ch_snapshot_effect = { save_scope_value_as = { name = rw_ch_revision value = var:rw_ch_revision } }
+rw_ch_snapshot_effect = {
+    save_scope_value_as = { name = rw_ch_revision value = var:rw_ch_revision }
+    save_scope_value_as = { name = rw_ct_term value = flag:year5 }
+    if = { limit = { has_variable = rw_ct_term } save_scope_value_as = { name = rw_ct_term value = var:rw_ct_term } }
+}
 rw_ch_propose_effect = {
     if = {
         limit = { rw_ch_can_propose_trigger = yes }
         scope:rw_lr_record = {
             set_variable = { name = rw_ch_revision value = 0 }
+            set_variable = { name = rw_ct_schema value = 1 }
+            set_variable = { name = rw_ct_term value = flag:year5 }
+            set_variable = { name = rw_ct_turn value = flag:head }
             set_variable = { name = rw_ch_issuer value = scope:rw_ch_ruler }
             set_variable = { name = rw_ch_original_head value = scope:rw_ch_head }
             set_variable = { name = rw_ch_issued_on value = current_date }
@@ -41,7 +49,12 @@ rw_ch_accept_effect = {
             remove_variable = rw_ch_offer_window
             change_variable = { name = rw_ch_revision add = 1 }
             set_variable = { name = rw_ch_accepted_on value = current_date }
-            set_variable = { name = rw_ch_due value = flag:yes days = 1825 }
+            remove_variable = rw_ct_turn
+            if = {
+                limit = { scope:rw_ct_term = flag:year1 }
+                set_variable = { name = rw_ch_due value = flag:yes days = 365 }
+            }
+            else = { set_variable = { name = rw_ch_due value = flag:yes days = 1825 } }
             set_variable = { name = rw_ch_recognized_by value = scope:rw_ch_ruler }
             set_variable = { name = rw_ch_state value = flag:active }
             set_variable = { name = rw_ch_notified_ruler value = scope:rw_ch_ruler }

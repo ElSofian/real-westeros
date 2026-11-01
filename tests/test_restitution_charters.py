@@ -63,7 +63,8 @@ def charter_errors(t, e):
     code=clean_script(e)[0]
     if re.search(r'\bname\s*=\s*rw_(?:lr|rs|rp|house|service)_|\b(add_gold|add_prestige|add_opinion|add_claim|change_title_holder|run_interaction|imprison|create_story|make_story_owner|every_living_character|every_in_global_list)\s*=',code):
         errors.append('public facts private consent or native title state rewritten')
-    if len(re.findall(r'\bname\s*=\s*rw_ch_due\b',code))!=1 or len(re.findall(r'\bname\s*=\s*rw_ch_offer_window\b',code))!=1:
+    # One mutually exclusive one-year/five-year acceptance branch each.
+    if len(re.findall(r'\bname\s*=\s*rw_ch_due\b',code))!=2 or len(re.findall(r'\bname\s*=\s*rw_ch_offer_window\b',code))!=1:
         errors.append('charter deadlines renewed')
     return errors
 

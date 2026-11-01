@@ -1,0 +1,5 @@
+﻿l_english:
+ rw_charter_terms.year1:0 "Current duration clause: one year from explicit acceptance. Agreement fixes a 365-day undertaking; it does not grant land or shorten a charter already accepted under other terms."
+ rw_charter_terms.year5:0 "Current duration clause: five years from explicit acceptance. Agreement fixes a 1825-day undertaking. Counters and later recognition never renew the original window or accepted deadline."
+ rw_charter_terms.shorten:0 "Counter with one year; ask the issuing sovereign to accept, without accepting yet."
+ rw_charter_terms.restate:0 "Maintain five years; ask the original house head to accept again."

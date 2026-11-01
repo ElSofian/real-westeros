@@ -1,0 +1,5 @@
+﻿l_french:
+ rw_charter_terms.year1:0 "Durée actuelle : un an depuis l’acceptation explicite. L’accord fixe un engagement de 365 jours ; il ne concède aucune terre et ne raccourcit pas une charte déjà acceptée sous d’autres clauses."
+ rw_charter_terms.year5:0 "Durée actuelle : cinq ans depuis l’acceptation explicite. L’accord fixe un engagement de 1825 jours. Ni les contre-offres ni une reconnaissance ultérieure ne prolongent le délai initial ou l’échéance acceptée."
+ rw_charter_terms.shorten:0 "Proposer un an ; demander l’accord du souverain initial, sans accepter encore."
+ rw_charter_terms.restate:0 "Maintenir cinq ans ; demander un nouvel accord au chef de maison initial."

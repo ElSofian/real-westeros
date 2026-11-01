@@ -1,0 +1,27 @@
+# Counteroffers alter only unaccepted terms/version/turn; never any existing clock.
+rw_ct_shorten_effect = {
+    if = {
+        limit = { rw_ct_can_shorten_trigger = yes }
+        scope:rw_lr_record = {
+            set_variable = { name = rw_ct_schema value = 1 }
+            set_variable = { name = rw_ct_term value = flag:year1 }
+            set_variable = { name = rw_ct_turn value = flag:ruler }
+            change_variable = { name = rw_ch_revision add = 1 }
+            rw_ch_snapshot_effect = yes
+        }
+        scope:rw_ch_ruler = { trigger_event = { id = rw_restitution_charter.0001 days = 1 } }
+    }
+}
+rw_ct_restate_effect = {
+    if = {
+        limit = { rw_ct_can_restate_trigger = yes }
+        scope:rw_lr_record = {
+            set_variable = { name = rw_ct_schema value = 1 }
+            set_variable = { name = rw_ct_term value = flag:year5 }
+            set_variable = { name = rw_ct_turn value = flag:head }
+            change_variable = { name = rw_ch_revision add = 1 }
+            rw_ch_snapshot_effect = yes
+        }
+        scope:rw_ch_head = { trigger_event = { id = rw_restitution_charter.0001 days = 1 } }
+    }
+}
