@@ -1,0 +1,28 @@
+# Manual disposable-save diagnostic only. No production AI policy is supplied.
+rw_g1p_stage_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_g1p_stage_interaction_desc
+    auto_accept = yes
+    is_shown = { scope:actor = { is_landed = yes } scope:recipient = { is_landed = yes } NOT = { scope:actor = scope:recipient } }
+    is_valid_showing_failures_only = { rw_g1p_can_stage_trigger = yes }
+    on_accept = { rw_g1p_stage_effect = yes }
+    ai_will_do = { base = 0 }
+}
+rw_g1p_review_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_g1p_review_interaction_desc
+    common_interaction = yes
+    auto_accept = yes
+    is_shown = { scope:actor = scope:recipient scope:actor = { var:rw_g1p_schema = 1 } }
+    on_accept = { scope:actor = { rw_g1p_read_effect = yes } }
+    ai_will_do = { base = 0 }
+}
+rw_g1p_clear_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_g1p_clear_interaction_desc
+    common_interaction = yes
+    auto_accept = yes
+    is_shown = { scope:actor = scope:recipient scope:actor = { OR = { has_character_flag = rw_g1p_offer_window has_character_flag = rw_g1p_armed } } }
+    on_accept = { scope:actor = { rw_g1p_clear_effect = { STATE = cleared } } }
+    ai_will_do = { base = 0 }
+}

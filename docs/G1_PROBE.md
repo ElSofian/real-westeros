@@ -88,3 +88,11 @@ and any relevant error lines with personal paths redacted. No full log dump need
 Only an in-game run can close this diagnostic. Full G1 also requires target-bound
 intent, legality recorded at declaration, safe cancellation/reload and identical
 mechanical access for AI; the probe intentionally does not implement those systems.
+
+## Optional target-bound extension
+
+The original manual-flag mode above remains the default. G1_INTENT_PROBE.md adds
+`--target-bound-intent`, an explicitly selected separate PRIVATE diagnostic with
+pinned source inputs, original staged/confirmed exact-target context and native
+claim-CB context observations. Do not enable both probes. This still has no verified
+native UI-cancel callback, engine/AI compatibility or political-legality receipt.

@@ -59,18 +59,20 @@ class DistributionTests(unittest.TestCase):
         self.assertEqual([], validate(Path(self.tmp.name) / 'extracted'))
 
     def test_untracked_private_files_and_claims_are_not_packaged(self):
-        (self.root / 'mod/real_westeros/private.txt').write_text('PRIVATE')
-        (self.root / '.env').write_text('PRIVATE')
+        marker = 'RW_TEST_UNPUBLISHED_PAYLOAD_f3a8d51a'
+        (self.root / 'mod/real_westeros/private.txt').write_text(marker)
+        (self.root / '.env').write_text(marker)
         claim = self.root / '.github/task-claims/RW-010.json'
         claim.parent.mkdir(parents=True)
-        claim.write_text('PRIVATE')
+        claim.write_text(marker)
         self.git('add', '.github')
         self.git('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid', 'commit', '-qm', 'Claim fixture')
         build(self.root, self.output)
         with zipfile.ZipFile(self.output) as zf:
             self.assertNotIn('mod/real_westeros/private.txt', zf.namelist())
             self.assertFalse(any('.github' in n or '.env' in n for n in zf.namelist()))
-            self.assertNotIn(b'PRIVATE', b''.join(zf.read(n) for n in zf.namelist()))
+            # Public documentation can legitimately say PRIVATE; reject the test payload.
+            self.assertFalse(any(marker.encode() in zf.read(n) for n in zf.namelist()))
 
     def test_tracked_unexpected_payload_fails_without_archive(self):
         for name in ('private.txt', 'rw_test.ck3', 'rw_test.zip'):

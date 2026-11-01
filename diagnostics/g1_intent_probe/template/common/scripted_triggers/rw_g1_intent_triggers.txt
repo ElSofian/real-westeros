@@ -1,0 +1,91 @@
+# PRIVATE DIAGNOSTIC templates only. Native UI still owns CB/claim/cost restrictions.
+rw_g1p_peer_setup_trigger = {
+    $ACTOR$ = {
+        is_alive = yes is_adult = yes is_landed = yes is_imprisoned = no is_at_war = no
+        government_has_flag = government_is_feudal
+        exists = liege
+        liege = $TARGET$.liege
+        NOT = { has_hook = $ACTOR$.liege }
+        liege = {
+            is_alive = yes
+            OR = { has_realm_law_flag = vassal_internal_wars_banned has_realm_law_flag = vassal_all_wars_banned }
+        }
+    }
+    $TARGET$ = {
+        is_alive = yes is_adult = yes is_landed = yes is_imprisoned = no is_at_war = no
+        government_has_flag = government_is_feudal
+        exists = liege
+        NOT = { this = $ACTOR$ }
+    }
+}
+rw_g1p_can_stage_trigger = {
+    exists = scope:actor exists = scope:recipient
+    scope:actor = { NOT = { has_character_flag = rw_g1p_offer_window } NOT = { has_character_flag = rw_g1p_armed } }
+    rw_g1p_peer_setup_trigger = { ACTOR = scope:actor TARGET = scope:recipient }
+    # Our contextual exemption is absent here, so this queries the original gate.
+    war_declarer_needs_hook_on_liege = yes
+}
+rw_g1p_ticket_trigger = {
+    exists = scope:rw_g1p_actor exists = scope:rw_g1p_target exists = scope:rw_g1p_liege exists = scope:rw_g1p_serial
+    this = scope:rw_g1p_actor
+    is_alive = yes
+    scope:rw_g1p_actor = {
+        var:rw_g1p_schema = 1
+        var:rw_g1p_serial = scope:rw_g1p_serial
+        var:rw_g1p_target = scope:rw_g1p_target
+        var:rw_g1p_liege = scope:rw_g1p_liege
+    }
+}
+rw_g1p_can_arm_trigger = {
+    rw_g1p_ticket_trigger = yes
+    exists = scope:actor exists = scope:recipient
+    scope:actor = scope:rw_g1p_actor
+    scope:recipient = scope:rw_g1p_target
+    rw_g1p_peer_setup_trigger = { ACTOR = scope:rw_g1p_actor TARGET = scope:rw_g1p_target }
+    scope:rw_g1p_actor = {
+        liege = scope:rw_g1p_liege
+        var:rw_g1p_phase = flag:offered
+        has_character_flag = rw_g1p_offer_window
+        NOT = { has_character_flag = rw_g1p_armed }
+    }
+    war_declarer_needs_hook_on_liege = yes
+}
+# Called only by the generated helper guard. Never call that helper recursively here.
+rw_g1p_bound_context_trigger = {
+    exists = scope:actor exists = scope:recipient
+    rw_g1p_peer_setup_trigger = { ACTOR = scope:actor TARGET = scope:recipient }
+    scope:actor = {
+        var:rw_g1p_schema = 1
+        has_variable = rw_g1p_serial
+        has_character_flag = rw_g1p_armed
+        var:rw_g1p_phase = flag:armed
+        var:rw_g1p_target = scope:recipient
+        var:rw_g1p_liege = scope:actor.liege
+    }
+}
+rw_g1p_can_cancel_trigger = {
+    rw_g1p_ticket_trigger = yes
+    scope:rw_g1p_actor = { OR = { var:rw_g1p_phase = flag:offered var:rw_g1p_phase = flag:armed } }
+}
+rw_g1p_native_context_trigger = {
+    exists = scope:war exists = scope:attacker exists = scope:defender
+    NOT = { scope:attacker = scope:defender }
+    scope:attacker = { is_alive = yes this = scope:war.primary_attacker }
+    scope:defender = { is_alive = yes this = scope:war.primary_defender }
+}
+# Fresh callback role/CB/ban facts only; no finding of illegality or selected hook.
+rw_g1p_claim_observation_trigger = {
+    rw_g1p_native_context_trigger = yes
+    scope:war = { using_cb = claim_cb }
+    scope:attacker = {
+        var:rw_g1p_schema = 1
+        has_variable = rw_g1p_serial
+        has_character_flag = rw_g1p_armed
+        var:rw_g1p_phase = flag:armed
+        var:rw_g1p_target = scope:defender
+        exists = liege
+        var:rw_g1p_liege = scope:attacker.liege
+        liege = scope:defender.liege
+        liege = { OR = { has_realm_law_flag = vassal_internal_wars_banned has_realm_law_flag = vassal_all_wars_banned } }
+    }
+}
