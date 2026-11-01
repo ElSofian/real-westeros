@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "e1f842e6b6a637d5feb9a1f94cc469c711537c20",
+  "assessed_commit": "8194bcbe59de0037a251cae2aae4e5204f6cf760",
   "lots": [
     {
       "id": "W",
@@ -347,8 +347,13 @@
           "id": "M4",
           "points": 2,
           "acceptance": "Intégration pertinente des souvenirs ou relations de maison natifs, au-delà des journaux propres",
-          "status": "open",
-          "evidence": []
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_NATIVE_MEMORIES.md",
+            "mod/real_westeros/common/character_memory_types/rw_political_memories.txt",
+            "mod/real_westeros/common/scripted_effects/rw_political_memory_effects.txt",
+            "mod/real_westeros/common/scripted_effects/rw_restitution_charter_effects.txt"
+          ]
         },
         {
           "id": "M5",
@@ -551,6 +556,39 @@
       "score": 43,
       "reference": "e1f842e6b6a637d5feb9a1f94cc469c711537c20",
       "note": "J2 source : demande d’arrestation individuelle native explicite, joueur/IA, refus/résistance laissés au natif, envoi non forcé et reçu de tentative uniquement. Voie sans faveur utilisable/diarchie active. +3 source ; moteur non testé."
+    },
+    {
+      "date": "2026-11-01",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4"
+      ],
+      "score": 45,
+      "reference": "8194bcbe59de0037a251cae2aae4e5204f6cf760",
+      "note": "M4 source : souvenirs natifs CK3 pour soutien public effectivement rendu et reconnaissance personnelle explicite de la Couronne, trois perspectives, rétention/coalescence bornées et aucun terme privé exporté. +2 source ; W1/W2 +0 et moteur non testé."
     }
   ]
 }

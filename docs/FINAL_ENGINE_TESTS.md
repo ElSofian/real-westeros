@@ -1236,3 +1236,10 @@ final G4/G5 campaign: sender/target/record freshness, native cost/default option
 acceptance/refusal/resistance, human/AI symmetry, dispatch-attempt versus outcome,
 save/reload, excluded diarchy/hook modes and duplicate/spam regression. Source credit
 does not certify a successful native send or custody.
+
+## Native political memories — M4
+
+No cases executed. NMEM-01…10 in RW010_NATIVE_MEMORIES.md cover actual memory UI,
+three perspectives, default icon, original parties/public privacy, performance-only
+creation, explicit Crown recognition, role changes, replay/coalescing, save/load,
+retention and final G4/G5 volume/regression. Native UI integration alone is not M5.

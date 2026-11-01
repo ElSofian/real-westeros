@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "status": "format/source references only; target engine UI, assets, semantics and compatibility unverified",
+  "private_references": [
+    {
+      "path": "AGOT/common/scripted_effects/03_bp1_scripted_effects.txt",
+      "sha256": "12e653e7ab50619e49780a8eb2588ece59ccc976e4b1037732192cc6a8ff5c61",
+      "line": 208,
+      "purpose": "Native character-memory creation with named participants"
+    }
+  ],
+  "public_references": [
+    {
+      "url": "https://github.com/cybrxkhan/RICE-for-CK3/blob/f2aa2c7ae50294407f0aca7f154dfdbd2dc28d46/RICE/common/character_memory_types/RICE__misc_character_memories.txt",
+      "sha256": "a9d5b1b87eeb18e8a890d9fd3f35031804768be06e96248a0b2cc6cc3bb539ed",
+      "purpose": "Definition, duration and three perspectives"
+    },
+    {
+      "url": "https://github.com/cybrxkhan/RICE-for-CK3/blob/f2aa2c7ae50294407f0aca7f154dfdbd2dc28d46/RICE/localization/french/rice_misc_l_french.yml",
+      "sha256": "27d7922b0e8d9d66ef88c0739d709bac7ee463642a99ab17271646df49a5a40d",
+      "purpose": "Memory owner and named participant localization"
+    },
+    {
+      "url": "https://github.com/PrincesOfDarknessMod/princesofdarknessmod-for-ck3/blob/e3e493db2a4668510a450b7b1e41c1f5b0360f6f/dev/devpod/common/character_memory_types/POD_memories.txt",
+      "sha256": "36a912d96c6eb6f2ad31e149d35dbc5171d352377a39842d9473ac12709fb44c",
+      "purpose": "Native default memory icon and definition format"
+    }
+  ]
+}
