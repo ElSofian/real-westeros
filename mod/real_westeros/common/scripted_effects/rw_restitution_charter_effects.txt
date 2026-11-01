@@ -1,0 +1,142 @@
+# Explicit fresh navigation; saved reply events never refresh their own consent.
+rw_ch_prepare_effect = {
+    if = {
+        limit = { rw_lr_view_trigger = yes }
+        clear_saved_scope = rw_ch_ruler
+        clear_saved_scope = rw_ch_head
+        clear_saved_scope = rw_ch_revision
+        if = {
+            limit = { rw_ch_roles_available_trigger = yes }
+            scope:rw_lr_authority.holder = { save_scope_as = rw_ch_ruler }
+            scope:rw_lr_house.house_head = { save_scope_as = rw_ch_head }
+        }
+        if = {
+            limit = { scope:rw_lr_record = { var:rw_ch_schema = 1 has_variable = rw_ch_revision } }
+            scope:rw_lr_record = { rw_ch_snapshot_effect = yes }
+        }
+        trigger_event = { id = rw_restitution_charter.0001 }
+    }
+}
+rw_ch_snapshot_effect = { save_scope_value_as = { name = rw_ch_revision value = var:rw_ch_revision } }
+rw_ch_propose_effect = {
+    if = {
+        limit = { rw_ch_can_propose_trigger = yes }
+        scope:rw_lr_record = {
+            set_variable = { name = rw_ch_revision value = 0 }
+            set_variable = { name = rw_ch_issuer value = scope:rw_ch_ruler }
+            set_variable = { name = rw_ch_original_head value = scope:rw_ch_head }
+            set_variable = { name = rw_ch_issued_on value = current_date }
+            set_variable = { name = rw_ch_offer_window value = flag:yes days = 7 }
+            set_variable = { name = rw_ch_state value = flag:offered }
+            set_variable = { name = rw_ch_schema value = 1 }
+            rw_ch_snapshot_effect = yes
+        }
+        scope:rw_ch_head = { trigger_event = { id = rw_restitution_charter.0001 days = 1 } }
+    }
+}
+rw_ch_accept_effect = {
+    if = {
+        limit = { rw_ch_can_accept_trigger = yes }
+        scope:rw_lr_record = {
+            remove_variable = rw_ch_offer_window
+            change_variable = { name = rw_ch_revision add = 1 }
+            set_variable = { name = rw_ch_accepted_on value = current_date }
+            set_variable = { name = rw_ch_due value = flag:yes days = 1825 }
+            set_variable = { name = rw_ch_recognized_by value = scope:rw_ch_ruler }
+            set_variable = { name = rw_ch_state value = flag:active }
+            set_variable = { name = rw_ch_notified_ruler value = scope:rw_ch_ruler }
+            set_variable = { name = rw_ch_notified_head value = scope:rw_ch_head }
+            rw_ch_snapshot_effect = yes
+        }
+        rw_ch_notify_effect = yes
+    }
+}
+rw_ch_assume_effect = {
+    if = {
+        limit = { rw_ch_can_assume_trigger = yes }
+        scope:rw_lr_record = {
+            change_variable = { name = rw_ch_revision add = 1 }
+            set_variable = { name = rw_ch_recognized_by value = scope:rw_ch_ruler }
+            set_variable = { name = rw_ch_recognized_on value = current_date }
+            rw_ch_snapshot_effect = yes
+        }
+        rw_ch_notify_effect = yes
+    }
+}
+# Internal terminal helper; public entry effects validate current actor and phase.
+rw_ch_finish_effect = {
+    if = {
+        limit = { rw_ch_view_trigger = yes rw_ch_roles_trigger = yes OR = { this = scope:rw_ch_ruler this = scope:rw_ch_head } }
+        save_scope_as = rw_ch_finisher
+        scope:rw_lr_record = {
+            remove_variable = rw_ch_offer_window
+            remove_variable = rw_ch_due
+            change_variable = { name = rw_ch_revision add = 1 }
+            set_variable = { name = rw_ch_state value = flag:$RESULT$ }
+            set_variable = { name = rw_ch_finished_on value = current_date }
+            set_variable = { name = rw_ch_finished_by value = scope:rw_ch_finisher }
+            rw_ch_snapshot_effect = yes
+        }
+        rw_ch_notify_effect = yes
+    }
+}
+rw_ch_renounce_effect = {
+    if = { limit = { rw_ch_can_renounce_trigger = yes } rw_ch_finish_effect = { RESULT = renounced } }
+}
+rw_ch_release_effect = {
+    if = { limit = { rw_ch_can_release_trigger = yes } rw_ch_finish_effect = { RESULT = released } }
+}
+rw_ch_close_effect = {
+    if = { limit = { rw_ch_can_close_trigger = yes } rw_ch_finish_effect = { RESULT = closed } }
+}
+rw_ch_satisfy_effect = {
+    if = {
+        limit = { rw_ch_can_satisfy_trigger = yes }
+        scope:rw_lr_record = { set_variable = { name = rw_ch_recovery_holder value = scope:rw_lr_title.holder } }
+        rw_ch_finish_effect = { RESULT = satisfied }
+    }
+}
+rw_ch_notify_effect = {
+    scope:rw_ch_ruler = { if = { limit = { is_alive = yes } trigger_event = { id = rw_restitution_charter.0001 } } }
+    scope:rw_ch_head = { if = { limit = { is_alive = yes } trigger_event = { id = rw_restitution_charter.0001 } } }
+}
+# Existing indexed story maintenance only. One opportunity per observed role identity.
+rw_ch_opportunity_effect = {
+    if = {
+        limit = {
+            rw_lr_record_valid_trigger = yes
+            has_variable = rw_lr_retained
+            OR = { NOT = { has_variable = rw_ch_schema } AND = { var:rw_ch_schema = 1 var:rw_ch_state = flag:active has_variable = rw_ch_due } }
+        }
+        rw_lr_snapshot_effect = yes
+        if = {
+            limit = { rw_ch_roles_available_trigger = yes }
+            if = {
+                limit = {
+                    NOT = { var:rw_ch_notified_ruler = scope:rw_lr_authority.holder }
+                    OR = { NOT = { has_variable = rw_ch_schema } NOT = { var:rw_ch_recognized_by = scope:rw_lr_authority.holder } }
+                }
+                set_variable = { name = rw_ch_notified_ruler value = scope:rw_lr_authority.holder }
+                scope:rw_lr_authority.holder = { trigger_event = { id = rw_restitution_charter.0002 } }
+            }
+            if = {
+                limit = {
+                    var:rw_ch_schema = 1 var:rw_ch_state = flag:active has_variable = rw_ch_due
+                    OR = {
+                        NOT = { var:rw_ch_notified_head = scope:rw_lr_house.house_head }
+                        AND = {
+                            scope:rw_lr_title = { exists = holder holder = { is_alive = yes exists = house house = scope:rw_lr_house } }
+                            NOT = { var:rw_ch_notified_recovery_holder = scope:rw_lr_title.holder }
+                        }
+                    }
+                }
+                set_variable = { name = rw_ch_notified_head value = scope:rw_lr_house.house_head }
+                if = {
+                    limit = { scope:rw_lr_title = { exists = holder holder = { is_alive = yes exists = house house = scope:rw_lr_house } } }
+                    set_variable = { name = rw_ch_notified_recovery_holder value = scope:rw_lr_title.holder }
+                }
+                scope:rw_lr_house.house_head = { trigger_event = { id = rw_restitution_charter.0002 } }
+            }
+        }
+    }
+}

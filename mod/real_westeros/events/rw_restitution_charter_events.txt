@@ -1,0 +1,44 @@
+namespace = rw_restitution_charter
+
+rw_restitution_charter.0001 = {
+    type = character_event
+    title = rw_restitution_charter.title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_ch_can_propose_trigger = yes } desc = rw_restitution_charter.introduction }
+            triggered_desc = {
+                trigger = { rw_ch_view_trigger = yes }
+                desc = {
+                    desc = rw_restitution_charter.terms
+                    first_valid = {
+                        triggered_desc = { trigger = { scope:rw_lr_record = { var:rw_ch_state = flag:satisfied } } desc = rw_restitution_charter.satisfied }
+                        triggered_desc = { trigger = { scope:rw_lr_record = { var:rw_ch_state = flag:renounced } } desc = rw_restitution_charter.renounced }
+                        triggered_desc = { trigger = { scope:rw_lr_record = { var:rw_ch_state = flag:released } } desc = rw_restitution_charter.released }
+                        triggered_desc = { trigger = { scope:rw_lr_record = { var:rw_ch_state = flag:closed } } desc = rw_restitution_charter.closed }
+                        triggered_desc = { trigger = { scope:rw_lr_record = { var:rw_ch_state = flag:offered has_variable = rw_ch_offer_window } } desc = rw_restitution_charter.offered }
+                        triggered_desc = { trigger = { scope:rw_lr_record = { var:rw_ch_state = flag:active has_variable = rw_ch_due } } desc = rw_restitution_charter.active }
+                        desc = rw_restitution_charter.expired
+                    }
+                    triggered_desc = { trigger = { rw_ch_active_trigger = yes scope:rw_lr_record = { NOT = { var:rw_ch_recognized_by = scope:rw_ch_ruler } } } desc = rw_restitution_charter.unassumed }
+                    desc = rw_restitution_charter.limits
+                }
+            }
+            desc = rw_restitution_charter.unavailable
+        }
+    }
+    theme = diplomacy
+    option = { name = rw_restitution_charter.propose trigger = { rw_ch_can_propose_trigger = yes } rw_ch_propose_effect = yes ai_chance = { base = 5 modifier = { factor = 2 has_trait = just } } }
+    option = { name = rw_restitution_charter.accept trigger = { rw_ch_can_accept_trigger = yes } rw_ch_accept_effect = yes ai_chance = { base = 50 } }
+    option = { name = rw_restitution_charter.assume trigger = { rw_ch_can_assume_trigger = yes } rw_ch_assume_effect = yes ai_chance = { base = 40 modifier = { factor = 2 has_trait = honest } } }
+    option = { name = rw_restitution_charter.renounce trigger = { rw_ch_can_renounce_trigger = yes } rw_ch_renounce_effect = yes ai_chance = { base = 5 modifier = { factor = 2 has_trait = deceitful } } }
+    option = { name = rw_restitution_charter.release trigger = { rw_ch_can_release_trigger = yes } rw_ch_release_effect = yes ai_chance = { base = 5 } }
+    option = { name = rw_restitution_charter.satisfy trigger = { rw_ch_can_satisfy_trigger = yes } rw_ch_satisfy_effect = yes ai_chance = { base = 70 } }
+    option = { name = rw_restitution_charter.close trigger = { rw_ch_can_close_trigger = yes } rw_ch_close_effect = yes ai_chance = { base = 10 } }
+    option = { name = rw_restitution_charter.leave ai_chance = { base = 60 } }
+}
+# Explicit current-role/revision capture. Delayed replies never execute this refresh.
+rw_restitution_charter.0002 = {
+    type = character_event
+    hidden = yes
+    immediate = { rw_ch_prepare_effect = yes }
+}

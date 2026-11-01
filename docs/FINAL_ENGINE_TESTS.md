@@ -1149,3 +1149,20 @@ All unrun. RW010_RESTITUTION_DIALOGUES.md creates discussion, not promised resti
 | MRESP-08 | Save/load at each state; war ends/reference disappears; original party dies or loses rank/freedom/peace/funds | Exact retained personal facts remain separate; living original parties need no new-pledge capacity to reply/react; death/retention guards apply |
 | MRESP-09 | Request on day twenty-nine, wait/review/reply, then expire and inspect archive | Original deadline never renewed; no repeated timer or extra notification chain; archive shows silence/statement/reaction separately |
 | MRESP-10 | AI↔AI and AI↔player across traits and observed war contexts, compared to AGOT baseline | Same actions/effects/guards, bounded notices, no native war/CB/truce/secret/justice effect; measure actual privacy/AI/performance before compatibility claims |
+
+## Public institutional restitution charters (all unrun)
+
+| ID | Final campaign scenario | Expected observation, not demonstrated |
+|---|---|---|
+| RCHART-01 | Fresh public entry, current sovereign proposes; exact head accepts within seven days | No charter consent from auto-open, payment or title transfer; exact representatives and version required |
+| RCHART-02 | Sovereign/head changes before acceptance; replay original offer, then close stale proposal | New representative cannot inherit pending personal consent; neutral current-role closure, no new rights |
+| RCHART-03 | Accepted charter, new sovereign chooses recognize or repudiate in separate saves | Explicit representative choice; no personal guilt/assumption from crown inheritance alone; original five-year deadline preserved |
+| RCHART-04 | Crown A→B→A, heads change, and short unobserved role reversals | Fresh current-role checks; recognition tracks character identity, not reign history; no claimed detection of unseen transitions |
+| RCHART-05 | Exact title held by original crown, third party, different house, then exact former-house member | Only current exact head can record satisfaction in the last case; no automatic transfer/seizure or causal grant inference |
+| RCHART-06 | Current head releases, current crown repudiates, or offer is closed; replay all panels | Windows consumed and revision/actor/date stored before notices; no replay or opinion/claim/title effect |
+| RCHART-07 | Expire offer/five-year accepted period; repeatedly read, recognize or reopen | No deadline reset, new proposal for same entry, automatic breach/fulfillment/guilt/pardon or record retention renewal |
+| RCHART-08 | Original storage owner dies, normal registry migration; archive reaches fixed retention end or native refs vanish | Public fields follow storage with current access/roles; no private consent copied; fail closed when entry/reference no longer accessible |
+| RCHART-09 | Original parties, current house/crown/title roles, custodian and outsider browse public entry | Existing public reader policy only; storage ownership creates no authority; archive navigation never accepts/proposes by itself |
+| RCHART-10 | Fresh deposit vs older empty entries, accepted charter and new ruler/head maintenance | Initial fresh opportunity, no old automatic offers, active-role and exact-house recovery-holder notices coalesced before sending; same head can acknowledge later recovery; correct character-event root, no repeated unchanged-role/holder prompts |
+| RCHART-11 | AI↔AI and player↔AI across dispositions and repeated records | Same actions/costs/role/revision guards; measure actual AI response/spam/performance; no automated native grant claimed |
+| RCHART-12 | Save/load all phases; native grant/inheritance/election/conquest, private restitution pledge and AGOT baseline | Independent public institutional state; no private promise exposure/rewrite, new hook/war/title/house-ban effect or invented universal G3 enforcement |

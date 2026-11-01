@@ -1,0 +1,80 @@
+# Public land-entry identity precedes charter access; no private pledge is inherited.
+rw_ch_roles_available_trigger = {
+    scope:rw_lr_authority = { exists = holder holder = { rw_house_sovereign_trigger = yes } }
+    scope:rw_lr_house = {
+        exists = house_head
+        house_head = { is_alive = yes is_adult = yes is_imprisoned = no house = scope:rw_lr_house }
+    }
+    NOT = { scope:rw_lr_authority.holder = scope:rw_lr_house.house_head }
+}
+rw_ch_roles_trigger = {
+    rw_lr_view_trigger = yes
+    exists = scope:rw_ch_ruler
+    exists = scope:rw_ch_head
+    rw_ch_roles_available_trigger = yes
+    scope:rw_lr_authority = { holder = scope:rw_ch_ruler }
+    scope:rw_lr_house = { house_head = scope:rw_ch_head }
+}
+rw_ch_can_propose_trigger = {
+    rw_ch_roles_trigger = yes
+    this = scope:rw_ch_ruler
+    scope:rw_lr_record = { NOT = { has_variable = rw_ch_schema } }
+    NOT = { scope:rw_lr_title = { exists = holder holder = { exists = house house = scope:rw_lr_house } } }
+}
+rw_ch_view_trigger = {
+    rw_lr_view_trigger = yes
+    exists = scope:rw_ch_revision
+    scope:rw_lr_record = {
+        var:rw_ch_schema = 1
+        var:rw_ch_revision = scope:rw_ch_revision
+        exists = var:rw_ch_issuer
+        exists = var:rw_ch_original_head
+        has_variable = rw_ch_issued_on
+        OR = { var:rw_ch_state = flag:offered var:rw_ch_state = flag:active var:rw_ch_state = flag:closed var:rw_ch_state = flag:renounced var:rw_ch_state = flag:released var:rw_ch_state = flag:satisfied }
+        trigger_if = {
+            limit = { NOR = { var:rw_ch_state = flag:offered var:rw_ch_state = flag:closed } }
+            has_variable = rw_ch_accepted_on
+            exists = var:rw_ch_recognized_by
+        }
+        trigger_if = {
+            limit = { NOR = { var:rw_ch_state = flag:offered var:rw_ch_state = flag:active } }
+            has_variable = rw_ch_finished_on
+            exists = var:rw_ch_finished_by
+        }
+        trigger_if = { limit = { var:rw_ch_state = flag:satisfied } exists = var:rw_ch_recovery_holder }
+    }
+}
+rw_ch_can_accept_trigger = {
+    rw_ch_view_trigger = yes
+    rw_ch_roles_trigger = yes
+    this = scope:rw_ch_head
+    scope:rw_lr_record = {
+        var:rw_ch_state = flag:offered
+        has_variable = rw_ch_offer_window
+        var:rw_ch_issuer = scope:rw_ch_ruler
+        var:rw_ch_original_head = scope:rw_ch_head
+    }
+}
+rw_ch_active_trigger = {
+    rw_ch_view_trigger = yes
+    rw_ch_roles_trigger = yes
+    scope:rw_lr_record = { var:rw_ch_state = flag:active has_variable = rw_ch_due }
+}
+rw_ch_can_assume_trigger = {
+    rw_ch_active_trigger = yes
+    this = scope:rw_ch_ruler
+    scope:rw_lr_record = { NOT = { var:rw_ch_recognized_by = scope:rw_ch_ruler } }
+}
+rw_ch_can_renounce_trigger = { rw_ch_active_trigger = yes this = scope:rw_ch_ruler }
+rw_ch_can_release_trigger = { rw_ch_active_trigger = yes this = scope:rw_ch_head }
+rw_ch_can_satisfy_trigger = {
+    rw_ch_can_release_trigger = yes
+    scope:rw_lr_title = { exists = holder holder = { is_alive = yes exists = house house = scope:rw_lr_house } }
+}
+# Current representatives may retire an unaccepted stale proposal without blame.
+rw_ch_can_close_trigger = {
+    rw_ch_view_trigger = yes
+    rw_ch_roles_trigger = yes
+    OR = { this = scope:rw_ch_ruler this = scope:rw_ch_head }
+    scope:rw_lr_record = { var:rw_ch_state = flag:offered }
+}
