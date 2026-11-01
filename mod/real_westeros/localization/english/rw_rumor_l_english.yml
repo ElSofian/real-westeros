@@ -15,3 +15,4 @@
  rw_rumor.send:0 "Tell this person the account, with its source"
  rw_rumor.keep:0 "Keep it to myself for now"
  rw_rumor.acknowledge:0 "Note what I have heard"
+ rw_rumor.send_effect:0 "I will attempt to tell this account with its original source. I may relay another account after thirty days. Telling it creates no proof of its truth."

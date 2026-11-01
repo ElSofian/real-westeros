@@ -79,8 +79,6 @@ rw_ru_relayable_trigger = {
         var:rw_ru_subject = scope:rw_ru_subject
         var:rw_ru_origin_serial = scope:rw_ru_origin_serial
         var:rw_ru_issued_on = scope:rw_ru_issued_on
-        has_variable_list = rw_ru_holders
-        any_in_list = { variable = rw_ru_holders this = scope:rw_ru_holder }
     }
 }
 rw_ru_can_send_trigger = {
@@ -133,12 +131,10 @@ rw_ru_candidate_trigger = {
     var:rw_ru_origin = {
         rw_ru_origin_trigger = yes
         has_variable = rw_ru_origin_retained
-        has_variable_list = rw_ru_holders
         var:rw_ru_speaker = prev.var:rw_ru_speaker
         var:rw_ru_subject = prev.var:rw_ru_subject
         var:rw_ru_origin_serial = prev.var:rw_ru_origin_serial
         var:rw_ru_issued_on = prev.var:rw_ru_issued_on
-        any_in_list = { variable = rw_ru_holders this = $SENDER$ }
     }
     trigger_if = {
         limit = { has_variable_list = rw_ru_attempted_targets }

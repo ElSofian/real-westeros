@@ -30,7 +30,7 @@ def rumor_errors(t,e,s,v,i,a):
               'scope:rw_ru_subject = { is_alive = yes }','var:rw_ru_origin = scope:rw_ru_origin','rw_ru_origin_trigger = yes',
               'has_variable = rw_ru_origin_retained','var:rw_ru_speaker = scope:rw_ru_speaker',
               'var:rw_ru_subject = scope:rw_ru_subject','var:rw_ru_origin_serial = scope:rw_ru_origin_serial',
-              'var:rw_ru_issued_on = scope:rw_ru_issued_on','any_in_list = { variable = rw_ru_holders this = scope:rw_ru_holder }'):
+              'var:rw_ru_issued_on = scope:rw_ru_issued_on'):
         if g not in relay:out.append('unowned expired or laundered lineage relayed')
     send=block(t,'rw_ru_can_send_trigger')
     for g in ('rw_ru_relayable_trigger = yes','scope:rw_ru_receiver = { rw_ru_party_trigger = yes }',
@@ -53,6 +53,8 @@ def rumor_errors(t,e,s,v,i,a):
            'name = rw_ru_attempted_targets target = scope:rw_ru_receiver',
            'flag = rw_ru_relay_cooldown days = 30','rw_ru_notify_new_packet_effect = yes')]
     if min(order)<0 or order!=sorted(order):out.append('attempt memory cooldown or notice order wrong')
+    if 'custom_tooltip = rw_rumor.send_effect' not in send_effect or 'hidden_effect = {' not in send_effect or send_effect.find('hidden_effect = {')>send_effect.find('rw_ru_create_packet_effect = yes'):
+        out.append('deduplication leaks through effect preview')
     if 'scope:rw_ru_new_packet' in send_effect or send_effect.count('if = {')!=1:
         out.append('sender learns whether receiver was already informed')
     creation_gate=block(t,'rw_ru_can_create_packet_trigger')
@@ -61,7 +63,7 @@ def rumor_errors(t,e,s,v,i,a):
     if constructor.find('clear_saved_scope = rw_ru_new_packet')>constructor.find('limit = { rw_ru_can_create_packet_trigger = yes }'):
         out.append('duplicate can reuse stale construction result')
     menu=block(t,'rw_ru_candidate_trigger')
-    if re.search(r'rw_ru_holders\s+this\s*=\s*(?:scope:rw_ru_receiver|\$RECEIVER\$)',send+menu):
+    if 'rw_ru_holders' in send+relay+menu:
         out.append('sender queries hidden audience')
     if e.count('name = rw_ru_origin_retained value = flag:yes days = 365')!=1 or 'rw_ru_origin_retained' in constructor:
         out.append('lineage lifetime renewed by relay')
@@ -122,7 +124,7 @@ class RumorPropagationTests(unittest.TestCase):
 
     def test_a_b_c_a_echo_and_already_informed_receivers_rejected(self):
         self.assertIn('echo creates new knowledge',self.errors(t=self.t.replace('NOT = { any_in_list = { variable = rw_ru_holders this = scope:rw_ru_receiver } }','always = yes',1)))
-        self.assertIn('unowned expired or laundered lineage relayed',self.errors(t=self.t.replace('any_in_list = { variable = rw_ru_holders this = scope:rw_ru_holder }','always = yes',1)))
+        self.assertIn('unowned expired or laundered lineage relayed',self.errors(t=self.t.replace('rw_ru_view_trigger = yes','always = yes',1)))
 
     def test_range_cooldown_death_and_ttl_are_fresh_guards(self):
         self.assertIn('self loop range or own-attempt guard bypassed',self.errors(t=self.t.replace('in_diplomatic_range = scope:rw_ru_receiver','always = yes')))
@@ -148,7 +150,11 @@ class RumorPropagationTests(unittest.TestCase):
     def test_sender_cannot_query_other_peoples_audience(self):
         injected='scope:rw_ru_origin = { NOT = { any_in_list = { variable = rw_ru_holders this = scope:rw_ru_receiver } } }'
         self.assertIn('sender queries hidden audience',self.errors(t=self.t.replace('rw_ru_can_send_trigger = {','rw_ru_can_send_trigger = { '+injected,1)))
-        self.assertIn('sender learns whether receiver was already informed',self.errors(e=self.e.replace('rw_ru_create_packet_effect = yes\n        # Sender','rw_ru_create_packet_effect = yes\n        if = { limit = { exists = scope:rw_ru_new_packet } }\n        # Sender',1)))
+        self.assertIn('sender learns whether receiver was already informed',self.errors(e=self.e.replace('rw_ru_create_packet_effect = yes\n            # Sender','rw_ru_create_packet_effect = yes\n            if = { limit = { exists = scope:rw_ru_new_packet } }\n            # Sender',1)))
+
+    def test_effect_preview_is_invariant_for_known_and_unknown_receiver(self):
+        self.assertIn('deduplication leaks through effect preview',self.errors(e=self.e.replace('hidden_effect = {','show_as_tooltip = {',1)))
+        self.assertIn('deduplication leaks through effect preview',self.errors(e=self.e.replace('custom_tooltip = rw_rumor.send_effect','custom_tooltip = rw_rumor.receiver_knows',1)))
 
     def test_redundant_attempt_cannot_notify_an_old_packet(self):
         original=block(self.e,'rw_ru_create_packet_effect')
@@ -170,8 +176,9 @@ class RumorPropagationTests(unittest.TestCase):
         self.assertIn('name = rw_ru_heard_on value = current_date',block(self.e,'rw_ru_create_packet_effect'))
 
     def test_en_fr_refs_preserve_unverified_speaker_relay_and_no_case_link(self):
-        keys=set(re.findall(r'\b(?:title|desc|name)\s*=\s*(rw_[\w.]+)',self.v+self.i))
+        keys=set(re.findall(r'\b(?:title|desc|name|custom_tooltip)\s*=\s*(rw_[\w.]+)',self.v+self.i))
         keys.update(('rw_rumor.prepare','rw_relay_rumor_interaction','rw_review_my_rumors_interaction'))
+        keys.update(re.findall(r'custom_tooltip\s*=\s*(rw_rumor\.[\w.]+)',self.e))
         for lang in ('english','french'):
             p=MOD/f'localization/{lang}/rw_rumor_l_{lang}.yml';self.assertTrue(p.read_bytes().startswith(b'\xef\xbb\xbf'))
             text=p.read_text(encoding='utf-8-sig');self.assertEqual(keys,set(re.findall(r'^\s+([\w.]+):0',text,re.M)))

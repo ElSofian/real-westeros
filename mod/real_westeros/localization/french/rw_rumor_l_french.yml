@@ -15,3 +15,4 @@
  rw_rumor.send:0 "Raconter ce récit en précisant sa source"
  rw_rumor.keep:0 "Le garder pour moi pour l’instant"
  rw_rumor.acknowledge:0 "Prendre note de ce que j’ai entendu"
+ rw_rumor.send_effect:0 "Je tenterai de raconter ce récit en précisant sa source initiale. Je pourrai relayer un autre récit après trente jours. Le raconter ne prouve pas sa véracité."

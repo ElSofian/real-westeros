@@ -84,11 +84,15 @@ rw_ru_create_packet_effect = {
 rw_ru_send_effect = {
     if = {
         limit = { rw_ru_can_send_trigger = yes }
-        rw_ru_create_packet_effect = yes
-        # Sender remembers their own attempt, not who was secretly informed by others.
-        scope:rw_ru_packet = { add_to_variable_list = { name = rw_ru_attempted_targets target = scope:rw_ru_receiver } }
-        add_character_flag = { flag = rw_ru_relay_cooldown days = 30 }
-        rw_ru_notify_new_packet_effect = yes
+        custom_tooltip = rw_rumor.send_effect
+        # No conditional tooltip may reveal the receiver's hidden prior knowledge.
+        hidden_effect = {
+            rw_ru_create_packet_effect = yes
+            # Sender remembers their own attempt, not who was informed by others.
+            scope:rw_ru_packet = { add_to_variable_list = { name = rw_ru_attempted_targets target = scope:rw_ru_receiver } }
+            add_character_flag = { flag = rw_ru_relay_cooldown days = 30 }
+            rw_ru_notify_new_packet_effect = yes
+        }
     }
 }
 # Separate notification lets the sender record/cool their attempt even if a duplicate
