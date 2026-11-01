@@ -1,0 +1,186 @@
+# Character scope. Headship allows representation, not inherited personal consent.
+rw_dp_party_trigger = {
+    rw_service_party_eligible_trigger = yes
+    is_imprisoned = no
+    exists = house
+    house = { house_head = prev }
+}
+# Story scope. History freezes original people/houses; storage ownership grants no rights.
+rw_dp_record_trigger = {
+    story_type = story_rw_dynastic_pledge
+    var:rw_dp_schema = 1
+    var:rw_dp_kind = flag:legacy_endowment
+    has_variable = rw_dp_serial
+    has_variable = rw_dp_revision
+    var:rw_dp_amount = 50
+    exists = var:rw_dp_original_payer
+    exists = var:rw_dp_original_payee
+    NOT = { var:rw_dp_original_payer = var:rw_dp_original_payee }
+    exists = var:rw_dp_payer_house
+    exists = var:rw_dp_payee_house
+    NOT = { var:rw_dp_payer_house = var:rw_dp_payee_house }
+    has_variable = rw_dp_issued_on
+    OR = {
+        var:rw_dp_state = flag:offered var:rw_dp_state = flag:active
+        var:rw_dp_state = flag:declined var:rw_dp_state = flag:offer_lapsed
+        var:rw_dp_state = flag:renounced var:rw_dp_state = flag:released
+        var:rw_dp_state = flag:expired var:rw_dp_state = flag:paid
+    }
+    trigger_if = {
+        limit = { OR = { var:rw_dp_state = flag:active var:rw_dp_state = flag:paid } }
+        has_variable = rw_dp_accepted_on
+        exists = var:rw_dp_payer_recognized
+        exists = var:rw_dp_payee_recognized
+    }
+    trigger_if = {
+        limit = { var:rw_dp_state = flag:paid }
+        exists = var:rw_dp_paid_by
+        exists = var:rw_dp_paid_to
+        NOT = { var:rw_dp_paid_by = var:rw_dp_paid_to }
+        exists = var:rw_dp_finished_by
+        var:rw_dp_finished_by = var:rw_dp_paid_by
+        has_variable = rw_dp_finished_on
+    }
+}
+rw_dp_reader_trigger = {
+    rw_dp_record_trigger = yes
+    has_variable = rw_dp_cap
+    has_variable = rw_dp_retained
+    $READER$ = { is_alive = yes }
+    OR = {
+        var:rw_dp_original_payer = $READER$
+        var:rw_dp_original_payee = $READER$
+        AND = {
+            var:rw_dp_state = flag:paid
+            OR = { var:rw_dp_paid_by = $READER$ var:rw_dp_paid_to = $READER$ }
+        }
+        var:rw_dp_payer_house = { exists = house_head house_head = $READER$ }
+        var:rw_dp_payee_house = { exists = house_head house_head = $READER$ }
+    }
+}
+rw_dp_can_offer_trigger = {
+    scope:actor = { rw_dp_party_trigger = yes NOT = { has_character_flag = rw_dp_offer_cooldown } }
+    scope:recipient = { rw_dp_party_trigger = yes }
+    NOT = { scope:actor = scope:recipient }
+    NOT = { scope:actor.house = scope:recipient.house }
+    trigger_if = {
+        limit = { has_global_variable_list = rw_dynastic_pledges }
+        NOT = {
+            any_in_global_list = {
+                variable = rw_dynastic_pledges
+                rw_dp_record_trigger = yes
+                has_variable = rw_dp_cap
+                has_variable = rw_dp_retained
+                var:rw_dp_payer_house = scope:actor.house
+                var:rw_dp_payee_house = scope:recipient.house
+                OR = { var:rw_dp_state = flag:offered var:rw_dp_state = flag:active }
+            }
+        }
+    }
+}
+# Character scope. Exact record+serial+revision and private reader, not custodian.
+rw_dp_view_trigger = {
+    exists = scope:rw_dp_record
+    exists = scope:rw_dp_serial
+    exists = scope:rw_dp_revision
+    exists = scope:rw_dp_viewer
+    this = scope:rw_dp_viewer
+    exists = scope:rw_dp_original_payer
+    exists = scope:rw_dp_original_payee
+    scope:rw_dp_record = {
+        rw_dp_reader_trigger = { READER = scope:rw_dp_viewer }
+        var:rw_dp_serial = scope:rw_dp_serial
+        var:rw_dp_revision = scope:rw_dp_revision
+        var:rw_dp_original_payer = scope:rw_dp_original_payer
+        var:rw_dp_original_payee = scope:rw_dp_original_payee
+        trigger_if = {
+            limit = { var:rw_dp_state = flag:paid }
+            exists = scope:rw_dp_paid_payer
+            exists = scope:rw_dp_paid_payee
+            var:rw_dp_paid_by = scope:rw_dp_paid_payer
+            var:rw_dp_paid_to = scope:rw_dp_paid_payee
+        }
+    }
+}
+rw_dp_roles_trigger = {
+    rw_dp_view_trigger = yes
+    exists = scope:rw_dp_payer
+    exists = scope:rw_dp_payee
+    scope:rw_dp_record = {
+        var:rw_dp_payer_house = { house_head = scope:rw_dp_payer }
+        var:rw_dp_payee_house = { house_head = scope:rw_dp_payee }
+    }
+    scope:rw_dp_payer = { rw_dp_party_trigger = yes house = scope:rw_dp_record.var:rw_dp_payer_house }
+    scope:rw_dp_payee = { rw_dp_party_trigger = yes house = scope:rw_dp_record.var:rw_dp_payee_house }
+    NOT = { scope:rw_dp_payer = scope:rw_dp_payee }
+}
+rw_dp_can_accept_trigger = {
+    rw_dp_roles_trigger = yes
+    this = scope:rw_dp_payee
+    scope:rw_dp_record = {
+        var:rw_dp_state = flag:offered
+        has_variable = rw_dp_offer_window
+        var:rw_dp_original_payer = scope:rw_dp_payer
+        var:rw_dp_original_payee = scope:rw_dp_payee
+    }
+}
+rw_dp_active_trigger = {
+    rw_dp_roles_trigger = yes
+    scope:rw_dp_record = { var:rw_dp_state = flag:active has_variable = rw_dp_due }
+}
+rw_dp_can_recognize_trigger = {
+    rw_dp_active_trigger = yes
+    OR = {
+        AND = { this = scope:rw_dp_payer scope:rw_dp_record = { NOT = { var:rw_dp_payer_recognized = scope:rw_dp_payer } } }
+        AND = { this = scope:rw_dp_payee scope:rw_dp_record = { NOT = { var:rw_dp_payee_recognized = scope:rw_dp_payee } } }
+    }
+}
+rw_dp_can_pay_trigger = {
+    rw_dp_active_trigger = yes
+    this = scope:rw_dp_payer
+    scope:rw_dp_payer = { gold >= 50 }
+    scope:rw_dp_record = {
+        var:rw_dp_original_payer = { is_alive = no }
+        NOT = { var:rw_dp_original_payer = scope:rw_dp_payer }
+        var:rw_dp_payer_recognized = scope:rw_dp_payer
+        var:rw_dp_payee_recognized = scope:rw_dp_payee
+    }
+}
+# Free exits need the acting house head, not the other head's health, war or funds.
+rw_dp_can_renounce_trigger = {
+    rw_dp_view_trigger = yes
+    is_adult = yes
+    is_imprisoned = no
+    scope:rw_dp_record = {
+        var:rw_dp_state = flag:active
+        has_variable = rw_dp_due
+        var:rw_dp_payer_house = { house_head = scope:rw_dp_viewer }
+    }
+}
+rw_dp_can_release_trigger = {
+    rw_dp_view_trigger = yes
+    is_adult = yes
+    is_imprisoned = no
+    scope:rw_dp_record = {
+        var:rw_dp_state = flag:active
+        has_variable = rw_dp_due
+        var:rw_dp_payee_house = { house_head = scope:rw_dp_viewer }
+    }
+}
+rw_dp_can_decline_trigger = {
+    rw_dp_view_trigger = yes
+    is_adult = yes
+    is_imprisoned = no
+    scope:rw_dp_record = { var:rw_dp_state = flag:offered }
+}
+# Refresh can read a newer revision but never another record or a foreign story.
+rw_dp_can_refresh_trigger = {
+    exists = scope:rw_dp_record
+    exists = scope:rw_dp_serial
+    scope:rw_dp_record = { rw_dp_reader_trigger = { READER = root } var:rw_dp_serial = scope:rw_dp_serial }
+}
+# Explicit death exclusion also works before native is_alive/headship flags settle.
+rw_dp_custodian_trigger = {
+    is_alive = yes
+    trigger_if = { limit = { exists = scope:rw_dp_departed } NOT = { this = scope:rw_dp_departed } }
+}
