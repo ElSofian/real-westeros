@@ -211,7 +211,16 @@ Existing storage rehoming carries only public charter fields. Fresh deposit and
 existing active-charter maintenance provide coalesced character-root opportunities
 for changed representatives and newly observed exact-house recovery holders;
 older empty entries never get new automatic offers. All engine behavior unverified.
-Next wider institutional/territorial negotiation and contextual consequences across systems. All G2 engine behavior and
+Public charter compensation now adds consideration (RW010_CHARTER_COMPENSATION.md):
+current sovereign offers twenty-five personal gold or current exact head requests
+fifty for release; counterpart agreement/current funds, frozen monetary parties,
+charter/quote versions and original windows guard settlement. Both quote and charter
+consume before sovereign debit/head credit/notices; result receipt binds original
+monetary names/amount/actor/date to the released parent revision. Role/version changes
+require fresh explicit proposal; no inherited financial consent or renewed charter.
+Free repudiation/release/satisfaction remain, refusal only closes talks, public
+receipt access follows existing registry and no private/native bank/title state changes.
+Next wider institutional clauses and contextual consequences across systems. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;
 never force the no-tyranny imprisonment helper as a legality check. Keep knowledge,
