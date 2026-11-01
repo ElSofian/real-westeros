@@ -200,7 +200,17 @@ chooses neutral note or −15 opinion/two years only if absent, never stacked/re
 consume before effect/notice. Statement, role fact and personal judgment remain
 separate; silence/expiry/old rows create no admission, reaction or pardon. No new
 native callback/war/legal state or record deadline/retention extension.
-Next wider territorial/institutional commitments and structured consideration across systems. All G2 engine behavior and
+Public institutional crown restitution charters now exist
+(RW010_RESTITUTION_CHARTERS.md): exact public land entry/crown/house/title, seven-day
+original-representative consent and fixed five-year accepted period. Successors may
+explicitly recognize or repudiate; current head may release or record satisfaction
+only while exact house owns exact title. No causal grant/legality proof, native
+transfer, automated AI grant or inherited personal guilt. Current roles/revisions
+revalidate every action; reading/recognition never renew terms or public retention.
+Existing storage rehoming carries only public charter fields. Fresh deposit and
+existing active-charter maintenance provide coalesced character-root opportunities;
+older empty entries never get new automatic offers. All engine behavior unverified.
+Next wider institutional/territorial negotiation and contextual consequences across systems. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;
 never force the no-tyranny imprisonment helper as a legality check. Keep knowledge,

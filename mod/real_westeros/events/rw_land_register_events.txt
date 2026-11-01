@@ -50,5 +50,11 @@ rw_land_registry.0003 = {
         rw_rs_open_request_effect = yes
         ai_chance = { base = 0 }
     }
+    option = {
+        name = rw_restitution_charter.review
+        trigger = { rw_lr_view_trigger = yes }
+        if = { limit = { rw_lr_view_trigger = yes } trigger_event = { id = rw_restitution_charter.0002 } }
+        ai_chance = { base = 0 }
+    }
     option = { name = rw_land_registry.close }
 }
