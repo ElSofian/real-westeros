@@ -18,8 +18,13 @@ RW010_NATIVE_JUSTICE_ACTIONS.md for the conservative native arrest-request path,
 shared player/AI with one next-day fresh-record opportunity, exact-target confirmation,
 current native reason/validity, no usable hook/active diarchy and pre-dispatch attempt
 receipt (never completed punishment). Native refusal/resistance remain native; all
-actual semantics await final testing. Next target **W1/W2** under RW-004, then other
-open roadmap criteria. Do not endlessly extend credited contract/dialogue variants.
+actual semantics await final testing. W1/W2 remain open (+0): shared-helper/cancel/AI
+limits in the existing G1 probe still require final observations before a production
+path; do not add another diagnostic or pretend a snapshot proves law at declaration.
+Independent M4 now adds +2 source points: **45/100**, engine **0/20**. Read
+RW010_NATIVE_MEMORIES.md for native public-support and explicit Crown-recognition
+memories, bounded coalescing/retention and no private terms. This is not M5.
+Next independent target **O4**, then I3/M5 and other open roadmap criteria. Do not endlessly extend credited contract/dialogue variants.
 
 RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remains
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
@@ -252,7 +257,7 @@ only. Base-mod files are unchanged. No native-window cancel hook, working engine
 route, unlawful-war verdict or successful CB/cost/Mega War lifecycle is established.
 All game tests stay in the final campaign. This is not a new G1-first blocker for
 independent development. Read the new guide before generating/installing the probe.
-Next work follows V01_ROADMAP.md, starting with W1/W2; historical wider-clause suggestions are superseded. All G2 engine behavior and
+Next work follows V01_ROADMAP.md, starting with O4 while G1 remains unresolved; historical wider-clause suggestions are superseded. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;
 never force the no-tyranny imprisonment helper as a legality check. Keep knowledge,

@@ -276,3 +276,28 @@
   nineteen PowerShell tests skipped (715 discovered)**; structural validation,
   frozen readiness report and whitespace PASS. CI and committed-source distribution
   checked before integration; no engine test claimed.
+
+- PR #65 J2 integrated: PR CI 41350101265 and main CI 41350213409 passed;
+  277-file main archive checksum/manifest/extracted structure, seven changed original
+  mod inputs and all source evidence verified. Readiness 43/100, engine 0/20. Claim
+  released. No CK3 run.
+- RW-010 / M4 (`feat/native-political-memories`, 2026-11-01): W1/W2 inspection found
+  no new source basis for promoting the private G1 helper override to production;
+  shared-call/cancellation/AI uncertainties and final-test timing stay visible, +0 war
+  points, no new diagnostic or unsafe core override. Claimed independent RW-010 work:
+  native CK3 character-memory integration for actual public endorsement in all four
+  gold/favor immediate/deferred performance paths and a current ruler's explicit Crown
+  charter recognition. Original parties, current recognition date/actor/revision,
+  three EN/FR perspectives, native five-year duration and once-per-year personal-role
+  coalescing; no private terms, case/title pointer, verdict, financial replay, extra
+  opinion or inherited consent/guilt. Existing contract/crown guards and effects stay;
+  no archive rebuild, scan or new timer. Native memory type validation/distribution
+  allowlists added; eight adversarial source tests and duplicate-type negative fixture.
+  Supplied native creation calls and pinned public type/description/icon conventions
+  are evidence of syntax only, not target-version compatibility. **43 → 45/100 (+2 source)**
+  for M4, engine **0/20**. Frozen rubric/history preserved, M5 not credited. Next O4
+  patrimonial/dynastic undertakings, then I3/M5; G1/G3 and all runtime gates remain open.
+  **705 local unit/static tests passed, nineteen PowerShell tests skipped (724 discovered)**;
+  structural validator, frozen progress report and whitespace PASS. Final native UI,
+  scopes, participants, default icon, retention, volume and AGOT compatibility remain
+  unverified; CI and committed-source distribution checked before integration.

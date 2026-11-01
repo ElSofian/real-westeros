@@ -1,0 +1,28 @@
+# Original types in CK3's native memory framework; public acts only.
+rw_public_support_given = {
+    categories = { positive minor }
+    icon = "_default.dds"
+    participants = { counterpart }
+    description = { first_valid = { desc = rw_memory.support_given.first } }
+    second_perspective_description = { first_valid = { desc = rw_memory.support_given.second } }
+    third_perspective_description = { first_valid = { desc = rw_memory.support_given.third } }
+    duration = { years = 5 }
+}
+rw_public_support_received = {
+    categories = { positive minor }
+    icon = "_default.dds"
+    participants = { counterpart }
+    description = { first_valid = { desc = rw_memory.support_received.first } }
+    second_perspective_description = { first_valid = { desc = rw_memory.support_received.second } }
+    third_perspective_description = { first_valid = { desc = rw_memory.support_received.third } }
+    duration = { years = 5 }
+}
+rw_public_crown_recognition = {
+    categories = { positive minor }
+    icon = "_default.dds"
+    participants = { counterpart }
+    description = { first_valid = { desc = rw_memory.crown_recognition.first } }
+    second_perspective_description = { first_valid = { desc = rw_memory.crown_recognition.second } }
+    third_perspective_description = { first_valid = { desc = rw_memory.crown_recognition.third } }
+    duration = { years = 5 }
+}

@@ -19,14 +19,15 @@ not an exhaustive completion checklist. PR/test counts are not global progress m
 
 **War-track preparation:** RW-004 now has an opt-in exact-target intent diagnostic (G1_INTENT_PROBE.md): pinned native helper/claim inputs, explicit one-day staged confirmation, target/liege/serial guards, owner cleanup and conditional native claim-CB observations. Private generation only; no base-mod behavior changes, actual CB/cost/lifecycle/AI/cancellation semantics unverified. All engine runs remain in the final campaign. This is a bounded parallel track in the backlog, not a new G1-first prerequisite for independent systems.
 
-**Next task:** W1/W2 genuine illegal-war source path, with separate RW-004 reservation.
-J2 now has an explicit native arrest-request pipeline for known participants, shared
-by player/AI and preserving native refusal/resistance in source; current reasons,
-no usable hook, no active diarchy, once per record and no completed-sanction claim.
-See RW010_NATIVE_JUSTICE_ACTIONS.md. Readiness **43/100 (+3 from 40)**; engine **0/20**.
-All game runs remain deferred. J3/J4/J5 and other sanctions, universal title restrictions,
-G1/CB behavior and AGOT compatibility remain incomplete/unverified. Frozen priorities
-and criteria: [V01_ROADMAP.md](V01_ROADMAP.md).
+**Next task:** O4, explicit patrimonial/dynastic undertakings, preserving native banking
+and separating personal consent from inherited political consequences; then I3/M5.
+W1/W2 remain open: the existing private G1 probe does not establish safe production
+helper/cancel/AI behavior; final engine observations remain deferred, no fake CB or
+base-mod bypass added and no war points awarded. Independent source work continues.
+M4 now integrates actual public support and explicit Crown recognition into native
+CK3 memories with public-only text, bounded retention/coalescing and unchanged costs.
+Readiness **45/100 (+2 from 43)**; engine **0/20**. See RW010_NATIVE_MEMORIES.md and
+[V01_ROADMAP.md](V01_ROADMAP.md). M5, J3/J4/J5, G1/G3 and other open criteria remain.
 
 
 RW-010 stages: immediate endorsement-for-gold negotiation (experimental scripts); deferred promises and optional personal breach response (experimental scripts, RW010_DEFERRED.md); contextual service-breach mediation (experimental scripts, RW010_CASES.md); independent referred-case records/history (experimental scripts, RW010_RECORDS.md); contested affront allegations/statement disclosure (experimental scripts, RW010_ALLEGATIONS.md); personal consent to conciliatory gestures (experimental scripts, RW010_REPAIR_RESPONSE.md); mutual release of deferred promises (experimental scripts, RW010_MUTUAL_CANCELLATION.md); native murder-scheme observations (experimental scripts, RW010_SCHEME_EVIDENCE.md); voluntary political scheme response (experimental scripts, RW010_SCHEME_RESPONSE.md); current judicial inspection (experimental scripts, RW010_SCHEME_JUSTICE.md); personal prisoner execution/release handoff (experimental scripts, RW010_PRISONER_SENTENCING.md); individual title/status review (experimental scripts, RW010_TITLE_STATUS.md); post-rehabilitation land review/native grant terms (experimental UI, RW010_TITLE_REMEDIES.md); conditional native revocation-context provenance (experimental scripts, RW010_TITLE_PROVENANCE.md); exact-affair title intentions/fresh-transfer association (experimental scripts, RW010_REVOCATION_INTENTS.md); institutional public land-fact archive (experimental scripts, RW010_LAND_REGISTER.md); private restitution discussions/personal refusal response (experimental scripts, RW010_RESTITUTION_DIALOGUES.md); custom coercive justice (todo); political house disfavor/rehabilitation (experimental scripts, RW010_HOUSE_AFFAIRS.md); legal dynastic aftermath/title ban (todo, G3 audit/debug trace; no enforcement); unlawful war stage (todo, G1). See docs/RW010_SERVICES.md for scope and final engine cases.

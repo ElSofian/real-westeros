@@ -1,0 +1,55 @@
+# Internal projection of a freshly delivered PUBLIC endorsement, never its terms.
+# Call sites consume the original contract and apply performance before this call.
+rw_pm_public_support_effect = {
+    if = {
+        limit = {
+            exists = $PROVIDER$
+            exists = $CLIENT$
+            NOT = { $PROVIDER$ = $CLIENT$ }
+            $PROVIDER$ = { is_alive = yes }
+            $CLIENT$ = { is_alive = yes }
+        }
+        $PROVIDER$ = {
+            if = {
+                limit = { NOT = { has_character_flag = rw_pm_support_given_recent } }
+                add_character_flag = { flag = rw_pm_support_given_recent days = 365 }
+                create_character_memory = {
+                    type = rw_public_support_given
+                    participants = { counterpart = $CLIENT$ }
+                }
+            }
+        }
+        $CLIENT$ = {
+            if = {
+                limit = { NOT = { has_character_flag = rw_pm_support_received_recent } }
+                add_character_flag = { flag = rw_pm_support_received_recent days = 365 }
+                create_character_memory = {
+                    type = rw_public_support_received
+                    participants = { counterpart = $PROVIDER$ }
+                }
+            }
+        }
+    }
+}
+# A current ruler's explicit recognition, not inherited consent or private evidence.
+# Existing charter identity, current roles, accepted phase and today's named act
+# must still match AFTER the guarded recognition effect updates its revision.
+rw_pm_crown_recognition_effect = {
+    if = {
+        limit = {
+            rw_ch_active_trigger = yes
+            this = scope:rw_ch_ruler
+            scope:rw_lr_record = {
+                has_variable = rw_ch_recognized_on
+                var:rw_ch_recognized_on = current_date
+                var:rw_ch_recognized_by = scope:rw_ch_ruler
+            }
+            NOT = { has_character_flag = rw_pm_crown_recognition_recent }
+        }
+        add_character_flag = { flag = rw_pm_crown_recognition_recent days = 365 }
+        create_character_memory = {
+            type = rw_public_crown_recognition
+            participants = { counterpart = scope:rw_ch_head }
+        }
+    }
+}

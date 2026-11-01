@@ -1,0 +1,10 @@
+﻿l_english:
+ rw_memory.support_given.first:0 "I spoke publicly in support of [counterpart.GetTitledFirstName]."
+ rw_memory.support_given.second:0 "You spoke publicly in support of [counterpart.GetTitledFirstName]."
+ rw_memory.support_given.third:0 "[owner.GetName] spoke publicly in support of [counterpart.GetTitledFirstName]."
+ rw_memory.support_received.first:0 "[counterpart.GetTitledFirstName] spoke publicly in my support."
+ rw_memory.support_received.second:0 "[counterpart.GetTitledFirstName] spoke publicly in your support."
+ rw_memory.support_received.third:0 "[counterpart.GetTitledFirstName] spoke publicly in support of [owner.GetName]."
+ rw_memory.crown_recognition.first:0 "I explicitly recognised a public Crown commitment towards [counterpart.GetTitledFirstName]."
+ rw_memory.crown_recognition.second:0 "You explicitly recognised a public Crown commitment towards [counterpart.GetTitledFirstName]."
+ rw_memory.crown_recognition.third:0 "[owner.GetName] explicitly recognised a public Crown commitment towards [counterpart.GetTitledFirstName]."
