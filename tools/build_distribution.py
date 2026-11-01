@@ -14,7 +14,10 @@ if __package__:
 else:
     from validate_mod import REQUIRED_DIRS, descriptor as parse_descriptor, validate, brace_errors
 
-DOCS = ('README.md', 'docs/INSTALL.md', 'docs/INTEGRATED_BUILD.md',
+DOCS = ('docs/V01_ROADMAP.md', 'docs/V01_PROGRESS.json',
+        'docs/RW010_ALLEGATIONS.md', 'docs/RW010_CASES.md', 'docs/RW010_RECORDS.md',
+        'docs/RW010_SCHEME_EVIDENCE.md', 'docs/RW010_SCHEME_JUSTICE.md',
+        'docs/RW010_SCHEME_RESPONSE.md', 'docs/RW010_SERVICES.md', 'README.md', 'docs/INSTALL.md', 'docs/INTEGRATED_BUILD.md',
         'docs/FINAL_ENGINE_TESTS.md', 'docs/TEST_PLAN_G1.md',
         'docs/G3_HOUSE_SANCTIONS.md', 'docs/G3_SOURCE_RECEIPT.json',
         'docs/TITLE_ROUTE_AUDIT.md', 'docs/TITLE_ROUTE_SOURCE_RECEIPT.json',

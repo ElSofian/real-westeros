@@ -203,3 +203,26 @@
 
 - PR #61 negotiated charter duration integrated after all 673 CI tests and nineteen Windows checks passed; main 252-file archive checksum/manifest/extracted structure and thirteen changed packaged inputs verified. No CK3 run.
 - RW-004 exact-target G1 intent diagnostic (`feat/g1-target-bound-probe`): separate opt-in private generator mode pins the reviewed helper/native claim source hashes and preserves the native helper body only in generated output outside checkout/installation. Seven original CK3 templates stage an immutable stored-original-actor/target/current-liege/serial ticket (copied-character metadata fails ticket/bypass/read/observation ownership checks), require explicit confirmation, fix one-day offer/armed windows, allow owner cleanup after reference/eligibility loss and prevent stale views arming/clearing newer tickets. Guard relaxes only that exact feudal-peer current-ban/no-detected-hook context; all other native helper behavior remains structurally preserved, with actual effective loading/hidden gates unverified. Additive native war-start observation consumes before retaining exact claim_cb/primary-role/common-liege/ban context, not illegality/hook-use/cost/UI-path/causal success or inherited guilt. Other CB/target/defender contexts clear conservatively, missing contexts rely on TTL/manual cleanup. No direct war/cost/law/contract/hook/title operation, base-mod file change, automatic UI-cancel guarantee, production AI flow or fake CB. Sixteen new adversarial source/build tests plus eight existing default-builder tests pass, including byte-exact preservation of CRLF helper bodies without host newline translation; actual received helper/claim bytes matched pins and a private construction check preserved source/body and seven templates using only a reported-descriptor fixture, no installation/game verification. **670 local unit/static tests passed, nineteen PowerShell tests skipped (689 discovered)**; sixteen new source/build tests, original eight manual-builder tests, structural validator and whitespace PASS. The distribution privacy fixture now checks a unique unpublished-payload marker rather than banning the legitimate documentation word PRIVATE. CI and committed-source distribution are checked before merge. Guide, source-research/handoff/backlog/gate status and G1INT-01…12 final cases updated. G1 remains unresolved/in progress, not engine-tested or a prerequisite for independent RW-010 work; all runtime cases remain in the final campaign. No private generated source published, new upload, paid service or gameplay Python/LLM.
+
+- PR #62 exact-target private G1 diagnostic integrated: final PR CI 41335757587 and
+  main CI 41335936007 passed all 689 unit/static checks plus nineteen separate Windows
+  collector checks. Main artifact 13094967630: checksum, full manifest, extracted
+  structure and isolation checked; 257 original files, all 207 base-mod files unchanged.
+  No G1 diagnostic template/native override in the normal mod payload. No CK3 run.
+- RW-010 measurable v0.1 baseline (`docs/v01-progress-baseline`, 2026-11-01): owner
+  requested visible progress and pace. Added a frozen eight-system readiness rubric,
+  source evidence and binary acceptance criteria, 80 source + 20 final-engine points,
+  checkpoint ledger and read-only reporting utility. Initial assessed source commit
+  `45c5e845597fcf291175308d2f0b6c31fecfd4bc`: **38/100**, entirely source credit;
+  **0/20 engine**. This calibrates the previous rough ~30%, NOT +8 delivered progress.
+  Tracking work delivers **+0 gameplay points**. No CK3 scripts changed. Priorities now
+  target missing substantive criteria, starting AI3 (+2 possible, contextual policy in
+  two families using three concrete factors), then J2 and the genuine W1/W2 war path.
+  Velocity unavailable: no comparable seven-day checkpoint series; no PR/test-count
+  substitution or invented ETA. Documentation/diagnostics/extra variants do not
+  automatically earn points. Source completion never establishes gameplay compatibility.
+  Seven metric tests cover evidence requirements, engine/source separation, frozen
+  rubric/denominator, ledger consistency and zero/same-day/stale timing; **677 local unit/static tests passed, nineteen PowerShell tests skipped (696 discovered)**;
+  structural validation, readiness report and whitespace checks PASS. CI and committed-source
+  distribution will be verified before merge. The archive includes the roadmap, baseline and all cited assessment guides.
+  No engine run or new compatibility claim.

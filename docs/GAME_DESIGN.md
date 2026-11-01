@@ -28,7 +28,9 @@
 The original three scenarios are non-exhaustive examples within the eight-system
 vision. Completing those examples would not complete Real Westeros. Overall progress
 must not be inferred from PR counts, static test counts or completed backlog rows;
-no measured global completion percentage is currently defined.
+the weighted first-v0.1 readiness rubric is now defined in [V01_ROADMAP.md](V01_ROADMAP.md).
+It covers all eight systems with 80 source points and 20 final engine-validation points;
+it is not a measured percentage of the open-ended ultimate vision or of engineering effort.
 
 An earlier 126-entry **candidate** action catalogue informed the eight-system design; the entries are not 126 mandatory buttons or proven implementations. All design principles are decisions delegated by the owner; all engine-dependent feasibility claims remain open.
 
