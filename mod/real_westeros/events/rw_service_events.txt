@@ -23,13 +23,13 @@ rw_services.0001 = {
         name = rw_services.accept_50
         trigger = { rw_service_client_turn_trigger = yes rw_service_affordable_trigger = yes NOT = { rw_service_deferred_trigger = yes } }
         rw_service_settle_effect = yes
-        ai_chance = { base = 30 }
+        ai_chance = { base = 0 modifier = { add = rw_ai_service_accept_weight always = yes } }
     }
     option = {
         name = rw_services.promise_50
         trigger = { rw_service_client_turn_trigger = yes rw_service_deferred_trigger = yes rw_service_affordable_trigger = yes }
         rw_service_accept_promise_effect = yes
-        ai_chance = { base = 30 }
+        ai_chance = { base = 0 modifier = { add = rw_ai_service_accept_weight always = yes } }
     }
     option = {
         name = rw_services.counter_25

@@ -63,6 +63,13 @@ class ValidatorTests(unittest.TestCase):
         (folder / 'b.txt').write_text('rw_test = { always = no }\n')
         self.assertTrue(any('duplicate top-level' in e for e in validate(self.root)))
 
+    def test_duplicate_script_value_is_rejected(self):
+        folder = self.mod / 'common' / 'script_values'
+        folder.mkdir()
+        (folder / 'a.txt').write_text('rw_weight = { value = 1 }\n')
+        (folder / 'b.txt').write_text('rw_weight = { value = 2 }\n')
+        self.assertTrue(any('duplicate top-level rw_weight' in e for e in validate(self.root)))
+
     def test_nested_repeated_keys_are_valid(self):
         (self.mod / 'common' / 'scripted_effects' / 'x.txt').write_text('rw_x = { add_gold = 1\n add_gold = 2\n}\n')
         self.assertEqual(validate(self.root), [])

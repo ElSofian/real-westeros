@@ -1,0 +1,49 @@
+# Original read-only policy; native numeric-value evaluation is engine-unverified.
+# Positive bounded multiplier for the ORIGINAL party currently deciding, not the
+# story owner or event sender. Missing/foreign parties yield zero, not a guess.
+rw_ai_cooperation_factor = {
+    value = 0
+    if = {
+        limit = { rw_ai_known_pair_trigger = yes }
+        add = 1
+        if = { limit = { rw_ai_trusted_counterpart_trigger = yes } multiply = 2 }
+        if = { limit = { rw_ai_hostile_counterpart_trigger = yes } multiply = 0.5 }
+        if = { limit = { rw_ai_existing_commitment_trigger = yes } multiply = 0.5 }
+        if = { limit = { is_at_war = yes } multiply = 0.5 }
+    }
+}
+# Reserve is twice the actual latest quotation, not a hard-coded old price.
+rw_ai_service_reserve_value = {
+    value = 0
+    if = {
+        limit = { exists = scope:rw_service_price }
+        add = scope:rw_service_price
+        multiply = 2
+    }
+}
+# Gold endorsement: preserve affordability, version, party and turn checks.
+# Low liquidity makes full-price acceptance less likely relative to the existing
+# counteroffer/refusal, without banning an affordable choice for either actor.
+rw_ai_service_accept_weight = {
+    value = 0
+    if = {
+        limit = {
+            rw_service_client_turn_trigger = yes
+            rw_service_affordable_trigger = yes
+        }
+        add = 30
+        multiply = rw_ai_cooperation_factor
+        if = { limit = { gold < rw_ai_service_reserve_value } multiply = 0.5 }
+    }
+}
+# Non-contractual OR service dispute: voluntary 25-prestige repair, not admission
+# of an offense. Means are the resource actually spent by this original party.
+rw_ai_case_repair_weight = {
+    value = 0
+    if = {
+        limit = { rw_case_provider_turn_trigger = yes prestige >= 25 }
+        add = 50
+        multiply = rw_ai_cooperation_factor
+        if = { limit = { prestige < 50 } multiply = 0.5 }
+    }
+}
