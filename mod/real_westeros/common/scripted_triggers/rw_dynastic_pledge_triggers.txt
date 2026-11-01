@@ -94,6 +94,18 @@ rw_dp_view_trigger = {
         var:rw_dp_original_payer = scope:rw_dp_original_payer
         var:rw_dp_original_payee = scope:rw_dp_original_payee
         trigger_if = {
+            limit = { var:rw_dp_payer_house = { exists = house_head } }
+            exists = scope:rw_dp_payer
+            var:rw_dp_payer_house = { house_head = scope:rw_dp_payer }
+        }
+        trigger_else = { NOT = { exists = scope:rw_dp_payer } }
+        trigger_if = {
+            limit = { var:rw_dp_payee_house = { exists = house_head } }
+            exists = scope:rw_dp_payee
+            var:rw_dp_payee_house = { house_head = scope:rw_dp_payee }
+        }
+        trigger_else = { NOT = { exists = scope:rw_dp_payee } }
+        trigger_if = {
             limit = { var:rw_dp_state = flag:paid }
             exists = scope:rw_dp_paid_payer
             exists = scope:rw_dp_paid_payee

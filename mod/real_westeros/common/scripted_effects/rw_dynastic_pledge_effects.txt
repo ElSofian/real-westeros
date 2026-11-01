@@ -231,6 +231,7 @@ rw_dp_maintenance_effect = {
         limit = { story_type = story_rw_dynastic_pledge }
         if = { limit = { OR = { NOT = { rw_dp_record_trigger = yes } NOT = { has_variable = rw_dp_cap } NOT = { has_variable = rw_dp_retained } } } rw_dp_retire_effect = yes }
         else = {
+            save_scope_as = rw_dp_record
             clear_saved_scope = rw_dp_finisher
             clear_saved_scope = rw_dp_departed
             if = {
@@ -238,8 +239,8 @@ rw_dp_maintenance_effect = {
                     var:rw_dp_state = flag:offered
                     OR = {
                         NOT = { has_variable = rw_dp_offer_window }
-                        NOT = { var:rw_dp_original_payer = { rw_dp_party_trigger = yes house = prev.var:rw_dp_payer_house } }
-                        NOT = { var:rw_dp_original_payee = { rw_dp_party_trigger = yes house = prev.var:rw_dp_payee_house } }
+                        NOT = { var:rw_dp_original_payer = { rw_dp_party_trigger = yes house = scope:rw_dp_record.var:rw_dp_payer_house } }
+                        NOT = { var:rw_dp_original_payee = { rw_dp_party_trigger = yes house = scope:rw_dp_record.var:rw_dp_payee_house } }
                     }
                 }
                 rw_dp_close_story_effect = { RESULT = offer_lapsed }

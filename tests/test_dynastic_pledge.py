@@ -30,6 +30,7 @@ def pledge_errors(t,e,s,v,i):
               'var:rw_dp_revision = scope:rw_dp_revision',
               'var:rw_dp_original_payer = scope:rw_dp_original_payer',
               'var:rw_dp_original_payee = scope:rw_dp_original_payee',
+              'house_head = scope:rw_dp_payer','house_head = scope:rw_dp_payee',
               'var:rw_dp_paid_by = scope:rw_dp_paid_payer','var:rw_dp_paid_to = scope:rw_dp_paid_payee'):
         if g not in view:out.append('stale foreign or substituted identity')
     roles=block(t,'rw_dp_roles_trigger')
@@ -141,7 +142,7 @@ class DynasticPledgeTests(unittest.TestCase):
 
     def test_old_revision_serial_origin_and_payment_parties_rejected(self):
         for guard in ('var:rw_dp_revision = scope:rw_dp_revision','var:rw_dp_serial = scope:rw_dp_serial',
-                      'var:rw_dp_original_payer = scope:rw_dp_original_payer','var:rw_dp_paid_by = scope:rw_dp_paid_payer'):
+                      'var:rw_dp_original_payer = scope:rw_dp_original_payer','house_head = scope:rw_dp_payer','var:rw_dp_paid_by = scope:rw_dp_paid_payer'):
             with self.subTest(guard=guard):self.assertIn('stale foreign or substituted identity',self.errors(t=self.t.replace(guard,'always = yes',1)))
 
     def test_successor_cannot_accept_original_pending_offer(self):
@@ -154,7 +155,7 @@ class DynasticPledgeTests(unittest.TestCase):
 
     def test_current_house_heads_and_membership_revalidated(self):
         for guard in ('house_head = scope:rw_dp_payer','house = scope:rw_dp_record.var:rw_dp_payee_house'):
-            with self.subTest(guard=guard):self.assertIn('current house representative substituted',self.errors(t=self.t.replace(guard,'always = yes',1)))
+            with self.subTest(guard=guard):self.assertIn('current house representative substituted',self.errors(t=self.t.replace(guard,'always = yes')))
 
     def test_all_public_effects_revalidate_before_mutating(self):
         for method in ('accept','recognize','pay','decline','renounce','release'):
