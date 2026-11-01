@@ -13,6 +13,7 @@ SCRIPT_FOLDERS = {
     'common/character_interactions',
     'common/scripted_triggers',
     'common/scripted_effects',
+    'common/script_values',
 }
 SCRIPT_SUFFIXES = {'.txt', '.mod', '.gui', '.gfx', '.asset'}
 FORBIDDEN_SUFFIXES = {'.zip', '.7z', '.rar', '.exe', '.dll', '.ck3', '.sav'}

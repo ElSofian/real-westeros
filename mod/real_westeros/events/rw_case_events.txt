@@ -77,7 +77,8 @@ rw_cases.0002 = {
         trigger = { rw_case_provider_turn_trigger = yes prestige >= 25 }
         rw_case_apologise_effect = yes
         ai_chance = {
-            base = 50
+            base = 0
+            modifier = { add = rw_ai_case_repair_weight always = yes }
             modifier = { factor = 2 opinion = { target = scope:rw_case_mediator value > 25 } }
         }
     }

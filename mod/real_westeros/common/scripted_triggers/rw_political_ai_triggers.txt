@@ -1,0 +1,41 @@
+# Read-only policy inputs. The character evaluating a choice is always `this`.
+# Existing party aliases name original, known parties in both service and case UI.
+rw_ai_known_pair_trigger = {
+    exists = scope:rw_service_provider
+    exists = scope:rw_service_client
+    NOT = { scope:rw_service_provider = scope:rw_service_client }
+    OR = { this = scope:rw_service_provider this = scope:rw_service_client }
+}
+rw_ai_trusted_counterpart_trigger = {
+    rw_ai_known_pair_trigger = yes
+    OR = {
+        AND = {
+            this = scope:rw_service_client
+            opinion = { target = scope:rw_service_provider value >= 25 }
+        }
+        AND = {
+            this = scope:rw_service_provider
+            opinion = { target = scope:rw_service_client value >= 25 }
+        }
+    }
+}
+rw_ai_hostile_counterpart_trigger = {
+    rw_ai_known_pair_trigger = yes
+    OR = {
+        AND = {
+            this = scope:rw_service_client
+            opinion = { target = scope:rw_service_provider value <= -25 }
+        }
+        AND = {
+            this = scope:rw_service_provider
+            opinion = { target = scope:rw_service_client value <= -25 }
+        }
+    }
+}
+# Own outstanding duties are known to the decider; no counterpart's private case read.
+rw_ai_existing_commitment_trigger = {
+    OR = {
+        has_character_flag = rw_service_obligation
+        has_character_flag = rw_fv_obligation
+    }
+}

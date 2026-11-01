@@ -14,7 +14,7 @@ if __package__:
 else:
     from validate_mod import REQUIRED_DIRS, descriptor as parse_descriptor, validate, brace_errors
 
-DOCS = ('docs/V01_ROADMAP.md', 'docs/V01_PROGRESS.json',
+DOCS = ('docs/RW010_CONTEXTUAL_AI.md', 'docs/AI_POLICY_SOURCE_RECEIPT.json', 'docs/V01_ROADMAP.md', 'docs/V01_PROGRESS.json',
         'docs/RW010_ALLEGATIONS.md', 'docs/RW010_CASES.md', 'docs/RW010_RECORDS.md',
         'docs/RW010_SCHEME_EVIDENCE.md', 'docs/RW010_SCHEME_JUSTICE.md',
         'docs/RW010_SCHEME_RESPONSE.md', 'docs/RW010_SERVICES.md', 'README.md', 'docs/INSTALL.md', 'docs/INTEGRATED_BUILD.md',
@@ -101,7 +101,7 @@ def payload(root):
             continue
         if name.startswith(PREFIX) and name != PREFIX + 'descriptor.mod':
             relative = name[len(PREFIX):]
-            valid = (re.fullmatch(r'(common/(character_interactions|scripted_triggers|scripted_effects|opinion_modifiers|story_cycles|on_action)|events)/rw_[\w]+\.txt', relative)
+            valid = (re.fullmatch(r'(common/(character_interactions|scripted_triggers|scripted_effects|script_values|opinion_modifiers|story_cycles|on_action)|events)/rw_[\w]+\.txt', relative)
                      or re.fullmatch(r'localization/(english|french)/rw_[\w]+\.yml', relative))
             if not valid:
                 raise ValueError(f'Unexpected mod content: {name}')

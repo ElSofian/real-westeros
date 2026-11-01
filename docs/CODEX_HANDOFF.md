@@ -9,9 +9,11 @@ readiness and pace: [V01_ROADMAP.md](V01_ROADMAP.md) and V01_PROGRESS.json are a
 for next priorities and the frozen v0.1 rubric, superseding historical micro-slice next-task
 suggestions below. Initial assessed readiness is 38/100 (38/80 source, 0/20 engine),
 not +8 progress from the earlier rough 30%. Tracking itself adds +0. Velocity is not
-measurable yet. Next target AI3: shared contextual policy across two action families
-and three concrete decision factors (+2 only if completed); then J2, W1/W2 and other
-open roadmap criteria. Do not endlessly extend credited contract/dialogue variants.
+measurable yet. AI3 now adds +2 source points: **40/100**, engine still **0/20**.
+Read RW010_CONTEXTUAL_AI.md: shared CK3 values change service acceptance and political
+repair weights using own opinion, actual resource reserve and own commitments, plus
+war burden. Existing costs, consent, refusal, native state and targeting remain.
+Next target **J2**, then W1/W2 and other open roadmap criteria. Do not endlessly extend credited contract/dialogue variants.
 
 RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remains
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
@@ -244,7 +246,7 @@ only. Base-mod files are unchanged. No native-window cancel hook, working engine
 route, unlawful-war verdict or successful CB/cost/Mega War lifecycle is established.
 All game tests stay in the final campaign. This is not a new G1-first blocker for
 independent development. Read the new guide before generating/installing the probe.
-Next work follows V01_ROADMAP.md, starting with AI3; historical wider-clause suggestions are superseded. All G2 engine behavior and
+Next work follows V01_ROADMAP.md, starting with J2; historical wider-clause suggestions are superseded. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;
 never force the no-tyranny imprisonment helper as a legality check. Keep knowledge,
