@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "status": "source syntax references only; target engine scope, storage and compatibility unverified",
+  "files": [
+    {
+      "path": "AGOT/common/scripted_effects/00_agot_mega_wars_effects.txt",
+      "sha256": "537695d2e25062104dc07eff6183124efe8792d54f992d221adc87dfa647b0e5",
+      "lines": [
+        235,
+        458,
+        2823
+      ],
+      "purpose": "Native variable-list random/any iteration and presence check; not a claim of StoryScope runtime semantics"
+    },
+    {
+      "path": "AGOT/common/scripted_effects/00_agot_artifact_sell_effects.txt",
+      "sha256": "0930d9aad1d0de2a385e75b4048fb3d1acfc66bbecee7cf06645605472aaea78",
+      "lines": [
+        368
+      ],
+      "purpose": "Native variable-list insertion syntax"
+    },
+    {
+      "path": "AGOT/common/character_interactions/00_artifact_interactions.txt",
+      "sha256": "4966b4674bd24a882032de6382b3b46fba0609cd3186658cc0e786ce821719cd",
+      "lines": [
+        3837
+      ],
+      "purpose": "Native character diplomatic range predicate"
+    }
+  ]
+}

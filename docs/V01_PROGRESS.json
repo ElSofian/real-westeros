@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "88c5da626615539d0ef34b940b4f459e21e924a5",
+  "assessed_commit": "ca71eefba9bd4e115c3c74301db6a46fafb07381",
   "lots": [
     {
       "id": "W",
@@ -297,8 +297,13 @@
           "id": "I3",
           "points": 2,
           "acceptance": "Rumeur et propagation contrôlée avec source, destinataire et provenance",
-          "status": "open",
-          "evidence": []
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_RUMOR_PROPAGATION.md",
+            "mod/real_westeros/common/scripted_triggers/rw_rumor_triggers.txt",
+            "mod/real_westeros/common/scripted_effects/rw_rumor_effects.txt",
+            "mod/real_westeros/common/story_cycles/rw_rumors.txt"
+          ]
         },
         {
           "id": "I4",
@@ -628,6 +633,41 @@
       "score": 47,
       "reference": "88c5da626615539d0ef34b940b4f459e21e924a5",
       "note": "O4 source : pacte privé de dotation entre maisons, acceptation originale, conservation dynastique, reconnaissance personnelle des chefs actuels, paiement volontaire après décès depuis bourse actuelle et sorties libres. +2 source ; dettes/successions natives non modifiées, moteur non testé."
+    },
+    {
+      "date": "2026-11-01",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4",
+        "O4",
+        "I3"
+      ],
+      "score": 49,
+      "reference": "ca71eefba9bd4e115c3c74301db6a46fafb07381",
+      "note": "I3 source : transmission personnelle de récits non vérifiés, auteur initial/dernier relais/destinataire et dates conservés, diffusion bornée, déduplication des échos et aucun accès au dossier privé ni preuve native. +2 source ; moteur non testé."
     }
   ]
 }
