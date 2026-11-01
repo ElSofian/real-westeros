@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "status": "Source syntax references only; target memory iteration, expiration and AI semantics engine-unverified",
+  "files": [
+    {
+      "path": "AGOT/common/character_interactions/00_tributary_interactions.txt",
+      "sha256": "fee37a5b38726c2c92414b88ef862e256917eeb8251bbfd8be1011b5b046440c",
+      "lines": [
+        1755,
+        1757
+      ],
+      "purpose": "Own-character any_memory, has_memory_type and explicit memory_age_years syntax"
+    },
+    {
+      "path": "AGOT/common/scripted_effects/03_bp1_scripted_effects.txt",
+      "sha256": "12e653e7ab50619e49780a8eb2588ece59ccc976e4b1037732192cc6a8ff5c61",
+      "lines": [
+        218,
+        219
+      ],
+      "purpose": "Memory type and exact participant identity predicate"
+    }
+  ]
+}

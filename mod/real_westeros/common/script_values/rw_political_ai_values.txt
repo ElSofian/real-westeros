@@ -6,6 +6,9 @@ rw_ai_cooperation_factor = {
     if = {
         limit = { rw_ai_known_pair_trigger = yes }
         add = 1
+        # A past public service may encourage a NEW agreement or later repair.
+        # Own retained memory only; no inference of innocence, debt or legality.
+        if = { limit = { rw_pm_remembers_counterpart_trigger = yes } multiply = 1.5 }
         if = { limit = { rw_ai_trusted_counterpart_trigger = yes } multiply = 2 }
         if = { limit = { rw_ai_hostile_counterpart_trigger = yes } multiply = 0.5 }
         if = { limit = { rw_ai_existing_commitment_trigger = yes } multiply = 0.5 }

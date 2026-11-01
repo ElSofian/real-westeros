@@ -1,0 +1,3 @@
+﻿l_english:
+ rw_remembered_support.service:0 "I have not forgotten the public support [rw_service_provider.GetTitledFirstName] once gave me. Perhaps we can reach an understanding again."
+ rw_remembered_support.repair:0 "I remember how [rw_service_client.GetTitledFirstName] once spoke publicly in my support. That past kindness gives me another reason to seek an understanding today."

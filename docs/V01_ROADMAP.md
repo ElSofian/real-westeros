@@ -1,9 +1,9 @@
 # Suivi de la première version intégrée — v0.1-plan-1
 
-**État courant : 49/100 (+2), dont 49/80 source et 0/20 moteur.**
-I3 ajoute la propagation contrôlée des récits ; prochaine cible indépendante M5.
+**État courant : 51/100 (+2), dont 51/80 source et 0/20 moteur.**
+M5 relie les souvenirs personnels à de nouvelles propositions et réparations ; prochaine cible P4.
 W1/W2 restent ouverts (+0), en attente des observations finales G1 avant voie de production.
-Vitesse encore non mesurable : relevés du même jour.
+Vitesse encore non mesurable : moins de sept jours de recul sur cette grille.
 
 Relevé initial : **1 novembre 2026, 38/100**, évalué sur le code de
 `45c5e845597fcf291175308d2f0b6c31fecfd4bc` (après PR #62).
@@ -28,7 +28,7 @@ coût. Les trois scénarios initiaux ne limitent pas le périmètre ; le catalog
 | Promesses et obligations | 10 | 10 |
 | Justice et sanctions | 5 | 12 |
 | Information et preuves | 8 | 8 |
-| Mémoire politique | 8 | 10 |
+| Mémoire politique | 10 | 10 |
 | IA politique | 6 | 10 |
 | Validation finale CK3/AGOT | 0 | 20 |
 
@@ -112,7 +112,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 | M2 | 2 | Continuité institutionnelle et stockage séparés des rôles et du consentement | Source seulement : [RW010_LAND_REGISTER.md](RW010_LAND_REGISTER.md), [rw_land_register_effects.txt](../mod/real_westeros/common/scripted_effects/rw_land_register_effects.txt) |
 | M3 | 2 | Disgrâce politique de maison et réhabilitation multigénérationnelle sans faute personnelle héritée | Source seulement : [RW010_HOUSE_AFFAIRS.md](RW010_HOUSE_AFFAIRS.md), [rw_house_affairs.txt](../mod/real_westeros/common/story_cycles/rw_house_affairs.txt) |
 | M4 | 2 | Intégration pertinente des souvenirs ou relations de maison natifs, au-delà des journaux propres | Source seulement : [RW010_NATIVE_MEMORIES.md](RW010_NATIVE_MEMORIES.md), [rw_political_memories.txt](../mod/real_westeros/common/character_memory_types/rw_political_memories.txt) |
-| M5 | 2 | Mémoire influençant des choix politiques futurs indépendants du dossier d’origine | À développer / valider |
+| M5 | 2 | Mémoire influençant des choix politiques futurs indépendants du dossier d’origine | Source seulement : [RW010_REMEMBERED_SUPPORT.md](RW010_REMEMBERED_SUPPORT.md), [rw_remembered_support_triggers.txt](../mod/real_westeros/common/scripted_triggers/rw_remembered_support_triggers.txt) |
 
 ### AI — IA politique
 
@@ -146,10 +146,11 @@ le critère est rempli. La qualification est une revue humaine explicite du code
    interdite intégrée. Réserver RW-004 séparément. Ne pas livrer le diagnostic privé
    comme solution ; si un point moteur empêche une implémentation sûre, conserver le
    manque visible et travailler sur un critère indépendant, sans demander un test intermédiaire.
-4. **O4/I3 livrés dans les sources (+2 chacun) ; M5 cible suivante** : engagements patrimoniaux/dynastiques, propagation de rumeurs,
-   effet de la mémoire sur des choix futurs. M4 est livré dans les sources (+2),
-   avec souvenirs publics natifs ; cela ne termine pas M5. Les autres critères ouverts
-   demeurent dans le périmètre, notamment J3/J4/J5, N4/N5, P4, W3/W4/W5 et AI4/AI5.
+4. **O4/I3/M5 livrés dans les sources (+2 chacun)** : engagements dynastiques,
+   propagation de récits et mémoire personnelle pesant sur de nouveaux choix.
+   **P4 cible suivante** : escalade/menace crédible avec issue volontaire et échec,
+   au-delà des demandes déjà livrées. Les autres critères ouverts demeurent,
+   notamment J3/J4/J5, N4/N5, W3/W4/W5 et AI4/AI5.
 5. **V1…V5** : une campagne finale, selon [FINAL_ENGINE_TESTS.md](FINAL_ENGINE_TESTS.md).
    Corriger ses erreurs avant de revendiquer une version jouable/compatible.
 

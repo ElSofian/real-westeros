@@ -16,6 +16,10 @@ rw_services.0001 = {
             }
             desc = rw_services.0001.desc
         }
+        triggered_desc = {
+            trigger = { rw_service_client_turn_trigger = yes rw_pm_remembers_counterpart_trigger = yes }
+            desc = rw_remembered_support.service
+        }
     }
     theme = diplomacy
     left_portrait = { character = scope:rw_service_provider }

@@ -361,3 +361,22 @@
   attempts, not another character's hidden receipt; duplicate handling returns no new-
   knowledge signal to sender. CI and committed-source distribution checked before merge.
   No engine test executed.
+
+- RW-010 / M5 (`feat/remembered-political-cooperation`, 2026-11-02): connected an
+  actual decider's own retained native received-support memory to new gold-service
+  acceptance and later independent dispute repair. Exact current counterpart, known
+  original pair and explicit five-year cap; one boolean ×1.5 cooperation factor,
+  never accumulated memory counts. Eligible player events append EN/FR reminders.
+  No other person's memories, hidden dossiers, rumor lists, inherited gratitude or
+  legal proof used; no state mutation in lookup, no change to costs/turn/version,
+  execution effects, refusal or counteroffer. Native query syntax source-located
+  with reference/hash receipt only. Eleven adversarial source tests cover reader,
+  counterpart/type/expiry, independent choice wiring, bounded influence, privacy,
+  prerequisites and optional refusal. Shared localization coverage now includes the
+  new reminder file. **746 local unit/static tests passed, nineteen PowerShell
+  tests skipped (765 discovered)**; structural validator, frozen readiness report
+  and whitespace PASS. Source criterion M5: **49 → 51/100 (+2)**, engine **0/20**;
+  frozen rubric and earlier checkpoints unchanged. Native memory lookup/expiration,
+  event text, save/load, AI outcome and performance remain engine-unverified; ten
+  RMEM cases added to the final campaign. CI and committed-source distribution are
+  checked before merge. Next substantive target P4; G1/G3 stay open. No engine run.
