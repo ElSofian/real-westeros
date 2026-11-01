@@ -143,7 +143,8 @@ def build(agot_root, output, target_bound_intent=False):
     mod = out / mod_id
     scripts = mod / 'common/scripted_triggers'
     scripts.mkdir(parents=True)
-    (scripts / 'zz_rw_g1_probe.txt').write_text(patched, encoding='utf-8-sig')
+    # Byte output avoids Windows newline translation changing the preserved native body.
+    (scripts / 'zz_rw_g1_probe.txt').write_bytes(b'\xef\xbb\xbf' + patched.encode('utf-8'))
     for relative, data in templates.items():
         target = mod / relative
         target.parent.mkdir(parents=True, exist_ok=True)

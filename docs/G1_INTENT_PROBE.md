@@ -117,9 +117,9 @@ before any production G1 implementation. The normal base mod loads none of this.
 
 ## Available checks and final campaign
 
-Fifteen new adversarial source/build tests cover exact actor/target/liege/serial,
+Sixteen new adversarial source/build tests cover exact actor/target/liege/serial,
 confirmation/expiry, no recursive helper guard, conservative native cleanup, genuine
-claim/primary-role observation, immutable native helper body, pinned hashes, missing/
+claim/primary-role observation, immutable native helper body (including byte-exact CRLF output without host newline translation), pinned hashes, missing/
 changed inputs, corrupt/symlink templates, localization and absence from the base.
 The earlier eight manual-builder tests still run. These are not an engine simulation.
 A local construction check used the received exact helper/claim bytes and a fixture

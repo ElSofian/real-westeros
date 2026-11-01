@@ -160,6 +160,17 @@ class G1IntentBuilderTests(unittest.TestCase):
         self.assertEqual(2,len(receipt['input_sources']));self.assertNotIn(str(self.agot),json.dumps(receipt))
         self.assertFalse((self.out/'rw_g1_probe.mod').exists())
         self.assertIn('path="mod/rw_g1_intent_probe"',(self.out/'rw_g1_intent_probe.mod').read_text())
+    def test_crlf_native_helper_body_preserved_as_exact_bytes(self):
+        source=SYNTHETIC.replace('\n','\r\n').encode('utf-8')
+        self.source.write_bytes(b'\xef\xbb\xbf'+source)
+        self.pins[builder.SOURCE.as_posix()]=hashlib.sha256(self.source.read_bytes()).hexdigest()
+        self.build()
+        head,body=builder.helper_block(source.decode('utf-8'))
+        expected=b'\xef\xbb\xbf'+(head+builder.INTENT_GUARD+body+'\n').encode('utf-8')
+        self.assertEqual(expected,(self.out/'rw_g1_intent_probe/common/scripted_triggers/zz_rw_g1_probe.txt').read_bytes())
+        self.assertIn(b'\r\n',body.encode('utf-8'))
+        self.assertNotIn(b'\r\r\n',expected)
+
     def test_unknown_helper_or_claim_hash_rejected_before_output(self):
         for path in (self.source,self.claim):
             original=path.read_bytes();path.write_bytes(original+b'\n# changed\n')
