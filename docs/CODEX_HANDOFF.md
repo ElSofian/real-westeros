@@ -38,6 +38,16 @@ case pointer, native proof or dossier access is exported. Actual StoryScope list
 range/save semantics await final testing. Next independent target **M5**, then the
 other open roadmap criteria. Do not endlessly extend credited contract/dialogue variants.
 
+M5 now adds +2 source points: **51/100**, engine **0/20**. Read
+RW010_REMEMBERED_SUPPORT.md: own native received-support memory, exact known
+counterpart and explicit five-year cap; one ×1.5 shared cooperation factor in new
+service quotations and later independent repair decisions. Eligible player events
+show a personal reminder. No memory of another person, private dossier, rumor,
+inherited gratitude or legal reason is used; costs/refusal/turn guards remain.
+Next substantive target **P4** (credible escalation with voluntary outcome/failure),
+then other open criteria. Memory lookup, expiry, event text and AI semantics remain
+engine-unverified; all runtime cases stay in the final campaign.
+
 RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remains
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
 and RW010_DEFERRED.md. Contextual service-breach mediation is in RW010_CASES.md. Independent case records/read-only history are in RW010_RECORDS.md. Non-contractual allegations, statements and disclosure are in RW010_ALLEGATIONS.md.

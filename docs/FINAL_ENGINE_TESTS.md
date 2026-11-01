@@ -1257,3 +1257,11 @@ No cases executed. RUMOR-01…12 in RW010_RUMOR_PROPAGATION.md cover actual orig
 recipient knowledge, echo and age laundering, private dossier isolation, range/death/
 stale confirmations, known-holder custody, native StoryScope lists/save/event data and
 final G4/G5 volume/regression. Hearsay creates no native proof, belief or sanction.
+
+## Remembered support in independent choices — M5
+
+No cases executed. RMEM-01…10 in RW010_REMEMBERED_SUPPORT.md cover later independent
+agreement/dispute decisions, own remembered type/age/participant, foreign readers,
+forgetting/expiry/save-load, bounded factor, stale/cost guards, optional refusal and
+human/AI parity. Final G4/G5 covers actual lookup cost and native memory/regression;
+source tests do not establish runtime availability or compatibility.

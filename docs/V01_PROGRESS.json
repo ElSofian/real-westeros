@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "e0aacd13578a626eee5b30fb37b5a38389848a1d",
+  "assessed_commit": "e5c4f1b54cc2eb9e02e2b311553577feedcb09c8",
   "lots": [
     {
       "id": "W",
@@ -369,8 +369,14 @@
           "id": "M5",
           "points": 2,
           "acceptance": "Mémoire influençant des choix politiques futurs indépendants du dossier d’origine",
-          "status": "open",
-          "evidence": []
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_REMEMBERED_SUPPORT.md",
+            "mod/real_westeros/common/scripted_triggers/rw_remembered_support_triggers.txt",
+            "mod/real_westeros/common/script_values/rw_political_ai_values.txt",
+            "mod/real_westeros/events/rw_service_events.txt",
+            "mod/real_westeros/events/rw_case_events.txt"
+          ]
         }
       ]
     },
@@ -668,6 +674,42 @@
       "score": 49,
       "reference": "e0aacd13578a626eee5b30fb37b5a38389848a1d",
       "note": "I3 source : transmission personnelle de récits non vérifiés, auteur initial/dernier relais/destinataire et dates conservés, diffusion bornée, déduplication des échos et aucun accès au dossier privé ni preuve native. +2 source ; moteur non testé."
+    },
+    {
+      "date": "2026-11-02",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4",
+        "O4",
+        "I3",
+        "M5"
+      ],
+      "score": 51,
+      "reference": "e5c4f1b54cc2eb9e02e2b311553577feedcb09c8",
+      "note": "M5 source : souvenir natif personnel de soutien reçu du partenaire exact, limité à cinq ans et à un facteur booléen, pesant sur une nouvelle proposition et une réparation ultérieure indépendante. +2 source ; aucun savoir emprunté, preuve ni coût modifié ; moteur non testé."
     }
   ]
 }
