@@ -1,5 +1,9 @@
 # Suivi de la première version intégrée — v0.1-plan-1
 
+**État courant : 40/100 (+2), dont 40/80 source et 0/20 moteur.**
+AI3 est implémenté dans les scripts ; prochaine cible J2.
+Vitesse encore non mesurable : relevés du même jour.
+
 Relevé initial : **1 novembre 2026, 38/100**, évalué sur le code de
 `45c5e845597fcf291175308d2f0b6c31fecfd4bc` (après PR #62).
 **38/80 points de développement source ; 0/20 points de validation CK3/AGOT.**
@@ -24,7 +28,7 @@ coût. Les trois scénarios initiaux ne limitent pas le périmètre ; le catalog
 | Justice et sanctions | 2 | 12 |
 | Information et preuves | 6 | 8 |
 | Mémoire politique | 6 | 10 |
-| IA politique | 4 | 10 |
+| IA politique | 6 | 10 |
 | Validation finale CK3/AGOT | 0 | 20 |
 
 Les critères « source » ci-dessous sont implémentés expérimentalement et vérifiés
@@ -115,7 +119,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 |---|---:|---|---|
 | AI1 | 2 | Actions implémentées : coûts et gardes partagés, raccourcis humains explicitement bornés | Source seulement : [RW010_FAVOR_SERVICE.md](RW010_FAVOR_SERVICE.md), [rw_favor_service_effects.txt](../mod/real_westeros/common/scripted_effects/rw_favor_service_effects.txt) |
 | AI2 | 2 | Ciblage borné, occasions réactives et délais anti-spam sans parcours global des paires | Source seulement : [RW010_FAVOR_SERVICE.md](RW010_FAVOR_SERVICE.md), [rw_favor_service_interactions.txt](../mod/real_westeros/common/character_interactions/rw_favor_service_interactions.txt) |
-| AI3 | 2 | Politique contextuelle partagée par deux familles avec au moins trois facteurs : enjeux, risques, moyens, savoir ou obligations | À développer / valider |
+| AI3 | 2 | Politique contextuelle partagée par deux familles avec au moins trois facteurs : enjeux, risques, moyens, savoir ou obligations | Source seulement : [RW010_CONTEXTUAL_AI.md](RW010_CONTEXTUAL_AI.md), [rw_political_ai_values.txt](../mod/real_westeros/common/script_values/rw_political_ai_values.txt) |
 | AI4 | 2 | Chemins autonomes IA↔IA à travers guerre, justice et négociation | À développer / valider |
 | AI5 | 2 | Instrumentation effective des décisions, abus et performances, prête pour la campagne finale | À développer / valider |
 
@@ -131,11 +135,11 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 
 ## Prochain ordre de travail
 
-1. **AI3 — cible suivante, +2 points possibles** : politique contextuelle partagée
+1. **AI3 — livré dans les sources, +2 points acquis** : politique contextuelle partagée
    par au moins deux familles d’actions, utilisant trois facteurs concrets parmi
    enjeux, risques, moyens, informations connues et obligations. Des poids aléatoires
    fondés uniquement sur les traits ou une nouvelle variante de dialogue ne suffisent pas.
-2. **J2 — +3 possibles** : chemin de sanction individuelle effectif, natif et accessible
+2. **J2 — cible suivante, +3 possibles** : chemin de sanction individuelle effectif, natif et accessible
    à l’IA ; préserver droit, coût, refus et résistance. Une simple fenêtre ne suffit pas.
 3. **W1/W2 — +2/+4 possibles** : qualification au moment de l’acte et véritable guerre
    interdite intégrée. Réserver RW-004 séparément. Ne pas livrer le diagnostic privé

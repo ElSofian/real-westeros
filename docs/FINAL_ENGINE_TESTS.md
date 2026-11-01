@@ -1220,3 +1220,11 @@ other probes/submods disabled; never distribute its generated native helper.
 | G1INT-10 | Resolve genuine claim wars by victory/defeat/white peace/invalidation/transfer | Compare native titles/realm/truce/cleanup/logs to AGOT baseline; observer adds no lifecycle effects |
 | G1INT-11 | Peer claim vs independently Mega-War-eligible case; actual helper loading/order | Do not reclassify peer war; verify Mega War initialization/cleanup and effective override; failures do not prove universal impossibility |
 | G1INT-12 | Manual AI test setup and normal AI legal declarations, baseline performance/privacy/error logs | No production AI declaration flow claimed; establish equal actual access/costs separately before G1 gameplay; base mod still unaffected |
+
+## Shared contextual political AI — AI3
+
+No cases executed. Run AIPOL-01…10 in [RW010_CONTEXTUAL_AI.md](RW010_CONTEXTUAL_AI.md)
+with the final G4/G5 campaign: direction of decider opinion, current cost/reserves, own
+commitments, war burden, independent allegations/service cases, player/AI symmetry,
+save/reload, stale/missing/foreign context, native isolation and observed performance.
+Source credit does not clear any runtime gate.

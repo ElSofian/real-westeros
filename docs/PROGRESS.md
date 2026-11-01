@@ -226,3 +226,29 @@
   structural validation, readiness report and whitespace checks PASS. CI and committed-source
   distribution will be verified before merge. The archive includes the roadmap, baseline and all cited assessment guides.
   No engine run or new compatibility claim.
+
+- PR #63 measurable baseline integrated: PR CI 41338662763 and main CI 41338758546
+  passed 696 Linux checks plus nineteen separate Windows collector checks. Main
+  266-file archive checksum/manifest/extracted structure and all evidence paths verified;
+  207 mod files unchanged. Readiness baseline 38/100, +0 gameplay. Claim released.
+- RW-010 / AI3 (`feat/contextual-political-ai`, 2026-11-01): original shared CK3
+  cooperation value and read-only known-pair/own-opinion/own-commitment triggers,
+  integrated into immediate/deferred service-price acceptance and voluntary case
+  repair (including independent allegations). Family adapters use current gold quote
+  or actual 25-prestige cost, retain positive refusal/counteroffer weights and all
+  existing identity/turn/funds/version/effect guards. No new actor scan, timer, state,
+  native effect, private counterpart lookup or AI privilege. Existing mediator
+  preference retained. New script-values directory included in structural duplicate
+  checking and distribution allowlist (full suite caught and corrected its initial
+  packaging omission). Nine adversarial source tests plus duplicate-value rejection,
+  packaged guide/source-reference-only receipt and ten unrun AIPOL final cases added.
+  **38 → 40/100 (+2 source points)** for frozen criterion AI3; engine **0/20**.
+  Original baseline preserved, delivery checkpoint references actual source commit;
+  no weekly velocity can be inferred from same-day checkpoints. No CK3 run: value/root
+  evaluation, actual weights, save/load, behavior/performance and AGOT compatibility
+  remain unverified. Next J2 native individual sanction pipeline (+3 possible), not
+  another weight variant; G1/G3 and the other open criteria remain incomplete.
+  **687 local unit/static tests passed, nineteen PowerShell tests skipped (706 discovered)**;
+  structural validator, readiness report and whitespace PASS. All non-AI option code
+  in both modified event files is unchanged against the baseline. CI and committed-source
+  archive will be checked before integration; no engine evidence claimed.

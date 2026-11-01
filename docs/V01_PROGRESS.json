@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "45c5e845597fcf291175308d2f0b6c31fecfd4bc",
+  "assessed_commit": "0c3809f6c1b6d7d9a01d56e0e86daee3354df276",
   "lots": [
     {
       "id": "W",
@@ -384,8 +384,14 @@
           "id": "AI3",
           "points": 2,
           "acceptance": "Politique contextuelle partagée par deux familles avec au moins trois facteurs : enjeux, risques, moyens, savoir ou obligations",
-          "status": "open",
-          "evidence": []
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_CONTEXTUAL_AI.md",
+            "mod/real_westeros/common/script_values/rw_political_ai_values.txt",
+            "mod/real_westeros/common/scripted_triggers/rw_political_ai_triggers.txt",
+            "mod/real_westeros/events/rw_service_events.txt",
+            "mod/real_westeros/events/rw_case_events.txt"
+          ]
         },
         {
           "id": "AI4",
@@ -476,6 +482,37 @@
       "score": 38,
       "reference": "45c5e845597fcf291175308d2f0b6c31fecfd4bc",
       "note": "Première calibration documentée ; remplace l’estimation orale ~30 %, sans gain de développement. Aucun test moteur exécuté.",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9"
+    },
+    {
+      "date": "2026-11-01",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3"
+      ],
+      "score": 40,
+      "reference": "0c3809f6c1b6d7d9a01d56e0e86daee3354df276",
+      "note": "AI3 source : politique CK3 partagée entre négociation de service et réparation de différend ; relation, ressources et engagements personnels, plus charge de guerre. +2 source, aucun test moteur.",
       "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9"
     }
   ]

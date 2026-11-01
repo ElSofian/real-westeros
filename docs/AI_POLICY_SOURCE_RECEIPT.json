@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "status": "source references only; target engine semantics unverified",
+  "files": [
+    {
+      "path": "CK3/events/single_combat_events.txt",
+      "sha256": "4fcade4a6394ca32b9687d3dff872f62fa02c97d60f86967115f58a3a093fb3f",
+      "line": 7295,
+      "purpose": "Named script value in event AI weight add modifier"
+    },
+    {
+      "path": "CK3/common/script_values/00_ai_values.txt",
+      "sha256": "8b248b0ab799adf356af71d69994edcf904f16bdbc4d2b104cc9a1305c04baa3",
+      "line": 3140,
+      "purpose": "Scoped numeric value arithmetic in original native script values"
+    }
+  ]
+}
