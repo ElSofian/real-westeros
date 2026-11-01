@@ -89,3 +89,10 @@ expiry, UI/privacy/save/load, story costs and actual AGOT compatibility require 
 owner's final campaign. No intermediate game run, upload, paid service or runtime
 Python/LLM is needed. Further contextual responses and other undertaking types remain
 separate work; G1 and universal G3 enforcement stay unresolved.
+
+## Voluntary personal response extension
+
+RW010_RESTRAINT_RESPONSES.md adds a fresh original-party explanation/reaction
+window after a new exact role observation. Request, acknowledgment/contest and
+optional personal rancour remain separate from native roles and legal truth.
+Silence, old records and expiry never create a penalty or admission.

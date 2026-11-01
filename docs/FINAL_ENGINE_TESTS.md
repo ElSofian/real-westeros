@@ -1134,3 +1134,18 @@ All unrun. RW010_RESTITUTION_DIALOGUES.md creates discussion, not promised resti
 | MREST-10 | Save/load before/after consent, exit, callback, war end and elapsed cleanup | Dates/role record remain coherent; no retained destroyed-war reference, repeated observation, renewed retention or reconstructed fulfillment |
 | MREST-11 | Observe AI↔AI and AI↔player, offer cooldown, story cleanup and numerous retained records | Same actions/costs/guards, bounded liege initiation and owner-local queries; measure actual event/privacy/performance behavior |
 | MREST-12 | Compare normal claim/revolt/Mega War and native ban/hook rules against AGOT baseline | Observer alone never enables declaration, changes CB, forces peace or claims voluntary war cause; G1 genuine-ban bypass remains separate/unresolved |
+
+## Military-restraint explanations and reactions (all unrun)
+
+| ID | Final campaign scenario | Expected observation, not demonstrated |
+|---|---|---|
+| MRESP-01 | Fresh exact role observation, compared with old record/expiry/renunciation/release/wrong target | New observation alone opens one thirty-day response window before notices; no legacy backfill or automatic opinion/admission |
+| MRESP-02 | Beneficiary requests explanation twice; promisor answers with acknowledgment or contest in separate saves | One request and one explicit original-promisor statement/date; no renewed deadline or change to role fact/native legal status |
+| MRESP-03 | Ignore request and pass response deadline | Statement stays unanswered; silence creates no deliberate-breach finding, opinion, consent or pardon |
+| MRESP-04 | Beneficiary chooses resentment before request, after acknowledgment or after contest | Same optional personal reaction allowed; consume before once-only −15 opinion/two years and private notice; no forced verdict |
+| MRESP-05 | Later pledge yields a fresh observation while pair's same modifier remains active | New personal response can be recorded but existing modifier never stacks/refreshes; other grievances remain |
+| MRESP-06 | Beneficiary takes note; pending promisor reply arrives afterward | Neutral response preserved, no opinion add/remove; late reply cannot rewrite closed response; original fact and prior statement remain |
+| MRESP-07 | Replay request/answer/reaction popups, wrong actor/story/serial/date, observer/liege or successor | No duplicate request, changed statement/reaction, personal penalty, leaked private terms or inherited authority |
+| MRESP-08 | Save/load at each state; war ends/reference disappears; original party dies or loses rank/freedom/peace/funds | Exact retained personal facts remain separate; living original parties need no new-pledge capacity to reply/react; death/retention guards apply |
+| MRESP-09 | Request on day twenty-nine, wait/review/reply, then expire and inspect archive | Original deadline never renewed; no repeated timer or extra notification chain; archive shows silence/statement/reaction separately |
+| MRESP-10 | AI↔AI and AI↔player across traits and observed war contexts, compared to AGOT baseline | Same actions/effects/guards, bounded notices, no native war/CB/truce/secret/justice effect; measure actual privacy/AI/performance before compatibility claims |

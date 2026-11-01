@@ -1,0 +1,69 @@
+# Fresh callback same-call token, after role observation and before any notice.
+rw_mb_begin_effect = {
+    if = {
+        limit = {
+            rw_mr_view_trigger = yes
+            this = scope:rw_mr_provider
+            exists = scope:rw_mb_fresh_observation
+            scope:rw_mb_fresh_observation = scope:rw_mr_record
+            scope:rw_mr_record = { var:rw_mr_state = flag:war_observed NOT = { has_variable = rw_mb_schema } }
+        }
+        scope:rw_mr_record = {
+            set_variable = { name = rw_mb_serial value = scope:rw_mr_serial }
+            set_variable = { name = rw_mb_observed_on value = var:rw_mr_observed_on }
+            set_variable = { name = rw_mb_state value = flag:pending }
+            set_variable = { name = rw_mb_statement value = flag:unanswered }
+            set_variable = { name = rw_mb_window value = flag:yes days = 30 }
+            set_variable = { name = rw_mb_schema value = 1 }
+        }
+    }
+}
+rw_mb_request_effect = {
+    if = {
+        limit = { rw_mb_can_request_trigger = yes }
+        scope:rw_mr_record = { set_variable = { name = rw_mb_requested_on value = current_date } }
+        scope:rw_mr_provider = { trigger_event = { id = rw_military_restraint.0001 } }
+    }
+}
+# Both public statement choices share the same validated actor/window; no verdict.
+rw_mb_answer_effect = {
+    save_scope_value_as = { name = rw_mb_answer value = flag:$ANSWER$ }
+    if = {
+        limit = {
+            rw_mb_can_answer_trigger = yes
+            OR = { scope:rw_mb_answer = flag:acknowledged scope:rw_mb_answer = flag:contested }
+        }
+        scope:rw_mr_record = {
+            set_variable = { name = rw_mb_statement value = scope:rw_mb_answer }
+            set_variable = { name = rw_mb_answered_on value = current_date }
+        }
+        scope:rw_mr_beneficiary = { trigger_event = { id = rw_military_restraint.0001 } }
+    }
+}
+rw_mb_resent_effect = {
+    if = {
+        limit = { rw_mb_can_react_trigger = yes }
+        scope:rw_mr_record = {
+            remove_variable = rw_mb_window
+            set_variable = { name = rw_mb_state value = flag:resented }
+            set_variable = { name = rw_mb_reacted_on value = current_date }
+        }
+        # Personal grievance, consumed first; never stack/refresh an existing pair modifier.
+        if = {
+            limit = { NOT = { has_opinion_modifier = { target = scope:rw_mr_provider modifier = rw_restraint_resented_opinion } } }
+            add_opinion = { target = scope:rw_mr_provider modifier = rw_restraint_resented_opinion }
+        }
+        scope:rw_mr_provider = { trigger_event = { id = rw_military_restraint.0001 } }
+    }
+}
+rw_mb_note_effect = {
+    if = {
+        limit = { rw_mb_can_react_trigger = yes }
+        scope:rw_mr_record = {
+            remove_variable = rw_mb_window
+            set_variable = { name = rw_mb_state value = flag:noted }
+            set_variable = { name = rw_mb_reacted_on value = current_date }
+        }
+        scope:rw_mr_provider = { trigger_event = { id = rw_military_restraint.0001 } }
+    }
+}
