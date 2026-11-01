@@ -1,0 +1,123 @@
+# Refresh financial terms only on explicit navigation, never in saved replies.
+rw_cq_prepare_effect = {
+    if = {
+        limit = { rw_ch_view_trigger = yes }
+        clear_saved_scope = rw_cq_revision
+        clear_saved_scope = rw_cq_price
+        clear_saved_scope = rw_cq_parent_revision
+        clear_saved_scope = rw_cq_payer
+        clear_saved_scope = rw_cq_payee
+        if = {
+            limit = {
+                scope:rw_lr_record = {
+                    var:rw_cq_schema = 1 has_variable = rw_cq_revision has_variable = rw_cq_price
+                    has_variable = rw_cq_parent_revision exists = var:rw_cq_payer exists = var:rw_cq_payee
+                }
+            }
+            scope:rw_lr_record = { rw_cq_snapshot_effect = yes }
+        }
+        trigger_event = { id = rw_charter_compensation.0001 }
+    }
+}
+rw_cq_snapshot_effect = {
+    save_scope_value_as = { name = rw_cq_revision value = var:rw_cq_revision }
+    save_scope_value_as = { name = rw_cq_price value = var:rw_cq_price }
+    save_scope_value_as = { name = rw_cq_parent_revision value = var:rw_cq_parent_revision }
+    var:rw_cq_payer = { save_scope_as = rw_cq_payer }
+    var:rw_cq_payee = { save_scope_as = rw_cq_payee }
+}
+rw_cq_propose_effect = {
+    save_scope_value_as = { name = rw_cq_start_price value = $PRICE$ }
+    if = {
+        limit = {
+            rw_cq_can_propose_trigger = yes
+            OR = {
+                AND = { this = scope:rw_ch_ruler scope:rw_cq_start_price = 25 }
+                AND = { this = scope:rw_ch_head scope:rw_cq_start_price = 50 }
+            }
+        }
+        scope:rw_lr_record = {
+            if = { limit = { NOT = { has_variable = rw_cq_revision } } set_variable = { name = rw_cq_revision value = 0 } }
+            change_variable = { name = rw_cq_revision add = 1 }
+            set_variable = { name = rw_cq_price value = scope:rw_cq_start_price }
+            set_variable = { name = rw_cq_parent_revision value = scope:rw_ch_revision }
+            set_variable = { name = rw_cq_payer value = scope:rw_ch_ruler }
+            set_variable = { name = rw_cq_payee value = scope:rw_ch_head }
+            set_variable = { name = rw_cq_state value = flag:offered }
+            set_variable = { name = rw_cq_issued_on value = current_date }
+            set_variable = { name = rw_cq_window value = flag:yes days = 7 }
+            set_variable = { name = rw_cq_schema value = 1 }
+        }
+        if = {
+            limit = { this = scope:rw_ch_ruler }
+            scope:rw_lr_record = { set_variable = { name = rw_cq_turn value = flag:head } }
+        }
+        else = { scope:rw_lr_record = { set_variable = { name = rw_cq_turn value = flag:ruler } } }
+        scope:rw_lr_record = { rw_cq_snapshot_effect = yes }
+        rw_cq_send_reply_effect = yes
+    }
+}
+rw_cq_send_reply_effect = {
+    if = {
+        limit = { this = scope:rw_ch_ruler }
+        scope:rw_ch_head = { trigger_event = { id = rw_charter_compensation.0001 days = 1 } }
+    }
+    else = { scope:rw_ch_ruler = { trigger_event = { id = rw_charter_compensation.0001 days = 1 } } }
+}
+rw_cq_counter_effect = {
+    if = {
+        limit = { rw_cq_responder_trigger = yes }
+        scope:rw_lr_record = {
+            change_variable = { name = rw_cq_revision add = 1 }
+            if = { limit = { var:rw_cq_price = 25 } set_variable = { name = rw_cq_price value = 50 } }
+            else = { set_variable = { name = rw_cq_price value = 25 } }
+            if = { limit = { var:rw_cq_turn = flag:ruler } set_variable = { name = rw_cq_turn value = flag:head } }
+            else = { set_variable = { name = rw_cq_turn value = flag:ruler } }
+            rw_cq_snapshot_effect = yes
+        }
+        rw_cq_send_reply_effect = yes
+    }
+}
+rw_cq_settle_effect = {
+    if = {
+        limit = { rw_cq_can_settle_trigger = yes }
+        save_scope_as = rw_cq_settler
+        scope:rw_lr_record = {
+            remove_variable = rw_cq_window
+            remove_variable = rw_cq_turn
+            set_variable = { name = rw_cq_state value = flag:paid }
+            set_variable = { name = rw_cq_paid_on value = current_date }
+            set_variable = { name = rw_cq_paid_amount value = scope:rw_cq_price }
+            set_variable = { name = rw_cq_paid_revision value = scope:rw_cq_revision }
+            set_variable = { name = rw_cq_settled_by value = scope:rw_cq_settler }
+            # Same charter release state as the existing free choice, but no early notice.
+            remove_variable = rw_ch_offer_window
+            remove_variable = rw_ch_due
+            change_variable = { name = rw_ch_revision add = 1 }
+            set_variable = { name = rw_ch_state value = flag:released }
+            set_variable = { name = rw_ch_finished_on value = current_date }
+            set_variable = { name = rw_ch_finished_by value = scope:rw_cq_settler }
+            rw_ch_snapshot_effect = yes
+            set_variable = { name = rw_cq_result_revision value = scope:rw_ch_revision }
+        }
+        # Consume both before the one personal gold exchange; never retry partial native effects.
+        scope:rw_cq_payer = { add_gold = { value = scope:rw_cq_price multiply = -1 } }
+        scope:rw_cq_payee = { add_gold = scope:rw_cq_price }
+        rw_cq_notify_effect = yes
+    }
+}
+rw_cq_close_effect = {
+    if = {
+        limit = { rw_cq_can_close_trigger = yes }
+        scope:rw_lr_record = {
+            remove_variable = rw_cq_window
+            remove_variable = rw_cq_turn
+            set_variable = { name = rw_cq_state value = flag:closed }
+        }
+        rw_cq_notify_effect = yes
+    }
+}
+rw_cq_notify_effect = {
+    scope:rw_ch_ruler = { if = { limit = { is_alive = yes } trigger_event = { id = rw_charter_compensation.0001 } } }
+    scope:rw_ch_head = { if = { limit = { is_alive = yes } trigger_event = { id = rw_charter_compensation.0001 } } }
+}

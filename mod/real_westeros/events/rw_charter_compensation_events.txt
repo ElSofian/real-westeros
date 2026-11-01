@@ -1,0 +1,41 @@
+namespace = rw_charter_compensation
+
+rw_charter_compensation.0001 = {
+    type = character_event
+    title = rw_charter_compensation.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_cq_view_trigger = yes }
+                desc = {
+                    desc = rw_charter_compensation.parties
+                    triggered_desc = { trigger = { scope:rw_cq_price = 25 } desc = rw_charter_compensation.price25 }
+                    triggered_desc = { trigger = { scope:rw_cq_price = 50 } desc = rw_charter_compensation.price50 }
+                    first_valid = {
+                        triggered_desc = { trigger = { scope:rw_lr_record = { var:rw_cq_state = flag:paid } } desc = rw_charter_compensation.paid }
+                        triggered_desc = { trigger = { scope:rw_lr_record = { var:rw_cq_state = flag:closed } } desc = rw_charter_compensation.closed }
+                        triggered_desc = { trigger = { rw_cq_live_trigger = yes } desc = rw_charter_compensation.offered }
+                        desc = rw_charter_compensation.inactive
+                    }
+                    triggered_desc = { trigger = { rw_cq_live_trigger = yes scope:rw_cq_payer = { gold < scope:rw_cq_price } } desc = rw_charter_compensation.unfunded }
+                    desc = rw_charter_compensation.limits
+                }
+            }
+            desc = rw_charter_compensation.unavailable
+        }
+    }
+    theme = diplomacy
+    option = { name = rw_charter_compensation.accept trigger = { rw_cq_can_settle_trigger = yes } rw_cq_settle_effect = yes ai_chance = { base = 40 modifier = { factor = 0.5 this = scope:rw_ch_ruler has_trait = greedy } } }
+    option = { name = rw_charter_compensation.counter50 trigger = { rw_cq_responder_trigger = yes scope:rw_cq_price = 25 } rw_cq_counter_effect = yes ai_chance = { base = 30 } }
+    option = { name = rw_charter_compensation.counter25 trigger = { rw_cq_responder_trigger = yes scope:rw_cq_price = 50 } rw_cq_counter_effect = yes ai_chance = { base = 30 } }
+    option = { name = rw_charter_compensation.close trigger = { rw_cq_can_close_trigger = yes } rw_cq_close_effect = yes ai_chance = { base = 15 } }
+    option = { name = rw_restitution_charter.release trigger = { rw_ch_can_release_trigger = yes } rw_ch_release_effect = yes ai_chance = { base = 5 } }
+    option = { name = rw_restitution_charter.renounce trigger = { rw_ch_can_renounce_trigger = yes } rw_ch_renounce_effect = yes ai_chance = { base = 5 } }
+    option = { name = rw_restitution_charter.satisfy trigger = { rw_ch_can_satisfy_trigger = yes } rw_ch_satisfy_effect = yes ai_chance = { base = 70 } }
+    option = { name = rw_charter_compensation.leave ai_chance = { base = 20 } }
+}
+rw_charter_compensation.0002 = {
+    type = character_event
+    hidden = yes
+    immediate = { rw_cq_prepare_effect = yes }
+}

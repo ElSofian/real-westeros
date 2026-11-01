@@ -97,3 +97,10 @@ no native/private-state mutation, character-root notices, neutral expiry and EN/
 RCHART-01…12 in FINAL_ENGINE_TESTS.md remain unrun for the owner's final campaign.
 No new native API, proprietary source, paid service, runtime Python/LLM or intermediate
 upload/game run is required. G1 and universal G3 enforcement remain unresolved.
+
+## Optional negotiated compensation
+
+RW010_CHARTER_COMPENSATION.md adds public twenty-five/fifty personal-gold terms
+for release of an accepted charter. Exact current counterpart consent/current funds
+and versioned paired consumption are required; free charter exits remain. The
+financial parties are named individuals, never a house bank or inherited debt.

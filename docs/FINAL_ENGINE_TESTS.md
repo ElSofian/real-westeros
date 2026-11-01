@@ -1166,3 +1166,20 @@ All unrun. RW010_RESTITUTION_DIALOGUES.md creates discussion, not promised resti
 | RCHART-10 | Fresh deposit vs older empty entries, accepted charter and new ruler/head maintenance | Initial fresh opportunity, no old automatic offers, active-role and exact-house recovery-holder notices coalesced before sending; same head can acknowledge later recovery; correct character-event root, no repeated unchanged-role/holder prompts |
 | RCHART-11 | AI↔AI and player↔AI across dispositions and repeated records | Same actions/costs/role/revision guards; measure actual AI response/spam/performance; no automated native grant claimed |
 | RCHART-12 | Save/load all phases; native grant/inheritance/election/conquest, private restitution pledge and AGOT baseline | Independent public institutional state; no private promise exposure/rewrite, new hook/war/title/house-ban effect or invented universal G3 enforcement |
+
+## Public charter compensation (all unrun)
+
+| ID | Final campaign scenario | Expected observation, not demonstrated |
+|---|---|---|
+| CCOMP-01 | Active exact charter, crown offers twenty-five or head requests fifty | Public named personal parties/amount; no payment or charter release at proposal |
+| CCOMP-02 | Other current representative accepts original amount with crown funds | Sovereign always pays head; quote and charter consumed before debit/credit/notices; composite receipt retains actor/date/result revision |
+| CCOMP-03 | Counter twenty-five/fifty repeatedly, then accept; replay older quote | Current counterpart/revision/price only, correct payer independent of accepting actor; no repeated debit or old-version closure |
+| CCOMP-04 | Sovereign spends gold before head or sovereign acceptance | Current agreed funds required; no borrowing, house-bank use, partial negative-balance fallback or release |
+| CCOMP-05 | Crown/head changes or charter recognition changes parent revision while offer pending | Old named-party/version acceptance fails; new current representatives need fresh explicit proposal, never inherited monetary consent |
+| CCOMP-06 | Same tuple/version closes, expires or repeatedly reviews; changed tuple/version reproposes | No same-context seven-day restart; new quote increments monotonic revision; original charter deadline/retention never renew |
+| CCOMP-07 | Free repudiation, free head release or actual-house recovery satisfaction during talks | Original action remains free and invalidates financial quote by parent state/revision; no fee/refund/debt inferred |
+| CCOMP-08 | Decline or close obsolete unpaid quote, including after charter expiry | Only financial dialogue closes; no gold, charter release, opinion, legal or other promise effect |
+| CCOMP-09 | Read paid receipt after sovereign/head succession, death, storage rehoming and archive expiry | Historical original monetary names/amount distinct from current roles; exact composite metadata/access required; no substituted recipient or retention extension |
+| CCOMP-10 | Missing/wrong story, parties, amount, quote/parent/result revision, actor/date or stale saved reply | Fail closed; no incomplete paid-release claim, native transfer/retry, private pledge rewrite or consent refresh |
+| CCOMP-11 | Save/load each turn and terminal state; inspect gold and accepted charter fields | Original version/date/actor preserved; source order is not atomic crash recovery; never retry an interrupted native exchange |
+| CCOMP-12 | AI↔AI and player↔AI, public observers, many records and AGOT baseline | Same role/funds/effect rules, bounded reply notices and existing public access; measure incentives/economy/privacy/performance, no bank/title/war/justice lifecycle changes |

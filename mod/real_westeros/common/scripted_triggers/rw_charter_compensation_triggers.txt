@@ -1,0 +1,104 @@
+# A fresh offer needs current institutional roles and an active original charter.
+rw_cq_can_propose_trigger = {
+    rw_ch_active_trigger = yes
+    OR = { this = scope:rw_ch_ruler this = scope:rw_ch_head }
+    scope:rw_lr_record = {
+        OR = {
+            NOT = { has_variable = rw_cq_schema }
+            AND = {
+                var:rw_cq_schema = 1
+                OR = { var:rw_cq_state = flag:offered var:rw_cq_state = flag:closed }
+                OR = {
+                    NOT = { var:rw_cq_parent_revision = scope:rw_ch_revision }
+                    NOT = { var:rw_cq_payer = scope:rw_ch_ruler }
+                    NOT = { var:rw_cq_payee = scope:rw_ch_head }
+                }
+            }
+        }
+    }
+}
+# Public terms, with original monetary parties rather than current successors.
+rw_cq_view_trigger = {
+    rw_ch_view_trigger = yes
+    exists = scope:rw_cq_revision
+    exists = scope:rw_cq_price
+    exists = scope:rw_cq_parent_revision
+    exists = scope:rw_cq_payer
+    exists = scope:rw_cq_payee
+    NOT = { scope:rw_cq_payer = scope:rw_cq_payee }
+    scope:rw_lr_record = {
+        var:rw_cq_schema = 1
+        var:rw_cq_revision = scope:rw_cq_revision
+        var:rw_cq_price = scope:rw_cq_price
+        var:rw_cq_parent_revision = scope:rw_cq_parent_revision
+        var:rw_cq_payer = scope:rw_cq_payer
+        var:rw_cq_payee = scope:rw_cq_payee
+        has_variable = rw_cq_issued_on
+        OR = { var:rw_cq_price = 25 var:rw_cq_price = 50 }
+        OR = { var:rw_cq_state = flag:offered var:rw_cq_state = flag:closed var:rw_cq_state = flag:paid }
+        trigger_if = {
+            limit = { var:rw_cq_state = flag:offered }
+            OR = { var:rw_cq_turn = flag:ruler var:rw_cq_turn = flag:head }
+        }
+        trigger_if = {
+            limit = { var:rw_cq_state = flag:paid }
+            rw_cq_paid_receipt_trigger = yes
+        }
+    }
+}
+rw_cq_live_trigger = {
+    rw_cq_view_trigger = yes
+    rw_ch_active_trigger = yes
+    scope:rw_cq_parent_revision = scope:rw_ch_revision
+    scope:rw_cq_payer = scope:rw_ch_ruler
+    scope:rw_cq_payee = scope:rw_ch_head
+    scope:rw_lr_record = { var:rw_cq_state = flag:offered has_variable = rw_cq_window }
+}
+rw_cq_responder_trigger = {
+    rw_cq_live_trigger = yes
+    OR = {
+        AND = { this = scope:rw_ch_ruler scope:rw_lr_record = { var:rw_cq_turn = flag:ruler } }
+        AND = { this = scope:rw_ch_head scope:rw_lr_record = { var:rw_cq_turn = flag:head } }
+    }
+}
+rw_cq_can_settle_trigger = {
+    rw_cq_responder_trigger = yes
+    scope:rw_cq_payer = { gold >= scope:rw_cq_price }
+}
+# Current representatives may discard an obsolete unpaid offer without touching charter.
+rw_cq_can_close_trigger = {
+    rw_cq_view_trigger = yes
+    rw_ch_roles_trigger = yes
+    OR = { this = scope:rw_ch_ruler this = scope:rw_ch_head }
+    scope:rw_lr_record = { var:rw_cq_state = flag:offered }
+}
+
+# Story scope: reusable paid-packet integrity for public charter and financial views.
+rw_cq_paid_receipt_trigger = {
+    rw_lr_record_valid_trigger = yes
+    has_variable = rw_lr_retained
+    var:rw_ch_schema = 1
+    var:rw_ch_state = flag:released
+    var:rw_cq_schema = 1
+    var:rw_cq_state = flag:paid
+    has_variable = rw_cq_paid_on
+    has_variable = rw_cq_revision
+    has_variable = rw_cq_price
+    has_variable = rw_cq_paid_amount
+    has_variable = rw_cq_paid_revision
+    has_variable = rw_cq_result_revision
+    has_variable = rw_ch_revision
+    has_variable = rw_ch_finished_on
+    exists = var:rw_ch_finished_by
+    has_variable = rw_cq_parent_revision
+    exists = var:rw_cq_payer
+    exists = var:rw_cq_payee
+    NOT = { var:rw_cq_payer = var:rw_cq_payee }
+    exists = var:rw_cq_settled_by
+    OR = { var:rw_cq_price = 25 var:rw_cq_price = 50 }
+    var:rw_cq_paid_amount = var:rw_cq_price
+    var:rw_cq_paid_revision = var:rw_cq_revision
+    var:rw_cq_result_revision = var:rw_ch_revision
+    var:rw_cq_paid_on = var:rw_ch_finished_on
+    var:rw_cq_settled_by = var:rw_ch_finished_by
+}

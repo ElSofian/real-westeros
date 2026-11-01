@@ -13,6 +13,14 @@ rw_restitution_charter.0001 = {
                     first_valid = {
                         triggered_desc = { trigger = { scope:rw_lr_record = { var:rw_ch_state = flag:satisfied } } desc = rw_restitution_charter.satisfied }
                         triggered_desc = { trigger = { scope:rw_lr_record = { var:rw_ch_state = flag:renounced } } desc = rw_restitution_charter.renounced }
+                        triggered_desc = {
+                            trigger = {
+                                scope:rw_lr_record = {
+                                    rw_cq_paid_receipt_trigger = yes
+                                }
+                            }
+                            desc = rw_charter_compensation.charter_released
+                        }
                         triggered_desc = { trigger = { scope:rw_lr_record = { var:rw_ch_state = flag:released } } desc = rw_restitution_charter.released }
                         triggered_desc = { trigger = { scope:rw_lr_record = { var:rw_ch_state = flag:closed } } desc = rw_restitution_charter.closed }
                         triggered_desc = { trigger = { scope:rw_lr_record = { var:rw_ch_state = flag:offered has_variable = rw_ch_offer_window } } desc = rw_restitution_charter.offered }
@@ -34,6 +42,24 @@ rw_restitution_charter.0001 = {
     option = { name = rw_restitution_charter.release trigger = { rw_ch_can_release_trigger = yes } rw_ch_release_effect = yes ai_chance = { base = 5 } }
     option = { name = rw_restitution_charter.satisfy trigger = { rw_ch_can_satisfy_trigger = yes } rw_ch_satisfy_effect = yes ai_chance = { base = 70 } }
     option = { name = rw_restitution_charter.close trigger = { rw_ch_can_close_trigger = yes } rw_ch_close_effect = yes ai_chance = { base = 10 } }
+    option = {
+        name = rw_charter_compensation.offer25
+        trigger = { rw_cq_can_propose_trigger = yes this = scope:rw_ch_ruler }
+        rw_cq_propose_effect = { PRICE = 25 }
+        ai_chance = { base = 5 }
+    }
+    option = {
+        name = rw_charter_compensation.request50
+        trigger = { rw_cq_can_propose_trigger = yes this = scope:rw_ch_head }
+        rw_cq_propose_effect = { PRICE = 50 }
+        ai_chance = { base = 5 modifier = { factor = 2 has_trait = greedy } }
+    }
+    option = {
+        name = rw_charter_compensation.review
+        trigger = { rw_ch_view_trigger = yes scope:rw_lr_record = { var:rw_cq_schema = 1 } }
+        if = { limit = { rw_ch_view_trigger = yes } trigger_event = { id = rw_charter_compensation.0002 } }
+        ai_chance = { base = 0 }
+    }
     option = { name = rw_restitution_charter.leave ai_chance = { base = 60 } }
 }
 # Explicit current-role/revision capture. Delayed replies never execute this refresh.
