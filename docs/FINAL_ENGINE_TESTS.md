@@ -1100,3 +1100,20 @@ All unrun. RW010_RESTITUTION_DIALOGUES.md creates discussion, not promised resti
 | FREN-06 | Save/load before and after response; reopen an older panel after a new serial/revision/mode/term | Exact terminal-date and ticket matching; no renewed window, stale response or changed newer record |
 | FREN-07 | Client/provider death, copied successor data, unrelated actor or mediator | No inherited personal response, leaked private notice or actor substitution; original identity guards apply |
 | FREN-08 | AI↔AI and AI↔player, including imprisonment/poverty/war after renunciation | Same personal response guards/costs; ordinary incapacity does not prevent taking note; no new scan/reminder spam or native-state change |
+
+## Private allegation settlement (all unrun)
+
+| ID | Final campaign scenario | Expected observation, not demonstrated |
+|---|---|---|
+| ASET-01 | Claimant alleges affront, respondent acknowledges or contests, claimant proposes fifty gold | One private seven-day offer after either statement; no money, opinion, prestige, disclosure or withdrawal at proposal |
+| ASET-02 | Respondent explicitly accepts fifty with funds | Exact respondent pays fifty to claimant once; both offer and case already consumed; withdrawal and payment recorded separately from unchanged statement |
+| ASET-03 | Respondent counters twenty-five; claimant accepts | Revision/turn updated; original respondent still pays, despite claimant clicking accept; no charge at counter |
+| ASET-04 | Claimant maintains fifty; replay initial fifty or older twenty-five panels | New revision requires new respondent agreement; stale panels cannot pay/close current offer |
+| ASET-05 | Respondent spends gold before either party's acceptance | No payment or withdrawal until current agreed funds exist; no negative-balance fallback, escrow or automatic retry |
+| ASET-06 | Wait beyond seven-day offer or original thirty-day case deadline, or repeatedly counter/review | No renewed deadline, payment, admission, inferred agreement or new offer for same case; original neutral case expiry still works |
+| ASET-07 | Either party refuses settlement | Financial dialogue closes without gold, case withdrawal, new grievance or judgment; claimant may still independently withdraw/refer |
+| ASET-08 | Claimant freely withdraws or refers before payment, then old acceptance arrives | Existing free action succeeds; old financial offer cannot charge or undo case stage; mediator learns only actually referred allegation |
+| ASET-09 | Wrong story/kind/serial/parties, changed lieges, war, imprisonment, minority, death or reference loss | No settlement or substituted/inherited payment; identity-only financial closure stays free where original scopes survive |
+| ASET-10 | Read exact archived paid receipt and statement; try mediator/outsider/archive navigation | Original parties read exact terms/payment; mediator cannot read financial dialogue; navigation never renews retention, proposes, pays or reopens |
+| ASET-11 | Save/load at each turn and terminal state; independent allegations with equal serials | Story/kind/owner/client/revision/amount remain isolated; no duplicate debit, statement change, hook, secret, pardon or title/native-justice effect |
+| ASET-12 | AI↔AI and AI↔player, with admission/contest, hostility, greed and low funds | Same actions/costs/guards; observe incentives, spam/economy, event scheduling and baseline AGOT compatibility before balance claims |

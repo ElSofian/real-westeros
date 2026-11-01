@@ -1,0 +1,71 @@
+# Private dialogue belongs to one exact allegation story, never a service receipt.
+rw_as_base_trigger = {
+    rw_case_matches_trigger = yes
+    is_alive = yes
+    OR = { this = scope:rw_service_provider this = scope:rw_service_client }
+    NOT = { scope:rw_service_provider = scope:rw_service_client }
+    scope:rw_case_record = { var:rw_case_kind = flag:allegation }
+}
+rw_as_context_trigger = {
+    rw_case_jurisdiction_trigger = yes
+    scope:rw_service_provider = { is_imprisoned = no NOT = { is_at_war_with = scope:rw_service_client } }
+    scope:rw_service_client = { is_imprisoned = no }
+    scope:rw_case_record = {
+        var:rw_case_stage = flag:claimant
+        has_variable = rw_case_pending
+        NOT = { has_variable = rw_case_disclosed }
+        OR = { var:rw_case_evidence = flag:admitted var:rw_case_evidence = flag:contested }
+    }
+}
+rw_as_can_propose_trigger = {
+    rw_as_base_trigger = yes
+    rw_as_context_trigger = yes
+    this = scope:rw_service_client
+    scope:rw_case_record = { NOT = { has_variable = rw_as_schema } }
+}
+rw_as_view_trigger = {
+    rw_as_base_trigger = yes
+    exists = scope:rw_as_revision
+    exists = scope:rw_as_price
+    scope:rw_case_record = {
+        var:rw_as_schema = 1
+        var:rw_as_revision = scope:rw_as_revision
+        var:rw_as_price = scope:rw_as_price
+        has_variable = rw_as_issued_on
+        OR = { var:rw_as_price = 25 var:rw_as_price = 50 }
+        OR = { var:rw_as_state = flag:offered var:rw_as_state = flag:closed var:rw_as_state = flag:paid }
+        trigger_if = {
+            limit = { var:rw_as_state = flag:offered }
+            OR = { var:rw_as_turn = flag:provider var:rw_as_turn = flag:client }
+        }
+        trigger_if = {
+            limit = { var:rw_as_state = flag:paid }
+            has_variable = rw_as_paid_on
+            var:rw_as_paid_revision = scope:rw_as_revision
+            var:rw_as_paid_amount = scope:rw_as_price
+            var:rw_case_stage = flag:closed
+            var:rw_case_result = flag:withdrawn
+        }
+    }
+}
+rw_as_live_trigger = {
+    rw_as_view_trigger = yes
+    rw_as_context_trigger = yes
+    scope:rw_case_record = { var:rw_as_state = flag:offered has_variable = rw_as_window }
+}
+rw_as_responder_trigger = {
+    rw_as_live_trigger = yes
+    OR = {
+        AND = { this = scope:rw_service_provider scope:rw_case_record = { var:rw_as_turn = flag:provider } }
+        AND = { this = scope:rw_service_client scope:rw_case_record = { var:rw_as_turn = flag:client } }
+    }
+}
+rw_as_can_settle_trigger = {
+    rw_as_responder_trigger = yes
+    scope:rw_service_provider = { gold >= scope:rw_as_price }
+}
+# Closing a proposal is free even if capacity/jurisdiction/deadline has changed.
+rw_as_can_close_trigger = {
+    rw_as_view_trigger = yes
+    scope:rw_case_record = { var:rw_as_state = flag:offered }
+}

@@ -174,7 +174,16 @@ acknowledgment or −15 opinion/two years consumes before effect/notice; an exis
 pair modifier never stacks or refreshes. Silence/expiry/client withdrawal/old rows
 create no reaction. Existing private notices offer identical AI/player actions;
 no new native state, reminders, global scan or inherited duty.
-Next other structured consideration and service/obligation types across the systems. All G2 engine behavior and
+Negotiated allegation withdrawal now adds a distinct service
+(RW010_ALLEGATION_SETTLEMENT.md): original claimant proposes fifty gold from
+respondent; versioned twenty-five counters swap responders, fixed seven-day dialogue
+never extends the original case deadline. Fresh original-party/jurisdiction/free/
+nonwar/non-disclosure/current-funds checks guard settlement; consume financial offer
+and active case before once-only gold and private notices. Existing free referral/
+withdrawal remain valid and invalidate quotes. Original statements and other
+penalties remain, no admission/pardon/immunity or native discovery change. Archive
+navigation is read-only; financial terms stay private from the mediator.
+Next wider structured obligations and contextual political choices across systems. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;
 never force the no-tyranny imprisonment helper as a legality check. Keep knowledge,

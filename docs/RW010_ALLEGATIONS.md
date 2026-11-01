@@ -98,3 +98,10 @@ Final engine cases:
 8. Observe AI choices, accusation spam/incentives, performance and AGOT baseline logs.
    Do not claim calibrated behavior, privacy/persistence guarantees or compatibility
    before this campaign. Native scheme-discovery integration remains separate work.
+
+## Optional negotiated withdrawal
+
+RW010_ALLEGATION_SETTLEMENT.md adds a private fifty/twenty-five gold negotiation
+for withdrawal after an acknowledgment or contest and before ruler referral. Both
+parties must explicitly agree; statements remain intact and money establishes no
+truth or legal immunity. Free withdrawal/referral and original deadlines remain.

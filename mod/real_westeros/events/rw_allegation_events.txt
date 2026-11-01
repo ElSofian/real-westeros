@@ -53,6 +53,12 @@ rw_allegations.0002 = {
         }
     }
     option = {
+        name = rw_allegation_settlement.propose
+        trigger = { rw_as_can_propose_trigger = yes }
+        rw_as_propose_effect = yes
+        ai_chance = { base = 20 modifier = { factor = 2 has_trait = greedy } }
+    }
+    option = {
         name = rw_allegations.withdraw
         trigger = { rw_allegation_claimant_turn_trigger = yes }
         rw_allegation_withdraw_effect = yes
