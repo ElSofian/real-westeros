@@ -301,3 +301,32 @@
   structural validator, frozen progress report and whitespace PASS. Final native UI,
   scopes, participants, default icon, retention, volume and AGOT compatibility remain
   unverified; CI and committed-source distribution checked before integration.
+
+- PR #66 native memories integrated: PR CI 41351338420 and main CI 41351480992
+  passed; 283-file main archive checksum/manifest/extracted structure, nine changed
+  original mod inputs and all evidence verified. Readiness 45/100 (+2), engine 0/20;
+  W1/W2 +0 and still open. Claim released, no game run.
+- RW-010 / O4 (`feat/dynastic-endowment`, 2026-11-01): original private dynastic
+  endowment of 50 gold, original-head seven-day acceptance and fixed 9,125-day term.
+  Separate original signatories/houses, current representatives, named recognitions
+  and storage custodian. Successors may consult the explicitly shared house record
+  but must recognise personally; only after actual original benefactor death may
+  current consenting heads perform from the live contributor's own 50 gold. Exact
+  private origin/serial/revision/roles/deadline/funds checked at execution, state and
+  actual payment-party receipt consumed before debit/credit; no automatic inherited
+  debt or payout. Original/paid parties and current exact heads can read; custodian,
+  liege/general kinship cannot. Free renunciation/release independent of counterpart
+  capacity; neutral waiting/expiry. Owner-death exclusion, living known custody,
+  local sixty-day reconciliation, index-before-retirement, five-year terminal archive
+  under absolute 10,957-day cap and coalesced role/revision/readiness notices added.
+  No native banking, title/succession, war, hook, opinion or public memory changed.
+  Fifteen adversarial source tests, EN/FR and twelve unrun final cases. **45 → 47/100
+  (+2 source)** for O4; engine **0/20**. Existing grid/history unchanged, no weekly
+  pace inferred from same-day checkpoints. This is not all possible patrimonial
+  arrangements or verified native callback/save/financial/AI compatibility. Next I3,
+  then M5; G1/G3 and other open criteria remain. **720 local unit/static tests passed,
+  nineteen PowerShell tests skipped (739 discovered)**; structural validator, frozen
+  progress report and whitespace PASS. Head changes also invalidate old view snapshots
+  even without a contract revision, enabling exact private refresh; maintenance binds
+  its own record before inspecting historical houses. CI and committed-source archive
+  checked before integration. No engine test executed.

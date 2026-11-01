@@ -1,0 +1,7 @@
+story_rw_dynastic_pledge = {
+    on_owner_death = { rw_dp_owner_died_effect = yes }
+    effect_group = {
+        days = 60
+        triggered_effect = { trigger = { always = yes } effect = { rw_dp_maintenance_effect = yes } }
+    }
+}

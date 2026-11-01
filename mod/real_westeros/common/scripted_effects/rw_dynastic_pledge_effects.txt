@@ -1,0 +1,266 @@
+# Story scope. Read-only snapshot: no new consent, timer or payment.
+rw_dp_snapshot_effect = {
+    save_scope_as = rw_dp_record
+    save_scope_value_as = { name = rw_dp_serial value = var:rw_dp_serial }
+    save_scope_value_as = { name = rw_dp_revision value = var:rw_dp_revision }
+    var:rw_dp_original_payer = { save_scope_as = rw_dp_original_payer }
+    var:rw_dp_original_payee = { save_scope_as = rw_dp_original_payee }
+    clear_saved_scope = rw_dp_paid_payer
+    clear_saved_scope = rw_dp_paid_payee
+    if = {
+        limit = { var:rw_dp_state = flag:paid }
+        var:rw_dp_paid_by = { save_scope_as = rw_dp_paid_payer }
+        var:rw_dp_paid_to = { save_scope_as = rw_dp_paid_payee }
+    }
+    clear_saved_scope = rw_dp_payer
+    clear_saved_scope = rw_dp_payee
+    if = { limit = { var:rw_dp_payer_house = { exists = house_head } } var:rw_dp_payer_house.house_head = { save_scope_as = rw_dp_payer } }
+    if = { limit = { var:rw_dp_payee_house = { exists = house_head } } var:rw_dp_payee_house.house_head = { save_scope_as = rw_dp_payee } }
+}
+rw_dp_begin_effect = {
+    if = {
+        limit = { rw_dp_can_offer_trigger = yes }
+        clear_saved_scope = rw_dp_record
+        scope:actor = { create_story = { type = story_rw_dynastic_pledge save_scope_as = rw_dp_record } }
+        if = {
+            limit = { scope:rw_dp_record = { story_type = story_rw_dynastic_pledge story_owner = scope:actor NOT = { has_variable = rw_dp_schema } } }
+            scope:actor = {
+                if = { limit = { NOT = { has_variable = rw_dp_counter } } set_variable = { name = rw_dp_counter value = 0 } }
+                change_variable = { name = rw_dp_counter add = 1 }
+                save_scope_value_as = { name = rw_dp_serial value = var:rw_dp_counter }
+                add_character_flag = { flag = rw_dp_offer_cooldown days = 365 }
+            }
+            scope:rw_dp_record = {
+                set_variable = { name = rw_dp_schema value = 1 }
+                set_variable = { name = rw_dp_kind value = flag:legacy_endowment }
+                set_variable = { name = rw_dp_serial value = scope:rw_dp_serial }
+                set_variable = { name = rw_dp_revision value = 0 }
+                set_variable = { name = rw_dp_amount value = 50 }
+                set_variable = { name = rw_dp_original_payer value = scope:actor }
+                set_variable = { name = rw_dp_original_payee value = scope:recipient }
+                set_variable = { name = rw_dp_payer_house value = scope:actor.house }
+                set_variable = { name = rw_dp_payee_house value = scope:recipient.house }
+                set_variable = { name = rw_dp_issued_on value = current_date }
+                set_variable = { name = rw_dp_offer_window value = flag:yes days = 7 }
+                set_variable = { name = rw_dp_retained value = flag:yes days = 10957 }
+                set_variable = { name = rw_dp_cap value = flag:yes days = 10957 }
+                set_variable = { name = rw_dp_state value = flag:offered }
+            }
+            add_to_global_variable_list = { name = rw_dynastic_pledges target = scope:rw_dp_record }
+            scope:rw_dp_record = { rw_dp_notify_effect = yes }
+        }
+    }
+}
+rw_dp_accept_effect = {
+    if = {
+        limit = { rw_dp_can_accept_trigger = yes }
+        scope:rw_dp_record = {
+            remove_variable = rw_dp_offer_window
+            change_variable = { name = rw_dp_revision add = 1 }
+            set_variable = { name = rw_dp_state value = flag:active }
+            set_variable = { name = rw_dp_accepted_on value = current_date }
+            set_variable = { name = rw_dp_due value = flag:yes days = 9125 }
+            set_variable = { name = rw_dp_payer_recognized value = scope:rw_dp_payer }
+            set_variable = { name = rw_dp_payee_recognized value = scope:rw_dp_payee }
+            rw_dp_notify_effect = yes
+        }
+    }
+}
+rw_dp_recognize_effect = {
+    if = {
+        limit = { rw_dp_can_recognize_trigger = yes }
+        scope:rw_dp_record = {
+            if = { limit = { scope:rw_dp_viewer = scope:rw_dp_payer } set_variable = { name = rw_dp_payer_recognized value = scope:rw_dp_payer } }
+            else = { set_variable = { name = rw_dp_payee_recognized value = scope:rw_dp_payee } }
+            change_variable = { name = rw_dp_revision add = 1 }
+            rw_dp_notify_effect = yes
+        }
+    }
+}
+# Internal story transition. External choices revalidate, neutral expiry has no actor.
+rw_dp_close_story_effect = {
+    if = {
+        limit = { rw_dp_record_trigger = yes OR = { var:rw_dp_state = flag:offered var:rw_dp_state = flag:active } }
+        remove_variable = rw_dp_offer_window
+        remove_variable = rw_dp_due
+        change_variable = { name = rw_dp_revision add = 1 }
+        set_variable = { name = rw_dp_state value = flag:$RESULT$ }
+        set_variable = { name = rw_dp_finished_on value = current_date }
+        set_variable = { name = rw_dp_retained value = flag:yes days = 1825 }
+        remove_variable = rw_dp_finished_by
+        if = { limit = { exists = scope:rw_dp_finisher } set_variable = { name = rw_dp_finished_by value = scope:rw_dp_finisher } }
+    }
+}
+rw_dp_pay_effect = {
+    if = {
+        limit = { rw_dp_can_pay_trigger = yes }
+        save_scope_as = rw_dp_finisher
+        scope:rw_dp_record = {
+            rw_dp_close_story_effect = { RESULT = paid }
+            set_variable = { name = rw_dp_paid_by value = scope:rw_dp_payer }
+            set_variable = { name = rw_dp_paid_to value = scope:rw_dp_payee }
+        }
+        scope:rw_dp_payer = { add_gold = -50 }
+        scope:rw_dp_payee = { add_gold = 50 }
+        scope:rw_dp_record = { rw_dp_notify_effect = yes }
+    }
+}
+rw_dp_decline_effect = {
+    if = {
+        limit = { rw_dp_can_decline_trigger = yes }
+        save_scope_as = rw_dp_finisher
+        scope:rw_dp_record = { rw_dp_close_story_effect = { RESULT = declined } rw_dp_notify_effect = yes }
+    }
+}
+rw_dp_renounce_effect = {
+    if = {
+        limit = { rw_dp_can_renounce_trigger = yes }
+        save_scope_as = rw_dp_finisher
+        scope:rw_dp_record = { rw_dp_close_story_effect = { RESULT = renounced } rw_dp_notify_effect = yes }
+    }
+}
+rw_dp_release_effect = {
+    if = {
+        limit = { rw_dp_can_release_trigger = yes }
+        save_scope_as = rw_dp_finisher
+        scope:rw_dp_record = { rw_dp_close_story_effect = { RESULT = released } rw_dp_notify_effect = yes }
+    }
+}
+# Per-record notifications coalesce role/revision changes before queuing any events.
+# Becoming able to pay creates one additional opportunity for that actual payer only.
+rw_dp_notify_effect = {
+    if = {
+        limit = { rw_dp_record_trigger = yes has_variable = rw_dp_cap has_variable = rw_dp_retained }
+        rw_dp_snapshot_effect = yes
+        if = {
+            limit = { exists = scope:rw_dp_payer scope:rw_dp_payer = { rw_dp_party_trigger = yes } }
+            if = {
+                limit = { OR = { NOT = { has_variable = rw_dp_notified_payer } NOT = { var:rw_dp_notified_payer = scope:rw_dp_payer } NOT = { var:rw_dp_payer_notice_revision = var:rw_dp_revision } } }
+                set_variable = { name = rw_dp_notified_payer value = scope:rw_dp_payer }
+                set_variable = { name = rw_dp_payer_notice_revision value = var:rw_dp_revision }
+                scope:rw_dp_payer = {
+                    save_scope_as = rw_dp_viewer
+                    if = {
+                        limit = { rw_dp_can_pay_trigger = yes }
+                        scope:rw_dp_record = { set_variable = { name = rw_dp_ready_notice_revision value = var:rw_dp_revision } }
+                    }
+                    # Sender has just made this offer; only invite the original recipient.
+                    if = { limit = { scope:rw_dp_record = { NOT = { var:rw_dp_state = flag:offered } } } trigger_event = { id = rw_dynastic_pledges.0001 days = 1 } }
+                }
+            }
+            scope:rw_dp_payer = {
+                save_scope_as = rw_dp_viewer
+                if = {
+                    limit = {
+                        rw_dp_can_pay_trigger = yes
+                        scope:rw_dp_record = { OR = { NOT = { has_variable = rw_dp_ready_notice_revision } NOT = { var:rw_dp_ready_notice_revision = var:rw_dp_revision } } }
+                    }
+                    scope:rw_dp_record = { set_variable = { name = rw_dp_ready_notice_revision value = var:rw_dp_revision } }
+                    trigger_event = { id = rw_dynastic_pledges.0001 days = 1 }
+                }
+            }
+        }
+        if = {
+            limit = { exists = scope:rw_dp_payee scope:rw_dp_payee = { rw_dp_party_trigger = yes } }
+            if = {
+                limit = { OR = { NOT = { has_variable = rw_dp_notified_payee } NOT = { var:rw_dp_notified_payee = scope:rw_dp_payee } NOT = { var:rw_dp_payee_notice_revision = var:rw_dp_revision } } }
+                set_variable = { name = rw_dp_notified_payee value = scope:rw_dp_payee }
+                set_variable = { name = rw_dp_payee_notice_revision value = var:rw_dp_revision }
+                scope:rw_dp_payee = { save_scope_as = rw_dp_viewer trigger_event = { id = rw_dynastic_pledges.0001 days = 1 } }
+            }
+        }
+    }
+}
+rw_dp_read_effect = {
+    if = {
+        limit = { scope:actor = { is_alive = yes } has_global_variable_list = rw_dynastic_pledges }
+        scope:actor = { save_scope_as = rw_dp_reader }
+        every_in_global_list = {
+            variable = rw_dynastic_pledges
+            limit = { rw_dp_reader_trigger = { READER = scope:rw_dp_reader } }
+            rw_dp_snapshot_effect = yes
+            scope:rw_dp_reader = { save_scope_as = rw_dp_viewer trigger_event = { id = rw_dynastic_pledges.0001 } }
+        }
+    }
+}
+rw_dp_refresh_effect = {
+    if = {
+        limit = { rw_dp_can_refresh_trigger = yes }
+        save_scope_as = rw_dp_viewer
+        scope:rw_dp_record = { rw_dp_snapshot_effect = yes }
+        trigger_event = { id = rw_dynastic_pledges.0001 days = 1 }
+    }
+}
+# Storage-only rehoming. A custodian is never silently made a signatory or payer.
+rw_dp_rehome_effect = {
+    if = {
+        limit = { rw_dp_record_trigger = yes }
+        clear_saved_scope = rw_dp_custodian
+        if = {
+            limit = { var:rw_dp_payer_house = { exists = house_head house_head = { rw_dp_custodian_trigger = yes } } }
+            var:rw_dp_payer_house.house_head = { save_scope_as = rw_dp_custodian }
+        }
+        else_if = {
+            limit = { var:rw_dp_payee_house = { exists = house_head house_head = { rw_dp_custodian_trigger = yes } } }
+            var:rw_dp_payee_house.house_head = { save_scope_as = rw_dp_custodian }
+        }
+        else_if = {
+            limit = { var:rw_dp_original_payee = { rw_dp_custodian_trigger = yes } }
+            var:rw_dp_original_payee = { save_scope_as = rw_dp_custodian }
+        }
+        else_if = {
+            limit = { var:rw_dp_original_payer = { rw_dp_custodian_trigger = yes } }
+            var:rw_dp_original_payer = { save_scope_as = rw_dp_custodian }
+        }
+        if = {
+            limit = { exists = scope:rw_dp_custodian }
+            if = { limit = { NOT = { story_owner = scope:rw_dp_custodian } } make_story_owner = scope:rw_dp_custodian }
+        }
+    }
+}
+rw_dp_retire_effect = {
+    if = {
+        limit = { story_type = story_rw_dynastic_pledge }
+        save_scope_as = rw_dp_record
+        if = { limit = { has_global_variable_list = rw_dynastic_pledges } remove_list_global_variable = { name = rw_dynastic_pledges target = scope:rw_dp_record } }
+        end_story = yes
+    }
+}
+rw_dp_maintenance_effect = {
+    if = {
+        limit = { story_type = story_rw_dynastic_pledge }
+        if = { limit = { OR = { NOT = { rw_dp_record_trigger = yes } NOT = { has_variable = rw_dp_cap } NOT = { has_variable = rw_dp_retained } } } rw_dp_retire_effect = yes }
+        else = {
+            save_scope_as = rw_dp_record
+            clear_saved_scope = rw_dp_finisher
+            clear_saved_scope = rw_dp_departed
+            if = {
+                limit = {
+                    var:rw_dp_state = flag:offered
+                    OR = {
+                        NOT = { has_variable = rw_dp_offer_window }
+                        NOT = { var:rw_dp_original_payer = { rw_dp_party_trigger = yes house = scope:rw_dp_record.var:rw_dp_payer_house } }
+                        NOT = { var:rw_dp_original_payee = { rw_dp_party_trigger = yes house = scope:rw_dp_record.var:rw_dp_payee_house } }
+                    }
+                }
+                rw_dp_close_story_effect = { RESULT = offer_lapsed }
+            }
+            if = { limit = { var:rw_dp_state = flag:active NOT = { has_variable = rw_dp_due } } rw_dp_close_story_effect = { RESULT = expired } }
+            rw_dp_rehome_effect = yes
+            if = { limit = { exists = scope:rw_dp_custodian } rw_dp_notify_effect = yes }
+            else = { rw_dp_retire_effect = yes }
+        }
+    }
+}
+rw_dp_owner_died_effect = {
+    if = {
+        limit = { rw_dp_record_trigger = yes }
+        story_owner = { save_scope_as = rw_dp_departed }
+        clear_saved_scope = rw_dp_finisher
+        if = { limit = { var:rw_dp_state = flag:offered } rw_dp_close_story_effect = { RESULT = offer_lapsed } }
+        # Do not turn the owner's death into a payment or inherited recognition.
+        rw_dp_rehome_effect = yes
+        if = { limit = { NOT = { exists = scope:rw_dp_custodian } } rw_dp_retire_effect = yes }
+    }
+    else = { rw_dp_retire_effect = yes }
+}

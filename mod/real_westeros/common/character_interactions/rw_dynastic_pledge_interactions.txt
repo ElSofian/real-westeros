@@ -1,0 +1,34 @@
+rw_offer_dynastic_endowment_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_offer_dynastic_endowment_interaction_desc
+    auto_accept = yes
+    is_shown = {
+        scope:actor = { is_landed = yes exists = house }
+        scope:recipient = { is_landed = yes exists = house }
+        NOT = { scope:actor = scope:recipient }
+    }
+    is_valid_showing_failures_only = { rw_dp_can_offer_trigger = yes }
+    on_accept = { rw_dp_begin_effect = yes }
+    ai_potential = { scope:actor = { rw_dp_party_trigger = yes NOT = { has_character_flag = rw_dp_offer_cooldown } } }
+    ai_targets = { ai_recipients = liege }
+    ai_frequency = 12
+    ai_will_do = {
+        base = 1
+        modifier = { factor = 2 scope:actor = { has_trait = generous } }
+        modifier = { factor = 0 scope:actor = { opinion = { target = scope:recipient value < 25 } } }
+    }
+}
+rw_review_dynastic_endowments_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_review_dynastic_endowments_interaction_desc
+    common_interaction = yes
+    use_diplomatic_range = no
+    auto_accept = yes
+    is_shown = {
+        scope:actor = { is_alive = yes }
+        has_global_variable_list = rw_dynastic_pledges
+        any_in_global_list = { variable = rw_dynastic_pledges rw_dp_reader_trigger = { READER = scope:actor } }
+    }
+    on_accept = { rw_dp_read_effect = yes }
+    ai_will_do = { base = 0 }
+}

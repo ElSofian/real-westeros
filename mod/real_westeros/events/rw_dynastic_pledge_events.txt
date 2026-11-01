@@ -1,0 +1,69 @@
+namespace = rw_dynastic_pledges
+
+rw_dynastic_pledges.0001 = {
+    type = character_event
+    title = rw_dynastic_pledge.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_dp_view_trigger = yes }
+                desc = {
+                    desc = rw_dynastic_pledge.history
+                    first_valid = {
+                        triggered_desc = { trigger = { scope:rw_dp_record = { var:rw_dp_state = flag:offered has_variable = rw_dp_offer_window } } desc = rw_dynastic_pledge.offered }
+                        triggered_desc = { trigger = { scope:rw_dp_record = { var:rw_dp_state = flag:active has_variable = rw_dp_due } } desc = rw_dynastic_pledge.active }
+                        triggered_desc = { trigger = { scope:rw_dp_record = { var:rw_dp_state = flag:paid } } desc = rw_dynastic_pledge.paid }
+                        triggered_desc = { trigger = { scope:rw_dp_record = { var:rw_dp_state = flag:renounced } } desc = rw_dynastic_pledge.renounced }
+                        triggered_desc = { trigger = { scope:rw_dp_record = { var:rw_dp_state = flag:released } } desc = rw_dynastic_pledge.released }
+                        desc = rw_dynastic_pledge.closed
+                    }
+                }
+            }
+            desc = rw_dynastic_pledge.unavailable
+        }
+    }
+    theme = diplomacy
+    option = {
+        name = rw_dynastic_pledge.accept
+        trigger = { rw_dp_can_accept_trigger = yes }
+        rw_dp_accept_effect = yes
+        ai_chance = { base = 40 modifier = { factor = 2 has_trait = generous } }
+    }
+    option = {
+        name = rw_dynastic_pledge.decline
+        trigger = { rw_dp_can_decline_trigger = yes }
+        rw_dp_decline_effect = yes
+        ai_chance = { base = 5 }
+    }
+    option = {
+        name = rw_dynastic_pledge.recognize
+        trigger = { rw_dp_can_recognize_trigger = yes }
+        rw_dp_recognize_effect = yes
+        ai_chance = { base = 50 modifier = { factor = 2 has_trait = honest } }
+    }
+    option = {
+        name = rw_dynastic_pledge.pay
+        trigger = { rw_dp_can_pay_trigger = yes }
+        rw_dp_pay_effect = yes
+        ai_chance = { base = 60 modifier = { factor = 2 has_trait = generous } }
+    }
+    option = {
+        name = rw_dynastic_pledge.renounce
+        trigger = { rw_dp_can_renounce_trigger = yes }
+        rw_dp_renounce_effect = yes
+        ai_chance = { base = 2 modifier = { factor = 2 has_trait = greedy } }
+    }
+    option = {
+        name = rw_dynastic_pledge.release
+        trigger = { rw_dp_can_release_trigger = yes }
+        rw_dp_release_effect = yes
+        ai_chance = { base = 2 modifier = { factor = 2 has_trait = forgiving } }
+    }
+    option = {
+        name = rw_dynastic_pledge.refresh
+        trigger = { NOT = { rw_dp_view_trigger = yes } rw_dp_can_refresh_trigger = yes }
+        rw_dp_refresh_effect = yes
+        ai_chance = { base = 100 }
+    }
+    option = { name = rw_dynastic_pledge.leave ai_chance = { base = 50 } }
+}
