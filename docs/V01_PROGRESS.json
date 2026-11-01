@@ -1,0 +1,482 @@
+{
+  "schema": 1,
+  "metric_version": "v0.1-plan-1",
+  "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
+  "assessed_commit": "45c5e845597fcf291175308d2f0b6c31fecfd4bc",
+  "lots": [
+    {
+      "id": "W",
+      "title": "Liberté, légalité et guerres",
+      "phase": "source",
+      "weight": 12,
+      "criteria": [
+        {
+          "id": "W1",
+          "points": 2,
+          "acceptance": "Qualification de la loi au moment de l’acte et exceptions natives dans le mod livré",
+          "status": "open",
+          "evidence": []
+        },
+        {
+          "id": "W2",
+          "points": 4,
+          "acceptance": "Déclaration malgré l’interdit avec vrai CB, contexte exact, coûts, annulation et accès joueur/IA",
+          "status": "open",
+          "evidence": []
+        },
+        {
+          "id": "W3",
+          "points": 2,
+          "acceptance": "Réaction royale discrétionnaire : intervention, sanction ou abstention selon le contexte",
+          "status": "open",
+          "evidence": []
+        },
+        {
+          "id": "W4",
+          "points": 2,
+          "acceptance": "Intégration du nouveau chemin aux cycles guerre/Mega Wars et à leur clôture",
+          "status": "open",
+          "evidence": []
+        },
+        {
+          "id": "W5",
+          "points": 2,
+          "acceptance": "Gardes et tests négatifs du chemin livré, distinct du diagnostic privé",
+          "status": "open",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "P",
+      "title": "Affaires politiques",
+      "phase": "source",
+      "weight": 8,
+      "criteria": [
+        {
+          "id": "P1",
+          "points": 2,
+          "acceptance": "Deux familles d’incidents hors contrats : affront allégué et complot découvert",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_ALLEGATIONS.md",
+            "mod/real_westeros/common/scripted_effects/rw_allegation_effects.txt",
+            "docs/RW010_SCHEME_RESPONSE.md",
+            "mod/real_westeros/common/scripted_effects/rw_scheme_response_effects.txt"
+          ]
+        },
+        {
+          "id": "P2",
+          "points": 2,
+          "acceptance": "Dossiers versionnés : parties connues, déclarations, faits et résolution distincts",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_RECORDS.md",
+            "mod/real_westeros/common/story_cycles/rw_political_cases.txt"
+          ]
+        },
+        {
+          "id": "P3",
+          "points": 2,
+          "acceptance": "Médiation, réparation volontaire, saisine et abstention explicites",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_CASES.md",
+            "mod/real_westeros/events/rw_case_events.txt"
+          ]
+        },
+        {
+          "id": "P4",
+          "points": 2,
+          "acceptance": "Menaces ou ultimatums structurés avec enjeu, réponse et escalade crédible",
+          "status": "open",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "N",
+      "title": "Négociation",
+      "phase": "source",
+      "weight": 10,
+      "criteria": [
+        {
+          "id": "N1",
+          "points": 2,
+          "acceptance": "Offre, contre-offre, consentement versionné et gardes de fonds/rejeu",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_SERVICES.md",
+            "mod/real_westeros/common/scripted_effects/rw_service_effects.txt"
+          ]
+        },
+        {
+          "id": "N2",
+          "points": 2,
+          "acceptance": "Au moins deux clauses indépendantes négociables : prix et délai",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_DELIVERY_TERMS.md",
+            "mod/real_westeros/common/scripted_effects/rw_service_effects.txt"
+          ]
+        },
+        {
+          "id": "N3",
+          "points": 2,
+          "acceptance": "Trois services distincts et contreparties or/faveur : soutien, retrait d’allégation, libération de charte",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_ALLEGATION_SETTLEMENT.md",
+            "mod/real_westeros/common/scripted_effects/rw_allegation_settlement_effects.txt",
+            "docs/RW010_FAVOR_SERVICE.md",
+            "mod/real_westeros/common/scripted_effects/rw_favor_service_effects.txt",
+            "docs/RW010_CHARTER_COMPENSATION.md",
+            "mod/real_westeros/common/scripted_effects/rw_charter_compensation_effects.txt"
+          ]
+        },
+        {
+          "id": "N4",
+          "points": 2,
+          "acceptance": "Modèle de contrat réutilisable partagé par au moins deux systèmes",
+          "status": "open",
+          "evidence": []
+        },
+        {
+          "id": "N5",
+          "points": 2,
+          "acceptance": "Accord combinant plusieurs actions, consentement commun et résultats par action",
+          "status": "open",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "O",
+      "title": "Promesses et obligations",
+      "phase": "source",
+      "weight": 10,
+      "criteria": [
+        {
+          "id": "O1",
+          "points": 2,
+          "acceptance": "Engagement personnel différé avec consentement et exécution volontaire",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_DEFERRED_FAVOR.md",
+            "mod/real_westeros/common/scripted_effects/rw_deferred_favor_effects.txt"
+          ]
+        },
+        {
+          "id": "O2",
+          "points": 2,
+          "acceptance": "Engagement continu et conditionnel, observation séparée de la faute volontaire",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_MILITARY_RESTRAINT.md",
+            "mod/real_westeros/common/scripted_effects/rw_military_restraint_effects.txt",
+            "docs/RW010_RESTITUTION_PLEDGES.md",
+            "mod/real_westeros/common/scripted_effects/rw_restitution_pledge_effects.txt",
+            "docs/RW010_RESTRAINT_RESPONSES.md",
+            "mod/real_westeros/common/scripted_effects/rw_restraint_response_effects.txt"
+          ]
+        },
+        {
+          "id": "O3",
+          "points": 2,
+          "acceptance": "Engagement territorial/institutionnel et reconnaissance explicite du successeur",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_RESTITUTION_CHARTERS.md",
+            "mod/real_westeros/common/scripted_effects/rw_restitution_charter_effects.txt"
+          ]
+        },
+        {
+          "id": "O4",
+          "points": 2,
+          "acceptance": "Cycle d’engagement patrimonial ou dynastique explicite, sans dette bancaire ni culpabilité héritée",
+          "status": "open",
+          "evidence": []
+        },
+        {
+          "id": "O5",
+          "points": 2,
+          "acceptance": "Renoncement, libération, expiration et exécution unique avec réponse discrétionnaire",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_DEFERRED_FAVOR.md",
+            "mod/real_westeros/common/scripted_effects/rw_deferred_favor_effects.txt",
+            "docs/RW010_FAVOR_RENUNCIATION.md",
+            "mod/real_westeros/common/scripted_effects/rw_favor_renunciation_effects.txt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "J",
+      "title": "Justice et sanctions",
+      "phase": "source",
+      "weight": 12,
+      "criteria": [
+        {
+          "id": "J1",
+          "points": 2,
+          "acceptance": "Inspection des raisons natives et de la détention, sans fausse immunité ni verdict rétroactif",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_SCHEME_JUSTICE.md",
+            "mod/real_westeros/common/scripted_triggers/rw_scheme_justice_triggers.txt"
+          ]
+        },
+        {
+          "id": "J2",
+          "points": 3,
+          "acceptance": "Sanction individuelle réellement exécutée via chemin natif joueur/IA, avec refus et résistance",
+          "status": "open",
+          "evidence": []
+        },
+        {
+          "id": "J3",
+          "points": 3,
+          "acceptance": "Pouvoir arbitraire/légal et sanctions discrétionnaires distinctes sans double peine native",
+          "status": "open",
+          "evidence": []
+        },
+        {
+          "id": "J4",
+          "points": 2,
+          "acceptance": "Mesures coercitives familiales/dynastiques de terres ou statut couvrant les routes G3",
+          "status": "open",
+          "evidence": []
+        },
+        {
+          "id": "J5",
+          "points": 2,
+          "acceptance": "Restauration après sanction coercitive effective, au-delà de la réhabilitation politique",
+          "status": "open",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "I",
+      "title": "Information et preuves",
+      "phase": "source",
+      "weight": 8,
+      "criteria": [
+        {
+          "id": "I1",
+          "points": 2,
+          "acceptance": "Observation du complot découvert et participants connus séparés",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_SCHEME_EVIDENCE.md",
+            "mod/real_westeros/common/on_action/rw_scheme_on_actions.txt"
+          ]
+        },
+        {
+          "id": "I2",
+          "points": 2,
+          "acceptance": "Allégation, aveu, contestation et silence distincts de la vérité",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_ALLEGATIONS.md",
+            "mod/real_westeros/common/scripted_effects/rw_allegation_effects.txt"
+          ]
+        },
+        {
+          "id": "I3",
+          "points": 2,
+          "acceptance": "Rumeur et propagation contrôlée avec source, destinataire et provenance",
+          "status": "open",
+          "evidence": []
+        },
+        {
+          "id": "I4",
+          "points": 2,
+          "acceptance": "Accès privé/public et provenance sans association causale ou preuve rétroactive dans les dossiers livrés",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_RECORDS.md",
+            "mod/real_westeros/common/scripted_triggers/rw_case_triggers.txt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M",
+      "title": "Mémoire politique",
+      "phase": "source",
+      "weight": 10,
+      "criteria": [
+        {
+          "id": "M1",
+          "points": 2,
+          "acceptance": "Historique personnel indépendant et rétention bornée",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_RECORDS.md",
+            "mod/real_westeros/common/story_cycles/rw_political_cases.txt"
+          ]
+        },
+        {
+          "id": "M2",
+          "points": 2,
+          "acceptance": "Continuité institutionnelle et stockage séparés des rôles et du consentement",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_LAND_REGISTER.md",
+            "mod/real_westeros/common/scripted_effects/rw_land_register_effects.txt"
+          ]
+        },
+        {
+          "id": "M3",
+          "points": 2,
+          "acceptance": "Disgrâce politique de maison et réhabilitation multigénérationnelle sans faute personnelle héritée",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_HOUSE_AFFAIRS.md",
+            "mod/real_westeros/common/story_cycles/rw_house_affairs.txt"
+          ]
+        },
+        {
+          "id": "M4",
+          "points": 2,
+          "acceptance": "Intégration pertinente des souvenirs ou relations de maison natifs, au-delà des journaux propres",
+          "status": "open",
+          "evidence": []
+        },
+        {
+          "id": "M5",
+          "points": 2,
+          "acceptance": "Mémoire influençant des choix politiques futurs indépendants du dossier d’origine",
+          "status": "open",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "AI",
+      "title": "IA politique",
+      "phase": "source",
+      "weight": 10,
+      "criteria": [
+        {
+          "id": "AI1",
+          "points": 2,
+          "acceptance": "Actions implémentées : coûts et gardes partagés, raccourcis humains explicitement bornés",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_FAVOR_SERVICE.md",
+            "mod/real_westeros/common/scripted_effects/rw_favor_service_effects.txt"
+          ]
+        },
+        {
+          "id": "AI2",
+          "points": 2,
+          "acceptance": "Ciblage borné, occasions réactives et délais anti-spam sans parcours global des paires",
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_FAVOR_SERVICE.md",
+            "mod/real_westeros/common/character_interactions/rw_favor_service_interactions.txt"
+          ]
+        },
+        {
+          "id": "AI3",
+          "points": 2,
+          "acceptance": "Politique contextuelle partagée par deux familles avec au moins trois facteurs : enjeux, risques, moyens, savoir ou obligations",
+          "status": "open",
+          "evidence": []
+        },
+        {
+          "id": "AI4",
+          "points": 2,
+          "acceptance": "Chemins autonomes IA↔IA à travers guerre, justice et négociation",
+          "status": "open",
+          "evidence": []
+        },
+        {
+          "id": "AI5",
+          "points": 2,
+          "acceptance": "Instrumentation effective des décisions, abus et performances, prête pour la campagne finale",
+          "status": "open",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "V",
+      "title": "Validation finale CK3/AGOT",
+      "phase": "engine",
+      "weight": 20,
+      "criteria": [
+        {
+          "id": "V1",
+          "points": 4,
+          "acceptance": "G1 : vrai CB, interdiction royale et cycles guerre/Mega Wars démontrés en jeu",
+          "status": "open",
+          "evidence": []
+        },
+        {
+          "id": "V2",
+          "points": 4,
+          "acceptance": "G2 : interface multi-clause, sauvegarde/rechargement, rejeu et obligations démontrés en jeu",
+          "status": "open",
+          "evidence": []
+        },
+        {
+          "id": "V3",
+          "points": 4,
+          "acceptance": "G3 : octroi, succession, élection, conquête, sanction/restauration et dettes natives démontrés en jeu",
+          "status": "open",
+          "evidence": []
+        },
+        {
+          "id": "V4",
+          "points": 4,
+          "acceptance": "G4 : IA↔IA, symétrie, spam, abus et performance effectivement mesurés en jeu",
+          "status": "open",
+          "evidence": []
+        },
+        {
+          "id": "V5",
+          "points": 4,
+          "acceptance": "G5 : régression AGOT, installation et distribution vérifiées, blocages de sortie corrigés",
+          "status": "open",
+          "evidence": []
+        }
+      ]
+    }
+  ],
+  "checkpoints": [
+    {
+      "date": "2026-11-01",
+      "kind": "baseline",
+      "metric_version": "v0.1-plan-1",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2"
+      ],
+      "score": 38,
+      "reference": "45c5e845597fcf291175308d2f0b6c31fecfd4bc",
+      "note": "Première calibration documentée ; remplace l’estimation orale ~30 %, sans gain de développement. Aucun test moteur exécuté.",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9"
+    }
+  ]
+}
