@@ -41,6 +41,7 @@ rw_ru_seed_effect = {
             if = {
                 limit = { exists = scope:rw_ru_new_packet scope:rw_ru_new_packet = { rw_ru_reader_trigger = { READER = scope:rw_ru_holder } } }
                 scope:rw_case_record = { set_variable = { name = rw_ru_seeded value = flag:yes } }
+                rw_ru_notify_new_packet_effect = yes
                 # Resume the existing original claimant choice, without renewing it.
                 if = { limit = { rw_allegation_claimant_turn_trigger = yes } trigger_event = { id = rw_allegations.0002 days = 1 } }
             }
@@ -50,9 +51,9 @@ rw_ru_seed_effect = {
 }
 # Character root remains the actual sender. Record new knowledge before any notice.
 rw_ru_create_packet_effect = {
+    clear_saved_scope = rw_ru_new_packet
     if = {
         limit = { rw_ru_can_create_packet_trigger = yes }
-        clear_saved_scope = rw_ru_new_packet
         scope:rw_ru_receiver = { create_story = { type = story_rw_rumor_packet save_scope_as = rw_ru_new_packet } }
         if = {
             limit = { scope:rw_ru_new_packet = { story_type = story_rw_rumor_packet story_owner = scope:rw_ru_receiver NOT = { has_variable = rw_ru_schema } } }
@@ -77,14 +78,27 @@ rw_ru_create_packet_effect = {
                 set_variable = { name = rw_ru_packet_retained value = flag:yes days = 365 }
             }
             scope:rw_ru_origin = { add_to_variable_list = { name = rw_ru_holders target = scope:rw_ru_receiver } }
-            if = { limit = { NOT = { scope:rw_ru_receiver = scope:rw_ru_holder } } add_character_flag = { flag = rw_ru_relay_cooldown days = 30 } }
-            scope:rw_ru_new_packet = { rw_ru_snapshot_effect = yes }
-            scope:rw_ru_receiver = { save_scope_as = rw_ru_holder trigger_event = { id = rw_rumors.0001 days = 1 } }
         }
     }
 }
 rw_ru_send_effect = {
-    if = { limit = { rw_ru_can_send_trigger = yes } rw_ru_create_packet_effect = yes }
+    if = {
+        limit = { rw_ru_can_send_trigger = yes }
+        rw_ru_create_packet_effect = yes
+        # Sender remembers their own attempt, not who was secretly informed by others.
+        scope:rw_ru_packet = { add_to_variable_list = { name = rw_ru_attempted_targets target = scope:rw_ru_receiver } }
+        add_character_flag = { flag = rw_ru_relay_cooldown days = 30 }
+        rw_ru_notify_new_packet_effect = yes
+    }
+}
+# Separate notification lets the sender record/cool their attempt even if a duplicate
+# recipient needs no new copy. No success/new-knowledge signal is returned to sender.
+rw_ru_notify_new_packet_effect = {
+    if = {
+        limit = { exists = scope:rw_ru_new_packet scope:rw_ru_new_packet = { rw_ru_reader_trigger = { READER = scope:rw_ru_receiver } } }
+        scope:rw_ru_new_packet = { rw_ru_snapshot_effect = yes }
+        scope:rw_ru_receiver = { save_scope_as = rw_ru_holder trigger_event = { id = rw_rumors.0001 days = 1 } }
+    }
 }
 # Native interaction chooses the recipient; each personal account gets its own view.
 rw_ru_prepare_send_effect = {

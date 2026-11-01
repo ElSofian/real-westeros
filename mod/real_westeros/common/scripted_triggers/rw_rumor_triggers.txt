@@ -89,7 +89,12 @@ rw_ru_can_send_trigger = {
     scope:rw_ru_receiver = { rw_ru_party_trigger = yes }
     NOT = { this = scope:rw_ru_receiver }
     in_diplomatic_range = scope:rw_ru_receiver
-    scope:rw_ru_origin = { NOT = { any_in_list = { variable = rw_ru_holders this = scope:rw_ru_receiver } } }
+    scope:rw_ru_packet = {
+        trigger_if = {
+            limit = { has_variable_list = rw_ru_attempted_targets }
+            NOT = { any_in_list = { variable = rw_ru_attempted_targets this = scope:rw_ru_receiver } }
+        }
+    }
 }
 # Internal constructor must be reached from a genuine source or a current relay.
 rw_ru_can_create_packet_trigger = {
@@ -134,6 +139,9 @@ rw_ru_candidate_trigger = {
         var:rw_ru_origin_serial = prev.var:rw_ru_origin_serial
         var:rw_ru_issued_on = prev.var:rw_ru_issued_on
         any_in_list = { variable = rw_ru_holders this = $SENDER$ }
-        NOT = { any_in_list = { variable = rw_ru_holders this = $RECEIVER$ } }
+    }
+    trigger_if = {
+        limit = { has_variable_list = rw_ru_attempted_targets }
+        NOT = { any_in_list = { variable = rw_ru_attempted_targets this = $RECEIVER$ } }
     }
 }

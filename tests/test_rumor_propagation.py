@@ -35,8 +35,8 @@ def rumor_errors(t,e,s,v,i,a):
     send=block(t,'rw_ru_can_send_trigger')
     for g in ('rw_ru_relayable_trigger = yes','scope:rw_ru_receiver = { rw_ru_party_trigger = yes }',
               'NOT = { this = scope:rw_ru_receiver }','in_diplomatic_range = scope:rw_ru_receiver',
-              'NOT = { any_in_list = { variable = rw_ru_holders this = scope:rw_ru_receiver } }'):
-        if g not in send:out.append('known receiver self loop or range bypassed')
+              'NOT = { any_in_list = { variable = rw_ru_attempted_targets this = scope:rw_ru_receiver } }'):
+        if g not in send:out.append('self loop range or own-attempt guard bypassed')
     for name,guard in (('rw_ru_seed_effect','rw_ru_can_seed_trigger'),('rw_ru_send_effect','rw_ru_can_send_trigger'),('rw_ru_create_packet_effect','rw_ru_can_create_packet_trigger')):
         if 'limit = { '+guard+' = yes }' not in block(e,name):out.append('direct effect bypass')
     constructor=block(e,'rw_ru_create_packet_effect')
@@ -46,9 +46,23 @@ def rumor_errors(t,e,s,v,i,a):
               'name = rw_ru_issued_on value = scope:rw_ru_issued_on','name = rw_ru_heard_on value = current_date',
               'name = rw_ru_hops value = scope:rw_ru_hops','change_variable = { name = rw_ru_hops add = 1 }'):
         if g not in constructor:out.append('receiver source relay date or hop provenance changed')
-    order=[constructor.find(g) for g in ('name = rw_ru_packet_retained','add_to_variable_list = { name = rw_ru_holders target = scope:rw_ru_receiver }',
-           'flag = rw_ru_relay_cooldown days = 30','trigger_event = { id = rw_rumors.0001 days = 1 }')]
-    if min(order)<0 or order!=sorted(order):out.append('notification before knowledge dedup or cooldown')
+    if constructor.find('name = rw_ru_packet_retained')>constructor.find('add_to_variable_list = { name = rw_ru_holders target = scope:rw_ru_receiver }'):
+        out.append('knowledge registered before packet construction')
+    send_effect=block(e,'rw_ru_send_effect')
+    order=[send_effect.find(g) for g in ('rw_ru_create_packet_effect = yes',
+           'name = rw_ru_attempted_targets target = scope:rw_ru_receiver',
+           'flag = rw_ru_relay_cooldown days = 30','rw_ru_notify_new_packet_effect = yes')]
+    if min(order)<0 or order!=sorted(order):out.append('attempt memory cooldown or notice order wrong')
+    if 'scope:rw_ru_new_packet' in send_effect or send_effect.count('if = {')!=1:
+        out.append('sender learns whether receiver was already informed')
+    creation_gate=block(t,'rw_ru_can_create_packet_trigger')
+    if 'NOT = { any_in_list = { variable = rw_ru_holders this = scope:rw_ru_receiver } }' not in creation_gate:
+        out.append('echo creates new knowledge')
+    if constructor.find('clear_saved_scope = rw_ru_new_packet')>constructor.find('limit = { rw_ru_can_create_packet_trigger = yes }'):
+        out.append('duplicate can reuse stale construction result')
+    menu=block(t,'rw_ru_candidate_trigger')
+    if re.search(r'rw_ru_holders\s+this\s*=\s*(?:scope:rw_ru_receiver|\$RECEIVER\$)',send+menu):
+        out.append('sender queries hidden audience')
     if e.count('name = rw_ru_origin_retained value = flag:yes days = 365')!=1 or 'rw_ru_origin_retained' in constructor:
         out.append('lineage lifetime renewed by relay')
     fields=set(re.findall(r'\bset_variable\s*=\s*\{\s*name\s*=\s*(\w+)',constructor))
@@ -107,11 +121,11 @@ class RumorPropagationTests(unittest.TestCase):
         self.assertIn('receiver source relay date or hop provenance changed',self.errors(e=self.e.replace('name = rw_ru_sender value = scope:rw_ru_holder','name = rw_ru_sender value = scope:rw_ru_speaker')))
 
     def test_a_b_c_a_echo_and_already_informed_receivers_rejected(self):
-        self.assertIn('known receiver self loop or range bypassed',self.errors(t=self.t.replace('NOT = { any_in_list = { variable = rw_ru_holders this = scope:rw_ru_receiver } }','always = yes',1)))
+        self.assertIn('echo creates new knowledge',self.errors(t=self.t.replace('NOT = { any_in_list = { variable = rw_ru_holders this = scope:rw_ru_receiver } }','always = yes',1)))
         self.assertIn('unowned expired or laundered lineage relayed',self.errors(t=self.t.replace('any_in_list = { variable = rw_ru_holders this = scope:rw_ru_holder }','always = yes',1)))
 
     def test_range_cooldown_death_and_ttl_are_fresh_guards(self):
-        self.assertIn('known receiver self loop or range bypassed',self.errors(t=self.t.replace('in_diplomatic_range = scope:rw_ru_receiver','always = yes')))
+        self.assertIn('self loop range or own-attempt guard bypassed',self.errors(t=self.t.replace('in_diplomatic_range = scope:rw_ru_receiver','always = yes')))
         for guard in ('NOT = { has_character_flag = rw_ru_relay_cooldown }','scope:rw_ru_subject = { is_alive = yes }','has_variable = rw_ru_origin_retained'):
             with self.subTest(guard=guard):self.assertIn('unowned expired or laundered lineage relayed',self.errors(t=self.t.replace(guard,'always = yes',1)))
         self.assertIn('lineage lifetime renewed by relay',self.errors(e=self.e+'\nrw_bad = { set_variable = { name = rw_ru_origin_retained value = flag:yes days = 365 } }'))
@@ -127,9 +141,20 @@ class RumorPropagationTests(unittest.TestCase):
         for extra in ('add_secret = {}','imprison = {}','add_opinion = {}','create_character_memory = {}','is_ai = yes','every_living_character = {}'):
             with self.subTest(extra=extra):self.assertIn('truth native sanction or global policy mutation',self.errors(e=self.e+'\nrw_bad = { '+extra+' }'))
 
-    def test_knowledge_registered_and_sender_cooled_before_notification(self):
-        self.assertIn('notification before knowledge dedup or cooldown',self.errors(e=self.e.replace('add_to_variable_list = { name = rw_ru_holders target = scope:rw_ru_receiver }','')))
-        self.assertIn('notification before knowledge dedup or cooldown',self.errors(e=self.e.replace('flag = rw_ru_relay_cooldown days = 30','flag = rw_ru_relay_cooldown days = 0')))
+    def test_attempt_memory_and_cooldown_precede_notification(self):
+        self.assertIn('attempt memory cooldown or notice order wrong',self.errors(e=self.e.replace('name = rw_ru_attempted_targets target = scope:rw_ru_receiver','name = rw_ru_other_targets target = scope:rw_ru_receiver')))
+        self.assertIn('attempt memory cooldown or notice order wrong',self.errors(e=self.e.replace('flag = rw_ru_relay_cooldown days = 30','flag = rw_ru_relay_cooldown days = 0')))
+
+    def test_sender_cannot_query_other_peoples_audience(self):
+        injected='scope:rw_ru_origin = { NOT = { any_in_list = { variable = rw_ru_holders this = scope:rw_ru_receiver } } }'
+        self.assertIn('sender queries hidden audience',self.errors(t=self.t.replace('rw_ru_can_send_trigger = {','rw_ru_can_send_trigger = { '+injected,1)))
+        self.assertIn('sender learns whether receiver was already informed',self.errors(e=self.e.replace('rw_ru_create_packet_effect = yes\n        # Sender','rw_ru_create_packet_effect = yes\n        if = { limit = { exists = scope:rw_ru_new_packet } }\n        # Sender',1)))
+
+    def test_redundant_attempt_cannot_notify_an_old_packet(self):
+        original=block(self.e,'rw_ru_create_packet_effect')
+        moved=original.replace('clear_saved_scope = rw_ru_new_packet','',1)
+        moved=moved.replace('limit = { rw_ru_can_create_packet_trigger = yes }','limit = { rw_ru_can_create_packet_trigger = yes }\nclear_saved_scope = rw_ru_new_packet',1)
+        self.assertIn('duplicate can reuse stale construction result',self.errors(e=self.e.replace(original,moved)))
 
     def test_custody_can_only_move_to_already_informed_live_holder(self):
         for guard in ('NOT = { this = scope:rw_ru_departed }','var:rw_ru_origin = scope:rw_ru_origin'):

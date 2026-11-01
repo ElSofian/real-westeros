@@ -5,7 +5,7 @@
  rw_review_my_rumors_interaction_desc:0 "Lire uniquement les récits qui m’ont personnellement été confiés. Les consulter ne confirme pas leur véracité et ne dévoile pas le dossier privé de leur source."
  rw_rumor.title:0 "Un récit de bouche à oreille"
  rw_rumor.claim:0 "Ce récit rapporte que [rw_ru_speaker.GetTitledFirstName] avait accusé [rw_ru_subject.GetTitledFirstName] d’avoir offensé sa maison. Il s’agit du récit d’une allégation, pas d’une faute établie."
- rw_rumor.own_account:0 "C’est mon propre récit, préparé pour la personne à qui je choisirai de le raconter. Le préparer ne l’a encore révélé à personne."
+ rw_rumor.own_account:0 "C’est mon propre récit, que je peux choisir de raconter. Le préparer ne suffit pas à le transmettre."
  rw_rumor.heard_account:0 "[rw_ru_sender.GetTitledFirstName] m’a transmis ce récit. Son premier auteur nommé reste [rw_ru_speaker.GetTitledFirstName] ; il est passé par [SCOPE.GetValue('rw_ru_hops')|0] relais."
  rw_rumor.caution:0 "La répétition ne confirme pas ce récit. L’entendre ne révèle ni la réponse de la personne visée, ni un arrangement privé, ni un jugement ou une faute familiale."
  rw_rumor.send_title:0 "Dois-je transmettre ce récit ?"

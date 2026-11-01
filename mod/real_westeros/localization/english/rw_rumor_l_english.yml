@@ -5,7 +5,7 @@
  rw_review_my_rumors_interaction_desc:0 "Read only accounts personally entrusted to me. Reading does not affirm their truth or reveal the source’s private dossier."
  rw_rumor.title:0 "A story passed from mouth to mouth"
  rw_rumor.claim:0 "This account relates that [rw_ru_speaker.GetTitledFirstName] had accused [rw_ru_subject.GetTitledFirstName] of affronting their house. It is a report of an allegation, not an established offense."
- rw_rumor.own_account:0 "This is my own account, prepared for someone I choose to tell. No one else has heard it merely because I prepared it."
+ rw_rumor.own_account:0 "This is my own account, which I may choose to tell. Preparing it alone does not transmit it."
  rw_rumor.heard_account:0 "[rw_ru_sender.GetTitledFirstName] told me this account. Its first named speaker remains [rw_ru_speaker.GetTitledFirstName]; it has passed through [SCOPE.GetValue('rw_ru_hops')|0] relays."
  rw_rumor.caution:0 "Repetition does not confirm the story. Neither the respondent’s answer nor any private settlement, legal judgment or family guilt follows from hearing it."
  rw_rumor.send_title:0 "Should I pass on this account?"
