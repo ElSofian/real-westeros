@@ -1,0 +1,3 @@
+﻿l_french:
+ rw_remembered_support.service:0 "Je n’ai pas oublié le soutien public que [rw_service_provider.GetTitledFirstName] m’a jadis apporté. Peut-être pouvons-nous encore nous entendre."
+ rw_remembered_support.repair:0 "Je me souviens du soutien que [rw_service_client.GetTitledFirstName] m’a jadis apporté en public. Cette bienveillance passée me donne une raison de plus de chercher un terrain d’entente aujourd’hui."

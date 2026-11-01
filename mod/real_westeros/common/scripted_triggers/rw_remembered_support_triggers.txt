@@ -1,0 +1,25 @@
+# Original read-only query: `this` is the actual decider, never the counterpart.
+# One boolean per choice: repeated memories cannot stack or extend retention.
+rw_pm_remembers_support_trigger = {
+    exists = $COUNTERPART$
+    NOT = { this = $COUNTERPART$ }
+    any_memory = {
+        has_memory_type = rw_public_support_received
+        memory_age_years < 5
+        any_memory_participant = { this = $COUNTERPART$ }
+    }
+}
+# Known original pair only. A mediator/custodian/heir does not inherit this query.
+rw_pm_remembers_counterpart_trigger = {
+    rw_ai_known_pair_trigger = yes
+    OR = {
+        AND = {
+            this = scope:rw_service_client
+            rw_pm_remembers_support_trigger = { COUNTERPART = scope:rw_service_provider }
+        }
+        AND = {
+            this = scope:rw_service_provider
+            rw_pm_remembers_support_trigger = { COUNTERPART = scope:rw_service_client }
+        }
+    }
+}
