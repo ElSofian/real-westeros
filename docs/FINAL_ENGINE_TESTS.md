@@ -1243,3 +1243,10 @@ No cases executed. NMEM-01…10 in RW010_NATIVE_MEMORIES.md cover actual memory 
 three perspectives, default icon, original parties/public privacy, performance-only
 creation, explicit Crown recognition, role changes, replay/coalescing, save/load,
 retention and final G4/G5 volume/regression. Native UI integration alone is not M5.
+
+## Voluntary dynastic endowments — O4
+
+No cases executed. DYN-01…12 in RW010_DYNASTIC_ENDOWMENTS.md cover original consent,
+owner-death/headship ordering, opt-in successors, exact current-person gold transfer,
+free exits, stale identities/replay, private access, archive/index bounds and final
+G4/G5 AI/performance plus native bank/debt/title/succession regression.

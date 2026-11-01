@@ -24,7 +24,13 @@ path; do not add another diagnostic or pretend a snapshot proves law at declarat
 Independent M4 now adds +2 source points: **45/100**, engine **0/20**. Read
 RW010_NATIVE_MEMORIES.md for native public-support and explicit Crown-recognition
 memories, bounded coalescing/retention and no private terms. This is not M5.
-Next independent target **O4**, then I3/M5 and other open roadmap criteria. Do not endlessly extend credited contract/dialogue variants.
+O4 now adds +2 source points: **47/100**, engine **0/20**. Read
+RW010_DYNASTIC_ENDOWMENTS.md: private two-house endowment, original seven-day consent,
+fixed 25-year term, explicit current-head recognitions and voluntary 50-gold payment
+after original benefactor death. Storage/headship never inherits personal consent;
+free exits, private index/retention and exact actual payment parties preserve native
+bank/debt/title inheritance. Final callback/save/AI semantics remain unverified.
+Next independent target **I3**, then M5 and other open roadmap criteria. Do not endlessly extend credited contract/dialogue variants.
 
 RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remains
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
@@ -257,7 +263,7 @@ only. Base-mod files are unchanged. No native-window cancel hook, working engine
 route, unlawful-war verdict or successful CB/cost/Mega War lifecycle is established.
 All game tests stay in the final campaign. This is not a new G1-first blocker for
 independent development. Read the new guide before generating/installing the probe.
-Next work follows V01_ROADMAP.md, starting with O4 while G1 remains unresolved; historical wider-clause suggestions are superseded. All G2 engine behavior and
+Next work follows V01_ROADMAP.md, starting with I3 while G1 remains unresolved; historical wider-clause suggestions are superseded. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;
 never force the no-tyranny imprisonment helper as a legality check. Keep knowledge,

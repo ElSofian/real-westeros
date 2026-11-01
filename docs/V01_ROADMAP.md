@@ -1,7 +1,7 @@
 # Suivi de la première version intégrée — v0.1-plan-1
 
-**État courant : 45/100 (+2), dont 45/80 source et 0/20 moteur.**
-M4 est intégré au système de souvenirs natifs ; prochaine cible indépendante O4.
+**État courant : 47/100 (+2), dont 47/80 source et 0/20 moteur.**
+O4 ajoute une dotation dynastique volontaire ; prochaine cible indépendante I3.
 W1/W2 restent ouverts (+0), en attente des observations finales G1 avant voie de production.
 Vitesse encore non mesurable : relevés du même jour.
 
@@ -25,7 +25,7 @@ coût. Les trois scénarios initiaux ne limitent pas le périmètre ; le catalog
 | Liberté, légalité et guerres | 0 | 12 |
 | Affaires politiques | 6 | 8 |
 | Négociation | 6 | 10 |
-| Promesses et obligations | 8 | 10 |
+| Promesses et obligations | 10 | 10 |
 | Justice et sanctions | 5 | 12 |
 | Information et preuves | 6 | 8 |
 | Mémoire politique | 8 | 10 |
@@ -82,7 +82,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 | O1 | 2 | Engagement personnel différé avec consentement et exécution volontaire | Source seulement : [RW010_DEFERRED_FAVOR.md](RW010_DEFERRED_FAVOR.md), [rw_deferred_favor_effects.txt](../mod/real_westeros/common/scripted_effects/rw_deferred_favor_effects.txt) |
 | O2 | 2 | Engagement continu et conditionnel, observation séparée de la faute volontaire | Source seulement : [RW010_MILITARY_RESTRAINT.md](RW010_MILITARY_RESTRAINT.md), [rw_military_restraint_effects.txt](../mod/real_westeros/common/scripted_effects/rw_military_restraint_effects.txt) |
 | O3 | 2 | Engagement territorial/institutionnel et reconnaissance explicite du successeur | Source seulement : [RW010_RESTITUTION_CHARTERS.md](RW010_RESTITUTION_CHARTERS.md), [rw_restitution_charter_effects.txt](../mod/real_westeros/common/scripted_effects/rw_restitution_charter_effects.txt) |
-| O4 | 2 | Cycle d’engagement patrimonial ou dynastique explicite, sans dette bancaire ni culpabilité héritée | À développer / valider |
+| O4 | 2 | Cycle d’engagement patrimonial ou dynastique explicite, sans dette bancaire ni culpabilité héritée | Source seulement : [RW010_DYNASTIC_ENDOWMENTS.md](RW010_DYNASTIC_ENDOWMENTS.md), [rw_dynastic_pledge_effects.txt](../mod/real_westeros/common/scripted_effects/rw_dynastic_pledge_effects.txt) |
 | O5 | 2 | Renoncement, libération, expiration et exécution unique avec réponse discrétionnaire | Source seulement : [RW010_DEFERRED_FAVOR.md](RW010_DEFERRED_FAVOR.md), [rw_deferred_favor_effects.txt](../mod/real_westeros/common/scripted_effects/rw_deferred_favor_effects.txt) |
 
 ### J — Justice et sanctions
@@ -146,7 +146,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
    interdite intégrée. Réserver RW-004 séparément. Ne pas livrer le diagnostic privé
    comme solution ; si un point moteur empêche une implémentation sûre, conserver le
    manque visible et travailler sur un critère indépendant, sans demander un test intermédiaire.
-4. **O4 — cible suivante, puis I3 et M5** : engagements patrimoniaux/dynastiques, propagation de rumeurs,
+4. **O4 livré dans les sources (+2) ; I3 cible suivante, puis M5** : engagements patrimoniaux/dynastiques, propagation de rumeurs,
    effet de la mémoire sur des choix futurs. M4 est livré dans les sources (+2),
    avec souvenirs publics natifs ; cela ne termine pas M5. Les autres critères ouverts
    demeurent dans le périmètre, notamment J3/J4/J5, N4/N5, P4, W3/W4/W5 et AI4/AI5.

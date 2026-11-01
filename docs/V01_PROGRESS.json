@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "8194bcbe59de0037a251cae2aae4e5204f6cf760",
+  "assessed_commit": "88c5da626615539d0ef34b940b4f459e21e924a5",
   "lots": [
     {
       "id": "W",
@@ -194,8 +194,13 @@
           "id": "O4",
           "points": 2,
           "acceptance": "Cycle d’engagement patrimonial ou dynastique explicite, sans dette bancaire ni culpabilité héritée",
-          "status": "open",
-          "evidence": []
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_DYNASTIC_ENDOWMENTS.md",
+            "mod/real_westeros/common/scripted_triggers/rw_dynastic_pledge_triggers.txt",
+            "mod/real_westeros/common/scripted_effects/rw_dynastic_pledge_effects.txt",
+            "mod/real_westeros/common/story_cycles/rw_dynastic_pledges.txt"
+          ]
         },
         {
           "id": "O5",
@@ -589,6 +594,40 @@
       "score": 45,
       "reference": "8194bcbe59de0037a251cae2aae4e5204f6cf760",
       "note": "M4 source : souvenirs natifs CK3 pour soutien public effectivement rendu et reconnaissance personnelle explicite de la Couronne, trois perspectives, rétention/coalescence bornées et aucun terme privé exporté. +2 source ; W1/W2 +0 et moteur non testé."
+    },
+    {
+      "date": "2026-11-01",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4",
+        "O4"
+      ],
+      "score": 47,
+      "reference": "88c5da626615539d0ef34b940b4f459e21e924a5",
+      "note": "O4 source : pacte privé de dotation entre maisons, acceptation originale, conservation dynastique, reconnaissance personnelle des chefs actuels, paiement volontaire après décès depuis bourse actuelle et sorties libres. +2 source ; dettes/successions natives non modifiées, moteur non testé."
     }
   ]
 }
