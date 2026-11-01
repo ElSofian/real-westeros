@@ -1,0 +1,20 @@
+story_rw_rumor_origin = {
+    on_owner_death = { rw_ru_origin_owner_died_effect = yes }
+    effect_group = {
+        days = 60
+        triggered_effect = {
+            trigger = { OR = { NOT = { rw_ru_origin_trigger = yes } NOT = { has_variable = rw_ru_origin_retained } } }
+            effect = { end_story = yes }
+        }
+    }
+}
+story_rw_rumor_packet = {
+    on_owner_death = { end_story = yes }
+    effect_group = {
+        days = 60
+        triggered_effect = {
+            trigger = { OR = { NOT = { rw_ru_packet_trigger = yes } NOT = { has_variable = rw_ru_packet_retained } } }
+            effect = { end_story = yes }
+        }
+    }
+}

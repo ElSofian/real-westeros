@@ -1250,3 +1250,10 @@ No cases executed. DYN-01…12 in RW010_DYNASTIC_ENDOWMENTS.md cover original co
 owner-death/headship ordering, opt-in successors, exact current-person gold transfer,
 free exits, stale identities/replay, private access, archive/index bounds and final
 G4/G5 AI/performance plus native bank/debt/title/succession regression.
+
+## Controlled unverified accounts — I3
+
+No cases executed. RUMOR-01…12 in RW010_RUMOR_PROPAGATION.md cover actual origin/relay/
+recipient knowledge, echo and age laundering, private dossier isolation, range/death/
+stale confirmations, known-holder custody, native StoryScope lists/save/event data and
+final G4/G5 volume/regression. Hearsay creates no native proof, belief or sanction.

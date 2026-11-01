@@ -330,3 +330,34 @@
   even without a contract revision, enabling exact private refresh; maintenance binds
   its own record before inspecting historical houses. CI and committed-source archive
   checked before integration. No engine test executed.
+
+- PR #67 O4 integrated: PR CI 41353525299 and main CI 41353670701 passed;
+  291-file main archive checksum/manifest/extracted structure, seven additive mod
+  files and all source evidence verified; existing mod files unchanged. Readiness
+  47/100, engine 0/20; claim released, no game run.
+- RW-010 / I3 (`feat/controlled-rumor-propagation`, 2026-11-01): original structured
+  account transmission from the original active allegation claimant, once per source
+  case, then explicit personal holder→selected recipient relays. Separate immutable
+  origin and personal heard packets preserve original speaker/serial/publication date,
+  actual last sender/recipient/hearing date/hops. Owner/serial/content/lineage/range,
+  living parties/subject and sender cooldown rechecked at actual send; personal own-
+  attempt target and thirty-day cooldown written before notices. Internal receiver
+  deduplication creates no duplicate packet and never exposes hidden B→C knowledge
+  through A’s menu/cooldown. Echoes/already informed recipients
+  cannot produce fresh copies or corroboration; fixed 365-day lineage never renews.
+  Own 365-day heard history can outlive retired origin, but cannot relay it. Personal
+  packets end on death; internal origin custody only to an informed live matching
+  packet holder, departed owner excluded. No world/global index/pair scan; native
+  variable-list and range syntax source-located, actual StoryScope semantics unverified.
+  Private source reply/settlement/case pointer/contract data never exported, planned
+  mediator gets no dossier disclosure merely from hearsay, no native secret/proof/
+  sanction/opinion/gold/public memory added. Fifteen adversarial source tests, preserved
+  allegation reader/evidence checks, EN/FR and twelve unrun final cases added.
+  **47 → 49/100 (+2 source)** for I3, engine **0/20**; frozen grid/history retained.
+  No complete belief system, retraction protocol, AI/performance or CK3 compatibility
+  claimed. Next M5; G1/G3 and other criteria stay open. **735 local unit/static tests
+  passed, nineteen PowerShell tests skipped (754 discovered)**; structural validator,
+  frozen progress report and whitespace PASS. Sender-facing gates consult only owned
+  attempts, not another character's hidden receipt; duplicate handling returns no new-
+  knowledge signal to sender. CI and committed-source distribution checked before merge.
+  No engine test executed.

@@ -19,15 +19,15 @@ not an exhaustive completion checklist. PR/test counts are not global progress m
 
 **War-track preparation:** RW-004 now has an opt-in exact-target intent diagnostic (G1_INTENT_PROBE.md): pinned native helper/claim inputs, explicit one-day staged confirmation, target/liege/serial guards, owner cleanup and conditional native claim-CB observations. Private generation only; no base-mod behavior changes, actual CB/cost/lifecycle/AI/cancellation semantics unverified. All engine runs remain in the final campaign. This is a bounded parallel track in the backlog, not a new G1-first prerequisite for independent systems.
 
-**Next task:** I3, controlled rumor propagation with source/recipient/provenance,
-then M5 and remaining open criteria. O4 now has a private dynastic endowment lifecycle:
-original heads explicitly agree; successors can consult but must personally recognise;
-after original benefactor death, a consenting current head may pay 50 personal gold
-once. Free exits, exact-role guards, private persistence and bounded cleanup preserve
-native banking/succession. See RW010_DYNASTIC_ENDOWMENTS.md. Readiness **47/100 (+2 from
-45)**, engine **0/20**. This is one dynastic undertaking, not every possible promise.
-W1/W2 and G1 remain open (+0); no production bypass/fake CB or intermediate game test.
-Frozen criteria: [V01_ROADMAP.md](V01_ROADMAP.md).
+**Next task:** M5, relevant memory influencing future independent political choices,
+then remaining P4/N4/N5/J3/J4/J5/AI4/AI5 criteria. I3 now transmits a claimant's own
+unverified account through explicit targeted relays, preserving original speaker,
+last sender, recipient and dates; no echo counts as corroboration, no private case
+access or native legal proof. Fixed source aging and personal packet retention,
+known-holder custody and shared sender cooldown bound propagation. Readiness
+**49/100 (+2 from 47)**, engine **0/20**. See RW010_RUMOR_PROPAGATION.md.
+This is one rumor topic, not a finished belief/justice system. G1/G3 remain open;
+all CK3 scenarios stay in the final campaign. Frozen criteria: V01_ROADMAP.md.
 
 
 RW-010 stages: immediate endorsement-for-gold negotiation (experimental scripts); deferred promises and optional personal breach response (experimental scripts, RW010_DEFERRED.md); contextual service-breach mediation (experimental scripts, RW010_CASES.md); independent referred-case records/history (experimental scripts, RW010_RECORDS.md); contested affront allegations/statement disclosure (experimental scripts, RW010_ALLEGATIONS.md); personal consent to conciliatory gestures (experimental scripts, RW010_REPAIR_RESPONSE.md); mutual release of deferred promises (experimental scripts, RW010_MUTUAL_CANCELLATION.md); native murder-scheme observations (experimental scripts, RW010_SCHEME_EVIDENCE.md); voluntary political scheme response (experimental scripts, RW010_SCHEME_RESPONSE.md); current judicial inspection (experimental scripts, RW010_SCHEME_JUSTICE.md); personal prisoner execution/release handoff (experimental scripts, RW010_PRISONER_SENTENCING.md); individual title/status review (experimental scripts, RW010_TITLE_STATUS.md); post-rehabilitation land review/native grant terms (experimental UI, RW010_TITLE_REMEDIES.md); conditional native revocation-context provenance (experimental scripts, RW010_TITLE_PROVENANCE.md); exact-affair title intentions/fresh-transfer association (experimental scripts, RW010_REVOCATION_INTENTS.md); institutional public land-fact archive (experimental scripts, RW010_LAND_REGISTER.md); private restitution discussions/personal refusal response (experimental scripts, RW010_RESTITUTION_DIALOGUES.md); custom coercive justice (todo); political house disfavor/rehabilitation (experimental scripts, RW010_HOUSE_AFFAIRS.md); legal dynastic aftermath/title ban (todo, G3 audit/debug trace; no enforcement); unlawful war stage (todo, G1). See docs/RW010_SERVICES.md for scope and final engine cases.

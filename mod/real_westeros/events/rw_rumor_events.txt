@@ -1,0 +1,53 @@
+namespace = rw_rumors
+
+rw_rumors.0001 = {
+    type = character_event
+    title = rw_rumor.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_ru_view_trigger = yes }
+                desc = {
+                    desc = rw_rumor.claim
+                    first_valid = {
+                        triggered_desc = { trigger = { scope:rw_ru_hops = 0 } desc = rw_rumor.own_account }
+                        desc = rw_rumor.heard_account
+                    }
+                    desc = rw_rumor.caution
+                }
+            }
+            desc = rw_rumor.unavailable
+        }
+    }
+    theme = diplomacy
+    option = { name = rw_rumor.acknowledge }
+}
+rw_rumors.0002 = {
+    type = character_event
+    title = rw_rumor.send_title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_ru_can_send_trigger = yes }
+                desc = {
+                    desc = rw_rumor.claim
+                    first_valid = {
+                        triggered_desc = { trigger = { scope:rw_ru_hops = 0 } desc = rw_rumor.own_account }
+                        desc = rw_rumor.heard_account
+                    }
+                    desc = rw_rumor.caution
+                    desc = rw_rumor.send_terms
+                }
+            }
+            desc = rw_rumor.unavailable
+        }
+    }
+    theme = diplomacy
+    option = {
+        name = rw_rumor.send
+        trigger = { rw_ru_can_send_trigger = yes }
+        rw_ru_send_effect = yes
+        ai_chance = { base = 30 modifier = { factor = 2 has_trait = gregarious } }
+    }
+    option = { name = rw_rumor.keep ai_chance = { base = 50 } }
+}

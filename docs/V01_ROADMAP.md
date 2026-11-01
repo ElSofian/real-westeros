@@ -1,7 +1,7 @@
 # Suivi de la première version intégrée — v0.1-plan-1
 
-**État courant : 47/100 (+2), dont 47/80 source et 0/20 moteur.**
-O4 ajoute une dotation dynastique volontaire ; prochaine cible indépendante I3.
+**État courant : 49/100 (+2), dont 49/80 source et 0/20 moteur.**
+I3 ajoute la propagation contrôlée des récits ; prochaine cible indépendante M5.
 W1/W2 restent ouverts (+0), en attente des observations finales G1 avant voie de production.
 Vitesse encore non mesurable : relevés du même jour.
 
@@ -27,7 +27,7 @@ coût. Les trois scénarios initiaux ne limitent pas le périmètre ; le catalog
 | Négociation | 6 | 10 |
 | Promesses et obligations | 10 | 10 |
 | Justice et sanctions | 5 | 12 |
-| Information et preuves | 6 | 8 |
+| Information et preuves | 8 | 8 |
 | Mémoire politique | 8 | 10 |
 | IA politique | 6 | 10 |
 | Validation finale CK3/AGOT | 0 | 20 |
@@ -101,7 +101,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 |---|---:|---|---|
 | I1 | 2 | Observation du complot découvert et participants connus séparés | Source seulement : [RW010_SCHEME_EVIDENCE.md](RW010_SCHEME_EVIDENCE.md), [rw_scheme_on_actions.txt](../mod/real_westeros/common/on_action/rw_scheme_on_actions.txt) |
 | I2 | 2 | Allégation, aveu, contestation et silence distincts de la vérité | Source seulement : [RW010_ALLEGATIONS.md](RW010_ALLEGATIONS.md), [rw_allegation_effects.txt](../mod/real_westeros/common/scripted_effects/rw_allegation_effects.txt) |
-| I3 | 2 | Rumeur et propagation contrôlée avec source, destinataire et provenance | À développer / valider |
+| I3 | 2 | Rumeur et propagation contrôlée avec source, destinataire et provenance | Source seulement : [RW010_RUMOR_PROPAGATION.md](RW010_RUMOR_PROPAGATION.md), [rw_rumor_effects.txt](../mod/real_westeros/common/scripted_effects/rw_rumor_effects.txt) |
 | I4 | 2 | Accès privé/public et provenance sans association causale ou preuve rétroactive dans les dossiers livrés | Source seulement : [RW010_RECORDS.md](RW010_RECORDS.md), [rw_case_triggers.txt](../mod/real_westeros/common/scripted_triggers/rw_case_triggers.txt) |
 
 ### M — Mémoire politique
@@ -146,7 +146,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
    interdite intégrée. Réserver RW-004 séparément. Ne pas livrer le diagnostic privé
    comme solution ; si un point moteur empêche une implémentation sûre, conserver le
    manque visible et travailler sur un critère indépendant, sans demander un test intermédiaire.
-4. **O4 livré dans les sources (+2) ; I3 cible suivante, puis M5** : engagements patrimoniaux/dynastiques, propagation de rumeurs,
+4. **O4/I3 livrés dans les sources (+2 chacun) ; M5 cible suivante** : engagements patrimoniaux/dynastiques, propagation de rumeurs,
    effet de la mémoire sur des choix futurs. M4 est livré dans les sources (+2),
    avec souvenirs publics natifs ; cela ne termine pas M5. Les autres critères ouverts
    demeurent dans le périmètre, notamment J3/J4/J5, N4/N5, P4, W3/W4/W5 et AI4/AI5.
