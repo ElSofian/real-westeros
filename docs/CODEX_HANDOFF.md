@@ -183,7 +183,16 @@ and active case before once-only gold and private notices. Existing free referra
 withdrawal remain valid and invalidate quotes. Original statements and other
 penalties remain, no admission/pardon/immunity or native discovery change. Archive
 navigation is read-only; financial terms stay private from the mediator.
-Next wider structured obligations and contextual political choices across systems. All G2 engine behavior and
+Personal military-restraint pledges now add a continuous undertaking
+(RW010_MILITARY_RESTRAINT.md): fixed seven-day explicit offer/ninety-day accepted
+window, independent typed personal stories, original-party renunciation/release,
+neutral expiry and fixed retention. A source-located additive on_war_started child
+checks existing war plus exact primary roles and matches only accepted/live retained
+stories owned by the actual attacker. It consumes before recording role/date and
+private notices; no inference of voluntary initiation, guilt, successful fulfillment
+or inherited duty. No native CB, law, truce, declaration, Mega War or outcome changes;
+G1 remains separate/unresolved. Missing/inconsistent callback context fails closed.
+Next wider contextual political responses and undertaking types across systems. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;
 never force the no-tyranny imprisonment helper as a legality check. Keep knowledge,

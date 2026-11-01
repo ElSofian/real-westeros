@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "kind": "private_native_war_start_scope_inspection_not_engine_evidence",
+  "reviewed_references": [
+    {
+      "source": "CK3",
+      "path": "common/on_action/war_on_actions.txt",
+      "size": 63290,
+      "sha256": "49ab57bf4a7c4ec3e6e3b430ab437c005c5084c43b838a57c8f55267e8f11b0f",
+      "markers": {
+        "# called when a war is started.": [
+          309
+        ],
+        "on_war_started = {": [
+          312
+        ],
+        "scope:war = {": [
+          21,
+          321,
+          444,
+          468,
+          488,
+          511,
+          520,
+          543,
+          553,
+          576,
+          585,
+          608
+        ],
+        "scope:attacker = {": [
+          328,
+          398,
+          746,
+          936,
+          1111,
+          1151,
+          1156,
+          1170,
+          1214,
+          1232,
+          1355,
+          1389
+        ],
+        "scope:war.primary_attacker": [
+          33,
+          37,
+          58,
+          65,
+          81,
+          104,
+          123,
+          134,
+          144
+        ],
+        "scope:war.primary_defender": [
+          34,
+          41,
+          57,
+          61,
+          82,
+          105,
+          124,
+          138
+        ]
+      }
+    },
+    {
+      "source": "AGOT",
+      "path": "common/on_action/agot_on_actions/agot_war_on_actions.txt",
+      "size": 33014,
+      "sha256": "92bc772f325eeb30e531be42d8fb6cd6a2d5ffe1cb0ac5ae4f422472d71d4919",
+      "markers": {
+        "on_war_started = {": [
+          7
+        ],
+        "agot_mega_war_action": [
+          10,
+          130
+        ],
+        "scope:attacker = {": [
+          68,
+          77,
+          116,
+          136,
+          544,
+          575,
+          616,
+          647,
+          662,
+          676,
+          766,
+          774
+        ],
+        "scope:defender = {": [
+          81,
+          86,
+          139,
+          545,
+          606,
+          611,
+          677,
+          806,
+          807,
+          842,
+          847,
+          1085
+        ]
+      }
+    }
+  ],
+  "limits": [
+    "Source usage only; native callback composition/order and live scope lifetime unverified.",
+    "Primary attacker is a role, not proof of voluntary initiation or wrongdoing.",
+    "No native war/CB/truce/law operation added; G1 remains unresolved."
+  ]
+}

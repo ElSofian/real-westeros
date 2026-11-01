@@ -1,0 +1,30 @@
+rw_offer_military_restraint_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_offer_military_restraint_interaction_desc
+    auto_accept = yes
+    is_shown = {
+        scope:actor = { is_landed = yes }
+        scope:recipient = { is_landed = yes }
+        NOT = { scope:actor = scope:recipient }
+    }
+    is_valid_showing_failures_only = { rw_mr_can_offer_trigger = yes }
+    # Opens an offer only; the beneficiary must explicitly accept.
+    on_accept = { rw_mr_begin_effect = yes }
+    ai_potential = { scope:actor = { rw_service_party_eligible_trigger = yes is_imprisoned = no NOT = { has_character_flag = rw_mr_cooldown } } }
+    ai_targets = { ai_recipients = liege }
+    ai_frequency = 12
+    ai_will_do = { base = 2 modifier = { factor = 2 has_trait = honest } }
+}
+rw_review_military_restraint_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_review_military_restraint_interaction_desc
+    common_interaction = yes
+    use_diplomatic_range = no
+    auto_accept = yes
+    is_shown = {
+        scope:actor = { is_alive = yes }
+        scope:recipient = { is_alive = yes any_owned_story = { rw_mr_reader_trigger = { READER = scope:actor } } }
+    }
+    on_accept = { rw_mr_read_effect = yes }
+    ai_will_do = { base = 0 }
+}

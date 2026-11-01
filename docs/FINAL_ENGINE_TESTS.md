@@ -1117,3 +1117,20 @@ All unrun. RW010_RESTITUTION_DIALOGUES.md creates discussion, not promised resti
 | ASET-10 | Read exact archived paid receipt and statement; try mediator/outsider/archive navigation | Original parties read exact terms/payment; mediator cannot read financial dialogue; navigation never renews retention, proposes, pays or reopens |
 | ASET-11 | Save/load at each turn and terminal state; independent allegations with equal serials | Story/kind/owner/client/revision/amount remain isolated; no duplicate debit, statement change, hook, secret, pardon or title/native-justice effect |
 | ASET-12 | AI↔AI and AI↔player, with admission/contest, hostility, greed and low funds | Same actions/costs/guards; observe incentives, spam/economy, event scheduling and baseline AGOT compatibility before balance claims |
+
+## Personal military-restraint pledges (all unrun)
+
+| ID | Final campaign scenario | Expected observation, not demonstrated |
+|---|---|---|
+| MREST-01 | Offer between valid original parties; decline, ignore or accept before day seven in separate saves | Explicit original-beneficiary consent only; no truce, gold, prestige, opinion, hook or legal consequence from offer/refusal |
+| MREST-02 | Accept; replay offer/acceptance and inspect after ninety days | Original accepted date/ninety-day marker set once; no renewal on read or repeated clicks; elapsed remains neutral |
+| MREST-03 | Original promisor becomes primary attacker against original beneficiary while accepted/live | Exact native callback roles recorded once before two private notices; native war/CB and normal AGOT resolution unchanged |
+| MREST-04 | Duplicate callback, reverse roles, defensive war, secondary ally participation or unrelated target | No duplicate notice and no reversed/secondary/other-target observation; no intent/legal verdict |
+| MREST-05 | Offer unaccepted/expired, pledge renounced/released/expired, then same pair wars | No observation attached or old-war backfill; existing historical result retained |
+| MREST-06 | Missing native war/attacker/defender, role mismatch or changed context during AGOT children | Fail closed without native mutation; investigate callback order; no assumption of exhaustive coverage |
+| MREST-07 | Renounce or release while personal identities survive but rank/war/wealth/imprisonment changed | Original actor can use their own free exit during active window; other actors/stale/deadline panels cannot |
+| MREST-08 | Promisor dies, heir/copy obtains metadata, beneficiary dies or scopes disappear | Personal owner-death cleanup; no inherited duty, substituted actor or invalid-scope action |
+| MREST-09 | Read independent records for same parties/other parties, including equal serials under different owners | Exact story/owner/beneficiary/serial isolation; only original parties see records, with no truncation or latest-pointer overwrite |
+| MREST-10 | Save/load before/after consent, exit, callback, war end and elapsed cleanup | Dates/role record remain coherent; no retained destroyed-war reference, repeated observation, renewed retention or reconstructed fulfillment |
+| MREST-11 | Observe AI↔AI and AI↔player, offer cooldown, story cleanup and numerous retained records | Same actions/costs/guards, bounded liege initiation and owner-local queries; measure actual event/privacy/performance behavior |
+| MREST-12 | Compare normal claim/revolt/Mega War and native ban/hook rules against AGOT baseline | Observer alone never enables declaration, changes CB, forces peace or claims voluntary war cause; G1 genuine-ban bypass remains separate/unresolved |

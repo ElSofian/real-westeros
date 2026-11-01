@@ -1,0 +1,115 @@
+# Story scope: capture immutable identity, not mutable terms or inferred successors.
+rw_mr_snapshot_effect = {
+    save_scope_as = rw_mr_record
+    var:rw_mr_provider = { save_scope_as = rw_mr_provider }
+    var:rw_mr_beneficiary = { save_scope_as = rw_mr_beneficiary }
+    save_scope_value_as = { name = rw_mr_serial value = var:rw_mr_serial }
+}
+rw_mr_begin_effect = {
+    if = {
+        limit = { rw_mr_can_offer_trigger = yes }
+        scope:actor = {
+            if = { limit = { NOT = { has_variable = rw_mr_serial_counter } } set_variable = { name = rw_mr_serial_counter value = 0 } }
+            change_variable = { name = rw_mr_serial_counter add = 1 }
+            save_scope_value_as = { name = rw_mr_serial value = var:rw_mr_serial_counter }
+            create_story = { type = story_rw_military_restraint save_scope_as = rw_mr_record }
+        }
+        if = {
+            limit = {
+                exists = scope:rw_mr_record
+                scope:rw_mr_record = { story_type = story_rw_military_restraint story_owner = scope:actor NOT = { has_variable = rw_mr_schema } }
+            }
+            scope:rw_mr_record = {
+                set_variable = { name = rw_mr_provider value = scope:actor }
+                set_variable = { name = rw_mr_beneficiary value = scope:recipient }
+                set_variable = { name = rw_mr_serial value = scope:rw_mr_serial }
+                set_variable = { name = rw_mr_issued_on value = current_date }
+                set_variable = { name = rw_mr_state value = flag:offered }
+                set_variable = { name = rw_mr_offer_window value = flag:yes days = 7 }
+                set_variable = { name = rw_mr_retained value = flag:yes days = 1825 }
+                set_variable = { name = rw_mr_schema value = 1 }
+                rw_mr_snapshot_effect = yes
+            }
+            scope:actor = { add_character_flag = { flag = rw_mr_cooldown days = 365 } }
+            scope:rw_mr_beneficiary = { trigger_event = { id = rw_military_restraint.0001 days = 1 } }
+        }
+    }
+}
+rw_mr_accept_effect = {
+    if = {
+        limit = { rw_mr_can_accept_trigger = yes }
+        scope:rw_mr_record = {
+            remove_variable = rw_mr_offer_window
+            set_variable = { name = rw_mr_accepted_on value = current_date }
+            set_variable = { name = rw_mr_due value = flag:yes days = 90 }
+            set_variable = { name = rw_mr_state value = flag:active }
+        }
+        rw_mr_notify_effect = yes
+    }
+}
+rw_mr_renounce_effect = {
+    if = {
+        limit = { rw_mr_can_renounce_trigger = yes }
+        scope:rw_mr_record = {
+            remove_variable = rw_mr_due
+            set_variable = { name = rw_mr_finished_on value = current_date }
+            set_variable = { name = rw_mr_state value = flag:renounced }
+        }
+        rw_mr_notify_effect = yes
+    }
+}
+rw_mr_release_effect = {
+    if = {
+        limit = { rw_mr_can_release_trigger = yes }
+        scope:rw_mr_record = {
+            remove_variable = rw_mr_due
+            set_variable = { name = rw_mr_finished_on value = current_date }
+            set_variable = { name = rw_mr_state value = flag:released }
+        }
+        rw_mr_notify_effect = yes
+    }
+}
+rw_mr_close_effect = {
+    if = {
+        limit = { rw_mr_can_close_trigger = yes }
+        scope:rw_mr_record = {
+            remove_variable = rw_mr_offer_window
+            set_variable = { name = rw_mr_finished_on value = current_date }
+            set_variable = { name = rw_mr_state value = flag:closed }
+        }
+        rw_mr_notify_effect = yes
+    }
+}
+# Only native callback intake calls this. Enumerate the actual attacker's own stories.
+rw_mr_observe_effect = {
+    if = {
+        limit = { rw_mr_native_context_trigger = yes this = scope:attacker }
+        every_owned_story = {
+            limit = { rw_mr_observable_trigger = yes }
+            rw_mr_snapshot_effect = yes
+            # Consume first, so a duplicate callback cannot notify again.
+            remove_variable = rw_mr_due
+            set_variable = { name = rw_mr_finished_on value = current_date }
+            set_variable = { name = rw_mr_observed_on value = current_date }
+            set_variable = { name = rw_mr_state value = flag:war_observed }
+            scope:rw_mr_provider = { rw_mr_notify_effect = yes }
+        }
+    }
+}
+rw_mr_notify_effect = {
+    scope:rw_mr_provider = { if = { limit = { is_alive = yes } trigger_event = { id = rw_military_restraint.0001 } } }
+    scope:rw_mr_beneficiary = { if = { limit = { is_alive = yes } trigger_event = { id = rw_military_restraint.0001 } } }
+}
+rw_mr_read_effect = {
+    if = {
+        limit = { scope:actor = { is_alive = yes } scope:recipient = { is_alive = yes } }
+        scope:actor = { save_scope_as = rw_mr_reader }
+        scope:recipient = {
+            every_owned_story = {
+                limit = { rw_mr_reader_trigger = { READER = scope:rw_mr_reader } }
+                rw_mr_snapshot_effect = yes
+                scope:rw_mr_reader = { trigger_event = { id = rw_military_restraint.0001 } }
+            }
+        }
+    }
+}
