@@ -1,0 +1,149 @@
+# Story scope. Snapshot personal knowledge, never today's private case or verdict.
+rw_ru_snapshot_effect = {
+    save_scope_as = rw_ru_packet
+    save_scope_value_as = { name = rw_ru_packet_serial value = var:rw_ru_packet_serial }
+    save_scope_value_as = { name = rw_ru_origin_serial value = var:rw_ru_origin_serial }
+    save_scope_value_as = { name = rw_ru_issued_on value = var:rw_ru_issued_on }
+    save_scope_value_as = { name = rw_ru_heard_on value = var:rw_ru_heard_on }
+    save_scope_value_as = { name = rw_ru_hops value = var:rw_ru_hops }
+    var:rw_ru_speaker = { save_scope_as = rw_ru_speaker }
+    var:rw_ru_subject = { save_scope_as = rw_ru_subject }
+    var:rw_ru_sender = { save_scope_as = rw_ru_sender }
+    clear_saved_scope = rw_ru_origin
+    if = { limit = { exists = var:rw_ru_origin } var:rw_ru_origin = { save_scope_as = rw_ru_origin } }
+}
+rw_ru_seed_effect = {
+    if = {
+        limit = { rw_ru_can_seed_trigger = yes }
+        save_scope_as = rw_ru_holder
+        save_scope_as = rw_ru_speaker
+        save_scope_as = rw_ru_receiver
+        scope:rw_service_provider = { save_scope_as = rw_ru_subject }
+        clear_saved_scope = rw_ru_origin
+        create_story = { type = story_rw_rumor_origin save_scope_as = rw_ru_origin }
+        if = {
+            limit = { scope:rw_ru_origin = { story_type = story_rw_rumor_origin story_owner = scope:rw_ru_holder NOT = { has_variable = rw_ru_schema } } }
+            if = { limit = { NOT = { has_variable = rw_ru_origin_counter } } set_variable = { name = rw_ru_origin_counter value = 0 } }
+            change_variable = { name = rw_ru_origin_counter add = 1 }
+            save_scope_value_as = { name = rw_ru_origin_serial value = var:rw_ru_origin_counter }
+            save_scope_value_as = { name = rw_ru_issued_on value = current_date }
+            save_scope_value_as = { name = rw_ru_hops value = 0 }
+            scope:rw_ru_origin = {
+                set_variable = { name = rw_ru_schema value = 1 }
+                set_variable = { name = rw_ru_kind value = flag:affront_account }
+                set_variable = { name = rw_ru_speaker value = scope:rw_ru_speaker }
+                set_variable = { name = rw_ru_subject value = scope:rw_ru_subject }
+                set_variable = { name = rw_ru_origin_serial value = scope:rw_ru_origin_serial }
+                set_variable = { name = rw_ru_issued_on value = scope:rw_ru_issued_on }
+                set_variable = { name = rw_ru_origin_retained value = flag:yes days = 365 }
+            }
+            rw_ru_create_packet_effect = yes
+            if = {
+                limit = { exists = scope:rw_ru_new_packet scope:rw_ru_new_packet = { rw_ru_reader_trigger = { READER = scope:rw_ru_holder } } }
+                scope:rw_case_record = { set_variable = { name = rw_ru_seeded value = flag:yes } }
+                # Resume the existing original claimant choice, without renewing it.
+                if = { limit = { rw_allegation_claimant_turn_trigger = yes } trigger_event = { id = rw_allegations.0002 days = 1 } }
+            }
+            else = { scope:rw_ru_origin = { end_story = yes } }
+        }
+    }
+}
+# Character root remains the actual sender. Record new knowledge before any notice.
+rw_ru_create_packet_effect = {
+    if = {
+        limit = { rw_ru_can_create_packet_trigger = yes }
+        clear_saved_scope = rw_ru_new_packet
+        scope:rw_ru_receiver = { create_story = { type = story_rw_rumor_packet save_scope_as = rw_ru_new_packet } }
+        if = {
+            limit = { scope:rw_ru_new_packet = { story_type = story_rw_rumor_packet story_owner = scope:rw_ru_receiver NOT = { has_variable = rw_ru_schema } } }
+            scope:rw_ru_receiver = {
+                if = { limit = { NOT = { has_variable = rw_ru_packet_counter } } set_variable = { name = rw_ru_packet_counter value = 0 } }
+                change_variable = { name = rw_ru_packet_counter add = 1 }
+                save_scope_value_as = { name = rw_ru_new_serial value = var:rw_ru_packet_counter }
+            }
+            scope:rw_ru_new_packet = {
+                set_variable = { name = rw_ru_schema value = 1 }
+                set_variable = { name = rw_ru_kind value = flag:affront_account }
+                set_variable = { name = rw_ru_packet_serial value = scope:rw_ru_new_serial }
+                set_variable = { name = rw_ru_origin value = scope:rw_ru_origin }
+                set_variable = { name = rw_ru_speaker value = scope:rw_ru_speaker }
+                set_variable = { name = rw_ru_subject value = scope:rw_ru_subject }
+                set_variable = { name = rw_ru_sender value = scope:rw_ru_holder }
+                set_variable = { name = rw_ru_origin_serial value = scope:rw_ru_origin_serial }
+                set_variable = { name = rw_ru_issued_on value = scope:rw_ru_issued_on }
+                set_variable = { name = rw_ru_heard_on value = current_date }
+                set_variable = { name = rw_ru_hops value = scope:rw_ru_hops }
+                if = { limit = { NOT = { scope:rw_ru_receiver = scope:rw_ru_holder } } change_variable = { name = rw_ru_hops add = 1 } }
+                set_variable = { name = rw_ru_packet_retained value = flag:yes days = 365 }
+            }
+            scope:rw_ru_origin = { add_to_variable_list = { name = rw_ru_holders target = scope:rw_ru_receiver } }
+            if = { limit = { NOT = { scope:rw_ru_receiver = scope:rw_ru_holder } } add_character_flag = { flag = rw_ru_relay_cooldown days = 30 } }
+            scope:rw_ru_new_packet = { rw_ru_snapshot_effect = yes }
+            scope:rw_ru_receiver = { save_scope_as = rw_ru_holder trigger_event = { id = rw_rumors.0001 days = 1 } }
+        }
+    }
+}
+rw_ru_send_effect = {
+    if = { limit = { rw_ru_can_send_trigger = yes } rw_ru_create_packet_effect = yes }
+}
+# Native interaction chooses the recipient; each personal account gets its own view.
+rw_ru_prepare_send_effect = {
+    if = {
+        limit = { scope:actor = { rw_ru_party_trigger = yes } scope:recipient = { rw_ru_party_trigger = yes } NOT = { scope:actor = scope:recipient } }
+        scope:actor = { save_scope_as = rw_ru_reader }
+        scope:recipient = { save_scope_as = rw_ru_receiver }
+        scope:rw_ru_reader = {
+            every_owned_story = {
+                limit = { rw_ru_reader_trigger = { READER = scope:rw_ru_reader } }
+                rw_ru_snapshot_effect = yes
+                scope:rw_ru_reader = {
+                    save_scope_as = rw_ru_holder
+                    if = { limit = { rw_ru_can_send_trigger = yes } trigger_event = { id = rw_rumors.0002 } }
+                }
+            }
+        }
+    }
+}
+rw_ru_read_effect = {
+    if = {
+        limit = { scope:actor = { is_alive = yes } }
+        scope:actor = { save_scope_as = rw_ru_reader }
+        scope:rw_ru_reader = {
+            every_owned_story = {
+                limit = { rw_ru_reader_trigger = { READER = scope:rw_ru_reader } }
+                rw_ru_snapshot_effect = yes
+                scope:rw_ru_reader = { save_scope_as = rw_ru_holder trigger_event = { id = rw_rumors.0001 } }
+            }
+        }
+    }
+}
+# The lineage cap never renews. If its custodian dies, only an already informed
+# living holder with a retained personal copy can keep this internal record.
+rw_ru_origin_owner_died_effect = {
+    if = {
+        limit = { rw_ru_origin_trigger = yes has_variable = rw_ru_origin_retained has_variable_list = rw_ru_holders }
+        save_scope_as = rw_ru_origin
+        story_owner = { save_scope_as = rw_ru_departed }
+        clear_saved_scope = rw_ru_custodian
+        random_in_list = {
+            variable = rw_ru_holders
+            limit = {
+                is_alive = yes
+                NOT = { this = scope:rw_ru_departed }
+                any_owned_story = {
+                    rw_ru_packet_trigger = yes
+                    has_variable = rw_ru_packet_retained
+                    var:rw_ru_origin = scope:rw_ru_origin
+                    var:rw_ru_speaker = scope:rw_ru_origin.var:rw_ru_speaker
+                    var:rw_ru_subject = scope:rw_ru_origin.var:rw_ru_subject
+                    var:rw_ru_origin_serial = scope:rw_ru_origin.var:rw_ru_origin_serial
+                    var:rw_ru_issued_on = scope:rw_ru_origin.var:rw_ru_issued_on
+                }
+            }
+            save_scope_as = rw_ru_custodian
+        }
+        if = { limit = { exists = scope:rw_ru_custodian } make_story_owner = scope:rw_ru_custodian }
+        else = { end_story = yes }
+    }
+    else = { end_story = yes }
+}

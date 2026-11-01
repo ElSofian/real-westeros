@@ -44,6 +44,12 @@ rw_allegations.0002 = {
     theme = diplomacy
     left_portrait = { character = scope:rw_service_provider }
     option = {
+        name = rw_rumor.prepare
+        trigger = { rw_ru_can_seed_trigger = yes }
+        rw_ru_seed_effect = yes
+        ai_chance = { base = 10 modifier = { factor = 2 has_trait = gregarious } }
+    }
+    option = {
         name = rw_allegations.refer
         trigger = { rw_allegation_claimant_turn_trigger = yes }
         rw_allegation_refer_effect = yes

@@ -1,0 +1,33 @@
+rw_relay_rumor_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_relay_rumor_interaction_desc
+    auto_accept = yes
+    is_shown = {
+        scope:actor = { is_landed = yes any_owned_story = { rw_ru_reader_trigger = { READER = scope:actor } } }
+        scope:recipient = { is_landed = yes }
+        NOT = { scope:actor = scope:recipient }
+    }
+    is_valid_showing_failures_only = {
+        scope:actor = {
+            rw_ru_party_trigger = yes
+            NOT = { has_character_flag = rw_ru_relay_cooldown }
+            any_owned_story = { rw_ru_candidate_trigger = { SENDER = scope:actor RECEIVER = scope:recipient } }
+        }
+        scope:recipient = { rw_ru_party_trigger = yes }
+    }
+    on_accept = { rw_ru_prepare_send_effect = yes }
+    ai_potential = { scope:actor = { rw_ru_party_trigger = yes NOT = { has_character_flag = rw_ru_relay_cooldown } } }
+    ai_targets = { ai_recipients = liege }
+    ai_frequency = 12
+    ai_will_do = { base = 2 modifier = { factor = 2 scope:actor = { has_trait = gregarious } } }
+}
+rw_review_my_rumors_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_review_my_rumors_interaction_desc
+    common_interaction = yes
+    use_diplomatic_range = no
+    auto_accept = yes
+    is_shown = { scope:actor = { is_alive = yes any_owned_story = { rw_ru_reader_trigger = { READER = scope:actor } } } }
+    on_accept = { rw_ru_read_effect = yes }
+    ai_will_do = { base = 0 }
+}

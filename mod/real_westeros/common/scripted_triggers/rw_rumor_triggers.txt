@@ -1,0 +1,139 @@
+# Known speakers may communicate during war; the message grants no legal ground.
+rw_ru_party_trigger = { is_alive = yes is_adult = yes is_landed = yes is_imprisoned = no }
+rw_ru_can_seed_trigger = {
+    rw_allegation_claimant_turn_trigger = yes
+    this = scope:rw_service_client
+    rw_ru_party_trigger = yes
+    scope:rw_case_record = {
+        var:rw_case_kind = flag:allegation
+        NOT = { has_variable = rw_ru_seeded }
+    }
+}
+# Immutable lineage, separate from the private source case. Ownership is storage only.
+rw_ru_origin_trigger = {
+    story_type = story_rw_rumor_origin
+    var:rw_ru_schema = 1
+    var:rw_ru_kind = flag:affront_account
+    exists = var:rw_ru_speaker
+    exists = var:rw_ru_subject
+    NOT = { var:rw_ru_speaker = var:rw_ru_subject }
+    has_variable = rw_ru_origin_serial
+    has_variable = rw_ru_issued_on
+}
+# Self-contained personal knowledge remains readable if its lineage later retires.
+rw_ru_packet_trigger = {
+    story_type = story_rw_rumor_packet
+    var:rw_ru_schema = 1
+    var:rw_ru_kind = flag:affront_account
+    exists = var:rw_ru_speaker
+    exists = var:rw_ru_subject
+    exists = var:rw_ru_sender
+    has_variable = rw_ru_packet_serial
+    has_variable = rw_ru_origin_serial
+    has_variable = rw_ru_issued_on
+    has_variable = rw_ru_heard_on
+    has_variable = rw_ru_hops
+    var:rw_ru_hops >= 0
+}
+rw_ru_reader_trigger = {
+    rw_ru_packet_trigger = yes
+    has_variable = rw_ru_packet_retained
+    story_owner = $READER$
+    $READER$ = { is_alive = yes }
+}
+rw_ru_view_trigger = {
+    exists = scope:rw_ru_holder
+    exists = scope:rw_ru_packet
+    exists = scope:rw_ru_packet_serial
+    exists = scope:rw_ru_origin_serial
+    exists = scope:rw_ru_speaker
+    exists = scope:rw_ru_subject
+    exists = scope:rw_ru_sender
+    exists = scope:rw_ru_issued_on
+    exists = scope:rw_ru_heard_on
+    exists = scope:rw_ru_hops
+    this = scope:rw_ru_holder
+    scope:rw_ru_packet = {
+        rw_ru_reader_trigger = { READER = scope:rw_ru_holder }
+        var:rw_ru_packet_serial = scope:rw_ru_packet_serial
+        var:rw_ru_origin_serial = scope:rw_ru_origin_serial
+        var:rw_ru_speaker = scope:rw_ru_speaker
+        var:rw_ru_subject = scope:rw_ru_subject
+        var:rw_ru_sender = scope:rw_ru_sender
+        var:rw_ru_issued_on = scope:rw_ru_issued_on
+        var:rw_ru_heard_on = scope:rw_ru_heard_on
+        var:rw_ru_hops = scope:rw_ru_hops
+    }
+}
+rw_ru_relayable_trigger = {
+    rw_ru_view_trigger = yes
+    rw_ru_party_trigger = yes
+    NOT = { has_character_flag = rw_ru_relay_cooldown }
+    scope:rw_ru_subject = { is_alive = yes }
+    exists = scope:rw_ru_origin
+    scope:rw_ru_packet = { var:rw_ru_origin = scope:rw_ru_origin }
+    scope:rw_ru_origin = {
+        rw_ru_origin_trigger = yes
+        has_variable = rw_ru_origin_retained
+        var:rw_ru_speaker = scope:rw_ru_speaker
+        var:rw_ru_subject = scope:rw_ru_subject
+        var:rw_ru_origin_serial = scope:rw_ru_origin_serial
+        var:rw_ru_issued_on = scope:rw_ru_issued_on
+        has_variable_list = rw_ru_holders
+        any_in_list = { variable = rw_ru_holders this = scope:rw_ru_holder }
+    }
+}
+rw_ru_can_send_trigger = {
+    rw_ru_relayable_trigger = yes
+    exists = scope:rw_ru_receiver
+    scope:rw_ru_receiver = { rw_ru_party_trigger = yes }
+    NOT = { this = scope:rw_ru_receiver }
+    in_diplomatic_range = scope:rw_ru_receiver
+    scope:rw_ru_origin = { NOT = { any_in_list = { variable = rw_ru_holders this = scope:rw_ru_receiver } } }
+}
+# Internal constructor must be reached from a genuine source or a current relay.
+rw_ru_can_create_packet_trigger = {
+    exists = scope:rw_ru_receiver
+    exists = scope:rw_ru_origin
+    scope:rw_ru_origin = {
+        rw_ru_origin_trigger = yes
+        has_variable = rw_ru_origin_retained
+        var:rw_ru_speaker = scope:rw_ru_speaker
+        var:rw_ru_subject = scope:rw_ru_subject
+        var:rw_ru_origin_serial = scope:rw_ru_origin_serial
+        var:rw_ru_issued_on = scope:rw_ru_issued_on
+        trigger_if = {
+            limit = { has_variable_list = rw_ru_holders }
+            NOT = { any_in_list = { variable = rw_ru_holders this = scope:rw_ru_receiver } }
+        }
+    }
+    OR = {
+        rw_ru_can_send_trigger = yes
+        AND = {
+            rw_ru_can_seed_trigger = yes
+            this = scope:rw_ru_holder
+            scope:rw_ru_receiver = scope:rw_ru_holder
+            scope:rw_ru_speaker = scope:rw_ru_holder
+            scope:rw_ru_subject = scope:rw_service_provider
+            scope:rw_ru_hops = 0
+        }
+    }
+}
+
+# Story-scoped native menu filter. Confirmation still checks its full snapshot.
+rw_ru_candidate_trigger = {
+    rw_ru_reader_trigger = { READER = $SENDER$ }
+    var:rw_ru_subject = { is_alive = yes }
+    exists = var:rw_ru_origin
+    var:rw_ru_origin = {
+        rw_ru_origin_trigger = yes
+        has_variable = rw_ru_origin_retained
+        has_variable_list = rw_ru_holders
+        var:rw_ru_speaker = prev.var:rw_ru_speaker
+        var:rw_ru_subject = prev.var:rw_ru_subject
+        var:rw_ru_origin_serial = prev.var:rw_ru_origin_serial
+        var:rw_ru_issued_on = prev.var:rw_ru_issued_on
+        any_in_list = { variable = rw_ru_holders this = $SENDER$ }
+        NOT = { any_in_list = { variable = rw_ru_holders this = $RECEIVER$ } }
+    }
+}
