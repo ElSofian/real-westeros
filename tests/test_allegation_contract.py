@@ -129,7 +129,8 @@ class AllegationContractTests(unittest.TestCase):
         self.assertIn('ANSWER = admitted', text)
         self.assertIn('ANSWER = contested', text)
         self.assertNotIn('is_ai = no', text)
-        self.assertEqual(7, text.count('ai_chance ='))
+        # Includes the new optional claimant settlement proposal.
+        self.assertEqual(8, text.count('ai_chance ='))
 
     def test_all_display_keys_are_localized(self):
         text = (MOD / 'events/rw_allegation_events.txt').read_text() + (MOD / 'events/rw_case_events.txt').read_text()

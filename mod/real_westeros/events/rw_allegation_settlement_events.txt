@@ -1,0 +1,83 @@
+namespace = rw_allegation_settlement
+
+rw_allegation_settlement.0001 = {
+    type = character_event
+    title = rw_allegation_settlement.title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_as_can_propose_trigger = yes } desc = rw_allegation_settlement.introduction }
+            triggered_desc = {
+                trigger = { rw_as_view_trigger = yes }
+                desc = {
+                    desc = rw_allegation_settlement.parties
+                    triggered_desc = { trigger = { scope:rw_as_price = 50 } desc = rw_allegation_settlement.price50 }
+                    triggered_desc = { trigger = { scope:rw_as_price = 25 } desc = rw_allegation_settlement.price25 }
+                    first_valid = {
+                        triggered_desc = { trigger = { scope:rw_case_record = { var:rw_as_state = flag:paid } } desc = rw_allegation_settlement.paid }
+                        triggered_desc = { trigger = { scope:rw_case_record = { var:rw_as_state = flag:closed } } desc = rw_allegation_settlement.closed }
+                        triggered_desc = { trigger = { rw_as_live_trigger = yes } desc = rw_allegation_settlement.offered }
+                        desc = rw_allegation_settlement.inactive
+                    }
+                    triggered_desc = { trigger = { rw_as_live_trigger = yes scope:rw_service_provider = { gold < scope:rw_as_price } } desc = rw_allegation_settlement.unfunded }
+                    desc = rw_allegation_settlement.boundaries
+                }
+            }
+            desc = rw_allegation_settlement.unavailable
+        }
+    }
+    theme = diplomacy
+    option = {
+        name = rw_allegation_settlement.propose
+        trigger = { rw_as_can_propose_trigger = yes }
+        rw_as_propose_effect = yes
+        ai_chance = { base = 20 modifier = { factor = 2 has_trait = greedy } }
+    }
+    option = {
+        name = rw_allegation_settlement.accept
+        trigger = { rw_as_can_settle_trigger = yes }
+        rw_as_settle_effect = yes
+        ai_chance = {
+            base = 10
+            modifier = { factor = 3 scope:rw_case_record = { var:rw_case_evidence = flag:admitted } }
+            modifier = { factor = 0.5 has_trait = greedy this = scope:rw_service_provider }
+            modifier = { factor = 0.2 this = scope:rw_service_provider opinion = { target = scope:rw_service_client value < -25 } }
+        }
+    }
+    option = {
+        name = rw_allegation_settlement.counter25
+        trigger = { rw_as_responder_trigger = yes scope:rw_as_price = 50 }
+        rw_as_counter_effect = yes
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = rw_allegation_settlement.counter50
+        trigger = { rw_as_responder_trigger = yes scope:rw_as_price = 25 }
+        rw_as_counter_effect = yes
+        ai_chance = { base = 20 modifier = { factor = 2 has_trait = greedy } }
+    }
+    option = {
+        name = rw_allegation_settlement.close
+        trigger = { rw_as_can_close_trigger = yes }
+        rw_as_close_effect = yes
+        ai_chance = { base = 20 }
+    }
+    option = {
+        name = rw_allegations.refer
+        trigger = { rw_allegation_claimant_turn_trigger = yes }
+        rw_allegation_refer_effect = yes
+        ai_chance = { base = 20 modifier = { factor = 2 has_trait = vengeful } }
+    }
+    option = {
+        name = rw_allegations.withdraw
+        trigger = { rw_allegation_claimant_turn_trigger = yes }
+        rw_allegation_withdraw_effect = yes
+        ai_chance = { base = 20 modifier = { factor = 2 has_trait = forgiving } }
+    }
+    option = { name = rw_allegation_settlement.leave ai_chance = { base = 20 } }
+}
+# Fresh menu navigation only; archive reads do not themselves offer or pay.
+rw_allegation_settlement.0002 = {
+    type = character_event
+    hidden = yes
+    immediate = { rw_as_prepare_effect = yes }
+}

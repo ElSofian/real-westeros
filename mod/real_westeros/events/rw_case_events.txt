@@ -252,6 +252,15 @@ rw_cases.0006 = {
             trigger_event = { id = rw_cases.0007 }
         }
     }
+    option = {
+        name = rw_allegation_settlement.review
+        trigger = { rw_as_base_trigger = yes }
+        if = {
+            limit = { rw_as_base_trigger = yes }
+            trigger_event = { id = rw_allegation_settlement.0002 }
+        }
+        ai_chance = { base = 0 }
+    }
     option = { name = rw_cases.acknowledge }
     option = {
         name = rw_case_terms.read

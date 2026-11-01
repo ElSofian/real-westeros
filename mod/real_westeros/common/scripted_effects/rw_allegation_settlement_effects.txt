@@ -1,0 +1,101 @@
+# Story scope, read-only; reply panels keep their captured terms until acted upon.
+rw_as_snapshot_effect = {
+    save_scope_value_as = { name = rw_as_revision value = var:rw_as_revision }
+    save_scope_value_as = { name = rw_as_price value = var:rw_as_price }
+}
+# Explicit fresh navigation only; never run automatically in a delayed reply event.
+rw_as_prepare_effect = {
+    if = {
+        limit = { rw_as_base_trigger = yes }
+        clear_saved_scope = rw_as_revision
+        clear_saved_scope = rw_as_price
+        if = {
+            limit = { scope:rw_case_record = { var:rw_as_schema = 1 has_variable = rw_as_revision has_variable = rw_as_price } }
+            scope:rw_case_record = { rw_as_snapshot_effect = yes }
+        }
+        trigger_event = { id = rw_allegation_settlement.0001 }
+    }
+}
+# Claimant offers withdrawal for fifty gold from the original respondent.
+rw_as_propose_effect = {
+    if = {
+        limit = { rw_as_can_propose_trigger = yes }
+        scope:rw_case_record = {
+            set_variable = { name = rw_as_revision value = 0 }
+            set_variable = { name = rw_as_price value = 50 }
+            set_variable = { name = rw_as_turn value = flag:provider }
+            set_variable = { name = rw_as_state value = flag:offered }
+            set_variable = { name = rw_as_issued_on value = current_date }
+            set_variable = { name = rw_as_window value = flag:yes days = 7 }
+            set_variable = { name = rw_as_schema value = 1 }
+            rw_as_snapshot_effect = yes
+        }
+        rw_as_send_reply_effect = yes
+    }
+}
+# Caller is the current proposer/counterer; no mediator learns these private terms.
+rw_as_send_reply_effect = {
+    if = {
+        limit = { this = scope:rw_service_client }
+        scope:rw_service_provider = { trigger_event = { id = rw_allegation_settlement.0001 days = 1 } }
+    }
+    else = { scope:rw_service_client = { trigger_event = { id = rw_allegation_settlement.0001 days = 1 } } }
+}
+rw_as_counter_effect = {
+    if = {
+        limit = { rw_as_responder_trigger = yes }
+        scope:rw_case_record = {
+            change_variable = { name = rw_as_revision add = 1 }
+            if = {
+                limit = { var:rw_as_price = 50 }
+                set_variable = { name = rw_as_price value = 25 }
+            }
+            else = { set_variable = { name = rw_as_price value = 50 } }
+            if = {
+                limit = { var:rw_as_turn = flag:provider }
+                set_variable = { name = rw_as_turn value = flag:client }
+            }
+            else = { set_variable = { name = rw_as_turn value = flag:provider } }
+            rw_as_snapshot_effect = yes
+        }
+        # Neither seven-day offer window nor original case deadline is renewed.
+        rw_as_send_reply_effect = yes
+    }
+}
+rw_as_settle_effect = {
+    if = {
+        limit = { rw_as_can_settle_trigger = yes }
+        scope:rw_case_record = {
+            remove_variable = rw_as_window
+            remove_variable = rw_as_turn
+            set_variable = { name = rw_as_paid_amount value = scope:rw_as_price }
+            set_variable = { name = rw_as_paid_revision value = scope:rw_as_revision }
+            set_variable = { name = rw_as_paid_on value = current_date }
+            set_variable = { name = rw_as_state value = flag:paid }
+            # Consume both offer and active case BEFORE native effects/notices.
+            # Same retention/result as a voluntary withdrawal; statements stay intact.
+            remove_variable = rw_case_pending
+            set_variable = { name = rw_case_retained value = flag:yes days = 1825 }
+            set_variable = { name = rw_case_stage value = flag:closed }
+            set_variable = { name = rw_case_result value = flag:withdrawn }
+        }
+        scope:rw_service_provider = { add_gold = { value = scope:rw_as_price multiply = -1 } }
+        scope:rw_service_client = { add_gold = scope:rw_as_price }
+        rw_as_notify_effect = yes
+    }
+}
+rw_as_close_effect = {
+    if = {
+        limit = { rw_as_can_close_trigger = yes }
+        scope:rw_case_record = {
+            remove_variable = rw_as_window
+            remove_variable = rw_as_turn
+            set_variable = { name = rw_as_state value = flag:closed }
+        }
+        rw_as_notify_effect = yes
+    }
+}
+rw_as_notify_effect = {
+    scope:rw_service_provider = { if = { limit = { is_alive = yes } trigger_event = { id = rw_allegation_settlement.0001 } } }
+    scope:rw_service_client = { if = { limit = { is_alive = yes } trigger_event = { id = rw_allegation_settlement.0001 } } }
+}
