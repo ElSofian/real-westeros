@@ -1,0 +1,53 @@
+namespace = rw_military_restraint
+
+rw_military_restraint.0001 = {
+    type = character_event
+    title = rw_military_restraint.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_mr_view_trigger = yes }
+                desc = {
+                    desc = rw_military_restraint.parties
+                    first_valid = {
+                        triggered_desc = { trigger = { scope:rw_mr_record = { var:rw_mr_state = flag:war_observed } } desc = rw_military_restraint.observed }
+                        triggered_desc = { trigger = { scope:rw_mr_record = { var:rw_mr_state = flag:renounced } } desc = rw_military_restraint.renounced }
+                        triggered_desc = { trigger = { scope:rw_mr_record = { var:rw_mr_state = flag:released } } desc = rw_military_restraint.released }
+                        triggered_desc = { trigger = { scope:rw_mr_record = { var:rw_mr_state = flag:closed } } desc = rw_military_restraint.closed }
+                        triggered_desc = { trigger = { rw_mr_active_trigger = yes } desc = rw_military_restraint.active }
+                        triggered_desc = { trigger = { scope:rw_mr_record = { var:rw_mr_state = flag:offered has_variable = rw_mr_offer_window } } desc = rw_military_restraint.offered }
+                        desc = rw_military_restraint.elapsed
+                    }
+                    desc = rw_military_restraint.boundaries
+                }
+            }
+            desc = rw_military_restraint.unavailable
+        }
+    }
+    theme = diplomacy
+    option = {
+        name = rw_military_restraint.accept
+        trigger = { rw_mr_can_accept_trigger = yes }
+        rw_mr_accept_effect = yes
+        ai_chance = { base = 50 modifier = { factor = 0.5 has_trait = paranoid } }
+    }
+    option = {
+        name = rw_military_restraint.close
+        trigger = { rw_mr_can_close_trigger = yes }
+        rw_mr_close_effect = yes
+        ai_chance = { base = 20 }
+    }
+    option = {
+        name = rw_military_restraint.renounce
+        trigger = { rw_mr_can_renounce_trigger = yes }
+        rw_mr_renounce_effect = yes
+        ai_chance = { base = 2 modifier = { factor = 0.2 has_trait = honest } modifier = { factor = 2 has_trait = deceitful } }
+    }
+    option = {
+        name = rw_military_restraint.release
+        trigger = { rw_mr_can_release_trigger = yes }
+        rw_mr_release_effect = yes
+        ai_chance = { base = 2 modifier = { factor = 2 has_trait = forgiving } }
+    }
+    option = { name = rw_military_restraint.leave ai_chance = { base = 40 } }
+}

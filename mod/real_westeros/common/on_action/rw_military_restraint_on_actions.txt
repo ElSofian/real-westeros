@@ -1,0 +1,6 @@
+# Append only this named child; preserve all native and AGOT effects and lists.
+on_war_started = { on_actions = { rw_on_military_restraint_war_started } }
+rw_on_military_restraint_war_started = {
+    trigger = { rw_mr_native_context_trigger = yes }
+    effect = { scope:attacker = { rw_mr_observe_effect = yes } }
+}

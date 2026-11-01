@@ -1,0 +1,97 @@
+rw_mr_can_offer_trigger = {
+    scope:actor = {
+        rw_service_party_eligible_trigger = yes
+        is_imprisoned = no
+        NOT = { has_character_flag = rw_mr_cooldown }
+    }
+    scope:recipient = { rw_service_party_eligible_trigger = yes is_imprisoned = no }
+    NOT = { scope:actor = scope:recipient }
+}
+# Story scope. Only original parties may read; copied/inherited rows fail closed.
+rw_mr_reader_trigger = {
+    story_type = story_rw_military_restraint
+    var:rw_mr_schema = 1
+    has_variable = rw_mr_retained
+    exists = var:rw_mr_provider
+    exists = var:rw_mr_beneficiary
+    story_owner = var:rw_mr_provider
+    OR = { var:rw_mr_provider = $READER$ var:rw_mr_beneficiary = $READER$ }
+}
+rw_mr_view_trigger = {
+    exists = scope:rw_mr_record
+    exists = scope:rw_mr_provider
+    exists = scope:rw_mr_beneficiary
+    exists = scope:rw_mr_serial
+    is_alive = yes
+    NOT = { scope:rw_mr_provider = scope:rw_mr_beneficiary }
+    OR = { this = scope:rw_mr_provider this = scope:rw_mr_beneficiary }
+    scope:rw_mr_record = {
+        story_type = story_rw_military_restraint
+        var:rw_mr_schema = 1
+        has_variable = rw_mr_retained
+        story_owner = scope:rw_mr_provider
+        var:rw_mr_provider = scope:rw_mr_provider
+        var:rw_mr_beneficiary = scope:rw_mr_beneficiary
+        var:rw_mr_serial = scope:rw_mr_serial
+        has_variable = rw_mr_issued_on
+        trigger_if = {
+            limit = { OR = { var:rw_mr_state = flag:active var:rw_mr_state = flag:renounced var:rw_mr_state = flag:released var:rw_mr_state = flag:war_observed } }
+            has_variable = rw_mr_accepted_on
+        }
+        trigger_if = {
+            limit = { OR = { var:rw_mr_state = flag:closed var:rw_mr_state = flag:renounced var:rw_mr_state = flag:released var:rw_mr_state = flag:war_observed } }
+            has_variable = rw_mr_finished_on
+        }
+        trigger_if = {
+            limit = { var:rw_mr_state = flag:war_observed }
+            has_variable = rw_mr_observed_on
+            var:rw_mr_observed_on = var:rw_mr_finished_on
+        }
+        OR = {
+            var:rw_mr_state = flag:offered var:rw_mr_state = flag:active
+            var:rw_mr_state = flag:closed var:rw_mr_state = flag:renounced
+            var:rw_mr_state = flag:released var:rw_mr_state = flag:war_observed
+            var:rw_mr_state = flag:elapsed
+        }
+    }
+}
+rw_mr_can_accept_trigger = {
+    rw_mr_view_trigger = yes
+    this = scope:rw_mr_beneficiary
+    scope:rw_mr_provider = { rw_service_party_eligible_trigger = yes is_imprisoned = no }
+    scope:rw_mr_beneficiary = { rw_service_party_eligible_trigger = yes is_imprisoned = no }
+    scope:rw_mr_record = { var:rw_mr_state = flag:offered has_variable = rw_mr_offer_window }
+}
+rw_mr_active_trigger = {
+    rw_mr_view_trigger = yes
+    scope:rw_mr_record = { var:rw_mr_state = flag:active has_variable = rw_mr_accepted_on has_variable = rw_mr_due }
+}
+rw_mr_can_renounce_trigger = { rw_mr_active_trigger = yes this = scope:rw_mr_provider }
+rw_mr_can_release_trigger = { rw_mr_active_trigger = yes this = scope:rw_mr_beneficiary }
+rw_mr_can_close_trigger = {
+    rw_mr_view_trigger = yes
+    scope:rw_mr_record = { var:rw_mr_state = flag:offered }
+}
+# Native on_war_started context; missing/changed scopes are not inferred.
+rw_mr_native_context_trigger = {
+    exists = scope:war
+    exists = scope:attacker
+    exists = scope:defender
+    NOT = { scope:attacker = scope:defender }
+    scope:attacker = { is_alive = yes this = scope:war.primary_attacker }
+    scope:defender = { is_alive = yes this = scope:war.primary_defender }
+}
+# Story scope, checked at the callback instant; no stored war object is retained.
+rw_mr_observable_trigger = {
+    rw_mr_native_context_trigger = yes
+    story_type = story_rw_military_restraint
+    story_owner = scope:attacker
+    var:rw_mr_schema = 1
+    var:rw_mr_provider = scope:attacker
+    var:rw_mr_beneficiary = scope:defender
+    var:rw_mr_state = flag:active
+    has_variable = rw_mr_serial
+    has_variable = rw_mr_accepted_on
+    has_variable = rw_mr_due
+    has_variable = rw_mr_retained
+}

@@ -1,0 +1,23 @@
+# Personal memory, never migrated to a successor or any native war story.
+story_rw_military_restraint = {
+    on_setup = { set_variable = { name = rw_mr_state value = flag:initialising } }
+    on_owner_death = { end_story = yes }
+    effect_group = {
+        days = 60
+        # Local neutral cleanup only. Absence of an observation is not fulfillment.
+        triggered_effect = {
+            trigger = {
+                var:rw_mr_schema = 1
+                OR = {
+                    AND = { var:rw_mr_state = flag:offered NOT = { has_variable = rw_mr_offer_window } }
+                    AND = { var:rw_mr_state = flag:active NOT = { has_variable = rw_mr_due } }
+                }
+            }
+            effect = { set_variable = { name = rw_mr_state value = flag:elapsed } }
+        }
+        triggered_effect = {
+            trigger = { NOT = { has_variable = rw_mr_retained } }
+            effect = { end_story = yes }
+        }
+    }
+}
