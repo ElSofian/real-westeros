@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "status": "source references only; engine semantics and compatibility unverified",
+  "files": [
+    {
+      "path": "AGOT/events/dlc/ep3/ep3_interactions_events.txt",
+      "sha256": "8cb5363379d59afb88ec813ba5298cea639b4d33df78a595430126c170e086e4",
+      "lines": [
+        3066,
+        3082,
+        3086
+      ],
+      "purpose": "Native validity and arrest dispatch with decline send threshold"
+    },
+    {
+      "path": "AGOT/common/character_interactions/00_prison_interactions.txt",
+      "sha256": "04d7f3975b951537b34b0cbb264e0cc2eeb7ac05c21d63c7c31d8b1d593ef750",
+      "lines": [
+        1,
+        118,
+        164,
+        213,
+        229,
+        271,
+        450
+      ],
+      "purpose": "Native imprisonment conditions, optional hook, cost and accept/decline handling"
+    },
+    {
+      "path": "AGOT/common/script_values/00_diarchy_values.txt",
+      "sha256": "c0988dacc27b82655deae3777fe9e63b23397f557790c5541021063b9284eef7",
+      "lines": [
+        3025
+      ],
+      "purpose": "Native diarchy surcharge context, excluded from this route"
+    }
+  ]
+}

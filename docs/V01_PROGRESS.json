@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "0c3809f6c1b6d7d9a01d56e0e86daee3354df276",
+  "assessed_commit": "e1f842e6b6a637d5feb9a1f94cc469c711537c20",
   "lots": [
     {
       "id": "W",
@@ -231,8 +231,13 @@
           "id": "J2",
           "points": 3,
           "acceptance": "Sanction individuelle réellement exécutée via chemin natif joueur/IA, avec refus et résistance",
-          "status": "open",
-          "evidence": []
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_NATIVE_JUSTICE_ACTIONS.md",
+            "mod/real_westeros/common/scripted_triggers/rw_justice_action_triggers.txt",
+            "mod/real_westeros/common/scripted_effects/rw_justice_action_effects.txt",
+            "mod/real_westeros/events/rw_justice_action_events.txt"
+          ]
         },
         {
           "id": "J3",
@@ -514,6 +519,38 @@
       "reference": "0c3809f6c1b6d7d9a01d56e0e86daee3354df276",
       "note": "AI3 source : politique CK3 partagée entre négociation de service et réparation de différend ; relation, ressources et engagements personnels, plus charge de guerre. +2 source, aucun test moteur.",
       "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9"
+    },
+    {
+      "date": "2026-11-01",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2"
+      ],
+      "score": 43,
+      "reference": "e1f842e6b6a637d5feb9a1f94cc469c711537c20",
+      "note": "J2 source : demande d’arrestation individuelle native explicite, joueur/IA, refus/résistance laissés au natif, envoi non forcé et reçu de tentative uniquement. Voie sans faveur utilisable/diarchie active. +3 source ; moteur non testé."
     }
   ]
 }

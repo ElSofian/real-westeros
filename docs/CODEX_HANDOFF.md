@@ -13,7 +13,13 @@ measurable yet. AI3 now adds +2 source points: **40/100**, engine still **0/20**
 Read RW010_CONTEXTUAL_AI.md: shared CK3 values change service acceptance and political
 repair weights using own opinion, actual resource reserve and own commitments, plus
 war burden. Existing costs, consent, refusal, native state and targeting remain.
-Next target **J2**, then W1/W2 and other open roadmap criteria. Do not endlessly extend credited contract/dialogue variants.
+J2 now adds +3 source points: **43/100**, engine **0/20**. Read
+RW010_NATIVE_JUSTICE_ACTIONS.md for the conservative native arrest-request path,
+shared player/AI with one next-day fresh-record opportunity, exact-target confirmation,
+current native reason/validity, no usable hook/active diarchy and pre-dispatch attempt
+receipt (never completed punishment). Native refusal/resistance remain native; all
+actual semantics await final testing. Next target **W1/W2** under RW-004, then other
+open roadmap criteria. Do not endlessly extend credited contract/dialogue variants.
 
 RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remains
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
@@ -246,7 +252,7 @@ only. Base-mod files are unchanged. No native-window cancel hook, working engine
 route, unlawful-war verdict or successful CB/cost/Mega War lifecycle is established.
 All game tests stay in the final campaign. This is not a new G1-first blocker for
 independent development. Read the new guide before generating/installing the probe.
-Next work follows V01_ROADMAP.md, starting with J2; historical wider-clause suggestions are superseded. All G2 engine behavior and
+Next work follows V01_ROADMAP.md, starting with W1/W2; historical wider-clause suggestions are superseded. All G2 engine behavior and
 universal landholding enforcement remains
 unresolved and must not be replaced by this political mechanism;
 never force the no-tyranny imprisonment helper as a legality check. Keep knowledge,
