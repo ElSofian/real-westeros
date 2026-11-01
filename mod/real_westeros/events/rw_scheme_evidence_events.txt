@@ -69,6 +69,12 @@ rw_scheme_evidence.0001 = {
         }
     }
     option = {
+        name = rw_justice_action.open
+        trigger = { rw_ja_can_open_trigger = yes }
+        rw_ja_open_effect = yes
+        ai_chance = { base = 0 }
+    }
+    option = {
         name = rw_scheme_justice.open
         trigger = { rw_scheme_justice_view_trigger = yes }
         if = {

@@ -79,6 +79,7 @@ rw_scheme_create_evidence_effect = {
                 set_variable = { name = rw_evidence_participant value = scope:rw_scheme_participant }
             }
         }
+        rw_ja_schedule_effect = yes
         rw_scheme_response_initialise_effect = yes
         rw_house_schedule_censure_review_effect = yes
         rw_ri_schedule_effect = yes

@@ -1,0 +1,34 @@
+namespace = rw_justice_actions
+
+# Player and AI make the same explicit choice, with native validity checked again.
+rw_justice_actions.0001 = {
+    type = character_event
+    title = rw_justice_action.title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_ja_can_attempt_trigger = yes } desc = rw_justice_action.confirm_desc }
+            desc = rw_justice_action.unavailable
+        }
+    }
+    theme = intrigue
+    option = {
+        name = rw_justice_action.attempt
+        trigger = { rw_ja_can_attempt_trigger = yes }
+        rw_ja_attempt_effect = yes
+        ai_chance = {
+            base = 25
+            modifier = { factor = 2 has_trait = vengeful }
+            modifier = { factor = 0.5 has_trait = forgiving }
+            modifier = { factor = 0.5 is_at_war = yes }
+        }
+    }
+    # Silence/nonintervention is always possible and changes no fact or reason.
+    option = { name = rw_justice_action.leave ai_chance = { base = 50 } }
+}
+
+# A fresh callback offers one delayed opportunity; it never sends an arrest itself.
+rw_justice_actions.0002 = {
+    type = character_event
+    hidden = yes
+    immediate = { rw_ja_open_effect = yes }
+}
