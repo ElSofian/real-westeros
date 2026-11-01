@@ -1,7 +1,7 @@
 ﻿l_english:
- rw_justice_action.title:0 "Consider a native arrest request"
- rw_justice_action.confirm_desc:0 "I may request the arrest of [rw_ja_target.GetTitledFirstName] under the current native rules. A present imprisonment reason is not proof that this plot caused it. Sending may lead to refusal, resistance or other native consequences. This channel uses the standard request without an available hook or active diarchy. It neither guarantees custody nor records a completed punishment."
- rw_justice_action.unavailable:0 "This request is no longer available. The person, record or current native conditions have changed, or this record has already been used for an attempt. No punishment is inferred."
- rw_justice_action.attempt:0 "Send this native arrest request"
+ rw_justice_action.title:0 "Consider an arrest request"
+ rw_justice_action.confirm_desc:0 "I may request the arrest of [rw_ja_target.GetTitledFirstName] under the current rules. The present grounds do not prove guilt for this plot. This request may be refused and lead to resistance or rebellion. Choosing to send it does not guarantee imprisonment."
+ rw_justice_action.unavailable:0 "This record or the present circumstances no longer allow this request. No guilt or completed punishment follows from that."
+ rw_justice_action.attempt:0 "Send the arrest request"
  rw_justice_action.leave:0 "Leave the matter for now"
- rw_justice_action.open:0 "Consider sending an arrest request"
+ rw_justice_action.open:0 "Consider an arrest request"
