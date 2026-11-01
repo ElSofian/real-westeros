@@ -208,7 +208,8 @@ only while exact house owns exact title. No causal grant/legality proof, native
 transfer, automated AI grant or inherited personal guilt. Current roles/revisions
 revalidate every action; reading/recognition never renew terms or public retention.
 Existing storage rehoming carries only public charter fields. Fresh deposit and
-existing active-charter maintenance provide coalesced character-root opportunities;
+existing active-charter maintenance provide coalesced character-root opportunities
+for changed representatives and newly observed exact-house recovery holders;
 older empty entries never get new automatic offers. All engine behavior unverified.
 Next wider institutional/territorial negotiation and contextual consequences across systems. All G2 engine behavior and
 universal landholding enforcement remains

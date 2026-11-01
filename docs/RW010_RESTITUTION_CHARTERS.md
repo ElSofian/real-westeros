@@ -76,7 +76,12 @@ is stored, not an exhaustive history of every reign.
 Fresh deposit can offer the issuer an initial charter menu. Older empty entries can
 be reviewed manually, but maintenance never invents an automatic new offer for them.
 Existing per-entry maintenance offers active-charter opportunities to changed current
-representatives, coalesced by last notified identity before sending. Character hidden
+representatives, coalesced by last notified identity before sending. A current
+head also gets an opportunity when a living member of the exact house is observed
+holding the exact title, coalesced by last notified recovery-holder identity before
+sending. This enables AI satisfaction choices without waiting for a head succession;
+unchanged ownership does not generate recurring reminders. Returning to the same
+last-notified holder or an unobserved transient change is not a guaranteed new notice. Character hidden
 events establish the correct recipient root before reader/role checks; invoking a
 reader helper directly from a story root is avoided. No new callback, timer, index,
 world-pair search or global scan is added. This reuses existing maintenance, not a

@@ -120,8 +120,21 @@ rw_ch_opportunity_effect = {
                 scope:rw_lr_authority.holder = { trigger_event = { id = rw_restitution_charter.0002 } }
             }
             if = {
-                limit = { var:rw_ch_schema = 1 var:rw_ch_state = flag:active has_variable = rw_ch_due NOT = { var:rw_ch_notified_head = scope:rw_lr_house.house_head } }
+                limit = {
+                    var:rw_ch_schema = 1 var:rw_ch_state = flag:active has_variable = rw_ch_due
+                    OR = {
+                        NOT = { var:rw_ch_notified_head = scope:rw_lr_house.house_head }
+                        AND = {
+                            scope:rw_lr_title = { exists = holder holder = { is_alive = yes exists = house house = scope:rw_lr_house } }
+                            NOT = { var:rw_ch_notified_recovery_holder = scope:rw_lr_title.holder }
+                        }
+                    }
+                }
                 set_variable = { name = rw_ch_notified_head value = scope:rw_lr_house.house_head }
+                if = {
+                    limit = { scope:rw_lr_title = { exists = holder holder = { is_alive = yes exists = house house = scope:rw_lr_house } } }
+                    set_variable = { name = rw_ch_notified_recovery_holder value = scope:rw_lr_title.holder }
+                }
                 scope:rw_lr_house.house_head = { trigger_event = { id = rw_restitution_charter.0002 } }
             }
         }
