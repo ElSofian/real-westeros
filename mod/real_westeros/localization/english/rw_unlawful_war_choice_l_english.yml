@@ -22,3 +22,7 @@
  rw_uw.close:0 "Close"
  rw_uw_censured_opinion:0 "Defied my peace"
  rw_uw_refused_stop_opinion:0 "Refused my demand to stop hostilities"
+ rw_uw.native_intervene:0 "Seek a negotiated end to this war."
+ rw_uw.native_intervene_effect:0 "If the native conditions still allow it, I will request negotiations to stop this war. My vassal may refuse or ask for a concession. This does not guarantee peace."
+ rw_uw.native_blocked_title:0 "The intervention could not be requested"
+ rw_uw.native_blocked_notice:0 "The conditions for intervening in this particular war are no longer met. No negotiation, payment or peace has been imposed by this request."

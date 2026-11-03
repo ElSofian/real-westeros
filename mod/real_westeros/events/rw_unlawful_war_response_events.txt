@@ -37,6 +37,19 @@ rw_unlawful_war_response.0001 = {
             modifier = { factor = 2 opinion = { target = scope:rw_uw_attacker value <= -20 } }
         }
     }
+    option = {
+        name = rw_uw.native_intervene
+        trigger = { rw_uw_can_queue_native_trigger = yes }
+        custom_tooltip = rw_uw.native_intervene_effect
+        rw_uw_queue_native_effect = yes
+        ai_chance = {
+            base = 20
+            modifier = { factor = 2 has_trait = just }
+            modifier = { factor = 0.5 is_at_war = yes }
+            modifier = { factor = 0.5 gold < 50 }
+            modifier = { factor = 2 opinion = { target = scope:rw_uw_attacker value <= -20 } }
+        }
+    }
     option = { name = rw_uw.close trigger = { NOT = { rw_uw_issuer_turn_trigger = yes } } }
 }
 rw_unlawful_war_response.0002 = {

@@ -19,14 +19,13 @@ not an exhaustive completion checklist. PR/test counts are not global progress m
 
 **War-track preparation:** RW-004 now has an opt-in exact-target intent diagnostic (G1_INTENT_PROBE.md): pinned native helper/claim inputs, explicit one-day staged confirmation, target/liege/serial guards, owner cleanup and conditional native claim-CB observations. Private generation only; no base-mod behavior changes, actual CB/cost/lifecycle/AI/cancellation semantics unverified. All engine runs remain in the final campaign. This is a bounded parallel track in the backlog, not a new G1-first prerequisite for independent systems.
 
-**Current readiness:** development **62/80**, engine validation **0/20**, total
-**62/100 (+2 AI5)**. Actual opt-in justice/negotiation decision and duplicate markers,
-metadata-only source audit and packaged read-only CPU/memory sampler/aggregate reader
-are ready for the final campaign (RW010_TELEMETRY.md). No CK3 measurements or native
-success inferred. Remaining source criteria: W1…W5 (12), J4/J5 (4), AI4 (2). Next
-inspect existing G1/G3 source constraints for a safe real path before reserving the
-corresponding task. Keep unresolved native capabilities open; no repetitive diagnostics
-or credited dialogue variants. All runtime observations remain in the final campaign.
+**Current readiness:** development **64/80**, engine validation **0/20**, total
+**64/100 (+2 W3)**. Source integration includes discretion to ignore/censure/demand
+and the guarded native stop-attacker-war request; this is not proof of peace or
+special-interface target propagation. See G1_NATIVE_INTERVENTION.md. Remaining
+source criteria: W1/W2/W4/W5 (10), J4/J5 (4), AI4 (2). Keep G1/G3 and native war-AI
+selection constraints visible. All runtime observations remain in the final campaign.
+
 
 
 RW-010 stages: immediate endorsement-for-gold negotiation (experimental scripts); deferred promises and optional personal breach response (experimental scripts, RW010_DEFERRED.md); contextual service-breach mediation (experimental scripts, RW010_CASES.md); independent referred-case records/history (experimental scripts, RW010_RECORDS.md); contested affront allegations/statement disclosure (experimental scripts, RW010_ALLEGATIONS.md); personal consent to conciliatory gestures (experimental scripts, RW010_REPAIR_RESPONSE.md); mutual release of deferred promises (experimental scripts, RW010_MUTUAL_CANCELLATION.md); native murder-scheme observations (experimental scripts, RW010_SCHEME_EVIDENCE.md); voluntary political scheme response (experimental scripts, RW010_SCHEME_RESPONSE.md); current judicial inspection (experimental scripts, RW010_SCHEME_JUSTICE.md); personal prisoner execution/release handoff (experimental scripts, RW010_PRISONER_SENTENCING.md); individual title/status review (experimental scripts, RW010_TITLE_STATUS.md); post-rehabilitation land review/native grant terms (experimental UI, RW010_TITLE_REMEDIES.md); conditional native revocation-context provenance (experimental scripts, RW010_TITLE_PROVENANCE.md); exact-affair title intentions/fresh-transfer association (experimental scripts, RW010_REVOCATION_INTENTS.md); institutional public land-fact archive (experimental scripts, RW010_LAND_REGISTER.md); private restitution discussions/personal refusal response (experimental scripts, RW010_RESTITUTION_DIALOGUES.md); custom coercive justice (todo); political house disfavor/rehabilitation (experimental scripts, RW010_HOUSE_AFFAIRS.md); legal dynastic aftermath/title ban (todo, G3 audit/debug trace; no enforcement); unlawful war stage (todo, G1). See docs/RW010_SERVICES.md for scope and final engine cases.
@@ -57,3 +56,15 @@ cold-start window. The read-only sampler now starts timing at its first real CPU
 observation and requires two genuine observations spanning the requested duration
 while the process remains available. A 700-ms delayed real-probe regression covers
 the failure. No fabricated samples, CK3 result or readiness points.
+
+**W3 native intervention source delivery:** original response/intervention libraries
+are now integrated under base `mod/real_westeros`; the separate PRIVATE generated
+declaration adapter alone overrides the native window and explicitly depends on
+Real Westeros. A fourth sovereign choice queues one next-day guarded native
+stop_attacker_vassal_war_interaction request, preserving native negotiations, costs,
+cooldowns/hooks and refusal. Exact record/roles/authority plus one-total-war guard,
+fresh native validation, target alias check and consumed-before-call receipt.
+No forced peace, copied native penalty or war-initiation AI. W3 qualifies for source
+assessment (+2 after source commit); target propagation and actual outcomes stay
+engine-unverified. G1/W1/W2/W4/W5/AI4 and G3 remain open. G1_NATIVE_INTERVENTION.md
+details final NATIVEWAR-01…09. Do not extend credited dialogue variants for points.

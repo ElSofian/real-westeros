@@ -1,116 +1,85 @@
-# G1 — Candidat isolé : défi explicite dans la fenêtre native
+# G1 — Choix explicite dans la fenêtre native
 
-**Implémentation source expérimentale et privée ; aucun test moteur.** Cette tranche
-RW-004 développe une voie de déclaration, pas un nouveau journal de diagnostic.
-Elle reste extérieure au mod principal. **W1…W5 et AI4 restent ouverts, +0 point.**
-Ni G1 résolu, ni guerre interdite fonctionnelle, ni compatibilité AGOT démontrée.
+**Source expérimentale ; aucun test moteur.** Le choix de défi ajoute une alternative
+locale au contrôle d'autorisation native dans un adaptateur privé séparé. Le mod
+principal ne remplace aucune interaction, loi, CB ou callback de guerre.
+G1, W1/W2, W4/W5 et l'initiative autonome de guerre restent ouverts.
+La réaction W3 et l'intervention native sont décrites dans G1_NATIVE_INTERVENTION.md.
+Leur qualification source ne valide pas le moteur ou la déclaration interdite.
 
-## Choix technique
+## Chemin et périmètre
 
-Le candidat ajoute « Défier l’interdiction de mon suzerain » à la fenêtre native de
-déclaration de guerre. Un appel gardé de réaction est ajouté en fin de `on_accept`. Il ajoute une seule
-alternative au contrôle natif exigeant
-l'absence de besoin de hameçon ou l'option hameçon. L'alternative demande le nouveau
-choix explicite, l'absence d'option hameçon sélectionnée et le contexte courant :
-acteur/cible adultes vivants, libres, titrés et féodaux, distincts, même suzerain
-direct vivant, interdiction interne/totale et helper natif exigeant réellement
-l'autorisation. Une exemption contractuelle que reconnaît déjà ce helper conserve
-sa voie normale. Posséder un hameçon n'impose pas de l'utiliser.
+« Défier l'interdiction de mon suzerain » est un send_option de la fenêtre native,
+pas un ticket extérieur d'une journée. Il exige deux pairs féodaux adultes, vivants,
+libres, titrés, distincts, avec le même suzerain direct vivant et son interdiction
+courante ; le helper natif inchangé doit encore exiger l'autorisation. L'exemption
+contractuelle reconnue par ce helper conserve sa voie native. Le défi est incompatible
+avec la sélection simultanée d'un hameçon. Posséder un hameçon ne force pas à l'utiliser.
 
-Le contrôle du contexte est présent à la visibilité, à la validité de l'option et
-au contrôle final de cible. Le moteur doit encore démontrer ces réévaluations.
-Cocher défi et hameçon ensemble invalide l'option de défi ; aucune consommation
-simultanée n'est ajoutée. Le helper partagé reste **inchangé**, sans récursion.
-Les options natives et leurs conditions restent byte pour byte identiques.
+Les gardes sont réévaluées à la visibilité, validité de l'option et contrôle de cible.
+La sélection du CB/titre, les autres restrictions, les coûts et le corps original
+d'acceptation restent natifs. Aucun CB artificiel, claim accordé ou appel `start_war`.
+Le choix peut accompagner les CB proposés par le moteur ; la première réaction
+originale est limitée à une guerre de revendication exacte et univoque.
 
-Contrairement au ticket préalable du diagnostic G1INT, l'intention est ici un
-`send_option` de l'interaction native : aucune variable, autorisation d'un jour,
-flag personnage, réservation d'un autre personnage ou effet sur ouverture. Fermer
-ou changer de fenêtre devrait abandonner ce choix local ; c'est un contrat moteur
-à vérifier, pas un résultat observé. Le candidat n'appelle ni `start_war`, ni
-`run_interaction`, ni un CB de remplacement. La fenêtre native conserve le choix du
-CB/titre, toutes les restrictions étrangères à cette unique garde, les coûts et
-l'emploi éventuel d'un hameçon dans la voie normale. Tout le corps d'origine de
-`on_accept` est préservé, suivi du seul appel gardé de réaction.
-Le choix n'est pas restreint artificiellement au seul `claim_cb` : les CB réellement
-proposés par le moteur restent natifs, sans nouvel octroi de revendication.
+En fin de `on_accept`, un appel original gardé peut créer ce dossier de réaction.
+Il constate le défi choisi et le contexte au callback, **pas la loi à l'instant
+moteur de déclaration**. Un callback sans guerre admissible ne crée rien ; aucune
+infraction native ou culpabilité héritée n'est inventée. La sélection autonome de
+ce send_option par l'IA native n'est ni fournie ni démontrée. Les négociations
+royales IA ne résolvent pas cette limite d'initiation de guerre.
 
-Aucun callback de guerre/Mega Wars, law, coût ou état de guerre n'est recopié ni
-rejoué. Le candidat ajoute maintenant une réaction personnelle du suzerain en fin
-d'acceptation native : voir G1_ROYAL_RESPONSES.md (ignorer, censurer ou demander l'arrêt,
-avec accusé de réception/refus). Il ne force ni paix ni confiscation. Le contexte et
-l'ordre des callbacks natifs doivent être établis avant de créer un verdict historique. Ne pas présenter un snapshot
-postérieur ou l'ouverture de la fenêtre comme la loi au moment de l'acte.
-
-Les mêmes triggers n'excluent ni humain ni IA. **La sélection autonome du nouveau
-choix par l'IA native n'est pas démontrée et aucune politique d'initiation IA n'est
-implémentée.** Aucun paramètre AI de send_option n'est inventé pour le prétendre.
-Il ne s'agit donc pas d'une livraison complète W2 ou AI4.
-
-## Génération locale privée pour la campagne finale
-
-Le dépôt/ZIP public contient uniquement le générateur et sept fichiers originaux
-(triggers, effets, histoire, événements, opinions et EN/FR), jamais la définition AGOT. Sur la copie de sources installées :
+## Génération et installation privées, pour la campagne finale
 
 ```sh
 python tools/build_g1_native_choice.py --agot-root <dossier-AGOT> --output <nouveau-dossier-prive>
 ```
 
-Le dossier doit être nouveau, extérieur au dépôt et à l'installation AGOT. Il n'est
-jamais installé automatiquement. Le générateur exige la version déclarée AGOT
-0.5.2.1 / support 1.19.0.6 et les trois empreintes privées déjà auditées : interaction
-de guerre/helper dans G1_SOURCE_RECEIPT.json, claim dans G1_COMPLEMENT_RECEIPT.json.
-Ces métadonnées ne vérifient pas l'exécutable CK3. Aucun changement de version/hash
-n'est accepté sans nouvel examen ; aucune nouvelle source à transmettre maintenant.
+Le dossier doit être nouveau, extérieur au dépôt/ZIP extrait et à l'installation.
+Le générateur refuse une version déclarée différente de AGOT 0.5.2.1 / support
+1.19.0.6, un hash inattendu, source symbolique ou layout non reconnu. Les quatre
+fichiers AGOT requis sont les interactions de guerre et de vassaux, le helper
+war-and-peace et le CB de revendication. Les neuf sources originales dans
+`mod/real_westeros` sont aussi contrôlées. Aucun besoin d'un nouvel envoi de fichiers.
 
-Il extrait uniquement la définition native `declare_war_interaction`, ajoute les
-trois fragments originaux, et démontre que leur retrait retrouve exactement les
-octets de la définition d'entrée (UTF-8, y compris CRLF internes). Tout autre bloc
-du fichier AGOT reste absent de l'override généré et demeure fourni par AGOT.
-Le manifeste privé contient des chemins relatifs et empreintes, jamais de chemin
-personnel. Un fichier modifié, lien symbolique, layout inattendu, version différente
-ou destination existante provoque un refus avant création de sortie.
+La sortie contient seulement une définition native adaptée, des descripteurs, un
+reçu et l'avertissement privé. Elle ne recopie plus les bibliothèques originales.
+La suppression des trois fragments (garde, option, appel final) retrouve exactement
+les octets de la définition de déclaration d'origine, y compris UTF-8/CRLF internes.
+Aucun autre bloc du fichier de guerre natif n'est copié dans l'override et le fichier
+natifs d'interactions de vassaux n'est jamais modifié. Les références sont dans
+G1_SOURCE_RECEIPT.json, G1_COMPLEMENT_RECEIPT.json et
+G1_NATIVE_INTERVENTION_SOURCE_RECEIPT.json, sans code propriétaire publié.
 
-**La sortie contient une définition propriétaire AGOT : ne pas la publier, committer
-ou redistribuer.** Son unique override est `zz_rw_native_war_choice.txt`, chargé dans
-un mod séparé `rw_g1_native_choice`. Pour la campagne finale seulement, installer ce
-mod après AGOT et, le cas échéant, Real Westeros ; vérifier que sa définition gagne
-réellement la résolution du playset. N'activer qu'un candidat G1 à la fois : il est
-**incompatible avec les deux diagnostics G1 et tout autre override de déclaration**.
-Le mod de base et son installation normale ne le chargent jamais. Désactivation et
-retour à une sauvegarde jetable restent le moyen de revenir au témoin AGOT seul.
+**Cette sortie contient du code AGOT : ne jamais publier, committer ou redistribuer.**
+Installer AGOT, puis Real Westeros, puis l'adaptateur `rw_g1_native_choice`, dont
+le descripteur dépend explicitement de Real Westeros. Ne pas activer en même temps
+les anciens diagnostics G1 ni un autre override de déclaration. Vérifier le load
+order effectif ; les métadonnées ne démontrent pas l'exécutable, les DLC ou le playset.
+Le ZIP public contient le mod original et le générateur, jamais cet override natif.
+Sans adaptateur, aucune déclaration ordinaire n'alimente le nouveau dossier.
 
-## Vérifications disponibles et limites
+## Vérification et campagne finale
 
-18 tests couvrent la construction réelle sur fixtures synthétiques originales, les
-sources manquantes/modifiées, version, symlinks, destinations, layout, double patch,
-préservation des octets UTF-8/CRLF, isolation, manifeste, gardes natives et textes.
-Une construction privée supplémentaire sur les trois fichiers reçus a réussi avec
-empreintes exactes et une fixture du descripteur déclaré. Cela n'exécute aucun moteur
-et ne démontre pas l'installation réelle, le load order, l'IA, le CB ou les coûts.
+Les tests positifs/négatifs du générateur couvrent les entrées privées synthétiques,
+la préservation des octets, les sources/destinations/versions refusées, la dépendance
+au mod de base et l'absence de bibliothèques dupliquées dans l'adaptateur. Une
+construction locale sur les quatre sources reçues et une fixture des métadonnées
+rapportées ne constitue ni une installation vérifiée ni un lancement CK3.
 
-Les fichiers originaux et le générateur autonome sont inclus dans le ZIP public,
-sous `experiments/` et `tools/`, sans mod optionnel installé ni source propriétaire.
-Le contrôle structurel principal ne transforme pas ces sources en gameplay validé.
-Un autre contrôle caché du moteur peut encore bloquer la guerre malgré cette garde.
+Les cas **G1CHOICE-01…08** restent tous non exécutés : témoin/load order ; vraie
+revendication et coûts exacts ; hameçon/exemptions/absence d'interdit ; contexte
+modifié pendant la fenêtre ; fermeture/annulation/rechargement/retargeting ; autres
+restrictions natives ; victoire/défaite/paix/invalidation/Mega Wars ; initiation IA.
+Ils s'ajoutent aux cas G1ROYAL et NATIVEWAR de leurs guides respectifs. Une guerre
+constatée ou une simple demande ne démontre ni illégalité, paix ou sanction exécutée.
 
-## Cas G1CHOICE-01…08 — tous différés à la campagne finale
+## Migration de l'ancien adaptateur
 
-1. Témoin AGOT seul, puis candidat isolé : comparer l'interface et vérifier la bonne
-   définition chargée, sans perte d'option ni autre interaction du fichier natif.
-2. Interdiction actuelle, deux pairs féodaux, vraie revendication sur le titre choisi :
-   refus sans choix, tentative avec défi, identité exacte du CB/titre/parties et coûts
-   réellement dépensés. Vérifier absence d'autorisation native hameçon.
-3. Hameçon seul, exemption contractuelle et absence d'interdiction : comportement
-   natif inchangé ; défi masqué/invalide. Défi+hameçon ensemble doit refuser l'envoi.
-4. Autre cible, suzerain changé, loi/exemption changée pendant l'interface, acteur/cible
-   invalides : pas de réutilisation du choix hors de son contexte admissible.
-5. Annuler/fermer/recharger/changer de cible ou de CB : aucun coût, infraction,
-   autorisation persistante ou nouveau choix précoché attribué par le candidat.
-6. Restrictions indépendantes (armée levée, dette, trêve/allié culturel, captivité,
-   foi, diarchie, Braavos/Pentos, institutions AGOT) : comparaison stricte au témoin.
-7. Victoire/défaite/paix blanche/invalidation et guerre Mega Wars appropriée :
-   callbacks/coûts/titres/nettoyage natifs, sans nouveau callback ni effet rejoué.
-8. IA↔IA et IA→joueur : constater séparément l'accès/choix natif et les limites
-   d'initiation. Sans chemin autonome réel, W2/AI4 restent ouverts. Aucune guerre
-   constatée ne suffit seule à attribuer une infraction ou à valider la réaction royale.
+L'adaptateur privé porte désormais la version **0.0.2**. À la campagne finale,
+remplacer entièrement son ancien dossier `rw_g1_native_choice` par le nouveau
+dossier généré ; ne pas simplement superposer les fichiers. Les versions précédentes
+contenaient leurs propres bibliothèques, qui pourraient sinon masquer celles du
+mod principal. Mettre à jour Real Westeros avec le même ZIP/commit et comparer les
+neuf empreintes du reçu privé aux sources installées. Le générateur ne supprime ni
+ne remplace automatiquement aucun dossier d'installation.

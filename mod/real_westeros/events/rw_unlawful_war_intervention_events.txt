@@ -1,0 +1,8 @@
+namespace = rw_unlawful_war_intervention
+# Native roles/target are rebound only here, outside the original declaration stack.
+rw_unlawful_war_intervention.0001 = {
+    type = character_event
+    hidden = yes
+    trigger = { rw_uw_native_ticket_trigger = yes }
+    immediate = { rw_uw_send_native_effect = yes }
+}

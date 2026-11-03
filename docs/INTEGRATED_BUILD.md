@@ -123,3 +123,14 @@ story/effects/events/opinions (G1_ROYAL_RESPONSES.md), called only at the end of
 private generated declaration's acceptance. No forced peace, native crime or title
 sanction. Seven templates remain outside base `mod/`; generated native code remains
 private. Human/AI reaction choices do not establish autonomous native war initiation.
+
+## Current W3 integration and private declaration adapter
+
+G1_NATIVE_INTERVENTION.md supersedes the earlier source-kit layout: nine original
+runtime files now live under base `mod/real_westeros`, including the guarded native
+stop-attacker-war request. No native definition or global war hook is added there.
+The private generator now checks four AGOT inputs and produces only a declaration
+adapter explicitly dependent on Real Westeros. It never duplicates the runtime
+libraries. Without that optional adapter, ordinary declarations create no new
+response record. The request is not proof of peace/negotiation; target propagation,
+AI, callbacks and all final scenarios remain engine-unverified.

@@ -1,0 +1,49 @@
+# No native operation during declaration or menu rendering. Revalidate next day.
+rw_uw_queue_native_effect = {
+    if = {
+        limit = { rw_uw_can_queue_native_trigger = yes }
+        scope:rw_uw_record = {
+            set_variable = { name = rw_uw_state value = flag:native_queued }
+            set_variable = { name = rw_uw_native_queued_on value = current_date }
+            remove_variable = rw_uw_issuer_window
+        }
+        trigger_event = { id = rw_unlawful_war_intervention.0001 days = 1 }
+    }
+}
+# Separate event context; never overwrite the declaring interaction's target/roles.
+# Native owns its special interface, cooldown, negotiation, hooks, payments and peace.
+rw_uw_send_native_effect = {
+    if = {
+        limit = { rw_uw_native_ticket_trigger = yes }
+        save_scope_as = actor
+        scope:rw_uw_attacker = { save_scope_as = recipient }
+        scope:rw_uw_war = { save_scope_as = target }
+        if = {
+            limit = { rw_uw_can_send_native_trigger = yes }
+            scope:rw_uw_record = {
+                set_variable = { name = rw_uw_state value = flag:closed }
+                set_variable = { name = rw_uw_result value = flag:native_requested }
+                set_variable = { name = rw_uw_native_dispatched_on value = current_date }
+                remove_variable = rw_uw_live
+            }
+            run_interaction = {
+                interaction = stop_attacker_vassal_war_interaction
+                actor = scope:rw_uw_issuer
+                recipient = scope:rw_uw_attacker
+                send_threshold = decline
+            }
+        }
+        else = {
+            scope:rw_uw_record = {
+                set_variable = { name = rw_uw_state value = flag:closed }
+                set_variable = { name = rw_uw_result value = flag:native_blocked }
+                remove_variable = rw_uw_live
+            }
+            send_interface_message = {
+                type = event_generic_neutral
+                title = rw_uw.native_blocked_title
+                desc = rw_uw.native_blocked_notice
+            }
+        }
+    }
+}
