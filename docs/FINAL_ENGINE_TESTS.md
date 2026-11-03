@@ -1320,3 +1320,15 @@ native restrictions/CB/costs, declaration override load order, lifecycle/Mega Wa
 and actual AI selection. Mutually exclusive with both older G1 probes and every
 other declaration override. No base-mod bypass, lawful/unlawful verdict or royal
 reaction is supplied. Existing G1/G1INT cases remain distinct and unrun.
+
+## Personal sovereign response to native declaration choice — RW-004
+
+No cases executed. G1ROYAL-01…10 in G1_ROYAL_RESPONSES.md cover exact active native
+claim-war intake after original acceptance, one reaction per exact war (including
+closed/inert receipts), original parties/suzerain/title/serial, shared human/AI
+ignore/censure/demand and acknowledgement/refusal, expiry/silence/authority changes,
+owner death, WarScope retention/save-load/cleanup and native CB/cost/Mega Wars
+regression. The new demand does NOT dispatch/force peace or create a native crime.
+This isolated candidate still does not establish historical illegality or autonomous
+war initiation. Public archive contains original sources only, never generated
+native code. All native runs remain deferred to the final campaign.

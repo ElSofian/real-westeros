@@ -9,7 +9,7 @@ not an exhaustive completion checklist. PR/test counts are not global progress m
 | P0 | RW-001 | Initialize public repository, instructions, design summary and gates | Done |
 | P0 | RW-002 | Establish independent mod directory and descriptor with conservative version metadata | Done (scaffold; engine untested) |
 | P0 | RW-003 | Build basic structural checks (file encodings, brace balance, duplicate definitions, localization keys as applicable); avoid false assurance | Done (12 local unit tests; static only) |
-| P0 | RW-004 | Investigate G1 against local AGOT/CK3 sources and create smallest safe experimental war prototype | In progress — isolated private native-window defiance choice candidate plus earlier exact-target diagnostic; no base-mod bypass, engine feasibility unverified |
+| P0 | RW-004 | Investigate G1 against local AGOT/CK3 sources and create smallest safe experimental war prototype | In progress — isolated private native-window defiance/royal-response candidate plus earlier exact-target diagnostic; no base-mod bypass, engine feasibility unverified |
 | P0 | RW-005 | Write reproducible engine test plan and logging for genuine CB / Mega Wars scenarios | Done (test plan only; engine execution pending) |
 | P1 | RW-006 | Identify a viable multi-clause negotiation UI/model or document engine limits (G2) | Done (research + 18 synthetic protocol tests; G2 UI/engine unverified) |
 | P1 | RW-007 | Create persistence model for pending political affairs and obligations | Done (offline snapshot + 16 synthetic tests; CK3 save/load unverified) |
@@ -40,3 +40,14 @@ checked; AI selection/cancel/actual CB costs/load order/Mega Wars await final ca
 W1…W5 / AI4 remain open, **+0 points: development 62/80, engine 0/20, total 62/100**.
 Next advance exact declaration context and autonomous AI on this isolated path when
 source-supported; never turn post-start snapshots into a historical legal verdict.
+
+**RW-004 royal response source extension:** the isolated native-window candidate now
+adds a guarded call after the native acceptance body. One exact active claim-war
+record, fixed original parties/suzerain/title, personal choice to ignore/censure/demand
+an end to hostilities, acknowledgement/refusal and consumed-before-opinion receipts.
+Seven/fourteen-day windows, same guards human/AI, original native CB/cost/lifecycle
+body preserved; no forced peace, title sanction, native crime or autonomous war AI.
+G1_ROYAL_RESPONSES.md covers actual source scope and G1ROYAL-01…10 final cases.
+W1…W5/AI4 remain open, **+0 (62/80 source, 0/20 engine, 62/100 total)**. Next source
+work must address an actual native intervention/coercive path or demonstrated war
+AI selection; a demand receipt alone is not peace, full W3 or G1 clearance.

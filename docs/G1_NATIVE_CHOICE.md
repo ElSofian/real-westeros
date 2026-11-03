@@ -8,7 +8,8 @@ Ni G1 résolu, ni guerre interdite fonctionnelle, ni compatibilité AGOT démont
 ## Choix technique
 
 Le candidat ajoute « Défier l’interdiction de mon suzerain » à la fenêtre native de
-déclaration de guerre. Il ajoute une seule alternative au contrôle natif exigeant
+déclaration de guerre. Un appel gardé de réaction est ajouté en fin de `on_accept`. Il ajoute une seule
+alternative au contrôle natif exigeant
 l'absence de besoin de hameçon ou l'option hameçon. L'alternative demande le nouveau
 choix explicite, l'absence d'option hameçon sélectionnée et le contexte courant :
 acteur/cible adultes vivants, libres, titrés et féodaux, distincts, même suzerain
@@ -28,15 +29,17 @@ flag personnage, réservation d'un autre personnage ou effet sur ouverture. Ferm
 ou changer de fenêtre devrait abandonner ce choix local ; c'est un contrat moteur
 à vérifier, pas un résultat observé. Le candidat n'appelle ni `start_war`, ni
 `run_interaction`, ni un CB de remplacement. La fenêtre native conserve le choix du
-CB/titre, toutes les restrictions étrangères à cette unique garde, les coûts,
-l'emploi éventuel d'un hameçon dans la voie normale et tout son `on_accept`.
+CB/titre, toutes les restrictions étrangères à cette unique garde, les coûts et
+l'emploi éventuel d'un hameçon dans la voie normale. Tout le corps d'origine de
+`on_accept` est préservé, suivi du seul appel gardé de réaction.
 Le choix n'est pas restreint artificiellement au seul `claim_cb` : les CB réellement
 proposés par le moteur restent natifs, sans nouvel octroi de revendication.
 
 Aucun callback de guerre/Mega Wars, law, coût ou état de guerre n'est recopié ni
-rejoué. Aucune qualification d'infraction, réaction royale, sanction ou restitution
-n'est encore attachée au choix : le contexte et l'ordre des callbacks natifs doivent
-être établis avant de créer un verdict historique. Ne pas présenter un snapshot
+rejoué. Le candidat ajoute maintenant une réaction personnelle du suzerain en fin
+d'acceptation native : voir G1_ROYAL_RESPONSES.md (ignorer, censurer ou demander l'arrêt,
+avec accusé de réception/refus). Il ne force ni paix ni confiscation. Le contexte et
+l'ordre des callbacks natifs doivent être établis avant de créer un verdict historique. Ne pas présenter un snapshot
 postérieur ou l'ouverture de la fenêtre comme la loi au moment de l'acte.
 
 Les mêmes triggers n'excluent ni humain ni IA. **La sélection autonome du nouveau
@@ -46,8 +49,8 @@ Il ne s'agit donc pas d'une livraison complète W2 ou AI4.
 
 ## Génération locale privée pour la campagne finale
 
-Le dépôt/ZIP public contient uniquement le générateur et trois fichiers originaux
-(triggers et EN/FR), jamais la définition AGOT. Sur la copie de sources installées :
+Le dépôt/ZIP public contient uniquement le générateur et sept fichiers originaux
+(triggers, effets, histoire, événements, opinions et EN/FR), jamais la définition AGOT. Sur la copie de sources installées :
 
 ```sh
 python tools/build_g1_native_choice.py --agot-root <dossier-AGOT> --output <nouveau-dossier-prive>
@@ -61,7 +64,7 @@ Ces métadonnées ne vérifient pas l'exécutable CK3. Aucun changement de versi
 n'est accepté sans nouvel examen ; aucune nouvelle source à transmettre maintenant.
 
 Il extrait uniquement la définition native `declare_war_interaction`, ajoute les
-deux fragments originaux, et démontre que leur retrait retrouve exactement les
+trois fragments originaux, et démontre que leur retrait retrouve exactement les
 octets de la définition d'entrée (UTF-8, y compris CRLF internes). Tout autre bloc
 du fichier AGOT reste absent de l'override généré et demeure fourni par AGOT.
 Le manifeste privé contient des chemins relatifs et empreintes, jamais de chemin

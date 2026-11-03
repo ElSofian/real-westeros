@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "status": "Private source syntax/context references only; no engine verification",
+  "files": [
+    {
+      "path": "AGOT/common/scripted_effects/00_laamp_effects.txt",
+      "sha256": "c4cd2b2c4385ceefee2a21028da0493b0c9672cbca7dcbd5edec3939262b030f",
+      "markers": {
+        "name = task_contract_war": [
+          203,
+          246,
+          296,
+          336
+        ],
+        "value = scope:war": [
+          204,
+          212,
+          247,
+          255,
+          297,
+          305,
+          337,
+          345
+        ]
+      }
+    },
+    {
+      "path": "AGOT/common/character_interactions/00_war.txt",
+      "sha256": "07c93240045371d3ede417e59607a08e36e331ca995bf448a439cff76233147e",
+      "markers": {
+        "on_accept =": [
+          414,
+          665,
+          1215,
+          2135
+        ],
+        "any_character_war =": [
+          461,
+          481,
+          520,
+          539,
+          605,
+          777,
+          1155,
+          1322,
+          1371,
+          1767,
+          2075,
+          2247,
+          2475,
+          2497
+        ],
+        "primary_attacker = scope:actor": [
+          463,
+          522,
+          541,
+          607,
+          842,
+          1157,
+          1560,
+          2077,
+          2352
+        ],
+        "primary_defender = scope:recipient": [
+          464,
+          523,
+          542,
+          1707,
+          1769,
+          1781,
+          1788,
+          1849,
+          1871,
+          1917,
+          1939,
+          2371,
+          2450
+        ]
+      }
+    }
+  ]
+}

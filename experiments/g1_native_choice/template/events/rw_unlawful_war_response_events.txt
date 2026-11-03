@@ -1,0 +1,64 @@
+namespace = rw_unlawful_war_response
+rw_unlawful_war_response.0001 = {
+    type = character_event
+    title = rw_uw.royal_title
+    desc = rw_uw.royal_desc
+    theme = diplomacy
+    left_portrait = scope:rw_uw_attacker
+    trigger = { rw_uw_issuer_turn_trigger = yes }
+    option = {
+        name = rw_uw.ignore
+        trigger = { rw_uw_issuer_turn_trigger = yes }
+        rw_uw_ignore_effect = yes
+        ai_chance = {
+            base = 20
+            modifier = { factor = 3 is_at_war = yes }
+            modifier = { factor = 2 gold < 50 }
+            modifier = { factor = 2 opinion = { target = scope:rw_uw_attacker value >= 40 } }
+        }
+    }
+    option = {
+        name = rw_uw.censure
+        trigger = { rw_uw_issuer_turn_trigger = yes }
+        custom_tooltip = rw_uw.censure_effect
+        rw_uw_censure_effect = yes
+        ai_chance = { base = 20 modifier = { factor = 2 has_trait = arrogant } modifier = { factor = 2 is_at_war = yes } }
+    }
+    option = {
+        name = rw_uw.demand
+        trigger = { rw_uw_issuer_turn_trigger = yes }
+        custom_tooltip = rw_uw.demand_effect
+        rw_uw_demand_effect = yes
+        ai_chance = {
+            base = 30
+            modifier = { factor = 2 has_trait = just }
+            modifier = { factor = 0.5 is_at_war = yes }
+            modifier = { factor = 0.5 gold < 50 }
+            modifier = { factor = 2 opinion = { target = scope:rw_uw_attacker value <= -20 } }
+        }
+    }
+    option = { name = rw_uw.close trigger = { NOT = { rw_uw_issuer_turn_trigger = yes } } }
+}
+rw_unlawful_war_response.0002 = {
+    type = character_event
+    title = rw_uw.demand_title
+    desc = rw_uw.demand_desc
+    theme = diplomacy
+    left_portrait = scope:rw_uw_issuer
+    trigger = { rw_uw_answer_turn_trigger = yes }
+    option = {
+        name = rw_uw.acknowledge
+        trigger = { rw_uw_answer_turn_trigger = yes }
+        custom_tooltip = rw_uw.acknowledge_effect
+        rw_uw_acknowledge_effect = yes
+        ai_chance = { base = 30 modifier = { factor = 2 has_trait = humble } }
+    }
+    option = {
+        name = rw_uw.refuse
+        trigger = { rw_uw_answer_turn_trigger = yes }
+        custom_tooltip = rw_uw.refuse_effect
+        rw_uw_refuse_effect = yes
+        ai_chance = { base = 15 modifier = { factor = 2 has_trait = stubborn } modifier = { factor = 2 has_trait = arrogant } }
+    }
+    option = { name = rw_uw.close trigger = { NOT = { rw_uw_answer_turn_trigger = yes } } }
+}

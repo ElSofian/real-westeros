@@ -1,0 +1,32 @@
+# Personal receipt owned by the original attacker; no succession/institutional guilt.
+story_rw_unlawful_war_response = {
+    on_setup = { set_variable = { name = rw_uw_state value = flag:initialising } }
+    on_owner_death = { end_story = yes }
+    effect_group = {
+        days = 30
+        triggered_effect = {
+            trigger = { NOT = { rw_uw_active_record_trigger = yes } }
+            effect = { end_story = yes }
+        }
+        triggered_effect = {
+            trigger = {
+                rw_uw_active_record_trigger = yes
+                NOT = { var:rw_uw_state = flag:closed }
+                OR = {
+                    NOT = { has_variable = rw_uw_live }
+                    AND = { var:rw_uw_state = flag:pending NOT = { has_variable = rw_uw_issuer_window } }
+                    AND = { var:rw_uw_state = flag:demanded NOT = { has_variable = rw_uw_answer_window } }
+                }
+            }
+            effect = {
+                set_variable = { name = rw_uw_state value = flag:closed }
+                set_variable = { name = rw_uw_result value = flag:timed_out }
+                remove_variable = rw_uw_live
+                remove_variable = rw_uw_issuer_window
+                remove_variable = rw_uw_answer_window
+            }
+        }
+    }
+    # A closed/inert receipt survives only while its exact war is still active.
+    # It prevents a second on_accept from repeating even a terminal reaction.
+}

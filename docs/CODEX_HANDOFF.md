@@ -134,6 +134,24 @@ G1 probes/war declaration overrides. +0: development 62/80, engine 0/20, total 6
 Next work should extend exact native declaration context/autonomous AI only where
 source supports it, retaining W1…W5/AI4 and G3 blockers until demonstrated.
 
+RW-004 royal responses extend the isolated candidate (G1_ROYAL_RESPONSES.md). A third
+original insertion at the END of native on_accept calls a guarded intake for exactly
+one active claim_cb war with original primary roles. One personal attacker-owned
+story captures exact war/serial/parties/issuer/title. Shared human/AI sovereign choices
+ignore, censure (-10 personal opinion / two years), or demand an end to hostilities;
+attacker acknowledges receipt only or refuses (-15 issuer opinion / two years).
+State consumption precedes opinions/messages; no forced peace, native dispatch,
+crime/reason/title/cost mutation, promise or historical legality verdict. Fixed
+seven/fourteen-day windows; closed receipts remain inert for exact live-war dedup,
+monthly cleanup ends them when that war disappears, owner death does not inherit.
+Source-kit builder now proves all THREE insertions removed restore native bytes.
+Seven original templates plus generator remain public; generated AGOT definition
+is private and never packaged. No new war/lifecycle hook. AI weights use burden,
+means and personal opinion but do not supply native war-initiation AI. W1…W5/AI4
+stay open, +0, development 62/80, engine 0/20, total 62/100; full W3 requires an
+actual supported intervention/coercive path, not interpreting this demand as peace.
+All G1ROYAL-01…10 stay in the final campaign, no intermediate game test requested.
+
 RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remains
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
 and RW010_DEFERRED.md. Contextual service-breach mediation is in RW010_CASES.md. Independent case records/read-only history are in RW010_RECORDS.md. Non-contractual allegations, statements and disclosure are in RW010_ALLEGATIONS.md.

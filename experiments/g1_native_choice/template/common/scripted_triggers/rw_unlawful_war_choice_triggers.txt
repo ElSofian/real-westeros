@@ -30,3 +30,62 @@ rw_uw_selected_defiance_trigger = {
     always = scope:rw_uw_defy
     NOT = { always = scope:hook }
 }
+
+# STORY scope. Only the exact currently active native claim war qualifies.
+rw_uw_active_record_trigger = {
+    story_type = story_rw_unlawful_war_response
+    var:rw_uw_schema = 1
+    exists = var:rw_uw_war
+    exists = var:rw_uw_attacker
+    exists = var:rw_uw_defender
+    story_owner = var:rw_uw_attacker
+    save_temporary_scope_as = rw_uw_check
+    var:rw_uw_attacker = {
+        any_character_war = {
+            this = scope:rw_uw_check.var:rw_uw_war
+            using_cb = claim_cb
+            primary_attacker = scope:rw_uw_check.var:rw_uw_attacker
+            primary_defender = scope:rw_uw_check.var:rw_uw_defender
+        }
+    }
+}
+# Character scope; saved event identity never silently follows a new liege/heir/war.
+rw_uw_response_identity_trigger = {
+    exists = scope:rw_uw_record
+    exists = scope:rw_uw_serial
+    exists = scope:rw_uw_attacker
+    exists = scope:rw_uw_defender
+    exists = scope:rw_uw_issuer
+    exists = scope:rw_uw_authority
+    exists = scope:rw_uw_war
+    scope:rw_uw_record = {
+        rw_uw_active_record_trigger = yes
+        var:rw_uw_serial = scope:rw_uw_serial
+        var:rw_uw_attacker = scope:rw_uw_attacker
+        var:rw_uw_defender = scope:rw_uw_defender
+        var:rw_uw_issuer = scope:rw_uw_issuer
+        var:rw_uw_authority = scope:rw_uw_authority
+        var:rw_uw_war = scope:rw_uw_war
+        has_variable = rw_uw_live
+    }
+    scope:rw_uw_issuer = { is_alive = yes is_adult = yes is_landed = yes is_imprisoned = no }
+    scope:rw_uw_authority = { holder = scope:rw_uw_issuer }
+    scope:rw_uw_attacker = { is_alive = yes is_adult = yes is_imprisoned = no liege = scope:rw_uw_issuer }
+    scope:rw_uw_defender = { is_alive = yes liege = scope:rw_uw_issuer }
+}
+rw_uw_issuer_turn_trigger = {
+    rw_uw_response_identity_trigger = yes
+    this = scope:rw_uw_issuer
+    scope:rw_uw_record = {
+        var:rw_uw_state = flag:pending
+        has_variable = rw_uw_issuer_window
+    }
+}
+rw_uw_answer_turn_trigger = {
+    rw_uw_response_identity_trigger = yes
+    this = scope:rw_uw_attacker
+    scope:rw_uw_record = {
+        var:rw_uw_state = flag:demanded
+        has_variable = rw_uw_answer_window
+    }
+}
