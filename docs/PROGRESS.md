@@ -520,3 +520,6 @@
   G1CHOICE-01…08 added to final campaign; no intermediate run requested. No royal
   response, historical unlawful verdict or autonomous native AI selection claimed.
   W1…W5 and AI4 remain open: **+0, development 62/80, engine 0/20, total 62/100**.
+
+- Readiness checkpoint references source `856d9ee7f69b33f69dcc3260eb3ae02ddf84d185`; frozen criteria and all
+  earlier checkpoints preserved, +0 recorded explicitly for this partial G1 candidate.

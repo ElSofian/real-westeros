@@ -1,7 +1,8 @@
 # Suivi de la première version intégrée — v0.1-plan-1
 
-**Développement : 62/80 · Validation en jeu : 0/20 · Total : 62/100 (+2).**
-AI5 livre l’instrumentation opt-in des décisions/doublons et les outils locaux CPU/mémoire.
+**Développement : 62/80 · Validation en jeu : 0/20 · Total : 62/100 (+0 sur la dernière tranche).**
+AI5 est livré dans les sources. RW-004 ajoute un candidat privé de choix dans la
+fenêtre native ([G1_NATIVE_CHOICE.md](G1_NATIVE_CHOICE.md)), sans clore W1/W2.
 Restent 18 points source : W1…W5, J4/J5 et AI4, dépendants des chemins G1/G3.
 W1/W2 restent ouverts (+0), en attente des observations finales G1 avant voie de production.
 Vitesse encore non mesurable : moins de sept jours de recul sur cette grille.
