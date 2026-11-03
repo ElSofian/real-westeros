@@ -546,3 +546,6 @@
   **+0: development 62/80, engine validation 0/20, total 62/100**. Next work must
   supply source-supported actual native intervention or war-AI selection, not another
   already-credited dialogue variant; unresolved G3 remains visible.
+
+- Sovereign-response source assessment: `7f10109d4ab51b4f0e711c0080851c1db274dce7`; +0 checkpoint appended,
+  frozen rubric/status/evidence and earlier checkpoints preserved; no engine credit.
