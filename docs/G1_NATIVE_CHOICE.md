@@ -73,3 +73,13 @@ modifié pendant la fenêtre ; fermeture/annulation/rechargement/retargeting ; a
 restrictions natives ; victoire/défaite/paix/invalidation/Mega Wars ; initiation IA.
 Ils s'ajoutent aux cas G1ROYAL et NATIVEWAR de leurs guides respectifs. Une guerre
 constatée ou une simple demande ne démontre ni illégalité, paix ou sanction exécutée.
+
+## Migration de l'ancien adaptateur
+
+L'adaptateur privé porte désormais la version **0.0.2**. À la campagne finale,
+remplacer entièrement son ancien dossier `rw_g1_native_choice` par le nouveau
+dossier généré ; ne pas simplement superposer les fichiers. Les versions précédentes
+contenaient leurs propres bibliothèques, qui pourraient sinon masquer celles du
+mod principal. Mettre à jour Real Westeros avec le même ZIP/commit et comparer les
+neuf empreintes du reçu privé aux sources installées. Le générateur ne supprime ni
+ne remplace automatiquement aucun dossier d'installation.

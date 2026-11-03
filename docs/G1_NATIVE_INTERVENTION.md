@@ -122,3 +122,13 @@ Aucune compatibilité G1/G4/G5, performance ou sauvegarde n'est déclarée valid
    rejetée : pas de succession du ticket, nouveau crime, relance ou peine automatique.
 9. Régression victoire/paix/défaite/invalidation/Mega Wars et volume humain/IA :
    comparer au témoin AGOT, mesurer en campagne finale, conserver les limites visibles.
+
+## Migration de l'ancien adaptateur
+
+L'adaptateur privé porte désormais la version **0.0.2**. À la campagne finale,
+remplacer entièrement son ancien dossier `rw_g1_native_choice` par le nouveau
+dossier généré ; ne pas simplement superposer les fichiers. Les versions précédentes
+contenaient leurs propres bibliothèques, qui pourraient sinon masquer celles du
+mod principal. Mettre à jour Real Westeros avec le même ZIP/commit et comparer les
+neuf empreintes du reçu privé aux sources installées. Le générateur ne supprime ni
+ne remplace automatiquement aucun dossier d'installation.

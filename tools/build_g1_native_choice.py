@@ -165,7 +165,7 @@ def build(agot_root, output):
     runtime = template_payload()
     payload = {'common/character_interactions/zz_rw_native_war_choice.txt': b'\xef\xbb\xbf' + patched + b'\n'}
     metadata = ('name="Real Westeros PRIVATE native war choice EXPERIMENT"\n'
-                'version="0.0.1"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
+                'version="0.0.2"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
                 'dependencies={ "Real Westeros" }\n')
     receipt = {'schema': 1, 'status': 'PRIVATE isolated experimental source; NOT engine-tested',
                'reported_agot': fields,
