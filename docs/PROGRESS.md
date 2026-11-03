@@ -610,3 +610,7 @@
   **W1 still open, +0, development 64/80, engine 0/20, total 64/100**.
   Next: actual native war initiation AI or source-supported G3 coercion, not another
   already-credited W3 dialogue variant. No new source upload/intermediate game run.
+
+- W1 preparation assessment: `cf7bac383d9e856d64a2ffa2560f6c1164249f24`; partial evidence recorded while W1
+  remains OPEN. +0 checkpoint dated 2026-11-04; development 64/80, engine 0/20,
+  total 64/100. Frozen rubric, completed criteria and prior history unchanged.
