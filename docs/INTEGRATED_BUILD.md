@@ -117,3 +117,9 @@ public ZIP includes only original templates and the local generator, outside `mo
 It never contains the installed native declaration definition. Do not activate this
 candidate with the older G1 probes or other declaration overrides; base installation
 is unchanged. Native CB/cost/cancel/AI/Mega Wars behavior remains engine-unverified.
+
+The G1 candidate's original source kit now also includes personal sovereign-response
+story/effects/events/opinions (G1_ROYAL_RESPONSES.md), called only at the end of its
+private generated declaration's acceptance. No forced peace, native crime or title
+sanction. Seven templates remain outside base `mod/`; generated native code remains
+private. Human/AI reaction choices do not establish autonomous native war initiation.

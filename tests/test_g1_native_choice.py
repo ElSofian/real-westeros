@@ -52,11 +52,11 @@ class NativeChoiceBuilderTests(unittest.TestCase):
         with patch.object(builder, 'pinned_sources', return_value=self.pins):
             return builder.build(self.agot, self.out)
 
-    def test_only_two_insertions_preserve_native_bytes(self):
+    def test_only_three_insertions_preserve_native_bytes(self):
         for newline in ('\n', '\r\n'):
             raw = FIXTURE.replace('\n',newline).encode()
             original, result = builder.patch_native(b'\xef\xbb\xbf' + raw)
-            self.assertEqual(original, result.replace(builder.GUARD.encode(),b'',1).replace(builder.OPTION.encode(),b'',1))
+            self.assertEqual(original, result.replace(builder.GUARD.encode(),b'',1).replace(builder.OPTION.encode(),b'',1).replace(builder.ACCEPT.encode(),b'',1))
             self.assertEqual([], brace_errors(result.decode()))
             self.assertNotIn(b'synthetic_before', result)
             self.assertNotIn(b'synthetic_after', result)
@@ -64,7 +64,7 @@ class NativeChoiceBuilderTests(unittest.TestCase):
 
     def test_real_original_templates_and_private_manifest(self):
         receipt = self.build()
-        self.assertEqual(4, len(receipt['outputs']))
+        self.assertEqual(8, len(receipt['outputs']))
         for row in receipt['outputs']:
             raw = (self.out / builder.MOD_ID / row['path']).read_bytes()
             self.assertEqual(row['sha256'], hashlib.sha256(raw).hexdigest())
@@ -141,10 +141,11 @@ class NativeChoiceBuilderTests(unittest.TestCase):
 
 class NativeChoiceSourceTests(unittest.TestCase):
     def setUp(self):
-        self.text=(builder.TEMPLATES/builder.FILES[0]).read_text()
+        self.text=(builder.TEMPLATES/'common/scripted_triggers/rw_unlawful_war_choice_triggers.txt').read_text()
 
     def test_same_live_peer_and_native_exception_guards(self):
-        text=clean_script(self.text)[0]
+        start,_,end=builder.bounds(self.text,'rw_uw_peer_ban_trigger')
+        text=clean_script(self.text[start:end])[0]
         self.assertIn('liege = scope:recipient.liege',text)
         self.assertEqual(2,text.count('government_has_flag = government_is_feudal'))
         self.assertEqual(2,text.count('is_imprisoned = no'))
@@ -169,7 +170,8 @@ class NativeChoiceSourceTests(unittest.TestCase):
 
     def test_templates_have_bom_headers_and_complete_localizations(self):
         payload=builder.template_payload()
-        for name in builder.FILES[1:]:
+        for name in builder.FILES:
+            if not name.endswith('.yml'): continue
             self.assertTrue(payload[name].startswith(b'\xef\xbb\xbf'))
             for key in ('rw_uw_defy_option:0','rw_uw_defy_warning:0'):
                 self.assertIn(key,payload[name].decode('utf-8-sig'))

@@ -12,7 +12,11 @@ except ImportError:
 
 REPO = Path(__file__).resolve().parents[1]
 TEMPLATES = REPO / 'experiments/g1_native_choice/template'
-FILES = ('common/scripted_triggers/rw_unlawful_war_choice_triggers.txt',
+FILES = ('common/scripted_effects/rw_unlawful_war_response_effects.txt',
+         'common/story_cycles/rw_unlawful_war_responses.txt',
+         'common/opinion_modifiers/rw_unlawful_war_response_opinions.txt',
+         'events/rw_unlawful_war_response_events.txt',
+         'common/scripted_triggers/rw_unlawful_war_choice_triggers.txt',
          'localization/english/rw_unlawful_war_choice_l_english.yml',
          'localization/french/rw_unlawful_war_choice_l_french.yml')
 INTERACTION = 'common/character_interactions/00_war.txt'
@@ -20,6 +24,7 @@ HELPER = 'common/scripted_triggers/00_war_and_peace_triggers.txt'
 CLAIM = 'common/casus_belli_types/00_claim.txt'
 MOD_ID = 'rw_g1_native_choice'
 # Original additions only. No copied native interaction/helper/CB in this file.
+ACCEPT = '\n    scope:actor = { rw_uw_notice_effect = yes }\n'
 GUARD = '\n            rw_uw_selected_defiance_trigger = yes\n'
 OPTION = '''
     # RW isolated experiment: the native window owns this transient send flag.
@@ -56,7 +61,7 @@ def bounds(text, name):
 
 
 def patch_native(raw):
-    """Insert only one extra OR branch and one send option; preserve all old bytes."""
+    """Insert a guard, option and guarded post-native response; preserve all old bytes."""
     text = raw.decode('utf-8-sig')
     if brace_errors(text):
         raise ValueError('Invalid source structure')
@@ -80,9 +85,14 @@ def patch_native(raw):
     option_at = send[0].end()
     if option_at <= insertion:
         raise ValueError('Unexpected declaration block ordering')
-    patched = native[:option_at] + OPTION + native[option_at:]
+    _, _, accept_end = bounds(native, 'on_accept')
+    accept_at = accept_end - 1
+    if accept_at <= option_at:
+        raise ValueError('Unexpected native acceptance block ordering')
+    patched = native[:accept_at] + ACCEPT + native[accept_at:]
+    patched = patched[:option_at] + OPTION + patched[option_at:]
     patched = patched[:insertion] + GUARD + patched[insertion:]
-    if brace_errors(patched) or patched.replace(GUARD, '', 1).replace(OPTION, '', 1) != native:
+    if brace_errors(patched) or patched.replace(GUARD, '', 1).replace(OPTION, '', 1).replace(ACCEPT, '', 1) != native:
         raise ValueError('Native-byte preservation failed')
     return native.encode('utf-8'), patched.encode('utf-8')
 
@@ -153,9 +163,9 @@ def build(agot_root, output):
                'inputs': [{'path': p, 'sha256': hashlib.sha256(b).hexdigest()} for p,b in sources.items()],
                'native_definition_sha256': hashlib.sha256(original).hexdigest(),
                'patched_definition_sha256': hashlib.sha256(patched).hexdigest(),
-               'native_byte_preservation': 'Removing exactly the two original insertions restores the native definition',
+               'native_byte_preservation': 'Removing exactly the three original insertions restores the native definition',
                'outputs': [{'path': p, 'sha256': hashlib.sha256(b).hexdigest()} for p,b in payload.items()],
-               'limits': ['No unlawful-war verdict, royal response or AI policy is implemented.',
+               'limits': ['No historical unlawful-war verdict, forced peace or war-initiation AI policy is implemented.',
                           'No cost, cancel, callback-order, override-loading or Mega War engine result.']}
     # All validation precedes exclusive directory creation; never touch installation.
     out.mkdir(parents=True, exist_ok=False)

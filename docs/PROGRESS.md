@@ -523,3 +523,29 @@
 
 - Readiness checkpoint references source `856d9ee7f69b33f69dcc3260eb3ae02ddf84d185`; frozen criteria and all
   earlier checkpoints preserved, +0 recorded explicitly for this partial G1 candidate.
+
+- RW-004 / sovereign reaction source (2026-11-03): isolated candidate now appends
+  one guarded original call after the native declaration on_accept body. Exact one
+  active native claim_cb war and original primary roles; personal attacker-owned
+  schema/serial/war/issuer/title receipt, dedup including closed/inert records.
+  Sovereign may ignore, censure (-10 personal opinion / two years), or demand an end
+  to hostilities. Attacker acknowledges receipt (no promise/peace/consent) or refuses
+  (-15 sovereign opinion / two years). Consume before opinion/message, fresh shared
+  human/AI guard, seven-day turns and fixed fourteen-day total, inert exact-war
+  receipt retention and monthly cleanup; no inherited knowledge/authority/guilt.
+  No native war/title/crime/cost operation, forced peace, AI war initiation, global
+  callback or scan. Local native-source construction with descriptor fixture PASS,
+  removal of THREE insertions restores native definition bytes; public kit has seven
+  original templates, generated native code remains private. Thirteen new adversarial
+  source tests plus updated preservation/isolation tests: **905 discovered, 883
+  passed, 22 PowerShell-dependent skips**; mod/isolated-original-module structure,
+  localizations, telemetry neutrality, readiness and whitespace PASS. CI and committed
+  ZIP verified before integration; actual CK3 behavior remains untested.
+  G1ROYAL-01…10 join final campaign. W1…W5/AI4 remain open: a political demand and
+  opinion do not complete native intervention/coercive sanctions or legality.
+  **+0: development 62/80, engine validation 0/20, total 62/100**. Next work must
+  supply source-supported actual native intervention or war-AI selection, not another
+  already-credited dialogue variant; unresolved G3 remains visible.
+
+- Sovereign-response source assessment: `7f10109d4ab51b4f0e711c0080851c1db274dce7`; +0 checkpoint appended,
+  frozen rubric/status/evidence and earlier checkpoints preserved; no engine credit.

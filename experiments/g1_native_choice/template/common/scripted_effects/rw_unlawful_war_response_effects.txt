@@ -1,0 +1,142 @@
+# Called ONLY at the end of the privately generated native on_accept.
+# This observes a selected declaration choice and CURRENT callback context, not
+# historical illegality, native crime, a complete G1 result or inherited guilt.
+rw_uw_notice_effect = {
+    if = {
+        limit = {
+            this = scope:actor
+            rw_uw_selected_defiance_trigger = yes
+            any_character_war = {
+                using_cb = claim_cb
+                primary_attacker = scope:actor
+                primary_defender = scope:recipient
+            }
+            NOT = {
+                any_character_war = {
+                    count >= 2
+                    using_cb = claim_cb
+                    primary_attacker = scope:actor
+                    primary_defender = scope:recipient
+                }
+            }
+        }
+        save_scope_as = rw_uw_attacker
+        scope:recipient = { save_scope_as = rw_uw_defender }
+        liege = { save_scope_as = rw_uw_issuer primary_title = { save_scope_as = rw_uw_authority } }
+        clear_saved_scope = rw_uw_war
+        random_character_war = {
+            limit = { using_cb = claim_cb primary_attacker = scope:rw_uw_attacker primary_defender = scope:rw_uw_defender }
+            save_scope_as = rw_uw_war
+        }
+        if = {
+            limit = {
+                exists = scope:rw_uw_war
+                NOT = {
+                    any_owned_story = {
+                        story_type = story_rw_unlawful_war_response
+                        story_owner = scope:rw_uw_attacker
+                        var:rw_uw_schema = 1
+                        var:rw_uw_war = scope:rw_uw_war
+                    }
+                }
+            }
+            clear_saved_scope = rw_uw_record
+            create_story = { type = story_rw_unlawful_war_response save_scope_as = rw_uw_record }
+            if = {
+                limit = {
+                    exists = scope:rw_uw_record
+                    scope:rw_uw_record = {
+                        story_type = story_rw_unlawful_war_response
+                        story_owner = scope:rw_uw_attacker
+                        NOT = { has_variable = rw_uw_serial }
+                    }
+                }
+                change_variable = { name = rw_uw_serial_counter add = 1 }
+                save_scope_value_as = { name = rw_uw_serial value = var:rw_uw_serial_counter }
+                scope:rw_uw_record = {
+                    set_variable = { name = rw_uw_schema value = 1 }
+                    set_variable = { name = rw_uw_serial value = scope:rw_uw_serial }
+                    set_variable = { name = rw_uw_attacker value = scope:rw_uw_attacker }
+                    set_variable = { name = rw_uw_defender value = scope:rw_uw_defender }
+                    set_variable = { name = rw_uw_issuer value = scope:rw_uw_issuer }
+                    set_variable = { name = rw_uw_authority value = scope:rw_uw_authority }
+                    set_variable = { name = rw_uw_war value = scope:rw_uw_war }
+                    set_variable = { name = rw_uw_seen_on value = current_date }
+                    set_variable = { name = rw_uw_source value = flag:native_choice_accept }
+                    set_variable = { name = rw_uw_state value = flag:pending }
+                    set_variable = { name = rw_uw_live value = flag:yes days = 14 }
+                    set_variable = { name = rw_uw_issuer_window value = flag:yes days = 7 }
+                }
+                scope:rw_uw_issuer = { trigger_event = { id = rw_unlawful_war_response.0001 } }
+            }
+        }
+    }
+}
+# Guarded, shared human/AI choices. Consume state before any opinion or message.
+rw_uw_ignore_effect = {
+    if = {
+        limit = { rw_uw_issuer_turn_trigger = yes }
+        scope:rw_uw_record = {
+            set_variable = { name = rw_uw_state value = flag:closed }
+            set_variable = { name = rw_uw_result value = flag:ignored }
+            remove_variable = rw_uw_issuer_window
+            remove_variable = rw_uw_live
+        }
+    }
+}
+rw_uw_censure_effect = {
+    if = {
+        limit = { rw_uw_issuer_turn_trigger = yes }
+        scope:rw_uw_record = {
+            set_variable = { name = rw_uw_state value = flag:closed }
+            set_variable = { name = rw_uw_result value = flag:censured }
+            remove_variable = rw_uw_issuer_window
+            remove_variable = rw_uw_live
+        }
+        add_opinion = { target = scope:rw_uw_attacker modifier = rw_uw_censured_opinion }
+        scope:rw_uw_attacker = {
+            send_interface_message = { type = event_generic_neutral title = rw_uw.censure_title desc = rw_uw.censure_notice }
+        }
+    }
+}
+rw_uw_demand_effect = {
+    if = {
+        limit = { rw_uw_issuer_turn_trigger = yes }
+        scope:rw_uw_record = {
+            set_variable = { name = rw_uw_state value = flag:demanded }
+            set_variable = { name = rw_uw_answer_window value = flag:yes days = 7 }
+            remove_variable = rw_uw_issuer_window
+        }
+        scope:rw_uw_attacker = { trigger_event = { id = rw_unlawful_war_response.0002 } }
+    }
+}
+# Acknowledgement is NOT compliance, peace, a promise, legal consent or confession.
+rw_uw_acknowledge_effect = {
+    if = {
+        limit = { rw_uw_answer_turn_trigger = yes }
+        scope:rw_uw_record = {
+            set_variable = { name = rw_uw_state value = flag:closed }
+            set_variable = { name = rw_uw_result value = flag:acknowledged }
+            remove_variable = rw_uw_answer_window
+            remove_variable = rw_uw_live
+        }
+        scope:rw_uw_issuer = {
+            send_interface_message = { type = event_generic_neutral title = rw_uw.answer_title desc = rw_uw.acknowledged_notice }
+        }
+    }
+}
+rw_uw_refuse_effect = {
+    if = {
+        limit = { rw_uw_answer_turn_trigger = yes }
+        scope:rw_uw_record = {
+            set_variable = { name = rw_uw_state value = flag:closed }
+            set_variable = { name = rw_uw_result value = flag:refused }
+            remove_variable = rw_uw_answer_window
+            remove_variable = rw_uw_live
+        }
+        scope:rw_uw_issuer = {
+            add_opinion = { target = scope:rw_uw_attacker modifier = rw_uw_refused_stop_opinion }
+            send_interface_message = { type = event_generic_neutral title = rw_uw.answer_title desc = rw_uw.refused_notice }
+        }
+    }
+}
