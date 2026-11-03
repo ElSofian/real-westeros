@@ -58,8 +58,10 @@ rw_ba_propose_effect = {
     }
 }
 rw_ba_counter_effect = {
+    rw_tm_emit_effect = { FAMILY = bundle ACTION = counter STAGE = evaluated }
     if = {
         limit = { rw_ba_responder_trigger = yes }
+        rw_tm_emit_effect = { FAMILY = bundle ACTION = counter STAGE = authorized }
         save_scope_as = rw_ba_counterer
         scope:rw_ba_record = {
             rw_contract_counter_effect = { PREFIX = ba TURN_A = ruler TURN_B = head }
@@ -68,12 +70,16 @@ rw_ba_counter_effect = {
         }
         if = { limit = { this = scope:rw_ba_payer } scope:rw_ba_payee = { trigger_event = { id = rw_multi_actions.0001 days = 1 } } }
         else = { scope:rw_ba_payer = { trigger_event = { id = rw_multi_actions.0001 days = 1 } } }
+        rw_tm_emit_effect = { FAMILY = bundle ACTION = counter STAGE = complete }
     }
+    else = { rw_tm_emit_effect = { FAMILY = bundle ACTION = counter STAGE = denied } }
 }
 # Explicit acceptance binds ALL THREE clauses; no transfer/performance at signature.
 rw_ba_accept_effect = {
+    rw_tm_emit_effect = { FAMILY = bundle ACTION = accept STAGE = evaluated }
     if = {
         limit = { rw_ba_responder_trigger = yes }
+        rw_tm_emit_effect = { FAMILY = bundle ACTION = accept STAGE = authorized }
         save_scope_as = rw_ba_signer
         scope:rw_ba_record = {
             rw_contract_close_effect = { PREFIX = ba }
@@ -90,51 +96,69 @@ rw_ba_accept_effect = {
         rw_ba_notify_effect = yes
         scope:rw_ba_payer = { trigger_event = { id = rw_multi_actions.0002 days = 31 } }
         scope:rw_ba_payee = { trigger_event = { id = rw_multi_actions.0002 days = 31 } }
+        rw_tm_emit_effect = { FAMILY = bundle ACTION = accept STAGE = complete }
     }
+    else = { rw_tm_emit_effect = { FAMILY = bundle ACTION = accept STAGE = denied } }
 }
 rw_ba_close_offer_effect = {
+    rw_tm_emit_effect = { FAMILY = bundle ACTION = close STAGE = evaluated }
     if = {
         limit = { rw_ba_can_close_offer_trigger = yes }
+        rw_tm_emit_effect = { FAMILY = bundle ACTION = close STAGE = authorized }
         scope:rw_ba_record = {
             rw_contract_close_effect = { PREFIX = ba }
             set_variable = { name = rw_ba_agreement value = flag:declined }
         }
         rw_ba_notify_effect = yes
+        rw_tm_emit_effect = { FAMILY = bundle ACTION = close STAGE = complete }
     }
+    else = { rw_tm_emit_effect = { FAMILY = bundle ACTION = close STAGE = denied } }
 }
 rw_ba_pay_effect = {
+    rw_tm_emit_effect = { FAMILY = bundle ACTION = gold STAGE = evaluated }
     if = {
         limit = { rw_ba_can_pay_trigger = yes }
+        rw_tm_emit_effect = { FAMILY = bundle ACTION = gold STAGE = authorized }
         scope:rw_ba_record = {
             set_variable = { name = rw_ba_gold value = flag:attempted }
             set_variable = { name = rw_ba_gold_actor value = scope:rw_ba_payer }
             rw_contract_consume_effect = { PREFIX = ba }
         }
+        rw_tm_commit_effect = { FAMILY = bundle ACTION = gold KEY = bundle_gold CONTAINER = scope:rw_ba_record }
         add_gold = { value = scope:rw_ba_price multiply = -1 }
         scope:rw_ba_payee = { add_gold = scope:rw_ba_price }
         scope:rw_ba_record = { set_variable = { name = rw_ba_gold value = flag:done } rw_ba_resolve_effect = yes }
         rw_ba_notify_effect = yes
+        rw_tm_emit_effect = { FAMILY = bundle ACTION = gold STAGE = complete }
     }
+    else = { rw_tm_emit_effect = { FAMILY = bundle ACTION = gold STAGE = denied } }
 }
 rw_ba_support_effect = {
+    rw_tm_emit_effect = { FAMILY = bundle ACTION = support STAGE = evaluated }
     if = {
         limit = { rw_ba_can_support_trigger = yes }
+        rw_tm_emit_effect = { FAMILY = bundle ACTION = support STAGE = authorized }
         scope:rw_ba_record = {
             set_variable = { name = rw_ba_support value = flag:attempted }
             set_variable = { name = rw_ba_support_actor value = scope:rw_ba_payer }
             set_variable = { name = rw_ba_support_on value = current_date }
             set_variable = { name = rw_ba_support_revision value = scope:rw_ba_revision }
         }
+        rw_tm_commit_effect = { FAMILY = bundle ACTION = support KEY = bundle_support CONTAINER = scope:rw_ba_record }
         scope:rw_ba_payee = { add_prestige = 50 }
         rw_pm_public_support_effect = { PROVIDER = scope:rw_ba_payer CLIENT = scope:rw_ba_payee }
         scope:rw_ba_record = { set_variable = { name = rw_ba_support value = flag:done } rw_ba_resolve_effect = yes }
         rw_ba_notify_effect = yes
+        rw_tm_emit_effect = { FAMILY = bundle ACTION = support STAGE = complete }
     }
+    else = { rw_tm_emit_effect = { FAMILY = bundle ACTION = support STAGE = denied } }
 }
 # Bind current parent aliases ONLY after exact original source/revision/role checks.
 rw_ba_release_effect = {
+    rw_tm_emit_effect = { FAMILY = bundle ACTION = release STAGE = evaluated }
     if = {
         limit = { rw_ba_can_release_trigger = yes }
+        rw_tm_emit_effect = { FAMILY = bundle ACTION = release STAGE = authorized }
         scope:rw_ba_record.var:rw_ba_source = { rw_lr_snapshot_effect = yes rw_ch_snapshot_effect = yes }
         scope:rw_ba_payer = { save_scope_as = rw_ch_ruler }
         scope:rw_ba_payee = { save_scope_as = rw_ch_head }
@@ -148,6 +172,7 @@ rw_ba_release_effect = {
                 set_variable = { name = rw_ba_release_revision value = scope:rw_ba_parent_revision }
                 change_variable = { name = rw_ba_release_revision add = 1 }
             }
+            rw_tm_commit_effect = { FAMILY = bundle ACTION = release KEY = bundle_release CONTAINER = scope:rw_ba_record }
             rw_ch_release_effect = yes
             if = {
                 limit = {
@@ -168,11 +193,15 @@ rw_ba_release_effect = {
             scope:rw_ba_record = { rw_ba_resolve_effect = yes }
             rw_ba_notify_effect = yes
         }
+        rw_tm_emit_effect = { FAMILY = bundle ACTION = release STAGE = complete }
     }
+    else = { rw_tm_emit_effect = { FAMILY = bundle ACTION = release STAGE = denied } }
 }
 rw_ba_refuse_effect = {
+    rw_tm_emit_effect = { FAMILY = bundle ACTION = refuse_$LEG$ STAGE = evaluated }
     if = {
         limit = { rw_ba_can_refuse_trigger = { LEG = $LEG$ PAYER = $PAYER$ PAYEE = $PAYEE$ } }
+        rw_tm_emit_effect = { FAMILY = bundle ACTION = refuse_$LEG$ STAGE = authorized }
         save_scope_as = rw_ba_refuser
         scope:rw_ba_record = {
             set_variable = { name = rw_ba_$LEG$ value = flag:refused }
@@ -181,7 +210,9 @@ rw_ba_refuse_effect = {
             rw_ba_resolve_effect = yes
         }
         rw_ba_notify_effect = yes
+        rw_tm_emit_effect = { FAMILY = bundle ACTION = refuse_$LEG$ STAGE = complete }
     }
+    else = { rw_tm_emit_effect = { FAMILY = bundle ACTION = refuse_$LEG$ STAGE = denied } }
 }
 rw_ba_notify_effect = {
     scope:rw_ba_payer = { if = { limit = { is_alive = yes } trigger_event = { id = rw_multi_actions.0001 days = 1 } } }

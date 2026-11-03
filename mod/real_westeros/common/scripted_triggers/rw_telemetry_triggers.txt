@@ -1,0 +1,6 @@
+# Diagnostic state only. Never referenced by a gameplay condition or AI weight.
+rw_tm_enabled_trigger = {
+    has_global_variable = rw_tm_enabled
+    has_global_variable = rw_tm_budget
+    global_var:rw_tm_budget > 0
+}

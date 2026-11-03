@@ -14,8 +14,10 @@ rw_jp_open_effect = {
 # Both explicit decisions share ONE receipt and ONE native dispatch. Native owns
 # death/default methods/player response, stress, tyranny, opinion and reason use.
 rw_jp_attempt_effect = {
+    rw_tm_emit_effect = { FAMILY = justice ACTION = execute STAGE = evaluated }
     if = {
         limit = { rw_jp_can_attempt_trigger = yes }
+        rw_tm_emit_effect = { FAMILY = justice ACTION = execute STAGE = authorized }
         scope:rw_scheme_evidence_record = {
             set_variable = { name = rw_jp_schema value = 1 }
             set_variable = { name = rw_jp_actor value = scope:rw_scheme_observer }
@@ -24,13 +26,16 @@ rw_jp_attempt_effect = {
             set_variable = { name = rw_jp_dispatched_on value = current_date }
             set_variable = { name = rw_jp_pair_window value = flag:yes days = 10 }
         }
+        rw_tm_commit_effect = { FAMILY = justice ACTION = execute KEY = execute CONTAINER = scope:rw_scheme_evidence_record }
         run_interaction = {
             interaction = execute_prisoner_interaction
             actor = root
             recipient = scope:rw_jp_target
             send_threshold = decline
         }
+        rw_tm_emit_effect = { FAMILY = justice ACTION = execute STAGE = complete }
     }
+    else = { rw_tm_emit_effect = { FAMILY = justice ACTION = execute STAGE = denied } }
 }
 rw_jp_open_receipt_effect = {
     if = {
@@ -65,6 +70,7 @@ rw_jp_opportunity_effect = {
         save_scope_value_as = { name = rw_scheme_evidence_serial value = var:rw_evidence_serial }
         story_owner = { save_scope_as = rw_scheme_observer }
         scope:rw_scheme_observer = {
+            rw_tm_emit_effect = { FAMILY = justice ACTION = custody_opportunity STAGE = visit }
             if = {
                 limit = { rw_jp_can_open_trigger = yes }
                 scope:rw_scheme_evidence_record = { set_variable = { name = rw_jp_notified value = flag:yes } }

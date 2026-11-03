@@ -485,3 +485,16 @@
   default options/costs/player response, actual result, stale basis/custody, dedup,
   privacy, save/cleanup, AI volume and G4/G5 regression. Next independent AI5;
   J4/J5/G3 and AI4/war gates remain open. No intermediate CK3 run requested.
+
+- RW-010 / AI5 instrumentation (2026-11-03): opt-in static ASCII decision markers
+  wired into actual multi-action agreement and native arrest/sentence effects and
+  nonintervention choices; guarded budget 5,000 / 90-day expiry, record-local duplicate
+  observation immediately before irreversible dispatch/performance. No logging-driven
+  eligibility, costs, native action, names/IDs or network. `complete` is handler return,
+  never native success. Six-file removal/hash proof restores original gameplay text;
+  logger metadata vocabulary audited. Added offline aggregate reader and read-only
+  PowerShell process CPU/memory sampler, packaged with guide/registry/syntax receipts;
+  TM-01…08 queued for final campaign. Local suite: **874 discovered, 852 passed,
+  22 PowerShell-dependent skips**; structural validator, telemetry audit and whitespace
+  checks PASS. Linux and Windows PowerShell CI required before merge. No engine run,
+  performance result or G1/G3 compatibility claim. Readiness reassessed after source commit.

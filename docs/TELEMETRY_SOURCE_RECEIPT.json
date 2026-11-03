@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "status": "Source syntax references only; telemetry is not engine-tested",
+  "files": [
+    {
+      "path": "AGOT/common/scripted_effects/00_agot_artifact_sell_effects.txt",
+      "sha256": "0930d9aad1d0de2a385e75b4048fb3d1acfc66bbecee7cf06645605472aaea78",
+      "lines": [
+        668
+      ],
+      "purpose": "Native global variable arithmetic"
+    },
+    {
+      "path": "AGOT/common/on_action/game_start.txt",
+      "sha256": "ded5ac77f002c823ff8086c94e160845d6901af1def90157ba35632eacd12913",
+      "lines": [
+        15
+      ],
+      "purpose": "Timed native global variable"
+    },
+    {
+      "path": "AGOT/common/on_action/agot_on_actions/agot_esr_on_actions.txt",
+      "sha256": "2b2eec77af46df0bfd5b17556c445d0aec06d74c4a52d1a96e79cd6c713c5ebd",
+      "lines": [
+        285
+      ],
+      "purpose": "Native debug_log output"
+    }
+  ]
+}
