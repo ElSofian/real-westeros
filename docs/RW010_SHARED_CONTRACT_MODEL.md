@@ -4,6 +4,10 @@
 both private allegation settlements and public charter-release compensation.
 This is an integrated script refactor, not a new dialogue variant or Python runtime.
 
+N5 now also binds this protocol to `ba` multi-action agreements; its financial
+`paid` state describes only the gold leg, while the complete agreement has a separate
+result. See RW010_MULTI_ACTION_AGREEMENTS.md. N4's original delivery/history remains.
+
 ## Shared protocol and existing storage
 
 The model binds a `PREFIX` and two responder flags to the existing story's schema,

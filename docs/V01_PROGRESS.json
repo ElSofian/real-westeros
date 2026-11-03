@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "1143298fe0142bf0acd4abefe054e34622dc1df0",
+  "assessed_commit": "d841050f5f99c624361992e1634fa784f4974346",
   "lots": [
     {
       "id": "W",
@@ -159,8 +159,14 @@
           "id": "N5",
           "points": 2,
           "acceptance": "Accord combinant plusieurs actions, consentement commun et résultats par action",
-          "status": "open",
-          "evidence": []
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_MULTI_ACTION_AGREEMENTS.md",
+            "mod/real_westeros/common/scripted_triggers/rw_multi_action_triggers.txt",
+            "mod/real_westeros/common/scripted_effects/rw_multi_action_effects.txt",
+            "mod/real_westeros/events/rw_multi_action_events.txt",
+            "mod/real_westeros/common/story_cycles/rw_multi_action_agreements.txt"
+          ]
         }
       ]
     },
@@ -799,6 +805,45 @@
       "score": 55,
       "reference": "1143298fe0142bf0acd4abefe054e34622dc1df0",
       "note": "N4 source : protocole contractuel CK3 commun réellement utilisé par règlements privés et libérations de chartes, version/offre/contre-offre/reçu/clôture partagés, champs sauvegardés et autorisations propres conservés. +2 développement, 55/80 ; validation moteur 0/20, total 55/100."
+    },
+    {
+      "date": "2026-11-03",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4",
+        "O4",
+        "I3",
+        "M5",
+        "P4",
+        "N4",
+        "N5"
+      ],
+      "score": 57,
+      "reference": "d841050f5f99c624361992e1634fa784f4974346",
+      "note": "N5 source : accord unique or/soutien public/libération de charte, signature commune versionnée puis exécution volontaire et reçu propre par action ; accomplissement partiel conservé, aucun consentement hérité ni rollback. +2 développement, 57/80 ; validation moteur 0/20, total 57/100."
     }
   ]
 }
