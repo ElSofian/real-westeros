@@ -498,3 +498,9 @@
   22 PowerShell-dependent skips**; structural validator, telemetry audit and whitespace
   checks PASS. Linux and Windows PowerShell CI required before merge. No engine run,
   performance result or G1/G3 compatibility claim. Readiness reassessed after source commit.
+
+- AI5 source assessment: `3c91c8e0a3fd04e4933d27ff9a0d7115b71a5369`; frozen rubric unchanged, AI5 +2 only.
+  **Development 62/80, engine validation 0/20, total 62/100**. Remaining source
+  work is W1…W5 / G1, J4/J5 / G3 and cross-family AI4 including war; no native
+  compatibility or performance credit from instrumentation. Next examine existing
+  source constraints before safe development; retain actual engine blockers openly.
