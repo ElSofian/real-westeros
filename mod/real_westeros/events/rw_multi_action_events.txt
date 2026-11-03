@@ -1,0 +1,92 @@
+namespace = rw_multi_actions
+
+rw_multi_actions.0001 = {
+    type = character_event
+    trigger = { rw_ba_view_trigger = yes }
+    title = rw_multi_actions.title
+    desc = {
+        desc = rw_multi_actions.terms
+        first_valid = {
+            triggered_desc = { trigger = { scope:rw_ba_price = 25 } desc = rw_multi_actions.price25 }
+            desc = rw_multi_actions.price50
+        }
+        first_valid = {
+            triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_agreement = flag:negotiating } } desc = rw_multi_actions.negotiating }
+            triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_agreement = flag:declined } } desc = rw_multi_actions.declined }
+            triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_agreement = flag:fulfilled } } desc = rw_multi_actions.fulfilled }
+            triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_agreement = flag:partial } } desc = rw_multi_actions.partial }
+            triggered_desc = { trigger = { scope:rw_ba_record = { NOT = { has_variable = rw_ba_due } } } desc = rw_multi_actions.overdue }
+            desc = rw_multi_actions.active
+        }
+        triggered_desc = {
+            trigger = { scope:rw_ba_record = { has_variable = rw_ba_accepted_on } }
+            desc = {
+                desc = rw_multi_actions.gold_label
+                first_valid = {
+                    triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_gold = flag:done } } desc = rw_multi_actions.done }
+                    triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_gold = flag:attempted } } desc = rw_multi_actions.attempted }
+                    triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_gold = flag:refused } } desc = rw_multi_actions.refused }
+                    triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_gold = flag:expired } } desc = rw_multi_actions.expired }
+                    triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_gold = flag:unavailable } } desc = rw_multi_actions.unavailable }
+                    triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_gold = flag:pending NOT = { has_variable = rw_ba_due } } } desc = rw_multi_actions.expired }
+                    desc = rw_multi_actions.pending
+                }
+            }
+        }
+        triggered_desc = {
+            trigger = { scope:rw_ba_record = { has_variable = rw_ba_accepted_on } }
+            desc = {
+                desc = rw_multi_actions.support_label
+                first_valid = {
+                    triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_support = flag:done } } desc = rw_multi_actions.done }
+                    triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_support = flag:attempted } } desc = rw_multi_actions.attempted }
+                    triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_support = flag:refused } } desc = rw_multi_actions.refused }
+                    triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_support = flag:expired } } desc = rw_multi_actions.expired }
+                    triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_support = flag:unavailable } } desc = rw_multi_actions.unavailable }
+                    triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_support = flag:pending NOT = { has_variable = rw_ba_due } } } desc = rw_multi_actions.expired }
+                    desc = rw_multi_actions.pending
+                }
+            }
+        }
+        triggered_desc = {
+            trigger = { scope:rw_ba_record = { has_variable = rw_ba_accepted_on } }
+            desc = {
+                desc = rw_multi_actions.release_label
+                first_valid = {
+                    triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_release = flag:done } } desc = rw_multi_actions.done }
+                    triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_release = flag:attempted } } desc = rw_multi_actions.attempted }
+                    triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_release = flag:refused } } desc = rw_multi_actions.refused }
+                    triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_release = flag:expired } } desc = rw_multi_actions.expired }
+                    triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_release = flag:unavailable } } desc = rw_multi_actions.unavailable }
+                    triggered_desc = { trigger = { scope:rw_ba_record = { var:rw_ba_release = flag:pending NOT = { has_variable = rw_ba_due } } } desc = rw_multi_actions.expired }
+                    desc = rw_multi_actions.pending
+                }
+            }
+        }
+    }
+    theme = diplomacy
+    left_portrait = { character = scope:rw_ba_payer }
+    right_portrait = { character = scope:rw_ba_payee }
+    option = { name = rw_multi_actions.accept trigger = { rw_ba_responder_trigger = yes } rw_ba_accept_effect = yes ai_chance = { base = 35 modifier = { factor = 2 has_trait = trusting } } }
+    option = { name = rw_multi_actions.counter trigger = { rw_ba_responder_trigger = yes } rw_ba_counter_effect = yes ai_chance = { base = 20 modifier = { factor = 2 has_trait = greedy } } }
+    option = { name = rw_multi_actions.decline trigger = { rw_ba_can_close_offer_trigger = yes } rw_ba_close_offer_effect = yes ai_chance = { base = 10 } }
+    option = { name = rw_multi_actions.pay trigger = { rw_ba_can_pay_trigger = yes } rw_ba_pay_effect = yes ai_chance = { base = 65 modifier = { factor = 2 has_trait = honest } } }
+    option = { name = rw_multi_actions.support trigger = { rw_ba_can_support_trigger = yes } rw_ba_support_effect = yes ai_chance = { base = 60 modifier = { factor = 2 has_trait = gregarious } } }
+    option = { name = rw_multi_actions.release trigger = { rw_ba_can_release_trigger = yes } rw_ba_release_effect = yes ai_chance = { base = 50 modifier = { factor = 2 has_trait = trusting } } }
+    option = { name = rw_multi_actions.refuse_gold trigger = { rw_ba_can_refuse_trigger = { LEG = gold PAYER = yes PAYEE = no } } rw_ba_refuse_effect = { LEG = gold PAYER = yes PAYEE = no } ai_chance = { base = 5 modifier = { factor = 2 has_trait = deceitful } } }
+    option = { name = rw_multi_actions.refuse_support trigger = { rw_ba_can_refuse_trigger = { LEG = support PAYER = yes PAYEE = no } } rw_ba_refuse_effect = { LEG = support PAYER = yes PAYEE = no } ai_chance = { base = 5 modifier = { factor = 2 has_trait = deceitful } } }
+    option = { name = rw_multi_actions.refuse_release trigger = { rw_ba_can_refuse_trigger = { LEG = release PAYER = no PAYEE = yes } } rw_ba_refuse_effect = { LEG = release PAYER = no PAYEE = yes } ai_chance = { base = 5 modifier = { factor = 2 has_trait = deceitful } } }
+    option = { name = rw_multi_actions.leave ai_chance = { base = 30 } }
+}
+# Fixed post-acceptance reminder. Snapshot stays the accepted packet; never refresh.
+rw_multi_actions.0002 = {
+    type = character_event
+    hidden = yes
+    immediate = {
+        if = {
+            limit = { rw_ba_view_trigger = yes scope:rw_ba_record = { var:rw_ba_agreement = flag:active NOT = { has_variable = rw_ba_due } } }
+            scope:rw_ba_record = { rw_ba_resolve_effect = yes }
+            rw_ba_notify_effect = yes
+        }
+    }
+}

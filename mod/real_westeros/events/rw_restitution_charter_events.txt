@@ -74,6 +74,12 @@ rw_restitution_charter.0001 = {
         if = { limit = { rw_ch_view_trigger = yes } trigger_event = { id = rw_charter_compensation.0002 } }
         ai_chance = { base = 0 }
     }
+    option = {
+        name = rw_multi_actions.propose
+        trigger = { rw_ba_can_propose_trigger = yes }
+        rw_ba_propose_effect = yes
+        ai_chance = { base = 5 modifier = { factor = 2 has_trait = gregarious } }
+    }
     option = { name = rw_restitution_charter.leave ai_chance = { base = 60 } }
 }
 # Explicit current-role/revision capture. Delayed replies never execute this refresh.

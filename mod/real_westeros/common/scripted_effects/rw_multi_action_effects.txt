@@ -1,0 +1,302 @@
+# STORY snapshot: only explicit navigation or a genuine new/countered quote.
+rw_ba_snapshot_effect = {
+    save_scope_as = rw_ba_record
+    save_scope_value_as = { name = rw_ba_serial value = var:rw_ba_serial }
+    save_scope_value_as = { name = rw_ba_parent_revision value = var:rw_ba_parent_revision }
+    save_scope_value_as = { name = rw_ba_source_serial value = var:rw_ba_source_serial }
+    var:rw_ba_issuer = { save_scope_as = rw_ba_issuer }
+    var:rw_ba_payer = { save_scope_as = rw_ba_payer }
+    var:rw_ba_payee = { save_scope_as = rw_ba_payee }
+    var:rw_ba_title = { save_scope_as = rw_ba_title }
+    var:rw_ba_authority = { save_scope_as = rw_ba_authority }
+    var:rw_ba_house = { save_scope_as = rw_ba_house }
+    rw_contract_snapshot_effect = { PREFIX = ba }
+}
+rw_ba_propose_effect = {
+    if = {
+        limit = { rw_ba_can_propose_trigger = yes }
+        if = { limit = { NOT = { has_variable = rw_ba_counter } } set_variable = { name = rw_ba_counter value = 0 } }
+        change_variable = { name = rw_ba_counter add = 1 }
+        save_scope_value_as = { name = rw_ba_serial value = var:rw_ba_counter }
+        clear_saved_scope = rw_ba_record
+        create_story = { type = story_rw_multi_action_agreement save_scope_as = rw_ba_record }
+        if = {
+            limit = { exists = scope:rw_ba_record scope:rw_ba_record = { story_type = story_rw_multi_action_agreement story_owner = root NOT = { has_variable = rw_ba_schema } } }
+            scope:rw_ba_record = {
+                set_variable = { name = rw_ba_serial value = scope:rw_ba_serial }
+                set_variable = { name = rw_ba_issuer value = scope:rw_ch_ruler }
+                set_variable = { name = rw_ba_payer value = scope:rw_ch_ruler }
+                set_variable = { name = rw_ba_payee value = scope:rw_ch_head }
+                set_variable = { name = rw_ba_offered_by value = scope:rw_ch_ruler }
+                set_variable = { name = rw_ba_source value = scope:rw_lr_record }
+                set_variable = { name = rw_ba_source_serial value = scope:rw_lr_serial }
+                set_variable = { name = rw_ba_parent_revision value = scope:rw_ch_revision }
+                set_variable = { name = rw_ba_title value = scope:rw_lr_title }
+                set_variable = { name = rw_ba_authority value = scope:rw_lr_authority }
+                set_variable = { name = rw_ba_house value = scope:rw_lr_house }
+                set_variable = { name = rw_ba_recipe value = flag:gold_support_release }
+                set_variable = { name = rw_ba_revision value = 0 }
+                set_variable = { name = rw_ba_turn value = flag:head }
+                set_variable = { name = rw_ba_agreement value = flag:negotiating }
+                set_variable = { name = rw_ba_retained value = flag:yes days = 1863 }
+                rw_contract_offer_effect = { PREFIX = ba PRICE = 25 }
+            }
+            if = {
+                limit = { scope:rw_ba_record = { rw_ba_record_trigger = yes } }
+                scope:rw_ba_record = { rw_ba_snapshot_effect = yes }
+                scope:rw_lr_record = {
+                    set_variable = { name = rw_ba_last_parent_revision value = scope:rw_ch_revision }
+                    set_variable = { name = rw_ba_last_payer value = scope:rw_ch_ruler }
+                    set_variable = { name = rw_ba_last_payee value = scope:rw_ch_head }
+                }
+                add_character_flag = { flag = rw_ba_recent days = 90 }
+                add_to_global_variable_list = { name = rw_multi_action_agreements target = scope:rw_ba_record }
+                scope:rw_ba_payee = { trigger_event = { id = rw_multi_actions.0001 days = 1 } }
+            }
+            else = { scope:rw_ba_record = { rw_ba_retire_effect = yes } }
+        }
+    }
+}
+rw_ba_counter_effect = {
+    if = {
+        limit = { rw_ba_responder_trigger = yes }
+        save_scope_as = rw_ba_counterer
+        scope:rw_ba_record = {
+            rw_contract_counter_effect = { PREFIX = ba TURN_A = ruler TURN_B = head }
+            set_variable = { name = rw_ba_offered_by value = scope:rw_ba_counterer }
+            rw_ba_snapshot_effect = yes
+        }
+        if = { limit = { this = scope:rw_ba_payer } scope:rw_ba_payee = { trigger_event = { id = rw_multi_actions.0001 days = 1 } } }
+        else = { scope:rw_ba_payer = { trigger_event = { id = rw_multi_actions.0001 days = 1 } } }
+    }
+}
+# Explicit acceptance binds ALL THREE clauses; no transfer/performance at signature.
+rw_ba_accept_effect = {
+    if = {
+        limit = { rw_ba_responder_trigger = yes }
+        save_scope_as = rw_ba_signer
+        scope:rw_ba_record = {
+            rw_contract_close_effect = { PREFIX = ba }
+            set_variable = { name = rw_ba_accepted_by value = scope:rw_ba_signer }
+            set_variable = { name = rw_ba_accepted_revision value = scope:rw_ba_revision }
+            set_variable = { name = rw_ba_accepted_price value = scope:rw_ba_price }
+            set_variable = { name = rw_ba_accepted_on value = current_date }
+            set_variable = { name = rw_ba_agreement value = flag:active }
+            set_variable = { name = rw_ba_gold value = flag:pending }
+            set_variable = { name = rw_ba_support value = flag:pending }
+            set_variable = { name = rw_ba_release value = flag:pending }
+            set_variable = { name = rw_ba_due value = flag:yes days = 30 }
+        }
+        rw_ba_notify_effect = yes
+        scope:rw_ba_payer = { trigger_event = { id = rw_multi_actions.0002 days = 31 } }
+        scope:rw_ba_payee = { trigger_event = { id = rw_multi_actions.0002 days = 31 } }
+    }
+}
+rw_ba_close_offer_effect = {
+    if = {
+        limit = { rw_ba_can_close_offer_trigger = yes }
+        scope:rw_ba_record = {
+            rw_contract_close_effect = { PREFIX = ba }
+            set_variable = { name = rw_ba_agreement value = flag:declined }
+        }
+        rw_ba_notify_effect = yes
+    }
+}
+rw_ba_pay_effect = {
+    if = {
+        limit = { rw_ba_can_pay_trigger = yes }
+        scope:rw_ba_record = {
+            set_variable = { name = rw_ba_gold value = flag:attempted }
+            set_variable = { name = rw_ba_gold_actor value = scope:rw_ba_payer }
+            rw_contract_consume_effect = { PREFIX = ba }
+        }
+        add_gold = { value = scope:rw_ba_price multiply = -1 }
+        scope:rw_ba_payee = { add_gold = scope:rw_ba_price }
+        scope:rw_ba_record = { set_variable = { name = rw_ba_gold value = flag:done } rw_ba_resolve_effect = yes }
+        rw_ba_notify_effect = yes
+    }
+}
+rw_ba_support_effect = {
+    if = {
+        limit = { rw_ba_can_support_trigger = yes }
+        scope:rw_ba_record = {
+            set_variable = { name = rw_ba_support value = flag:attempted }
+            set_variable = { name = rw_ba_support_actor value = scope:rw_ba_payer }
+            set_variable = { name = rw_ba_support_on value = current_date }
+            set_variable = { name = rw_ba_support_revision value = scope:rw_ba_revision }
+        }
+        scope:rw_ba_payee = { add_prestige = 50 }
+        rw_pm_public_support_effect = { PROVIDER = scope:rw_ba_payer CLIENT = scope:rw_ba_payee }
+        scope:rw_ba_record = { set_variable = { name = rw_ba_support value = flag:done } rw_ba_resolve_effect = yes }
+        rw_ba_notify_effect = yes
+    }
+}
+# Bind current parent aliases ONLY after exact original source/revision/role checks.
+rw_ba_release_effect = {
+    if = {
+        limit = { rw_ba_can_release_trigger = yes }
+        scope:rw_ba_record.var:rw_ba_source = { rw_lr_snapshot_effect = yes rw_ch_snapshot_effect = yes }
+        scope:rw_ba_payer = { save_scope_as = rw_ch_ruler }
+        scope:rw_ba_payee = { save_scope_as = rw_ch_head }
+        if = {
+            limit = { rw_ch_can_release_trigger = yes }
+            scope:rw_ba_record = {
+                set_variable = { name = rw_ba_release value = flag:attempted }
+                set_variable = { name = rw_ba_release_actor value = scope:rw_ba_payee }
+                set_variable = { name = rw_ba_release_on value = current_date }
+                set_variable = { name = rw_ba_release_quote_revision value = scope:rw_ba_revision }
+                set_variable = { name = rw_ba_release_revision value = scope:rw_ba_parent_revision }
+                change_variable = { name = rw_ba_release_revision add = 1 }
+            }
+            rw_ch_release_effect = yes
+            if = {
+                limit = {
+                    scope:rw_lr_record = {
+                        var:rw_ch_state = flag:released
+                        var:rw_ch_finished_by = scope:rw_ba_payee
+                        var:rw_ch_finished_on = current_date
+                        var:rw_ch_revision = scope:rw_ba_record.var:rw_ba_release_revision
+                    }
+                }
+                scope:rw_ba_record = {
+                    set_variable = { name = rw_ba_release_result_revision value = scope:rw_lr_record.var:rw_ch_revision }
+                    set_variable = { name = rw_ba_release_result_on value = scope:rw_lr_record.var:rw_ch_finished_on }
+                    set_variable = { name = rw_ba_release_result_by value = scope:rw_lr_record.var:rw_ch_finished_by }
+                    set_variable = { name = rw_ba_release value = flag:done }
+                }
+            }
+            scope:rw_ba_record = { rw_ba_resolve_effect = yes }
+            rw_ba_notify_effect = yes
+        }
+    }
+}
+rw_ba_refuse_effect = {
+    if = {
+        limit = { rw_ba_can_refuse_trigger = { LEG = $LEG$ PAYER = $PAYER$ PAYEE = $PAYEE$ } }
+        save_scope_as = rw_ba_refuser
+        scope:rw_ba_record = {
+            set_variable = { name = rw_ba_$LEG$ value = flag:refused }
+            set_variable = { name = rw_ba_$LEG$_refused_by value = scope:rw_ba_refuser }
+            set_variable = { name = rw_ba_$LEG$_refused_on value = current_date }
+            rw_ba_resolve_effect = yes
+        }
+        rw_ba_notify_effect = yes
+    }
+}
+rw_ba_notify_effect = {
+    scope:rw_ba_payer = { if = { limit = { is_alive = yes } trigger_event = { id = rw_multi_actions.0001 days = 1 } } }
+    scope:rw_ba_payee = { if = { limit = { is_alive = yes } trigger_event = { id = rw_multi_actions.0001 days = 1 } } }
+}
+rw_ba_read_effect = {
+    if = {
+        limit = { scope:actor = { is_alive = yes } has_global_variable_list = rw_multi_action_agreements }
+        scope:actor = { save_scope_as = rw_ba_reader }
+        every_in_global_list = {
+            variable = rw_multi_action_agreements
+            limit = { rw_ba_reader_trigger = { READER = scope:rw_ba_reader } }
+            rw_ba_snapshot_effect = yes
+            scope:rw_ba_reader = { trigger_event = { id = rw_multi_actions.0001 } }
+        }
+    }
+}
+
+# STORY local resolution: preserve completed actions, never undo/repay them.
+rw_ba_resolve_effect = {
+    if = {
+        limit = { var:rw_ba_agreement = flag:active }
+        if = {
+            limit = { NOT = { has_variable = rw_ba_due } }
+            if = { limit = { var:rw_ba_gold = flag:pending } set_variable = { name = rw_ba_gold value = flag:expired } }
+            if = { limit = { var:rw_ba_support = flag:pending } set_variable = { name = rw_ba_support value = flag:expired } }
+            if = { limit = { var:rw_ba_release = flag:pending } set_variable = { name = rw_ba_release value = flag:expired } }
+        }
+        if = {
+            limit = { OR = { NOT = { var:rw_ba_payer = { is_alive = yes } } NOT = { var:rw_ba_payee = { is_alive = yes } } } }
+            if = { limit = { var:rw_ba_gold = flag:pending } set_variable = { name = rw_ba_gold value = flag:unavailable } }
+            if = { limit = { var:rw_ba_support = flag:pending } set_variable = { name = rw_ba_support value = flag:unavailable } }
+            if = { limit = { var:rw_ba_release = flag:pending } set_variable = { name = rw_ba_release value = flag:unavailable } }
+        }
+        if = {
+            limit = { var:rw_ba_gold = flag:done var:rw_ba_support = flag:done var:rw_ba_release = flag:done }
+            set_variable = { name = rw_ba_agreement value = flag:fulfilled }
+        }
+        else_if = {
+            limit = { NOR = { var:rw_ba_gold = flag:pending var:rw_ba_support = flag:pending var:rw_ba_release = flag:pending } }
+            set_variable = { name = rw_ba_agreement value = flag:partial }
+        }
+        if = {
+            limit = { NOT = { var:rw_ba_agreement = flag:active } }
+            remove_variable = rw_ba_due
+            set_variable = { name = rw_ba_finished_on value = current_date }
+        }
+    }
+}
+rw_ba_retire_effect = {
+    if = {
+        limit = { story_type = story_rw_multi_action_agreement }
+        save_scope_as = rw_ba_record
+        if = { limit = { has_global_variable_list = rw_multi_action_agreements } remove_list_global_variable = { name = rw_multi_action_agreements target = scope:rw_ba_record } }
+        end_story = yes
+    }
+}
+# Only either original party may hold the record; storage conveys no action rights.
+rw_ba_rehome_effect = {
+    clear_saved_scope = rw_ba_custodian
+    if = {
+        limit = { var:rw_ba_payer = { is_alive = yes NOT = { this = scope:rw_ba_departed } } }
+        var:rw_ba_payer = { save_scope_as = rw_ba_custodian }
+    }
+    else_if = {
+        limit = { var:rw_ba_payee = { is_alive = yes NOT = { this = scope:rw_ba_departed } } }
+        var:rw_ba_payee = { save_scope_as = rw_ba_custodian }
+    }
+    if = { limit = { exists = scope:rw_ba_custodian NOT = { story_owner = scope:rw_ba_custodian } } make_story_owner = scope:rw_ba_custodian }
+}
+rw_ba_maintenance_effect = {
+    if = {
+        limit = { story_type = story_rw_multi_action_agreement }
+        if = { limit = { NOT = { rw_ba_record_trigger = yes } } rw_ba_retire_effect = yes }
+        else = {
+            rw_ba_snapshot_effect = yes
+            if = {
+                limit = { var:rw_ba_agreement = flag:negotiating NOT = { has_variable = rw_ba_window } }
+                rw_contract_close_effect = { PREFIX = ba }
+                set_variable = { name = rw_ba_agreement value = flag:declined }
+            }
+            if = {
+                limit = { var:rw_ba_agreement = flag:active var:rw_ba_release = flag:pending NOT = { rw_ba_source_context_trigger = yes } }
+                set_variable = { name = rw_ba_release value = flag:unavailable }
+            }
+            rw_ba_resolve_effect = yes
+        }
+    }
+}
+rw_ba_owner_died_effect = {
+    if = {
+        limit = { rw_ba_record_trigger = yes }
+        story_owner = { save_scope_as = rw_ba_departed }
+        # Native alive flags can lag the death callback. Explicit known death
+        # invalidates pending acts but preserves completed/attempted/refused receipts.
+        if = {
+            limit = {
+                var:rw_ba_agreement = flag:active
+                OR = { var:rw_ba_payer = scope:rw_ba_departed var:rw_ba_payee = scope:rw_ba_departed }
+            }
+            if = { limit = { var:rw_ba_gold = flag:pending } set_variable = { name = rw_ba_gold value = flag:unavailable } }
+            if = { limit = { var:rw_ba_support = flag:pending } set_variable = { name = rw_ba_support value = flag:unavailable } }
+            if = { limit = { var:rw_ba_release = flag:pending } set_variable = { name = rw_ba_release value = flag:unavailable } }
+            rw_ba_resolve_effect = yes
+        }
+        if = {
+            limit = {
+                var:rw_ba_agreement = flag:negotiating
+                OR = { var:rw_ba_payer = scope:rw_ba_departed var:rw_ba_payee = scope:rw_ba_departed }
+            }
+            rw_contract_close_effect = { PREFIX = ba }
+            set_variable = { name = rw_ba_agreement value = flag:declined }
+        }
+        rw_ba_rehome_effect = yes
+        if = { limit = { NOT = { exists = scope:rw_ba_custodian } } rw_ba_retire_effect = yes }
+    }
+    else = { rw_ba_retire_effect = yes }
+}

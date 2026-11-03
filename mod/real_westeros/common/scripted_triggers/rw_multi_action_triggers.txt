@@ -1,0 +1,212 @@
+# Independent personal bundle, not a modification to native justice or titles.
+rw_ba_record_trigger = {
+    story_type = story_rw_multi_action_agreement
+    var:rw_ba_schema = 1
+    var:rw_ba_recipe = flag:gold_support_release
+    has_variable = rw_ba_serial
+    exists = var:rw_ba_issuer
+    exists = var:rw_ba_payer
+    exists = var:rw_ba_payee
+    NOT = { var:rw_ba_payer = var:rw_ba_payee }
+    var:rw_ba_issuer = var:rw_ba_payer
+    exists = var:rw_ba_title
+    exists = var:rw_ba_authority
+    exists = var:rw_ba_house
+    has_variable = rw_ba_source_serial
+    has_variable = rw_ba_parent_revision
+    has_variable = rw_ba_revision
+    has_variable = rw_ba_issued_on
+    has_variable = rw_ba_retained
+    OR = { var:rw_ba_price = 25 var:rw_ba_price = 50 }
+    OR = { var:rw_ba_state = flag:offered var:rw_ba_state = flag:closed var:rw_ba_state = flag:paid }
+    OR = { var:rw_ba_agreement = flag:negotiating var:rw_ba_agreement = flag:declined var:rw_ba_agreement = flag:active var:rw_ba_agreement = flag:fulfilled var:rw_ba_agreement = flag:partial }
+    exists = var:rw_ba_offered_by
+    OR = { var:rw_ba_offered_by = var:rw_ba_payer var:rw_ba_offered_by = var:rw_ba_payee }
+    trigger_if = {
+        limit = { NOR = { var:rw_ba_agreement = flag:negotiating var:rw_ba_agreement = flag:declined } }
+        has_variable = rw_ba_accepted_on
+        var:rw_ba_accepted_revision = var:rw_ba_revision
+        var:rw_ba_accepted_price = var:rw_ba_price
+        OR = {
+            AND = { var:rw_ba_offered_by = var:rw_ba_payer var:rw_ba_accepted_by = var:rw_ba_payee }
+            AND = { var:rw_ba_offered_by = var:rw_ba_payee var:rw_ba_accepted_by = var:rw_ba_payer }
+        }
+        OR = { var:rw_ba_gold = flag:pending var:rw_ba_gold = flag:attempted var:rw_ba_gold = flag:done var:rw_ba_gold = flag:refused var:rw_ba_gold = flag:expired var:rw_ba_gold = flag:unavailable }
+        OR = { var:rw_ba_support = flag:pending var:rw_ba_support = flag:attempted var:rw_ba_support = flag:done var:rw_ba_support = flag:refused var:rw_ba_support = flag:expired var:rw_ba_support = flag:unavailable }
+        OR = { var:rw_ba_release = flag:pending var:rw_ba_release = flag:attempted var:rw_ba_release = flag:done var:rw_ba_release = flag:refused var:rw_ba_release = flag:expired var:rw_ba_release = flag:unavailable }
+        trigger_if = {
+            limit = { var:rw_ba_gold = flag:refused }
+            var:rw_ba_gold_refused_by = var:rw_ba_payer
+            has_variable = rw_ba_gold_refused_on
+        }
+        trigger_if = {
+            limit = { var:rw_ba_support = flag:refused }
+            var:rw_ba_support_refused_by = var:rw_ba_payer
+            has_variable = rw_ba_support_refused_on
+        }
+        trigger_if = {
+            limit = { var:rw_ba_release = flag:refused }
+            var:rw_ba_release_refused_by = var:rw_ba_payee
+            has_variable = rw_ba_release_refused_on
+        }
+        NOT = { var:rw_ba_state = flag:offered }
+        trigger_if = {
+            limit = { OR = { var:rw_ba_gold = flag:done var:rw_ba_gold = flag:attempted } }
+            var:rw_ba_state = flag:paid
+            var:rw_ba_gold_actor = var:rw_ba_payer
+            has_variable = rw_ba_paid_on
+            var:rw_ba_paid_amount = var:rw_ba_accepted_price
+            var:rw_ba_paid_revision = var:rw_ba_accepted_revision
+        }
+        trigger_if = {
+            limit = { OR = { var:rw_ba_support = flag:done var:rw_ba_support = flag:attempted } }
+            var:rw_ba_support_actor = var:rw_ba_payer
+            has_variable = rw_ba_support_on
+            var:rw_ba_support_revision = var:rw_ba_accepted_revision
+        }
+        trigger_if = {
+            limit = { OR = { var:rw_ba_release = flag:done var:rw_ba_release = flag:attempted } }
+            var:rw_ba_release_actor = var:rw_ba_payee
+            has_variable = rw_ba_release_on
+            has_variable = rw_ba_release_revision
+            var:rw_ba_release_quote_revision = var:rw_ba_accepted_revision
+        }
+        trigger_if = {
+            limit = { var:rw_ba_release = flag:done }
+            var:rw_ba_release_result_revision = var:rw_ba_release_revision
+            var:rw_ba_release_result_on = var:rw_ba_release_on
+            var:rw_ba_release_result_by = var:rw_ba_payee
+        }
+        trigger_if = {
+            limit = { var:rw_ba_agreement = flag:partial }
+            NOR = { var:rw_ba_gold = flag:pending var:rw_ba_support = flag:pending var:rw_ba_release = flag:pending }
+        }
+        trigger_if = {
+            limit = { var:rw_ba_agreement = flag:fulfilled }
+            var:rw_ba_gold = flag:done
+            var:rw_ba_support = flag:done
+            var:rw_ba_release = flag:done
+        }
+
+    }
+}
+rw_ba_reader_trigger = {
+    rw_ba_record_trigger = yes
+    $READER$ = { is_alive = yes }
+    OR = { var:rw_ba_payer = $READER$ var:rw_ba_payee = $READER$ }
+}
+rw_ba_view_trigger = {
+    exists = scope:rw_ba_record
+    exists = scope:rw_ba_serial
+    exists = scope:rw_ba_issuer
+    exists = scope:rw_ba_payer
+    exists = scope:rw_ba_payee
+    exists = scope:rw_ba_parent_revision
+    exists = scope:rw_ba_source_serial
+    exists = scope:rw_ba_title
+    exists = scope:rw_ba_authority
+    exists = scope:rw_ba_house
+    exists = scope:rw_ba_revision
+    exists = scope:rw_ba_price
+    scope:rw_ba_record = {
+        rw_ba_reader_trigger = { READER = root }
+        var:rw_ba_serial = scope:rw_ba_serial
+        var:rw_ba_issuer = scope:rw_ba_issuer
+        var:rw_ba_payer = scope:rw_ba_payer
+        var:rw_ba_payee = scope:rw_ba_payee
+        var:rw_ba_parent_revision = scope:rw_ba_parent_revision
+        var:rw_ba_source_serial = scope:rw_ba_source_serial
+        var:rw_ba_title = scope:rw_ba_title
+        var:rw_ba_authority = scope:rw_ba_authority
+        var:rw_ba_house = scope:rw_ba_house
+        rw_contract_quote_trigger = { PREFIX = ba TURN_A = ruler TURN_B = head }
+    }
+}
+# Named scopes only: usable internally from the bundle story as well as a party.
+# Never refresh the accepted parent revision to make an obsolete release fit.
+rw_ba_source_context_trigger = {
+    exists = scope:rw_ba_record.var:rw_ba_source
+    scope:rw_ba_record.var:rw_ba_source = {
+        rw_lr_record_valid_trigger = yes
+        has_variable = rw_lr_retained
+        var:rw_lr_serial = scope:rw_ba_source_serial
+        var:rw_lr_title = scope:rw_ba_title
+        var:rw_lr_authority = scope:rw_ba_authority
+        var:rw_lr_former_house = scope:rw_ba_house
+        var:rw_ch_schema = 1
+        var:rw_ch_state = flag:active
+        has_variable = rw_ch_due
+        var:rw_ch_revision = scope:rw_ba_parent_revision
+        var:rw_ch_recognized_by = scope:rw_ba_payer
+    }
+    scope:rw_ba_authority = { holder = scope:rw_ba_payer }
+    scope:rw_ba_house = { house_head = scope:rw_ba_payee }
+}
+rw_ba_parties_trigger = {
+    scope:rw_ba_payer = { is_alive = yes is_adult = yes is_imprisoned = no NOT = { is_at_war_with = scope:rw_ba_payee } }
+    scope:rw_ba_payee = { is_alive = yes is_adult = yes is_imprisoned = no }
+}
+rw_ba_can_propose_trigger = {
+    rw_ch_active_trigger = yes
+    this = scope:rw_ch_ruler
+    NOT = { has_character_flag = rw_ba_recent }
+    scope:rw_ch_ruler = { rw_service_party_eligible_trigger = yes }
+    scope:rw_ch_head = { rw_service_party_eligible_trigger = yes }
+    scope:rw_lr_record = {
+        var:rw_ch_recognized_by = scope:rw_ch_ruler
+        OR = {
+            NOT = { has_variable = rw_ba_last_parent_revision }
+            NOT = { var:rw_ba_last_parent_revision = scope:rw_ch_revision }
+            NOT = { var:rw_ba_last_payer = scope:rw_ch_ruler }
+            NOT = { var:rw_ba_last_payee = scope:rw_ch_head }
+        }
+    }
+}
+rw_ba_responder_trigger = {
+    rw_ba_view_trigger = yes
+    rw_ba_parties_trigger = yes
+    rw_ba_source_context_trigger = yes
+    scope:rw_ba_record = { var:rw_ba_agreement = flag:negotiating var:rw_ba_state = flag:offered has_variable = rw_ba_window }
+    OR = {
+        AND = { this = scope:rw_ba_payer scope:rw_ba_record = { var:rw_ba_turn = flag:ruler var:rw_ba_offered_by = scope:rw_ba_payee } }
+        AND = { this = scope:rw_ba_payee scope:rw_ba_record = { var:rw_ba_turn = flag:head var:rw_ba_offered_by = scope:rw_ba_payer } }
+    }
+}
+# Agreement is personal, not inherited. Paying/supporting do NOT depend on the
+# charter remaining active after a successful earlier release.
+rw_ba_active_trigger = {
+    rw_ba_view_trigger = yes
+    rw_ba_parties_trigger = yes
+    scope:rw_ba_record = { var:rw_ba_agreement = flag:active has_variable = rw_ba_due }
+}
+rw_ba_can_pay_trigger = {
+    rw_ba_active_trigger = yes
+    this = scope:rw_ba_payer
+    gold >= scope:rw_ba_price
+    scope:rw_ba_record = { var:rw_ba_gold = flag:pending }
+}
+rw_ba_can_support_trigger = {
+    rw_ba_active_trigger = yes
+    this = scope:rw_ba_payer
+    rw_service_party_eligible_trigger = yes
+    scope:rw_ba_payee = { rw_service_party_eligible_trigger = yes }
+    scope:rw_ba_record = { var:rw_ba_support = flag:pending }
+}
+rw_ba_can_release_trigger = {
+    rw_ba_active_trigger = yes
+    this = scope:rw_ba_payee
+    rw_ba_source_context_trigger = yes
+    scope:rw_ba_record = { var:rw_ba_release = flag:pending }
+}
+rw_ba_can_close_offer_trigger = {
+    rw_ba_view_trigger = yes
+    scope:rw_ba_record = { var:rw_ba_agreement = flag:negotiating }
+}
+rw_ba_can_refuse_trigger = {
+    rw_ba_view_trigger = yes
+    scope:rw_ba_record = { var:rw_ba_agreement = flag:active has_variable = rw_ba_due var:rw_ba_$LEG$ = flag:pending }
+    OR = {
+        AND = { this = scope:rw_ba_payer always = $PAYER$ }
+        AND = { this = scope:rw_ba_payee always = $PAYEE$ }
+    }
+}
