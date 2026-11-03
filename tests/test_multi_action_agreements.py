@@ -225,6 +225,8 @@ class MultiActionAgreementTests(unittest.TestCase):
                       'var:rw_ba_release_result_revision = var:rw_ba_release_revision',
                       'var:rw_ba_release_result_by = var:rw_ba_payee'):
             self.assertIn(guard,record)
+        paid_gate=nested_block(record[record.index('limit = { var:rw_ba_state = flag:paid }')-len('    trigger_if = {\n        '):],'trigger_if')
+        self.assertIn('OR = { var:rw_ba_gold = flag:attempted var:rw_ba_gold = flag:done }',paid_gate)
         death=block(self.e,'rw_ba_owner_died_effect')
         self.assertIn('OR = { var:rw_ba_payer = scope:rw_ba_departed var:rw_ba_payee = scope:rw_ba_departed }',death)
 

@@ -23,6 +23,18 @@ rw_ba_record_trigger = {
     exists = var:rw_ba_offered_by
     OR = { var:rw_ba_offered_by = var:rw_ba_payer var:rw_ba_offered_by = var:rw_ba_payee }
     trigger_if = {
+        limit = { var:rw_ba_agreement = flag:negotiating }
+        var:rw_ba_state = flag:offered
+    }
+    trigger_if = {
+        limit = { var:rw_ba_agreement = flag:declined }
+        var:rw_ba_state = flag:closed
+    }
+    trigger_if = {
+        limit = { var:rw_ba_state = flag:paid }
+        OR = { var:rw_ba_gold = flag:attempted var:rw_ba_gold = flag:done }
+    }
+    trigger_if = {
         limit = { NOR = { var:rw_ba_agreement = flag:negotiating var:rw_ba_agreement = flag:declined } }
         has_variable = rw_ba_accepted_on
         var:rw_ba_accepted_revision = var:rw_ba_revision
