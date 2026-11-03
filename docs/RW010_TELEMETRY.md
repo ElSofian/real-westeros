@@ -93,7 +93,11 @@ chronomètre, la mémoire résidente/privée et les threads ; aucun chemin, argu
 nom d'utilisateur ou injection. Il refuse d'écraser un fichier existant et cesse
 si le processus devient indisponible ou si le PID est réutilisé. Ne pas modifier
 le script pour contourner les permissions système ; utiliser le même utilisateur
-que CK3. `DurationSeconds` 0,1…3 600 ; intervalle 100…10 000 ms. CSV invariant même
+que CK3. `DurationSeconds` 0,1…3 600 ; intervalle 100…10 000 ms. La fenêtre
+commence au premier relevé CPU réel, après l’initialisation des API. Si le processus
+reste accessible, au moins deux relevés CPU couvrent la durée demandée ; le coût de
+collecte peut prolonger le temps mural. Aucun second relevé n’est fabriqué si le
+processus disparaît. CSV invariant même
 sur un Windows français, UTF-8 avec BOM.
 
 ```sh

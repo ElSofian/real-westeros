@@ -208,11 +208,11 @@ class ProcessSamplerTests(unittest.TestCase):
         self.addCleanup(self.tmp.cleanup)
         self.out = Path(self.tmp.name) / 'samples.csv'
 
-    def run_sampler(self, interval=100):
+    def run_sampler(self, interval=100, prefix=""):
         # Test the real read-only sampler against its own shell, never a fake game.
         script = str(ROOT / 'tools/Measure-RealWesteros-Process.ps1').replace("'", "''")
         output = str(self.out).replace("'", "''")
-        code = f"& '{script}' -TargetProcessId $PID -DurationSeconds 0.5 -IntervalMilliseconds {interval} -OutputPath '{output}'"
+        code = prefix + f"& '{script}' -TargetProcessId $PID -DurationSeconds 0.5 -IntervalMilliseconds {interval} -OutputPath '{output}'"
         return subprocess.run([self.shell, '-NoProfile', '-NonInteractive', '-Command', code], capture_output=True, text=True, timeout=30)
 
     def test_real_process_samples_parse(self):
@@ -221,6 +221,26 @@ class ProcessSamplerTests(unittest.TestCase):
         parsed = report.process_samples(report.bounded_lines(self.out))
         self.assertGreaterEqual(parsed['sample_count'], 2)
         self.assertGreater(parsed['observed_seconds'], 0)
+        self.assertGreater(parsed['peak_observed_working_set_bytes'], 0)
+
+    def test_slow_first_probe_still_spans_real_sampling_window(self):
+        # Delay the first sampling probe around the REAL Get-Process cmdlet.
+        # Baseline lookup is probe zero; no fake CPU/memory values are returned.
+        prefix = r"""
+$script:probeNumber = 0
+function Get-Process {
+    [CmdletBinding()]
+    param([int]$Id)
+    if ($script:probeNumber -eq 1) { Start-Sleep -Milliseconds 700 }
+    $script:probeNumber += 1
+    Microsoft.PowerShell.Management\Get-Process -Id $Id
+}
+"""
+        result = self.run_sampler(prefix=prefix)
+        self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+        parsed = report.process_samples(report.bounded_lines(self.out))
+        self.assertGreaterEqual(parsed['sample_count'], 2)
+        self.assertGreaterEqual(parsed['observed_seconds'], 0.45)
         self.assertGreater(parsed['peak_observed_working_set_bytes'], 0)
 
     def test_existing_file_never_overwritten(self):

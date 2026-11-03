@@ -549,3 +549,14 @@
 
 - Sovereign-response source assessment: `7f10109d4ab51b4f0e711c0080851c1db274dce7`; +0 checkpoint appended,
   frozen rubric/status/evidence and earlier checkpoints preserved; no engine credit.
+
+- RW-010 / sampler correction after RW-004 main CI (2026-11-03): the Windows
+  0.5-second real-process test exposed a cold probe consuming the entire old
+  sampling window, leaving only one genuine sample. The sampler now starts its
+  window at the first real CPU observation and stops after at least two running
+  observations spanning the requested window; process exit/reuse still stops it
+  without fabricated data. Added a regression delaying the first real Get-Process
+  sampling probe by 700 ms. No CK3 execution or performance credit, +0.
+  Local correction checks: **906 discovered, 883 passed, 23 PowerShell skips**;
+  readiness/structural/telemetry/whitespace PASS. Windows/Linux execution of the
+  delayed-real-probe test is required before merge. No failed check is waived.

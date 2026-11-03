@@ -20,6 +20,8 @@ $initial.Dispose()
 $stream = [IO.File]::Open($OutputPath, [IO.FileMode]::CreateNew, [IO.FileAccess]::Write, [IO.FileShare]::Read)
 $writer = New-Object IO.StreamWriter($stream, (New-Object Text.UTF8Encoding($true)))
 $watch = [Diagnostics.Stopwatch]::StartNew()
+$sampleCount = 0
+$sampleElapsed = 0
 try {
     $writer.WriteLine('elapsed_seconds,cpu_seconds,working_set_bytes,private_bytes,threads,logical_processors,status')
     do {
@@ -29,11 +31,16 @@ try {
             $process = Get-Process -Id $TargetProcessId -ErrorAction Stop
             if ($process.StartTime.ToUniversalTime() -ne $started) { $status = 'replaced' }
             if ($status -eq 'running') {
-                $row = @($watch.Elapsed.TotalSeconds.ToString('R',$invariant),
-                    $process.TotalProcessorTime.TotalSeconds.ToString('R',$invariant),
+                $sampleCpu = $process.TotalProcessorTime.TotalSeconds
+                # Begin the window at the first real CPU observation, not cold API setup.
+                if ($sampleCount -eq 0) { $watch.Restart() }
+                $sampleElapsed = $watch.Elapsed.TotalSeconds
+                $row = @($sampleElapsed.ToString('R',$invariant),
+                    $sampleCpu.ToString('R',$invariant),
                     $process.WorkingSet64, $process.PrivateMemorySize64,
                     $process.Threads.Count, [Environment]::ProcessorCount, 'running')
                 $writer.WriteLine(($row -join ','))
+                $sampleCount += 1
             }
         } catch { $status = 'unavailable' }
         finally { if ($null -ne $process) { $process.Dispose() } }
@@ -41,7 +48,9 @@ try {
             $writer.WriteLine(($watch.Elapsed.TotalSeconds.ToString('R',$invariant) + ',,,,,,' + $status))
         }
         $writer.Flush()
-        if ($status -ne 'running' -or $watch.Elapsed.TotalSeconds -ge $DurationSeconds) { break }
+        # End only after two real observations spanning the requested CPU window.
+        # Slow collection may extend wall time; never fabricate a second sample.
+        if ($status -ne 'running' -or ($sampleCount -ge 2 -and $sampleElapsed -ge $DurationSeconds)) { break }
         $remaining = [Math]::Max(1, [Math]::Ceiling(($DurationSeconds - $watch.Elapsed.TotalSeconds) * 1000))
         Start-Sleep -Milliseconds ([int][Math]::Min($IntervalMilliseconds,$remaining))
     } while ($true)
