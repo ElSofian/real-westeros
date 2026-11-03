@@ -1283,3 +1283,12 @@ deadlines, receipt/domain consumption before a single gold transfer, current rol
 legacy schema-1 save/load, private/public separation, free close and final G2/G4/G5
 AI/callback/partial-effect/performance/regression. Literal source expansion is no
 engine parser or runtime evidence. N5 multi-action contracts remain separate.
+
+## One multi-action agreement — N5
+
+No cases executed. BUNDLE-01…14 in RW010_MULTI_ACTION_AGREEMENTS.md cover one shared
+signature, exact original/version/source context, all six action orders, partial
+fulfillment/refusal/expiry, at-most-once costs and release postcondition, personal
+consent versus custody/heirs, bounded history/index/timers, source/external changes,
+private access, AI↔AI parity and final G2/G4/G5 volume/regression. Gold paid does not
+mean whole agreement fulfilled; no rollback or native legal/property consequence.

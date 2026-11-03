@@ -1,0 +1,7 @@
+story_rw_multi_action_agreement = {
+    on_owner_death = { rw_ba_owner_died_effect = yes }
+    effect_group = {
+        days = 60
+        triggered_effect = { trigger = { always = yes } effect = { rw_ba_maintenance_effect = yes } }
+    }
+}

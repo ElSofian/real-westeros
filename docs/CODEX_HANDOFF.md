@@ -75,6 +75,20 @@ multi-action agreement, common consent and per-action results. Callback/save/nat
 parameter expansion, privacy, AI and performance remain unverified until the final
 campaign; no intermediate run requested. G1/G3 and coercive justice stay open.
 
+N5 now adds +2 development points: **development 57/80, engine validation 0/20,
+total 57/100**. Read RW010_MULTI_ACTION_AGREEMENTS.md: one fixed gold/public-support/
+exact-charter-release bundle, latest opposite-party common consent, then three
+independent voluntary actions and receipts. Reuses N4 with PREFIX=ba; paid means gold
+only, never whole-bundle fulfillment. Completed legs survive refusal/expiry of others;
+release first does not block personal gold/support. No native property transfer,
+rollback, refund, new crime or inherited obligation. Original-reader-only indexed
+history, fixed seven/thirty-day windows and retention, local maintenance and
+original-party-only custody preserve identity. Twenty-six adversarial source checks;
+actual native expansion, gold/prestige/memory, release callback, timers/save/load,
+privacy and AI/performance remain unverified until the final campaign. Next **J3**:
+legal/arbitrary power and native penalty deduplication. G1/G3 and other open criteria
+stay visible; no intermediate CK3 run requested.
+
 RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remains
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
 and RW010_DEFERRED.md. Contextual service-breach mediation is in RW010_CASES.md. Independent case records/read-only history are in RW010_RECORDS.md. Non-contractual allegations, statements and disclosure are in RW010_ALLEGATIONS.md.

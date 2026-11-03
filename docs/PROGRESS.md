@@ -429,3 +429,32 @@
   human/AI and G2/G4/G5 regression; none run. No engine compatibility, multi-action
   agreement or transaction/rollback guarantee claimed. Next N5, shared consent and
   per-action results; G1/G3/coercive justice remain open. No intermediate game test.
+
+- RW-010 / N5 (`feat/multi-action-charter-agreements`, 2026-11-03): actual CK3
+  agreement combining original sovereign's personal gold/public support and original
+  head's exact charter release. Latest proposer plus opposite-party acceptance bind
+  the same recipe/revision/price/source and all three pending clauses, with no early
+  native performance. Reuses all six N4 primitives; gold paid is not full agreement
+  fulfillment. Each actual original actor can perform/refuse their own pending leg;
+  guards and attempt receipts precede native effects, release completion checks its
+  own exact guarded result. Original signed quote and individual receipts remain
+  separate. Release first does not block later personal payment/support. All three
+  done alone means fulfilled; partial/refused/expired/unavailable/uncertain outcomes
+  preserve earlier effects without rollback, retry, refund, crime or inherited guilt.
+  One seven-day offer, thirty-day execution window, fixed 1,863-day retention,
+  source-context replay guards and ninety-day issuer cooldown bound lifecycle. Both
+  originals alone read the indexed record; storage conveys no consent, departed
+  custodian is excluded before flag settlement, and original survivor retains past
+  results. Retirement unindexes before ending; no world-pair scan or recurrent AI
+  prompt. Constructor validates the initialized packet before consuming context and
+  registering it. EN/FR board shows each clause, fixed terms and voluntary choices.
+  **804 local unit/static tests passed, nineteen PowerShell tests skipped (823
+  discovered)**, including 26 new adversarial source checks. Structural validator,
+  frozen progress report and whitespace PASS. Committed-source distribution and
+  Linux/Windows CI checked before merge. **Development 57/80 (+2 for N5), engine
+  validation 0/20, total 57/100**; prior checkpoints/rubric unchanged. Fourteen
+  BUNDLE final-campaign cases remain unrun: actual native scope/timing/save behavior,
+  all action orders, partial effects, gold/prestige/memory/release outcome, private
+  reads/custody, AI/index volume and G2/G4/G5 regression. No atomic transaction,
+  native property transfer or compatibility claimed. Next J3, lawful/arbitrary
+  sanctions and native penalty deduplication; G1/G3 remain open. No interim game run.
