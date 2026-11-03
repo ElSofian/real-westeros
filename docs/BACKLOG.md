@@ -51,3 +51,9 @@ G1_ROYAL_RESPONSES.md covers actual source scope and G1ROYAL-01…10 final cases
 W1…W5/AI4 remain open, **+0 (62/80 source, 0/20 engine, 62/100 total)**. Next source
 work must address an actual native intervention/coercive path or demonstrated war
 AI selection; a demand receipt alone is not peace, full W3 or G1 clearance.
+
+**RW-010 measurement reliability:** a Windows post-merge run exposed a single-sample
+cold-start window. The read-only sampler now starts timing at its first real CPU
+observation and requires two genuine observations spanning the requested duration
+while the process remains available. A 700-ms delayed real-probe regression covers
+the failure. No fabricated samples, CK3 result or readiness points.
