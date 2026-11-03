@@ -78,7 +78,7 @@ class SchemeJusticeTests(unittest.TestCase):
         self.assertIn('journal execution guard bypass', assessment_errors(self.t, self.v, self.j.replace('limit = { rw_scheme_justice_view_trigger = yes }', 'limit = { always = yes }')))
         self.assertIn('rw_scheme_justice.0001', self.j)
         self.assertNotRegex(self.v, r'\b(days|months|years|immediate|after)\s*=')
-        self.assertEqual(2, self.v.count('option = {'))
+        self.assertEqual(3, self.v.count('option = {'))
 
     def test_original_reader_keeps_owner_type_serial_retention_guards(self):
         original = (MOD / 'common/scripted_triggers/rw_scheme_evidence_triggers.txt').read_text()

@@ -11,6 +11,7 @@ rw_ja_open_effect = {
 rw_ja_attempt_effect = {
     if = {
         limit = { rw_ja_can_attempt_trigger = yes }
+        rw_ut_mark_shared_attempt_effect = yes
         scope:rw_scheme_evidence_record = {
             set_variable = { name = rw_ja_dispatched_on value = current_date }
             set_variable = { name = rw_ja_actor value = scope:rw_scheme_observer }

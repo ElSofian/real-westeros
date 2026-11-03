@@ -1,0 +1,123 @@
+# Every public action rechecks the exact live context. No native state override.
+rw_ut_issue_effect = {
+    if = {
+        limit = { rw_ut_can_issue_trigger = yes }
+        scope:rw_scheme_evidence_record = {
+            set_variable = { name = rw_ut_schema value = 1 }
+            set_variable = { name = rw_ut_issuer value = scope:rw_scheme_observer }
+            set_variable = { name = rw_ut_target value = scope:rw_ja_target }
+            set_variable = { name = rw_ut_issued_on value = current_date }
+            set_variable = { name = rw_ut_state value = flag:waiting }
+            set_variable = { name = rw_ut_answer_window value = flag:yes days = 7 }
+            # Fixed total lifetime, never renewed by answers or archive reads.
+            set_variable = { name = rw_ut_live value = flag:yes days = 14 }
+        }
+        add_character_flag = { flag = rw_ut_recent days = 30 }
+        scope:rw_ja_target = { trigger_event = { id = rw_ultimatums.0001 } }
+        # After timed variables have expired; no same-day callback-order assumption.
+        trigger_event = { id = rw_ultimatums.0003 days = 8 }
+    }
+}
+# Regret for damaged trust is NOT a confession, verdict or purchase of immunity.
+rw_ut_apologise_effect = {
+    custom_tooltip = rw_ut.apology_effect
+    hidden_effect = {
+
+        if = {
+            limit = { rw_ut_can_apologise_trigger = yes }
+            scope:rw_scheme_evidence_record = {
+                set_variable = { name = rw_ut_state value = flag:complied }
+                set_variable = { name = rw_ut_answered_on value = current_date }
+                remove_variable = rw_ut_answer_window
+                remove_variable = rw_ut_live
+            }
+            add_prestige = -25
+            scope:rw_scheme_observer = { trigger_event = { id = rw_ultimatums.0002 days = 1 } }
+        }
+    }
+}
+rw_ut_reject_effect = {
+    custom_tooltip = rw_ut.rejection_effect
+    hidden_effect = {
+
+        if = {
+            limit = { rw_ut_can_answer_trigger = yes }
+            scope:rw_scheme_evidence_record = {
+                set_variable = { name = rw_ut_state value = flag:rejected }
+                set_variable = { name = rw_ut_answered_on value = current_date }
+                remove_variable = rw_ut_answer_window
+            }
+            scope:rw_scheme_observer = { trigger_event = { id = rw_ultimatums.0002 days = 1 } }
+        }
+    }
+}
+# Only a still-waiting, live exact record becomes silence. Never interpret an
+# explicit rejection, invalid identity or expired total lifetime as a fresh timeout.
+rw_ut_deadline_effect = {
+    if = {
+        limit = {
+            rw_ut_issuer_view_trigger = yes
+            scope:rw_scheme_evidence_record = {
+                has_variable = rw_ut_live
+                NOT = { has_variable = rw_ut_answer_window }
+                var:rw_ut_state = flag:waiting
+            }
+        }
+        scope:rw_scheme_evidence_record = {
+            set_variable = { name = rw_ut_state value = flag:timed_out }
+            set_variable = { name = rw_ut_deadline_seen_on value = current_date }
+        }
+        trigger_event = { id = rw_ultimatums.0002 }
+    }
+}
+rw_ut_withdraw_effect = {
+    if = {
+        limit = { rw_ut_can_withdraw_trigger = yes }
+        scope:rw_scheme_evidence_record = {
+            set_variable = { name = rw_ut_state value = flag:withdrawn }
+            set_variable = { name = rw_ut_closed_on value = current_date }
+            remove_variable = rw_ut_answer_window
+            remove_variable = rw_ut_live
+        }
+        if = {
+            limit = { scope:rw_ja_target = { is_alive = yes } }
+            scope:rw_ja_target = {
+                send_interface_message = {
+                    type = event_generic_neutral
+                    title = rw_ut.withdrawn_title
+                    desc = rw_ut.withdrawn_notice
+                }
+            }
+        }
+    }
+}
+# Called from the freshly validated shared arrest helper before its dispatch
+# receipt. Both the ultimatum button and older arrest entries consume one truth.
+rw_ut_mark_shared_attempt_effect = {
+    if = {
+        limit = { rw_ut_can_escalate_trigger = yes }
+        scope:rw_scheme_evidence_record = {
+            set_variable = { name = rw_ut_state value = flag:arrest_requested }
+            set_variable = { name = rw_ut_closed_on value = current_date }
+            remove_variable = rw_ut_answer_window
+            remove_variable = rw_ut_live
+        }
+    }
+}
+rw_ut_escalate_effect = {
+    if = {
+        limit = { rw_ut_can_escalate_trigger = yes }
+        rw_ja_attempt_effect = yes
+    }
+}
+
+rw_ut_open_review_effect = {
+    if = {
+        limit = { rw_ut_can_open_review_trigger = yes }
+        scope:rw_scheme_evidence_record.var:rw_ut_target = { save_scope_as = rw_ja_target }
+        if = {
+            limit = { rw_ut_issuer_view_trigger = yes }
+            trigger_event = { id = rw_ultimatums.0002 }
+        }
+    }
+}
