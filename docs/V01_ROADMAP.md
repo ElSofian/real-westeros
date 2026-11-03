@@ -1,7 +1,7 @@
 # Suivi de la première version intégrée — v0.1-plan-1
 
-**Développement : 57/80 · Validation en jeu : 0/20 · Total : 57/100 (+2).**
-N5 lie or, soutien public et libération de charte par un consentement commun ; prochaine cible J3.
+**Développement : 60/80 · Validation en jeu : 0/20 · Total : 60/100 (+3).**
+J3 ajoute les sentences natives avec ou sans motif reconnu ; prochaine cible indépendante AI5.
 W1/W2 restent ouverts (+0), en attente des observations finales G1 avant voie de production.
 Vitesse encore non mesurable : moins de sept jours de recul sur cette grille.
 
@@ -26,7 +26,7 @@ coût. Les trois scénarios initiaux ne limitent pas le périmètre ; le catalog
 | Affaires politiques | 8 | 8 |
 | Négociation | 10 | 10 |
 | Promesses et obligations | 10 | 10 |
-| Justice et sanctions | 5 | 12 |
+| Justice et sanctions | 8 | 12 |
 | Information et preuves | 8 | 8 |
 | Mémoire politique | 10 | 10 |
 | IA politique | 6 | 10 |
@@ -91,7 +91,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 |---|---:|---|---|
 | J1 | 2 | Inspection des raisons natives et de la détention, sans fausse immunité ni verdict rétroactif | Source seulement : [RW010_SCHEME_JUSTICE.md](RW010_SCHEME_JUSTICE.md), [rw_scheme_justice_triggers.txt](../mod/real_westeros/common/scripted_triggers/rw_scheme_justice_triggers.txt) |
 | J2 | 3 | Sanction individuelle réellement exécutée via chemin natif joueur/IA, avec refus et résistance | Source seulement : [RW010_NATIVE_JUSTICE_ACTIONS.md](RW010_NATIVE_JUSTICE_ACTIONS.md), [rw_justice_action_effects.txt](../mod/real_westeros/common/scripted_effects/rw_justice_action_effects.txt) |
-| J3 | 3 | Pouvoir arbitraire/légal et sanctions discrétionnaires distinctes sans double peine native | À développer / valider |
+| J3 | 3 | Pouvoir arbitraire/légal et sanctions discrétionnaires distinctes sans double peine native | Source seulement : [RW010_LAWFUL_ARBITRARY_SENTENCES.md](RW010_LAWFUL_ARBITRARY_SENTENCES.md), [rw_native_sentence_effects.txt](../mod/real_westeros/common/scripted_effects/rw_native_sentence_effects.txt) |
 | J4 | 2 | Mesures coercitives familiales/dynastiques de terres ou statut couvrant les routes G3 | À développer / valider |
 | J5 | 2 | Restauration après sanction coercitive effective, au-delà de la réhabilitation politique | À développer / valider |
 
@@ -154,8 +154,11 @@ le critère est rempli. La qualification est une revue humaine explicite du code
    contre-offre, reçu et clôture utilisé par règlements d’allégations et chartes.
    **N5 livré dans les sources (+2)** : signature commune pour or/soutien/libération,
    exécution volontaire et résultat distinct pour chaque clause ; aucune transaction atomique.
-   **J3 cible suivante** : distinction pouvoir légal/arbitraire et sanctions natives
-   sans double peine. J4/J5, W3/W4/W5 et AI4/AI5 restent ouverts.
+   **J3 livré dans les sources (+3)** : sentence native explicite avec/sans motif
+   reconnu, confirmation figée, reçu et déduplication communs, aucune peine copiée.
+   **AI5 cible indépendante suivante** : instrumentation réelle des décisions, abus
+   et performances pour la campagne finale. J4/J5 restent liés aux routes G3 ;
+   AI4 inclut la voie de guerre encore ouverte. W3/W4/W5 restent ouverts.
 5. **V1…V5** : une campagne finale, selon [FINAL_ENGINE_TESTS.md](FINAL_ENGINE_TESTS.md).
    Corriger ses erreurs avant de revendiquer une version jouable/compatible.
 

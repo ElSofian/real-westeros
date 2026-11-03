@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "3b0393ec36bc45caba8dce3dcba08c19dab509fe",
+  "assessed_commit": "a21f2be0f0d33b89cf84e44c0d7b88874aa767b4",
   "lots": [
     {
       "id": "W",
@@ -268,8 +268,14 @@
           "id": "J3",
           "points": 3,
           "acceptance": "Pouvoir arbitraire/légal et sanctions discrétionnaires distinctes sans double peine native",
-          "status": "open",
-          "evidence": []
+          "status": "source_complete",
+          "evidence": [
+            "docs/RW010_LAWFUL_ARBITRARY_SENTENCES.md",
+            "mod/real_westeros/common/scripted_triggers/rw_native_sentence_triggers.txt",
+            "mod/real_westeros/common/scripted_effects/rw_native_sentence_effects.txt",
+            "mod/real_westeros/events/rw_native_sentence_events.txt",
+            "mod/real_westeros/common/story_cycles/rw_scheme_evidence.txt"
+          ]
         },
         {
           "id": "J4",
@@ -844,6 +850,46 @@
       "score": 57,
       "reference": "3b0393ec36bc45caba8dce3dcba08c19dab509fe",
       "note": "N5 source : accord unique or/soutien public/libération de charte, signature commune versionnée puis exécution volontaire et reçu propre par action ; accomplissement partiel conservé, aucun consentement hérité ni rollback. +2 développement, 57/80 ; validation moteur 0/20, total 57/100."
+    },
+    {
+      "date": "2026-11-03",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4",
+        "O4",
+        "I3",
+        "M5",
+        "P4",
+        "N4",
+        "N5",
+        "J3"
+      ],
+      "score": 60,
+      "reference": "a21f2be0f0d33b89cf84e44c0d7b88874aa767b4",
+      "note": "J3 source : sentence native avec/sans motif d’exécution reconnu, choix explicite joueur/IA, base confirmée puis revérifiée, reçu historique et déduplication communs ; aucune peine ou mort copiée, restriction native d’arrestation IA préservée. +3 développement, 60/80 ; validation moteur 0/20, total 60/100."
     }
   ]
 }

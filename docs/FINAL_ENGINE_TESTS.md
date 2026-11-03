@@ -1292,3 +1292,12 @@ fulfillment/refusal/expiry, at-most-once costs and release postcondition, person
 consent versus custody/heirs, bounded history/index/timers, source/external changes,
 private access, AI↔AI parity and final G2/G4/G5 volume/regression. Gold paid does not
 mean whole agreement fulfilled; no rollback or native legal/property consequence.
+
+## Native recognized/arbitrary prisoner sentences — J3
+
+No cases executed. SENT-01…12 in RW010_LAWFUL_ARBITRARY_SENTENCES.md cover default
+native method/context, current execution reason versus historical basis, stale
+custody/target/protections, single shared request/pair lock, native penalty comparison,
+AI→player reaction/delay, private receipt and source retention, human/AI discretion
+and final G4/G5 volume/regression. Dispatch is not execution/death proof; arbitrary
+arrest's separate native AI restriction remains intact.

@@ -89,6 +89,22 @@ privacy and AI/performance remain unverified until the final campaign. Next **J3
 legal/arbitrary power and native penalty deduplication. G1/G3 and other open criteria
 stay visible; no intermediate CK3 run requested.
 
+J3 now adds +3 development points: **development 60/80, engine validation 0/20,
+total 60/100**. Read RW010_LAWFUL_ARBITRARY_SENTENCES.md. New default native prisoner
+execution request, recognized/no recognized execution reason, explicit same human/AI
+choices and nonintervention. Frozen target/basis rechecked at send; one native call,
+no direct death, copied penalty or reason consumption. Typed historical attempt
+receipt never reads today's reason to infer guilt/completed execution. Local own-
+record actor/target lock prevents immediate cross-record repeats; expired source
+reader access stays closed while an inert record retains a still-live pair lock.
+Native own custody/validity, peace/diarchy/adult/protected-prisoner guards apply;
+native-player reaction/default method/costs remain native and engine-unverified.
+Native arbitrary-arrest AI can_send restriction was source-audited and preserved;
+J2/P4 remain unchanged. Fresh and local known-record custody opportunities notify
+once, never send automatically. Next independent **AI5**: actual decision/abuse/
+performance instrumentation. J4/J5 depend on G3 routes and AI4 includes unresolved
+war integration. No additional diagnostic or intermediate game test requested.
+
 RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remains
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
 and RW010_DEFERRED.md. Contextual service-breach mediation is in RW010_CASES.md. Independent case records/read-only history are in RW010_RECORDS.md. Non-contractual allegations, statements and disclosure are in RW010_ALLEGATIONS.md.
