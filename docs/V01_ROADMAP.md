@@ -1,7 +1,7 @@
 # Suivi de la première version intégrée — v0.1-plan-1
 
-**Développement : 53/80 · Validation en jeu : 0/20 · Total : 53/100 (+2).**
-P4 ajoute des ultimatums avec réponse et escalade native gardée ; prochaine cible N4.
+**Développement : 55/80 · Validation en jeu : 0/20 · Total : 55/100 (+2).**
+N4 partage le protocole contractuel entre règlements privés et libérations de chartes ; prochaine cible N5.
 W1/W2 restent ouverts (+0), en attente des observations finales G1 avant voie de production.
 Vitesse encore non mesurable : moins de sept jours de recul sur cette grille.
 
@@ -24,7 +24,7 @@ coût. Les trois scénarios initiaux ne limitent pas le périmètre ; le catalog
 |---|---:|---:|
 | Liberté, légalité et guerres | 0 | 12 |
 | Affaires politiques | 8 | 8 |
-| Négociation | 6 | 10 |
+| Négociation | 8 | 10 |
 | Promesses et obligations | 10 | 10 |
 | Justice et sanctions | 5 | 12 |
 | Information et preuves | 8 | 8 |
@@ -72,7 +72,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 | N1 | 2 | Offre, contre-offre, consentement versionné et gardes de fonds/rejeu | Source seulement : [RW010_SERVICES.md](RW010_SERVICES.md), [rw_service_effects.txt](../mod/real_westeros/common/scripted_effects/rw_service_effects.txt) |
 | N2 | 2 | Au moins deux clauses indépendantes négociables : prix et délai | Source seulement : [RW010_DELIVERY_TERMS.md](RW010_DELIVERY_TERMS.md), [rw_service_effects.txt](../mod/real_westeros/common/scripted_effects/rw_service_effects.txt) |
 | N3 | 2 | Trois services distincts et contreparties or/faveur : soutien, retrait d’allégation, libération de charte | Source seulement : [RW010_ALLEGATION_SETTLEMENT.md](RW010_ALLEGATION_SETTLEMENT.md), [rw_allegation_settlement_effects.txt](../mod/real_westeros/common/scripted_effects/rw_allegation_settlement_effects.txt) |
-| N4 | 2 | Modèle de contrat réutilisable partagé par au moins deux systèmes | À développer / valider |
+| N4 | 2 | Modèle de contrat réutilisable partagé par au moins deux systèmes | Source seulement : [RW010_SHARED_CONTRACT_MODEL.md](RW010_SHARED_CONTRACT_MODEL.md), [rw_contract_effects.txt](../mod/real_westeros/common/scripted_effects/rw_contract_effects.txt) |
 | N5 | 2 | Accord combinant plusieurs actions, consentement commun et résultats par action | À développer / valider |
 
 ### O — Promesses et obligations
@@ -150,8 +150,10 @@ le critère est rempli. La qualification est une revue humaine explicite du code
    propagation de récits et mémoire personnelle pesant sur de nouveaux choix.
    **P4 livré dans les sources (+2)** : ultimatum de sept jours, regrets publics
    volontaires ou refus/silence, retrait ou tentative native d’arrestation gardée.
-   **N4 cible suivante** : modèle de contrat réutilisable partagé par deux systèmes,
-   puis N5. J3/J4/J5, W3/W4/W5 et AI4/AI5 restent ouverts.
+   **N4 livré dans les sources (+2)** : même protocole CK3 de proposition, version,
+   contre-offre, reçu et clôture utilisé par règlements d’allégations et chartes.
+   **N5 cible suivante** : accord combinant plusieurs actions, consentement commun
+   et résultats par action. J3/J4/J5, W3/W4/W5 et AI4/AI5 restent ouverts.
 5. **V1…V5** : une campagne finale, selon [FINAL_ENGINE_TESTS.md](FINAL_ENGINE_TESTS.md).
    Corriger ses erreurs avant de revendiquer une version jouable/compatible.
 

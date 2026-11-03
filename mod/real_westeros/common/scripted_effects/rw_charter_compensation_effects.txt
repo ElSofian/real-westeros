@@ -20,8 +20,7 @@ rw_cq_prepare_effect = {
     }
 }
 rw_cq_snapshot_effect = {
-    save_scope_value_as = { name = rw_cq_revision value = var:rw_cq_revision }
-    save_scope_value_as = { name = rw_cq_price value = var:rw_cq_price }
+    rw_contract_snapshot_effect = { PREFIX = cq }
     save_scope_value_as = { name = rw_cq_parent_revision value = var:rw_cq_parent_revision }
     var:rw_cq_payer = { save_scope_as = rw_cq_payer }
     var:rw_cq_payee = { save_scope_as = rw_cq_payee }
@@ -39,14 +38,10 @@ rw_cq_propose_effect = {
         scope:rw_lr_record = {
             if = { limit = { NOT = { has_variable = rw_cq_revision } } set_variable = { name = rw_cq_revision value = 0 } }
             change_variable = { name = rw_cq_revision add = 1 }
-            set_variable = { name = rw_cq_price value = scope:rw_cq_start_price }
             set_variable = { name = rw_cq_parent_revision value = scope:rw_ch_revision }
             set_variable = { name = rw_cq_payer value = scope:rw_ch_ruler }
             set_variable = { name = rw_cq_payee value = scope:rw_ch_head }
-            set_variable = { name = rw_cq_state value = flag:offered }
-            set_variable = { name = rw_cq_issued_on value = current_date }
-            set_variable = { name = rw_cq_window value = flag:yes days = 7 }
-            set_variable = { name = rw_cq_schema value = 1 }
+            rw_contract_offer_effect = { PREFIX = cq PRICE = scope:rw_cq_start_price }
         }
         if = {
             limit = { this = scope:rw_ch_ruler }
@@ -68,11 +63,7 @@ rw_cq_counter_effect = {
     if = {
         limit = { rw_cq_responder_trigger = yes }
         scope:rw_lr_record = {
-            change_variable = { name = rw_cq_revision add = 1 }
-            if = { limit = { var:rw_cq_price = 25 } set_variable = { name = rw_cq_price value = 50 } }
-            else = { set_variable = { name = rw_cq_price value = 25 } }
-            if = { limit = { var:rw_cq_turn = flag:ruler } set_variable = { name = rw_cq_turn value = flag:head } }
-            else = { set_variable = { name = rw_cq_turn value = flag:ruler } }
+            rw_contract_counter_effect = { PREFIX = cq TURN_A = ruler TURN_B = head }
             rw_cq_snapshot_effect = yes
         }
         rw_cq_send_reply_effect = yes
@@ -83,12 +74,7 @@ rw_cq_settle_effect = {
         limit = { rw_cq_can_settle_trigger = yes }
         save_scope_as = rw_cq_settler
         scope:rw_lr_record = {
-            remove_variable = rw_cq_window
-            remove_variable = rw_cq_turn
-            set_variable = { name = rw_cq_state value = flag:paid }
-            set_variable = { name = rw_cq_paid_on value = current_date }
-            set_variable = { name = rw_cq_paid_amount value = scope:rw_cq_price }
-            set_variable = { name = rw_cq_paid_revision value = scope:rw_cq_revision }
+            rw_contract_consume_effect = { PREFIX = cq }
             set_variable = { name = rw_cq_settled_by value = scope:rw_cq_settler }
             # Same charter release state as the existing free choice, but no early notice.
             remove_variable = rw_ch_offer_window
@@ -110,9 +96,7 @@ rw_cq_close_effect = {
     if = {
         limit = { rw_cq_can_close_trigger = yes }
         scope:rw_lr_record = {
-            remove_variable = rw_cq_window
-            remove_variable = rw_cq_turn
-            set_variable = { name = rw_cq_state value = flag:closed }
+            rw_contract_close_effect = { PREFIX = cq }
         }
         rw_cq_notify_effect = yes
     }

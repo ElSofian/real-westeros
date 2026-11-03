@@ -19,14 +19,15 @@ not an exhaustive completion checklist. PR/test counts are not global progress m
 
 **War-track preparation:** RW-004 now has an opt-in exact-target intent diagnostic (G1_INTENT_PROBE.md): pinned native helper/claim inputs, explicit one-day staged confirmation, target/liege/serial guards, owner cleanup and conditional native claim-CB observations. Private generation only; no base-mod behavior changes, actual CB/cost/lifecycle/AI/cancellation semantics unverified. All engine runs remain in the final campaign. This is a bounded parallel track in the backlog, not a new G1-first prerequisite for independent systems.
 
-**Next task:** N4, reusable contract model shared by at least two systems, then N5
-and remaining J3/J4/J5/AI4/AI5 criteria. P4 now implements an original-party ultimatum
-with seven-day answer, voluntary 25-prestige regret, explicit refusal or silence,
-free withdrawal and optional guarded native arrest request. Current native grounds
-required at issue and escalation; no invented crime, forced acceptance or immunity.
-The older custom arrest entry honors the same waiting/closed/expiry and actual-party
-guards; all native CK3/AGOT windows remain unchanged. **Development 53/80, engine
-validation 0/20, total 53/100 (+2)**. See RW010_ULTIMATUMS.md. G1/G3 remain open;
+**Next task:** N5, multi-action agreement with common consent and per-action results,
+then remaining J3/J4/J5/AI4/AI5 criteria. N4 now shares one native CK3 contract
+protocol across private allegation settlement and public charter compensation:
+quote/version, snapshot, offer, counter, consume receipt and free close. Existing
+serialized fields remain authoritative; domain-specific identity, private/public
+readers, roles, deadlines, funds and action/transfer ordering remain guarded in each
+adapter. No new Python runtime, consent inheritance, native override or general
+multi-action transaction claim. **Development 55/80, engine validation 0/20,
+total 55/100 (+2)**. See RW010_SHARED_CONTRACT_MODEL.md. G1/G3 remain open;
 all CK3 scenarios stay in the final campaign. Frozen criteria: V01_ROADMAP.md.
 
 

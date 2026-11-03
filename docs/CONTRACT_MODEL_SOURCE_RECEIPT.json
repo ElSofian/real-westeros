@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "status": "Syntax references only; target engine substitution, scope and save behavior unverified",
+  "files": [
+    {
+      "path": "AGOT/common/scripted_effects/00_accolades_scripted_effects.txt",
+      "sha256": "f9404087b7ed7cc4910a499d45e42f53f5ad9d8ce252a4400ade033569f92831",
+      "lines": [
+        3115
+      ],
+      "purpose": "Literal parameter embedded within a native variable key"
+    },
+    {
+      "path": "AGOT/common/scripted_effects/00_agot_effects.txt",
+      "sha256": "8142dea606c1762dac6cbf425772d72fb517a8b7fd1ba362bdb9c7ce9de45ea6",
+      "lines": [
+        3
+      ],
+      "purpose": "Native set_variable name parameter"
+    },
+    {
+      "path": "AGOT/common/scripted_triggers/03_bp1_scripted_triggers.txt",
+      "sha256": "9d71410682a9d0c606a4e7ce40bb3251cdc986e03a596811d4a237dae6942c16",
+      "lines": [
+        7
+      ],
+      "purpose": "Native variable reference parameter"
+    }
+  ]
+}

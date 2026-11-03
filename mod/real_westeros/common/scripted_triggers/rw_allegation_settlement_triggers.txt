@@ -28,16 +28,7 @@ rw_as_view_trigger = {
     exists = scope:rw_as_revision
     exists = scope:rw_as_price
     scope:rw_case_record = {
-        var:rw_as_schema = 1
-        var:rw_as_revision = scope:rw_as_revision
-        var:rw_as_price = scope:rw_as_price
-        has_variable = rw_as_issued_on
-        OR = { var:rw_as_price = 25 var:rw_as_price = 50 }
-        OR = { var:rw_as_state = flag:offered var:rw_as_state = flag:closed var:rw_as_state = flag:paid }
-        trigger_if = {
-            limit = { var:rw_as_state = flag:offered }
-            OR = { var:rw_as_turn = flag:provider var:rw_as_turn = flag:client }
-        }
+        rw_contract_quote_trigger = { PREFIX = as TURN_A = provider TURN_B = client }
         trigger_if = {
             limit = { var:rw_as_state = flag:paid }
             has_variable = rw_as_paid_on

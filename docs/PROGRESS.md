@@ -405,3 +405,27 @@
   AI decisions, cost/refusal/resistance and performance remain engine-unverified;
   twelve ULT cases added to the single final campaign. Next substantive target N4,
   shared reusable contract model, then N5. G1/G3 stay open; no engine run requested.
+
+- RW-010 / N4 (`feat/shared-contract-protocol`, 2026-11-03): one native CK3 contract
+  model now supplies exact quote validation, snapshot, offer, counter, consumed paid
+  receipt and free close to BOTH private allegation settlements and public charter
+  compensation. Literal PREFIX/role bindings reuse original serialized keys/schema
+  and captured aliases; no new shadow state, world index or save migration added.
+  Each adapter keeps domain-specific original identity, reader/privacy, roles and
+  successor restrictions, source context/deadlines, funds and domain-action consume
+  before the original one-way gold debit/credit. Core contains no native/domain
+  effect, public disclosure, inherited consent or runtime Python. Thirty-nine
+  existing family adversarial checks now inspect bounded literal template expansion;
+  twelve new checks validate actual two-family bindings, correct storage/guarded
+  callers, version/receipt integrity, non-renewal, old keys and cross-system isolation.
+  The expansion utility evaluates no game behavior and is not shipped as a runtime
+  dependency. Native key/reference parameter syntax recorded by hashes/line refs
+  only. **778 local unit/static tests passed, nineteen PowerShell tests skipped
+  (797 discovered)**; structural validator, frozen progress report and whitespace
+  PASS. Committed-source ZIP and Linux/Windows CI verified before merge.
+  **Development 55/80 (+2 for N4), engine validation 0/20, total 55/100**; frozen
+  rubric and earlier checkpoints unchanged. Ten MODEL final-campaign cases cover
+  actual native expansion/scope, quote/reply/save timing, legacy saves, cost/privacy,
+  human/AI and G2/G4/G5 regression; none run. No engine compatibility, multi-action
+  agreement or transaction/rollback guarantee claimed. Next N5, shared consent and
+  per-action results; G1/G3/coercive justice remain open. No intermediate game test.

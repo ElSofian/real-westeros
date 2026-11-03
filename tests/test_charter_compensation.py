@@ -4,6 +4,7 @@ import re
 import unittest
 from test_native_scheme_evidence import block
 from tools.validate_mod import clean_script
+from contract_source import expand_contracts
 ROOT=Path(__file__).resolve().parents[1]
 MOD=ROOT/'mod/real_westeros'
 
@@ -83,8 +84,8 @@ def compensation_errors(t,e):
 
 class CharterCompensationTests(unittest.TestCase):
     def setUp(self):
-        self.t=(MOD/'common/scripted_triggers/rw_charter_compensation_triggers.txt').read_text()
-        self.e=(MOD/'common/scripted_effects/rw_charter_compensation_effects.txt').read_text()
+        self.t=expand_contracts((MOD/'common/scripted_triggers/rw_charter_compensation_triggers.txt').read_text())
+        self.e=expand_contracts((MOD/'common/scripted_effects/rw_charter_compensation_effects.txt').read_text())
         self.ev=(MOD/'events/rw_charter_compensation_events.txt').read_text()
         self.ch=(MOD/'events/rw_restitution_charter_events.txt').read_text()
     def errors(self,t=None,e=None):return compensation_errors(self.t if t is None else t,self.e if e is None else e)

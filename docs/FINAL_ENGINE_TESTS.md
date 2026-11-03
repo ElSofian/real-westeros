@@ -1274,3 +1274,12 @@ voluntary prestige cost, explicit rejection versus silence, free withdrawal,
 older-entry bypass and one shared native dispatch, native refusal/resistance,
 private event/effect previews, human/AI parity and final G4/G5 volume/regression.
 A reply is no confession or immunity; an attempt is no demonstrated arrest.
+
+## Shared native contract protocol — N4
+
+No cases executed. MODEL-01…10 in RW010_SHARED_CONTRACT_MODEL.md cover actual native
+parameter/scoped-key expansion in both adapters, stale replies/counters, fixed
+deadlines, receipt/domain consumption before a single gold transfer, current roles,
+legacy schema-1 save/load, private/public separation, free close and final G2/G4/G5
+AI/callback/partial-effect/performance/regression. Literal source expansion is no
+engine parser or runtime evidence. N5 multi-action contracts remain separate.
