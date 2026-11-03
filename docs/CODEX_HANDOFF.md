@@ -152,6 +152,24 @@ stay open, +0, development 62/80, engine 0/20, total 62/100; full W3 requires an
 actual supported intervention/coercive path, not interpreting this demand as peace.
 All G1ROYAL-01…10 stay in the final campaign, no intermediate game test requested.
 
+W3 now has original runtime integration and an actual native intervention-request
+path (G1_NATIVE_INTERVENTION.md). Nine original files live under base mod, without
+a native definition/global war-hook override. The private builder checks four AGOT
+inputs, records nine public runtime hashes, emits only the private declaration
+override and declares a Real Westeros dependency. The sovereign may now choose
+stop_attacker_vassal_war_interaction instead of ignore/censure/political demand.
+The choice queues a next-day isolated event: immutable ticket/current authority/
+exact active war, only one war TOTAL for the attacker, sovereign non-participation,
+native role/target binding and fresh native validation. Consume before one native
+call (send_threshold=decline, no execute threshold or invented target argument);
+blocked tickets close without native effects. No forced peace, custom payment/hook/
+native opinion, crime or title operation. Native refusal/counterparts stay native.
+This is source-only W3 readiness (+2 after assessment); actual special-interface
+target propagation and outcome still require final NATIVEWAR-01…09. W1/W2/G1,
+W4/W5/AI4 and G3 remain open. Next substantive priorities are source-supported war
+initiation AI/exact-law provenance and genuine dynastic coercion, not more credited
+variants. All engine runs remain deferred; no new source upload requested.
+
 RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remains
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
 and RW010_DEFERRED.md. Contextual service-breach mediation is in RW010_CASES.md. Independent case records/read-only history are in RW010_RECORDS.md. Non-contractual allegations, statements and disclosure are in RW010_ALLEGATIONS.md.

@@ -1,11 +1,12 @@
 # G1 — Réponses du suzerain au défi déclaré
 
-**Sources CK3 expérimentales, module privé isolé, aucun test moteur.** Cette tranche
+**Sources CK3 expérimentales intégrées au mod, adaptateur natif privé, aucun test moteur.** Cette tranche
 RW-004 relie le choix natif de défi à une véritable décision du suzerain : ignorer,
 censurer ou demander la fin des hostilités. Elle ne force aucune paix, confiscation,
-révocation ou sanction familiale. **W1…W5 et AI4 restent ouverts, +0 point** : pas de
+révocation ou sanction familiale. La tranche initiale de ce guide ajoutait +0 point. La voie native W3 ultérieure
+est dans G1_NATIVE_INTERVENTION.md ; W1/W2, W4/W5 et AI4 restent ouverts : pas de
 qualification historique de légalité, de chemin autonome d'initiation IA ou de résultat
-G1 prouvé. Développement 62/80, validation moteur 0/20, total 62/100.
+G1 prouvé. Le score courant et son historique sont dans V01_ROADMAP.md / V01_PROGRESS.json.
 
 ## Entrée depuis la déclaration native
 
@@ -62,7 +63,8 @@ restent à démontrer dans CK3. Aucun journal historique permanent n'est ajouté
 
 ## Décisions et conséquences réelles dans les sources
 
-Le suzerain, humain ou IA, a trois choix utilisant les mêmes gardes et effets :
+Les trois choix politiques initiaux utilisent les mêmes gardes et effets humain/IA.
+Une quatrième option de tentative native est maintenant dans G1_NATIVE_INTERVENTION.md :
 
 - **Ignorer** : ferme la réaction sans coût, opinion ni changement de guerre.
 - **Censurer** : ferme d'abord la réaction, puis ajoute son opinion de désapprobation
@@ -91,9 +93,10 @@ non démontré pour l'IA. G4 et AI4 ne sont pas validés par ces événements.
 
 ## Distribution et vérifications hors jeu
 
-Les sept templates originaux et le générateur sont inclus dans le ZIP sous
-`experiments/` et `tools/`, sans activation dans le mod principal. Le générateur
-vérifie toujours les trois mêmes empreintes AGOT. G1_ROYAL_RESPONSE_SOURCE_RECEIPT.json
+Les neuf bibliothèques originales, dont la voie native ultérieure, sont maintenant
+dans `mod/real_westeros`. Le générateur sous `tools/` valide quatre empreintes AGOT
+et produit seulement un adaptateur de déclaration privé, dépendant de Real Westeros.
+Sans cet adaptateur, aucun on_action natif ou déclaration ordinaire ne crée de dossier. G1_ROYAL_RESPONSE_SOURCE_RECEIPT.json
 contient seulement chemins relatifs, empreintes et positions de marqueurs pour le
 contexte de guerre de l'acceptation native et le stockage natif de référence de guerre.
 Aucun original AGOT, sauvegarde, chemin personnel ou service payant n'est ajouté.

@@ -22,3 +22,7 @@
  rw_uw.close:0 "Fermer"
  rw_uw_censured_opinion:0 "A défié ma paix"
  rw_uw_refused_stop_opinion:0 "A refusé ma demande de cesser les hostilités"
+ rw_uw.native_intervene:0 "Chercher une fin négociée à cette guerre."
+ rw_uw.native_intervene_effect:0 "Si les conditions le permettent encore, je demanderai des négociations pour arrêter cette guerre. Mon vassal pourra refuser ou demander une contrepartie. Cela ne garantit pas la paix."
+ rw_uw.native_blocked_title:0 "L’intervention n’a pas pu être demandée"
+ rw_uw.native_blocked_notice:0 "Les conditions d’intervention dans cette guerre précise ne sont plus réunies. Cette demande n’a imposé ni négociation, ni paiement, ni paix."

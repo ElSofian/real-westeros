@@ -11,8 +11,10 @@ except ImportError:
     from validate_mod import brace_errors, clean_script
 
 REPO = Path(__file__).resolve().parents[1]
-TEMPLATES = REPO / 'experiments/g1_native_choice/template'
-FILES = ('common/scripted_effects/rw_unlawful_war_response_effects.txt',
+TEMPLATES = REPO / 'mod/real_westeros'
+FILES = ('common/scripted_effects/rw_unlawful_war_intervention_effects.txt',
+         'events/rw_unlawful_war_intervention_events.txt',
+         'common/scripted_effects/rw_unlawful_war_response_effects.txt',
          'common/story_cycles/rw_unlawful_war_responses.txt',
          'common/opinion_modifiers/rw_unlawful_war_response_opinions.txt',
          'events/rw_unlawful_war_response_events.txt',
@@ -22,6 +24,7 @@ FILES = ('common/scripted_effects/rw_unlawful_war_response_effects.txt',
 INTERACTION = 'common/character_interactions/00_war.txt'
 HELPER = 'common/scripted_triggers/00_war_and_peace_triggers.txt'
 CLAIM = 'common/casus_belli_types/00_claim.txt'
+VASSAL = 'common/character_interactions/00_vassal_interactions.txt'
 MOD_ID = 'rw_g1_native_choice'
 # Original additions only. No copied native interaction/helper/CB in this file.
 ACCEPT = '\n    scope:actor = { rw_uw_notice_effect = yes }\n'
@@ -110,6 +113,11 @@ def pinned_sources():
     if len(hits) != 1:
         raise ValueError('Missing reviewed claim source')
     result[CLAIM] = hits[0]
+    intervention = json.loads((REPO / 'docs/G1_NATIVE_INTERVENTION_SOURCE_RECEIPT.json').read_text())['files']
+    hits = [r['sha256'] for r in intervention if r['path'] == 'AGOT/' + VASSAL]
+    if len(hits) != 1:
+        raise ValueError('Missing reviewed native intervention source')
+    result[VASSAL] = hits[0]
     return result
 
 
@@ -154,12 +162,15 @@ def build(agot_root, output):
             raise ValueError('Native input differs from reviewed hash; stop for source review')
         sources[relative] = raw
     original, patched = patch_native(sources[INTERACTION])
-    payload = template_payload()
-    payload['common/character_interactions/zz_rw_native_war_choice.txt'] = b'\xef\xbb\xbf' + patched + b'\n'
+    runtime = template_payload()
+    payload = {'common/character_interactions/zz_rw_native_war_choice.txt': b'\xef\xbb\xbf' + patched + b'\n'}
     metadata = ('name="Real Westeros PRIVATE native war choice EXPERIMENT"\n'
-                'version="0.0.1"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n')
+                'version="0.0.1"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
+                'dependencies={ "Real Westeros" }\n')
     receipt = {'schema': 1, 'status': 'PRIVATE isolated experimental source; NOT engine-tested',
                'reported_agot': fields,
+               'requires_base_mod': 'Real Westeros',
+               'runtime_sources': [{'path': p, 'sha256': hashlib.sha256(b).hexdigest()} for p,b in runtime.items()],
                'inputs': [{'path': p, 'sha256': hashlib.sha256(b).hexdigest()} for p,b in sources.items()],
                'native_definition_sha256': hashlib.sha256(original).hexdigest(),
                'patched_definition_sha256': hashlib.sha256(patched).hexdigest(),
@@ -177,7 +188,7 @@ def build(agot_root, output):
     (out / (MOD_ID + '.mod')).write_text(metadata + f'path="mod/{MOD_ID}"\n', encoding='utf-8')
     (out / 'receipt.json').write_text(json.dumps(receipt, indent=2) + '\n', encoding='utf-8')
     (out / 'PRIVATE.txt').write_text('Contains proprietary native interaction. DO NOT publish, commit or redistribute.\n'
-        'Install only for final campaign, after AGOT. Mutually exclusive with every other G1 probe/adapter.\n', encoding='utf-8')
+        'Install only for final campaign, after AGOT and Real Westeros. Mutually exclusive with every other G1 probe/adapter.\n', encoding='utf-8')
     return receipt
 
 

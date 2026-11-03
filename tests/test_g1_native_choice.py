@@ -41,7 +41,7 @@ class NativeChoiceBuilderTests(unittest.TestCase):
         self.out = self.root / 'private'
         (self.agot / 'descriptor.mod').write_text('version="0.5.2.1"\nsupported_version="1.19.0.6"\n')
         self.inputs = {builder.INTERACTION: FIXTURE.encode(), builder.HELPER: b'synthetic helper',
-                       builder.CLAIM: b'synthetic original CB'}
+                       builder.CLAIM: b'synthetic original CB', builder.VASSAL: b'synthetic native intervention'}
         for name, raw in self.inputs.items():
             path = self.agot / name
             path.parent.mkdir(parents=True, exist_ok=True)
@@ -64,7 +64,13 @@ class NativeChoiceBuilderTests(unittest.TestCase):
 
     def test_real_original_templates_and_private_manifest(self):
         receipt = self.build()
-        self.assertEqual(8, len(receipt['outputs']))
+        self.assertEqual(1, len(receipt['outputs']))
+        self.assertEqual(len(builder.FILES), len(receipt['runtime_sources']))
+        self.assertEqual('Real Westeros', receipt['requires_base_mod'])
+        self.assertIn('dependencies={ "Real Westeros" }', (self.out/builder.MOD_ID/'descriptor.mod').read_text())
+        for row in receipt['runtime_sources']:
+            self.assertEqual(row['sha256'], hashlib.sha256((builder.TEMPLATES/row['path']).read_bytes()).hexdigest())
+            self.assertFalse((self.out/builder.MOD_ID/row['path']).exists())
         for row in receipt['outputs']:
             raw = (self.out / builder.MOD_ID / row['path']).read_bytes()
             self.assertEqual(row['sha256'], hashlib.sha256(raw).hexdigest())
@@ -166,7 +172,7 @@ class NativeChoiceSourceTests(unittest.TestCase):
         for forbidden in ('set_variable','set_character_flag','start_war','end_war','run_interaction',
                           'add_gold','use_hook =','on_accept =','on_war_started','ai_will_do','claim_cb ='):
             self.assertNotIn(forbidden,original)
-        self.assertFalse((builder.REPO/'mod/real_westeros/common/scripted_triggers/rw_unlawful_war_choice_triggers.txt').exists())
+        self.assertFalse((builder.REPO/'mod/real_westeros/common/character_interactions/zz_rw_native_war_choice.txt').exists())
 
     def test_templates_have_bom_headers_and_complete_localizations(self):
         payload=builder.template_payload()
@@ -176,9 +182,9 @@ class NativeChoiceSourceTests(unittest.TestCase):
             for key in ('rw_uw_defy_option:0','rw_uw_defy_warning:0'):
                 self.assertIn(key,payload[name].decode('utf-8-sig'))
 
-    def test_source_pins_remain_the_reviewed_three_files(self):
+    def test_source_pins_cover_declaration_and_native_intervention(self):
         pins=builder.pinned_sources()
-        self.assertEqual({builder.INTERACTION,builder.HELPER,builder.CLAIM},set(pins))
+        self.assertEqual({builder.INTERACTION,builder.HELPER,builder.CLAIM,builder.VASSAL},set(pins))
         self.assertTrue(all(len(h)==64 for h in pins.values()))
 
 

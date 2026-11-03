@@ -1332,3 +1332,14 @@ regression. The new demand does NOT dispatch/force peace or create a native crim
 This isolated candidate still does not establish historical illegality or autonomous
 war initiation. Public archive contains original sources only, never generated
 native code. All native runs remain deferred to the final campaign.
+
+## Native sovereign stop-attacker-war request — W3
+
+No cases executed. NATIVEWAR-01…09 in G1_NATIVE_INTERVENTION.md cover original runtime
+integration without a base override, the separately installed private declaration
+adapter, exact stored war/roles/serial/authority, next-day isolated native role/target
+binding and validation, all-war ambiguity, native cooldown/hook/participant guards,
+actual target propagation into the special interface, negotiation/counterpart/refusal
+and delayed player/AI responses, replay/expiry/save-load and native lifecycle/Mega Wars
+regression. Source receipt precedes the one native call; never infer peace, payment,
+completed negotiation or sanction from that receipt. All runs stay in final campaign.

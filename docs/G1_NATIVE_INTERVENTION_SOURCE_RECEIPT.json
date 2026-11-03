@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "status": "Private source inspection only; no native interaction target propagation or engine outcome demonstrated",
+  "reported_agot": "0.5.2.1",
+  "files": [
+    {
+      "path": "AGOT/common/character_interactions/00_vassal_interactions.txt",
+      "sha256": "b7a36b408a6c0583429ebf81dbe07a794f6af140e91d39e75b9318f77ab162e1",
+      "markers": {
+        "stop_attacker_vassal_war_interaction": [
+          2065,
+          2074
+        ],
+        "can_be_picked": [
+          140,
+          422,
+          476,
+          2137,
+          2276,
+          3044
+        ],
+        "vassal_interaction.0001": [
+          2150
+        ],
+        "attempt_to_force_end_war_opinion": [
+          2125,
+          2144,
+          2194
+        ]
+      }
+    },
+    {
+      "path": "CK3/events/interaction_events/vassal_interaction_events.txt",
+      "sha256": "97c706c9ec1cf5b3a6520c27a6683b68eb94d89ef9dbad3d745c3ed4386ed247",
+      "markers": {
+        "vassal_interaction.0001": [
+          10,
+          13,
+          14,
+          142,
+          171,
+          178,
+          182,
+          193,
+          215,
+          216,
+          220,
+          233,
+          255,
+          284,
+          614,
+          671,
+          693,
+          858,
+          862,
+          873,
+          896,
+          900,
+          913,
+          1256,
+          1313,
+          1337,
+          1364,
+          1395
+        ],
+        "vassal_interaction.0002": [
+          157,
+          313,
+          316,
+          317,
+          342,
+          360,
+          462,
+          568,
+          995,
+          1036,
+          1124,
+          1216
+        ],
+        "vassal_interaction.0003": [
+          201,
+          358,
+          361,
+          368,
+          415,
+          416,
+          520,
+          1044,
+          1084,
+          1085,
+          1175
+        ],
+        "vassal_interaction.0004": [
+          241,
+          460,
+          463,
+          470,
+          519,
+          1132,
+          1174
+        ],
+        "vassal_interaction.0005": [
+          270,
+          297,
+          565,
+          569,
+          572,
+          600,
+          1220,
+          1242
+        ]
+      }
+    }
+  ]
+}

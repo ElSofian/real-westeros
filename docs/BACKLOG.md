@@ -57,3 +57,15 @@ cold-start window. The read-only sampler now starts timing at its first real CPU
 observation and requires two genuine observations spanning the requested duration
 while the process remains available. A 700-ms delayed real-probe regression covers
 the failure. No fabricated samples, CK3 result or readiness points.
+
+**W3 native intervention source delivery:** original response/intervention libraries
+are now integrated under base `mod/real_westeros`; the separate PRIVATE generated
+declaration adapter alone overrides the native window and explicitly depends on
+Real Westeros. A fourth sovereign choice queues one next-day guarded native
+stop_attacker_vassal_war_interaction request, preserving native negotiations, costs,
+cooldowns/hooks and refusal. Exact record/roles/authority plus one-total-war guard,
+fresh native validation, target alias check and consumed-before-call receipt.
+No forced peace, copied native penalty or war-initiation AI. W3 qualifies for source
+assessment (+2 after source commit); target propagation and actual outcomes stay
+engine-unverified. G1/W1/W2/W4/W5/AI4 and G3 remain open. G1_NATIVE_INTERVENTION.md
+details final NATIVEWAR-01…09. Do not extend credited dialogue variants for points.

@@ -560,3 +560,25 @@
   Local correction checks: **906 discovered, 883 passed, 23 PowerShell skips**;
   readiness/structural/telemetry/whitespace PASS. Windows/Linux execution of the
   delayed-real-probe test is required before merge. No failed check is waived.
+
+- RW-004 / W3 native intervention (2026-11-03): located and audited AGOT's native
+  stop_attacker_vassal_war_interaction and CK3 negotiation followups, relative
+  hashes/markers only. Integrated nine original runtime libraries into base mod,
+  no native definition/global callback override; private adapter now emits only
+  the declaration override, checks four AGOT inputs and declares Real Westeros
+  dependency. Fourth shared sovereign choice queues an isolated next-day native
+  request, exact serial/war/parties/issuer/title, one-total-war ambiguity guard,
+  non-participation/native validity/target checks; receipt consumed before one call.
+  Native negotiation/counterpart/refusal/cooldown/cost/hook/peace ownership retained,
+  no execute threshold, guessed API argument, forced peace or copied penalty.
+  Blocked tickets have no native effect; existing fixed windows and inert per-war
+  dedup remain. Four-input actual private-source build with descriptor fixture
+  PASS, one private override plus nine public runtime hashes, no proprietary asset
+  committed/packaged. Fourteen new adversarial source tests; **920 discovered,
+  897 local passed, 23 PowerShell skipped**. Base/isolated source structure, EN/FR,
+  telemetry audit, readiness and whitespace PASS. CI and committed ZIP required
+  before merge; no CK3 run. NATIVEWAR-01…09 all deferred, especially scope:target
+  propagation into the native special interface. W3 source qualifies for +2 after
+  assessment; no engine credit or claim of successful peace. G1/W1/W2/W4/W5/AI4
+  and G3 stay open. Next: actual war-initiation AI/exact-law source path or
+  dynastic coercion where supported, not repeated credited dialogue variants.

@@ -89,3 +89,57 @@ rw_uw_answer_turn_trigger = {
         has_variable = rw_uw_answer_window
     }
 }
+
+# Unique native target: the attacker has exactly ONE war, not merely one claim war.
+# This excludes ambiguous special-interface dispatch rather than guessing a target.
+rw_uw_native_context_trigger = {
+    rw_uw_response_identity_trigger = yes
+    this = scope:rw_uw_issuer
+    NOT = { is_participant_in_war = scope:rw_uw_war }
+    scope:rw_uw_attacker = {
+        any_character_war = { this = scope:rw_uw_war }
+        NOT = { any_character_war = { count >= 2 } }
+    }
+}
+rw_uw_can_queue_native_trigger = {
+    rw_uw_issuer_turn_trigger = yes
+    rw_uw_native_context_trigger = yes
+}
+# Immutable personal ticket. Closing an unavailable request grants no authority.
+rw_uw_native_ticket_trigger = {
+    exists = scope:rw_uw_record
+    exists = scope:rw_uw_serial
+    exists = scope:rw_uw_attacker
+    exists = scope:rw_uw_defender
+    exists = scope:rw_uw_issuer
+    exists = scope:rw_uw_authority
+    exists = scope:rw_uw_war
+    this = scope:rw_uw_issuer
+    scope:rw_uw_record = {
+        story_type = story_rw_unlawful_war_response
+        story_owner = scope:rw_uw_attacker
+        var:rw_uw_schema = 1
+        var:rw_uw_serial = scope:rw_uw_serial
+        var:rw_uw_attacker = scope:rw_uw_attacker
+        var:rw_uw_defender = scope:rw_uw_defender
+        var:rw_uw_issuer = scope:rw_uw_issuer
+        var:rw_uw_authority = scope:rw_uw_authority
+        var:rw_uw_war = scope:rw_uw_war
+        var:rw_uw_state = flag:native_queued
+        NOT = { has_variable = rw_uw_native_dispatched_on }
+    }
+}
+# Used ONLY inside the separate next-day event after binding native input scopes.
+rw_uw_can_send_native_trigger = {
+    rw_uw_native_ticket_trigger = yes
+    rw_uw_native_context_trigger = yes
+    scope:actor = scope:rw_uw_issuer
+    scope:recipient = scope:rw_uw_attacker
+    scope:target = scope:rw_uw_war
+    is_character_interaction_valid = {
+        recipient = scope:rw_uw_attacker
+        interaction = stop_attacker_vassal_war_interaction
+    }
+    # Do not proceed if native validation replaced the candidate target context.
+    scope:target = scope:rw_uw_war
+}
