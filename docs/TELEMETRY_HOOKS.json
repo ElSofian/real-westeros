@@ -1,0 +1,99 @@
+{
+  "schema": 1,
+  "baseline_commit": "026863e34b0d3eb780551c32812b35c29ff55bb1",
+  "budget": 5000,
+  "window_days": 90,
+  "coverage": [
+    {
+      "file": "mod/real_westeros/common/scripted_effects/rw_justice_action_effects.txt",
+      "effect": "rw_ja_attempt_effect",
+      "family": "justice",
+      "action": "arrest",
+      "commit_key": "arrest"
+    },
+    {
+      "file": "mod/real_westeros/common/scripted_effects/rw_native_sentence_effects.txt",
+      "effect": "rw_jp_attempt_effect",
+      "family": "justice",
+      "action": "execute",
+      "commit_key": "execute"
+    },
+    {
+      "file": "mod/real_westeros/common/scripted_effects/rw_multi_action_effects.txt",
+      "effect": "rw_ba_counter_effect",
+      "family": "bundle",
+      "action": "counter"
+    },
+    {
+      "file": "mod/real_westeros/common/scripted_effects/rw_multi_action_effects.txt",
+      "effect": "rw_ba_accept_effect",
+      "family": "bundle",
+      "action": "accept"
+    },
+    {
+      "file": "mod/real_westeros/common/scripted_effects/rw_multi_action_effects.txt",
+      "effect": "rw_ba_close_offer_effect",
+      "family": "bundle",
+      "action": "close"
+    },
+    {
+      "file": "mod/real_westeros/common/scripted_effects/rw_multi_action_effects.txt",
+      "effect": "rw_ba_refuse_effect",
+      "family": "bundle",
+      "action": "refuse_$LEG$"
+    },
+    {
+      "file": "mod/real_westeros/common/scripted_effects/rw_multi_action_effects.txt",
+      "effect": "rw_ba_pay_effect",
+      "family": "bundle",
+      "action": "gold",
+      "commit_key": "bundle_gold"
+    },
+    {
+      "file": "mod/real_westeros/common/scripted_effects/rw_multi_action_effects.txt",
+      "effect": "rw_ba_support_effect",
+      "family": "bundle",
+      "action": "support",
+      "commit_key": "bundle_support"
+    },
+    {
+      "file": "mod/real_westeros/common/scripted_effects/rw_multi_action_effects.txt",
+      "effect": "rw_ba_release_effect",
+      "family": "bundle",
+      "action": "release",
+      "commit_key": "bundle_release"
+    },
+    {
+      "file": "mod/real_westeros/events/rw_native_sentence_events.txt",
+      "event_option": "rw_native_sentence.leave",
+      "family": "justice",
+      "action": "leave_sentence"
+    },
+    {
+      "file": "mod/real_westeros/events/rw_justice_action_events.txt",
+      "event_option": "rw_justice_action.leave",
+      "family": "justice",
+      "action": "leave_arrest"
+    },
+    {
+      "file": "mod/real_westeros/events/rw_multi_action_events.txt",
+      "event_option": "rw_multi_actions.leave",
+      "family": "bundle",
+      "action": "leave"
+    },
+    {
+      "file": "mod/real_westeros/common/scripted_effects/rw_native_sentence_effects.txt",
+      "effect": "rw_jp_opportunity_effect",
+      "family": "justice",
+      "action": "custody_opportunity"
+    }
+  ],
+  "gameplay_sha256": {
+    "mod/real_westeros/common/scripted_effects/rw_justice_action_effects.txt": "4d66a1fde3945bb1a8c75bc659e5e17600dbd6d888b2f52ed24ad87c9370ad56",
+    "mod/real_westeros/common/scripted_effects/rw_native_sentence_effects.txt": "a1603d311d7cc28436f38a3b9239522c417eedffccc88d9dfa18116179123c19",
+    "mod/real_westeros/common/scripted_effects/rw_multi_action_effects.txt": "2e446e71f7eba6afec6b401e9515fa216e824ae73913ce77f4bbfabec5eb7cce",
+    "mod/real_westeros/events/rw_native_sentence_events.txt": "67334300e9b5e97c38c2472a358cf6d524712bc758ee276d626c022f1d5a37d4",
+    "mod/real_westeros/events/rw_justice_action_events.txt": "db0b85e55bf7ccd930997bed4f9ac82837751dd978ef41448cf3f9d10cb66b21",
+    "mod/real_westeros/events/rw_multi_action_events.txt": "7678362df1f379f8256f01a7d817d12cc4121c58eb26fb581500ab53c54cc95a"
+  }
+}

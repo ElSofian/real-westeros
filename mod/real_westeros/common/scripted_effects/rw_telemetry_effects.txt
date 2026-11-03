@@ -1,0 +1,51 @@
+# Developer-console opt-in, no player-facing interaction, network or personal IDs.
+# Record-local audit marks remain inert across sessions: irreversible acts are
+# single-use for those exact records. Off/budget-exhausted logging changes no marks.
+rw_tm_start_effect = {
+    set_global_variable = { name = rw_tm_budget value = 5000 }
+    set_global_variable = { name = rw_tm_enabled value = flag:yes days = 90 }
+    debug_log = "RW_TM1 family=telemetry action=session stage=start control=unknown"
+}
+rw_tm_stop_effect = {
+    remove_global_variable = rw_tm_enabled
+    remove_global_variable = rw_tm_budget
+    debug_log = "RW_TM1 family=telemetry action=session stage=stop control=unknown"
+}
+# Character scope only. Fixed literal fields: no names, IDs, secrets or source terms.
+rw_tm_emit_effect = {
+    if = {
+        limit = { rw_tm_enabled_trigger = yes }
+        if = {
+            limit = { is_ai = yes }
+            debug_log = "RW_TM1 family=$FAMILY$ action=$ACTION$ stage=$STAGE$ control=ai"
+        }
+        else = { debug_log = "RW_TM1 family=$FAMILY$ action=$ACTION$ stage=$STAGE$ control=player" }
+        change_global_variable = { name = rw_tm_budget add = -1 }
+        if = {
+            limit = { global_var:rw_tm_budget <= 0 }
+            debug_log = "RW_TM1 family=telemetry action=session stage=truncated control=unknown"
+        }
+    }
+}
+# Character scope, immediately before the existing irreversible instruction.
+# This observes duplicates; it NEVER blocks, retries or performs a gameplay action.
+rw_tm_commit_effect = {
+    if = {
+        limit = { rw_tm_enabled_trigger = yes }
+        save_scope_as = rw_tm_actor
+        if = {
+            limit = { exists = $CONTAINER$ }
+            $CONTAINER$ = {
+                if = {
+                    limit = { has_variable = rw_tm_$KEY$_committed }
+                    scope:rw_tm_actor = { rw_tm_emit_effect = { FAMILY = $FAMILY$ ACTION = $ACTION$ STAGE = duplicate } }
+                }
+                else = {
+                    set_variable = { name = rw_tm_$KEY$_committed value = 1 }
+                    scope:rw_tm_actor = { rw_tm_emit_effect = { FAMILY = $FAMILY$ ACTION = $ACTION$ STAGE = commit } }
+                }
+            }
+        }
+        else = { rw_tm_emit_effect = { FAMILY = $FAMILY$ ACTION = $ACTION$ STAGE = missing_context } }
+    }
+}

@@ -37,7 +37,7 @@ rw_native_sentences.0001 = {
             modifier = { factor = 2 opinion = { target = scope:rw_jp_target value < -25 } }
         }
     }
-    option = { name = rw_native_sentence.leave ai_chance = { base = 50 } }
+    option = { name = rw_native_sentence.leave ai_chance = { base = 50 } rw_tm_emit_effect = { FAMILY = justice ACTION = leave_sentence STAGE = selected } }
 }
 # No automatic send: even a native callback offers only a separate explicit choice.
 rw_native_sentences.0002 = {

@@ -76,7 +76,7 @@ rw_multi_actions.0001 = {
     option = { name = rw_multi_actions.refuse_gold trigger = { rw_ba_can_refuse_trigger = { LEG = gold PAYER = yes PAYEE = no } } rw_ba_refuse_effect = { LEG = gold PAYER = yes PAYEE = no } ai_chance = { base = 5 modifier = { factor = 2 has_trait = deceitful } } }
     option = { name = rw_multi_actions.refuse_support trigger = { rw_ba_can_refuse_trigger = { LEG = support PAYER = yes PAYEE = no } } rw_ba_refuse_effect = { LEG = support PAYER = yes PAYEE = no } ai_chance = { base = 5 modifier = { factor = 2 has_trait = deceitful } } }
     option = { name = rw_multi_actions.refuse_release trigger = { rw_ba_can_refuse_trigger = { LEG = release PAYER = no PAYEE = yes } } rw_ba_refuse_effect = { LEG = release PAYER = no PAYEE = yes } ai_chance = { base = 5 modifier = { factor = 2 has_trait = deceitful } } }
-    option = { name = rw_multi_actions.leave ai_chance = { base = 30 } }
+    option = { name = rw_multi_actions.leave ai_chance = { base = 30 } rw_tm_emit_effect = { FAMILY = bundle ACTION = leave STAGE = selected } }
 }
 # Fixed post-acceptance reminder. Snapshot stays the accepted packet; never refresh.
 rw_multi_actions.0002 = {

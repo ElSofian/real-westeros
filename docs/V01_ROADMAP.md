@@ -1,7 +1,8 @@
 # Suivi de la première version intégrée — v0.1-plan-1
 
-**Développement : 60/80 · Validation en jeu : 0/20 · Total : 60/100 (+3).**
-J3 ajoute les sentences natives avec ou sans motif reconnu ; prochaine cible indépendante AI5.
+**Développement : 62/80 · Validation en jeu : 0/20 · Total : 62/100 (+2).**
+AI5 livre l’instrumentation opt-in des décisions/doublons et les outils locaux CPU/mémoire.
+Restent 18 points source : W1…W5, J4/J5 et AI4, dépendants des chemins G1/G3.
 W1/W2 restent ouverts (+0), en attente des observations finales G1 avant voie de production.
 Vitesse encore non mesurable : moins de sept jours de recul sur cette grille.
 
@@ -29,7 +30,7 @@ coût. Les trois scénarios initiaux ne limitent pas le périmètre ; le catalog
 | Justice et sanctions | 8 | 12 |
 | Information et preuves | 8 | 8 |
 | Mémoire politique | 10 | 10 |
-| IA politique | 6 | 10 |
+| IA politique | 8 | 10 |
 | Validation finale CK3/AGOT | 0 | 20 |
 
 Les critères « source » ci-dessous sont implémentés expérimentalement et vérifiés
@@ -122,7 +123,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 | AI2 | 2 | Ciblage borné, occasions réactives et délais anti-spam sans parcours global des paires | Source seulement : [RW010_FAVOR_SERVICE.md](RW010_FAVOR_SERVICE.md), [rw_favor_service_interactions.txt](../mod/real_westeros/common/character_interactions/rw_favor_service_interactions.txt) |
 | AI3 | 2 | Politique contextuelle partagée par deux familles avec au moins trois facteurs : enjeux, risques, moyens, savoir ou obligations | Source seulement : [RW010_CONTEXTUAL_AI.md](RW010_CONTEXTUAL_AI.md), [rw_political_ai_values.txt](../mod/real_westeros/common/script_values/rw_political_ai_values.txt) |
 | AI4 | 2 | Chemins autonomes IA↔IA à travers guerre, justice et négociation | À développer / valider |
-| AI5 | 2 | Instrumentation effective des décisions, abus et performances, prête pour la campagne finale | À développer / valider |
+| AI5 | 2 | Instrumentation effective des décisions, abus et performances, prête pour la campagne finale | Source seulement : [RW010_TELEMETRY.md](RW010_TELEMETRY.md), [rw_telemetry_effects.txt](../mod/real_westeros/common/scripted_effects/rw_telemetry_effects.txt) |
 
 ### V — Validation finale CK3/AGOT
 
@@ -156,8 +157,8 @@ le critère est rempli. La qualification est une revue humaine explicite du code
    exécution volontaire et résultat distinct pour chaque clause ; aucune transaction atomique.
    **J3 livré dans les sources (+3)** : sentence native explicite avec/sans motif
    reconnu, confirmation figée, reçu et déduplication communs, aucune peine copiée.
-   **AI5 cible indépendante suivante** : instrumentation réelle des décisions, abus
-   et performances pour la campagne finale. J4/J5 restent liés aux routes G3 ;
+   **AI5 livré dans les sources (+2)** : traces opt-in réellement branchées, audit de
+   doublons et outils locaux CPU/mémoire pour la campagne finale. J4/J5 restent liés aux routes G3 ;
    AI4 inclut la voie de guerre encore ouverte. W3/W4/W5 restent ouverts.
 5. **V1…V5** : une campagne finale, selon [FINAL_ENGINE_TESTS.md](FINAL_ENGINE_TESTS.md).
    Corriger ses erreurs avant de revendiquer une version jouable/compatible.
@@ -165,6 +166,12 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 Cet ordre privilégie les manques structurants. Une dépendance technique peut imposer
 un travail préalable à **+0** ; l’annoncer et expliquer quel critère il débloque.
 Ne plus prolonger indéfiniment une tranche déjà comptée par de petites variantes.
+
+La suite exige une voie G1/G3 réelle : relire les limites et les sources privées déjà
+fournies avant de réserver RW-004 ou une tranche coercitive RW-010. Si la correction
+sûre nécessite les observations finales différées, conserver ces 18 points ouverts ;
+une nouvelle variante de dialogue ou un diagnostic supplémentaire ne les remplit pas.
+Aucun test intermédiaire demandé, aucun contournement natif non démontré.
 
 ## Règles de mise à jour et vitesse
 

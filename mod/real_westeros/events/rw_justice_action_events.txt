@@ -33,7 +33,7 @@ rw_justice_actions.0001 = {
         }
     }
     # Silence/nonintervention is always possible and changes no fact or reason.
-    option = { name = rw_justice_action.leave ai_chance = { base = 50 } }
+    option = { name = rw_justice_action.leave ai_chance = { base = 50 } rw_tm_emit_effect = { FAMILY = justice ACTION = leave_arrest STAGE = selected } }
 }
 
 # A fresh callback offers one delayed opportunity; it never sends an arrest itself.

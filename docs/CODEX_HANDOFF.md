@@ -105,6 +105,20 @@ once, never send automatically. Next independent **AI5**: actual decision/abuse/
 performance instrumentation. J4/J5 depend on G3 routes and AI4 includes unresolved
 war integration. No additional diagnostic or intermediate game test requested.
 
+AI5 now adds +2 development points: **development 62/80, engine validation 0/20,
+total 62/100**. Read RW010_TELEMETRY.md and TELEMETRY_HOOKS.json. Opt-in literal
+anonymous markers are wired into actual justice/multi-action negotiation effects;
+record-local audit observes duplicate irreversible dispatches without blocking them.
+Default off, 5,000 observations / 90-day window, no native action/eligibility/AI weight
+change. Source hash removal proof restores six original gameplay inputs. Packaged
+PowerShell sampler measures actual whole-process CPU/memory; offline Python only
+aggregates literal traces/real samples, never simulates CK3. No engine run or measured
+CK3 overhead. TM-01…08 join the final campaign; Linux/Windows tool checks are separate.
+The remaining 18 source points are W1…W5, J4/J5 and AI4 (war included): re-examine
+existing G1/G3 source constraints for a safe real implementation, not another
+already-credited variant or standalone diagnostic. If final observations are truly
+required, retain visible blockers without asking for an intermediate game test.
+
 RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remains
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
 and RW010_DEFERRED.md. Contextual service-breach mediation is in RW010_CASES.md. Independent case records/read-only history are in RW010_RECORDS.md. Non-contractual allegations, statements and disclosure are in RW010_ALLEGATIONS.md.

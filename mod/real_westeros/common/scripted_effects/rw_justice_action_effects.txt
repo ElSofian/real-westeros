@@ -9,21 +9,26 @@ rw_ja_open_effect = {
 # One native request at most per exact personal observation. This receipt records
 # a dispatch attempt ONLY; native refusal, pending resolution or no send is not guilt.
 rw_ja_attempt_effect = {
+    rw_tm_emit_effect = { FAMILY = justice ACTION = arrest STAGE = evaluated }
     if = {
         limit = { rw_ja_can_attempt_trigger = yes }
+        rw_tm_emit_effect = { FAMILY = justice ACTION = arrest STAGE = authorized }
         rw_ut_mark_shared_attempt_effect = yes
         scope:rw_scheme_evidence_record = {
             set_variable = { name = rw_ja_dispatched_on value = current_date }
             set_variable = { name = rw_ja_actor value = scope:rw_scheme_observer }
             set_variable = { name = rw_ja_target value = scope:rw_ja_target }
         }
+        rw_tm_commit_effect = { FAMILY = justice ACTION = arrest KEY = arrest CONTAINER = scope:rw_scheme_evidence_record }
         run_interaction = {
             interaction = imprison_interaction
             actor = root
             recipient = scope:rw_ja_target
             send_threshold = decline
         }
+        rw_tm_emit_effect = { FAMILY = justice ACTION = arrest STAGE = complete }
     }
+    else = { rw_tm_emit_effect = { FAMILY = justice ACTION = arrest STAGE = denied } }
 }
 # Called only after a fresh participant record has been fully initialized. Never
 # enumerate characters, reschedule on archive reads or attach to generic discovery.

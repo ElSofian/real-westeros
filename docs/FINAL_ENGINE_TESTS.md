@@ -1301,3 +1301,12 @@ custody/target/protections, single shared request/pair lock, native penalty comp
 AI→player reaction/delay, private receipt and source retention, human/AI discretion
 and final G4/G5 volume/regression. Dispatch is not execution/death proof; arbitrary
 arrest's separate native AI restriction remains intact.
+
+## Opt-in decision/duplicate/process instrumentation — AI5
+
+No cases executed. TM-01…08 in RW010_TELEMETRY.md cover default-off neutrality,
+explicit windows/budget/expiry/save-load, human/AI and abstention/guard observations,
+record-local duplicate audit for three distinct clauses and native justice requests,
+privacy, incomplete/rotated logs and real CPU/memory comparison (matched AGOT-only,
+RW trace-off and trace-on). The packaged sampler measures the whole process; no FPS,
+per-effect latency, native outcome or engine compatibility is inferred.
