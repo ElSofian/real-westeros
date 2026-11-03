@@ -53,7 +53,7 @@ class DistributionTests(unittest.TestCase):
             # Public source kit only: no generated native declaration or enabled adapter.
             self.assertIn('tools/build_g1_native_choice.py', payload_names)
             self.assertIn('mod/real_westeros/common/scripted_triggers/rw_unlawful_war_choice_triggers.txt', payload_names)
-            self.assertFalse(any(n.endswith(('zz_rw_native_war_choice.txt', 'rw_g1_native_choice.mod')) for n in payload_names))
+            self.assertFalse(any(n.endswith(('zz_rw_native_war_choice.txt', 'rw_g1_native_choice.mod', 'zz_rw_native_claim_law.txt', 'zz_rw_native_law_permission.txt')) for n in payload_names))
             self.assertIn('mod/real_westeros/common/scripted_effects/rw_unlawful_war_intervention_effects.txt', payload_names)
             self.assertFalse(any(n.startswith('experiments/g1_native_choice/') for n in payload_names))
             for record in manifest['files']:

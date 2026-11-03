@@ -67,6 +67,7 @@ rw_uw_notice_effect = {
                     set_variable = { name = rw_uw_live value = flag:yes days = 14 }
                     set_variable = { name = rw_uw_issuer_window value = flag:yes days = 7 }
                 }
+                rw_dl_link_response_effect = yes
                 scope:rw_uw_issuer = { trigger_event = { id = rw_unlawful_war_response.0001 } }
             }
         }

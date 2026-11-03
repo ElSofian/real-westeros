@@ -1,0 +1,49 @@
+# Fail-closed fallbacks. Only the PRIVATE adapter supplies the read-only native clone.
+# Availability means definitions were supplied, NOT engine compatibility.
+rw_dl_adapter_available_trigger = { always = no }
+rw_dl_native_permission_trigger = { always = no }
+# Callback context only. No actor/recipient/target aliases of the native CB changed.
+rw_dl_callback_context_trigger = {
+    rw_dl_adapter_available_trigger = yes
+    exists = scope:attacker
+    exists = scope:defender
+    exists = scope:war
+    NOT = { scope:attacker = scope:defender }
+    scope:war = { using_cb = claim_cb primary_attacker = scope:attacker primary_defender = scope:defender }
+    scope:attacker = {
+        is_alive = yes is_adult = yes is_landed = yes
+        government_has_flag = government_is_feudal
+        exists = liege
+        liege = scope:defender.liege
+        liege = { is_alive = yes }
+    }
+    scope:defender = { is_alive = yes is_landed = yes government_has_flag = government_is_feudal exists = liege }
+}
+# STORY scope. An exact retained callback receipt, never a later reconstruction.
+rw_dl_match_response_trigger = {
+    story_type = story_rw_declaration_law
+    story_owner = scope:rw_uw_attacker
+    var:rw_dl_schema = 1
+    has_variable = rw_dl_serial
+    has_variable = rw_dl_retained
+    var:rw_dl_phase = flag:claim_cb_on_declaration_prefix
+    var:rw_dl_attacker = scope:rw_uw_attacker
+    var:rw_dl_defender = scope:rw_uw_defender
+    var:rw_dl_war = scope:rw_uw_war
+    var:rw_dl_issuer = scope:rw_uw_issuer
+    var:rw_dl_authority = scope:rw_uw_authority
+}
+# A current issuer can see this public-law/native-gate context only through their
+# own exact response record. No private terms, native legal reason or successor.
+rw_dl_link_view_trigger = {
+    rw_uw_response_identity_trigger = yes
+    this = scope:rw_uw_issuer
+    scope:rw_uw_record = {
+        exists = var:rw_dl_link
+        has_variable = rw_dl_link_serial
+        var:rw_dl_link = {
+            rw_dl_match_response_trigger = yes
+            var:rw_dl_serial = prev.var:rw_dl_link_serial
+        }
+    }
+}
