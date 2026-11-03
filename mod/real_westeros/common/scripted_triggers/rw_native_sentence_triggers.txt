@@ -1,0 +1,71 @@
+# Native execution, not arbitrary arrest. Original observer and actual custody only.
+rw_jp_pair_blocked_trigger = {
+    any_owned_story = {
+        story_type = story_rw_scheme_evidence
+        story_owner = scope:rw_scheme_observer
+        var:rw_evidence_schema = 1
+        var:rw_evidence_kind = flag:participant_exposed
+        var:rw_jp_schema = 1
+        var:rw_jp_actor = scope:rw_scheme_observer
+        var:rw_jp_target = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+        has_variable = rw_jp_dispatched_on
+        has_variable = rw_jp_pair_window
+    }
+}
+rw_jp_can_open_trigger = {
+    rw_sentencing_current_prisoner_trigger = yes
+    is_adult = yes
+    is_landed = yes
+    is_at_war = no
+    has_active_diarchy = no
+    scope:rw_scheme_evidence_record = { NOT = { has_variable = rw_jp_dispatched_on } }
+    scope:rw_scheme_evidence_record.var:rw_evidence_participant = {
+        is_adult = yes
+        NOT = { has_strong_hook = scope:rw_scheme_observer }
+        NOT = { has_character_flag = being_prisonbroken_by_laamp }
+        NOT = { has_character_flag = keep_imprisoned }
+    }
+    NOT = { rw_jp_pair_blocked_trigger = yes }
+    is_character_interaction_valid = {
+        recipient = scope:rw_scheme_evidence_record.var:rw_evidence_participant
+        interaction = execute_prisoner_interaction
+    }
+}
+rw_jp_view_trigger = {
+    rw_sentencing_current_prisoner_trigger = yes
+    exists = scope:rw_jp_target
+    exists = scope:rw_jp_basis
+    scope:rw_scheme_evidence_record = { var:rw_evidence_participant = scope:rw_jp_target }
+}
+# A stale confirmation NEVER silently switches legal basis or target.
+rw_jp_basis_matches_trigger = {
+    rw_jp_view_trigger = yes
+    OR = {
+        AND = { scope:rw_jp_basis = flag:recognized has_execute_reason = scope:rw_jp_target }
+        AND = { scope:rw_jp_basis = flag:unrecognized NOT = { has_execute_reason = scope:rw_jp_target } }
+    }
+}
+rw_jp_can_attempt_trigger = {
+    rw_jp_can_open_trigger = yes
+    rw_jp_basis_matches_trigger = yes
+}
+rw_jp_can_reasoned_trigger = { rw_jp_can_attempt_trigger = yes scope:rw_jp_basis = flag:recognized }
+rw_jp_can_arbitrary_trigger = { rw_jp_can_attempt_trigger = yes scope:rw_jp_basis = flag:unrecognized }
+# Receipt is historical, NOT recomputed from today's native reasons or custody.
+rw_jp_receipt_trigger = {
+    rw_scheme_evidence_view_trigger = yes
+    scope:rw_scheme_evidence_record = {
+        var:rw_evidence_kind = flag:participant_exposed
+        var:rw_jp_schema = 1
+        has_variable = rw_jp_dispatched_on
+        var:rw_jp_actor = scope:rw_scheme_observer
+        var:rw_jp_target = var:rw_evidence_participant
+        OR = { var:rw_jp_basis = flag:recognized var:rw_jp_basis = flag:unrecognized }
+    }
+}
+
+rw_jp_receipt_view_trigger = {
+    rw_jp_receipt_trigger = yes
+    exists = scope:rw_jp_target
+    scope:rw_scheme_evidence_record = { var:rw_jp_target = scope:rw_jp_target }
+}

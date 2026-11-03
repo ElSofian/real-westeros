@@ -458,3 +458,30 @@
   reads/custody, AI/index volume and G2/G4/G5 regression. No atomic transaction,
   native property transfer or compatibility claimed. Next J3, lawful/arbitrary
   sanctions and native penalty deduplication; G1/G3 remain open. No interim game run.
+
+- RW-010 / J3 (`feat/lawful-arbitrary-justice`, 2026-11-03): original known-participant
+  native prisoner sentence with or without a recognized execution reason. Adult own
+  custody, native validity, peace/diarchy/strong-hook/story-prisoner/prison-break
+  protections apply identically to human/AI. Frozen target/basis must still match at
+  dispatch; one shared default native interaction owns costs, tyranny, stress, dread,
+  opinion, reason use, player response/deferment and actual outcome. No direct death,
+  copied penalty or forced execute threshold. Source audit found native AI arrest
+  can_send restriction; it was preserved, with J2/P4 unchanged. One typed attempt
+  receipt and local own-record actor/target pair lock precede the native call; receipt
+  never infers guilt/execution or rejudges historical basis from today's reasons.
+  Read-only confirmation/receipt links preserve original native windows and original
+  private reader/serial/target identity. Fresh intake and existing local sixty-day
+  known-record custody inspection offer one actual decision, never auto-execute.
+  Five-year reader retention unchanged; unreadable source remains inert while its
+  ten-day pair lock is live, then existing cleanup ends it. Owner death still ends
+  the personal record; no inherited knowledge, guilt or authority. Twenty new
+  adversarial source tests plus preserved legacy/native/custody/reader checks:
+  **824 local unit/static tests passed, nineteen PowerShell tests skipped (843
+  discovered)**. Structural validator, frozen progress report and whitespace PASS;
+  committed-source ZIP and Linux/Windows CI verified before merge. References/hashes
+  only for native default dispatch and execution ownership; no native source/assets.
+  **Development 60/80 (+3 for J3), engine validation 0/20, total 60/100**; earlier
+  checkpoints/rubric unchanged. Twelve SENT final cases remain unrun for native
+  default options/costs/player response, actual result, stale basis/custody, dedup,
+  privacy, save/cleanup, AI volume and G4/G5 regression. Next independent AI5;
+  J4/J5/G3 and AI4/war gates remain open. No intermediate CK3 run requested.

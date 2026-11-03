@@ -27,6 +27,12 @@ rw_sentencing.0001 = {
     }
     theme = intrigue
     option = {
+        name = rw_native_sentence.open
+        trigger = { rw_jp_can_open_trigger = yes }
+        rw_jp_open_effect = yes
+        ai_chance = { base = 0 }
+    }
+    option = {
         name = rw_sentencing.review_execution
         trigger = { rw_sentencing_can_open_execution_trigger = yes }
         if = {

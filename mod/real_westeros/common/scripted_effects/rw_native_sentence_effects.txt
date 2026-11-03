@@ -1,0 +1,75 @@
+# Navigation only. No sentence, serialized judgment or resource mutation.
+rw_jp_open_effect = {
+    if = {
+        limit = { rw_jp_can_open_trigger = yes }
+        scope:rw_scheme_evidence_record.var:rw_evidence_participant = { save_scope_as = rw_jp_target }
+        if = {
+            limit = { has_execute_reason = scope:rw_jp_target }
+            save_scope_value_as = { name = rw_jp_basis value = flag:recognized }
+        }
+        else = { save_scope_value_as = { name = rw_jp_basis value = flag:unrecognized } }
+        trigger_event = { id = rw_native_sentences.0001 }
+    }
+}
+# Both explicit decisions share ONE receipt and ONE native dispatch. Native owns
+# death/default methods/player response, stress, tyranny, opinion and reason use.
+rw_jp_attempt_effect = {
+    if = {
+        limit = { rw_jp_can_attempt_trigger = yes }
+        scope:rw_scheme_evidence_record = {
+            set_variable = { name = rw_jp_schema value = 1 }
+            set_variable = { name = rw_jp_actor value = scope:rw_scheme_observer }
+            set_variable = { name = rw_jp_target value = scope:rw_jp_target }
+            set_variable = { name = rw_jp_basis value = scope:rw_jp_basis }
+            set_variable = { name = rw_jp_dispatched_on value = current_date }
+            set_variable = { name = rw_jp_pair_window value = flag:yes days = 10 }
+        }
+        run_interaction = {
+            interaction = execute_prisoner_interaction
+            actor = root
+            recipient = scope:rw_jp_target
+            send_threshold = decline
+        }
+    }
+}
+rw_jp_open_receipt_effect = {
+    if = {
+        limit = { rw_jp_receipt_trigger = yes }
+        scope:rw_scheme_evidence_record.var:rw_jp_target = { save_scope_as = rw_jp_target }
+        trigger_event = { id = rw_native_sentences.0003 }
+    }
+}
+# Fresh-record opportunity; does not assume that a native arrest has completed.
+rw_jp_schedule_effect = {
+    scope:rw_scheme_observer = {
+        if = {
+            limit = { rw_scheme_justice_view_trigger = yes scope:rw_scheme_evidence_record = { NOT = { has_variable = rw_jp_scheduled } } }
+            scope:rw_scheme_evidence_record = { set_variable = { name = rw_jp_scheduled value = flag:yes } }
+            trigger_event = { id = rw_native_sentences.0002 days = 1 }
+        }
+    }
+}
+# STORY scope, from that fresh callback or local known-record maintenance only.
+# Once eligible custody is actually observed, offer one decision, never execute it.
+rw_jp_opportunity_effect = {
+    if = {
+        limit = {
+            story_type = story_rw_scheme_evidence
+            var:rw_evidence_schema = 1
+            var:rw_evidence_kind = flag:participant_exposed
+            has_variable = rw_evidence_retained
+            NOT = { has_variable = rw_jp_notified }
+            NOT = { has_variable = rw_jp_dispatched_on }
+        }
+        save_scope_as = rw_scheme_evidence_record
+        save_scope_value_as = { name = rw_scheme_evidence_serial value = var:rw_evidence_serial }
+        story_owner = { save_scope_as = rw_scheme_observer }
+        scope:rw_scheme_observer = {
+            if = {
+                limit = { rw_jp_can_open_trigger = yes }
+                scope:rw_scheme_evidence_record = { set_variable = { name = rw_jp_notified value = flag:yes } }
+                rw_jp_open_effect = yes
+            }
+        }
+    }
+}
