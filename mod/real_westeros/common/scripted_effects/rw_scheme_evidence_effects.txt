@@ -80,6 +80,7 @@ rw_scheme_create_evidence_effect = {
             }
         }
         rw_ja_schedule_effect = yes
+        rw_jp_schedule_effect = yes
         rw_scheme_response_initialise_effect = yes
         rw_house_schedule_censure_review_effect = yes
         rw_ri_schedule_effect = yes

@@ -49,6 +49,12 @@ rw_scheme_evidence.0001 = {
     }
     theme = intrigue
     option = {
+        name = rw_native_sentence.receipt
+        trigger = { rw_jp_receipt_trigger = yes }
+        rw_jp_open_receipt_effect = yes
+        ai_chance = { base = 0 }
+    }
+    option = {
         name = rw_scheme_response.open
         trigger = { rw_scheme_response_can_open_trigger = yes }
         if = {

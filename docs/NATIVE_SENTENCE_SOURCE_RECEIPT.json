@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "status": "Source references only; default send semantics, costs, native callbacks and compatibility engine-unverified",
+  "files": [
+    {
+      "path": "AGOT/common/character_interactions/00_prison_interactions.txt",
+      "sha256": "04d7f3975b951537b34b0cbb264e0cc2eeb7ac05c21d63c7c31d8b1d593ef750",
+      "lines": [
+        164,
+        189,
+        7376,
+        7400,
+        7739,
+        7784,
+        7801,
+        8439,
+        8767
+      ],
+      "purpose": "Native AI arrest restriction; execution eligibility, costs, default/native-player response and automatic acceptance"
+    },
+    {
+      "path": "AGOT/events/diarchy_events/diarchy_events.txt",
+      "sha256": "1c77cde80a71e5fac91eebb21f9cfb3629c3e989f5ae002f6de2ad957ddb5701",
+      "lines": [
+        9351
+      ],
+      "purpose": "Native execution dispatch with no explicit method flags; forced threshold deliberately not used by the submod"
+    },
+    {
+      "path": "AGOT/common/scripted_effects/00_prison_effects.txt",
+      "sha256": "51b05a9721ffd3af3b94400d25962a61b84b43de8bcf662ca8211a2f702b1712",
+      "lines": [
+        229
+      ],
+      "purpose": "Native consequence/death helper remains owned and called by the native interaction, never duplicated by the submod"
+    }
+  ]
+}

@@ -170,7 +170,10 @@ class NativeSchemeEvidenceTests(unittest.TestCase):
             p = MOD / f'localization/{lang}/rw_scheme_evidence_l_{lang}.yml'
             self.assertTrue(p.read_bytes().startswith(b'\xef\xbb\xbf'))
             text = p.read_text(encoding='utf-8-sig')
-            self.assertEqual(keys, set(re.findall(r'^\s+([\w.]+):0', text, re.M)))
+            own = set(re.findall(r'^\s+([\w.]+):0', text, re.M))
+            shared = (MOD/f'localization/{lang}/rw_native_sentence_l_{lang}.yml').read_text(encoding='utf-8-sig')
+            shared_keys = set(re.findall(r'^\s+([\w.]+):0', shared, re.M))
+            self.assertEqual(keys, own | (shared_keys & keys))
             self.assertNotIn('scheme_owner', text)
             self.assertNotIn('scope:agent', text)
             self.assertIn('[rw_evidence_visible_participant.GetTitledFirstName]', text)

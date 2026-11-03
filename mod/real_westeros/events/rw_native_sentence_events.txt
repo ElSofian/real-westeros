@@ -1,0 +1,68 @@
+namespace = rw_native_sentences
+
+rw_native_sentences.0001 = {
+    type = character_event
+    title = rw_native_sentence.title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_jp_can_reasoned_trigger = yes } desc = rw_native_sentence.reasoned_desc }
+            triggered_desc = { trigger = { rw_jp_can_arbitrary_trigger = yes } desc = rw_native_sentence.arbitrary_desc }
+            desc = rw_native_sentence.unavailable
+        }
+    }
+    right_portrait = { trigger = { rw_jp_view_trigger = yes } character = scope:rw_jp_target }
+    theme = intrigue
+    option = {
+        name = rw_native_sentence.reasoned
+        trigger = { rw_jp_can_reasoned_trigger = yes }
+        rw_jp_attempt_effect = yes
+        ai_chance = {
+            base = 12
+            modifier = { factor = 2 has_trait = vengeful }
+            modifier = { factor = 0.2 has_trait = forgiving }
+            modifier = { factor = 0.2 has_trait = compassionate }
+        }
+    }
+    option = {
+        name = rw_native_sentence.arbitrary
+        trigger = { rw_jp_can_arbitrary_trigger = yes }
+        rw_jp_attempt_effect = yes
+        ai_chance = {
+            base = 2
+            modifier = { factor = 3 has_trait = arbitrary }
+            modifier = { factor = 2 has_trait = sadistic }
+            modifier = { factor = 0.1 has_trait = forgiving }
+            modifier = { factor = 0.1 has_trait = compassionate }
+            modifier = { factor = 0.2 has_trait = just }
+            modifier = { factor = 2 opinion = { target = scope:rw_jp_target value < -25 } }
+        }
+    }
+    option = { name = rw_native_sentence.leave ai_chance = { base = 50 } }
+}
+# No automatic send: even a native callback offers only a separate explicit choice.
+rw_native_sentences.0002 = {
+    type = character_event
+    hidden = yes
+    immediate = {
+        if = {
+            limit = { rw_scheme_justice_view_trigger = yes }
+            scope:rw_scheme_evidence_record = { rw_jp_opportunity_effect = yes }
+        }
+    }
+}
+# The recorded basis remains historical when reasons/custody/life later change.
+rw_native_sentences.0003 = {
+    type = character_event
+    trigger = { rw_jp_receipt_view_trigger = yes }
+    title = rw_native_sentence.receipt_title
+    desc = {
+        desc = rw_native_sentence.receipt_intro
+        first_valid = {
+            triggered_desc = { trigger = { scope:rw_scheme_evidence_record = { var:rw_jp_basis = flag:recognized } } desc = rw_native_sentence.receipt_reasoned }
+            desc = rw_native_sentence.receipt_arbitrary
+        }
+        desc = rw_native_sentence.receipt_limits
+    }
+    theme = intrigue
+    option = { name = rw_native_sentence.leave ai_chance = { base = 50 } }
+}
