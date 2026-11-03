@@ -4,7 +4,7 @@
 political demand to the existing guarded native arrest-request path. No runtime
 Python, LLM, native override or new legal ground is introduced.
 
-## Playable source path
+## Scripted path
 
 From the existing arrest confirmation for an original known exposed participant,
 the original observer may issue one ultimatum instead of immediately requesting an

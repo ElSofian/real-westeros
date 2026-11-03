@@ -1,7 +1,7 @@
 # Suivi de la première version intégrée — v0.1-plan-1
 
-**État courant : 51/100 (+2), dont 51/80 source et 0/20 moteur.**
-M5 relie les souvenirs personnels à de nouvelles propositions et réparations ; prochaine cible P4.
+**Développement : 53/80 · Validation en jeu : 0/20 · Total : 53/100 (+2).**
+P4 ajoute des ultimatums avec réponse et escalade native gardée ; prochaine cible N4.
 W1/W2 restent ouverts (+0), en attente des observations finales G1 avant voie de production.
 Vitesse encore non mesurable : moins de sept jours de recul sur cette grille.
 
@@ -23,7 +23,7 @@ coût. Les trois scénarios initiaux ne limitent pas le périmètre ; le catalog
 | Système | Points acquis | Poids |
 |---|---:|---:|
 | Liberté, légalité et guerres | 0 | 12 |
-| Affaires politiques | 6 | 8 |
+| Affaires politiques | 8 | 8 |
 | Négociation | 6 | 10 |
 | Promesses et obligations | 10 | 10 |
 | Justice et sanctions | 5 | 12 |
@@ -63,7 +63,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 | P1 | 2 | Deux familles d’incidents hors contrats : affront allégué et complot découvert | Source seulement : [RW010_ALLEGATIONS.md](RW010_ALLEGATIONS.md), [rw_allegation_effects.txt](../mod/real_westeros/common/scripted_effects/rw_allegation_effects.txt) |
 | P2 | 2 | Dossiers versionnés : parties connues, déclarations, faits et résolution distincts | Source seulement : [RW010_RECORDS.md](RW010_RECORDS.md), [rw_political_cases.txt](../mod/real_westeros/common/story_cycles/rw_political_cases.txt) |
 | P3 | 2 | Médiation, réparation volontaire, saisine et abstention explicites | Source seulement : [RW010_CASES.md](RW010_CASES.md), [rw_case_events.txt](../mod/real_westeros/events/rw_case_events.txt) |
-| P4 | 2 | Menaces ou ultimatums structurés avec enjeu, réponse et escalade crédible | À développer / valider |
+| P4 | 2 | Menaces ou ultimatums structurés avec enjeu, réponse et escalade crédible | Source seulement : [RW010_ULTIMATUMS.md](RW010_ULTIMATUMS.md), [rw_ultimatum_effects.txt](../mod/real_westeros/common/scripted_effects/rw_ultimatum_effects.txt) |
 
 ### N — Négociation
 
@@ -148,9 +148,10 @@ le critère est rempli. La qualification est une revue humaine explicite du code
    manque visible et travailler sur un critère indépendant, sans demander un test intermédiaire.
 4. **O4/I3/M5 livrés dans les sources (+2 chacun)** : engagements dynastiques,
    propagation de récits et mémoire personnelle pesant sur de nouveaux choix.
-   **P4 cible suivante** : escalade/menace crédible avec issue volontaire et échec,
-   au-delà des demandes déjà livrées. Les autres critères ouverts demeurent,
-   notamment J3/J4/J5, N4/N5, W3/W4/W5 et AI4/AI5.
+   **P4 livré dans les sources (+2)** : ultimatum de sept jours, regrets publics
+   volontaires ou refus/silence, retrait ou tentative native d’arrestation gardée.
+   **N4 cible suivante** : modèle de contrat réutilisable partagé par deux systèmes,
+   puis N5. J3/J4/J5, W3/W4/W5 et AI4/AI5 restent ouverts.
 5. **V1…V5** : une campagne finale, selon [FINAL_ENGINE_TESTS.md](FINAL_ENGINE_TESTS.md).
    Corriger ses erreurs avant de revendiquer une version jouable/compatible.
 

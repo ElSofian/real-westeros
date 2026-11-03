@@ -1,5 +1,10 @@
 # J2 — explicit native individual arrest request
 
+P4 now connects a seven-day ultimatum to this shared attempt helper. Its waiting,
+closure, expiry and current-party guards also apply to older custom arrest entries;
+native windows remain unchanged. See RW010_ULTIMATUMS.md for the single shared
+dispatch receipt and final engine cases.
+
 **Original experimental CK3 scripts; static checks only, not engine-tested.**
 J2 source acceptance is one real individual coercive path: a native arrest request,
 not another window opener. Execution/confiscation/house sanctions remain separate.
