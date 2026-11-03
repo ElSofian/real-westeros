@@ -187,6 +187,8 @@ class MultiActionAgreementTests(unittest.TestCase):
         self.assertEqual(1,self.e.count('name = rw_ba_window value = flag:yes days = 7'))
     def test_dead_owner_excluded_and_no_heir_inherits_actions(self):
         self.assertIn('dead custodian or heir inherits personal consent',self.errors('e','NOT = { this = scope:rw_ba_departed }','always = yes'))
+        resolver=block(self.e,'rw_ba_resolve_effect')
+        self.assertLess(resolver.index('NOT = { var:rw_ba_payer = { is_alive = yes } }'),resolver.index('NOT = { has_variable = rw_ba_due }'))
     def test_ending_story_removes_index_before_end(self):
         self.assertIn('retired agreement remains globally indexed',self.errors('e','remove_list_global_variable = { name = rw_multi_action_agreements target = scope:rw_ba_record }',''))
     def test_reading_snapshot_never_executes_or_refreshes_saved_reply(self):

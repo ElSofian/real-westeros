@@ -205,16 +205,16 @@ rw_ba_resolve_effect = {
     if = {
         limit = { var:rw_ba_agreement = flag:active }
         if = {
-            limit = { NOT = { has_variable = rw_ba_due } }
-            if = { limit = { var:rw_ba_gold = flag:pending } set_variable = { name = rw_ba_gold value = flag:expired } }
-            if = { limit = { var:rw_ba_support = flag:pending } set_variable = { name = rw_ba_support value = flag:expired } }
-            if = { limit = { var:rw_ba_release = flag:pending } set_variable = { name = rw_ba_release value = flag:expired } }
-        }
-        if = {
             limit = { OR = { NOT = { var:rw_ba_payer = { is_alive = yes } } NOT = { var:rw_ba_payee = { is_alive = yes } } } }
             if = { limit = { var:rw_ba_gold = flag:pending } set_variable = { name = rw_ba_gold value = flag:unavailable } }
             if = { limit = { var:rw_ba_support = flag:pending } set_variable = { name = rw_ba_support value = flag:unavailable } }
             if = { limit = { var:rw_ba_release = flag:pending } set_variable = { name = rw_ba_release value = flag:unavailable } }
+        }
+        if = {
+            limit = { NOT = { has_variable = rw_ba_due } }
+            if = { limit = { var:rw_ba_gold = flag:pending } set_variable = { name = rw_ba_gold value = flag:expired } }
+            if = { limit = { var:rw_ba_support = flag:pending } set_variable = { name = rw_ba_support value = flag:expired } }
+            if = { limit = { var:rw_ba_release = flag:pending } set_variable = { name = rw_ba_release value = flag:expired } }
         }
         if = {
             limit = { var:rw_ba_gold = flag:done var:rw_ba_support = flag:done var:rw_ba_release = flag:done }
