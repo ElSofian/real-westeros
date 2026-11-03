@@ -27,19 +27,10 @@ rw_cq_view_trigger = {
     exists = scope:rw_cq_payee
     NOT = { scope:rw_cq_payer = scope:rw_cq_payee }
     scope:rw_lr_record = {
-        var:rw_cq_schema = 1
-        var:rw_cq_revision = scope:rw_cq_revision
-        var:rw_cq_price = scope:rw_cq_price
         var:rw_cq_parent_revision = scope:rw_cq_parent_revision
         var:rw_cq_payer = scope:rw_cq_payer
         var:rw_cq_payee = scope:rw_cq_payee
-        has_variable = rw_cq_issued_on
-        OR = { var:rw_cq_price = 25 var:rw_cq_price = 50 }
-        OR = { var:rw_cq_state = flag:offered var:rw_cq_state = flag:closed var:rw_cq_state = flag:paid }
-        trigger_if = {
-            limit = { var:rw_cq_state = flag:offered }
-            OR = { var:rw_cq_turn = flag:ruler var:rw_cq_turn = flag:head }
-        }
+        rw_contract_quote_trigger = { PREFIX = cq TURN_A = ruler TURN_B = head }
         trigger_if = {
             limit = { var:rw_cq_state = flag:paid }
             rw_cq_paid_receipt_trigger = yes

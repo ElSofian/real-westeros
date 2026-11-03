@@ -1,0 +1,46 @@
+# Internal STORY-scope primitives: call only under the domain adapter's fresh
+# identity, turn, deadline, role and resource checks. Existing field names/schema
+# stay authoritative. This is literal CK3 parameter substitution, not runtime code.
+rw_contract_snapshot_effect = {
+    save_scope_value_as = { name = rw_$PREFIX$_revision value = var:rw_$PREFIX$_revision }
+    save_scope_value_as = { name = rw_$PREFIX$_price value = var:rw_$PREFIX$_price }
+}
+# Initial revision, original parties, source revision and first turn are adapter
+# responsibilities. Only a legitimately fresh domain offer may initialize a clock.
+rw_contract_offer_effect = {
+    set_variable = { name = rw_$PREFIX$_price value = $PRICE$ }
+    set_variable = { name = rw_$PREFIX$_state value = flag:offered }
+    set_variable = { name = rw_$PREFIX$_issued_on value = current_date }
+    set_variable = { name = rw_$PREFIX$_window value = flag:yes days = 7 }
+    set_variable = { name = rw_$PREFIX$_schema value = 1 }
+}
+# A counter invalidates the old quote before any capture/notification. No renewal.
+rw_contract_counter_effect = {
+    change_variable = { name = rw_$PREFIX$_revision add = 1 }
+    if = {
+        limit = { var:rw_$PREFIX$_price = 50 }
+        set_variable = { name = rw_$PREFIX$_price value = 25 }
+    }
+    else = { set_variable = { name = rw_$PREFIX$_price value = 50 } }
+    if = {
+        limit = { var:rw_$PREFIX$_turn = flag:$TURN_A$ }
+        set_variable = { name = rw_$PREFIX$_turn value = flag:$TURN_B$ }
+    }
+    else = { set_variable = { name = rw_$PREFIX$_turn value = flag:$TURN_A$ } }
+}
+# Consume the quoted version and write the receipt BEFORE the adapter consumes its
+# own domain action, then performs the native transfer. Never retry partial effects.
+rw_contract_consume_effect = {
+    remove_variable = rw_$PREFIX$_window
+    remove_variable = rw_$PREFIX$_turn
+    set_variable = { name = rw_$PREFIX$_paid_amount value = scope:rw_$PREFIX$_price }
+    set_variable = { name = rw_$PREFIX$_paid_revision value = scope:rw_$PREFIX$_revision }
+    set_variable = { name = rw_$PREFIX$_paid_on value = current_date }
+    set_variable = { name = rw_$PREFIX$_state value = flag:paid }
+}
+# The adapter permits free close even after expiry/context loss; no native effect.
+rw_contract_close_effect = {
+    remove_variable = rw_$PREFIX$_window
+    remove_variable = rw_$PREFIX$_turn
+    set_variable = { name = rw_$PREFIX$_state value = flag:closed }
+}

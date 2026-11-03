@@ -4,6 +4,7 @@ import re
 import unittest
 from test_native_scheme_evidence import block
 from tools.validate_mod import clean_script
+from contract_source import expand_contracts
 
 ROOT = Path(__file__).resolve().parents[1]
 MOD = ROOT / 'mod/real_westeros'
@@ -94,8 +95,8 @@ def settlement_errors(t, e):
 
 class AllegationSettlementTests(unittest.TestCase):
     def setUp(self):
-        self.t = (MOD/'common/scripted_triggers/rw_allegation_settlement_triggers.txt').read_text()
-        self.e = (MOD/'common/scripted_effects/rw_allegation_settlement_effects.txt').read_text()
+        self.t =expand_contracts((MOD/'common/scripted_triggers/rw_allegation_settlement_triggers.txt').read_text())
+        self.e =expand_contracts((MOD/'common/scripted_effects/rw_allegation_settlement_effects.txt').read_text())
         self.ev = (MOD/'events/rw_allegation_settlement_events.txt').read_text()
 
     def errors(self, t=None, e=None):

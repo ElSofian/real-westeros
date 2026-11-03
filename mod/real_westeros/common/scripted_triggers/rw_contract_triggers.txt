@@ -1,0 +1,16 @@
+# Internal STORY-scope protocol. PREFIX binds existing serialized keys and saved
+# quote aliases; role flags are supplied by the domain adapter, never a UI input.
+# Domain readers, original record identity, roles and legal/context rules remain
+# mandatory in the caller. No index, transfer or native legal authorization here.
+rw_contract_quote_trigger = {
+    var:rw_$PREFIX$_schema = 1
+    var:rw_$PREFIX$_revision = scope:rw_$PREFIX$_revision
+    var:rw_$PREFIX$_price = scope:rw_$PREFIX$_price
+    has_variable = rw_$PREFIX$_issued_on
+    OR = { var:rw_$PREFIX$_price = 25 var:rw_$PREFIX$_price = 50 }
+    OR = { var:rw_$PREFIX$_state = flag:offered var:rw_$PREFIX$_state = flag:closed var:rw_$PREFIX$_state = flag:paid }
+    trigger_if = {
+        limit = { var:rw_$PREFIX$_state = flag:offered }
+        OR = { var:rw_$PREFIX$_turn = flag:$TURN_A$ var:rw_$PREFIX$_turn = flag:$TURN_B$ }
+    }
+}

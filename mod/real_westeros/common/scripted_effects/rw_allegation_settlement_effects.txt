@@ -1,7 +1,6 @@
 # Story scope, read-only; reply panels keep their captured terms until acted upon.
 rw_as_snapshot_effect = {
-    save_scope_value_as = { name = rw_as_revision value = var:rw_as_revision }
-    save_scope_value_as = { name = rw_as_price value = var:rw_as_price }
+    rw_contract_snapshot_effect = { PREFIX = as }
 }
 # Explicit fresh navigation only; never run automatically in a delayed reply event.
 rw_as_prepare_effect = {
@@ -22,12 +21,8 @@ rw_as_propose_effect = {
         limit = { rw_as_can_propose_trigger = yes }
         scope:rw_case_record = {
             set_variable = { name = rw_as_revision value = 0 }
-            set_variable = { name = rw_as_price value = 50 }
             set_variable = { name = rw_as_turn value = flag:provider }
-            set_variable = { name = rw_as_state value = flag:offered }
-            set_variable = { name = rw_as_issued_on value = current_date }
-            set_variable = { name = rw_as_window value = flag:yes days = 7 }
-            set_variable = { name = rw_as_schema value = 1 }
+            rw_contract_offer_effect = { PREFIX = as PRICE = 50 }
             rw_as_snapshot_effect = yes
         }
         rw_as_send_reply_effect = yes
@@ -45,17 +40,7 @@ rw_as_counter_effect = {
     if = {
         limit = { rw_as_responder_trigger = yes }
         scope:rw_case_record = {
-            change_variable = { name = rw_as_revision add = 1 }
-            if = {
-                limit = { var:rw_as_price = 50 }
-                set_variable = { name = rw_as_price value = 25 }
-            }
-            else = { set_variable = { name = rw_as_price value = 50 } }
-            if = {
-                limit = { var:rw_as_turn = flag:provider }
-                set_variable = { name = rw_as_turn value = flag:client }
-            }
-            else = { set_variable = { name = rw_as_turn value = flag:provider } }
+            rw_contract_counter_effect = { PREFIX = as TURN_A = provider TURN_B = client }
             rw_as_snapshot_effect = yes
         }
         # Neither seven-day offer window nor original case deadline is renewed.
@@ -66,12 +51,7 @@ rw_as_settle_effect = {
     if = {
         limit = { rw_as_can_settle_trigger = yes }
         scope:rw_case_record = {
-            remove_variable = rw_as_window
-            remove_variable = rw_as_turn
-            set_variable = { name = rw_as_paid_amount value = scope:rw_as_price }
-            set_variable = { name = rw_as_paid_revision value = scope:rw_as_revision }
-            set_variable = { name = rw_as_paid_on value = current_date }
-            set_variable = { name = rw_as_state value = flag:paid }
+            rw_contract_consume_effect = { PREFIX = as }
             # Consume both offer and active case BEFORE native effects/notices.
             # Same retention/result as a voluntary withdrawal; statements stay intact.
             remove_variable = rw_case_pending
@@ -88,9 +68,7 @@ rw_as_close_effect = {
     if = {
         limit = { rw_as_can_close_trigger = yes }
         scope:rw_case_record = {
-            remove_variable = rw_as_window
-            remove_variable = rw_as_turn
-            set_variable = { name = rw_as_state value = flag:closed }
+            rw_contract_close_effect = { PREFIX = as }
         }
         rw_as_notify_effect = yes
     }
