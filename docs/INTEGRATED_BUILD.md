@@ -109,3 +109,11 @@ The experimental house register also includes a sovereign's conditional 50-gold
 rehabilitation offer (RW010_HOUSE_TERMS.md): current-head consent and funds are required,
 free restoration/withdrawal remain separate, and no native title/status sanction is
 implemented. Payment/closure ordering and persistence still require final CK3 tests.
+
+## Isolated G1 candidate sources
+
+G1_NATIVE_CHOICE.md documents a private native-window send-option experiment. The
+public ZIP includes only original templates and the local generator, outside `mod/`.
+It never contains the installed native declaration definition. Do not activate this
+candidate with the older G1 probes or other declaration overrides; base installation
+is unchanged. Native CB/cost/cancel/AI/Mega Wars behavior remains engine-unverified.

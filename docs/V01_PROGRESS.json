@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "3c91c8e0a3fd04e4933d27ff9a0d7115b71a5369",
+  "assessed_commit": "856d9ee7f69b33f69dcc3260eb3ae02ddf84d185",
   "lots": [
     {
       "id": "W",
@@ -941,6 +941,47 @@
       "score": 62,
       "reference": "3c91c8e0a3fd04e4933d27ff9a0d7115b71a5369",
       "note": "AI5 source : marqueurs opt-in réellement branchés en justice/négociation, observation locale des doublons, budget borné, preuve statique de neutralité métier et outils locaux CPU/mémoire ; aucune mesure CK3 ni compatibilité démontrée. +2 développement, 62/80 ; validation moteur 0/20, total 62/100."
+    },
+    {
+      "date": "2026-11-03",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4",
+        "O4",
+        "I3",
+        "M5",
+        "P4",
+        "N4",
+        "N5",
+        "J3",
+        "AI5"
+      ],
+      "score": 62,
+      "reference": "856d9ee7f69b33f69dcc3260eb3ae02ddf84d185",
+      "note": "RW-004 : candidat privé de choix explicite dans la fenêtre native, garde locale et octets natifs conservés ; pas de ticket persistant ni de helper partagé modifié. W1…W5 et AI4 restent ouverts : coûts, annulation, IA et cycles restent non démontrés. +0, développement 62/80, moteur 0/20, total 62/100."
     }
   ]
 }

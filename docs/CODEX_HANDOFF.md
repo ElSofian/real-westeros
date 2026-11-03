@@ -119,6 +119,21 @@ existing G1/G3 source constraints for a safe real implementation, not another
 already-credited variant or standalone diagnostic. If final observations are truly
 required, retain visible blockers without asking for an intermediate game test.
 
+RW-004 now has an isolated native-window gameplay candidate (G1_NATIVE_CHOICE.md),
+separate from both older diagnostics. The private local builder pins the reviewed
+interaction/helper/claim hashes and inserts only a new window-local defiance option
+and a guarded OR alternative in native target validation. Removing both insertions
+restores the exact native declaration definition; shared helper/CB/lifecycle and
+native on_accept are unchanged. No persistent permission, fabricated CB, direct
+start_war, forced native execution or human-only eligibility. AI selection/policy is
+NOT established. Native outcome, costs, cancellation, load ordering and Mega Wars
+remain unverified, and no historical illegality or royal response is inferred.
+The public ZIP ships original generator/templates only outside base mod. Generated
+native output is PRIVATE, never redistribute; mutually exclusive with all other
+G1 probes/war declaration overrides. +0: development 62/80, engine 0/20, total 62/100.
+Next work should extend exact native declaration context/autonomous AI only where
+source supports it, retaining W1…W5/AI4 and G3 blockers until demonstrated.
+
 RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remains
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
 and RW010_DEFERRED.md. Contextual service-breach mediation is in RW010_CASES.md. Independent case records/read-only history are in RW010_RECORDS.md. Non-contractual allegations, statements and disclosure are in RW010_ALLEGATIONS.md.

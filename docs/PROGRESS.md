@@ -504,3 +504,22 @@
   work is W1…W5 / G1, J4/J5 / G3 and cross-family AI4 including war; no native
   compatibility or performance credit from instrumentation. Next examine existing
   source constraints before safe development; retain actual engine blockers openly.
+
+- RW-004 / native declaration choice candidate (2026-11-03): original private local
+  builder and three CK3 source templates add explicit defiance directly to the
+  native war window, rather than a separate timed bypass ticket. Same-current-
+  liege feudal peers, actual current ban and unchanged native hook-helper decision,
+  explicit send flag and no simultaneous hook selection. Only target validation
+  gains one OR alternative; all original native bytes, CB/cost/on_accept/lifecycle
+  code preserved. Public ZIP includes original source kit only; generated native
+  interaction is private, never distributed, base mod untouched. Exact three private
+  inputs successfully constructed with reported-descriptor fixture; no engine run.
+  Eighteen new negative/positive tests; full suite **892 discovered, 870 passed,
+  22 PowerShell-dependent skips**. Structural/telemetry/readiness/whitespace checks
+  PASS; Linux/Windows CI and committed artifact required before integration.
+  G1CHOICE-01…08 added to final campaign; no intermediate run requested. No royal
+  response, historical unlawful verdict or autonomous native AI selection claimed.
+  W1…W5 and AI4 remain open: **+0, development 62/80, engine 0/20, total 62/100**.
+
+- Readiness checkpoint references source `856d9ee7f69b33f69dcc3260eb3ae02ddf84d185`; frozen criteria and all
+  earlier checkpoints preserved, +0 recorded explicitly for this partial G1 candidate.

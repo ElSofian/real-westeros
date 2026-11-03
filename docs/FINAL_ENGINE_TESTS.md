@@ -1310,3 +1310,13 @@ record-local duplicate audit for three distinct clauses and native justice reque
 privacy, incomplete/rotated logs and real CPU/memory comparison (matched AGOT-only,
 RW trace-off and trace-on). The packaged sampler measures the whole process; no FPS,
 per-effect latency, native outcome or engine compatibility is inferred.
+
+## Isolated native declaration-window choice — RW-004
+
+No cases executed. G1CHOICE-01…08 in G1_NATIVE_CHOICE.md cover an isolated private
+native interaction candidate (not the ticket diagnostic): explicit send-option,
+current peer/ban/native-helper context, hook exclusion, cancel/retarget/law changes,
+native restrictions/CB/costs, declaration override load order, lifecycle/Mega Wars
+and actual AI selection. Mutually exclusive with both older G1 probes and every
+other declaration override. No base-mod bypass, lawful/unlawful verdict or royal
+reaction is supplied. Existing G1/G1INT cases remain distinct and unrun.

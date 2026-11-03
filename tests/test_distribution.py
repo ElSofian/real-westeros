@@ -50,6 +50,11 @@ class DistributionTests(unittest.TestCase):
             self.assertIn('not engine-tested', manifest['status'])
             payload_names = {r['path'] for r in manifest['files']}
             self.assertEqual(payload_names | {'MANIFEST.json'}, {n for n in zf.namelist() if not n.endswith('/')})
+            # Public source kit only: no generated native declaration or enabled adapter.
+            self.assertIn('tools/build_g1_native_choice.py', payload_names)
+            self.assertIn('experiments/g1_native_choice/template/common/scripted_triggers/rw_unlawful_war_choice_triggers.txt', payload_names)
+            self.assertFalse(any(n.endswith(('zz_rw_native_war_choice.txt', 'rw_g1_native_choice.mod')) for n in payload_names))
+            self.assertFalse(any('rw_unlawful_war_choice' in n for n in payload_names if n.startswith('mod/')))
             for record in manifest['files']:
                 data = zf.read(record['path'])
                 self.assertEqual(record['size'], len(data))
