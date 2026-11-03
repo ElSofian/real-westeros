@@ -1,0 +1,32 @@
+# Isolated private native-window candidate. Never loaded by the base submod.
+# The unmodified native helper remains authoritative for law/contract exceptions.
+rw_uw_peer_ban_trigger = {
+    exists = scope:actor
+    exists = scope:recipient
+    NOT = { scope:actor = scope:recipient }
+    scope:actor = {
+        is_alive = yes is_adult = yes is_landed = yes is_imprisoned = no
+        government_has_flag = government_is_feudal
+        exists = liege
+        liege = scope:recipient.liege
+        liege = {
+            is_alive = yes
+            OR = {
+                has_realm_law_flag = vassal_internal_wars_banned
+                has_realm_law_flag = vassal_all_wars_banned
+            }
+        }
+    }
+    scope:recipient = {
+        is_alive = yes is_adult = yes is_landed = yes is_imprisoned = no
+        government_has_flag = government_is_feudal
+        exists = liege
+    }
+    war_declarer_needs_hook_on_liege = yes
+}
+# A native window-local send flag, not a character variable or reusable ticket.
+rw_uw_selected_defiance_trigger = {
+    rw_uw_peer_ban_trigger = yes
+    always = scope:rw_uw_defy
+    NOT = { always = scope:hook }
+}

@@ -156,3 +156,14 @@ the native window is still not observable through a verified hook, and no workin
 engine/AI or legality/cost/lifecycle result is claimed. All final-campaign tests
 remain unrun. This source increment neither closes G1 nor makes it a prerequisite
 for unrelated development.
+
+## Isolated native-window candidate (2026-11-03)
+
+G1_NATIVE_CHOICE.md now provides an original local generator adding an explicit
+window-local send-option and one additional native target-guard alternative. Unlike
+the ticket diagnostic, it leaves the shared helper untouched and needs no persistent
+permission. Exact reviewed interaction/helper/claim hashes and removal of both
+insertions prove byte preservation of the native declaration body. Generated native
+code remains private, base gameplay unchanged. This candidate develops the actual
+native declaration route but does not establish engine acceptance, cancellation,
+costs, AI or lifecycle. W1…W5 / G1 remain open; all game cases stay in final campaign.

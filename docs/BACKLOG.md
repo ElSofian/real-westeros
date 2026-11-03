@@ -9,7 +9,7 @@ not an exhaustive completion checklist. PR/test counts are not global progress m
 | P0 | RW-001 | Initialize public repository, instructions, design summary and gates | Done |
 | P0 | RW-002 | Establish independent mod directory and descriptor with conservative version metadata | Done (scaffold; engine untested) |
 | P0 | RW-003 | Build basic structural checks (file encodings, brace balance, duplicate definitions, localization keys as applicable); avoid false assurance | Done (12 local unit tests; static only) |
-| P0 | RW-004 | Investigate G1 against local AGOT/CK3 sources and create smallest safe experimental war prototype | In progress — isolated private exact-target intent diagnostic prepared; no base-mod bypass, engine feasibility unverified |
+| P0 | RW-004 | Investigate G1 against local AGOT/CK3 sources and create smallest safe experimental war prototype | In progress — isolated private native-window defiance choice candidate plus earlier exact-target diagnostic; no base-mod bypass, engine feasibility unverified |
 | P0 | RW-005 | Write reproducible engine test plan and logging for genuine CB / Mega Wars scenarios | Done (test plan only; engine execution pending) |
 | P1 | RW-006 | Identify a viable multi-clause negotiation UI/model or document engine limits (G2) | Done (research + 18 synthetic protocol tests; G2 UI/engine unverified) |
 | P1 | RW-007 | Create persistence model for pending political affairs and obligations | Done (offline snapshot + 16 synthetic tests; CK3 save/load unverified) |
@@ -30,3 +30,13 @@ or credited dialogue variants. All runtime observations remain in the final camp
 
 
 RW-010 stages: immediate endorsement-for-gold negotiation (experimental scripts); deferred promises and optional personal breach response (experimental scripts, RW010_DEFERRED.md); contextual service-breach mediation (experimental scripts, RW010_CASES.md); independent referred-case records/history (experimental scripts, RW010_RECORDS.md); contested affront allegations/statement disclosure (experimental scripts, RW010_ALLEGATIONS.md); personal consent to conciliatory gestures (experimental scripts, RW010_REPAIR_RESPONSE.md); mutual release of deferred promises (experimental scripts, RW010_MUTUAL_CANCELLATION.md); native murder-scheme observations (experimental scripts, RW010_SCHEME_EVIDENCE.md); voluntary political scheme response (experimental scripts, RW010_SCHEME_RESPONSE.md); current judicial inspection (experimental scripts, RW010_SCHEME_JUSTICE.md); personal prisoner execution/release handoff (experimental scripts, RW010_PRISONER_SENTENCING.md); individual title/status review (experimental scripts, RW010_TITLE_STATUS.md); post-rehabilitation land review/native grant terms (experimental UI, RW010_TITLE_REMEDIES.md); conditional native revocation-context provenance (experimental scripts, RW010_TITLE_PROVENANCE.md); exact-affair title intentions/fresh-transfer association (experimental scripts, RW010_REVOCATION_INTENTS.md); institutional public land-fact archive (experimental scripts, RW010_LAND_REGISTER.md); private restitution discussions/personal refusal response (experimental scripts, RW010_RESTITUTION_DIALOGUES.md); custom coercive justice (todo); political house disfavor/rehabilitation (experimental scripts, RW010_HOUSE_AFFAIRS.md); legal dynastic aftermath/title ban (todo, G3 audit/debug trace; no enforcement); unlawful war stage (todo, G1). See docs/RW010_SERVICES.md for scope and final engine cases.
+
+**RW-004 native-window implementation candidate (G1_NATIVE_CHOICE.md):** local private
+generator adds one explicit send-option and one target-guard branch to the exact
+reviewed native declaration definition. Shared hook helper, native CBs, costs and
+lifecycle stay untouched; no persistent bypass ticket. Public distribution contains
+original sources only, outside base `mod/`. Construction and negative paths static-
+checked; AI selection/cancel/actual CB costs/load order/Mega Wars await final campaign.
+W1…W5 / AI4 remain open, **+0 points: development 62/80, engine 0/20, total 62/100**.
+Next advance exact declaration context and autonomous AI on this isolated path when
+source-supported; never turn post-start snapshots into a historical legal verdict.
