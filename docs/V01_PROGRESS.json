@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "b0572b1359cf68036ed7137e5fdbe94a62b2391d",
+  "assessed_commit": "3b0393ec36bc45caba8dce3dcba08c19dab509fe",
   "lots": [
     {
       "id": "W",
@@ -842,7 +842,7 @@
         "N5"
       ],
       "score": 57,
-      "reference": "b0572b1359cf68036ed7137e5fdbe94a62b2391d",
+      "reference": "3b0393ec36bc45caba8dce3dcba08c19dab509fe",
       "note": "N5 source : accord unique or/soutien public/libération de charte, signature commune versionnée puis exécution volontaire et reçu propre par action ; accomplissement partiel conservé, aucun consentement hérité ni rollback. +2 développement, 57/80 ; validation moteur 0/20, total 57/100."
     }
   ]
