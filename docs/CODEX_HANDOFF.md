@@ -61,6 +61,20 @@ New target **N4**, reusable contract model across at least two systems, then N5 
 other open criteria. Actual callbacks, timers, costs, native UI privacy, AI/resistance
 and save/load/performance remain engine-unverified; no intermediate game test asked.
 
+N4 now adds +2 development points: **development 55/80, engine validation 0/20,
+total 55/100**. Read RW010_SHARED_CONTRACT_MODEL.md: six common native CK3 primitives
+for exact quote validation, snapshot, offer, counter, paid receipt consumption and
+free close, actually called by private allegation settlements and public charter
+compensation. PREFIX binds existing serialized fields; no schema migration or
+shadow state. Adapters keep original identity/access/roles, case/charter context,
+original deadlines, payer funds, domain action consumption and one gold transfer.
+Thirty-nine existing family source checks inspect literal template expansions;
+twelve new checks protect actual bindings and shared lifecycle. This is not a
+Python contract interpreter or engine validation. Next substantive target **N5**:
+multi-action agreement, common consent and per-action results. Callback/save/native
+parameter expansion, privacy, AI and performance remain unverified until the final
+campaign; no intermediate run requested. G1/G3 and coercive justice stay open.
+
 RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remains
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
 and RW010_DEFERRED.md. Contextual service-breach mediation is in RW010_CASES.md. Independent case records/read-only history are in RW010_RECORDS.md. Non-contractual allegations, statements and disclosure are in RW010_ALLEGATIONS.md.
