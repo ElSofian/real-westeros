@@ -170,6 +170,13 @@ W4/W5/AI4 and G3 remain open. Next substantive priorities are source-supported w
 initiation AI/exact-law provenance and genuine dynastic coercion, not more credited
 variants. All engine runs remain deferred; no new source upload requested.
 
+W3 assessed source-complete on the integrated native-request implementation:
+**development 64/80 (+2), engine validation 0/20, total 64/100**. This is source
+credit only, not native target propagation, successful peace, lawful/unlawful war
+classification or compatibility proof. Remaining 16 source points: W1/W2/W4/W5,
+J4/J5 and AI4. Frozen rubric/prior checkpoints unchanged; final NATIVEWAR cases
+must demonstrate special target handoff, negotiation and AGOT lifecycle outcomes.
+
 RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remains
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
 and RW010_DEFERRED.md. Contextual service-breach mediation is in RW010_CASES.md. Independent case records/read-only history are in RW010_RECORDS.md. Non-contractual allegations, statements and disclosure are in RW010_ALLEGATIONS.md.

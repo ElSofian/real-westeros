@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "7f10109d4ab51b4f0e711c0080851c1db274dce7",
+  "assessed_commit": "a28c7bd5f1b260902a90aa0148c8f80b8fef04e9",
   "lots": [
     {
       "id": "W",
@@ -28,8 +28,19 @@
           "id": "W3",
           "points": 2,
           "acceptance": "Réaction royale discrétionnaire : intervention, sanction ou abstention selon le contexte",
-          "status": "open",
-          "evidence": []
+          "status": "source_complete",
+          "evidence": [
+            "docs/G1_NATIVE_INTERVENTION.md",
+            "docs/G1_NATIVE_INTERVENTION_SOURCE_RECEIPT.json",
+            "mod/real_westeros/common/scripted_effects/rw_unlawful_war_intervention_effects.txt",
+            "mod/real_westeros/common/scripted_effects/rw_unlawful_war_response_effects.txt",
+            "mod/real_westeros/common/scripted_triggers/rw_unlawful_war_choice_triggers.txt",
+            "mod/real_westeros/events/rw_unlawful_war_response_events.txt",
+            "mod/real_westeros/events/rw_unlawful_war_intervention_events.txt",
+            "mod/real_westeros/common/story_cycles/rw_unlawful_war_responses.txt",
+            "mod/real_westeros/common/opinion_modifiers/rw_unlawful_war_response_opinions.txt",
+            "tools/build_g1_native_choice.py"
+          ]
         },
         {
           "id": "W4",
@@ -1023,6 +1034,48 @@
       "score": 62,
       "reference": "7f10109d4ab51b4f0e711c0080851c1db274dce7",
       "note": "RW-004 : réactions personnelles au choix de défi, un dossier par guerre native de revendication exacte, ignorer/censurer/demander et accusé de réception/refus, fenêtres et autorité revérifiées. Aucun verdict historique, paix forcée, sanction de titre ou initiation autonome IA. Critères W1…W5/AI4 toujours ouverts, +0, développement 62/80, moteur 0/20, total 62/100."
+    },
+    {
+      "date": "2026-11-03",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4",
+        "O4",
+        "I3",
+        "M5",
+        "P4",
+        "N4",
+        "N5",
+        "J3",
+        "AI5",
+        "W3"
+      ],
+      "score": 64,
+      "reference": "a28c7bd5f1b260902a90aa0148c8f80b8fef04e9",
+      "note": "W3 source : réponses discrétionnaires intégrées et demande native stop_attacker_vassal_war_interaction, contexte exact non ambigu, revérification différée et reçu préalable sans paix/peine forcée ni coût natif recopié. +2 source, 64/80 ; moteur 0/20, total 64/100. Propagation de cible spéciale et résultats toujours non démontrés ; G1/W1/W2/W4/W5/AI4 et G3 restent ouverts."
     }
   ]
 }

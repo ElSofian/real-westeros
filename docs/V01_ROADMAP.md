@@ -1,10 +1,9 @@
 # Suivi de la première version intégrée — v0.1-plan-1
 
-**Développement : 62/80 · Validation en jeu : 0/20 · Total : 62/100 (+0 sur la dernière tranche).**
-AI5 est livré dans les sources. RW-004 ajoute un candidat privé de choix dans la
-fenêtre native ([G1_NATIVE_CHOICE.md](G1_NATIVE_CHOICE.md)), puis des réponses du
-suzerain ([G1_ROYAL_RESPONSES.md](G1_ROYAL_RESPONSES.md)), sans clore W1/W2/W3.
-Restent 18 points source : W1…W5, J4/J5 et AI4, dépendants des chemins G1/G3.
+**Développement : 64/80 · Validation en jeu : 0/20 · Total : 64/100 (+2 W3).**
+W3 livre les réponses discrétionnaires et la demande native d’intervention dans les sources
+([G1_NATIVE_INTERVENTION.md](G1_NATIVE_INTERVENTION.md)), sans garantir la paix ou G1.
+Restent 16 points source : W1/W2/W4/W5 (10), J4/J5 (4) et AI4 (2).
 W1/W2 restent ouverts (+0), en attente des observations finales G1 avant voie de production.
 Vitesse encore non mesurable : moins de sept jours de recul sur cette grille.
 
@@ -25,7 +24,7 @@ coût. Les trois scénarios initiaux ne limitent pas le périmètre ; le catalog
 
 | Système | Points acquis | Poids |
 |---|---:|---:|
-| Liberté, légalité et guerres | 0 | 12 |
+| Liberté, légalité et guerres | 2 | 12 |
 | Affaires politiques | 8 | 8 |
 | Négociation | 10 | 10 |
 | Promesses et obligations | 10 | 10 |
@@ -55,7 +54,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 |---|---:|---|---|
 | W1 | 2 | Qualification de la loi au moment de l’acte et exceptions natives dans le mod livré | À développer / valider |
 | W2 | 4 | Déclaration malgré l’interdit avec vrai CB, contexte exact, coûts, annulation et accès joueur/IA | À développer / valider |
-| W3 | 2 | Réaction royale discrétionnaire : intervention, sanction ou abstention selon le contexte | À développer / valider |
+| W3 | 2 | Réaction royale discrétionnaire : intervention, sanction ou abstention selon le contexte | Source seulement : [G1_NATIVE_INTERVENTION.md](G1_NATIVE_INTERVENTION.md), [rw_unlawful_war_intervention_effects.txt](../mod/real_westeros/common/scripted_effects/rw_unlawful_war_intervention_effects.txt) |
 | W4 | 2 | Intégration du nouveau chemin aux cycles guerre/Mega Wars et à leur clôture | À développer / valider |
 | W5 | 2 | Gardes et tests négatifs du chemin livré, distinct du diagnostic privé | À développer / valider |
 
@@ -161,7 +160,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
    reconnu, confirmation figée, reçu et déduplication communs, aucune peine copiée.
    **AI5 livré dans les sources (+2)** : traces opt-in réellement branchées, audit de
    doublons et outils locaux CPU/mémoire pour la campagne finale. J4/J5 restent liés aux routes G3 ;
-   AI4 inclut la voie de guerre encore ouverte. W3/W4/W5 restent ouverts.
+   AI4 inclut la voie de guerre encore ouverte. W3 est livré dans les sources (+2), W4/W5 restent ouverts.
 5. **V1…V5** : une campagne finale, selon [FINAL_ENGINE_TESTS.md](FINAL_ENGINE_TESTS.md).
    Corriger ses erreurs avant de revendiquer une version jouable/compatible.
 
@@ -171,7 +170,7 @@ Ne plus prolonger indéfiniment une tranche déjà comptée par de petites varia
 
 La suite exige une voie G1/G3 réelle : relire les limites et les sources privées déjà
 fournies avant de réserver RW-004 ou une tranche coercitive RW-010. Si la correction
-sûre nécessite les observations finales différées, conserver ces 18 points ouverts ;
+sûre nécessite les observations finales différées, conserver les points correspondants ouverts ;
 une nouvelle variante de dialogue ou un diagnostic supplémentaire ne les remplit pas.
 Aucun test intermédiaire demandé, aucun contournement natif non démontré.
 

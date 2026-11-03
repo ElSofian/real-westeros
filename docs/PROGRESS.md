@@ -582,3 +582,8 @@
   assessment; no engine credit or claim of successful peace. G1/W1/W2/W4/W5/AI4
   and G3 stay open. Next: actual war-initiation AI/exact-law source path or
   dynastic coercion where supported, not repeated credited dialogue variants.
+
+- W3 source assessment references `a28c7bd5f1b260902a90aa0148c8f80b8fef04e9`. Integrated original runtime/native
+  request is credited +2 only: **development 64/80, engine 0/20, total 64/100**.
+  Target propagation and engine outcomes remain unverified. W1/W2/W4/W5, J4/J5,
+  AI4 remain open (16 source points); frozen rubric/prior history preserved.

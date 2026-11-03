@@ -5,6 +5,7 @@ Le suzerain peut désormais choisir une tentative native de négociation pour ar
 la guerre de revendication du dossier. Ce chemin complète la décision de tolérer,
 censurer ou adresser une demande politique sans action native. Une demande envoyée
 n'est ni une négociation confirmée, ni une paix acceptée, ni une sanction exécutée.
+**W3 : source seulement, +2 points ; développement 64/80, moteur 0/20, total 64/100.**
 G1, W1/W2, W4/W5, l'initiative autonome de guerre AI4 et G3 restent ouverts.
 
 ## Intégration et activation
