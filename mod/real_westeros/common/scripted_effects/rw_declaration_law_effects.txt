@@ -6,6 +6,8 @@ rw_dl_capture_effect = {
         scope:attacker = { save_scope_as = rw_dl_actor }
         scope:defender = { save_scope_as = rw_dl_target }
         scope:war = { save_scope_as = rw_dl_war }
+        clear_saved_scope = rw_dl_issuer
+        clear_saved_scope = rw_dl_authority
         scope:attacker.liege = {
             save_scope_as = rw_dl_issuer
             primary_title = { save_scope_as = rw_dl_authority }
@@ -35,6 +37,8 @@ rw_dl_capture_effect = {
         scope:rw_dl_actor = {
             if = {
                 limit = {
+                    exists = scope:rw_dl_issuer
+                    exists = scope:rw_dl_authority
                     NOT = {
                         any_owned_story = {
                             story_type = story_rw_declaration_law

@@ -32,12 +32,13 @@ def contract_errors(t,e,s):
     need(ctx,('rw_dl_adapter_available_trigger = yes','exists = scope:attacker',
         'exists = scope:defender','exists = scope:war','using_cb = claim_cb',
         'primary_attacker = scope:attacker','primary_defender = scope:defender',
-        'liege = scope:defender.liege'),'wrong callback context')
+        'liege = scope:defender.liege','liege = { is_alive = yes is_landed = yes exists = primary_title }'),'wrong callback context')
     capture=block(e,'rw_dl_capture_effect')
     need(capture,('limit = { rw_dl_callback_context_trigger = yes }','rw_dl_native_permission_trigger = yes',
         'flag:inconsistent','flag:native_exception','flag:permission_required','flag:no_ban',
         'flag:claim_cb_on_declaration_prefix','any_owned_story =','var:rw_dl_war = scope:rw_dl_war',
         'story_owner = scope:rw_dl_actor','NOT = { has_variable = rw_dl_serial }',
+        'clear_saved_scope = rw_dl_authority','exists = scope:rw_dl_authority',
         'name = rw_dl_retained value = flag:yes days = 365'),'missing provenance or immutable capture')
     if re.search(r'save_scope_as\s*=\s*(actor|recipient|target|attacker|defender|war)\b',capture):
         errors.append('native aliases overwritten')
