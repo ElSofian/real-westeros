@@ -48,6 +48,19 @@ Next substantive target **P4** (credible escalation with voluntary outcome/failu
 then other open criteria. Memory lookup, expiry, event text and AI semantics remain
 engine-unverified; all runtime cases stay in the final campaign.
 
+P4 now adds +2 source points: **development 53/80, engine validation 0/20,
+total 53/100**. Read RW010_ULTIMATUMS.md: actual original observer with current native
+reason may demand public regret within seven days from their direct vassal/courtier.
+Voluntary 25-prestige reply, rejection/silence distinct, optional withdrawal or
+shared native arrest attempt under fresh reason/identity/authority/validity checks.
+Fixed fourteen-day total lifetime, thirty-day issuer cooldown and one ultimatum per
+exact record. Older custom arrest entries honor forbearance/closure and share the
+same terminal/dispatch receipt; native windows/rights stay untouched. No confession,
+new crime, pardon, inherited guilt or private journal access for the addressee.
+New target **N4**, reusable contract model across at least two systems, then N5 and
+other open criteria. Actual callbacks, timers, costs, native UI privacy, AI/resistance
+and save/load/performance remain engine-unverified; no intermediate game test asked.
+
 RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remains
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
 and RW010_DEFERRED.md. Contextual service-breach mediation is in RW010_CASES.md. Independent case records/read-only history are in RW010_RECORDS.md. Non-contractual allegations, statements and disclosure are in RW010_ALLEGATIONS.md.

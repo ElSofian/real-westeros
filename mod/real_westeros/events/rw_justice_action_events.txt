@@ -22,6 +22,16 @@ rw_justice_actions.0001 = {
             modifier = { factor = 0.5 is_at_war = yes }
         }
     }
+    option = {
+        name = rw_ut.issue
+        trigger = { rw_ut_can_issue_trigger = yes }
+        rw_ut_issue_effect = yes
+        ai_chance = {
+            base = 12
+            modifier = { factor = 2 has_trait = forgiving }
+            modifier = { factor = 0.5 is_at_war = yes }
+        }
+    }
     # Silence/nonintervention is always possible and changes no fact or reason.
     option = { name = rw_justice_action.leave ai_chance = { base = 50 } }
 }

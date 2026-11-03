@@ -4,7 +4,10 @@ rw_ja_can_open_trigger = {
     is_imprisoned = no
     has_active_diarchy = no
     NOT = { has_character_flag = flag_hostile_actions_disabled_delay }
-    scope:rw_scheme_evidence_record = { NOT = { has_variable = rw_ja_dispatched_on } }
+    scope:rw_scheme_evidence_record = {
+        NOT = { has_variable = rw_ja_dispatched_on }
+    }
+    rw_ut_shared_arrest_trigger = yes
     has_imprisonment_reason = scope:rw_scheme_evidence_record.var:rw_evidence_participant
     NOT = { has_usable_hook = scope:rw_scheme_evidence_record.var:rw_evidence_participant }
     is_character_interaction_valid = {

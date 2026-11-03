@@ -1,0 +1,80 @@
+namespace = rw_ultimatums
+
+# Only the addressee sees these terms. No source observation or proof is displayed.
+rw_ultimatums.0001 = {
+    type = character_event
+    trigger = { rw_ut_target_view_trigger = yes }
+    title = rw_ut.title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_ut_can_answer_trigger = yes } desc = rw_ut.demand_desc }
+            desc = rw_ut.unavailable_desc
+        }
+    }
+    theme = intrigue
+    left_portrait = { character = scope:rw_scheme_observer }
+    option = {
+        name = rw_ut.apologise
+        trigger = { rw_ut_can_apologise_trigger = yes }
+        rw_ut_apologise_effect = yes
+        ai_chance = {
+            base = 40
+            modifier = { factor = 2 has_trait = craven }
+            modifier = { factor = 0.5 has_trait = arrogant }
+            modifier = { factor = 0.5 prestige < 50 }
+            modifier = { factor = 2 opinion = { target = scope:rw_scheme_observer value > 25 } }
+        }
+    }
+    option = {
+        name = rw_ut.reject
+        trigger = { rw_ut_can_answer_trigger = yes }
+        rw_ut_reject_effect = yes
+        ai_chance = { base = 40 modifier = { factor = 2 has_trait = brave } }
+    }
+    # Silence leaves the seven-day deadline unchanged; no recurring reminder.
+    option = { name = rw_ut.silent ai_chance = { base = 20 } }
+}
+
+rw_ultimatums.0002 = {
+    type = character_event
+    trigger = { rw_ut_issuer_view_trigger = yes }
+    title = rw_ut.review_title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { scope:rw_scheme_evidence_record = { var:rw_ut_state = flag:complied } } desc = rw_ut.complied_desc }
+            triggered_desc = { trigger = { scope:rw_scheme_evidence_record = { var:rw_ut_state = flag:withdrawn } } desc = rw_ut.withdrawn_desc }
+            triggered_desc = { trigger = { scope:rw_scheme_evidence_record = { var:rw_ut_state = flag:arrest_requested } } desc = rw_ut.requested_desc }
+            triggered_desc = { trigger = { scope:rw_scheme_evidence_record = { NOT = { has_variable = rw_ut_live } } } desc = rw_ut.expired_desc }
+            triggered_desc = { trigger = { scope:rw_scheme_evidence_record = { var:rw_ut_state = flag:rejected } } desc = rw_ut.rejected_desc }
+            triggered_desc = { trigger = { scope:rw_scheme_evidence_record = { var:rw_ut_state = flag:timed_out } } desc = rw_ut.timeout_desc }
+            desc = rw_ut.waiting_desc
+        }
+    }
+    theme = intrigue
+    left_portrait = { character = scope:rw_ja_target }
+    option = {
+        name = rw_ut.escalate
+        trigger = { rw_ut_can_escalate_trigger = yes }
+        rw_ut_escalate_effect = yes
+        ai_chance = {
+            base = 25
+            modifier = { factor = 2 has_trait = vengeful }
+            modifier = { factor = 0.5 has_trait = forgiving }
+            modifier = { factor = 0.5 is_at_war = yes }
+        }
+    }
+    option = {
+        name = rw_ut.withdraw
+        trigger = { rw_ut_can_withdraw_trigger = yes }
+        rw_ut_withdraw_effect = yes
+        ai_chance = { base = 50 modifier = { factor = 2 has_trait = forgiving } }
+    }
+    # Leave without deciding: cannot extend or renew the fixed total lifetime.
+    option = { name = rw_ut.leave ai_chance = { base = 10 } }
+}
+
+rw_ultimatums.0003 = {
+    type = character_event
+    hidden = yes
+    immediate = { rw_ut_deadline_effect = yes }
+}

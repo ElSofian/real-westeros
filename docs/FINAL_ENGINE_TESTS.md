@@ -1265,3 +1265,12 @@ agreement/dispute decisions, own remembered type/age/participant, foreign reader
 forgetting/expiry/save-load, bounded factor, stale/cost guards, optional refusal and
 human/AI parity. Final G4/G5 covers actual lookup cost and native memory/regression;
 source tests do not establish runtime availability or compatibility.
+
+## Credible political ultimatums — P4
+
+No cases executed. ULT-01…12 in RW010_ULTIMATUMS.md cover current native grounds,
+exact original readers/target/authority, seven/fourteen/thirty-day timing and replay,
+voluntary prestige cost, explicit rejection versus silence, free withdrawal,
+older-entry bypass and one shared native dispatch, native refusal/resistance,
+private event/effect previews, human/AI parity and final G4/G5 volume/regression.
+A reply is no confession or immunity; an attempt is no demonstrated arrest.

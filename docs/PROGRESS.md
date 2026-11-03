@@ -380,3 +380,28 @@
   event text, save/load, AI outcome and performance remain engine-unverified; ten
   RMEM cases added to the final campaign. CI and committed-source distribution are
   checked before merge. Next substantive target P4; G1/G3 stay open. No engine run.
+
+- RW-010 / P4 (`feat/credible-political-ultimatums`, 2026-11-03): original-party
+  seven-day ultimatum from an existing known-participant arrest opportunity, only
+  with actual current native reason/validity and direct vassal/courtier authority.
+  Fixed voluntary public-regret terms (25 prestige), explicit rejection or observed
+  silence, fourteen-day total cap and thirty-day issuer cooldown. Reply/withdrawal
+  closes this custom observation's arrest route, not native legal rights/windows.
+  Refusal/silence creates no crime, proof, confession, pardon or inherited guilt.
+  Free withdrawal remains possible without land, freedom, means, legal reason or
+  current authority. Optional escalation rechecks all current native J2 conditions;
+  older custom entries honor the same exact identity, parties, authority, waiting,
+  closure and expiry. One terminal demand state is consumed before the shared
+  dispatch receipt/native request, never a forced arrest or duplicate path. The
+  actual original observer can reopen via the read-only justice journal without
+  reissue, cost or renewal. Recipient gets only addressed terms, private effect
+  previews hidden; original source-reader filters stay intact. No global scans,
+  recurring reminder or new native override. Twenty adversarial source tests and
+  preserved native/justice checks; **766 local unit/static tests passed, nineteen
+  PowerShell tests skipped (785 discovered)**. Structural validator, frozen progress
+  report and whitespace PASS; committed-source ZIP and Linux/Windows CI checked
+  before merge. **Development 53/80 (+2 for P4), engine validation 0/20, total
+  53/100**. Earlier checkpoints/rubric unchanged. Native callback/timer/save/UI privacy,
+  AI decisions, cost/refusal/resistance and performance remain engine-unverified;
+  twelve ULT cases added to the single final campaign. Next substantive target N4,
+  shared reusable contract model, then N5. G1/G3 stay open; no engine run requested.

@@ -42,5 +42,11 @@ rw_scheme_justice.0001 = {
         }
         ai_chance = { base = 0 }
     }
+    option = {
+        name = rw_ut.review
+        trigger = { rw_ut_can_open_review_trigger = yes }
+        rw_ut_open_review_effect = yes
+        ai_chance = { base = 0 }
+    }
     option = { name = rw_scheme_justice.close }
 }

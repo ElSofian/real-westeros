@@ -1,5 +1,10 @@
 # Native judicial situation — inspection and native UI handoff
 
+P4 adds a guarded link from this read-only inspection to the original observer’s
+ultimatum view. Opening that view restores the exact addressed target and performs
+no punishment, reissue or payment. Actual choices occur in the separate event; see
+RW010_ULTIMATUMS.md. The native interaction window remains unchanged.
+
 Static-checked only; no CK3 execution. This slice adds an explicit examination
 button to a retained exposed-participant observation and a guarded native arrest-window handoff. It does not implement a new
 arrest, execution, confiscation, pardon or dynastic penalty.

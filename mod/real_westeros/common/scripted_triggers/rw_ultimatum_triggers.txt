@@ -1,0 +1,136 @@
+# Original, private ultimatum terms on one exact retained personal observation.
+# Identity is internal; each actual action/reader additionally checks its own role.
+rw_ut_identity_trigger = {
+    exists = scope:rw_scheme_observer
+    exists = scope:rw_scheme_evidence_record
+    exists = scope:rw_scheme_evidence_serial
+    exists = scope:rw_ja_target
+    NOT = { scope:rw_scheme_observer = scope:rw_ja_target }
+    scope:rw_scheme_evidence_record = {
+        story_type = story_rw_scheme_evidence
+        story_owner = scope:rw_scheme_observer
+        var:rw_evidence_schema = 1
+        has_variable = rw_evidence_retained
+        var:rw_evidence_serial = scope:rw_scheme_evidence_serial
+        var:rw_evidence_kind = flag:participant_exposed
+        var:rw_evidence_participant = scope:rw_ja_target
+        var:rw_ut_schema = 1
+        var:rw_ut_issuer = scope:rw_scheme_observer
+        var:rw_ut_target = scope:rw_ja_target
+        has_variable = rw_ut_issued_on
+        has_variable = rw_ut_state
+    }
+}
+rw_ut_issuer_view_trigger = {
+    rw_ut_identity_trigger = yes
+    this = scope:rw_scheme_observer
+    is_alive = yes
+}
+# This grants only the addressed ultimatum view, NEVER the underlying journal.
+rw_ut_target_view_trigger = {
+    rw_ut_identity_trigger = yes
+    this = scope:rw_ja_target
+    is_alive = yes
+}
+rw_ut_parties_trigger = {
+    exists = scope:rw_scheme_observer
+    exists = scope:rw_ja_target
+    scope:rw_scheme_observer = {
+        is_alive = yes
+        is_adult = yes
+        is_landed = yes
+        is_imprisoned = no
+        host = this
+    }
+    scope:rw_ja_target = {
+        is_alive = yes
+        is_adult = yes
+        is_imprisoned = no
+        NOT = { this = scope:rw_scheme_observer }
+        OR = {
+            AND = { exists = liege liege = scope:rw_scheme_observer }
+            is_courtier_of = scope:rw_scheme_observer
+        }
+    }
+}
+# Actual native reason AND validity at issue, not a reason manufactured by refusal.
+rw_ut_can_issue_trigger = {
+    rw_ja_can_attempt_trigger = yes
+    rw_ut_parties_trigger = yes
+    NOT = { has_character_flag = rw_ut_recent }
+    scope:rw_scheme_evidence_record = { NOT = { has_variable = rw_ut_schema } }
+}
+rw_ut_can_answer_trigger = {
+    rw_ut_target_view_trigger = yes
+    rw_ut_parties_trigger = yes
+    scope:rw_scheme_evidence_record = {
+        has_variable = rw_ut_live
+        has_variable = rw_ut_answer_window
+        var:rw_ut_state = flag:waiting
+    }
+}
+rw_ut_can_apologise_trigger = {
+    rw_ut_can_answer_trigger = yes
+    prestige >= 25
+}
+# Loss of resources, jurisdiction or legal reason never prevents a free withdrawal.
+rw_ut_can_withdraw_trigger = {
+    rw_ut_issuer_view_trigger = yes
+    scope:rw_scheme_evidence_record = {
+        OR = {
+            var:rw_ut_state = flag:waiting
+            var:rw_ut_state = flag:rejected
+            var:rw_ut_state = flag:timed_out
+        }
+    }
+}
+rw_ut_can_escalate_trigger = {
+    rw_ut_issuer_view_trigger = yes
+    rw_ut_parties_trigger = yes
+    scope:rw_scheme_evidence_record = {
+        has_variable = rw_ut_live
+        OR = { var:rw_ut_state = flag:rejected var:rw_ut_state = flag:timed_out }
+    }
+    rw_ja_can_attempt_trigger = yes
+}
+
+# Story-scope guard for the shared custom arrest route only. Native CK3/AGOT
+# interactions stay available under their own rules; this is not legal immunity.
+rw_ut_arrest_route_allowed_trigger = {
+    OR = {
+        NOT = { has_variable = rw_ut_schema }
+        AND = {
+            var:rw_ut_schema = 1
+            has_variable = rw_ut_live
+            OR = {
+                var:rw_ut_state = flag:rejected
+                var:rw_ut_state = flag:timed_out
+            }
+        }
+    }
+}
+# Reopen from the observer's private journal even while the arrest route is paused.
+# Snapshot the exact addressed target only after checking the original record.
+rw_ut_can_open_review_trigger = {
+    rw_scheme_justice_view_trigger = yes
+    scope:rw_scheme_evidence_record = {
+        var:rw_ut_schema = 1
+        var:rw_ut_issuer = scope:rw_scheme_observer
+        var:rw_ut_target = var:rw_evidence_participant
+        has_variable = rw_ut_issued_on
+        has_variable = rw_ut_state
+    }
+}
+
+# Character-scope shared guard: an older J2 entry must satisfy the SAME stored
+# identities and current authority as the ultimatum button, not merely its phase.
+rw_ut_shared_arrest_trigger = {
+    OR = {
+        scope:rw_scheme_evidence_record = { NOT = { has_variable = rw_ut_schema } }
+        AND = {
+            rw_ut_identity_trigger = yes
+            rw_ut_parties_trigger = yes
+            scope:rw_scheme_evidence_record = { rw_ut_arrest_route_allowed_trigger = yes }
+        }
+    }
+}
