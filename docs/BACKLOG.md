@@ -17,6 +17,13 @@ not an exhaustive completion checklist. PR/test counts are not global progress m
 | P1 | RW-009 | Add AI actor selection and negative-path tests for one end-to-end incident | Implemented experimentally — bounded liege targeting; engine untested |
 | P2 | RW-010 | Expand political memory, justice, diplomacy and other systems incrementally | In progress — services, mediation, case history, contested allegations and voluntary repair responses and mutual promise cancellation and immutable mediated service clauses plus personal restitution promises and voluntary private case compensation in scripts; engine untested; native observation intake added; voluntary political responses added; coercive justice/dynastic stages remain |
 
+**AI availability scope corrected (RW-010/RW-009):** nine initial filters in
+seven interaction files now evaluate the candidate character directly instead
+of an unbound scope:actor wrapper. Same conditions, direct-liege pool, frequency,
+weights and execution guards; AI_AVAILABILITY_SCOPE_FIXES.md. Seven regression
+tests; nine targeted partial-source Tiger scope warnings gone, one other intake
+scope warning still open. +0,64/80+0/20; no native planner/engine proof or new AI4.
+
 **Localization expression defects corrected (RW-010/RW-004):** seven FR/EN
 files,22 erroneous script-scope prefixes in14 strings,three literal-number hash
 markers escaped. No gameplay code changed. Two narrow validator rules and nine

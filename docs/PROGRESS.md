@@ -831,3 +831,27 @@
 
 - Localization correction source assessment: `3668c2f5226a0288e66d413dcd7a247d87934ec0`; +0 checkpoint.
   Frozen rubric/statuses/history preserved; no claim of runtime scope availability.
+
+- RW-010/RW-009 / AI initial availability scope (2026-11-06): nine ai_potential
+  filters across seven interaction files now evaluate the candidate character
+  directly, without an unbound actor wrapper. All inner conditions byte-preserved;
+  targets,frequency12,weights,visibility,send guards and effects unchanged by full
+  baseline comparison. Root helpers checked for actor/recipient dependencies.
+  Native-source root-guard reference and Tiger's explicit character context read;
+  no native rule copied. Narrow validator detects the former outer actor/recipient
+  shape, not general named-scope resolution; ordinary interaction contexts intact.
+  Seven new regression tests; existing reconciliation bypass mutation adapted.
+  1020 discovered,997 local passed,23 PowerShell skips; structural/targeted checks,
+  telemetry noninterference, whitespace and readiness PASS. Same pinned Tiger on
+  PRIVATE partial fixtures: nine targeted AI scope warnings→zero, one unrelated
+  scheme-intake scope warning remains. No engine/planner/performance evidence or
+  global semantic clearance. No native source/binary/raw private report shipped.
+  Required exact-head CI, committed ZIP and extracted standalone negative-path
+  verification before merge. +0,development64/80,engine0/20,total64/100; AI4 genuine
+  war initiation still open. Existing final AI↔AI discovery/capacity/cooldown/spam/
+  resolution cases grouped, no intermediate launch (7–10min/start). Next inspect
+  optional/mandatory participant context in the remaining intake warning, fix only
+  confirmed defects, preserve J4/J5/G1 dependencies rather than suppressing reports.
+
+- AI availability correction source assessment: `9d6b0811e8aeacb77441413ebd40cf0d040a66fd`; +0 checkpoint.
+  Frozen rubric and prior history intact; no native scheduling or engine claim.
