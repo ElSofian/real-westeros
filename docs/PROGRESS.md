@@ -778,3 +778,6 @@
   installed game. J5 OPEN,+0: voluntary narrow restitution is not the complete
   coercive-sanction/restoration chain. Development64/80,engine0/20,total64/100.
   Next: substantive coercive-route coverage/integrated chain, no extra journal.
+
+- Ducal restitution partial source assessment: `3e29aaa120358aa994606d2448e19e3b54e51df3`; +0 checkpoint.
+  J5 remains open; source call delivered, full coercive-restoration chain missing.

@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "c1ab7749439bea78650d07f02ac40787ec145716",
+  "assessed_commit": "3e29aaa120358aa994606d2448e19e3b54e51df3",
   "lots": [
     {
       "id": "W",
@@ -334,7 +334,14 @@
           "points": 2,
           "acceptance": "Restauration après sanction coercitive effective, au-delà de la réhabilitation politique",
           "status": "open",
-          "evidence": []
+          "evidence": [
+            "docs/RW010_NATIVE_RESTITUTION.md",
+            "docs/NATIVE_RESTITUTION_SOURCE_RECEIPT.json",
+            "mod/real_westeros/common/scripted_triggers/rw_native_restitution_triggers.txt",
+            "mod/real_westeros/common/scripted_effects/rw_native_restitution_effects.txt",
+            "mod/real_westeros/events/rw_native_restitution_events.txt",
+            "tools/build_native_restitution.py"
+          ]
         }
       ]
     },
@@ -1325,6 +1332,48 @@
       "score": 64,
       "reference": "c1ab7749439bea78650d07f02ac40787ec145716",
       "note": "Préparation J4/J5 : demande native exacte30jours, fermeture au refus et transfert observé par on_title_gain sans dépendance aux alias de l’interaction. Fait TP canonique sans réécriture des entrées existantes, dépôt public facultatif isolé. Association non exclusive, pas de verdict ou restitution ; J4/J5 ouverts,+0,développement64/80,moteur0/20,total64/100."
+    },
+    {
+      "date": "2026-11-05",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4",
+        "O4",
+        "I3",
+        "M5",
+        "P4",
+        "N4",
+        "N5",
+        "J3",
+        "AI5",
+        "W3"
+      ],
+      "score": 64,
+      "reference": "3e29aaa120358aa994606d2448e19e3b54e51df3",
+      "note": "Retour volontaire du titre ducal par appel natif type=granted après choix explicite partagé joueur/IA ; gardes natives privées et détenteur réel vérifié avant conséquences. Une tentative par promesse, aucun déplacement des terres/vassaux d’autrui. Équivalence moteur et chaîne sanction coercitive/restauration non démontrées ; J5 ouvert,+0,développement64/80,moteur0/20,total64/100."
     }
   ]
 }
