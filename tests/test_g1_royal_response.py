@@ -140,7 +140,11 @@ class RoyalResponseSourceTests(unittest.TestCase):
         event=(ROOT/EVENT).read_text()
         for condition in ('is_at_war = yes','gold < 50','opinion = { target = scope:rw_uw_attacker'):
             self.assertIn(condition,event)
-        self.assertNotIn('is_ai',self.t+self.e+event)
+        a, _, b = builder.bounds(self.t, 'rw_uw_ai_default_defiance_trigger')
+        shared = self.t[:a] + self.t[b:] + self.e + event
+        # Only initial option preference may branch on AI identity.
+        self.assertNotIn('is_ai', shared)
+        self.assertNotIn('rw_uw_ai_default_defiance_trigger', shared)
         for effect in ('ignore','censure','demand','acknowledge','refuse'):
             self.assertIn('rw_uw_'+effect+'_effect = yes',event)
 

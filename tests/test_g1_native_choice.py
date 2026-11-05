@@ -64,6 +64,8 @@ class NativeChoiceBuilderTests(unittest.TestCase):
 
     def test_real_original_templates_and_private_manifest(self):
         receipt = self.build()
+        self.assertIn('NOT VERIFIED', receipt['ai_option_initialization'])
+        self.assertIn('version="0.0.4"', (self.out/builder.MOD_ID/'descriptor.mod').read_text())
         self.assertEqual(3, len(receipt['outputs']))
         self.assertEqual(len(builder.FILES), len(receipt['runtime_sources']))
         self.assertEqual('Real Westeros', receipt['requires_base_mod'])
@@ -173,6 +175,44 @@ class NativeChoiceSourceTests(unittest.TestCase):
                           'add_gold','use_hook =','on_accept =','on_war_started','ai_will_do','claim_cb ='):
             self.assertNotIn(forbidden,original)
         self.assertFalse((builder.REPO/'mod/real_westeros/common/character_interactions/zz_rw_native_war_choice.txt').exists())
+
+    def test_ai_initial_choice_never_changes_shared_permission(self):
+        # Identity/AI/means are preference only, never a new eligibility branch.
+        for name in ('rw_uw_peer_ban_trigger', 'rw_uw_selected_defiance_trigger'):
+            start, _, end = builder.bounds(self.text, name)
+            block = clean_script(self.text[start:end])[0]
+            self.assertNotIn('is_ai', block)
+            self.assertNotIn('gold', block)
+            self.assertNotIn('opinion', block)
+            self.assertNotIn('rw_uw_ai_default_defiance_trigger', block)
+        self.assertEqual(1, builder.OPTION.count('starts_enabled'))
+        self.assertIn('starts_enabled = { rw_uw_ai_default_defiance_trigger = yes }', builder.OPTION)
+        self.assertNotIn('starts_enabled', builder.GUARD)
+        self.assertNotIn('can_be_changed', builder.OPTION)
+
+    def test_ai_preference_fails_closed_on_context_hook_or_burden(self):
+        start, _, end = builder.bounds(self.text, 'rw_uw_ai_default_defiance_trigger')
+        block = clean_script(self.text[start:end])[0]
+        for guard in ('rw_uw_peer_ban_trigger = yes', 'NOT = { always = scope:hook }',
+                      'is_ai = yes', 'is_at_war = no', 'gold >= 150',
+                      'rw_ai_existing_commitment_trigger = no',
+                      'opinion = { target = scope:actor.liege value <= -25 }'):
+            self.assertIn(guard, block)
+        _, opening, actor_end = builder.bounds(block, 'scope:actor')
+        actor = block[opening:actor_end]
+        for token in ('is_ai = yes', 'gold >= 150', 'is_at_war = no', 'opinion ='):
+            self.assertIn(token, actor)
+        for token in ('random', 'set_', 'save_', 'every_', 'any_', 'run_interaction',
+                      'start_war', 'add_gold', 'use_hook'):
+            self.assertNotIn(token, block)
+
+    def test_ai_preference_does_not_claim_native_planner_support(self):
+        receipt = json.loads((builder.REPO/'docs/G1_AI_OPTION_SOURCE_RECEIPT.json').read_text())
+        self.assertEqual(1, len(receipt['files']))
+        row = receipt['files'][0]
+        self.assertEqual(64, len(row['sha256']))
+        self.assertEqual([2505, 3323], row['markers']['send_option.starts_enabled'])
+        self.assertNotIn('native_source', row)
 
     def test_templates_have_bom_headers_and_complete_localizations(self):
         payload=builder.template_payload()

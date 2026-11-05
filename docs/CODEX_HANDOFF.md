@@ -471,3 +471,19 @@ The scheduled worker prioritizes reviewing actual PR diffs, test evidence and CI
 
 ## Validation timing update
 Owner requests all CK3 runs at the end. Do static/source validation now, track engine risks and add cases to docs/FINAL_ENGINE_TESTS.md. Do not require incremental manual game runs.
+
+- RW-004 / W2-AI4 initial choice preparation (2026-11-05): target AGOT source
+  confirms send_option.starts_enabled syntax (relative hash/line receipt only).
+  Adapter 0.0.4 initializes its original defiance option for AI at peace, gold >=150,
+  no own service/favor commitment and own liege opinion <=-25, under shared peer-ban
+  and no-selected-hook guards. Preference only; shared eligibility/costs unchanged,
+  player starts unchecked. Deterministic read-only CK3 trigger, no persistent state,
+  global scan, forced dispatch, fake CB or runtime Python. Four pinned real source
+  inputs / twelve runtime hashes / three private outputs generation PASS with
+  reported-version descriptor fixture, not a verified installation. Native byte
+  inversion still exact. Three added source tests; full checks recorded below.
+  Native war-planner discovery may filter before option construction: selection,
+  dispatch/costs and AI-to-AI outcomes NOT demonstrated. AIDEFY-01…06 all deferred
+  to final campaign. W2/AI4 remain OPEN, +0: development 64/80, engine 0/20,
+  total 64/100. Next: investigate actual native AI candidate discovery and the
+  remaining G1/G3 source constraints; do not count this as autonomous war delivery.
