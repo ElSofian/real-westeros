@@ -23,7 +23,7 @@ matches current/former holder/title without inherited callback aliases, consumes
 the personal30-day ticket and uses canonical TP facts without rewriting existing
 entries. Optional filing remains existing UI, isolated one-shot event. No cause/
 crime verdict or native action replay. RW010_CONFISCATION_TRANSFER_RECEIPTS.md /
-HCRECEIPT-01…08; J4/J5 open,+0,64/80+0/20,19 runtime sources/two PRIVATE outputs.
+HCRECEIPT-01…08; J4/J5 open,+0,64/80+0/20,22 runtime sources/two PRIVATE outputs.
 
 **Native house-confiscation route resumed:** target-source native AI already scores
 scope:landed_title, so the new candidate avoids external title dispatch. Explicit
