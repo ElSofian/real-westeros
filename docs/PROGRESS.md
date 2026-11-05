@@ -637,3 +637,6 @@
   inspect every shared trigger/effect/event excluding only the isolated preference;
   they also forbid calls to that preference from execution/response guards.
   Linux/Windows required CI and committed public artifact checks precede merge.
+
+- W2/AI4 partial source assessment: `6ca62e7a63973bc9c21a04aa415dbfc333a983a6`; +0 checkpoint
+  dated 2026-11-05. Both criteria remain open; frozen rubric/history unchanged.

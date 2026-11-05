@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "cf7bac383d9e856d64a2ffa2560f6c1164249f24",
+  "assessed_commit": "6ca62e7a63973bc9c21a04aa415dbfc333a983a6",
   "lots": [
     {
       "id": "W",
@@ -29,7 +29,12 @@
           "points": 4,
           "acceptance": "Déclaration malgré l’interdit avec vrai CB, contexte exact, coûts, annulation et accès joueur/IA",
           "status": "open",
-          "evidence": []
+          "evidence": [
+            "docs/G1_AI_OPTION_POLICY.md",
+            "docs/G1_AI_OPTION_SOURCE_RECEIPT.json",
+            "mod/real_westeros/common/scripted_triggers/rw_unlawful_war_choice_triggers.txt",
+            "tools/build_g1_native_choice.py"
+          ]
         },
         {
           "id": "W3",
@@ -468,7 +473,12 @@
           "points": 2,
           "acceptance": "Chemins autonomes IA↔IA à travers guerre, justice et négociation",
           "status": "open",
-          "evidence": []
+          "evidence": [
+            "docs/G1_AI_OPTION_POLICY.md",
+            "docs/G1_AI_OPTION_SOURCE_RECEIPT.json",
+            "mod/real_westeros/common/scripted_triggers/rw_unlawful_war_choice_triggers.txt",
+            "tools/build_g1_native_choice.py"
+          ]
         },
         {
           "id": "AI5",
@@ -1125,6 +1135,48 @@
       "score": 64,
       "reference": "cf7bac383d9e856d64a2ffa2560f6c1164249f24",
       "note": "Préparation W1 : relevé immuable du contexte au préfixe claim_cb.on_declaration et helper natif sous alias propres, liaison unique au dossier W3 sans reconstruction tardive. Ordre réel des callbacks et loi à l’instant moteur toujours non démontrés ; W1 reste ouvert. +0, développement 64/80, moteur 0/20, total 64/100."
+    },
+    {
+      "date": "2026-11-05",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4",
+        "O4",
+        "I3",
+        "M5",
+        "P4",
+        "N4",
+        "N5",
+        "J3",
+        "AI5",
+        "W3"
+      ],
+      "score": 64,
+      "reference": "6ca62e7a63973bc9c21a04aa415dbfc333a983a6",
+      "note": "Préférence initiale IA via starts_enabled sourcé, politique CK3 déterministe moyens/engagements/guerre/opinion, gardes partagées inchangées. Découverte et envoi par le planificateur de guerre non démontrés : W2/AI4 restent ouverts. +0, développement 64/80, moteur 0/20, total 64/100."
     }
   ]
 }
