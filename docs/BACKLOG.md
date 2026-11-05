@@ -19,7 +19,11 @@ not an exhaustive completion checklist. PR/test counts are not global progress m
 
 **Current continuation (2026-11-05):** [V01_REMAINING_WORK.md](V01_REMAINING_WORK.md)
 separates actual missing development from experimental code and engine-dependent
-feasibility. Next substantive target J4, then J5 after effective sanction; do not
+feasibility. J4 has now been examined and parked: native celestial extinction is unsuitable,
+disinheritance does not cover G3, and exact-title automated native revocation is
+unestablished. See the dated decision in the remaining-work review. Resume only
+with specific capability evidence or final G3 observations; J5 depends on actual
+sanction. Do not
 extend the war candidate without a concrete defect/source-supported unblock.
 W1/W2/W4/W5/AI4 remain open and have mixed dependencies, not just final tests.
 Final campaign schedule and frozen64/80 +0/20 score remain unchanged.

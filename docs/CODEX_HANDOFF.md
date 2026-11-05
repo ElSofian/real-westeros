@@ -7,8 +7,14 @@ Readiness stays 64/80 source, 0/20 engine, total64/100. Seven source criteria re
 open, with mixed missing-code and feasibility/observation dependencies. J4/J5
 coercion/restoration are missing; war AI discovery is unresolved, not delivered
 by starts_enabled. W1/W4 have preparation, not complete law/lifecycle integration.
-Target substantive J4 next from a precise supported native route, then J5; retain
-explicit missing G3 route coverage. Preserve the current war candidate unless a
+J4's targeted check is now parked (V01_REMAINING_WORK.md): celestial extinction
+is government/player-restricted, disinheritance is not four-route coverage, and
+exact title selection for an automated native revoke request is not established.
+No implemented family sanction or universal impossibility is claimed. J5 depends
+on real sanction. Resume with specific native capability evidence or final G3
+observations, not another repeated audit/variant. Final campaign G1/G3 feasibility
+is the next engine-dependent work; no intermediate run/upload requested. Retain
+explicit missing route coverage. Preserve the current war candidate unless a
 concrete defect or source proof justifies a change. Do not keep generating minor
 +0 variants or general audits without resolving a specific missing requirement.
 If no safe implementation is established, record the dependency and park it.

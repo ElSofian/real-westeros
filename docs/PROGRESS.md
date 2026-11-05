@@ -680,3 +680,20 @@
   Review checks: seven readiness tests (including rejection of inflation/fake engine
   completion), distribution tests, structural/localization/telemetry checks and
   whitespace PASS; machine metric byte-identical and all new review links resolve.
+
+- RW-010 / J4 targeted stop decision (2026-11-05): examined native celestial
+  family extinction, disinheritance and current native-title confiscation as
+  distinct measures. First has incompatible government/player restrictions; second
+  lacks grant/conquest coverage; third lacks established exact-title transmission
+  for automated native UI/AI execution preserving costs/refusal/resistance. No
+  guessed run_interaction argument, forced transfer/helper call, family guilt,
+  personal-mechanic generalization or political marker substitute implemented.
+  J4 parked, J5 dependent; no universal impossibility claimed. Resume on a precise
+  native capability proof or final G3 observations, not another repeated audit.
+  Final campaign G1/G3 feasibility is the next engine-dependent work; no new source
+  upload/intermediate game run requested. Documentation decision only: no gameplay,
+  metric, checkpoint or rubric change; development64/80, engine0/20, total64/100.
+
+  Checks: seven existing readiness tests (including fake-completion/inflation
+  negatives), structural/localization/readiness/whitespace and review links PASS;
+  gameplay/tools/frozen assessment byte-unchanged. Required CI before merge.
