@@ -8,3 +8,4 @@
  rw_title_provenance.boundaries:0 "This entry identifies no particular plot as the reason for the transfer and establishes no lawful judgment, pardon, ancestral entitlement or house-wide land ban. Ordinary title history and restrictions remain authoritative."
  rw_title_provenance.unavailable:0 "This private observation is no longer accessible. No title or sentence is changed."
  rw_title_provenance.close:0 "Close this observation."
+ rw_title_provenance.request_association:0 "A request to revoke this title was pending when the transfer was observed. This does not establish that the request was its sole cause."

@@ -1,5 +1,22 @@
 # Codex implementation handoff
 
+## Current continuation — native request to canonical title fact
+
+RW010_CONFISCATION_TRANSFER_RECEIPTS.md extends private adapter0.0.2: capture chosen
+title at native on_send, close request at on_decline, exact root/title/previous-holder
+lookup in an additive on_title_gain child. No dependence on actor/recipient/selected-
+title marker propagation there. Fixed30-day personal request, consume before fact,
+leave existing canonical TP facts entirely unchanged; no duplicate journal, late
+cause inference, native replay or private-case backfill. Only a fresh receipt may
+schedule the existing optional filing UI, in a separate event with exact one-shot
+seven-day ticket; ordinary institutional filing/custody rules remain. Source-only,
+J4/J5 open,+0,64/80 +0/20. One native input,22 runtime sources,two PRIVATE outputs;
+remove three original fragments to restore native bytes. on_accept unchanged.
+All HCRECEIPT cases deferred/grouped; no intermediate game launch (7–10min/start).
+This records an observed transfer matching a pending request, not exclusive cause,
+a completed legal punishment, fifty-year ban or restoration. Next substantive work
+is actual native restitution/remaining route coverage, not another journal variant.
+
 ## Current continuation — native confiscation AI route
 
 J4 resumed on actual target-source evidence: native revoke AI already evaluates

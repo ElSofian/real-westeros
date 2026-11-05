@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "425f7e1a22623c44a7c85f6014b87964680ba9dc",
+  "assessed_commit": "c1ab7749439bea78650d07f02ac40787ec145716",
   "lots": [
     {
       "id": "W",
@@ -320,7 +320,13 @@
             "mod/real_westeros/common/scripted_effects/rw_house_confiscation_effects.txt",
             "mod/real_westeros/common/script_values/rw_house_confiscation_values.txt",
             "mod/real_westeros/common/story_cycles/rw_house_confiscation.txt",
-            "tools/build_g3_native_confiscation.py"
+            "tools/build_g3_native_confiscation.py",
+            "docs/RW010_CONFISCATION_TRANSFER_RECEIPTS.md",
+            "mod/real_westeros/common/scripted_triggers/rw_confiscation_transfer_triggers.txt",
+            "mod/real_westeros/common/scripted_effects/rw_confiscation_transfer_effects.txt",
+            "mod/real_westeros/common/on_action/rw_title_provenance_on_actions.txt",
+            "mod/real_westeros/common/story_cycles/rw_house_revocation_request.txt",
+            "mod/real_westeros/events/rw_confiscation_transfer_events.txt"
           ]
         },
         {
@@ -1277,6 +1283,48 @@
       "score": 64,
       "reference": "425f7e1a22623c44a7c85f6014b87964680ba9dc",
       "note": "Préparation J4 : ordre de confiscation de maison 180jours et priorité conditionnelle dans la révocation IA native, sans sélection externe de titre. Droits/coûts/refus natifs préservés, pas de sanction exécutée déduite du score, ni veto d’acquisition ou ban50ans. Couverture G3 et moteur non établis ; J4 ouvert,+0, développement64/80,moteur0/20,total64/100."
+    },
+    {
+      "date": "2026-11-05",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4",
+        "O4",
+        "I3",
+        "M5",
+        "P4",
+        "N4",
+        "N5",
+        "J3",
+        "AI5",
+        "W3"
+      ],
+      "score": 64,
+      "reference": "c1ab7749439bea78650d07f02ac40787ec145716",
+      "note": "Préparation J4/J5 : demande native exacte30jours, fermeture au refus et transfert observé par on_title_gain sans dépendance aux alias de l’interaction. Fait TP canonique sans réécriture des entrées existantes, dépôt public facultatif isolé. Association non exclusive, pas de verdict ou restitution ; J4/J5 ouverts,+0,développement64/80,moteur0/20,total64/100."
     }
   ]
 }

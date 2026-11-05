@@ -13,7 +13,7 @@ FIELDS=('kind','request_serial','pledge_revision','pledge_days','title','former_
 
 def observation_errors(t,e,on,wrapper):
     out=[]
-    if block(wrapper,'on_title_gain').strip()!='on_actions = { rw_on_title_revocation_context rw_on_pledged_title_gain_context }':
+    if block(wrapper,'on_title_gain').strip()!='on_actions = { rw_on_title_revocation_context rw_on_pledged_title_gain_context rw_on_house_revocation_gain }':
         out.append('native dispatcher replaced or original child lost')
     child=block(on,'rw_on_pledged_title_gain_context')
     for g in ('trigger = { rw_rg_native_context_trigger = yes }','effect = { rw_rg_observe_effect = yes }'):

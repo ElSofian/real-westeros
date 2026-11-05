@@ -24,6 +24,16 @@
         ]
       },
       "supports": "Native AI score already references selected landed_title. Does not establish external run_interaction title binding or actual runtime outcome."
+    },
+    {
+      "path": "AGOT/common/scripted_effects/00_interaction_effects.txt",
+      "sha256": "dfde92191c93bf93a074dc475fe1a188d8d17f7f4515c22b4f903bb2d6cfff91",
+      "markers": {
+        "revoke_title_interaction_effect": [
+          3740
+        ]
+      },
+      "supports": "Reference-only consequence helper; inspected body does not establish a scripted title-transfer effect or engine ordering. Not patched or a second generator input."
     }
   ]
 }

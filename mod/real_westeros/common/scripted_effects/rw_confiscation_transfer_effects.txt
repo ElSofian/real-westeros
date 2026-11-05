@@ -1,0 +1,163 @@
+# PRIVATE native on_send only. Record chosen title while its former holder owns it.
+rw_hcr_register_request_effect = {
+    if = {
+        limit = {
+            rw_hcr_before_trigger = yes
+            scope:actor = { NOT = { any_owned_story = { rw_hcr_same_request_trigger = yes } } }
+        }
+        scope:actor = { save_scope_as = rw_hcr_issuer }
+        scope:recipient = { save_scope_as = rw_hcr_former }
+        scope:landed_title = { save_scope_as = rw_hcr_title }
+        clear_saved_scope = rw_hcr_request
+        scope:actor = { create_story = { type = story_rw_house_revocation_request save_scope_as = rw_hcr_request } }
+        if = {
+            limit = {
+                exists = scope:rw_hcr_request
+                scope:rw_hcr_request = {
+                    story_type = story_rw_house_revocation_request
+                    story_owner = scope:actor
+                    NOT = { has_variable = rw_hcr_schema }
+                }
+            }
+            scope:rw_hcr_request = {
+                set_variable = { name = rw_hcr_schema value = 1 }
+                set_variable = { name = rw_hcr_issuer value = scope:actor }
+                set_variable = { name = rw_hcr_former value = scope:recipient }
+                set_variable = { name = rw_hcr_title value = scope:landed_title }
+                set_variable = { name = rw_hcr_house value = scope:recipient.house }
+                set_variable = { name = rw_hcr_authority value = scope:actor.primary_title }
+                set_variable = { name = rw_hcr_sent_on value = current_date }
+                set_variable = { name = rw_hcr_pending value = flag:yes days = 30 }
+            }
+            scope:actor = {
+                if = {
+                    limit = { rw_house_sovereign_trigger = yes }
+                    scope:rw_hcr_request = { set_variable = { name = rw_hcr_sovereign value = flag:yes } }
+                }
+            }
+        }
+    }
+    clear_saved_scope = rw_hcr_request
+}
+# Close request association BEFORE native refusal/resistance; no war outcome inferred.
+rw_hcr_declined_effect = {
+    if = {
+        limit = { exists = scope:actor exists = scope:recipient }
+        scope:actor = {
+            every_owned_story = {
+                limit = { rw_hcr_closeable_request_trigger = yes }
+                remove_variable = rw_hcr_pending
+                end_story = yes
+            }
+        }
+    }
+}
+# Source-located title-gain child needs only root/new holder, title and previous holder.
+# An existing one-day canonical fact is left entirely unchanged, never backfilled.
+# It does not require actor/recipient/landed_title/native marker propagation.
+rw_hcr_observe_gain_effect = {
+    if = {
+        limit = { rw_hcr_gain_context_trigger = yes }
+        save_scope_as = rw_hcr_issuer
+        scope:title = { save_scope_as = rw_hcr_title }
+        scope:previous_holder = { save_scope_as = rw_hcr_former }
+        clear_saved_scope = rw_hcr_request
+        clear_saved_scope = rw_hcr_receipt
+        save_scope_value_as = { name = rw_hcr_receipt_serial value = -1 }
+        random_owned_story = {
+            limit = { rw_hcr_matches_gain_trigger = yes }
+            save_scope_as = rw_hcr_request
+            var:rw_hcr_house = { save_scope_as = rw_hcr_house }
+            var:rw_hcr_authority = { save_scope_as = rw_hcr_authority }
+            save_scope_value_as = { name = rw_hcr_request_date value = var:rw_hcr_sent_on }
+            save_scope_value_as = { name = rw_hcr_sovereign value = no }
+            if = { limit = { has_variable = rw_hcr_sovereign } save_scope_value_as = { name = rw_hcr_sovereign value = yes } }
+            # Consume BEFORE canonical facts/filing. A repeated callback cannot reuse it.
+            remove_variable = rw_hcr_pending
+            end_story = yes
+        }
+        scope:rw_hcr_issuer = {
+            if = {
+                limit = { NOT = { any_owned_story = { rw_hcr_matching_receipt_trigger = yes } } }
+                create_story = { type = story_rw_title_provenance save_scope_as = rw_hcr_receipt }
+                if = {
+                    limit = {
+                        exists = scope:rw_hcr_receipt
+                        scope:rw_hcr_receipt = {
+                            story_type = story_rw_title_provenance
+                            story_owner = scope:rw_hcr_issuer
+                            NOT = { has_variable = rw_tp_schema }
+                        }
+                    }
+                    if = { limit = { NOT = { has_variable = rw_tp_serial_counter } } set_variable = { name = rw_tp_serial_counter value = 0 } }
+                    change_variable = { name = rw_tp_serial_counter add = 1 }
+                    scope:rw_hcr_receipt = {
+                        set_variable = { name = rw_tp_schema value = 1 }
+                        set_variable = { name = rw_tp_kind value = flag:native_revocation_context_transfer }
+                        set_variable = { name = rw_tp_source value = flag:pending_native_revocation_transfer }
+                        set_variable = { name = rw_tp_serial value = scope:rw_hcr_issuer.var:rw_tp_serial_counter }
+                        save_scope_value_as = { name = rw_hcr_receipt_serial value = var:rw_tp_serial }
+                        set_variable = { name = rw_tp_title value = scope:rw_hcr_title }
+                        set_variable = { name = rw_tp_former_holder value = scope:rw_hcr_former }
+                        set_variable = { name = rw_tp_new_holder value = scope:rw_hcr_issuer }
+                        set_variable = { name = rw_tp_observed_on value = current_date }
+                        set_variable = { name = rw_tp_repeat_window value = flag:yes days = 1 }
+                        set_variable = { name = rw_tp_retained value = flag:yes years = 5 }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    exists = scope:rw_hcr_receipt
+                    scope:rw_hcr_receipt = {
+                        rw_hcr_matching_receipt_trigger = yes
+                        var:rw_tp_source = flag:pending_native_revocation_transfer
+                        var:rw_tp_serial = scope:rw_hcr_receipt_serial
+                    }
+                }
+                scope:rw_hcr_receipt = {
+                    set_variable = { name = rw_tp_hc_request_matched value = flag:yes }
+                    set_variable = { name = rw_tp_hc_house value = scope:rw_hcr_house }
+                    set_variable = { name = rw_tp_hc_authority value = scope:rw_hcr_authority }
+                    set_variable = { name = rw_tp_hc_request_date value = scope:rw_hcr_request_date }
+                }
+                # Only a sovereign captured as such at native send may
+                # offer public filing. Preserve an existing on_gain offer/snapshot.
+                if = {
+                    limit = {
+                        always = scope:rw_hcr_sovereign
+                        rw_house_sovereign_trigger = yes
+                        scope:rw_hcr_receipt = {
+                            NOT = { has_variable = rw_lr_offer_scheduled }
+                            NOT = { has_variable = rw_tp_land_authority }
+                            NOT = { has_variable = rw_tp_former_house }
+                        }
+                    }
+                    scope:rw_hcr_receipt = {
+                        set_variable = { name = rw_tp_land_authority value = scope:rw_hcr_authority }
+                        set_variable = { name = rw_tp_former_house value = scope:rw_hcr_house }
+                        set_variable = { name = rw_lr_offer_scheduled value = flag:yes }
+                        set_variable = { name = rw_tp_hc_offer_pending value = flag:yes days = 7 }
+                    }
+                    trigger_event = { id = rw_confiscation_transfer.0001 days = 1 }
+                }
+            }
+        }
+    }
+    clear_saved_scope = rw_hcr_request
+    clear_saved_scope = rw_hcr_receipt
+}
+# Isolated next-day event: bind the existing journal/filing API only in this context.
+rw_hcr_open_filing_effect = {
+    if = {
+        limit = { rw_hcr_offer_ticket_trigger = yes }
+        scope:rw_hcr_receipt = { remove_variable = rw_tp_hc_offer_pending }
+        scope:rw_hcr_issuer = { save_scope_as = rw_tp_observer }
+        scope:rw_hcr_receipt = { save_scope_as = rw_tp_record }
+        save_scope_value_as = { name = rw_tp_serial value = scope:rw_hcr_receipt_serial }
+        scope:rw_hcr_title = { save_scope_as = rw_tp_title }
+        scope:rw_hcr_former = { save_scope_as = rw_tp_former_holder }
+        scope:rw_hcr_issuer = { save_scope_as = rw_tp_new_holder }
+        rw_lr_open_deposit_effect = yes
+    }
+}

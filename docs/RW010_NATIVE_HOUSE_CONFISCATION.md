@@ -40,7 +40,7 @@ python tools/build_g3_native_confiscation.py --agot-root <AGOT> --output <nouvea
 
 Le générateur vérifie le fichier AGOT de révocation épinglé par hash et les versions
 déclarées 0.5.2.1 / support1.19.0.6. Il émet sa définition native adaptée et un marqueur
-RW de disponibilité. Le mod public contient **sept sources originales**, non dupliquées
+RW de disponibilité. Le mod public contient **22 sources runtime originales**, non dupliquées
 dans l’adaptateur ; leurs empreintes figurent au reçu. Sans adaptateur, le fallback
 refuse la création d’ordres et le nouveau bonus reste nul.
 
@@ -49,8 +49,11 @@ avant les modificateurs IA natifs. Valeur **0 sans ordre exact/contexte valide**
 **+1500** : une priorité, pas une obligation d’agir ni une garantie de score final positif.
 Les modificateurs natifs, dont facteurs nuls, relations, risques et réticences régionales,
 restent présents, sans réécriture. Leur calcul effectif doit être vérifié dans CK3.
-Les corps natifs de validité, sélection du titre, coûts, envoi, acceptation et refus
-restent octet pour octet identiques. Retirer PREFIX restaure toute la définition native.
+Les corps natifs originaux de validité, sélection du titre, coûts, acceptation et
+refus sont préservés. La version0.0.2 ajoute aussi un préfixe metadata-only à l’envoi
+et au refus ; retirer PREFIX/BEFORE/AFTER restaure toute la définition native.
+[RW010_CONFISCATION_TRANSFER_RECEIPTS.md](RW010_CONFISCATION_TRANSFER_RECEIPTS.md)
+décrit la demande et son association au transfert observé, sans verdict causal.
 
 Le candidat doit être un titre actuellement détenu par le destinataire, comtal ou
 supérieur, non titre foncier abstrait ni titre de famille noble ; destinataire
