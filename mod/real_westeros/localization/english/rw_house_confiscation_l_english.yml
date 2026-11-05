@@ -1,5 +1,5 @@
 ﻿l_english:
  rw_hc_issue_interaction:0 "Pursue confiscations against this house"
- rw_hc_issue_interaction_desc:0 "For 180 days, favour revoking the titles of this house’s direct vassals. Each revocation retains its usual conditions, costs and possible resistance. Members are not made personally guilty by this order. No land changes hands when the order is issued. Choose individual titles through the usual revocation interaction."
+ rw_hc_issue_interaction_desc:0 "For 180 days, favour revoking the titles of my direct vassals who belong to this house. Each revocation retains its usual conditions, costs and possible resistance. Members are not made personally guilty by this order. No land changes hands when the order is issued. Choose individual titles through the usual revocation interaction."
  rw_hc_withdraw_interaction:0 "Withdraw the confiscation order"
  rw_hc_withdraw_interaction_desc:0 "End my current confiscation policy against this house. Previous revocations are not reversed and no land or noble status is restored."

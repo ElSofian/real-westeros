@@ -1,5 +1,5 @@
 ﻿l_french:
  rw_hc_issue_interaction:0 "Engager des confiscations contre cette maison"
- rw_hc_issue_interaction_desc:0 "Pendant 180 jours, privilégier la révocation des titres des vassaux directs de cette maison. Chaque révocation conserve ses conditions habituelles, ses coûts et les risques de résistance. Cet ordre ne rend pas les membres personnellement coupables. Aucune terre ne change de mains à sa promulgation. Choisissez les titres par l’interaction habituelle de révocation."
+ rw_hc_issue_interaction_desc:0 "Pendant 180 jours, privilégier la révocation des titres de mes vassaux directs appartenant à cette maison. Chaque révocation conserve ses conditions habituelles, ses coûts et les risques de résistance. Cet ordre ne rend pas les membres personnellement coupables. Aucune terre ne change de mains à sa promulgation. Choisissez les titres par l’interaction habituelle de révocation."
  rw_hc_withdraw_interaction:0 "Retirer l’ordre de confiscation"
  rw_hc_withdraw_interaction_desc:0 "Mettre fin à ma politique actuelle de confiscation envers cette maison. Les révocations antérieures ne sont pas annulées ; aucune terre ni noblesse n’est restaurée."
