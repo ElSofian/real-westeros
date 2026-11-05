@@ -86,3 +86,12 @@ policy under unchanged shared permission and hook guards. Player starts unchecke
 G1_AI_OPTION_POLICY.md and its relative-only receipt separate option initialization
 from native candidate discovery/send, still unproved. AIDEFY-01…06 join the final
 campaign; **W2/AI4 remain open, +0, development 64/80, engine 0/20, total 64/100**.
+
+**W4 receipt lifecycle preparation (2026-11-05):** adapter 0.0.5 prefixes four
+native claim terminal callbacks with guarded original metadata closure. Exact-war
+retention is independent of current CB/roles/authority; lost actionable context
+closes pending windows without deleting a still-local war receipt. Prior action
+result preserved, first callback only, no native lifecycle/state mutation or global
+scan. Thirteen runtime inputs, three PRIVATE outputs; G1_WAR_RECEIPT_LIFECYCLE.md
+and WARLIFE-01…08 retain scope/order/Mega Wars limits. **W4 open, +0; development
+64/80, engine0/20, total64/100.**

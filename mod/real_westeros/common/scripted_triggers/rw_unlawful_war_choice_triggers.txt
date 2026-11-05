@@ -46,6 +46,34 @@ rw_uw_ai_default_defiance_trigger = {
     }
 }
 
+# STORY scope. Dedup survival is independent of CB, roles and present authority.
+# Only the original owner's local war list is visited; never follow a replacement.
+rw_uw_exact_war_present_trigger = {
+    story_type = story_rw_unlawful_war_response
+    var:rw_uw_schema = 1
+    exists = var:rw_uw_war
+    exists = var:rw_uw_attacker
+    story_owner = var:rw_uw_attacker
+    save_temporary_scope_as = rw_wc_check
+    story_owner = {
+        any_character_war = { this = scope:rw_wc_check.var:rw_uw_war }
+    }
+}
+# STORY scope. Maintenance closes lost authority/context; never transfers consent.
+rw_uw_record_context_trigger = {
+    rw_uw_active_record_trigger = yes
+    exists = var:rw_uw_issuer
+    exists = var:rw_uw_authority
+    save_temporary_scope_as = rw_wc_check
+    var:rw_uw_issuer = { is_alive = yes is_adult = yes is_landed = yes is_imprisoned = no }
+    var:rw_uw_authority = { holder = scope:rw_wc_check.var:rw_uw_issuer }
+    var:rw_uw_attacker = {
+        is_alive = yes is_adult = yes is_imprisoned = no
+        liege = scope:rw_wc_check.var:rw_uw_issuer
+    }
+    var:rw_uw_defender = { is_alive = yes liege = scope:rw_wc_check.var:rw_uw_issuer }
+}
+
 # STORY scope. Only the exact currently active native claim war qualifies.
 rw_uw_active_record_trigger = {
     story_type = story_rw_unlawful_war_response

@@ -12,7 +12,7 @@ except ImportError:
 
 REPO = Path(__file__).resolve().parents[1]
 TEMPLATES = REPO / 'mod/real_westeros'
-FILES = ('common/scripted_triggers/rw_declaration_law_triggers.txt',
+FILES = ('common/scripted_effects/rw_war_lifecycle_effects.txt', 'common/scripted_triggers/rw_declaration_law_triggers.txt',
          'common/scripted_effects/rw_declaration_law_effects.txt',
          'common/story_cycles/rw_declaration_law.txt', 'common/scripted_effects/rw_unlawful_war_intervention_effects.txt',
          'events/rw_unlawful_war_intervention_events.txt',
@@ -30,6 +30,9 @@ VASSAL = 'common/character_interactions/00_vassal_interactions.txt'
 MOD_ID = 'rw_g1_native_choice'
 # Original additions only. No copied native interaction/helper/CB in this file.
 LAW_PREFIX = '\n    rw_dl_capture_effect = yes\n'
+TERMINAL_CALLBACKS = ('on_invalidated', 'on_victory', 'on_white_peace', 'on_defeat')
+TERMINAL_PREFIXES = {name: '\n    rw_uw_terminal_effect = { OUTCOME = ' + name + ' }\n'
+                     for name in TERMINAL_CALLBACKS}
 CLONE = 'rw_dl_native_permission_trigger'
 NATIVE_PERMISSION = 'war_declarer_needs_hook_on_liege'
 ACCEPT = '\n    scope:actor = { rw_uw_notice_effect = yes }\n'
@@ -129,6 +132,26 @@ def patch_claim_law(raw):
     return native.encode('utf-8'), patched.encode('utf-8')
 
 
+def patch_claim_lifecycle(raw):
+    """Original metadata prefixes only; refuse missing/ambiguous native callbacks."""
+    native = top_definition(raw, 'claim_cb')
+    if 'rw_uw_terminal_effect' in native:
+        raise ValueError('Claim already contains lifecycle adapter')
+    additions = []
+    for name, prefix in TERMINAL_PREFIXES.items():
+        _, opening, _ = bounds(native, name)
+        additions.append((opening + 1, prefix))
+    patched = native
+    for position, prefix in sorted(additions, reverse=True):
+        patched = patched[:position] + prefix + patched[position:]
+    restored = patched
+    for prefix in TERMINAL_PREFIXES.values():
+        restored = restored.replace(prefix, '', 1)
+    if brace_errors(patched) or restored != native:
+        raise ValueError('Native terminal callback preservation failed')
+    return native.encode('utf-8'), patched.encode('utf-8')
+
+
 def clone_permission(raw):
     native = top_definition(raw, NATIVE_PERMISSION)
     clean = clean_script(native)[0]
@@ -214,7 +237,8 @@ def build(agot_root, output):
             raise ValueError('Native input differs from reviewed hash; stop for source review')
         sources[relative] = raw
     original, patched = patch_native(sources[INTERACTION])
-    original_claim, patched_claim = patch_claim_law(sources[CLAIM])
+    original_claim, law_claim = patch_claim_law(sources[CLAIM])
+    _, patched_claim = patch_claim_lifecycle(law_claim)
     original_helper, cloned_helper = clone_permission(sources[HELPER])
     runtime = template_payload()
     payload = {
@@ -223,7 +247,7 @@ def build(agot_root, output):
         'common/scripted_triggers/zz_rw_native_law_permission.txt': b'\xef\xbb\xbf' + cloned_helper + b'\n',
     }
     metadata = ('name="Real Westeros PRIVATE native war choice EXPERIMENT"\n'
-                'version="0.0.4"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
+                'version="0.0.5"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
                 'dependencies={ "Real Westeros" }\n')
     receipt = {'schema': 1, 'status': 'PRIVATE isolated experimental source; NOT engine-tested',
                'reported_agot': fields,
@@ -234,7 +258,9 @@ def build(agot_root, output):
                'native_claim_definition_sha256': hashlib.sha256(original_claim).hexdigest(),
                'patched_claim_definition_sha256': hashlib.sha256(patched_claim).hexdigest(),
                'native_helper_definition_sha256': hashlib.sha256(original_helper).hexdigest(),
-               'claim_preservation': 'Removing LAW_PREFIX restores native claim_cb; no native cost or lifecycle replay',
+               'claim_preservation': 'Removing LAW_PREFIX and four TERMINAL_PREFIXES restores native claim_cb; no native cost or lifecycle replay',
+               'terminal_callbacks': list(TERMINAL_CALLBACKS),
+               'terminal_order': 'Original metadata prefix only; engine scope availability and Mega War ordering NOT VERIFIED',
                'helper_preservation': 'Inverse owned-name/actor/recipient alias substitution restores native helper',
                'native_definition_sha256': hashlib.sha256(original).hexdigest(),
                'patched_definition_sha256': hashlib.sha256(patched).hexdigest(),
