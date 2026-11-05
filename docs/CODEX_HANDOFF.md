@@ -1,5 +1,21 @@
 # Codex implementation handoff
 
+## Current continuation — localization expression defects
+
+LOCALIZATION_EXPRESSION_FIXES.md fixes22 script-scope prefixes in14 FR/EN strings
+and three unescaped numeric hash markers, seven localization files only. Same
+saved scopes/functions/keys/prose and number formats; UTF-8 BOM preserved. No
+interaction/effect/trigger/AI or native backend change. Validator adds narrow
+quoted-value checks for script prefixes and odd literal hash runs before [;
+external comments excluded, escaped quotes/##/standard markup/tooltips retained.
+Nine regression tests; same pinned Tiger v1.19.0 with PRIVATE partial source
+fixtures reports datafunctions14→0/markup3→0. Other diagnostics remain; this is
+not complete semantic validation or engine/UI evidence. No native code/binary/
+raw report distributed. +0,64/80 +0/20; source/UI corrections do not finish a new
+criterion. UI reads grouped with existing final scenarios, no intermediate CK3
+launch (7–10min/start). Next inspect actual scope warnings in their call context;
+fix confirmed defects, not broad suppressions or new intent/journal variants.
+
 ## Current continuation — native money debit correction
 
 NATIVE_GOLD_DEBITS.md fixes eleven real payment paths: positive

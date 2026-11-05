@@ -4,7 +4,7 @@
  rw_review_military_restraint_interaction:0 "Review personal military-restraint pledges"
  rw_review_military_restraint_interaction_desc:0 "Read this promisor’s retained pledges that I personally know. Reading creates no agreement or extension; only original parties may act on an exact current record."
  rw_military_restraint.title:0 "A personal pledge of military restraint"
- rw_military_restraint.parties:0 "Promisor: [scope:rw_mr_provider.GetShortUIName]. Beneficiary: [scope:rw_mr_beneficiary.GetShortUIName]. The proposed undertaking is not to become primary attacker against this beneficiary for ninety days after acceptance."
+ rw_military_restraint.parties:0 "Promisor: [rw_mr_provider.GetShortUIName]. Beneficiary: [rw_mr_beneficiary.GetShortUIName]. The proposed undertaking is not to become primary attacker against this beneficiary for ninety days after acceptance."
  rw_military_restraint.offered:0 "The original beneficiary has seven days from proposal to accept. Nothing is promised by silence and no truce, payment or opinion change is imposed. Either original party may close the offer."
  rw_military_restraint.active:0 "The beneficiary explicitly accepted; the original ninety-day period is still open. The promisor may renounce and the beneficiary may release the pledge. Neither decision changes native rights, CBs or wars; reading never renews the period."
  rw_military_restraint.observed:0 "A native war-start callback recorded the original promisor as primary attacker and the original beneficiary as primary defender while the accepted pledge was active. This is a role observation, not proof of voluntary initiation, legal wrongdoing or a deliberate betrayal. The pledge is closed; no sanction or forced peace follows."

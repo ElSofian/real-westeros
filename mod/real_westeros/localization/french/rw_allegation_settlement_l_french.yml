@@ -1,7 +1,7 @@
 ﻿l_french:
  rw_allegation_settlement.title:0 "Un accord privé sur l’allégation"
  rw_allegation_settlement.introduction:0 "Je peux proposer de retirer cette allégation précise d’affront à ma maison contre 50 pièces d’or versées par le mis en cause. Il peut refuser ou proposer 25 pièces. Ni la proposition ni le paiement n’établissent la vérité de l’allégation. Je reste libre de retirer gratuitement l’affaire ou de saisir le suzerain avant la conclusion d’un accord."
- rw_allegation_settlement.parties:0 "Mis en cause et payeur : [scope:rw_service_provider.GetShortUIName]. Demandeur et bénéficiaire : [scope:rw_service_client.GetShortUIName]. Ces clauses portent uniquement sur le retrait de cette allégation précise."
+ rw_allegation_settlement.parties:0 "Mis en cause et payeur : [rw_service_provider.GetShortUIName]. Demandeur et bénéficiaire : [rw_service_client.GetShortUIName]. Ces clauses portent uniquement sur le retrait de cette allégation précise."
  rw_allegation_settlement.price50:0 "Proposition actuelle : 50 pièces d’or du mis en cause au demandeur, en échange du retrait immédiat de cette allégation."
  rw_allegation_settlement.price25:0 "Proposition actuelle : 25 pièces d’or du mis en cause au demandeur, en échange du retrait immédiat de cette allégation."
  rw_allegation_settlement.offered:0 "Seule l’autre partie peut accepter les dernières clauses ou les renégocier. Le délai initial de sept jours et l’échéance initiale de l’affaire s’appliquent tous deux ; négocier ne les prolonge jamais. Avant le paiement, le demandeur reste libre de saisir le suzerain ou de retirer gratuitement l’affaire."
