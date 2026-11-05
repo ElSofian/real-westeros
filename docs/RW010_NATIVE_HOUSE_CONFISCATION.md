@@ -40,7 +40,7 @@ python tools/build_g3_native_confiscation.py --agot-root <AGOT> --output <nouvea
 
 Le générateur vérifie le fichier AGOT de révocation épinglé par hash et les versions
 déclarées 0.5.2.1 / support1.19.0.6. Il émet sa définition native adaptée et un marqueur
-RW de disponibilité. Le mod public contient **19 sources runtime originales**, non dupliquées
+RW de disponibilité. Le mod public contient **22 sources runtime originales**, non dupliquées
 dans l’adaptateur ; leurs empreintes figurent au reçu. Sans adaptateur, le fallback
 refuse la création d’ordres et le nouveau bonus reste nul.
 

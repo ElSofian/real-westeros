@@ -52,6 +52,7 @@ La coalescence peut fusionner deux transitions réelles de même tuple dans la j
 ce journal n’est pas exhaustif et ne fournit pas un identifiant de transaction.
 
 Une nouvelle entrée porte une origine explicite `pending_native_revocation_transfer`.
+Le journal affiche explicitement que cette association ne prouve pas une cause unique.
 Elle ne crée aucune observation de participant exposé et n’appelle pas le lieur de
 dossier privé. L’ancien lecteur de complot conserve toutes ses gardes. Aucun droit
 foncier, culpabilité héritée ou consentement de descendant n’est déduit de la note.
@@ -68,7 +69,7 @@ choisi copie leurs faits publics habituels, sans pointeur de demande, dossier ou
 ## Construction et limites
 
 Même commande que RW010_NATIVE_HOUSE_CONFISCATION.md. Remplacer complètement l’ancien
-adaptateur, utiliser Real Westeros du même commit. **19 sources runtime** originales
+adaptateur, utiliser Real Westeros du même commit. **22 sources runtime** originales
 contrôlées, un fichier AGOT épinglé inchangé, deux sorties privées. Retirer les trois
 fragments originaux retrouve tous les octets de la définition native, UTF-8/CRLF et
 commentaires compris. Le ZIP public contient le générateur et les bibliothèques

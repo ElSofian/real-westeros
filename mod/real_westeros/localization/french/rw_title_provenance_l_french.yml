@@ -8,3 +8,4 @@
  rw_title_provenance.boundaries:0 "Cette entrée n’attribue pas le transfert à un complot précis et n’établit ni jugement légal, ni grâce, ni droit ancestral, ni interdiction foncière collective. L’histoire et les restrictions habituelles des titres restent déterminantes."
  rw_title_provenance.unavailable:0 "Cette observation privée n’est plus accessible. Aucun titre ni aucune peine n’est modifié."
  rw_title_provenance.close:0 "Fermer cette observation."
+ rw_title_provenance.request_association:0 "Une demande de révocation de ce titre était en cours lorsque le transfert a été observé. Cela ne prouve pas qu’elle en soit l’unique cause."

@@ -10,7 +10,7 @@ leave existing canonical TP facts entirely unchanged; no duplicate journal, late
 cause inference, native replay or private-case backfill. Only a fresh receipt may
 schedule the existing optional filing UI, in a separate event with exact one-shot
 seven-day ticket; ordinary institutional filing/custody rules remain. Source-only,
-J4/J5 open,+0,64/80 +0/20. One native input,19 runtime sources,two PRIVATE outputs;
+J4/J5 open,+0,64/80 +0/20. One native input,22 runtime sources,two PRIVATE outputs;
 remove three original fragments to restore native bytes. on_accept unchanged.
 All HCRECEIPT cases deferred/grouped; no intermediate game launch (7–10min/start).
 This records an observed transfer matching a pending request, not exclusive cause,

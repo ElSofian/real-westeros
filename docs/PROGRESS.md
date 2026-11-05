@@ -742,7 +742,7 @@
   send and checked now. Old archive exports/access/custody unchanged. Observation
   is request association, NOT exclusive cause, legal verdict or executed punishment.
   No native action/cost/title/claim/hook/crime replay. Inverse of three insertions
-  restores original native bytes; one pinned native input,19 original runtime
+  restores original native bytes; one pinned native input,22 original runtime
   sources/two PRIVATE outputs. Actual-source generation with reported-version
   descriptor fixture PASS, not installed-game verification. Twelve added adversarial
   tests; **979 discovered,956 local passed,23 PowerShell skips**. Old callback

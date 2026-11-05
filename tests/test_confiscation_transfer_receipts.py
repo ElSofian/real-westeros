@@ -155,6 +155,12 @@ class ConfiscationTransferTests(unittest.TestCase):
         tp=(b.TEMPLATES/'common/scripted_triggers/rw_title_provenance_triggers.txt').read_text()
         self.assertIn('var:rw_evidence_kind = flag:participant_exposed',tp)
         self.assertNotIn('rw_ri_',self.e)
+        event=(b.TEMPLATES/'events/rw_title_provenance_events.txt').read_text()
+        self.assertIn('var:rw_tp_source = flag:pending_native_revocation_transfer',event)
+        self.assertIn('desc = rw_title_provenance.request_association',event)
+        for lang in ('english','french'):
+            loc=(b.TEMPLATES/f'localization/{lang}/rw_title_provenance_l_{lang}.yml').read_text(encoding='utf-8-sig')
+            self.assertIn('rw_title_provenance.request_association:0',loc)
 
     def test_original_callback_children_preserved_and_no_duplicate_wrapper(self):
         self.assertEqual(1,self.wrapper.count('on_title_gain = {'))
