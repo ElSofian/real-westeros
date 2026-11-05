@@ -1,0 +1,7 @@
+namespace = rw_confiscation_transfer
+rw_confiscation_transfer.0001 = {
+    type = character_event
+    hidden = yes
+    trigger = { rw_hcr_offer_ticket_trigger = yes }
+    immediate = { rw_hcr_open_filing_effect = yes }
+}

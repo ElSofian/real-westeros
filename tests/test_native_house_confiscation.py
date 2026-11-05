@@ -14,6 +14,7 @@ FIXTURE = '''synthetic_before = { ignored = yes }
 revoke_title_interaction = {
     is_valid = { synthetic_native_right = yes }
     cost = { synthetic_native_cost = 7 }
+    on_send = { original_native_send = yes }
     on_accept = { original_success = "é" }
     on_decline = { original_resistance = yes }
     ai_will_do = {
@@ -74,9 +75,9 @@ def contract_errors(t, e, v, i, s):
 
 class NativeConfiscationSourceTests(unittest.TestCase):
     def setUp(self):
-        self.t=(b.TEMPLATES/b.FILES[1]).read_text();self.e=(b.TEMPLATES/b.FILES[2]).read_text()
-        self.v=(b.TEMPLATES/b.FILES[4]).read_text();self.i=(b.TEMPLATES/b.FILES[0]).read_text()
-        self.s=(b.TEMPLATES/b.FILES[3]).read_text()
+        self.t=(b.TEMPLATES/'common/scripted_triggers/rw_house_confiscation_triggers.txt').read_text();self.e=(b.TEMPLATES/'common/scripted_effects/rw_house_confiscation_effects.txt').read_text()
+        self.v=(b.TEMPLATES/'common/script_values/rw_house_confiscation_values.txt').read_text();self.i=(b.TEMPLATES/'common/character_interactions/rw_house_confiscation_interactions.txt').read_text()
+        self.s=(b.TEMPLATES/'common/story_cycles/rw_house_confiscation.txt').read_text()
 
     def test_current_runtime_contract(self):
         self.assertEqual([],contract_errors(self.t,self.e,self.v,self.i,self.s))
@@ -145,10 +146,12 @@ class NativeConfiscationBuilderTests(unittest.TestCase):
     def build(self):
         with patch.object(b,'pin',return_value=hashlib.sha256(self.raw).hexdigest()):return b.build(self.agot,self.out)
 
-    def test_one_insertion_preserves_every_native_byte_and_zero_factor(self):
+    def test_three_insertions_preserve_every_native_byte_and_zero_factor(self):
         for newline in ('\n','\r\n'):
             original,patched=b.patch_native(b'\xef\xbb\xbf'+FIXTURE.replace('\n',newline).encode())
-            self.assertEqual(original,patched.replace(b.PREFIX.encode(),b'',1))
+            restored=patched
+            for addition in b.INSERTIONS: restored=restored.replace(addition.encode(),b'',1)
+            self.assertEqual(original,restored)
             self.assertEqual(1,patched.count(b.PREFIX.encode()))
             self.assertLess(patched.index(b.PREFIX.encode()),patched.index(b'synthetic_bad_war'))
             self.assertIn(b'factor = 0',patched)
@@ -157,7 +160,7 @@ class NativeConfiscationBuilderTests(unittest.TestCase):
 
     def test_manifest_original_runtime_and_no_installed_writes(self):
         r=self.build()
-        self.assertEqual(7,len(r['runtime_sources']));self.assertEqual(2,len(r['outputs']))
+        self.assertEqual(len(b.FILES),len(r['runtime_sources']));self.assertEqual(2,len(r['outputs']))
         self.assertEqual(self.raw,self.path.read_bytes())
         for row in r['outputs']:
             self.assertEqual(row['sha256'],hashlib.sha256((self.out/b.MOD_ID/row['path']).read_bytes()).hexdigest())
@@ -203,7 +206,7 @@ class NativeConfiscationBuilderTests(unittest.TestCase):
         self.assertFalse(self.out.exists())
 
     def test_localizations_and_source_receipt(self):
-        self.assertEqual(7,len(b.templates()))
+        self.assertEqual(len(b.FILES),len(b.templates()))
         self.assertEqual(64,len(b.pin()))
         for lang in ('english','french'):
             p=b.TEMPLATES/f'localization/{lang}/rw_house_confiscation_l_{lang}.yml'

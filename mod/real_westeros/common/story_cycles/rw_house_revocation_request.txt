@@ -1,0 +1,11 @@
+# A pending native request is not a confiscation. Fixed deadline, no inheritance.
+story_rw_house_revocation_request = {
+    on_owner_death = { end_story = yes }
+    effect_group = {
+        days = 30
+        triggered_effect = {
+            trigger = { NOT = { has_variable = rw_hcr_pending } }
+            effect = { end_story = yes }
+        }
+    }
+}

@@ -1385,3 +1385,14 @@ performance/Mega Wars. First observe scheduling/score/selection/send/outcome as
 separate stages. No coercive outcome inferred from a score or issued policy.
 Group within the existing final playset sessions; owner startup takes7–10minutes,
 no intermediate run or per-case restart requested. J4/G3 remain unverified.
+
+## Native request / observed title gain — HCRECEIPT-01…08 (all unexecuted)
+
+RW010_CONFISCATION_TRANSFER_RECEIPTS.md covers native on_send snapshot, close before
+native refusal, additive root/title/previous-holder matching, one-shot30-day request
+consumption and canonical TP dedup without rewriting existing facts. New source
+origin is request association, not exclusive revocation cause/legal punishment.
+Existing optional filing uses an isolated event and exact seven-day UI ticket;
+no native grant/revocation or restoration is executed by this integration.
+Group all cases with HCONF in the final playset sessions (7–10min/start); no
+intermediate game run requested. Verify actual send scopes and callback composition.

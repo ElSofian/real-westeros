@@ -16,7 +16,16 @@ REPO = Path(__file__).resolve().parents[1]
 TEMPLATES = REPO/'mod/real_westeros'
 INPUT = 'common/character_interactions/00_revoke_title_interaction.txt'
 MOD_ID = 'rw_g3_native_confiscation'
-FILES = ('common/character_interactions/rw_house_confiscation_interactions.txt',
+FILES = ('common/scripted_effects/rw_title_provenance_effects.txt', 'common/story_cycles/rw_house_revocation_request.txt',
+         'common/on_action/rw_title_provenance_on_actions.txt', 'common/scripted_triggers/rw_confiscation_transfer_triggers.txt',
+         'common/scripted_effects/rw_confiscation_transfer_effects.txt',
+         'events/rw_confiscation_transfer_events.txt',
+         'common/story_cycles/rw_title_provenance.txt',
+         'common/scripted_triggers/rw_title_provenance_triggers.txt',
+         'common/scripted_triggers/rw_land_register_triggers.txt',
+         'common/scripted_effects/rw_land_register_effects.txt',
+         'events/rw_land_register_events.txt',
+         'common/scripted_triggers/rw_house_affair_triggers.txt', 'common/character_interactions/rw_house_confiscation_interactions.txt',
          'common/scripted_triggers/rw_house_confiscation_triggers.txt',
          'common/scripted_effects/rw_house_confiscation_effects.txt',
          'common/story_cycles/rw_house_confiscation.txt',
@@ -24,6 +33,9 @@ FILES = ('common/character_interactions/rw_house_confiscation_interactions.txt',
          'localization/english/rw_house_confiscation_l_english.yml',
          'localization/french/rw_house_confiscation_l_french.yml')
 PREFIX = '\n        modifier = { add = rw_hc_native_priority_value }\n'
+BEFORE = '\n        rw_hcr_register_request_effect = yes\n'
+AFTER = '\n        rw_hcr_declined_effect = yes\n'
+INSERTIONS = (PREFIX, BEFORE, AFTER)
 AVAILABLE = 'rw_hc_adapter_available_trigger = { always = yes }\n'
 
 
@@ -43,8 +55,14 @@ def patch_native(raw):
     if not base:
         raise ValueError('Unexpected native AI base/layout')
     position = opening+1+base.end()
-    patched = original[:position]+PREFIX+original[position:]
-    if brace_errors(patched) or patched.replace(PREFIX,'',1) != original:
+    _, send_start, _ = bounds(original, 'on_send')
+    _, decline_start, _ = bounds(original, 'on_decline')
+    patched = original
+    for at, addition in sorted(((position,PREFIX),(send_start+1,BEFORE),(decline_start+1,AFTER)),reverse=True):
+        patched = patched[:at]+addition+patched[at:]
+    restored = patched
+    for addition in INSERTIONS: restored = restored.replace(addition,'',1)
+    if brace_errors(patched) or restored != original:
         raise ValueError('Native byte preservation failed')
     return original.encode('utf-8'), patched.encode('utf-8')
 
@@ -88,7 +106,7 @@ def build(agot_root, output):
         'common/scripted_triggers/zz_rw_native_confiscation_available.txt': AVAILABLE.encode(),
     }
     metadata = ('name="Real Westeros PRIVATE confiscation AI EXPERIMENT"\n'
-                'version="0.0.1"\nsupported_version="1.19.*"\n'
+                'version="0.0.2"\nsupported_version="1.19.*"\n'
                 'dependencies={ "Real Westeros" }\ntags={ "Gameplay" }\n')
     receipt = {'schema':1,'status':'PRIVATE experimental source; NOT engine-tested',
                'reported_agot':fields,'requires_base_mod':'Real Westeros',
@@ -96,10 +114,11 @@ def build(agot_root, output):
                'runtime_sources':runtime,
                'native_definition_sha256':hashlib.sha256(original).hexdigest(),
                'patched_definition_sha256':hashlib.sha256(patched).hexdigest(),
-               'preservation':'Removing exactly one original PREFIX restores native definition; all native bodies/modifiers unchanged',
+               'preservation':'Removing PREFIX/BEFORE/AFTER restores native definition; native bodies/modifiers unchanged',
                'outputs':[{'path':p,'sha256':hashlib.sha256(b).hexdigest()} for p,b in payload.items()],
+               'receipt_phase':'Snapshot at native on_send, exact on_title_gain association, close at decline; callback timing/scopes NOT engine-tested',
                'limits':['Native AI scheduling, title scope, scoring, costs/resistance and outcomes NOT engine-tested.',
-                         'Intended 180-day revocation policy only; no acquisition veto, fifty-year ban, completed sanction or restoration.']}
+                         'Policy and conditional request-matched title facts only; no acquisition veto, fifty-year ban, legal verdict or restoration.']}
     out.mkdir(parents=True,exist_ok=False)
     for name, data in payload.items():
         dest = out/MOD_ID/name;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(data)

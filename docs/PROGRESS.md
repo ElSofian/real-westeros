@@ -726,3 +726,31 @@
 
 - J4 partial source assessment: `425f7e1a22623c44a7c85f6014b87964680ba9dc`; +0 checkpoint. Criterion
   remains open; frozen rubric and earlier history preserved.
+
+- RW-010 / native request-to-transfer association (2026-11-05): private adapter0.0.2
+  adds metadata-only native on_send snapshot and decline closure, leaving on_accept
+  unchanged. Exact chosen title still held by recipient, one active house order,
+  immutable issuer/former holder/house/authority/date and30-day personal request;
+  decline closes before native resistance. Third named on_title_gain child preserves
+  both older readers and uses root/current holder/title/previous holder only, not
+  unproved native actor/recipient/marker propagation. Unique live exact request,
+  living former holder/same house and authority; consume before canonical fact/UI.
+  Existing one-day canonical TP fact left entirely unchanged, no second ledger,
+  retroactive association, date/retention refresh or private-case reconstruction.
+  Only a fresh canonical receipt can schedule old optional land-filing UI via an
+  isolated next-day exact one-shot seven-day ticket, with sovereignty captured at
+  send and checked now. Old archive exports/access/custody unchanged. Observation
+  is request association, NOT exclusive cause, legal verdict or executed punishment.
+  No native action/cost/title/claim/hook/crime replay. Inverse of three insertions
+  restores original native bytes; one pinned native input,19 original runtime
+  sources/two PRIVATE outputs. Actual-source generation with reported-version
+  descriptor fixture PASS, not installed-game verification. Twelve added adversarial
+  tests; **979 discovered,956 local passed,23 PowerShell skips**. Old callback
+  contract tests now require all three named children and still reject effects/
+  original-child loss. Structure/localization/telemetry/whitespace PASS; required CI,
+  committed ZIP/standalone private-builder checks precede merge. HCRECEIPT-01…08
+  deferred/grouped with HCONF; no intermediate CK3 run (7–10min/start).
+  **J4/J5 remain OPEN,+0; development64/80,engine0/20,total64/100.** No fifty-year
+  ban, title acquisition veto, nobility stripping or actual restitution delivered.
+  Next substantive work: native restitution/remaining route coverage, not another
+  variant of journal/intent or a completed-sanction claim based on a score.

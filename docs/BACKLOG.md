@@ -17,6 +17,14 @@ not an exhaustive completion checklist. PR/test counts are not global progress m
 | P1 | RW-009 | Add AI actor selection and negative-path tests for one end-to-end incident | Implemented experimentally — bounded liege targeting; engine untested |
 | P2 | RW-010 | Expand political memory, justice, diplomacy and other systems incrementally | In progress — services, mediation, case history, contested allegations and voluntary repair responses and mutual promise cancellation and immutable mediated service clauses plus personal restitution promises and voluntary private case compensation in scripts; engine untested; native observation intake added; voluntary political responses added; coercive justice/dynastic stages remain |
 
+**Request-to-transfer integration:** private adapter0.0.2 captures exact native
+on_send requests and closes them at refusal. A third additive title-gain child
+matches current/former holder/title without inherited callback aliases, consumes
+the personal30-day ticket and uses canonical TP facts without rewriting existing
+entries. Optional filing remains existing UI, isolated one-shot event. No cause/
+crime verdict or native action replay. RW010_CONFISCATION_TRANSFER_RECEIPTS.md /
+HCRECEIPT-01…08; J4/J5 open,+0,64/80+0/20,19 runtime sources/two PRIVATE outputs.
+
 **Native house-confiscation route resumed:** target-source native AI already scores
 scope:landed_title, so the new candidate avoids external title dispatch. Explicit
 180-day own-house policy and one conditional native score modifier, private adapter

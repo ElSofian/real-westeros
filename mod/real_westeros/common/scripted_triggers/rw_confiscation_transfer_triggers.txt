@@ -1,0 +1,75 @@
+rw_hcr_before_trigger = {
+    rw_hc_native_candidate_trigger = yes
+    scope:actor = {
+        NOT = { any_owned_story = { count >= 2 rw_hc_live_record_trigger = yes story_owner = scope:actor var:rw_hc_house = scope:recipient.house } }
+    }
+}
+# Story scope at native send/decline: same concrete request tuple only.
+rw_hcr_same_request_trigger = {
+    story_type = story_rw_house_revocation_request
+    story_owner = scope:actor
+    var:rw_hcr_schema = 1
+    has_variable = rw_hcr_pending
+    has_variable = rw_hcr_sent_on
+    var:rw_hcr_issuer = scope:actor
+    var:rw_hcr_title = scope:landed_title
+    var:rw_hcr_former = scope:recipient
+}
+# Story scope INSIDE the source-located title-gain callback (root is new holder).
+rw_hcr_matches_gain_trigger = {
+    story_type = story_rw_house_revocation_request
+    story_owner = root
+    var:rw_hcr_schema = 1
+    has_variable = rw_hcr_pending
+    has_variable = rw_hcr_sent_on
+    var:rw_hcr_issuer = root
+    var:rw_hcr_title = scope:title
+    var:rw_hcr_former = scope:previous_holder
+    var:rw_hcr_house = scope:previous_holder.house
+    exists = var:rw_hcr_authority
+    var:rw_hcr_authority = { holder = root }
+}
+rw_hcr_gain_context_trigger = {
+    rw_hc_adapter_available_trigger = yes
+    is_alive = yes is_adult = yes
+    exists = scope:title
+    exists = scope:previous_holder
+    NOT = { this = scope:previous_holder }
+    scope:title = { holder = root tier >= tier_county }
+    scope:previous_holder = { is_alive = yes exists = house }
+    any_owned_story = { rw_hcr_matches_gain_trigger = yes }
+    NOT = { any_owned_story = { count >= 2 rw_hcr_matches_gain_trigger = yes } }
+}
+# Canonical TP receipt, matching the observed pair/title, not a second ledger.
+rw_hcr_matching_receipt_trigger = {
+    rw_tp_reader_trigger = { READER = scope:rw_hcr_issuer }
+    has_variable = rw_tp_repeat_window
+    var:rw_tp_title = scope:rw_hcr_title
+    var:rw_tp_former_holder = scope:rw_hcr_former
+    var:rw_tp_new_holder = scope:rw_hcr_issuer
+}
+# Saved event ticket; callback aliases never overwrite native or existing TP aliases.
+rw_hcr_offer_ticket_trigger = {
+    exists = scope:rw_hcr_receipt
+    exists = scope:rw_hcr_receipt_serial
+    exists = scope:rw_hcr_issuer
+    exists = scope:rw_hcr_title
+    exists = scope:rw_hcr_former
+    exists = scope:rw_hcr_house
+    exists = scope:rw_hcr_authority
+    this = scope:rw_hcr_issuer
+    rw_house_sovereign_trigger = yes
+    scope:rw_hcr_authority = { holder = scope:rw_hcr_issuer }
+    scope:rw_hcr_title = { holder = scope:rw_hcr_issuer }
+    scope:rw_hcr_receipt = {
+        rw_tp_reader_trigger = { READER = scope:rw_hcr_issuer }
+        var:rw_tp_serial = scope:rw_hcr_receipt_serial
+        var:rw_tp_title = scope:rw_hcr_title
+        var:rw_tp_former_holder = scope:rw_hcr_former
+        var:rw_tp_new_holder = scope:rw_hcr_issuer
+        var:rw_tp_land_authority = scope:rw_hcr_authority
+        var:rw_tp_former_house = scope:rw_hcr_house
+        var:rw_tp_hc_request_matched = flag:yes
+        has_variable = rw_tp_hc_offer_pending
+    }
+}
