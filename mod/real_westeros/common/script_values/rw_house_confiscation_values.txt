@@ -1,0 +1,10 @@
+# This value is inserted BEFORE all native AI modifiers. Original zero factors,
+# risks, relationship penalties and regional reluctance still apply afterward.
+# Native base score remains unchanged; no campaign or missing context adds zero.
+rw_hc_native_priority_value = {
+    value = 0
+    if = {
+        limit = { rw_hc_native_candidate_trigger = yes }
+        add = 1500
+    }
+}

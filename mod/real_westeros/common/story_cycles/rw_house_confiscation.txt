@@ -1,0 +1,11 @@
+# Personal 180-day intention, not a completed sanction or inherited conviction.
+story_rw_house_confiscation = {
+    on_owner_death = { end_story = yes }
+    effect_group = {
+        days = 30
+        triggered_effect = {
+            trigger = { NOT = { rw_hc_live_record_trigger = yes } }
+            effect = { end_story = yes }
+        }
+    }
+}

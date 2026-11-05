@@ -697,3 +697,32 @@
   Checks: seven existing readiness tests (including fake-completion/inflation
   negatives), structural/localization/readiness/whitespace and review links PASS;
   gameplay/tools/frozen assessment byte-unchanged. Required CI before merge.
+
+- RW-010 / native house-confiscation candidate (2026-11-05): resumed J4 using an
+  active native AI landed_title reference instead of external target dispatch.
+  Seven original CK3 runtime sources implement explicit own exact-house/authority
+  180-day policy and free withdrawal, fixed expiry/owner-death/local cleanup and
+  duplicate-order guards. Human/AI share execution conditions; AI issuance prefers
+  peace/reserves/hostility and native personal revocation reason for representative,
+  never a reason against relatives. Player still uses native title selection.
+  PRIVATE builder pins actual revoke input and emits only a native definition with
+  one original priority modifier before existing native modifiers plus owned
+  availability marker; inverse restores all native bytes. Native rights/selection/
+  cost/send/refusal/resistance/acceptance bodies preserved; no external interaction,
+  forced transfer, crime/trait/hook/title mutation, inherited conviction or native
+  asset distributed. Zero bonus without exact active policy/current native context;
+  no retroactive use of existing political censures. Native scheduling/scoring and
+  actual revocation outcomes remain unverified, as do route/institution exclusions.
+  One-real-input generation with reported-version descriptor fixture PASS (not an
+  installed game check), seven runtime hashes/two PRIVATE outputs. Eighteen new
+  adversarial source/builder tests; **967 discovered,944 local passed,23 PowerShell
+  skips**. Structure/EN-FR/telemetry/readiness/whitespace PASS. Required CI and public
+  ZIP/standalone extracted builder checks precede merge. HCONF-01…08 deferred and
+  grouped with final tests; owner launch takes7–10min, no intermediate run requested.
+  **J4 remains OPEN,+0; development64/80,engine0/20,total64/100.** No universal
+  acquisition veto, fifty-year ban, noble-status removal, completed sanction or J5
+  restoration. Next: assess native integration and remaining G3 coverage, without
+  another political-marker substitute or claiming a confiscation from an AI score.
+
+- J4 partial source assessment: `425f7e1a22623c44a7c85f6014b87964680ba9dc`; +0 checkpoint. Criterion
+  remains open; frozen rubric and earlier history preserved.

@@ -17,7 +17,15 @@ not an exhaustive completion checklist. PR/test counts are not global progress m
 | P1 | RW-009 | Add AI actor selection and negative-path tests for one end-to-end incident | Implemented experimentally — bounded liege targeting; engine untested |
 | P2 | RW-010 | Expand political memory, justice, diplomacy and other systems incrementally | In progress — services, mediation, case history, contested allegations and voluntary repair responses and mutual promise cancellation and immutable mediated service clauses plus personal restitution promises and voluntary private case compensation in scripts; engine untested; native observation intake added; voluntary political responses added; coercive justice/dynastic stages remain |
 
-**Current continuation (2026-11-05):** [V01_REMAINING_WORK.md](V01_REMAINING_WORK.md)
+**Native house-confiscation route resumed:** target-source native AI already scores
+scope:landed_title, so the new candidate avoids external title dispatch. Explicit
+180-day own-house policy and one conditional native score modifier, private adapter
+only; normal native rights/selection/cost/refusal/acceptance preserved by inversion.
+RW010_NATIVE_HOUSE_CONFISCATION.md covers seven original sources, private builder
+and HCONF-01…08 deferred. J4 open, +0; no future-title ban/nobility removal/restoration.
+Score64/80 +0/20 unchanged. No game launch requested; group final tests (7–10min/start).
+
+**Earlier external-dispatch investigation (native-AI candidate now supersedes this stop):** [V01_REMAINING_WORK.md](V01_REMAINING_WORK.md)
 separates actual missing development from experimental code and engine-dependent
 feasibility. J4 has now been examined and parked: native celestial extinction is unsuitable,
 disinheritance does not cover G3, and exact-title automated native revocation is

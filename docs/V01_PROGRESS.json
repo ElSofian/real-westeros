@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "66543156f342434d8ee24233e110b50899ef380c",
+  "assessed_commit": "425f7e1a22623c44a7c85f6014b87964680ba9dc",
   "lots": [
     {
       "id": "W",
@@ -312,7 +312,16 @@
           "points": 2,
           "acceptance": "Mesures coercitives familiales/dynastiques de terres ou statut couvrant les routes G3",
           "status": "open",
-          "evidence": []
+          "evidence": [
+            "docs/RW010_NATIVE_HOUSE_CONFISCATION.md",
+            "docs/HOUSE_CONFISCATION_SOURCE_RECEIPT.json",
+            "mod/real_westeros/common/character_interactions/rw_house_confiscation_interactions.txt",
+            "mod/real_westeros/common/scripted_triggers/rw_house_confiscation_triggers.txt",
+            "mod/real_westeros/common/scripted_effects/rw_house_confiscation_effects.txt",
+            "mod/real_westeros/common/script_values/rw_house_confiscation_values.txt",
+            "mod/real_westeros/common/story_cycles/rw_house_confiscation.txt",
+            "tools/build_g3_native_confiscation.py"
+          ]
         },
         {
           "id": "J5",
@@ -1226,6 +1235,48 @@
       "score": 64,
       "reference": "66543156f342434d8ee24233e110b50899ef380c",
       "note": "Préparation W4 : rétention du reçu de guerre indépendante des rôles/CB/autorité, clôture metadata-only des choix dans quatre callbacks claim natifs préservés. Scopes/ordre/Mega Wars non démontrés ; W4 ouvert. +0, développement64/80, moteur0/20, total64/100."
+    },
+    {
+      "date": "2026-11-05",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4",
+        "O4",
+        "I3",
+        "M5",
+        "P4",
+        "N4",
+        "N5",
+        "J3",
+        "AI5",
+        "W3"
+      ],
+      "score": 64,
+      "reference": "425f7e1a22623c44a7c85f6014b87964680ba9dc",
+      "note": "Préparation J4 : ordre de confiscation de maison 180jours et priorité conditionnelle dans la révocation IA native, sans sélection externe de titre. Droits/coûts/refus natifs préservés, pas de sanction exécutée déduite du score, ni veto d’acquisition ou ban50ans. Couverture G3 et moteur non établis ; J4 ouvert,+0, développement64/80,moteur0/20,total64/100."
     }
   ]
 }
