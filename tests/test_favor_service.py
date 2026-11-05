@@ -65,11 +65,11 @@ def favor_errors(t,e):
     if min(points)<0 or points!=sorted(points):out.append('native performance before ticket consumption')
     for g in ('limit = { scope:rw_fv_term = flag:favor }',
               'scope:rw_fv_provider = { add_hook = { type = favor_hook target = scope:rw_fv_client } }',
-              'scope:rw_fv_client = { add_gold = -25 }','scope:rw_fv_provider = { add_gold = 25 }',
+              'scope:rw_fv_client = { remove_short_term_gold = 25 }','scope:rw_fv_provider = { add_gold = 25 }',
               'scope:rw_fv_client = { add_prestige = 50 }'):
         if g not in settle:out.append('wrong native favor gold direction or service benefit')
     code=clean_script(e)[0]
-    if len(re.findall(r'\badd_hook\s*=',code))!=1 or len(re.findall(r'\badd_gold\s*=',code))!=2 or len(re.findall(r'\badd_prestige\s*=',code))!=1:
+    if len(re.findall(r'\badd_hook\s*=',code))!=1 or len(re.findall(r'\b(?:add_gold|remove_short_term_gold)\s*=',code))!=2 or len(re.findall(r'\badd_prestige\s*=',code))!=1:
         out.append('extra native effect or replay path')
     if re.search(r'\b(?:name|flag)\s*=\s*rw_service_(?!cooldown\b)\w+',code):out.append('old financial contract reactivated or rewritten')
     if re.search(r'\b(remove_hook|use_hook|change_title_holder|create_title_and_vassal_change|run_interaction|send_interaction|add_secret|add_claim|imprison|make_story_owner|every_living_character|every_in_global_list)\s*=',code):
@@ -102,7 +102,7 @@ class FavorServiceTests(unittest.TestCase):
                   'NOT = { scope:actor = scope:recipient }'):
             self.assertIn('unavailable or wrong initiating parties',self.errors(t=self.t.replace(g,'always = yes')))
         begin=block(self.e,'rw_fv_begin_effect')
-        self.assertNotRegex(begin,r'\b(add_gold|add_hook|add_prestige)\s*=')
+        self.assertNotRegex(begin,r'\b(add_gold|remove_short_term_gold|add_hook|add_prestige)\s*=')
         self.assertIn('on_accept = { rw_fv_begin_effect = { MODE = immediate } }',self.i)
 
     def test_ticket_binds_original_provider_client_serial_revision_and_consideration(self):
@@ -167,7 +167,7 @@ class FavorServiceTests(unittest.TestCase):
     def test_correct_hook_direction_and_mutually_selected_gold_alternative(self):
         for g in ('limit = { scope:rw_fv_term = flag:favor }',
                   'scope:rw_fv_provider = { add_hook = { type = favor_hook target = scope:rw_fv_client } }',
-                  'scope:rw_fv_client = { add_gold = -25 }','scope:rw_fv_provider = { add_gold = 25 }',
+                  'scope:rw_fv_client = { remove_short_term_gold = 25 }','scope:rw_fv_provider = { add_gold = 25 }',
                   'scope:rw_fv_client = { add_prestige = 50 }'):
             self.assertIn('wrong native favor gold direction or service benefit',self.errors(e=self.e.replace(g,'removed_part')))
         self.assertNotIn('rw_fv_settle_effect',block(self.e,'rw_fv_notify_effect'))
@@ -177,7 +177,7 @@ class FavorServiceTests(unittest.TestCase):
         self.assertIn('rw_fv_view_trigger = yes',gate)
         self.assertNotRegex(gate,r'\b(rw_fv_live_trigger|rw_fv_pending|gold|can_add_hook)\b')
         close=block(self.e,'rw_fv_close_effect')
-        self.assertNotRegex(close,r'\b(add_gold|add_hook|add_prestige|remove_hook)\s*=')
+        self.assertNotRegex(close,r'\b(add_gold|remove_short_term_gold|add_hook|add_prestige|remove_hook)\s*=')
         self.assertIn('name = rw_fv_state value = flag:closed',close)
 
     def test_private_latest_record_review_does_not_renew_grant_or_pay(self):

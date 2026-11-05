@@ -60,10 +60,10 @@ def compensation_errors(t,e,v):
                                  'name = rw_cc_paid_revision','name = rw_cc_paid_on',
                                  'name = rw_cc_state value = flag:paid','add_gold','rw_cc_notify_effect = yes')]
     if min(points)<0 or points!=sorted(points):out.append('payment before receipt consumption or early notice')
-    for g in ('scope:rw_service_provider = { add_gold = { value = scope:rw_cc_price multiply = -1 } }',
+    for g in ('scope:rw_service_provider = { remove_short_term_gold = scope:rw_cc_price }',
               'scope:rw_service_client = { add_gold = scope:rw_cc_price }'):
         if g not in pay:out.append('wrong payer amount or direction')
-    if len(re.findall(r'\badd_gold\s*=',clean_script(e)[0]))!=2:out.append('extra payment or refund path')
+    if len(re.findall(r'\b(?:add_gold|remove_short_term_gold)\s*=',clean_script(e)[0]))!=2:out.append('extra payment or refund path')
     code=clean_script(e)[0]
     if re.search(r'\b(?:name|flag)\s*=\s*rw_(?!cc_)\w+',code):out.append('financial gesture rewrites original affair')
     if re.search(r'\b(add_opinion|remove_opinion|add_prestige|add_secret|add_hook|add_claim|imprison|death|change_title_holder|create_title_and_vassal_change|run_interaction|send_interaction|make_story_owner|create_story|every_living_character|every_in_global_list)\s*=',code):
@@ -145,7 +145,7 @@ class CaseCompensationTests(unittest.TestCase):
             self.assertIn('unguarded financial effect',self.errors(e=self.e.replace('limit = { '+gate+' }','limit = { always = yes }')))
 
     def test_gold_direction_and_amount_never_follow_the_clicking_actor(self):
-        for g in ('scope:rw_service_provider = { add_gold = { value = scope:rw_cc_price multiply = -1 } }',
+        for g in ('scope:rw_service_provider = { remove_short_term_gold = scope:rw_cc_price }',
                   'scope:rw_service_client = { add_gold = scope:rw_cc_price }'):
             self.assertIn('wrong payer amount or direction',self.errors(e=self.e.replace(g,'add_gold = 50')))
         self.assertIn('extra payment or refund path',self.errors(e=self.e+'\nadd_gold = 25'))
@@ -177,7 +177,7 @@ class CaseCompensationTests(unittest.TestCase):
         self.assertNotRegex(close,r'\b(rw_cc_context_trigger|rw_cc_window|gold|rw_cc_can_settle_trigger)\b')
         effect=block(self.e,'rw_cc_close_effect')
         self.assertLess(effect.index('name = rw_cc_state value = flag:closed'),effect.index('rw_cc_notify_effect'))
-        self.assertNotRegex(effect,r'\b(add_gold|add_opinion|add_prestige)\s*=')
+        self.assertNotRegex(effect,r'\b(add_gold|remove_short_term_gold|add_opinion|add_prestige)\s*=')
 
     def test_archive_remains_read_only_and_all_entries_recheck_before_navigation(self):
         events=(MOD/'events/rw_case_events.txt').read_text()
@@ -188,7 +188,7 @@ class CaseCompensationTests(unittest.TestCase):
             self.assertIn('id = rw_case_compensation.0002',option)
             self.assertNotIn('rw_cc_settle_effect',option)
         self.assertNotRegex(block(events,'rw_cases.0006'),r'\brw_\w+_effect\s*=')
-        self.assertNotRegex(block(events,'rw_cases.0006'),r'\b(add_gold|set_variable)\s*=')
+        self.assertNotRegex(block(events,'rw_cases.0006'),r'\b(add_gold|remove_short_term_gold|set_variable)\s*=')
 
     def test_private_receipts_not_sent_to_mediator_or_successor(self):
         notify=block(self.e,'rw_cc_notify_effect')

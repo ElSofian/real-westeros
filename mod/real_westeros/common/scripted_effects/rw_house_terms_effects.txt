@@ -28,7 +28,7 @@ rw_house_accept_terms_effect = {
         # Consume the live decision before money. No assumed engine transaction/rollback.
         rw_house_close_effect = { RESULT = restored }
         scope:rw_house_record = { set_variable = { name = rw_house_closed_by value = scope:rw_house_terms_payee } }
-        add_gold = -50
+        remove_short_term_gold = 50
         scope:rw_house_terms_payee = { add_gold = 50 }
         scope:rw_house_record = {
             set_variable = { name = rw_house_last_response value = flag:terms_settled }

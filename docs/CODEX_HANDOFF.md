@@ -1,5 +1,26 @@
 # Codex implementation handoff
 
+## Current continuation — native money debit correction
+
+NATIVE_GOLD_DEBITS.md fixes eleven real payment paths: positive
+remove_short_term_gold replaces negative add_gold (five literal, six calculated).
+Payee credits, amounts, consent/funds/version/consumption guards, alternative hooks
+and telemetry calls byte-preserved; inverse proof and hashes in
+GOLD_DEBIT_SOURCE_RECEIPT.json. Validator now rejects known negative scalar/simple
+block forms, not general symbolic arithmetic. Existing financial mutation tests
+updated for debit/credit; ten regression tests added. One explicit telemetry
+baseline revision for the legitimate multi-action gameplay correction preserves
+its previous digest and original baseline; logger unchanged.
+Free ck3-tiger v1.19.0 run on PRIVATE partial source fixtures found the five literal
+range alerts; all five gone after correction. Six calculated debits found by owned
+source audit. Release archive digest checked; no binary/native data/raw report
+committed or shipped. Missing definitions/assets and remaining semantic alerts
+mean this is NOT a full semantic validation or installed/engine test.
+No new readiness criterion,+0,64/80 +0/20. All money balance/budget/replay/AI cases
+stay grouped in final campaign, no intermediate launch (7–10min/start).
+Next inspect concrete localization/scope diagnostics in context; do not repeatedly
+re-audit stalled J4/G1 or add another journal variant without a substantive unblock.
+
 ## Current continuation — actual voluntary ducal restitution
 
 RW010_NATIVE_RESTITUTION.md implements an actual source-level native type=granted

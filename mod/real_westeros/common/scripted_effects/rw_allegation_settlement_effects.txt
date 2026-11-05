@@ -59,7 +59,7 @@ rw_as_settle_effect = {
             set_variable = { name = rw_case_stage value = flag:closed }
             set_variable = { name = rw_case_result value = flag:withdrawn }
         }
-        scope:rw_service_provider = { add_gold = { value = scope:rw_as_price multiply = -1 } }
+        scope:rw_service_provider = { remove_short_term_gold = scope:rw_as_price }
         scope:rw_service_client = { add_gold = scope:rw_as_price }
         rw_as_notify_effect = yes
     }

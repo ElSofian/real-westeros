@@ -84,7 +84,7 @@ def agreement_errors(t,e,ev):
             errors.append('earlier release blocks independent later promises')
     pay=block(e,'rw_ba_pay_effect')
     seq=[pay.find(p) for p in ('name = rw_ba_gold value = flag:attempted','name = rw_ba_paid_revision value = scope:rw_ba_revision',
-        'add_gold = { value = scope:rw_ba_price multiply = -1 }','scope:rw_ba_payee = { add_gold = scope:rw_ba_price }','name = rw_ba_gold value = flag:done')]
+        'remove_short_term_gold = scope:rw_ba_price','scope:rw_ba_payee = { add_gold = scope:rw_ba_price }','name = rw_ba_gold value = flag:done')]
     if min(seq)<0 or seq!=sorted(seq):errors.append('duplicate wrong-direction or unconsumed payment')
     support=block(e,'rw_ba_support_effect')
     seq=[support.find(p) for p in ('name = rw_ba_support value = flag:attempted','scope:rw_ba_payee = { add_prestige = 50 }',

@@ -25,7 +25,7 @@ def contract_errors(triggers, effects):
     if 'rw_service_affordable_trigger = yes' not in settlement:
         errors.append('missing settlement revalidation')
     consume = settlement.find('rw_service_clear_effect = yes')
-    if consume < 0 or consume > settlement.find('add_gold'):
+    if consume < 0 or consume > settlement.find('remove_short_term_gold'):
         errors.append('settlement occurs before consume')
     if effects.count('add_character_flag = { flag = rw_service_pending days = 30 }') != 1:
         errors.append('quote reset extends expiry')

@@ -65,7 +65,7 @@ def settlement_errors(t, e):
         'name = rw_as_turn value = flag:client', 'name = rw_as_turn value = flag:provider',
         'rw_as_snapshot_effect = yes'), 'counter keeps stale consent')
     for b in (propose, counter):
-        if re.search(r'\b(add_gold|add_opinion|rw_case_close_effect)\s*=', clean_script(b)[0]):
+        if re.search(r'\b(add_gold|remove_short_term_gold|add_opinion|rw_case_close_effect)\s*=', clean_script(b)[0]):
             errors.append('negotiation charges or withdraws early')
     settle = block(e, 'rw_as_settle_effect')
     need(settle, ('limit = { rw_as_can_settle_trigger = yes }', 'remove_variable = rw_as_window',
@@ -77,13 +77,13 @@ def settlement_errors(t, e):
         'settlement not consumed or unsupported withdrawal')
     points = [settle.find(p) for p in ('name = rw_as_state value = flag:paid',
         'remove_variable = rw_case_pending', 'name = rw_case_stage value = flag:closed',
-        'scope:rw_service_provider = { add_gold = { value = scope:rw_as_price multiply = -1 } }',
+        'scope:rw_service_provider = { remove_short_term_gold = scope:rw_as_price }',
         'scope:rw_service_client = { add_gold = scope:rw_as_price }', 'rw_as_notify_effect = yes')]
     if min(points) < 0 or points != sorted(points): errors.append('wrong payment direction or premature notice')
     closing = block(e, 'rw_as_close_effect')
     need(closing, ('limit = { rw_as_can_close_trigger = yes }', 'remove_variable = rw_as_window',
         'remove_variable = rw_as_turn', 'name = rw_as_state value = flag:closed'), 'refusal not consumed')
-    if re.search(r'\b(add_gold|add_opinion|rw_case_close_effect)\s*=|name\s*=\s*rw_case_', clean_script(closing)[0]):
+    if re.search(r'\b(add_gold|remove_short_term_gold|add_opinion|rw_case_close_effect)\s*=|name\s*=\s*rw_case_', clean_script(closing)[0]):
         errors.append('refusal charges or withdraws')
     code = clean_script(e)[0]
     if re.search(r'\bname\s*=\s*(rw_case_evidence|rw_case_disclosed|rw_cc_\w+|rw_cp_\w+|rw_service_\w+)', code):
@@ -143,12 +143,12 @@ class AllegationSettlementTests(unittest.TestCase):
     def test_current_respondent_gold_always_funds_agreed_price(self):
         g = 'scope:rw_service_provider = { gold >= scope:rw_as_price }'
         self.assertIn('wrong payer or missing current funds', self.errors(t=self.t.replace(g, 'scope:rw_service_client = { gold >= 50 }')))
-        self.assertEqual(2, len(re.findall(r'\badd_gold\s*=', self.e)))
-        self.assertIn('wrong payment direction or premature notice', self.errors(e=self.e.replace('multiply = -1', 'multiply = 1')))
+        self.assertEqual(2, len(re.findall(r'\b(?:add_gold|remove_short_term_gold)\s*=', self.e)))
+        self.assertIn('wrong payment direction or premature notice', self.errors(e=self.e.replace('remove_short_term_gold', 'add_gold')))
 
     def test_no_payment_or_case_closure_at_proposal_counter(self):
         for g in ('rw_as_propose_effect = {', 'rw_as_counter_effect = {'):
-            self.assertIn('negotiation charges or withdraws early', self.errors(e=self.e.replace(g, g+' add_gold = -50')))
+            self.assertIn('negotiation charges or withdraws early', self.errors(e=self.e.replace(g, g+' remove_short_term_gold = 50')))
         self.assertIn('unguarded proposal or mutable deadline', self.errors(e=self.e.replace('limit = { rw_as_can_propose_trigger = yes }', 'limit = { always = yes }')))
 
     def test_counter_invalidates_consent_before_capturing_new_terms(self):
@@ -174,14 +174,14 @@ class AllegationSettlementTests(unittest.TestCase):
         allegations = (MOD/'common/scripted_effects/rw_allegation_effects.txt').read_text()
         for name in ('rw_allegation_withdraw_effect', 'rw_allegation_refer_effect'):
             b = block(allegations, name)
-            self.assertNotRegex(b, r'\brw_as_|\badd_gold\s*=')
+            self.assertNotRegex(b, r'\brw_as_|\b(?:add_gold|remove_short_term_gold)\s*=')
         for name, effect in (('refer', 'rw_allegation_refer_effect'), ('withdraw', 'rw_allegation_withdraw_effect')):
             self.assertIn('name = rw_allegations.'+name, self.ev)
             self.assertIn(effect+' = yes', self.ev)
         self.assertIn('var:rw_case_stage = flag:claimant', block(self.t, 'rw_as_context_trigger'))
 
     def test_declining_talks_does_not_withdraw_or_pay(self):
-        self.assertIn('refusal charges or withdraws', self.errors(e=self.e.replace('rw_as_close_effect = {', 'rw_as_close_effect = { add_gold = -25')))
+        self.assertIn('refusal charges or withdraws', self.errors(e=self.e.replace('rw_as_close_effect = {', 'rw_as_close_effect = { remove_short_term_gold = 25')))
         b = block(self.t, 'rw_as_can_close_trigger')
         self.assertIn('rw_as_view_trigger = yes', b)
         self.assertNotIn('rw_as_context_trigger', b)

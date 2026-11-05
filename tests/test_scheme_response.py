@@ -42,7 +42,7 @@ def response_errors(t, e):
     pay = block(e, 'rw_scheme_response_pay_effect')
     if 'limit = { rw_scheme_response_can_pay_trigger = yes }' not in pay:
         errors.append('payment execution bypass')
-    if not 0 <= pay.find('name = rw_scheme_response_state value = flag:paid') < pay.find('add_gold'):
+    if not 0 <= pay.find('name = rw_scheme_response_state value = flag:paid') < pay.find('remove_short_term_gold'):
         errors.append('payment before consumption')
     if 'remove_variable = rw_scheme_response_window' not in pay:
         errors.append('payment leaves window live')
@@ -51,7 +51,7 @@ def response_errors(t, e):
         errors.append('request execution bypass')
     if not 0 <= request.find('value = flag:offered') < request.find('trigger_event'):
         errors.append('request not consumed before disclosure')
-    if re.search(r'\badd_gold\s*=', request):
+    if re.search(r'\b(?:add_gold|remove_short_term_gold)\s*=', request):
         errors.append('unilateral charge')
     initial = block(e, 'rw_scheme_response_initialise_effect')
     for guard in ('var:rw_evidence_kind = flag:participant_exposed', 'NOT = { has_variable = rw_scheme_response_state }'):
@@ -114,10 +114,10 @@ class SchemeResponseTests(unittest.TestCase):
         self.assertIn('payment leaves window live', self.errors(e=self.e.replace('remove_variable = rw_scheme_response_window', '')))
         e = self.e.replace('name = rw_scheme_response_state value = flag:paid', 'name = rw_scheme_response_state value = flag:offered')
         self.assertIn('payment before consumption', self.errors(e=e))
-        e = self.e.replace('rw_scheme_response_request_effect = {', 'rw_scheme_response_request_effect = { add_gold = -25')
+        e = self.e.replace('rw_scheme_response_request_effect = {', 'rw_scheme_response_request_effect = { remove_short_term_gold = 25')
         self.assertIn('unilateral charge', self.errors(e=e))
         pay = block(self.e, 'rw_scheme_response_pay_effect')
-        self.assertEqual(1, pay.count('add_gold = -25'))
+        self.assertEqual(1, pay.count('remove_short_term_gold = 25'))
         self.assertEqual(1, pay.count('add_gold = 25'))
 
     def test_agreed_goodwill_cannot_stack_renew_or_remove_native_penalty(self):
@@ -151,7 +151,7 @@ class SchemeResponseTests(unittest.TestCase):
         self.assertIn('rw_scheme_response_owner_turn_trigger = yes', block(self.e, 'rw_scheme_response_forego_effect'))
 
     def test_silence_delay_and_tolerance_cannot_sanction_or_reschedule(self):
-        self.assertNotRegex(block(self.e, 'rw_scheme_response_forego_effect'), r'\b(add_gold|add_opinion|trigger_event)\s*=')
+        self.assertNotRegex(block(self.e, 'rw_scheme_response_forego_effect'), r'\b(add_gold|remove_short_term_gold|add_opinion|trigger_event)\s*=')
         for event_name, option_name, next_option in (('rw_scheme_response.0001', 'later', 'acknowledge'),
                                                      ('rw_scheme_response.0002', 'ignore', 'acknowledge')):
             event = block(self.v, event_name)
@@ -171,7 +171,7 @@ class SchemeResponseTests(unittest.TestCase):
         self.assertIn('rw_scheme_response_can_withdraw_trigger = yes', withdraw)
         self.assertIn('remove_variable = rw_scheme_response_window', withdraw)
         self.assertIn('value = flag:withdrawn', withdraw)
-        self.assertNotRegex(withdraw, r'\b(add_gold|add_opinion|add_prestige)\s*=')
+        self.assertNotRegex(withdraw, r'\b(add_gold|remove_short_term_gold|add_opinion|add_prestige)\s*=')
         self.assertLess(withdraw.index('value = flag:withdrawn'), withdraw.index('send_interface_message'))
 
     def test_actor_only_history_and_explicit_request_sharing(self):
@@ -223,7 +223,7 @@ class SchemeResponseTests(unittest.TestCase):
         self.assertIn('rw_scheme_response_can_open_trigger = yes', journal)
         self.assertIn('scope:rw_scheme_evidence_record.var:rw_evidence_participant = { save_scope_as = rw_scheme_participant }', journal)
         self.assertIn('rw_scheme_response_owner_turn_trigger = yes', journal)
-        self.assertNotRegex(journal, r'\b(add_gold|set_variable|change_variable)\s*=')
+        self.assertNotRegex(journal, r'\b(add_gold|remove_short_term_gold|set_variable|change_variable)\s*=')
 
     def test_display_keys_and_no_claim_of_immunity(self):
         interaction = (MOD / 'common/character_interactions/rw_scheme_response_interactions.txt').read_text()

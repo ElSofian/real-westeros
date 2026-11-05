@@ -55,7 +55,7 @@ def compensation_errors(t,e):
         'name = rw_cq_turn value = flag:head','name = rw_cq_turn value = flag:ruler','rw_cq_snapshot_effect = yes'),
         'counter preserves old consent')
     for b in (propose,counter):
-        if re.search(r'\badd_gold\s*=|name\s*=\s*rw_ch_(?:state|revision|due)',clean_script(b)[0]):errors.append('early payment or release')
+        if re.search(r'\b(?:add_gold|remove_short_term_gold)\s*=|name\s*=\s*rw_ch_(?:state|revision|due)',clean_script(b)[0]):errors.append('early payment or release')
     settle=block(e,'rw_cq_settle_effect')
     need(settle,('limit = { rw_cq_can_settle_trigger = yes }','save_scope_as = rw_cq_settler',
         'remove_variable = rw_cq_window','remove_variable = rw_cq_turn','name = rw_cq_state value = flag:paid',
@@ -68,13 +68,13 @@ def compensation_errors(t,e):
         'paired release not consumed with actual actor')
     points=[settle.find(x) for x in ('name = rw_cq_state value = flag:paid','remove_variable = rw_ch_due',
         'name = rw_ch_state value = flag:released','name = rw_cq_result_revision value = scope:rw_ch_revision',
-        'scope:rw_cq_payer = { add_gold = { value = scope:rw_cq_price multiply = -1 } }',
+        'scope:rw_cq_payer = { remove_short_term_gold = scope:rw_cq_price }',
         'scope:rw_cq_payee = { add_gold = scope:rw_cq_price }','rw_cq_notify_effect = yes')]
     if min(points)<0 or points!=sorted(points):errors.append('wrong transfer direction or premature native effect or notice')
     closing=block(e,'rw_cq_close_effect')
     need(closing,('limit = { rw_cq_can_close_trigger = yes }','remove_variable = rw_cq_window',
         'remove_variable = rw_cq_turn','name = rw_cq_state value = flag:closed'),'unguarded refusal')
-    if re.search(r'\badd_gold\s*=|name\s*=\s*rw_ch_',clean_script(closing)[0]):errors.append('refusal changes money or charter')
+    if re.search(r'\b(?:add_gold|remove_short_term_gold)\s*=|name\s*=\s*rw_ch_',clean_script(closing)[0]):errors.append('refusal changes money or charter')
     code=clean_script(e)[0]
     if re.search(r'\bname\s*=\s*rw_(?:lr|house|rs|rp|service)_|\b(add_opinion|add_prestige|add_secret|add_hook|add_claim|change_title_holder|run_interaction|make_story_owner|every_living_character|every_in_global_list)\s*=',code):
         errors.append('unrelated native public or private state rewritten')
@@ -113,7 +113,7 @@ class CharterCompensationTests(unittest.TestCase):
         self.assertIn('rw_cq_propose_effect = { PRICE = 50 }',self.ch)
     def test_negotiating_never_charges_or_changes_charter_state(self):
         for name in ('rw_cq_propose_effect','rw_cq_counter_effect'):
-            self.assertIn('early payment or release',self.errors(e=self.e.replace(name+' = {',name+' = { add_gold = -25')))
+            self.assertIn('early payment or release',self.errors(e=self.e.replace(name+' = {',name+' = { remove_short_term_gold = 25')))
         self.assertIn('counter preserves old consent',self.errors(e=self.e.replace('limit = { rw_cq_responder_trigger = yes }','limit = { always = yes }')))
     def test_counters_swap_responder_capture_latest_and_keep_original_clocks(self):
         b=block(self.e,'rw_cq_counter_effect')
@@ -125,9 +125,9 @@ class CharterCompensationTests(unittest.TestCase):
     def test_paired_consumption_precedes_personal_gold_and_only_then_notices(self):
         for g in ('limit = { rw_cq_can_settle_trigger = yes }','remove_variable = rw_cq_window','remove_variable = rw_ch_due','name = rw_ch_finished_by value = scope:rw_cq_settler','name = rw_cq_result_revision value = scope:rw_ch_revision'):
             self.assertIn('paired release not consumed with actual actor',self.errors(e=self.e.replace(g,'removed')))
-        self.assertIn('wrong transfer direction or premature native effect or notice',self.errors(e=self.e.replace('multiply = -1','multiply = 1')))
+        self.assertIn('wrong transfer direction or premature native effect or notice',self.errors(e=self.e.replace('remove_short_term_gold','add_gold')))
         self.assertNotIn('rw_ch_finish_effect',block(self.e,'rw_cq_settle_effect'))
-        self.assertEqual(2,len(re.findall(r'\badd_gold\s*=',self.e)))
+        self.assertEqual(2,len(re.findall(r'\b(?:add_gold|remove_short_term_gold)\s*=',self.e)))
     def test_release_bookkeeping_matches_free_charter_shape_without_early_notice(self):
         base=block((MOD/'common/scripted_effects/rw_restitution_charter_effects.txt').read_text(),'rw_ch_finish_effect')
         paid=block(self.e,'rw_cq_settle_effect')
@@ -146,7 +146,7 @@ class CharterCompensationTests(unittest.TestCase):
         self.assertNotIn('rw_cq_',base)
         self.assertIn('var:rw_ch_state = flag:active',(MOD/'common/scripted_triggers/rw_restitution_charter_triggers.txt').read_text())
     def test_declining_financial_offer_does_not_release_charter_or_pay(self):
-        self.assertIn('refusal changes money or charter',self.errors(e=self.e.replace('rw_cq_close_effect = {','rw_cq_close_effect = { add_gold = -25')))
+        self.assertIn('refusal changes money or charter',self.errors(e=self.e.replace('rw_cq_close_effect = {','rw_cq_close_effect = { remove_short_term_gold = 25')))
         close=block(self.t,'rw_cq_can_close_trigger')
         self.assertIn('rw_ch_roles_trigger = yes',close)
         self.assertNotIn('rw_cq_live_trigger',close)

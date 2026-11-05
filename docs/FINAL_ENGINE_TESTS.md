@@ -1408,3 +1408,14 @@ New private adapter supplies six read-only/copied native bodies under RW names,
 no native interaction override. Check callback timing, TITLE alias and hidden
 engine grant effects explicitly; source cloning is not equivalence proof.
 Group with HCONF/HCRECEIPT/G3 in final sessions; no intermediate CK3 launch.
+
+## Native gold debit correction — existing payment scenarios (all unexecuted)
+
+NATIVE_GOLD_DEBITS.md replaces negative additions with positive native short-term
+debits in eleven paths, while retaining consent, affordability, consumption and
+payee credits. In the already planned service/favor/compensation/charter/bundle/
+dynastic/house/scheme scenarios, record actual payer and recipient balances,
+25/50 negotiated amounts, insufficient-funds refusal, hook branch without money,
+replay/load and shared AI behavior; observe native short-term budget/debt behavior.
+No new launch per payment: group with existing final scenarios. Partial offline
+Tiger range checks and inverse source tests are not proof of actual balances.

@@ -24,7 +24,7 @@ def block(text, name):
 def obligation_errors(effects, triggers):
     errors = []
     acceptance = block(effects, 'rw_service_accept_promise_effect')
-    if re.search(r'\b(add_gold|add_prestige|rw_service_settle_effect)\s*=', acceptance):
+    if re.search(r'\b(add_gold|remove_short_term_gold|add_prestige|rw_service_settle_effect)\s*=', acceptance):
         errors.append('acceptance performs service/payment')
     if 'change_variable = { name = rw_service_revision add = 1 }' not in acceptance:
         errors.append('acceptance leaves negotiation revision live')
@@ -33,7 +33,7 @@ def obligation_errors(effects, triggers):
     fulfillment = block(effects, 'rw_service_fulfill_promise_effect')
     if 'rw_service_obligation_fulfillable_trigger = yes' not in fulfillment:
         errors.append('unguarded fulfillment')
-    consume, payment = fulfillment.find('rw_service_clear_effect = yes'), fulfillment.find('add_gold')
+    consume, payment = fulfillment.find('rw_service_clear_effect = yes'), fulfillment.find('remove_short_term_gold')
     if consume < 0 or payment < 0 or consume > payment:
         errors.append('fulfillment before consumption')
     timeout = block(effects, 'rw_service_timeout_effect')

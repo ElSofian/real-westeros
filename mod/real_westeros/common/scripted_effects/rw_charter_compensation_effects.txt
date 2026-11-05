@@ -87,7 +87,7 @@ rw_cq_settle_effect = {
             set_variable = { name = rw_cq_result_revision value = scope:rw_ch_revision }
         }
         # Consume both before the one personal gold exchange; never retry partial native effects.
-        scope:rw_cq_payer = { add_gold = { value = scope:rw_cq_price multiply = -1 } }
+        scope:rw_cq_payer = { remove_short_term_gold = scope:rw_cq_price }
         scope:rw_cq_payee = { add_gold = scope:rw_cq_price }
         rw_cq_notify_effect = yes
     }

@@ -781,3 +781,30 @@
 
 - Ducal restitution partial source assessment: `3e29aaa120358aa994606d2448e19e3b54e51df3`; +0 checkpoint.
   J5 remains open; source call delivered, full coercive-restoration chain missing.
+
+- RW-010 / native gold debit defect (2026-11-05): free ck3-tiger v1.19.0 on
+  private partial received-source fixtures found five literal negative-addition
+  range errors; audit found six additional calculated negative debit forms.
+  Correct eleven payer debits to positive remove_short_term_gold, retaining all
+  amounts, payee credits, consent/funds/revision/consumption guards, hooks and
+  telemetry calls. Exact inverse proof and before/after own-source hashes for
+  each file; target AGOT debit/credit example referenced only by hash/markers.
+  Validator rejects known negative scalar/simple-block forms, ignores strings/
+  comments and does not claim general expression evaluation. Existing financial
+  contracts now check debit and credit; ten new adversarial/integration/inverse
+  tests. Multi-action telemetry gameplay hash explicitly advanced for this one
+  legitimate debit correction; previous digest/commit retained, logger unchanged.
+  1004 tests discovered,981 local passed,23 PowerShell skips; mod structure,
+  gold lint, telemetry noninterference, whitespace and readiness checks PASS.
+  Targeted Tiger range alerts five→zero; remaining partial-context semantic
+  diagnostics NOT cleared. No installed-game or engine/balance/atomicity proof.
+  Required exact-head CI, committed ZIP and extracted-validator verification
+  before merge; no native code, tool binary or raw private report distributed.
+  +0,development64/80,engine0/20,total64/100: correction of credited paths, no
+  newly completed criterion. Group actual balance/AI/budget/replay checks into
+  existing final payment scenarios; no intermediate CK3 launch (7–10min/start).
+  Next: investigate concrete localization/scope diagnostics before final campaign,
+  preserve open J4/J5/war dependencies, no new journal/intention variant.
+
+- Gold debit correction source assessment: `452cb6db40e28417227ce3fa5264c3669911a186`; +0 checkpoint.
+  No frozen acceptance/weight/status changed; partial semantic check is not engine evidence.

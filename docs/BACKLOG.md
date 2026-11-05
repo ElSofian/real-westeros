@@ -17,6 +17,14 @@ not an exhaustive completion checklist. PR/test counts are not global progress m
 | P1 | RW-009 | Add AI actor selection and negative-path tests for one end-to-end incident | Implemented experimentally — bounded liege targeting; engine untested |
 | P2 | RW-010 | Expand political memory, justice, diplomacy and other systems incrementally | In progress — services, mediation, case history, contested allegations and voluntary repair responses and mutual promise cancellation and immutable mediated service clauses plus personal restitution promises and voluntary private case compensation in scripts; engine untested; native observation intake added; voluntary political responses added; coercive justice/dynastic stages remain |
 
+**Native debit defect corrected:** eleven payments used negative add_gold,
+including six calculated prices; all use positive remove_short_term_gold now.
+Payees, amounts and original transaction guards unchanged (exact inverse proof).
+NATIVE_GOLD_DEBITS.md / GOLD_DEBIT_SOURCE_RECEIPT.json; local validator rejects
+known negative forms. Partial-source Tiger findings addressed for the five literal
+range alerts only, not full semantic/engine validation. +0,64/80+0/20; existing
+money/AI/replay/budget tests grouped in final campaign. J4/J5 remain open.
+
 **Actual voluntary restitution candidate:** RW010_NATIVE_RESTITUTION.md adds an
 explicit shared player/AI pledge choice, next-day exact-version one-attempt dispatch
 and native type=granted transfer of a ducal dignity to an existing count vassal.

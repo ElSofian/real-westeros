@@ -20,7 +20,7 @@ def response_errors(t,e,cc):
               'paid_on value = var:rw_cc_paid_on','state value = flag:pending','window value = flag:yes days = 30'):
         if not 0 <= begin.find('name = rw_cp_'+g) < stamp:out.append('response identity or fixed window missing')
     pay=block(cc,'rw_cc_settle_effect')
-    debit=pay.find('scope:rw_service_provider = { add_gold')
+    debit=pay.find('scope:rw_service_provider = { remove_short_term_gold')
     credit=pay.find('scope:rw_service_client = { add_gold')
     token=pay.find('save_scope_as = rw_cp_fresh_payment')
     init=pay.find('rw_cp_begin_effect = yes')
@@ -53,7 +53,7 @@ def response_errors(t,e,cc):
         out.append('wrong opinion target or benefit')
     code=clean_script(e)[0]
     if re.search(r'\b(?:name|flag)\s*=\s*rw_(?!cp_)\w+',code):out.append('response rewrites financial or judicial fact')
-    if re.search(r'\b(add_gold|add_prestige|remove_opinion|add_secret|add_hook|add_claim|imprison|death|run_interaction|send_interaction|change_title_holder|make_story_owner|create_story|every_living_character|every_in_global_list)\s*=',code):
+    if re.search(r'\b(add_gold|remove_short_term_gold|add_prestige|remove_opinion|add_secret|add_hook|add_claim|imprison|death|run_interaction|send_interaction|change_title_holder|make_story_owner|create_story|every_living_character|every_in_global_list)\s*=',code):
         out.append('response refunds pays pardons or scans')
     if e.count('name = rw_cp_window')!=1:out.append('personal response window renewed')
     return out
@@ -81,11 +81,11 @@ class CompensationResponseTests(unittest.TestCase):
         self.assertEqual(1,len(re.findall(r'\bsave_scope_as\s*=\s*rw_cp_fresh_payment\b',code)))
 
     def test_initialization_after_both_gold_effects_then_token_cleared_before_notices(self):
-        for g in ('scope:rw_service_provider = { add_gold','scope:rw_service_client = { add_gold',
+        for g in ('scope:rw_service_provider = { remove_short_term_gold','scope:rw_service_client = { add_gold',
                   'save_scope_as = rw_cp_fresh_payment','rw_cp_begin_effect = yes','clear_saved_scope = rw_cp_fresh_payment'):
             self.assertIn('response created before payment or token survives notice',self.errors(cc=self.cc.replace(g,'removed_part')))
         init=block(self.e,'rw_cp_begin_effect')
-        self.assertNotRegex(init,r'\b(add_opinion|add_gold|add_prestige|trigger_event)\s*=')
+        self.assertNotRegex(init,r'\b(add_opinion|add_gold|remove_short_term_gold|add_prestige|trigger_event)\s*=')
         self.assertNotIn('rw_cp_appreciate_effect',self.cc)
         self.assertNotIn('rw_cp_note_effect',self.cc)
 
@@ -144,7 +144,7 @@ class CompensationResponseTests(unittest.TestCase):
             self.assertIn('response rewrites financial or judicial fact',self.errors(e=self.e+f'\nset_variable = {{ name = {var} value = flag:appreciated }}'))
         for command in ('add_gold = 50','add_prestige = 25','remove_opinion = {}','add_hook = {}','run_interaction = {}'):
             self.assertIn('response refunds pays pardons or scans',self.errors(e=self.e+'\n'+command))
-        self.assertEqual(2,len(re.findall(r'\badd_gold\s*=',clean_script(self.cc)[0])))
+        self.assertEqual(2,len(re.findall(r'\b(?:add_gold|remove_short_term_gold)\s*=',clean_script(self.cc)[0])))
 
     def test_payer_notice_is_private_and_never_to_the_mediator_or_successor(self):
         notify=block(self.e,'rw_cp_notify_payer_effect')
