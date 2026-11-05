@@ -828,3 +828,6 @@
   existing scenarios, no intermediate launch (7–10min/start). Next inspect actual
   scope warnings in context and fix confirmed errors; keep J4/J5/war dependencies
   visible, no broad suppressions or further intention/journal variants.
+
+- Localization correction source assessment: `3668c2f5226a0288e66d413dcd7a247d87934ec0`; +0 checkpoint.
+  Frozen rubric/statuses/history preserved; no claim of runtime scope availability.
