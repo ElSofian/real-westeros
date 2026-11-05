@@ -1,11 +1,13 @@
 # Suivi de la première version intégrée — v0.1-plan-1
 
-**Développement : 64/80 · Validation en jeu : 0/20 · Total : 64/100 (+0 sur la préparation W1).**
-W3 livre les réponses discrétionnaires et la demande native d’intervention dans les sources
-([G1_NATIVE_INTERVENTION.md](G1_NATIVE_INTERVENTION.md)), sans garantir la paix ou G1.
-Restent 16 points source : W1/W2/W4/W5 (10), J4/J5 (4) et AI4 (2).
-Le [relevé de contexte W1](G1_DECLARATION_LAW_CONTEXT.md) est écrit dans les sources ;
-l’ordre réel des callbacks reste à démontrer. W1/W2 restent ouverts (+0), en attente des observations finales G1 avant voie de production.
+**Développement : 64/80 · Validation en jeu : 0/20 · Total : 64/100 (inchangé après revue des critères restants).**
+Il reste **sept critères source ouverts, totalisant 16 points** : W1/W2/W4/W5,
+J4/J5 et AI4. Le [bilan du travail restant](V01_REMAINING_WORK.md) distingue code
+expérimental écrit, fonctionnalité absente et dépendance d’observation moteur.
+La capture W1, la préférence IA et la clôture W4 ne terminent pas ces critères.
+J4/J5 ne sont pas implémentés comme coercition/restauration dynastique effective.
+On ne peut pas déduire de ce score qu’il reste seulement des tests ou que 80/80
+sera nécessairement atteint avant toute observation CK3. Campagne finale maintenue.
 Vitesse encore non mesurable : moins de sept jours de recul sur cette grille.
 
 Relevé initial : **1 novembre 2026, 38/100**, évalué sur le code de
@@ -138,6 +140,11 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 | V5 | 4 | G5 : régression AGOT, installation et distribution vérifiées, blocages de sortie corrigés | À développer / valider |
 
 ## Prochain ordre de travail
+
+**Direction courante :** suivre [V01_REMAINING_WORK.md](V01_REMAINING_WORK.md) :
+J4 est la prochaine cible substantielle, J5 dépend de sa sanction effective ;
+préserver le candidat de guerre sauf défaut concret ou preuve levant un blocage.
+Les étapes ci-dessous conservent l’historique des livraisons et dépendances.
 
 1. **AI3 — livré dans les sources, +2 points acquis** : politique contextuelle partagée
    par au moins deux familles d’actions, utilisant trois facteurs concrets parmi

@@ -663,3 +663,20 @@
 
 - W4 partial source assessment: `66543156f342434d8ee24233e110b50899ef380c`; +0 checkpoint, criterion
   remains open, frozen rubric and all earlier checkpoints unchanged.
+
+- RW-010 / remaining-development review (2026-11-05): V01_REMAINING_WORK.md now
+  distinguishes seven open criteria by code present, actual missing functionality,
+  and source/engine dependencies. J4 coercion and J5 restoration are still missing;
+  autonomous native war discovery is unresolved, not provided by option initialization.
+  W1/W4 preparation is not complete law/Mega Wars integration, W5 follows the retained
+  production path. Next substantive target J4, then J5; no further minor war variants
+  without a concrete defect or source proof resolving a specified requirement.
+  Final CK3 campaign timing retained, with possible implementation changes/retesting;
+  no guarantee80/80 before observations. Documentation only, +0; V01_PROGRESS.json,
+  frozen rubric/statuses/assessed commit/checkpoint history unchanged. No new feature,
+  engine result, compatibility claim, metric or ETA. Available consistency checks
+  and required CI precede merge; no new diagnostic or game test requested.
+
+  Review checks: seven readiness tests (including rejection of inflation/fake engine
+  completion), distribution tests, structural/localization/telemetry checks and
+  whitespace PASS; machine metric byte-identical and all new review links resolve.
