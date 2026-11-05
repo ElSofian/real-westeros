@@ -805,3 +805,6 @@
   existing final payment scenarios; no intermediate CK3 launch (7–10min/start).
   Next: investigate concrete localization/scope diagnostics before final campaign,
   preserve open J4/J5/war dependencies, no new journal/intention variant.
+
+- Gold debit correction source assessment: `452cb6db40e28417227ce3fa5264c3669911a186`; +0 checkpoint.
+  No frozen acceptance/weight/status changed; partial semantic check is not engine evidence.
