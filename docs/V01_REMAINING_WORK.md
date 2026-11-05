@@ -36,9 +36,39 @@ Preuves et limites : [contexte W1](G1_DECLARATION_LAW_CONTEXT.md),
 [cycle du reçu W4](G1_WAR_RECEIPT_LIFECYCLE.md),
 [frontière G3](G3_HOUSE_SANCTIONS.md) et [audit des routes](TITLE_ROUTE_AUDIT.md).
 
+## Décision J4 après examen ciblé — 5 novembre 2026
+
+**J4 mis en attente, pas livré.** Trois voies natives ont été confrontées au besoin :
+
+- L’extinction de famille noble (`celestial_extinguish_noble_family_interaction`)
+  exige un souverain céleste humain joueur et un destinataire IA avec titre de famille
+  noble. Ces conditions ne fournissent pas une sanction féodale AGOT symétrique.
+- Le déshéritement natif vise une personne avec ses conditions dynastiques/culturelles ;
+  il ne couvre pas octroi et conquête, ni une interdiction de maison de cinquante ans.
+- La confiscation actuelle via `revoke_title_interaction` serait une mesure distincte
+  et réelle, mais son interface spéciale sélectionne un titre. La transmission sûre
+  de ce titre dans un appel automatisé conservant coûts, refus/résistance et choix IA
+  n’est pas établie par les sources reçues. Lier un scope ou ouvrir la fenêtre n’en
+  constitue pas la preuve. Ne pas inventer un argument de run_interaction, copier
+  directement le helper de confiscation ou effectuer un transfert forcé de remplacement.
+
+Références : [frontière G3](G3_HOUSE_SANCTIONS.md),
+[audit des routes](TITLE_ROUTE_AUDIT.md), interaction AGOT de révocation (sélection
+vers ligne215, acceptation408, refus570), sources déjà reçues. Aucun nouvel envoi requis.
+Ce constat porte sur les voies examinées ; il ne prouve pas une impossibilité générale.
+
+J5 reste dépendant d’une sanction effective. Reprendre J4 avec une capacité native
+précise documentée ou des observations de la campagne finale G3 ; celles-ci peuvent
+nécessiter une nouvelle investigation/implémentation, elles ne garantissent pas une
+solution. Ne pas relire les mêmes voies à chaque « continue » ni produire une autre
+PR de diagnostic/variante pour masquer le blocage. Le prochain travail moteur utile
+est l’investigation de faisabilité G1/G3 au début de la **campagne finale déjà prévue**,
+avec corrections/retests selon résultats. Aucun test intermédiaire demandé ici.
+Le code de jeu et le score restent inchangés :64/80 +0/20, total64/100.
+
 ## Ordre de continuation
 
-1. **Prochaine cible de développement substantiel : J4**, puis J5 lorsqu’une sanction
+1. **Cible substantielle J4, actuellement en attente selon la décision ci-dessus**, puis J5 lorsqu’une sanction
    effective existe. Partir des routes déjà auditées et d’une hypothèse technique
    précise : quel mécanisme natif peut imposer la mesure, à qui, avec quelle autorité,
    quels refus/coûts et quelles routes couvertes ? Développer seulement une voie
