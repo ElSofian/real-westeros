@@ -808,3 +808,26 @@
 
 - Gold debit correction source assessment: `452cb6db40e28417227ce3fa5264c3669911a186`; +0 checkpoint.
   No frozen acceptance/weight/status changed; partial semantic check is not engine evidence.
+
+- RW-010/RW-004 / localization expression corrections (2026-11-06): seven
+  FR/EN files,22 script-scope prefixes removed from14 strings; three EN numeric
+  observation hashes escaped as literal ##. Same saved scopes, functions, keys,
+  prose and number formats; UTF-8 BOM retained. Independent byte comparison
+  against baseline proves only those substitutions; no gameplay script changed.
+  Validator adds two narrow quoted-value checks, excludes external comments,
+  preserves escaped quotes/hash pairs/normal markup/dynamic tooltips. Nine new
+  regression tests including integrated negative values and actual language refs.
+  1013 discovered,990 local passed,23 PowerShell skips; structure, targeted lint,
+  telemetry noninterference, readiness and whitespace PASS. Same digest-pinned
+  Tiger v1.19.0 on PRIVATE partial fixtures: datafunctions14→0,markup3→0. Other
+  semantic diagnostics remain; no installed-game, UI-render or engine proof.
+  No native source/tool binary/raw private report distributed. Exact-head CI,
+  committed ZIP and extracted standalone negative-path checks before merge.
+  +0,development64/80,engine0/20,total64/100: existing display corrections, no
+  newly completed criterion. Final FR/EN names/numbers/log reads grouped with
+  existing scenarios, no intermediate launch (7–10min/start). Next inspect actual
+  scope warnings in context and fix confirmed errors; keep J4/J5/war dependencies
+  visible, no broad suppressions or further intention/journal variants.
+
+- Localization correction source assessment: `3668c2f5226a0288e66d413dcd7a247d87934ec0`; +0 checkpoint.
+  Frozen rubric/statuses/history preserved; no claim of runtime scope availability.

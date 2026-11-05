@@ -1,7 +1,7 @@
 ﻿l_english:
  rw_allegation_settlement.title:0 "A private settlement of the allegation"
  rw_allegation_settlement.introduction:0 "I may offer to withdraw this exact house-affront allegation for 50 gold paid by the respondent. They may refuse or counter 25 gold. Neither proposing nor paying establishes the truth of the allegation. I can still withdraw freely or refer the matter before an agreement is completed."
- rw_allegation_settlement.parties:0 "Respondent and payer: [scope:rw_service_provider.GetShortUIName]. Claimant and recipient: [scope:rw_service_client.GetShortUIName]. These terms concern withdrawal of this exact allegation only."
+ rw_allegation_settlement.parties:0 "Respondent and payer: [rw_service_provider.GetShortUIName]. Claimant and recipient: [rw_service_client.GetShortUIName]. These terms concern withdrawal of this exact allegation only."
  rw_allegation_settlement.price50:0 "Current proposal: 50 gold from respondent to claimant, in exchange for immediate withdrawal of this allegation."
  rw_allegation_settlement.price25:0 "Current proposal: 25 gold from respondent to claimant, in exchange for immediate withdrawal of this allegation."
  rw_allegation_settlement.offered:0 "Only the other party may accept the latest terms or counter. The original seven-day offer window and original case deadline both still apply; negotiation never renews either. Before payment the claimant remains free to refer or withdraw without payment."

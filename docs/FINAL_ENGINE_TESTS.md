@@ -1419,3 +1419,13 @@ dynastic/house/scheme scenarios, record actual payer and recipient balances,
 replay/load and shared AI behavior; observe native short-term budget/debt behavior.
 No new launch per payment: group with existing final scenarios. Partial offline
 Tiger range checks and inverse source tests are not proof of actual balances.
+
+## Localization expression correction — existing UI scenarios (all unexecuted)
+
+LOCALIZATION_EXPRESSION_FIXES.md fixes saved-character expressions in FR/EN
+allegation/military-restraint/royal-response texts and escapes three EN observation
+number hashes. Read actual names and numbers in existing final scenarios; check
+both languages/logs for unresolved functions/scopes. Royal responses require the
+matching private war candidate. Source parser diagnostics are not proof that
+these saved scopes exist when the engine renders each text. Group readings with
+existing sessions; no intermediate launch or relaunch per string.

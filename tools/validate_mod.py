@@ -112,6 +112,17 @@ def gold_errors(text):
             for pos, effect in sorted(issues)]
 
 
+def localization_value_errors(value):
+    """Catch two known text mistakes; not a full Jomini localization parser."""
+    errors = []
+    if re.search(r"(?<!\[)\[\s*scope:[A-Za-z_]", value):
+        errors.append('script scope: prefix inside localization expression; use the saved scope name directly')
+    # ## is a literal hash; an odd run directly before [ opens malformed markup.
+    if any(len(m.group()) % 2 for m in re.finditer(r"(?<!#)#+(?=\[)", value)):
+        errors.append('unescaped # before localization expression; use ## for a literal hash')
+    return errors
+
+
 def definitions(text):
     """Find only top-level block definitions; nested repeated keys are normal."""
     clean, _ = clean_script(text)
@@ -207,6 +218,11 @@ def validate(root):
                 if not match:
                     errors.append(f'{relative}:{line_no}: invalid localization key line')
                     continue
+                # Inspect only the quoted value, excluding comments outside it.
+                quoted = re.match(r'"((?:\\.|[^"\\])*)"', line[match.end():].lstrip())
+                if quoted:
+                    errors.extend(f'{relative}:{line_no}: {problem}'
+                                  for problem in localization_value_errors(quoted.group(1)))
                 key = match.group(1)
                 previous = localization_keys[header].get(key)
                 if previous:

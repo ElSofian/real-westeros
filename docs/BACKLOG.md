@@ -17,6 +17,13 @@ not an exhaustive completion checklist. PR/test counts are not global progress m
 | P1 | RW-009 | Add AI actor selection and negative-path tests for one end-to-end incident | Implemented experimentally — bounded liege targeting; engine untested |
 | P2 | RW-010 | Expand political memory, justice, diplomacy and other systems incrementally | In progress — services, mediation, case history, contested allegations and voluntary repair responses and mutual promise cancellation and immutable mediated service clauses plus personal restitution promises and voluntary private case compensation in scripts; engine untested; native observation intake added; voluntary political responses added; coercive justice/dynastic stages remain |
 
+**Localization expression defects corrected (RW-010/RW-004):** seven FR/EN
+files,22 erroneous script-scope prefixes in14 strings,three literal-number hash
+markers escaped. No gameplay code changed. Two narrow validator rules and nine
+regression tests; LOCALIZATION_EXPRESSION_FIXES.md. Partial-source Tiger reports
+for datafunctions14→0/markup3→0, not complete semantics or engine validation.
++0,64/80+0/20; final grouped UI checks only, no intermediate launch.
+
 **Native debit defect corrected:** eleven payments used negative add_gold,
 including six calculated prices; all use positive remove_short_term_gold now.
 Payees, amounts and original transaction guards unchanged (exact inverse proof).
