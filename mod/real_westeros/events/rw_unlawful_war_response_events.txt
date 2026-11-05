@@ -2,7 +2,25 @@ namespace = rw_unlawful_war_response
 rw_unlawful_war_response.0001 = {
     type = character_event
     title = rw_uw.royal_title
-    desc = rw_uw.royal_desc
+    desc = {
+        desc = rw_uw.royal_desc
+        triggered_desc = {
+            trigger = { rw_dl_link_view_trigger = yes scope:rw_uw_record.var:rw_dl_link = { var:rw_dl_gate = flag:permission_required } }
+            desc = rw_dl.permission_required
+        }
+        triggered_desc = {
+            trigger = { rw_dl_link_view_trigger = yes scope:rw_uw_record.var:rw_dl_link = { var:rw_dl_gate = flag:native_exception } }
+            desc = rw_dl.native_exception
+        }
+        triggered_desc = {
+            trigger = { rw_dl_link_view_trigger = yes scope:rw_uw_record.var:rw_dl_link = { var:rw_dl_gate = flag:no_ban } }
+            desc = rw_dl.no_ban
+        }
+        triggered_desc = {
+            trigger = { rw_dl_link_view_trigger = yes scope:rw_uw_record.var:rw_dl_link = { var:rw_dl_gate = flag:inconsistent } }
+            desc = rw_dl.inconsistent
+        }
+    }
     theme = diplomacy
     left_portrait = scope:rw_uw_attacker
     trigger = { rw_uw_issuer_turn_trigger = yes }

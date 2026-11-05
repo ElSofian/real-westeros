@@ -10,15 +10,16 @@ G1, W1/W2, W4/W5, l'initiative autonome de guerre AI4 et G3 restent ouverts.
 
 ## Intégration et activation
 
-Les neuf fichiers originaux (triggers, effets, histoires, événements et EN/FR) sont
+Les douze fichiers originaux (triggers, effets, histoires, événements et EN/FR) sont
 maintenant dans `mod/real_westeros`. Leur présence n'ajoute aucun on_action global,
 aucune politique de déclaration automatique et aucun override natif. L'entrée reste
 l'appel gardé du `on_accept` du candidat privé de G1_NATIVE_CHOICE.md. Sans cet
 adaptateur, les déclarations ordinaires ne créent aucun de ces dossiers.
 
-Le générateur privé valide les neuf sources publiques, mais ne les recopie plus :
-sa sortie contient seulement l'override natif généré et son descripteur, dépendant
-explicitement de **Real Westeros**. Installer AGOT, puis Real Westeros, puis cet
+Le générateur privé valide les douze sources publiques, mais ne les recopie plus :
+sa sortie 0.0.3 contient les overrides privés de déclaration et du callback de
+claim_cb, un clone de helper en lecture seule et le descripteur dépendant de
+**Real Westeros**. Voir G1_DECLARATION_LAW_CONTEXT.md pour cette extension W1 à +0. Installer AGOT, puis Real Westeros, puis cet
 adaptateur privé pendant la campagne finale. Il reste mutuellement exclusif avec
 les anciens diagnostics G1 et tout autre override de déclaration. Le ZIP public
 ne contient jamais la définition AGOT générée ; aucun changement des fichiers
@@ -125,10 +126,21 @@ Aucune compatibilité G1/G4/G5, performance ou sauvegarde n'est déclarée valid
 
 ## Migration de l'ancien adaptateur
 
-L'adaptateur privé porte désormais la version **0.0.2**. À la campagne finale,
+L'adaptateur privé porte désormais la version **0.0.3**. À la campagne finale,
 remplacer entièrement son ancien dossier `rw_g1_native_choice` par le nouveau
 dossier généré ; ne pas simplement superposer les fichiers. Les versions précédentes
 contenaient leurs propres bibliothèques, qui pourraient sinon masquer celles du
 mod principal. Mettre à jour Real Westeros avec le même ZIP/commit et comparer les
-neuf empreintes du reçu privé aux sources installées. Le générateur ne supprime ni
+douze empreintes du reçu privé aux sources installées. Le générateur ne supprime ni
 ne remplace automatiquement aucun dossier d'installation.
+
+### Relevé de déclaration — adaptateur 0.0.3
+
+G1_DECLARATION_LAW_CONTEXT.md documente la capture au début de `claim_cb.on_declaration`.
+La version privée 0.0.3 vérifie douze sources originales et produit trois fichiers
+privés (déclaration, vrai CB de revendication préservé, clone natif en lecture seule).
+Le helper partagé n’est pas remplacé ; seul un identifiant RW est fourni au-dessus
+d’un fallback public qui refuse la capture. Ne pas cumuler avec un autre override
+de `claim_cb`. Aucun coût ni effet de guerre rejoué ; W1 reste ouvert tant que
+l’ordre réel des callbacks n’est pas démontré. Remplacer entièrement l’ancien
+adaptateur et mettre à jour Real Westeros avec le même ZIP/commit.

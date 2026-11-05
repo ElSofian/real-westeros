@@ -177,6 +177,25 @@ classification or compatibility proof. Remaining 16 source points: W1/W2/W4/W5,
 J4/J5 and AI4. Frozen rubric/prior checkpoints unchanged; final NATIVEWAR cases
 must demonstrate special target handoff, negotiation and AGOT lifecycle outcomes.
 
+W1 callback-context preparation is now source-written (G1_DECLARATION_LAW_CONTEXT.md).
+Private adapter 0.0.3 adds metadata capture at the START of genuine claim_cb's
+on_declaration, before the original body. It also emits the native permission
+helper cloned under owned name/actor-target aliases only, plus availability marker;
+inverse substitutions recover native bytes. Base fallbacks refuse capture without
+that adapter. Exact claim-war primary roles/peer authority, immutable attacker-owned
+serial/date/phase/ban/gate receipt, one per exact war even after read expiry; 365-day
+reading, monthly cleanup after expiry AND war closure, owner death ends it. W3 links
+only a unique existing retained exact-party/war/issuer/title receipt; no late capture
+or current-law rejudgment. Current issuer-only conditional text is not a crime or
+proof of hook selection. All gameplay/native rights remain unchanged by these data.
+Twelve original runtime inputs remain public; three generated native files stay
+PRIVATE (declaration, claim_cb prefix, owned helper clone). Clean replacement required,
+no competing claim_cb/declaration override. Four exact input pins unchanged.
+Actual relative engine callback order remains UNPROVEN: W1 still OPEN, +0, development
+64/80, engine 0/20, total 64/100. DECLAW-01…09 stay in the final campaign; no new upload
+or intermediate game run requested. Next substantive work: actual native war-AI
+selection or source-supported dynastic coercion, not more credited W3 variants.
+
 RW-008/009 static lifecycle audit is integrated (PR #19); native behavior remains
 unverified. RW-010 immediate and deferred service slices are described in RW010_SERVICES.md
 and RW010_DEFERRED.md. Contextual service-breach mediation is in RW010_CASES.md. Independent case records/read-only history are in RW010_RECORDS.md. Non-contractual allegations, statements and disclosure are in RW010_ALLEGATIONS.md.

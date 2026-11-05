@@ -26,3 +26,7 @@
  rw_uw.native_intervene_effect:0 "Si les conditions le permettent encore, je demanderai des négociations pour arrêter cette guerre. Mon vassal pourra refuser ou demander une contrepartie. Cela ne garantit pas la paix."
  rw_uw.native_blocked_title:0 "L’intervention n’a pas pu être demandée"
  rw_uw.native_blocked_notice:0 "Les conditions d’intervention dans cette guerre précise ne sont plus réunies. Cette demande n’a imposé ni négociation, ni paiement, ni paix."
+ rw_dl.permission_required:0 "Le relevé associé à cette déclaration indique qu’une autorisation était requise. Il ne prouve ni une infraction ni l’usage éventuel d’un hameçon."
+ rw_dl.native_exception:0 "Le relevé associé à cette déclaration indique une exception reconnue à l’interdiction. Il n’identifie pas une infraction."
+ rw_dl.no_ban:0 "Aucune interdiction applicable du suzerain n’a été relevée pour cette déclaration. Les autres restrictions de guerre peuvent encore s’appliquer."
+ rw_dl.inconsistent:0 "Les éléments du relevé sont contradictoires. Ils ne permettent pas de qualifier la déclaration d’illégale."

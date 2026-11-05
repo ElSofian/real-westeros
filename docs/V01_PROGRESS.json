@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "a28c7bd5f1b260902a90aa0148c8f80b8fef04e9",
+  "assessed_commit": "cf7bac383d9e856d64a2ffa2560f6c1164249f24",
   "lots": [
     {
       "id": "W",
@@ -15,7 +15,14 @@
           "points": 2,
           "acceptance": "Qualification de la loi au moment de l’acte et exceptions natives dans le mod livré",
           "status": "open",
-          "evidence": []
+          "evidence": [
+            "docs/G1_DECLARATION_LAW_CONTEXT.md",
+            "docs/G1_DECLARATION_LAW_SOURCE_RECEIPT.json",
+            "mod/real_westeros/common/scripted_effects/rw_declaration_law_effects.txt",
+            "mod/real_westeros/common/scripted_triggers/rw_declaration_law_triggers.txt",
+            "mod/real_westeros/common/story_cycles/rw_declaration_law.txt",
+            "tools/build_g1_native_choice.py"
+          ]
         },
         {
           "id": "W2",
@@ -1076,6 +1083,48 @@
       "score": 64,
       "reference": "a28c7bd5f1b260902a90aa0148c8f80b8fef04e9",
       "note": "W3 source : réponses discrétionnaires intégrées et demande native stop_attacker_vassal_war_interaction, contexte exact non ambigu, revérification différée et reçu préalable sans paix/peine forcée ni coût natif recopié. +2 source, 64/80 ; moteur 0/20, total 64/100. Propagation de cible spéciale et résultats toujours non démontrés ; G1/W1/W2/W4/W5/AI4 et G3 restent ouverts."
+    },
+    {
+      "date": "2026-11-04",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4",
+        "O4",
+        "I3",
+        "M5",
+        "P4",
+        "N4",
+        "N5",
+        "J3",
+        "AI5",
+        "W3"
+      ],
+      "score": 64,
+      "reference": "cf7bac383d9e856d64a2ffa2560f6c1164249f24",
+      "note": "Préparation W1 : relevé immuable du contexte au préfixe claim_cb.on_declaration et helper natif sous alias propres, liaison unique au dossier W3 sans reconstruction tardive. Ordre réel des callbacks et loi à l’instant moteur toujours non démontrés ; W1 reste ouvert. +0, développement 64/80, moteur 0/20, total 64/100."
     }
   ]
 }

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "status": "Source callback placement and read-only native helper references; engine callback order and historical legality NOT VERIFIED",
+  "files": [
+    {
+      "path": "AGOT/common/casus_belli_types/00_claim.txt",
+      "sha256": "deb9a27936f27fbb930de372d146122192612ec7e2479df9ba080382e3faf7b2",
+      "markers": {
+        "on_declaration =": [
+          299
+        ],
+        "on_declared_war = yes": [
+          300
+        ]
+      }
+    },
+    {
+      "path": "AGOT/common/scripted_triggers/00_war_and_peace_triggers.txt",
+      "sha256": "5f1fd8d6bfd46b5b0e43e389bd436ff06329f3072decdeb1b6d18eba0f295fd6",
+      "markers": {
+        "war_declarer_needs_hook_on_liege =": [
+          223
+        ],
+        "vassal_contract_war_override": [
+          232
+        ]
+      }
+    }
+  ]
+}

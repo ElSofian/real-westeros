@@ -167,3 +167,12 @@ insertions prove byte preservation of the native declaration body. Generated nat
 code remains private, base gameplay unchanged. This candidate develops the actual
 native declaration route but does not establish engine acceptance, cancellation,
 costs, AI or lifecycle. W1…W5 / G1 remain open; all game cases stay in final campaign.
+
+## Declaration callback context extension (2026-11-04)
+
+G1_DECLARATION_LAW_CONTEXT.md now records a source-placed claim_cb.on_declaration
+prefix, native permission predicate under owned aliases, immutable exact-war
+receipt and existing W3 reader link. Three generated native files remain private;
+removing the prefix/inverting helper substitutions recovers native bytes. This
+neither proves callback order nor clears W1/G1; no late on_accept reconstruction
+is substituted. All DECLAW cases stay in the final campaign.

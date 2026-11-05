@@ -1,0 +1,121 @@
+# PRIVATE claim_cb.on_declaration prefix only. This records the callback context,
+# not proof of engine ordering, selected hook consumption or an unlawful act.
+rw_dl_capture_effect = {
+    if = {
+        limit = { rw_dl_callback_context_trigger = yes }
+        scope:attacker = { save_scope_as = rw_dl_actor }
+        scope:defender = { save_scope_as = rw_dl_target }
+        scope:war = { save_scope_as = rw_dl_war }
+        clear_saved_scope = rw_dl_issuer
+        clear_saved_scope = rw_dl_authority
+        scope:attacker.liege = {
+            save_scope_as = rw_dl_issuer
+            primary_title = { save_scope_as = rw_dl_authority }
+        }
+        save_scope_value_as = { name = rw_dl_ban value = flag:none }
+        if = {
+            limit = { scope:rw_dl_issuer = { has_realm_law_flag = vassal_all_wars_banned } }
+            save_scope_value_as = { name = rw_dl_ban value = flag:all }
+        }
+        else_if = {
+            limit = { scope:rw_dl_issuer = { has_realm_law_flag = vassal_internal_wars_banned } }
+            save_scope_value_as = { name = rw_dl_ban value = flag:internal }
+        }
+        save_scope_value_as = { name = rw_dl_gate value = flag:no_ban }
+        if = {
+            limit = { rw_dl_native_permission_trigger = yes }
+            save_scope_value_as = { name = rw_dl_gate value = flag:permission_required }
+            if = {
+                limit = { scope:rw_dl_ban = flag:none }
+                save_scope_value_as = { name = rw_dl_gate value = flag:inconsistent }
+            }
+        }
+        else_if = {
+            limit = { NOT = { scope:rw_dl_ban = flag:none } }
+            save_scope_value_as = { name = rw_dl_gate value = flag:native_exception }
+        }
+        scope:rw_dl_actor = {
+            if = {
+                limit = {
+                    exists = scope:rw_dl_issuer
+                    exists = scope:rw_dl_authority
+                    NOT = {
+                        any_owned_story = {
+                            story_type = story_rw_declaration_law
+                            story_owner = scope:rw_dl_actor
+                            var:rw_dl_schema = 1
+                            var:rw_dl_war = scope:rw_dl_war
+                        }
+                    }
+                }
+                clear_saved_scope = rw_dl_record
+                create_story = { type = story_rw_declaration_law save_scope_as = rw_dl_record }
+                if = {
+                    limit = {
+                        exists = scope:rw_dl_record
+                        scope:rw_dl_record = {
+                            story_type = story_rw_declaration_law
+                            story_owner = scope:rw_dl_actor
+                            NOT = { has_variable = rw_dl_serial }
+                        }
+                    }
+                    change_variable = { name = rw_dl_serial_counter add = 1 }
+                    scope:rw_dl_record = {
+                        set_variable = { name = rw_dl_schema value = 1 }
+                        set_variable = { name = rw_dl_serial value = scope:rw_dl_actor.var:rw_dl_serial_counter }
+                        set_variable = { name = rw_dl_phase value = flag:claim_cb_on_declaration_prefix }
+                        set_variable = { name = rw_dl_attacker value = scope:rw_dl_actor }
+                        set_variable = { name = rw_dl_defender value = scope:rw_dl_target }
+                        set_variable = { name = rw_dl_war value = scope:rw_dl_war }
+                        set_variable = { name = rw_dl_issuer value = scope:rw_dl_issuer }
+                        set_variable = { name = rw_dl_authority value = scope:rw_dl_authority }
+                        set_variable = { name = rw_dl_seen_on value = current_date }
+                        set_variable = { name = rw_dl_ban value = scope:rw_dl_ban }
+                        set_variable = { name = rw_dl_gate value = scope:rw_dl_gate }
+                        set_variable = { name = rw_dl_retained value = flag:yes days = 365 }
+                    }
+                }
+            }
+        }
+    }
+}
+# Attach ONLY an already captured unique receipt for the exact parties/war/issuer.
+# No capture fallback if the native CB callback has not run or lacks context.
+rw_dl_link_response_effect = {
+    if = {
+        limit = {
+            this = scope:rw_uw_attacker
+            scope:rw_uw_record = {
+                story_type = story_rw_unlawful_war_response
+                story_owner = scope:rw_uw_attacker
+                var:rw_uw_serial = scope:rw_uw_serial
+                var:rw_uw_war = scope:rw_uw_war
+                var:rw_uw_attacker = scope:rw_uw_attacker
+                var:rw_uw_defender = scope:rw_uw_defender
+                var:rw_uw_issuer = scope:rw_uw_issuer
+                var:rw_uw_authority = scope:rw_uw_authority
+                var:rw_uw_source = flag:native_choice_accept
+                has_variable = rw_uw_live
+                var:rw_uw_state = flag:pending
+                NOT = { has_variable = rw_dl_link }
+            }
+            any_owned_story = { rw_dl_match_response_trigger = yes }
+            NOT = { any_owned_story = { count >= 2 rw_dl_match_response_trigger = yes } }
+        }
+        clear_saved_scope = rw_dl_link_source
+        random_owned_story = {
+            limit = { rw_dl_match_response_trigger = yes }
+            save_scope_as = rw_dl_link_source
+        }
+        if = {
+            limit = {
+                exists = scope:rw_dl_link_source
+                scope:rw_dl_link_source = { rw_dl_match_response_trigger = yes }
+            }
+            scope:rw_uw_record = {
+                set_variable = { name = rw_dl_link value = scope:rw_dl_link_source }
+                set_variable = { name = rw_dl_link_serial value = scope:rw_dl_link_source.var:rw_dl_serial }
+            }
+        }
+    }
+}

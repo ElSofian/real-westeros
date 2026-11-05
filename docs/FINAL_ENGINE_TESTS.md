@@ -1343,3 +1343,16 @@ actual target propagation into the special interface, negotiation/counterpart/re
 and delayed player/AI responses, replay/expiry/save-load and native lifecycle/Mega Wars
 regression. Source receipt precedes the one native call; never infer peace, payment,
 completed negotiation or sanction from that receipt. All runs stay in final campaign.
+
+## Native declaration callback law/gate context — W1 preparation
+
+No cases executed. DECLAW-01…09 in G1_DECLARATION_LAW_CONTEXT.md cover the native
+claim_cb.on_declaration prefix, exact roles/war/authority, raw prohibition plus
+unaltered native helper exceptions under owned aliases, missing/inconsistent states,
+actual callback order versus native/AGOT/interaction processing, immutable capture
+and same-war dedup across expiry, unique retained W3 linkage without late capture,
+reader privacy/no rejudgment/no clock renewal, owner death and lifecycle regression.
+Private adapter 0.0.3 now contains declaration and genuine claim_cb definitions plus
+a read-only helper clone; native code remains private, base fallback refuses capture.
+This does not prove historical legality, selected hook consumption or resolve W1/G1.
+All game observations remain in the final campaign; no extra source upload required.

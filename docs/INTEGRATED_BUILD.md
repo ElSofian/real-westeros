@@ -134,3 +134,13 @@ adapter explicitly dependent on Real Westeros. It never duplicates the runtime
 libraries. Without that optional adapter, ordinary declarations create no new
 response record. The request is not proof of peace/negotiation; target propagation,
 AI, callbacks and all final scenarios remain engine-unverified.
+
+## Current private adapter 0.0.3
+
+G1_DECLARATION_LAW_CONTEXT.md supersedes the earlier minimal adapter's file counts.
+Twelve original runtime inputs are public; three generated native files stay private
+(declaration override, genuine claim_cb prefix and readonly owned helper clone).
+No global native helper or installed file is overwritten. Remove the old adapter
+folder before copying the new generation, use matching Real Westeros source hashes
+and do not combine with another claim_cb/declaration override. Availability is not
+engine compatibility; W1 and historical law/ordering remain unverified.

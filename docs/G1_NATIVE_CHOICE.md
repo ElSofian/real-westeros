@@ -39,11 +39,11 @@ Le dossier doit être nouveau, extérieur au dépôt/ZIP extrait et à l'install
 Le générateur refuse une version déclarée différente de AGOT 0.5.2.1 / support
 1.19.0.6, un hash inattendu, source symbolique ou layout non reconnu. Les quatre
 fichiers AGOT requis sont les interactions de guerre et de vassaux, le helper
-war-and-peace et le CB de revendication. Les neuf sources originales dans
+war-and-peace et le CB de revendication. Les douze sources originales dans
 `mod/real_westeros` sont aussi contrôlées. Aucun besoin d'un nouvel envoi de fichiers.
 
-La sortie contient seulement une définition native adaptée, des descripteurs, un
-reçu et l'avertissement privé. Elle ne recopie plus les bibliothèques originales.
+La sortie contient les définitions privées de déclaration et de claim_cb adaptées,
+le clone du helper en lecture seule, des descripteurs, un reçu et l'avertissement privé. Elle ne recopie plus les bibliothèques originales.
 La suppression des trois fragments (garde, option, appel final) retrouve exactement
 les octets de la définition de déclaration d'origine, y compris UTF-8/CRLF internes.
 Aucun autre bloc du fichier de guerre natif n'est copié dans l'override et le fichier
@@ -76,10 +76,21 @@ constatée ou une simple demande ne démontre ni illégalité, paix ou sanction 
 
 ## Migration de l'ancien adaptateur
 
-L'adaptateur privé porte désormais la version **0.0.2**. À la campagne finale,
+L'adaptateur privé porte désormais la version **0.0.3**. À la campagne finale,
 remplacer entièrement son ancien dossier `rw_g1_native_choice` par le nouveau
 dossier généré ; ne pas simplement superposer les fichiers. Les versions précédentes
 contenaient leurs propres bibliothèques, qui pourraient sinon masquer celles du
 mod principal. Mettre à jour Real Westeros avec le même ZIP/commit et comparer les
-neuf empreintes du reçu privé aux sources installées. Le générateur ne supprime ni
+douze empreintes du reçu privé aux sources installées. Le générateur ne supprime ni
 ne remplace automatiquement aucun dossier d'installation.
+
+### Relevé de déclaration — adaptateur 0.0.3
+
+G1_DECLARATION_LAW_CONTEXT.md documente la capture au début de `claim_cb.on_declaration`.
+La version privée 0.0.3 vérifie douze sources originales et produit trois fichiers
+privés (déclaration, vrai CB de revendication préservé, clone natif en lecture seule).
+Le helper partagé n’est pas remplacé ; seul un identifiant RW est fourni au-dessus
+d’un fallback public qui refuse la capture. Ne pas cumuler avec un autre override
+de `claim_cb`. Aucun coût ni effet de guerre rejoué ; W1 reste ouvert tant que
+l’ordre réel des callbacks n’est pas démontré. Remplacer entièrement l’ancien
+adaptateur et mettre à jour Real Westeros avec le même ZIP/commit.

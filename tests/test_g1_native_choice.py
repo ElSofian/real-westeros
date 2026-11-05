@@ -40,8 +40,8 @@ class NativeChoiceBuilderTests(unittest.TestCase):
         self.agot.mkdir()
         self.out = self.root / 'private'
         (self.agot / 'descriptor.mod').write_text('version="0.5.2.1"\nsupported_version="1.19.0.6"\n')
-        self.inputs = {builder.INTERACTION: FIXTURE.encode(), builder.HELPER: b'synthetic helper',
-                       builder.CLAIM: b'synthetic original CB', builder.VASSAL: b'synthetic native intervention'}
+        self.inputs = {builder.INTERACTION: FIXTURE.encode(), builder.HELPER: b'war_declarer_needs_hook_on_liege = { scope:actor = { synthetic_peer = scope:recipient } }',
+                       builder.CLAIM: b'claim_cb = { target_titles = synthetic on_declaration = { synthetic_native_declaration = yes } on_victory = { synthetic_resolution = yes } }', builder.VASSAL: b'synthetic native intervention'}
         for name, raw in self.inputs.items():
             path = self.agot / name
             path.parent.mkdir(parents=True, exist_ok=True)
@@ -64,7 +64,7 @@ class NativeChoiceBuilderTests(unittest.TestCase):
 
     def test_real_original_templates_and_private_manifest(self):
         receipt = self.build()
-        self.assertEqual(1, len(receipt['outputs']))
+        self.assertEqual(3, len(receipt['outputs']))
         self.assertEqual(len(builder.FILES), len(receipt['runtime_sources']))
         self.assertEqual('Real Westeros', receipt['requires_base_mod'])
         self.assertIn('dependencies={ "Real Westeros" }', (self.out/builder.MOD_ID/'descriptor.mod').read_text())

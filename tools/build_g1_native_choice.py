@@ -12,7 +12,9 @@ except ImportError:
 
 REPO = Path(__file__).resolve().parents[1]
 TEMPLATES = REPO / 'mod/real_westeros'
-FILES = ('common/scripted_effects/rw_unlawful_war_intervention_effects.txt',
+FILES = ('common/scripted_triggers/rw_declaration_law_triggers.txt',
+         'common/scripted_effects/rw_declaration_law_effects.txt',
+         'common/story_cycles/rw_declaration_law.txt', 'common/scripted_effects/rw_unlawful_war_intervention_effects.txt',
          'events/rw_unlawful_war_intervention_events.txt',
          'common/scripted_effects/rw_unlawful_war_response_effects.txt',
          'common/story_cycles/rw_unlawful_war_responses.txt',
@@ -27,6 +29,9 @@ CLAIM = 'common/casus_belli_types/00_claim.txt'
 VASSAL = 'common/character_interactions/00_vassal_interactions.txt'
 MOD_ID = 'rw_g1_native_choice'
 # Original additions only. No copied native interaction/helper/CB in this file.
+LAW_PREFIX = '\n    rw_dl_capture_effect = yes\n'
+CLONE = 'rw_dl_native_permission_trigger'
+NATIVE_PERMISSION = 'war_declarer_needs_hook_on_liege'
 ACCEPT = '\n    scope:actor = { rw_uw_notice_effect = yes }\n'
 GUARD = '\n            rw_uw_selected_defiance_trigger = yes\n'
 OPTION = '''
@@ -100,6 +105,52 @@ def patch_native(raw):
     return native.encode('utf-8'), patched.encode('utf-8')
 
 
+
+def top_definition(raw, name):
+    text = raw.decode('utf-8-sig')
+    if brace_errors(text):
+        raise ValueError('Invalid native source structure')
+    a, opening, end = bounds(text, name)
+    clean = clean_script(text)[0]
+    if clean[:a].count('{') != clean[:a].count('}'):
+        raise ValueError('Native definition must be top-level')
+    return text[a:end]
+
+
+def patch_claim_law(raw):
+    native = top_definition(raw, 'claim_cb')
+    if 'rw_dl_' in native:
+        raise ValueError('Claim already contains declaration-law adapter')
+    _, opening, _ = bounds(native, 'on_declaration')
+    patched = native[:opening+1] + LAW_PREFIX + native[opening+1:]
+    if brace_errors(patched) or patched.replace(LAW_PREFIX, '', 1) != native:
+        raise ValueError('Claim-body preservation failed')
+    return native.encode('utf-8'), patched.encode('utf-8')
+
+
+def clone_permission(raw):
+    native = top_definition(raw, NATIVE_PERMISSION)
+    clean = clean_script(native)[0]
+    if 'rw_dl_' in native or re.search(r'\b(root|prev)\b', clean):
+        raise ValueError('Unsupported native helper context')
+    refs = set(re.findall(r'\bscope:(\w+)', clean))
+    if refs != {'actor', 'recipient'}:
+        raise ValueError('Unexpected native helper aliases')
+    # Replace ONLY actual code tokens; keep every other byte, comment and string.
+    changes = [(m.start(),m.end(),'scope:rw_dl_actor' if m.group(1)=='actor' else 'scope:rw_dl_target')
+               for m in re.finditer(r'\bscope:(actor|recipient)\b',clean)]
+    copied = native
+    for a,b,value in reversed(changes):
+        copied = copied[:a] + value + copied[b:]
+    copied = copied.replace(NATIVE_PERMISSION, CLONE, 1)
+    restored = copied.replace(CLONE,NATIVE_PERMISSION,1).replace('scope:rw_dl_actor','scope:actor').replace('scope:rw_dl_target','scope:recipient')
+    if brace_errors(copied) or restored != native:
+        raise ValueError('Native helper preservation failed')
+    # The base's false availability marker stays fail-closed if load order is wrong.
+    prefix = 'rw_dl_adapter_available_trigger = { always = yes }\n'
+    return native.encode('utf-8'), (prefix+copied).encode('utf-8')
+
+
 def pinned_sources():
     first = json.loads((REPO / 'docs/G1_SOURCE_RECEIPT.json').read_text())['files']
     second = json.loads((REPO / 'docs/G1_COMPLEMENT_RECEIPT.json').read_text())['files']
@@ -162,16 +213,28 @@ def build(agot_root, output):
             raise ValueError('Native input differs from reviewed hash; stop for source review')
         sources[relative] = raw
     original, patched = patch_native(sources[INTERACTION])
+    original_claim, patched_claim = patch_claim_law(sources[CLAIM])
+    original_helper, cloned_helper = clone_permission(sources[HELPER])
     runtime = template_payload()
-    payload = {'common/character_interactions/zz_rw_native_war_choice.txt': b'\xef\xbb\xbf' + patched + b'\n'}
+    payload = {
+        'common/character_interactions/zz_rw_native_war_choice.txt': b'\xef\xbb\xbf' + patched + b'\n',
+        'common/casus_belli_types/zz_rw_native_claim_law.txt': b'\xef\xbb\xbf' + patched_claim + b'\n',
+        'common/scripted_triggers/zz_rw_native_law_permission.txt': b'\xef\xbb\xbf' + cloned_helper + b'\n',
+    }
     metadata = ('name="Real Westeros PRIVATE native war choice EXPERIMENT"\n'
-                'version="0.0.2"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
+                'version="0.0.3"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
                 'dependencies={ "Real Westeros" }\n')
     receipt = {'schema': 1, 'status': 'PRIVATE isolated experimental source; NOT engine-tested',
                'reported_agot': fields,
                'requires_base_mod': 'Real Westeros',
                'runtime_sources': [{'path': p, 'sha256': hashlib.sha256(b).hexdigest()} for p,b in runtime.items()],
                'inputs': [{'path': p, 'sha256': hashlib.sha256(b).hexdigest()} for p,b in sources.items()],
+               'law_capture_phase': 'claim_cb.on_declaration prefix; engine callback order NOT VERIFIED',
+               'native_claim_definition_sha256': hashlib.sha256(original_claim).hexdigest(),
+               'patched_claim_definition_sha256': hashlib.sha256(patched_claim).hexdigest(),
+               'native_helper_definition_sha256': hashlib.sha256(original_helper).hexdigest(),
+               'claim_preservation': 'Removing LAW_PREFIX restores native claim_cb; no native cost or lifecycle replay',
+               'helper_preservation': 'Inverse owned-name/actor/recipient alias substitution restores native helper',
                'native_definition_sha256': hashlib.sha256(original).hexdigest(),
                'patched_definition_sha256': hashlib.sha256(patched).hexdigest(),
                'native_byte_preservation': 'Removing exactly the three original insertions restores the native definition',

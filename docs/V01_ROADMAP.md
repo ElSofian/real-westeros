@@ -1,10 +1,11 @@
 # Suivi de la première version intégrée — v0.1-plan-1
 
-**Développement : 64/80 · Validation en jeu : 0/20 · Total : 64/100 (+2 W3).**
+**Développement : 64/80 · Validation en jeu : 0/20 · Total : 64/100 (+0 sur la préparation W1).**
 W3 livre les réponses discrétionnaires et la demande native d’intervention dans les sources
 ([G1_NATIVE_INTERVENTION.md](G1_NATIVE_INTERVENTION.md)), sans garantir la paix ou G1.
 Restent 16 points source : W1/W2/W4/W5 (10), J4/J5 (4) et AI4 (2).
-W1/W2 restent ouverts (+0), en attente des observations finales G1 avant voie de production.
+Le [relevé de contexte W1](G1_DECLARATION_LAW_CONTEXT.md) est écrit dans les sources ;
+l’ordre réel des callbacks reste à démontrer. W1/W2 restent ouverts (+0), en attente des observations finales G1 avant voie de production.
 Vitesse encore non mesurable : moins de sept jours de recul sur cette grille.
 
 Relevé initial : **1 novembre 2026, 38/100**, évalué sur le code de
@@ -52,7 +53,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 
 | ID | Points | Critère de fin | État / preuve principale |
 |---|---:|---|---|
-| W1 | 2 | Qualification de la loi au moment de l’acte et exceptions natives dans le mod livré | À développer / valider |
+| W1 | 2 | Qualification de la loi au moment de l’acte et exceptions natives dans le mod livré | Préparation source : [G1_DECLARATION_LAW_CONTEXT.md](G1_DECLARATION_LAW_CONTEXT.md) ; ordre moteur non démontré, critère ouvert |
 | W2 | 4 | Déclaration malgré l’interdit avec vrai CB, contexte exact, coûts, annulation et accès joueur/IA | À développer / valider |
 | W3 | 2 | Réaction royale discrétionnaire : intervention, sanction ou abstention selon le contexte | Source seulement : [G1_NATIVE_INTERVENTION.md](G1_NATIVE_INTERVENTION.md), [rw_unlawful_war_intervention_effects.txt](../mod/real_westeros/common/scripted_effects/rw_unlawful_war_intervention_effects.txt) |
 | W4 | 2 | Intégration du nouveau chemin aux cycles guerre/Mega Wars et à leur clôture | À développer / valider |

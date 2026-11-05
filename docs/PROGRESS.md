@@ -587,3 +587,30 @@
   request is credited +2 only: **development 64/80, engine 0/20, total 64/100**.
   Target propagation and engine outcomes remain unverified. W1/W2/W4/W5, J4/J5,
   AI4 remain open (16 source points); frozen rubric/prior history preserved.
+
+- RW-004 / W1 declaration-context preparation (2026-11-04): private adapter 0.0.3
+  inserts one metadata capture before the original genuine claim_cb.on_declaration
+  body and supplies an owned-name/alias clone of the native permission helper.
+  Exact inverse checks preserve all native CB/helper bytes except the original
+  prefix/name/alias additions; original shared helper and all native costs/lifecycle
+  bodies remain untouched. Base fallbacks refuse capture without the private clone.
+  Typed exact-war/party/authority receipt records raw ban/native gate/date/phase,
+  immutable once per original attacker/war, 365-day reading and inert active-war
+  dedup; monthly cleanup and owner-death termination, no inherited guilt.
+  W3 attaches only one retained exact matching receipt, with stale source cleared
+  and revalidated, before notification; issuer-only text never rejudges current law
+  or reconstructs a missing callback. No native world effect, verdict, crime or
+  hook-use inference. Twelve original inputs public, three generated native outputs
+  PRIVATE, four exact input hashes unchanged. Actual-source generation with fixture
+  descriptor PASS; byte inversions include UTF-8/CRLF/comments/strings.
+  Sixteen new adversarial source/builder tests: **936 discovered, 913 local passed,
+  23 PowerShell skipped**; structure, localizations, telemetry/readiness/whitespace
+  PASS. Available CI/committed ZIP required before integration. DECLAW-01…09 remain
+  deferred to final campaign. Relative engine/AGOT/interaction order NOT proved:
+  **W1 still open, +0, development 64/80, engine 0/20, total 64/100**.
+  Next: actual native war initiation AI or source-supported G3 coercion, not another
+  already-credited W3 dialogue variant. No new source upload/intermediate game run.
+
+- W1 preparation assessment: `cf7bac383d9e856d64a2ffa2560f6c1164249f24`; partial evidence recorded while W1
+  remains OPEN. +0 checkpoint dated 2026-11-04; development 64/80, engine 0/20,
+  total 64/100. Frozen rubric, completed criteria and prior history unchanged.

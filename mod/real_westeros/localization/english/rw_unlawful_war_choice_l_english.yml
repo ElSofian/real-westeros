@@ -26,3 +26,7 @@
  rw_uw.native_intervene_effect:0 "If the native conditions still allow it, I will request negotiations to stop this war. My vassal may refuse or ask for a concession. This does not guarantee peace."
  rw_uw.native_blocked_title:0 "The intervention could not be requested"
  rw_uw.native_blocked_notice:0 "The conditions for intervening in this particular war are no longer met. No negotiation, payment or peace has been imposed by this request."
+ rw_dl.permission_required:0 "The record associated with this declaration reports that permission was required. It does not prove an offence or the use of a hook."
+ rw_dl.native_exception:0 "The record associated with this declaration reports a recognized exception to the prohibition. It does not identify an offence."
+ rw_dl.no_ban:0 "No applicable prohibition by the liege was recorded for this declaration. Other restrictions on war may still apply."
+ rw_dl.inconsistent:0 "The recorded information is contradictory. It cannot establish whether the declaration was unlawful."

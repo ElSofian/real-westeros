@@ -68,3 +68,14 @@ No forced peace, copied native penalty or war-initiation AI. W3 qualifies for so
 assessment (+2 after source commit); target propagation and actual outcomes stay
 engine-unverified. G1/W1/W2/W4/W5/AI4 and G3 remain open. G1_NATIVE_INTERVENTION.md
 details final NATIVEWAR-01…09. Do not extend credited dialogue variants for points.
+
+**W1 callback provenance preparation (2026-11-04):** private adapter 0.0.3 prepends
+one metadata-only call to genuine claim_cb.on_declaration and supplies a readonly
+owned-name/alias clone of the native permission helper. Native CB/helper bytes are
+recoverable by inversion; global helper/costs/lifecycle unchanged. Public fail-closed
+marker, exact-war immutable personal receipt, raw ban/native exception states, unique
+retained W3 linkage and current issuer-only view without late reconstruction.
+G1_DECLARATION_LAW_CONTEXT.md / DECLAW-01…09 retain the real callback-order gate.
+**W1 remains open, +0: development 64/80, engine 0/20, total 64/100.** Next source
+work should target actual autonomous native war selection or G3 coercion where
+supported; no historical illegality claim or further credited W3 dialogue variant.
