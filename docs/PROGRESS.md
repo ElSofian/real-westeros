@@ -660,3 +660,6 @@
   WARLIFE-01…08 all deferred. **W4 open, +0; development64/80, engine0/20, total64/100.**
   Next: remaining native war discovery/lifecycle and genuine G3 route enforcement,
   without more already-credited dialogues or requesting an intermediate CK3 run.
+
+- W4 partial source assessment: `66543156f342434d8ee24233e110b50899ef380c`; +0 checkpoint, criterion
+  remains open, frozen rubric and all earlier checkpoints unchanged.

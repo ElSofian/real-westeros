@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "6ca62e7a63973bc9c21a04aa415dbfc333a983a6",
+  "assessed_commit": "66543156f342434d8ee24233e110b50899ef380c",
   "lots": [
     {
       "id": "W",
@@ -59,7 +59,14 @@
           "points": 2,
           "acceptance": "Intégration du nouveau chemin aux cycles guerre/Mega Wars et à leur clôture",
           "status": "open",
-          "evidence": []
+          "evidence": [
+            "docs/G1_WAR_RECEIPT_LIFECYCLE.md",
+            "docs/G1_LIFECYCLE_SOURCE_RECEIPT.json",
+            "mod/real_westeros/common/scripted_effects/rw_war_lifecycle_effects.txt",
+            "mod/real_westeros/common/scripted_triggers/rw_unlawful_war_choice_triggers.txt",
+            "mod/real_westeros/common/story_cycles/rw_unlawful_war_responses.txt",
+            "tools/build_g1_native_choice.py"
+          ]
         },
         {
           "id": "W5",
@@ -1177,6 +1184,48 @@
       "score": 64,
       "reference": "6ca62e7a63973bc9c21a04aa415dbfc333a983a6",
       "note": "Préférence initiale IA via starts_enabled sourcé, politique CK3 déterministe moyens/engagements/guerre/opinion, gardes partagées inchangées. Découverte et envoi par le planificateur de guerre non démontrés : W2/AI4 restent ouverts. +0, développement 64/80, moteur 0/20, total 64/100."
+    },
+    {
+      "date": "2026-11-05",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4",
+        "O4",
+        "I3",
+        "M5",
+        "P4",
+        "N4",
+        "N5",
+        "J3",
+        "AI5",
+        "W3"
+      ],
+      "score": 64,
+      "reference": "66543156f342434d8ee24233e110b50899ef380c",
+      "note": "Préparation W4 : rétention du reçu de guerre indépendante des rôles/CB/autorité, clôture metadata-only des choix dans quatre callbacks claim natifs préservés. Scopes/ordre/Mega Wars non démontrés ; W4 ouvert. +0, développement64/80, moteur0/20, total64/100."
     }
   ]
 }
