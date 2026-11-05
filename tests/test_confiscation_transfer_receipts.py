@@ -29,7 +29,7 @@ def errors(t,e,event,wrapper,story):
          'var:rw_hcr_title = scope:title','var:rw_hcr_former = scope:previous_holder',
          'var:rw_hcr_house = scope:previous_holder.house','holder = root'), 'wrong request or owner')
     context=block(t,'rw_hcr_gain_context_trigger')
-    need(context,('rw_hc_adapter_available_trigger = yes','scope:title = { holder = root tier >= tier_county }',
+    need(context,('rw_hc_adapter_available_trigger = yes','this = root','scope:title = { holder = root tier >= tier_county }',
          'scope:previous_holder = { is_alive = yes exists = house }',
          'NOT = { any_owned_story = { count >= 2 rw_hcr_matches_gain_trigger = yes } }'), 'actual/unique gain')
     for token in ('scope:actor','scope:recipient','scope:landed_title','revoke_title_interaction'):

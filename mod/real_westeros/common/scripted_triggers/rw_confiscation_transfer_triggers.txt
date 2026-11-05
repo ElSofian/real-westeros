@@ -31,6 +31,7 @@ rw_hcr_matches_gain_trigger = {
 }
 rw_hcr_gain_context_trigger = {
     rw_hc_adapter_available_trigger = yes
+    this = root
     is_alive = yes is_adult = yes
     exists = scope:title
     exists = scope:previous_holder

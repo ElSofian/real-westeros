@@ -731,7 +731,7 @@
   adds metadata-only native on_send snapshot and decline closure, leaving on_accept
   unchanged. Exact chosen title still held by recipient, one active house order,
   immutable issuer/former holder/house/authority/date and30-day personal request;
-  decline closes before native resistance. Third named on_title_gain child preserves
+  decline closes before its native scripted body. Third named on_title_gain child preserves
   both older readers and uses root/current holder/title/previous holder only, not
   unproved native actor/recipient/marker propagation. Unique live exact request,
   living former holder/same house and authority; consume before canonical fact/UI.
