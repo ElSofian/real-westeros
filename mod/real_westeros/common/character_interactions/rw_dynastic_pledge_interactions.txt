@@ -9,7 +9,7 @@ rw_offer_dynastic_endowment_interaction = {
     }
     is_valid_showing_failures_only = { rw_dp_can_offer_trigger = yes }
     on_accept = { rw_dp_begin_effect = yes }
-    ai_potential = { scope:actor = { rw_dp_party_trigger = yes NOT = { has_character_flag = rw_dp_offer_cooldown } } }
+    ai_potential = { rw_dp_party_trigger = yes NOT = { has_character_flag = rw_dp_offer_cooldown } }
     ai_targets = { ai_recipients = liege }
     ai_frequency = 12
     ai_will_do = {

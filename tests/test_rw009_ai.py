@@ -36,7 +36,7 @@ class AiContractTests(unittest.TestCase):
         self.assertTrue(ai_contract_errors(self.interaction.replace('ai_recipients = liege', 'ai_recipients = all'), self.triggers))
 
     def test_ai_eligibility_bypass_is_rejected(self):
-        changed = self.interaction.replace('ai_potential = { scope:actor = { rw_can_petition_trigger = yes } }', 'ai_potential = { always = yes }')
+        changed = self.interaction.replace('ai_potential = { rw_can_petition_trigger = yes }', 'ai_potential = { always = yes }')
         self.assertTrue(ai_contract_errors(changed, self.triggers))
 
     def test_missing_cooldown_is_rejected(self):

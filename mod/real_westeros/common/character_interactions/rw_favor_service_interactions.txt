@@ -10,7 +10,7 @@ rw_offer_favor_endorsement_interaction = {
     is_valid_showing_failures_only = { rw_fv_can_offer_trigger = yes }
     # Native auto-accept opens an explicit offer; it grants no favor or prestige.
     on_accept = { rw_fv_begin_effect = { MODE = immediate } }
-    ai_potential = { scope:actor = { rw_service_provider_available_trigger = yes is_imprisoned = no } }
+    ai_potential = { rw_service_provider_available_trigger = yes is_imprisoned = no }
     ai_targets = { ai_recipients = liege }
     ai_frequency = 12
     ai_will_do = { base = 3 modifier = { factor = 2 has_trait = ambitious } }
@@ -41,7 +41,7 @@ rw_offer_deferred_favor_endorsement_interaction = {
     is_valid_showing_failures_only = { rw_fv_can_offer_trigger = yes }
     # Native auto-accept opens an explicit offer; it grants no favor or prestige.
     on_accept = { rw_fv_begin_effect = { MODE = deferred } }
-    ai_potential = { scope:actor = { rw_service_provider_available_trigger = yes is_imprisoned = no } }
+    ai_potential = { rw_service_provider_available_trigger = yes is_imprisoned = no }
     ai_targets = { ai_recipients = liege }
     ai_frequency = 12
     ai_will_do = { base = 3 modifier = { factor = 2 has_trait = ambitious } }

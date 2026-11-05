@@ -1429,3 +1429,13 @@ both languages/logs for unresolved functions/scopes. Royal responses require the
 matching private war candidate. Source parser diagnostics are not proof that
 these saved scopes exist when the engine renders each text. Group readings with
 existing sessions; no intermediate launch or relaunch per string.
+
+## AI initial availability scope — existing nine initiative scenarios (unexecuted)
+
+AI_AVAILABILITY_SCOPE_FIXES.md removes the unbound named actor wrapper from the
+initial filter for reconciliation, immediate/deferred services, immediate/deferred
+favor services, allegations, restraint, dynastic endowments and rumor relay.
+Observe autonomous AI↔AI discovery, applicable capacity/pending/cooldown exclusions,
+direct-liege frequency12 and resolution; verify the player's unchanged execution
+and no new spam. Source scope diagnostics gone is not scheduler or performance
+proof. Group with the existing final cases, no intermediate launch per interaction.

@@ -9,7 +9,7 @@ rw_raise_affront_allegation_interaction = {
     }
     is_valid_showing_failures_only = { rw_allegation_can_start_trigger = yes }
     on_accept = { rw_allegation_begin_effect = yes }
-    ai_potential = { scope:actor = { NOT = { has_character_flag = rw_allegation_cooldown } } }
+    ai_potential = { NOT = { has_character_flag = rw_allegation_cooldown } }
     ai_targets = { ai_recipients = liege }
     ai_frequency = 12
     ai_will_do = {

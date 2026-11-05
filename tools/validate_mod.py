@@ -112,6 +112,18 @@ def gold_errors(text):
             for pos, effect in sorted(issues)]
 
 
+def ai_availability_errors(text):
+    """Reject the known unbound outer actor/recipient wrapper in an AI filter.
+
+    ai_potential is rooted on the candidate character, before recipient selection.
+    This narrow shape check does not resolve general saved-scope dependencies.
+    """
+    clean, _ = clean_script(text)
+    pattern = r"\bai_potential\s*=\s*\{\s*scope:(actor|recipient)\s*="
+    return [f"line {clean.count(chr(10), 0, m.start()) + 1}: ai_potential starts with unbound scope:{m.group(1)}; evaluate the current character directly"
+            for m in re.finditer(pattern, clean)]
+
+
 def localization_value_errors(value):
     """Catch two known text mistakes; not a full Jomini localization parser."""
     errors = []
@@ -194,6 +206,8 @@ def validate(root):
             errors.extend(f'{relative}: {problem}' for problem in brace_errors(text))
             if path.suffix == '.txt':
                 errors.extend(f'{relative}: {problem}' for problem in gold_errors(text))
+                if 'character_interactions' in relative.parts:
+                    errors.extend(f'{relative}: {problem}' for problem in ai_availability_errors(text))
         if relative in (OUTER, MOD_DIR / 'descriptor.mod'):
             descriptors[relative] = descriptor(text, relative, errors)
         if path.suffix == '.txt':

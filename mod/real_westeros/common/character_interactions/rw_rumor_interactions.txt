@@ -16,7 +16,7 @@ rw_relay_rumor_interaction = {
         scope:recipient = { rw_ru_party_trigger = yes }
     }
     on_accept = { rw_ru_prepare_send_effect = yes }
-    ai_potential = { scope:actor = { rw_ru_party_trigger = yes NOT = { has_character_flag = rw_ru_relay_cooldown } } }
+    ai_potential = { rw_ru_party_trigger = yes NOT = { has_character_flag = rw_ru_relay_cooldown } }
     ai_targets = { ai_recipients = liege }
     ai_frequency = 12
     ai_will_do = { base = 2 modifier = { factor = 2 scope:actor = { has_trait = gregarious } } }

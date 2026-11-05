@@ -1,5 +1,21 @@
 # Codex implementation handoff
 
+## Current continuation — AI availability scope correction
+
+AI_AVAILABILITY_SCOPE_FIXES.md fixes nine initial ai_potential filters across seven
+interaction files: use current candidate character directly, not unbound named
+actor. Same helper/cooldown/capacity conditions; targets/frequency12/weights/UI/
+execution intact. Helpers checked for actor/recipient dependencies. No recipient
+selection or native action added. Narrow validator catches the former outer
+actor/recipient wrapper; no general scope inference/suppression. Seven added
+regression tests and original reconciliation bypass mutation updated to new form.
+Same pinned Tiger v1.19.0, PRIVATE partial fixtures: nine AI scope warnings→zero,
+one unrelated scheme intake scope warning remains. No planner/gameplay/performance
+or installed-engine proof. +0,64/80 +0/20; AI4 war initiation remains unresolved.
+Final AI↔AI eligibility/frequency/resolution/regression cases grouped; no intermediate
+CK3 launch (7–10min/start). Next inspect optional versus mandatory participant in
+scheme intake warning, fix only established defects; preserve G1/J4/J5 limits.
+
 ## Current continuation — localization expression defects
 
 LOCALIZATION_EXPRESSION_FIXES.md fixes22 script-scope prefixes in14 FR/EN strings
