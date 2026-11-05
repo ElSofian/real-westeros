@@ -852,3 +852,6 @@
   resolution cases grouped, no intermediate launch (7–10min/start). Next inspect
   optional/mandatory participant context in the remaining intake warning, fix only
   confirmed defects, preserve J4/J5/G1 dependencies rather than suppressing reports.
+
+- AI availability correction source assessment: `9d6b0811e8aeacb77441413ebd40cf0d040a66fd`; +0 checkpoint.
+  Frozen rubric and prior history intact; no native scheduling or engine claim.
