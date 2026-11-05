@@ -1,0 +1,51 @@
+rw_hc_issue_interaction = {
+    category = interaction_category_hostile
+    desc = rw_hc_issue_interaction_desc
+    use_diplomatic_range = no
+    auto_accept = yes
+    is_shown = {
+        rw_hc_adapter_available_trigger = yes
+        scope:actor = { rw_hc_ruler_trigger = yes }
+        scope:recipient = { is_alive = yes is_landed = yes exists = house liege = scope:actor }
+    }
+    is_valid = { rw_hc_can_issue_trigger = yes }
+    on_accept = { rw_hc_issue_effect = yes }
+    ai_potential = { rw_hc_ruler_trigger = yes is_at_war = no gold >= 150 }
+    ai_targets = { ai_recipients = vassals }
+    ai_frequency = 6
+    ai_will_do = {
+        base = 0
+        modifier = {
+            add = 20
+            rw_hc_can_issue_trigger = yes
+            scope:actor = {
+                has_revoke_title_reason = scope:recipient
+                opinion = { target = scope:recipient value <= -25 }
+            }
+        }
+    }
+}
+rw_hc_withdraw_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_hc_withdraw_interaction_desc
+    use_diplomatic_range = no
+    auto_accept = yes
+    is_shown = { rw_hc_has_order_trigger = yes }
+    is_valid = { rw_hc_has_order_trigger = yes }
+    on_accept = { rw_hc_withdraw_effect = yes }
+    ai_targets = { ai_recipients = vassals }
+    ai_frequency = 1
+    ai_will_do = {
+        base = 0
+        modifier = {
+            add = 50
+            scope:actor = {
+                OR = {
+                    is_at_war = yes
+                    gold < 50
+                    opinion = { target = scope:recipient value >= 25 }
+                }
+            }
+        }
+    }
+}

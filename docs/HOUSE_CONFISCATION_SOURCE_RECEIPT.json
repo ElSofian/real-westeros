@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "status": "Private source inspection only; native AI title selection/scoring and outcomes NOT engine-tested",
+  "reported_agot": "0.5.2.1",
+  "files": [
+    {
+      "path": "AGOT/common/character_interactions/00_revoke_title_interaction.txt",
+      "sha256": "56253a3875e6b7097a690d60002dda3bbadb1062fa508873963af2f55af2d456",
+      "markers": {
+        "ai_will_do": [
+          1033
+        ],
+        "active_landed_title_priority": [
+          1399
+        ],
+        "can_be_picked_title": [
+          215
+        ],
+        "on_accept": [
+          408
+        ],
+        "on_decline": [
+          570
+        ]
+      },
+      "supports": "Native AI score already references selected landed_title. Does not establish external run_interaction title binding or actual runtime outcome."
+    }
+  ]
+}

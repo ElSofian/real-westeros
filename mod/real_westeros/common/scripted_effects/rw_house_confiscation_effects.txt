@@ -1,0 +1,45 @@
+# Records an explicit intended policy; NO title, crime, hook or native action.
+rw_hc_issue_effect = {
+    if = {
+        limit = { rw_hc_can_issue_trigger = yes }
+        clear_saved_scope = rw_hc_new
+        scope:actor = {
+            create_story = { type = story_rw_house_confiscation save_scope_as = rw_hc_new }
+        }
+        if = {
+            limit = {
+                exists = scope:rw_hc_new
+                scope:rw_hc_new = {
+                    story_type = story_rw_house_confiscation
+                    story_owner = scope:actor
+                    NOT = { has_variable = rw_hc_schema }
+                }
+            }
+            scope:rw_hc_new = {
+                set_variable = { name = rw_hc_schema value = 1 }
+                set_variable = { name = rw_hc_issuer value = scope:actor }
+                set_variable = { name = rw_hc_authority value = scope:actor.primary_title }
+                set_variable = { name = rw_hc_house value = scope:recipient.house }
+                set_variable = { name = rw_hc_issued_on value = current_date }
+                set_variable = { name = rw_hc_live value = flag:yes days = 180 }
+            }
+        }
+    }
+}
+# Free withdrawal of own intention only; no refund, restitution or native rollback.
+rw_hc_withdraw_effect = {
+    if = {
+        limit = { rw_hc_has_order_trigger = yes }
+        scope:actor = {
+            every_owned_story = {
+                limit = {
+                    rw_hc_live_record_trigger = yes
+                    story_owner = scope:actor
+                    var:rw_hc_house = scope:recipient.house
+                }
+                remove_variable = rw_hc_live
+                end_story = yes
+            }
+        }
+    }
+}

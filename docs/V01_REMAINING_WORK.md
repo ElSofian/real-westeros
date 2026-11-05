@@ -38,6 +38,12 @@ Preuves et limites : [contexte W1](G1_DECLARATION_LAW_CONTEXT.md),
 
 ## Décision J4 après examen ciblé — 5 novembre 2026
 
+**Mise à jour :** J4 reprend par une voie distincte documentée dans
+[RW010_NATIVE_HOUSE_CONFISCATION.md](RW010_NATIVE_HOUSE_CONFISCATION.md) : priorité
+conditionnelle dans l’IA native, qui dispose déjà du titre choisi. L’appel externe
+reste non résolu ; il n’est pas utilisé par ce candidat. J4 reste ouvert (+0), sans
+couverture universelle ou confiscation moteur attestée. La décision historique suit.
+
 **J4 mis en attente, pas livré.** Trois voies natives ont été confrontées au besoin :
 
 - L’extinction de famille noble (`celestial_extinguish_noble_family_interaction`)

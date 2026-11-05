@@ -1,5 +1,21 @@
 # Codex implementation handoff
 
+## Current continuation — native confiscation AI route
+
+J4 resumed on actual target-source evidence: native revoke AI already evaluates
+scope:landed_title (active line1399). RW010_NATIVE_HOUSE_CONFISCATION.md documents
+original 180-day issuer/authority/exact-house intent plus PRIVATE native AI scoring
+adapter. One original modifier before existing native modifiers; all native title
+selection/rights/costs/send/refusal/acceptance remain. No external target dispatch,
+forced transfer, fabricated crime, inherited conviction or native asset distributed.
+Player uses normal native title selection; AI uses native planner, unproven until
+final HCONF-01…08. No intermediate CK3 run; launches take7–10min, group test sessions.
+J4 still open (+0), development64/80, engine0/20, total64/100; no fifty-year ban,
+acquisition veto, stripping nobility or J5 restoration. Earlier parked external-
+API approach remains unestablished, but no longer blocks this separate native-AI
+candidate. Next assess native integration/route coverage without adding unrelated
+political-marker variants or claiming actual confiscation from a score.
+
 ## Current continuation — remaining-work review, 2026-11-05
 
 Read [V01_REMAINING_WORK.md](V01_REMAINING_WORK.md) before choosing another slice.

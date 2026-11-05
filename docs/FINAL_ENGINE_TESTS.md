@@ -1374,3 +1374,14 @@ Observe real callback scopes/order, queued request cancellation, original result
 preservation, changed CB/roles/authority and Mega Wars break-up/reunion versus the
 AGOT control. A callback label is not a completed outcome. W4 remains open; all
 engine runs stay in the final campaign.
+
+## Native house-confiscation policy — HCONF-01…08 (all unexecuted)
+
+RW010_NATIVE_HOUSE_CONFISCATION.md covers native AI title selection instead of an
+external run_interaction title argument: exact own house/issuer/authority and180-day
+intention, original native rights/costs/resistance, expiration/withdrawal without
+restoration, four origins of held titles without acquisition veto, player/AI and
+performance/Mega Wars. First observe scheduling/score/selection/send/outcome as
+separate stages. No coercive outcome inferred from a score or issued policy.
+Group within the existing final playset sessions; owner startup takes7–10minutes,
+no intermediate run or per-case restart requested. J4/G3 remain unverified.

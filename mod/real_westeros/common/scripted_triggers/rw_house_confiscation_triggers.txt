@@ -1,0 +1,75 @@
+# False without the separately generated PRIVATE native AI adapter.
+rw_hc_adapter_available_trigger = { always = no }
+# Actor CHARACTER scope. This is an intended policy, never a new legal reason.
+rw_hc_ruler_trigger = {
+    is_alive = yes is_adult = yes is_landed = yes is_imprisoned = no
+    government_has_flag = government_is_feudal
+    exists = primary_title
+    exists = house
+    highest_held_title_tier >= tier_kingdom
+    has_realm_law_flag = title_revocation_allowed
+}
+# STORY scope; personal issuer/title/house identity and original fixed window.
+rw_hc_live_record_trigger = {
+    story_type = story_rw_house_confiscation
+    var:rw_hc_schema = 1
+    has_variable = rw_hc_live
+    exists = var:rw_hc_house
+    exists = var:rw_hc_issuer
+    exists = var:rw_hc_authority
+    story_owner = var:rw_hc_issuer
+    save_temporary_scope_as = rw_hc_check
+    var:rw_hc_issuer = { rw_hc_ruler_trigger = yes }
+    var:rw_hc_authority = { holder = scope:rw_hc_check.var:rw_hc_issuer }
+}
+# Native interaction context: actor / recipient. Never use a third party's dossier.
+rw_hc_has_order_trigger = {
+    exists = scope:actor
+    exists = scope:recipient
+    exists = scope:recipient.house
+    scope:actor = {
+        any_owned_story = {
+            rw_hc_live_record_trigger = yes
+            story_owner = scope:actor
+            var:rw_hc_house = scope:recipient.house
+        }
+    }
+}
+rw_hc_can_issue_trigger = {
+    rw_hc_adapter_available_trigger = yes
+    exists = scope:actor
+    exists = scope:recipient
+    NOT = { scope:actor = scope:recipient }
+    scope:actor = { rw_hc_ruler_trigger = yes }
+    scope:recipient = {
+        is_alive = yes is_adult = yes is_landed = yes
+        government_has_flag = government_is_feudal
+        liege = scope:actor
+        exists = house
+        NOT = { house = scope:actor.house }
+    }
+    NOT = { rw_hc_has_order_trigger = yes }
+}
+# Native AI scoring ONLY. Native eligibility, cost, resistance and execution stay
+# in the original interaction; nothing calls run_interaction or selects a title.
+rw_hc_native_candidate_trigger = {
+    rw_hc_adapter_available_trigger = yes
+    exists = scope:landed_title
+    exists = scope:actor
+    exists = scope:recipient
+    scope:actor = { rw_hc_ruler_trigger = yes }
+    scope:recipient = {
+        is_alive = yes is_landed = yes
+        government_has_flag = government_is_feudal
+        liege = scope:actor
+        exists = house
+        NOT = { house = scope:actor.house }
+    }
+    scope:landed_title = {
+        holder = scope:recipient
+        tier >= tier_county
+        is_landless_type_title = no
+        is_noble_family_title = no
+    }
+    rw_hc_has_order_trigger = yes
+}
