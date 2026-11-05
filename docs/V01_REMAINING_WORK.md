@@ -72,6 +72,16 @@ est l’investigation de faisabilité G1/G3 au début de la **campagne finale d�
 avec corrections/retests selon résultats. Aucun test intermédiaire demandé ici.
 Le code de jeu et le score restent inchangés :64/80 +0/20, total64/100.
 
+## Candidat de restitution ajouté — 2026-11-05
+
+[RW010_NATIVE_RESTITUTION.md](RW010_NATIVE_RESTITUTION.md) fournit désormais un
+appel réel de transfert ducal volontaire via type=granted, avec choix explicite
+joueur/IA, gardes natives privées et contrôle du détenteur après résolution.
+Ce chemin étroit débloque le code de retour d'un titre, pas la couverture de J4
+ni l'ensemble de J5 après sanction coercitive effective. Pas de déplacement des
+terres/vassaux d'autrui ou d'interdiction future de posséder. Timing/équivalence
+native et chaîne complète à observer lors de la campagne finale ; score inchangé.
+
 ## Ordre de continuation
 
 1. **Cible substantielle J4, actuellement en attente selon la décision ci-dessus**, puis J5 lorsqu’une sanction

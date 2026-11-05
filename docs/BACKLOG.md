@@ -17,6 +17,15 @@ not an exhaustive completion checklist. PR/test counts are not global progress m
 | P1 | RW-009 | Add AI actor selection and negative-path tests for one end-to-end incident | Implemented experimentally — bounded liege targeting; engine untested |
 | P2 | RW-010 | Expand political memory, justice, diplomacy and other systems incrementally | In progress — services, mediation, case history, contested allegations and voluntary repair responses and mutual promise cancellation and immutable mediated service clauses plus personal restitution promises and voluntary private case compensation in scripts; engine untested; native observation intake added; voluntary political responses added; coercive justice/dynastic stages remain |
 
+**Actual voluntary restitution candidate:** RW010_NATIVE_RESTITUTION.md adds an
+explicit shared player/AI pledge choice, next-day exact-version one-attempt dispatch
+and native type=granted transfer of a ducal dignity to an existing count vassal.
+No third-party lands/vassals moved. Four native grant predicates rechecked; native
+consequences only after actual holder verification. PRIVATE adapter clones six
+unchanged bodies; public fallbacks refuse. Source-only, RESTORE-01…08 grouped with
+final HCONF/G3 campaign. J5 remains open: narrow voluntary return does not establish
+restoration after an effective coercive sanction. +0,64/80+0/20.
+
 **Request-to-transfer integration:** private adapter0.0.2 captures exact native
 on_send requests and closes them at refusal. A third additive title-gain child
 matches current/former holder/title without inherited callback aliases, consumes

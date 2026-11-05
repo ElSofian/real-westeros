@@ -1,0 +1,96 @@
+# No private native source is present in the public mod.
+rw_nd_native_consequences_effect = { }
+rw_nd_native_notification_effect = { }
+
+rw_nd_queue_effect = {
+    if = {
+        limit = { rw_nd_can_deliver_trigger = yes }
+        scope:rw_rs_record = {
+            set_variable = { name = rw_nd_attempt value = scope:rw_rp_revision }
+            set_variable = { name = rw_nd_result value = flag:pending }
+            set_variable = { name = rw_nd_ticket value = flag:yes days = 2 }
+        }
+        # A new event frame isolates native target_titles and native scratch lists.
+        trigger_event = { id = rw_native_restitution.0001 days = 1 }
+    }
+}
+rw_nd_execute_effect = {
+    if = {
+        limit = { rw_rp_view_trigger = yes this = scope:rw_rs_holder
+            scope:rw_rs_record = {
+                var:rw_nd_attempt = scope:rw_rp_revision
+                var:rw_nd_result = flag:pending
+                has_variable = rw_nd_ticket
+            }
+        }
+        if = {
+            limit = { rw_nd_queued_trigger = yes }
+            clear_local_variable_list = target_titles
+            clear_local_variable_list = titles_to_grant
+            # Native callbacks bind these conditionally; never inherit stale aliases.
+            clear_saved_scope = recipient_is_independent
+            clear_saved_scope = this_title
+            clear_saved_scope = claim_title
+            clear_saved_scope = claim_vassal
+            clear_saved_scope = lowborn_scope
+            clear_saved_scope = claimant_scope
+            clear_saved_scope = dragon
+            clear_saved_scope = granted_duchy
+            clear_saved_scope = loc_title
+            clear_saved_scope = county
+            save_scope_as = actor
+            scope:rw_rs_requester = { save_scope_as = recipient }
+            scope:rw_rs_title = {
+                save_scope_as = target
+                save_scope_as = target_title
+                save_scope_as = landed_title
+                # Native house-relation macro takes a title under this alias.
+                save_scope_as = dummy_gender
+                add_to_temporary_list = target_titles
+            }
+            # Includes the unchanged native show/valid/picker/send predicates.
+            if = {
+                limit = { rw_nd_native_eligible_trigger = yes }
+                # Consume BEFORE the world effect: no replay, even on ambiguous failure.
+                scope:rw_rs_record = {
+                    remove_variable = rw_nd_ticket
+                    set_variable = { name = rw_nd_result value = flag:failed }
+                }
+                create_title_and_vassal_change = {
+                    type = granted
+                    save_scope_as = rw_nd_change
+                }
+                scope:rw_rs_title = {
+                    change_title_holder = {
+                        holder = scope:rw_rs_requester
+                        change = scope:rw_nd_change
+                        take_baronies = no
+                    }
+                }
+                resolve_title_and_vassal_change = scope:rw_nd_change
+                if = {
+                    limit = { scope:rw_rs_title = { holder = scope:rw_rs_requester } }
+                    scope:rw_rs_record = {
+                        set_variable = { name = rw_nd_result value = flag:transferred }
+                        set_variable = { name = rw_nd_transferred_on value = current_date }
+                    }
+                    # Exactly once, after actual holder verification; no second transfer.
+                    rw_nd_native_consequences_effect = yes
+                    rw_nd_native_notification_effect = yes
+                }
+            }
+            else = {
+                scope:rw_rs_record = {
+                    remove_variable = rw_nd_ticket
+                    set_variable = { name = rw_nd_result value = flag:blocked }
+                }
+            }
+        }
+        else = {
+            scope:rw_rs_record = {
+                remove_variable = rw_nd_ticket
+                set_variable = { name = rw_nd_result value = flag:blocked }
+            }
+        }
+    }
+}

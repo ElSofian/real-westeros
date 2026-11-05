@@ -757,3 +757,24 @@
 
 - Request/transfer partial source assessment: `c1ab7749439bea78650d07f02ac40787ec145716`; +0 checkpoint.
   J4/J5 open; frozen rubric and earlier checkpoints unchanged.
+
+- RW-010 / actual voluntary ducal restitution (2026-11-05): separate explicit
+  pledge choice shared by player/AI; exact personal request/revision, single
+  consumed attempt, next-day isolated dispatch, current owner/capacity/peace
+  rechecked. Independent feudal king+ to own existing count vassal, ducal dignity
+  only; no county/barony/vassal transfer. Native type=granted create/change/resolve
+  API; verify actual title holder before recording transfer or running native
+  consequences. No scripted crime/claim/hook or automatic promise fulfilment.
+  Optional PRIVATE generator pins received grant input/version, clones four native
+  predicates and two callbacks under RW keys with all six bodies byte-identical;
+  public fallbacks false, no native interaction override. Isolated one-title list,
+  native scratch cleanup, explicit TITLE alias; no claim of hardcoded engine grant
+  equivalence or successful behavior. RESTORE-01…08 grouped in final campaign with
+  HCONF/HCRECEIPT/G3; no intermediate launch. Fifteen added adversarial tests;
+  994 discovered,971 local passed,23 PowerShell skips. Structural checks,
+  telemetry noninterference, readiness report and whitespace PASS. Exact-head CI,
+  committed artifact and standalone private generation checks required before merge.
+  Actual received-byte build with reported-version descriptor fixture PASS, not an
+  installed game. J5 OPEN,+0: voluntary narrow restitution is not the complete
+  coercive-sanction/restoration chain. Development64/80,engine0/20,total64/100.
+  Next: substantive coercive-route coverage/integrated chain, no extra journal.
