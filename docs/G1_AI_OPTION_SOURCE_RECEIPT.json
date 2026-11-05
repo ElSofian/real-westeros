@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "status": "Private target-source syntax inspection only; NOT engine-tested; no autonomous war-planner result",
+  "reported_agot": "0.5.2.1",
+  "files": [
+    {
+      "path": "AGOT/common/character_interactions/00_diarch_interactions.txt",
+      "sha256": "266ec3b35af8f94ce6f5100367df87d1db5de1567daa2c3ef1aabd4c1ace234d",
+      "markers": {
+        "send_option.starts_enabled": [
+          2505,
+          3323
+        ]
+      },
+      "supports": "Initial send-option selection syntax only, not declare-war AI discovery or order of evaluation"
+    }
+  ]
+}

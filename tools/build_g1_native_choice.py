@@ -47,6 +47,7 @@ OPTION = '''
                 NOT = { always = scope:hook }
             }
         }
+        starts_enabled = { rw_uw_ai_default_defiance_trigger = yes }
         can_invalidate_interaction = yes
     }
 '''
@@ -222,7 +223,7 @@ def build(agot_root, output):
         'common/scripted_triggers/zz_rw_native_law_permission.txt': b'\xef\xbb\xbf' + cloned_helper + b'\n',
     }
     metadata = ('name="Real Westeros PRIVATE native war choice EXPERIMENT"\n'
-                'version="0.0.3"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
+                'version="0.0.4"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
                 'dependencies={ "Real Westeros" }\n')
     receipt = {'schema': 1, 'status': 'PRIVATE isolated experimental source; NOT engine-tested',
                'reported_agot': fields,
@@ -239,7 +240,8 @@ def build(agot_root, output):
                'patched_definition_sha256': hashlib.sha256(patched).hexdigest(),
                'native_byte_preservation': 'Removing exactly the three original insertions restores the native definition',
                'outputs': [{'path': p, 'sha256': hashlib.sha256(b).hexdigest()} for p,b in payload.items()],
-               'limits': ['No historical unlawful-war verdict, forced peace or war-initiation AI policy is implemented.',
+               'ai_option_initialization': 'Contextual starts_enabled only; native AI candidate discovery and dispatch NOT VERIFIED',
+               'limits': ['No historical unlawful-war verdict, forced peace or demonstrated autonomous war initiation.',
                           'No cost, cancel, callback-order, override-loading or Mega War engine result.']}
     # All validation precedes exclusive directory creation; never touch installation.
     out.mkdir(parents=True, exist_ok=False)

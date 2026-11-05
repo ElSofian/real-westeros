@@ -25,8 +25,9 @@ originale est limitée à une guerre de revendication exacte et univoque.
 En fin de `on_accept`, un appel original gardé peut créer ce dossier de réaction.
 Il constate le défi choisi et le contexte au callback, **pas la loi à l'instant
 moteur de déclaration**. Un callback sans guerre admissible ne crée rien ; aucune
-infraction native ou culpabilité héritée n'est inventée. La sélection autonome de
-ce send_option par l'IA native n'est ni fournie ni démontrée. Les négociations
+infraction native ou culpabilité héritée n'est inventée. Une préférence initiale IA est désormais fournie via `starts_enabled`
+(G1_AI_OPTION_POLICY.md) ; la découverte et l'envoi autonomes par l'IA native
+ne sont toujours pas démontrés. Les négociations
 royales IA ne résolvent pas cette limite d'initiation de guerre.
 
 ## Génération et installation privées, pour la campagne finale
@@ -76,7 +77,7 @@ constatée ou une simple demande ne démontre ni illégalité, paix ou sanction 
 
 ## Migration de l'ancien adaptateur
 
-L'adaptateur privé porte désormais la version **0.0.3**. À la campagne finale,
+L'adaptateur privé porte désormais la version **0.0.4**. À la campagne finale,
 remplacer entièrement son ancien dossier `rw_g1_native_choice` par le nouveau
 dossier généré ; ne pas simplement superposer les fichiers. Les versions précédentes
 contenaient leurs propres bibliothèques, qui pourraient sinon masquer celles du

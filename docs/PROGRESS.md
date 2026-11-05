@@ -614,3 +614,26 @@
 - W1 preparation assessment: `cf7bac383d9e856d64a2ffa2560f6c1164249f24`; partial evidence recorded while W1
   remains OPEN. +0 checkpoint dated 2026-11-04; development 64/80, engine 0/20,
   total 64/100. Frozen rubric, completed criteria and prior history unchanged.
+
+- RW-004 / W2-AI4 initial choice preparation (2026-11-05): target AGOT source
+  confirms send_option.starts_enabled syntax (relative hash/line receipt only).
+  Adapter 0.0.4 initializes its original defiance option for AI at peace, gold >=150,
+  no own service/favor commitment and own liege opinion <=-25, under shared peer-ban
+  and no-selected-hook guards. Preference only; shared eligibility/costs unchanged,
+  player starts unchecked. Deterministic read-only CK3 trigger, no persistent state,
+  global scan, forced dispatch, fake CB or runtime Python. Four pinned real source
+  inputs / twelve runtime hashes / three private outputs generation PASS with
+  reported-version descriptor fixture, not a verified installation. Native byte
+  inversion still exact. Three added source tests; full checks recorded below.
+  Native war-planner discovery may filter before option construction: selection,
+  dispatch/costs and AI-to-AI outcomes NOT demonstrated. AIDEFY-01…06 all deferred
+  to final campaign. W2/AI4 remain OPEN, +0: development 64/80, engine 0/20,
+  total 64/100. Next: investigate actual native AI candidate discovery and the
+  remaining G1/G3 source constraints; do not count this as autonomous war delivery.
+
+  Available checks: **939 discovered, 916 local passed, 23 PowerShell skips**;
+  structure/EN-FR, telemetry removal audit, byte-preserving actual-source generation,
+  readiness and whitespace PASS. Two prior whole-file AI-identity assertions now
+  inspect every shared trigger/effect/event excluding only the isolated preference;
+  they also forbid calls to that preference from execution/response guards.
+  Linux/Windows required CI and committed public artifact checks precede merge.

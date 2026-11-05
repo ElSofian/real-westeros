@@ -1356,3 +1356,12 @@ Private adapter 0.0.3 now contains declaration and genuine claim_cb definitions 
 a read-only helper clone; native code remains private, base fallback refuses capture.
 This does not prove historical legality, selected hook consumption or resolve W1/G1.
 All game observations remain in the final campaign; no extra source upload required.
+
+## G1 contextual initial AI option — AIDEFY-01…06 (all unexecuted)
+
+G1_AI_OPTION_POLICY.md covers private adapter 0.0.4 `starts_enabled`: player initial
+unchecked choice, contextual AI preference, negative means/obligation/war/opinion
+cases, hook conflicts and retarget/cancel/load. Observe native candidate discovery,
+option selection and actual dispatch separately; no one stage proves the next.
+Native war planning may reject the ban before constructing options. W2/AI4 and all
+engine criteria remain open; no intermediate CK3 execution requested.

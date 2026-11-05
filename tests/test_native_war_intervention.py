@@ -113,7 +113,11 @@ class NativeWarInterventionTests(unittest.TestCase):
         text=(ROOT/'events/rw_unlawful_war_response_events.txt').read_text()
         self.assertIn('trigger = { rw_uw_can_queue_native_trigger = yes }',text)
         self.assertIn('rw_uw_queue_native_effect = yes',text)
-        self.assertNotIn('is_ai',text+self.t+self.e)
+        a, _, b = builder.bounds(self.t, 'rw_uw_ai_default_defiance_trigger')
+        shared = text + self.t[:a] + self.t[b:] + self.e
+        # Initial preference never becomes an intervention eligibility condition.
+        self.assertNotIn('is_ai', shared)
+        self.assertNotIn('rw_uw_ai_default_defiance_trigger', shared)
 
     def test_known_native_api_fields_only(self):
         api=block(self.e,'run_interaction')

@@ -79,3 +79,10 @@ G1_DECLARATION_LAW_CONTEXT.md / DECLAW-01…09 retain the real callback-order ga
 **W1 remains open, +0: development 64/80, engine 0/20, total 64/100.** Next source
 work should target actual autonomous native war selection or G3 coercion where
 supported; no historical illegality claim or further credited W3 dialogue variant.
+
+**W2/AI4 initial preference preparation (2026-11-05):** adapter 0.0.4 adds target-source
+supported starts_enabled with a deterministic AI own-opinion/means/obligation/war
+policy under unchanged shared permission and hook guards. Player starts unchecked.
+G1_AI_OPTION_POLICY.md and its relative-only receipt separate option initialization
+from native candidate discovery/send, still unproved. AIDEFY-01…06 join the final
+campaign; **W2/AI4 remain open, +0, development 64/80, engine 0/20, total 64/100**.

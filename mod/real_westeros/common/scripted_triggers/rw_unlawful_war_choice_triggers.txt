@@ -1,4 +1,4 @@
-# Isolated private native-window candidate. Never loaded by the base submod.
+# Original runtime guards; native entry requires the isolated PRIVATE adapter.
 # The unmodified native helper remains authoritative for law/contract exceptions.
 rw_uw_peer_ban_trigger = {
     exists = scope:actor
@@ -29,6 +29,21 @@ rw_uw_selected_defiance_trigger = {
     rw_uw_peer_ban_trigger = yes
     always = scope:rw_uw_defy
     NOT = { always = scope:hook }
+}
+
+# Decision preference ONLY, never permission: native AI must still discover/send
+# the authentic interaction. No random roll in repeatedly evaluated UI triggers.
+# A player starts unchecked; this does not change either actor's valid choices.
+rw_uw_ai_default_defiance_trigger = {
+    rw_uw_peer_ban_trigger = yes
+    NOT = { always = scope:hook }
+    scope:actor = {
+        is_ai = yes
+        is_at_war = no
+        gold >= 150
+        rw_ai_existing_commitment_trigger = no
+        opinion = { target = scope:actor.liege value <= -25 }
+    }
 }
 
 # STORY scope. Only the exact currently active native claim war qualifies.
