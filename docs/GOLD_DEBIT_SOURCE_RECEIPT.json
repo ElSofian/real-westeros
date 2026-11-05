@@ -1,0 +1,113 @@
+{
+  "schema": 1,
+  "status": "Source correction only; NOT engine-tested",
+  "baseline_commit": "a74c4ea168893d50e5bc0469b9898dc97dcfa909",
+  "corrections": [
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_allegation_settlement_effects.txt",
+      "before_sha256": "da26137ee1b9aa5d45f1c76948f8cc9f0d426629d739b52cb8dcd08e0076c53a",
+      "after_sha256": "4bed4d29d83c5503ed51a860368bef8cd09f53ae94b1ed5f26ef5cd10592640a",
+      "before": "add_gold = { value = scope:rw_as_price multiply = -1 }",
+      "after": "remove_short_term_gold = scope:rw_as_price"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_case_compensation_effects.txt",
+      "before_sha256": "d36bf063679ee650604f33df76d7c5abae49b1e568adb234ed0e00aa1b9d6657",
+      "after_sha256": "c759f9ace01ece7fc0254b46444ef2c89568fd3408c299ca18f67703e0c09f52",
+      "before": "add_gold = { value = scope:rw_cc_price multiply = -1 }",
+      "after": "remove_short_term_gold = scope:rw_cc_price"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_charter_compensation_effects.txt",
+      "before_sha256": "c196de90cb4888943870008842388c5b5ccb7c1043a2644db6f805057099eb05",
+      "after_sha256": "e02756d3288e15660306ccb9118e2ab593dc93a29e612dd0436fb1ac300ede07",
+      "before": "add_gold = { value = scope:rw_cq_price multiply = -1 }",
+      "after": "remove_short_term_gold = scope:rw_cq_price"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_deferred_favor_effects.txt",
+      "before_sha256": "344a0309236da7c1c821f413bd14cbc3cc38ebb3d2a87596ace69e538c42c7d9",
+      "after_sha256": "b2172745b169d62176c0096258c2b4072843cddb30800fe946df74a499f665c8",
+      "before": "add_gold = -25",
+      "after": "remove_short_term_gold = 25"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_dynastic_pledge_effects.txt",
+      "before_sha256": "a7c0e1af45072987bca30c5797c5b1b3b7e9f44406596548426e8e07b9774a34",
+      "after_sha256": "b77d6d24da3a13ac10624d914d1a485a8d5feb26b084b6fcc710139001f56995",
+      "before": "add_gold = -50",
+      "after": "remove_short_term_gold = 50"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_favor_service_effects.txt",
+      "before_sha256": "f78e7de1c3a0947348a40308a0613ca0433b36a79104a67bd8ce1c710e5ec0bb",
+      "after_sha256": "b9a818f1a3e237ad06b07e256b137f48df83856a77c50e5e07a8b4940dfe5603",
+      "before": "add_gold = -25",
+      "after": "remove_short_term_gold = 25"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_house_terms_effects.txt",
+      "before_sha256": "450bae00dbf86b69ab4a4f5f62832f349d17660e880fbf17e8e7a65a62440bd1",
+      "after_sha256": "72941088eeb17da61446da09206ca589e7d0df020adb99ba574e094d48fc29f8",
+      "before": "add_gold = -50",
+      "after": "remove_short_term_gold = 50"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_multi_action_effects.txt",
+      "before_sha256": "d406986b0d7661553a2253cea47b4cb8f0daed4d7a306898532bba9d877dc5e6",
+      "after_sha256": "b19d4a8f032d180bb89836cacc233fefa8226bdda498e65bc5b6b2717ab01957",
+      "before": "add_gold = { value = scope:rw_ba_price multiply = -1 }",
+      "after": "remove_short_term_gold = scope:rw_ba_price"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_obligation_effects.txt",
+      "before_sha256": "c71f07f348468526f2debd9ffbe8decb5caf733839f61fc79c2f038e43ea82d4",
+      "after_sha256": "9dcaa6118833a13bf908174c3195ed33383780c0eee454e5411ff1f6e376fa09",
+      "before": "add_gold = { value = scope:rw_service_price multiply = -1 }",
+      "after": "remove_short_term_gold = scope:rw_service_price"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_scheme_response_effects.txt",
+      "before_sha256": "0d4c94f4749afc813e4fb720006fe6ec7c156f18d24d6708cf4d3818fa650c18",
+      "after_sha256": "a43d5a088d0c11ebdf103bdcb4763da383e3e7860ba487bbd419ef1b1f0ccf49",
+      "before": "add_gold = -25",
+      "after": "remove_short_term_gold = 25"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_service_effects.txt",
+      "before_sha256": "b7bc375826803ad478f664717c3321685d249bb0b88710566481fdc49c94bd81",
+      "after_sha256": "3df9ffe7759875f69eb413ae66b7ce73132b10a69a52fccc7731a835cb20005b",
+      "before": "add_gold = { value = scope:rw_service_price multiply = -1 }",
+      "after": "remove_short_term_gold = scope:rw_service_price"
+    }
+  ],
+  "native_reference": {
+    "path": "AGOT/events/single_combat_events.txt",
+    "sha256": "49064163dfcb54372e064daba460f5acebc8ab8a1f6b6be6c7783f09aa1ce63d",
+    "markers": {
+      "remove_short_term_gold": [
+        4210,
+        4215
+      ]
+    }
+  },
+  "validator": {
+    "project": "https://github.com/amtep/tiger",
+    "release": "v1.19.0",
+    "target_reported": "CK3 1.19.0 (Scribe)",
+    "asset": "ck3-tiger-linux-v1.19.0.tar.gz",
+    "asset_sha256": "6d72d276c2b2a953f63221ff8050d1276a085b5a2ffe74977675fdf6e17e9ff3",
+    "source_commit": "9e3d3b25c7524cdcc86d5f4190f3f8cffbc4d630",
+    "table_path": "src/ck3/tables/effects.rs",
+    "table_sha256": "f36bf1aba47775c16cfbb04763d2a36073606a73775771d7614e92d6a3197902",
+    "input": "PRIVATE partial received-source fixture, not an installed game; empty signature/directories explicitly synthetic",
+    "range_diagnostics_before": 5,
+    "range_diagnostics_after": 0
+  },
+  "limits": [
+    "Five literal debits were reported; six calculated debits found by owned-source audit.",
+    "Partial source set lacks assets and definitions: remaining semantic reports are not cleared by this correction.",
+    "Only payer debit tokens change; original consent, affordability, consumption, amount, payee, credit, hooks and telemetry calls are byte-preserved.",
+    "Static source validation does not establish real gold balances, budget semantics or engine atomicity."
+  ]
+}

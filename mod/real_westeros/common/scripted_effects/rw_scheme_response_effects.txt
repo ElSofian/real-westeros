@@ -53,7 +53,7 @@ rw_scheme_response_pay_effect = {
             set_variable = { name = rw_scheme_response_state value = flag:paid }
         }
         # Consume the offer before the one agreed transfer. No debt, reward or immunity.
-        add_gold = -25
+        remove_short_term_gold = 25
         scope:rw_scheme_observer = {
             add_gold = 25
             if = {

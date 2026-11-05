@@ -100,7 +100,7 @@ rw_dp_pay_effect = {
             set_variable = { name = rw_dp_paid_by value = scope:rw_dp_payer }
             set_variable = { name = rw_dp_paid_to value = scope:rw_dp_payee }
         }
-        scope:rw_dp_payer = { add_gold = -50 }
+        scope:rw_dp_payer = { remove_short_term_gold = 50 }
         scope:rw_dp_payee = { add_gold = 50 }
         scope:rw_dp_record = { rw_dp_notify_effect = yes }
     }

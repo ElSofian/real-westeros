@@ -53,7 +53,7 @@ def deferred_errors(t,e,fv,vt):
     points=[body.find(g) for g in ('rw_fd_finish_effect = { RESULT = fulfilled }','add_hook','add_prestige = 50','rw_fv_notify_effect = yes')]
     if min(points)<0 or points!=sorted(points):out.append('native consideration before terminal consumption')
     for g in ('scope:rw_fv_provider = { add_hook = { type = favor_hook target = scope:rw_fv_client } }',
-              'scope:rw_fv_client = { add_gold = -25 }','scope:rw_fv_provider = { add_gold = 25 }',
+              'scope:rw_fv_client = { remove_short_term_gold = 25 }','scope:rw_fv_provider = { add_gold = 25 }',
               'scope:rw_fv_client = { add_prestige = 50 }'):
         if g not in body:out.append('wrong native consideration or beneficiary')
     finish=block(e,'rw_fd_finish_effect')
@@ -168,13 +168,13 @@ class DeferredFavorTests(unittest.TestCase):
     def test_consumption_before_one_selected_native_branch_then_service_reward(self):
         self.assertIn('native consideration before terminal consumption',self.errors(e=self.e.replace('rw_fd_finish_effect = { RESULT = fulfilled }','')))
         for g in ('scope:rw_fv_provider = { add_hook = { type = favor_hook target = scope:rw_fv_client } }',
-                  'scope:rw_fv_client = { add_gold = -25 }','scope:rw_fv_provider = { add_gold = 25 }',
+                  'scope:rw_fv_client = { remove_short_term_gold = 25 }','scope:rw_fv_provider = { add_gold = 25 }',
                   'scope:rw_fv_client = { add_prestige = 50 }'):
             self.assertIn('wrong native consideration or beneficiary',self.errors(e=self.e.replace(g,'removed_part')))
         perform=block(self.e,'rw_fd_perform_effect')
         self.assertIn('limit = { scope:rw_fv_term = flag:favor }',perform)
         self.assertEqual(1,len(re.findall(r'\badd_hook\s*=',perform)))
-        self.assertEqual(2,len(re.findall(r'\badd_gold\s*=',perform)))
+        self.assertEqual(2,len(re.findall(r'\b(?:add_gold|remove_short_term_gold)\s*=',perform)))
 
     def test_original_provider_renunciation_and_client_withdrawal_are_identity_only(self):
         for gate,actor in (('rw_fd_can_renounce_trigger','provider'),('rw_fd_can_withdraw_trigger','client')):

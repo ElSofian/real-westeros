@@ -46,7 +46,7 @@ rw_fd_perform_effect = {
             scope:rw_fv_provider = { add_hook = { type = favor_hook target = scope:rw_fv_client } }
         }
         else = {
-            scope:rw_fv_client = { add_gold = -25 }
+            scope:rw_fv_client = { remove_short_term_gold = 25 }
             scope:rw_fv_provider = { add_gold = 25 }
         }
         scope:rw_fv_client = { add_prestige = 50 }

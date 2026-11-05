@@ -42,7 +42,7 @@ def terms_errors(t, e, base_t, base_e):
     if not 0 <= offer.find('change_variable') < offer.find('rw_house_snapshot_effect') < offer.find('trigger_event'):
         errors.append('offer sent before new revision')
     accept = block(e, 'rw_house_accept_terms_effect')
-    if not 0 <= accept.find('rw_house_close_effect = { RESULT = restored }') < accept.find('add_gold = -50') < accept.find('add_gold = 50') < accept.find('flag:terms_settled'):
+    if not 0 <= accept.find('rw_house_close_effect = { RESULT = restored }') < accept.find('remove_short_term_gold = 50') < accept.find('add_gold = 50') < accept.find('flag:terms_settled'):
         errors.append('unconsumed or premature payment receipt')
     for guard in ('scope:rw_house_record.var:rw_house_requested_ruler = { save_scope_as = rw_house_terms_payee }',
                   'scope:rw_house_terms_payee = { add_gold = 50 }', 'name = rw_house_terms_paid_by value = root',
@@ -113,13 +113,13 @@ class HouseTermsContractTests(unittest.TestCase):
             self.assertIn('old consent or unbounded offer survives', self.errors(e=self.e.replace(guard, 'always = yes')))
         self.assertIn('offer sent before new revision', self.errors(e=self.e.replace('rw_house_snapshot_effect = yes', '', 1)))
         # Offering never executes the payment, free restoration or a forced native send.
-        self.assertNotRegex(clean_script(block(self.e, 'rw_house_offer_terms_effect'))[0], r'\b(add_gold|rw_house_close_effect|run_interaction)\s*=')
+        self.assertNotRegex(clean_script(block(self.e, 'rw_house_offer_terms_effect'))[0], r'\b(add_gold|remove_short_term_gold|rw_house_close_effect|run_interaction)\s*=')
 
     def test_consume_before_two_money_legs_and_receipt_after_both(self):
         accept = block(self.e, 'rw_house_accept_terms_effect')
-        self.assertEqual(2, accept.count('add_gold'))
+        self.assertEqual(2, accept.count('add_gold') + accept.count('remove_short_term_gold'))
         self.assertIn('unconsumed or premature payment receipt', self.errors(e=self.e.replace('rw_house_close_effect = { RESULT = restored }', '')))
-        self.assertIn('unconsumed or premature payment receipt', self.errors(e=self.e.replace('add_gold = -50', '').replace('rw_house_close_effect = { RESULT = restored }', 'add_gold = -50 rw_house_close_effect = { RESULT = restored }')))
+        self.assertIn('unconsumed or premature payment receipt', self.errors(e=self.e.replace('remove_short_term_gold = 50', '').replace('rw_house_close_effect = { RESULT = restored }', 'remove_short_term_gold = 50 rw_house_close_effect = { RESULT = restored }')))
         self.assertIn('unconsumed or premature payment receipt', self.errors(e=self.e.replace('flag:terms_settled', 'flag:terms_offered')))
         self.assertNotIn('add_opinion', accept)
         self.assertNotIn('rw_house_restore_effect', accept)
@@ -136,7 +136,7 @@ class HouseTermsContractTests(unittest.TestCase):
         for name in ('rw_house_review_terms_effect', 'rw_house_refuse_terms_effect',
                      'rw_house_invalidate_terms_effect', 'rw_house_reconcile_terms_effect'):
             text = clean_script(block(self.e, name))[0]
-            self.assertNotRegex(text, r'\b(add_gold|add_opinion|add_prestige|rw_house_close_effect)\s*=')
+            self.assertNotRegex(text, r'\b(add_gold|remove_short_term_gold|add_opinion|add_prestige|rw_house_close_effect)\s*=')
             self.assertNotRegex(text, r'\b(?:name|remove_variable)\s*=\s*(?:rw_house_term|rw_house_petition_cooldown|rw_house_issued_on|rw_house_requested_on|rw_house_retained)\b')
         self.assertIn('flag:terms_refused', block(self.e, 'rw_house_refuse_terms_effect'))
         self.assertNotRegex(block(self.e, 'rw_house_review_terms_effect'), r'\b(set_variable|remove_variable|change_variable)\s*=')

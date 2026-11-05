@@ -84,6 +84,34 @@ def brace_errors(text):
     return errors
 
 
+def gold_errors(text):
+    """Reject known negative gold spellings, not arbitrary script-value evaluation.
+
+    CK3 1.19's add_gold is nonnegative; debits use remove_short_term_gold.
+    Comments/strings are ignored. Complex expressions and referenced values
+    still require semantic validation against the actual game/parent sources.
+    """
+    clean, _ = clean_script(text)
+    issues = []
+    scalar = r"\b(add_gold|remove_short_term_gold)\s*=\s*(-\d+(?:\.\d+)?)\b"
+    for match in re.finditer(scalar, clean):
+        if float(match.group(2)) < 0:
+            issues.append((match.start(), match.group(1)))
+    # Exact simple blocks only: do not guess the sign of general arithmetic.
+    value = r"([A-Za-z_][\w:.$]*|\d+(?:\.\d+)?)"
+    negation = r"\b(add_gold)\s*=\s*\{\s*value\s*=\s*" + value + r"\s+multiply\s*=\s*-1(?:\.0+)?\s*\}"
+    negative_value = r"\b(add_gold|remove_short_term_gold)\s*=\s*\{\s*value\s*=\s*(-\d+(?:\.\d+)?)\s*\}"
+    for match in re.finditer(negation, clean):
+        if not match.group(2).replace('.', '').strip('0'):
+            continue
+        issues.append((match.start(), match.group(1)))
+    for match in re.finditer(negative_value, clean):
+        if float(match.group(2)) < 0:
+            issues.append((match.start(), match.group(1)))
+    return [f"line {clean.count(chr(10), 0, pos) + 1}: negative {effect}; use a positive amount with the correct gold effect"
+            for pos, effect in sorted(issues)]
+
+
 def definitions(text):
     """Find only top-level block definitions; nested repeated keys are normal."""
     clean, _ = clean_script(text)
@@ -153,6 +181,8 @@ def validate(root):
             continue
         if path.suffix in SCRIPT_SUFFIXES:
             errors.extend(f'{relative}: {problem}' for problem in brace_errors(text))
+            if path.suffix == '.txt':
+                errors.extend(f'{relative}: {problem}' for problem in gold_errors(text))
         if relative in (OUTER, MOD_DIR / 'descriptor.mod'):
             descriptors[relative] = descriptor(text, relative, errors)
         if path.suffix == '.txt':

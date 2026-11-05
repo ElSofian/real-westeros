@@ -73,7 +73,7 @@ def pledge_errors(t,e,s,v,i):
     pay=block(e,'rw_dp_pay_effect')
     ordering=[pay.find(g) for g in ('limit = { rw_dp_can_pay_trigger = yes }','rw_dp_close_story_effect = { RESULT = paid }',
                                    'name = rw_dp_paid_by value = scope:rw_dp_payer','name = rw_dp_paid_to value = scope:rw_dp_payee',
-                                   'scope:rw_dp_payer = { add_gold = -50 }','scope:rw_dp_payee = { add_gold = 50 }','rw_dp_notify_effect = yes')]
+                                   'scope:rw_dp_payer = { remove_short_term_gold = 50 }','scope:rw_dp_payee = { add_gold = 50 }','rw_dp_notify_effect = yes')]
     if min(ordering)<0 or ordering!=sorted(ordering):out.append('payment before consent consumption or wrong personal purse')
     close=block(e,'rw_dp_close_story_effect')
     for g in ('var:rw_dp_state = flag:offered var:rw_dp_state = flag:active',
@@ -95,7 +95,7 @@ def pledge_errors(t,e,s,v,i):
     custodian=block(t,'rw_dp_custodian_trigger')
     if 'NOT = { this = scope:rw_dp_departed }' not in custodian:out.append('owner death loses explicit custodian exclusion')
     for name in ('rw_dp_owner_died_effect','rw_dp_rehome_effect','rw_dp_maintenance_effect'):
-        if re.search(r'\b(?:add_gold|name\s*=\s*rw_dp_(?:payer|payee)_recognized)\b',block(e,name)):
+        if re.search(r'\b(?:add_gold|remove_short_term_gold|name\s*=\s*rw_dp_(?:payer|payee)_recognized)\b',block(e,name)):
             out.append('storage or maintenance inherits consent or pays automatically')
     rehome=block(e,'rw_dp_rehome_effect')
     if 'random_house_member' in rehome or 'name = rw_dp_state' in rehome:out.append('storage grants authority or changes outcome')
@@ -109,7 +109,7 @@ def pledge_errors(t,e,s,v,i):
     read=block(e,'rw_dp_read_effect')
     if 'rw_dp_reader_trigger = { READER = scope:rw_dp_reader }' not in read:out.append('private reader or retention bypassed')
     code=clean_script(t+e+s+v+i)[0]
-    if len(re.findall(r'\badd_gold\s*=',code))!=2:out.append('extra money path')
+    if len(re.findall(r'\b(?:add_gold|remove_short_term_gold)\s*=',code))!=2:out.append('extra money path')
     if re.search(r'\b(?:is_ai|imprison|death|change_title_holder|add_hook|add_prestige|add_opinion|create_character_memory|every_living_character|any_living_character|on_death|on_title_gain|consume_imprisonment_reasons)\s*=',code):
         out.append('native inheritance bank justice publicity or AI privilege changed')
     if 'ai_targets = { ai_recipients = liege }' not in i or 'ai_frequency = 12' not in i:
@@ -162,7 +162,7 @@ class DynasticPledgeTests(unittest.TestCase):
             with self.subTest(method=method):self.assertIn('direct effect bypass',self.errors(e=self.e.replace('limit = { rw_dp_can_'+method+'_trigger = yes }','limit = { always = yes }',1)))
 
     def test_payment_consumes_once_and_uses_only_actual_personal_purses(self):
-        for change in (self.e.replace('rw_dp_close_story_effect = { RESULT = paid }',''),self.e.replace('scope:rw_dp_payer = { add_gold = -50 }','scope:rw_dp_original_payer = { add_gold = -50 }'),self.e.replace('scope:rw_dp_payee = { add_gold = 50 }','scope:rw_dp_original_payee = { add_gold = 50 }')):
+        for change in (self.e.replace('rw_dp_close_story_effect = { RESULT = paid }',''),self.e.replace('scope:rw_dp_payer = { remove_short_term_gold = 50 }','scope:rw_dp_original_payer = { remove_short_term_gold = 50 }'),self.e.replace('scope:rw_dp_payee = { add_gold = 50 }','scope:rw_dp_original_payee = { add_gold = 50 }')):
             self.assertIn('payment before consent consumption or wrong personal purse',self.errors(e=change))
 
     def test_recognition_and_reads_never_reset_accepted_deadline(self):
@@ -171,7 +171,7 @@ class DynasticPledgeTests(unittest.TestCase):
 
     def test_owner_death_excludes_departed_even_before_native_flags_settle(self):
         self.assertIn('owner death loses explicit custodian exclusion',self.errors(t=self.t.replace('NOT = { this = scope:rw_dp_departed }','always = yes')))
-        self.assertIn('storage or maintenance inherits consent or pays automatically',self.errors(e=self.e.replace('rw_dp_owner_died_effect = {','rw_dp_owner_died_effect = { add_gold = -50',1)))
+        self.assertIn('storage or maintenance inherits consent or pays automatically',self.errors(e=self.e.replace('rw_dp_owner_died_effect = {','rw_dp_owner_died_effect = { remove_short_term_gold = 50',1)))
 
     def test_free_exits_do_not_require_healthy_or_consented_counterpart(self):
         self.assertIn('free exit blocked by counterpart eligibility',self.errors(t=self.t.replace('rw_dp_can_renounce_trigger = {','rw_dp_can_renounce_trigger = { rw_dp_roles_trigger = yes',1)))

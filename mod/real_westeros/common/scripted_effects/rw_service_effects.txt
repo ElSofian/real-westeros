@@ -100,7 +100,7 @@ rw_service_settle_effect = {
         }
         rw_service_clear_effect = yes
         scope:rw_service_client = {
-            add_gold = { value = scope:rw_service_price multiply = -1 }
+            remove_short_term_gold = scope:rw_service_price
         }
         scope:rw_service_provider = { add_gold = scope:rw_service_price }
         scope:rw_service_client = { add_prestige = 50 }
