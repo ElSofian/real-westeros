@@ -5,7 +5,8 @@ Il reste **sept critères source ouverts, totalisant 16 points** : W1/W2/W4/W5,
 J4/J5 et AI4. Le [bilan du travail restant](V01_REMAINING_WORK.md) distingue code
 expérimental écrit, fonctionnalité absente et dépendance d’observation moteur.
 La capture W1, la préférence IA et la clôture W4 ne terminent pas ces critères.
-J4/J5 ne sont pas implémentés comme coercition/restauration dynastique effective.
+J4 a un [candidat de priorité native](RW010_NATIVE_HOUSE_CONFISCATION.md), sans
+coercition moteur démontrée ni couverture G3 complète ; J5 reste à développer.
 On ne peut pas déduire de ce score qu’il reste seulement des tests ou que 80/80
 sera nécessairement atteint avant toute observation CK3. Campagne finale maintenue.
 Vitesse encore non mesurable : moins de sept jours de recul sur cette grille.
@@ -97,7 +98,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 | J1 | 2 | Inspection des raisons natives et de la détention, sans fausse immunité ni verdict rétroactif | Source seulement : [RW010_SCHEME_JUSTICE.md](RW010_SCHEME_JUSTICE.md), [rw_scheme_justice_triggers.txt](../mod/real_westeros/common/scripted_triggers/rw_scheme_justice_triggers.txt) |
 | J2 | 3 | Sanction individuelle réellement exécutée via chemin natif joueur/IA, avec refus et résistance | Source seulement : [RW010_NATIVE_JUSTICE_ACTIONS.md](RW010_NATIVE_JUSTICE_ACTIONS.md), [rw_justice_action_effects.txt](../mod/real_westeros/common/scripted_effects/rw_justice_action_effects.txt) |
 | J3 | 3 | Pouvoir arbitraire/légal et sanctions discrétionnaires distinctes sans double peine native | Source seulement : [RW010_LAWFUL_ARBITRARY_SENTENCES.md](RW010_LAWFUL_ARBITRARY_SENTENCES.md), [rw_native_sentence_effects.txt](../mod/real_westeros/common/scripted_effects/rw_native_sentence_effects.txt) |
-| J4 | 2 | Mesures coercitives familiales/dynastiques de terres ou statut couvrant les routes G3 | À développer / valider |
+| J4 | 2 | Mesures coercitives familiales/dynastiques de terres ou statut couvrant les routes G3 | Candidat source partiel : [priorité de révocation native](RW010_NATIVE_HOUSE_CONFISCATION.md) ; couverture G3 non établie, ouvert |
 | J5 | 2 | Restauration après sanction coercitive effective, au-delà de la réhabilitation politique | À développer / valider |
 
 ### I — Information et preuves

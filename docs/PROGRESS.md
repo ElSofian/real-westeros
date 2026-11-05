@@ -723,3 +723,6 @@
   acquisition veto, fifty-year ban, noble-status removal, completed sanction or J5
   restoration. Next: assess native integration and remaining G3 coverage, without
   another political-marker substitute or claiming a confiscation from an AI score.
+
+- J4 partial source assessment: `425f7e1a22623c44a7c85f6014b87964680ba9dc`; +0 checkpoint. Criterion
+  remains open; frozen rubric and earlier history preserved.

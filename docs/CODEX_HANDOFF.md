@@ -16,7 +16,7 @@ API approach remains unestablished, but no longer blocks this separate native-AI
 candidate. Next assess native integration/route coverage without adding unrelated
 political-marker variants or claiming actual confiscation from a score.
 
-## Current continuation — remaining-work review, 2026-11-05
+## Earlier continuation — remaining-work review, 2026-11-05
 
 Read [V01_REMAINING_WORK.md](V01_REMAINING_WORK.md) before choosing another slice.
 Readiness stays 64/80 source, 0/20 engine, total64/100. Seven source criteria remain

@@ -25,7 +25,7 @@ RW010_NATIVE_HOUSE_CONFISCATION.md covers seven original sources, private builde
 and HCONF-01…08 deferred. J4 open, +0; no future-title ban/nobility removal/restoration.
 Score64/80 +0/20 unchanged. No game launch requested; group final tests (7–10min/start).
 
-**Current continuation (2026-11-05):** [V01_REMAINING_WORK.md](V01_REMAINING_WORK.md)
+**Earlier external-dispatch investigation (native-AI candidate now supersedes this stop):** [V01_REMAINING_WORK.md](V01_REMAINING_WORK.md)
 separates actual missing development from experimental code and engine-dependent
 feasibility. J4 has now been examined and parked: native celestial extinction is unsuitable,
 disinheritance does not cover G3, and exact-title automated native revocation is
