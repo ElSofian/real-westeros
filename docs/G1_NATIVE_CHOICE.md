@@ -40,7 +40,7 @@ Le dossier doit être nouveau, extérieur au dépôt/ZIP extrait et à l'install
 Le générateur refuse une version déclarée différente de AGOT 0.5.2.1 / support
 1.19.0.6, un hash inattendu, source symbolique ou layout non reconnu. Les quatre
 fichiers AGOT requis sont les interactions de guerre et de vassaux, le helper
-war-and-peace et le CB de revendication. Les douze sources originales dans
+war-and-peace et le CB de revendication. Les treize sources originales dans
 `mod/real_westeros` sont aussi contrôlées. Aucun besoin d'un nouvel envoi de fichiers.
 
 La sortie contient les définitions privées de déclaration et de claim_cb adaptées,
@@ -77,12 +77,12 @@ constatée ou une simple demande ne démontre ni illégalité, paix ou sanction 
 
 ## Migration de l'ancien adaptateur
 
-L'adaptateur privé porte désormais la version **0.0.4**. À la campagne finale,
+L'adaptateur privé porte désormais la version **0.0.5**. À la campagne finale,
 remplacer entièrement son ancien dossier `rw_g1_native_choice` par le nouveau
 dossier généré ; ne pas simplement superposer les fichiers. Les versions précédentes
 contenaient leurs propres bibliothèques, qui pourraient sinon masquer celles du
 mod principal. Mettre à jour Real Westeros avec le même ZIP/commit et comparer les
-douze empreintes du reçu privé aux sources installées. Le générateur ne supprime ni
+treize empreintes du reçu privé aux sources installées. Le générateur ne supprime ni
 ne remplace automatiquement aucun dossier d'installation.
 
 ### Relevé de déclaration — adaptateur 0.0.3
@@ -95,3 +95,11 @@ d’un fallback public qui refuse la capture. Ne pas cumuler avec un autre overr
 de `claim_cb`. Aucun coût ni effet de guerre rejoué ; W1 reste ouvert tant que
 l’ordre réel des callbacks n’est pas démontré. Remplacer entièrement l’ancien
 adaptateur et mettre à jour Real Westeros avec le même ZIP/commit.
+
+### Clôture des choix — adaptateur 0.0.5
+
+G1_WAR_RECEIPT_LIFECYCLE.md décrit les quatre préfixes de clôture metadata-only
+dans les callbacks natifs de fin de claim_cb et la conservation indépendante
+des rôles/CB/autorité. Treize entrées runtime, trois sorties privées. Retirer les
+quatre préfixes et LAW_PREFIX restaure le CB natif exact. L’ordre moteur et Mega Wars
+restent non vérifiés ; W4 ouvert, +0. Régénérer entièrement le dossier privé.

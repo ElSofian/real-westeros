@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "status": "Private source inspection only; callback scope/order/Mega Wars behavior NOT engine-tested",
+  "reported_agot": "0.5.2.1",
+  "files": [
+    {
+      "path": "AGOT/common/casus_belli_types/00_claim.txt",
+      "sha256": "deb9a27936f27fbb930de372d146122192612ec7e2479df9ba080382e3faf7b2",
+      "markers": {
+        "on_invalidated": [
+          387
+        ],
+        "on_victory": [
+          406
+        ],
+        "on_white_peace": [
+          651
+        ],
+        "on_defeat": [
+          748
+        ]
+      },
+      "supports": "Four native callback blocks only; callback labels are not observed game outcomes"
+    },
+    {
+      "path": "AGOT/common/scripted_triggers/00_agot_mega_wars_triggers.txt",
+      "sha256": "47b64ffdee753972cd72413e4b8fa31cab3edda27b5d91b1fc73a1cc12c63bb1",
+      "markers": {
+        "agot_mw_war_valid_during_megawar": [
+          867
+        ],
+        "agot_mw_is_in_realm_at_megawar": [
+          892
+        ]
+      },
+      "supports": "Classification helper uses root and global ruler/story traversal; not invoked or overridden by local receipt maintenance"
+    }
+  ]
+}

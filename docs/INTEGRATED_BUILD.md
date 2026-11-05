@@ -135,10 +135,10 @@ libraries. Without that optional adapter, ordinary declarations create no new
 response record. The request is not proof of peace/negotiation; target propagation,
 AI, callbacks and all final scenarios remain engine-unverified.
 
-## Current private adapter 0.0.4
+## Current private adapter 0.0.5
 
 G1_DECLARATION_LAW_CONTEXT.md supersedes the earlier minimal adapter's file counts.
-Twelve original runtime inputs are public; three generated native files stay private
+Thirteen original runtime inputs are public; three generated native files stay private
 (declaration override, genuine claim_cb prefix and readonly owned helper clone).
 No global native helper or installed file is overwritten. Remove the old adapter
 folder before copying the new generation, use matching Real Westeros source hashes
@@ -148,3 +148,8 @@ engine compatibility; W1 and historical law/ordering remain unverified.
 Adapter 0.0.4 adds the source-supported contextual initial AI option preference
 (G1_AI_OPTION_POLICY.md), not demonstrated autonomous native war initiation.
 Replace the entire old adapter and update the base mod from the same commit.
+
+Adapter 0.0.5 additionally closes original pending response windows from four native
+claim-CB terminal callback prefixes and retains exact-war dedup independently of
+roles/CB/authority. G1_WAR_RECEIPT_LIFECYCLE.md covers the metadata-only effect and
+non-executed lifecycle/Mega Wars cases; W4 remains open (+0). No native state reset.

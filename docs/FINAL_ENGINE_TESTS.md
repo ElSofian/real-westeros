@@ -1365,3 +1365,12 @@ cases, hook conflicts and retarget/cancel/load. Observe native candidate discove
 option selection and actual dispatch separately; no one stage proves the next.
 Native war planning may reject the ban before constructing options. W2/AI4 and all
 engine criteria remain open; no intermediate CK3 execution requested.
+
+## War receipt lifecycle — WARLIFE-01…08 (all unexecuted)
+
+G1_WAR_RECEIPT_LIFECYCLE.md separates exact-war receipt retention from current
+permission and adds metadata-only prefixes to four native claim terminal callbacks.
+Observe real callback scopes/order, queued request cancellation, original result
+preservation, changed CB/roles/authority and Mega Wars break-up/reunion versus the
+AGOT control. A callback label is not a completed outcome. W4 remains open; all
+engine runs stay in the final campaign.

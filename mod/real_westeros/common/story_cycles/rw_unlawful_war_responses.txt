@@ -5,8 +5,22 @@ story_rw_unlawful_war_response = {
     effect_group = {
         days = 30
         triggered_effect = {
-            trigger = { NOT = { rw_uw_active_record_trigger = yes } }
+            trigger = { NOT = { rw_uw_exact_war_present_trigger = yes } }
             effect = { end_story = yes }
+        }
+        triggered_effect = {
+            trigger = {
+                rw_uw_exact_war_present_trigger = yes
+                NOT = { var:rw_uw_state = flag:closed }
+                NOT = { rw_uw_record_context_trigger = yes }
+            }
+            effect = {
+                set_variable = { name = rw_uw_state value = flag:closed }
+                set_variable = { name = rw_uw_result value = flag:context_lost }
+                remove_variable = rw_uw_live
+                remove_variable = rw_uw_issuer_window
+                remove_variable = rw_uw_answer_window
+            }
         }
         triggered_effect = {
             trigger = {
@@ -27,6 +41,6 @@ story_rw_unlawful_war_response = {
             }
         }
     }
-    # A closed/inert receipt survives only while its exact war is still active.
+    # A closed/inert receipt survives while its exact war is in the original owner's local list.
     # It prevents a second on_accept from repeating even a terminal reaction.
 }

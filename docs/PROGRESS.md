@@ -640,3 +640,23 @@
 
 - W2/AI4 partial source assessment: `6ca62e7a63973bc9c21a04aa415dbfc333a983a6`; +0 checkpoint
   dated 2026-11-05. Both criteria remain open; frozen rubric/history unchanged.
+
+- RW-004 / W4 receipt lifecycle preparation (2026-11-05): separate exact-war
+  retention from actionable claim-CB/original-role/current-authority validation.
+  A changed context closes original pending windows without deleting the local
+  exact-war dedup receipt or transferring consent. Private adapter 0.0.5 adds four
+  metadata-only prefixes to native claim_cb terminal callbacks, preserving every
+  original body by byte inversion. Exact original owner/war/schema/serial guards,
+  first callback receipt only, previous censure/refusal/native-send result preserved;
+  remove all original action windows before a queued dispatch can be reused.
+  No native outcome/cost/title/claim/opinion/Mega Wars state mutation, global scan,
+  inferred victory/peace or replacement-war binding. Base runtime count13, private
+  outputs3, pinned AGOT inputs4 unchanged; source receipts contain hashes/markers only.
+  Four-real-input generation with reported-version descriptor fixture PASS, not an
+  installed game verification. Ten adversarial builder/source tests added:
+  **949 discovered, 926 local passed, 23 PowerShell skipped**; structure/localization,
+  telemetry/readiness/whitespace PASS. Required Linux/Windows CI and committed ZIP
+  checks precede merge. Callback scopes/order/Mega Wars remain engine-unverified;
+  WARLIFE-01…08 all deferred. **W4 open, +0; development64/80, engine0/20, total64/100.**
+  Next: remaining native war discovery/lifecycle and genuine G3 route enforcement,
+  without more already-credited dialogues or requesting an intermediate CK3 run.
