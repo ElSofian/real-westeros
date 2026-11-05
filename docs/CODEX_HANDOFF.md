@@ -1,5 +1,22 @@
 # Codex implementation handoff
 
+## Current continuation — remaining-work review, 2026-11-05
+
+Read [V01_REMAINING_WORK.md](V01_REMAINING_WORK.md) before choosing another slice.
+Readiness stays 64/80 source, 0/20 engine, total64/100. Seven source criteria remain
+open, with mixed missing-code and feasibility/observation dependencies. J4/J5
+coercion/restoration are missing; war AI discovery is unresolved, not delivered
+by starts_enabled. W1/W4 have preparation, not complete law/lifecycle integration.
+Target substantive J4 next from a precise supported native route, then J5; retain
+explicit missing G3 route coverage. Preserve the current war candidate unless a
+concrete defect or source proof justifies a change. Do not keep generating minor
++0 variants or general audits without resolving a specific missing requirement.
+If no safe implementation is established, record the dependency and park it.
+The final CK3 campaign remains deferred as requested; it may lead to implementation
+changes and retesting. Do not demand an intermediate game run, promise80/80 before
+any observation, reclassify missing features as tests-only, or recalibrate points.
+This direction supersedes older next-slice suggestions below; frozen criteria remain.
+
 ## Current owner direction (supersedes the historical session text below)
 
 The owner reaffirmed the full eight-system vision. The three original scenarios

@@ -17,6 +17,13 @@ not an exhaustive completion checklist. PR/test counts are not global progress m
 | P1 | RW-009 | Add AI actor selection and negative-path tests for one end-to-end incident | Implemented experimentally — bounded liege targeting; engine untested |
 | P2 | RW-010 | Expand political memory, justice, diplomacy and other systems incrementally | In progress — services, mediation, case history, contested allegations and voluntary repair responses and mutual promise cancellation and immutable mediated service clauses plus personal restitution promises and voluntary private case compensation in scripts; engine untested; native observation intake added; voluntary political responses added; coercive justice/dynastic stages remain |
 
+**Current continuation (2026-11-05):** [V01_REMAINING_WORK.md](V01_REMAINING_WORK.md)
+separates actual missing development from experimental code and engine-dependent
+feasibility. Next substantive target J4, then J5 after effective sanction; do not
+extend the war candidate without a concrete defect/source-supported unblock.
+W1/W2/W4/W5/AI4 remain open and have mixed dependencies, not just final tests.
+Final campaign schedule and frozen64/80 +0/20 score remain unchanged.
+
 **War-track preparation:** RW-004 now has an opt-in exact-target intent diagnostic (G1_INTENT_PROBE.md): pinned native helper/claim inputs, explicit one-day staged confirmation, target/liege/serial guards, owner cleanup and conditional native claim-CB observations. Private generation only; no base-mod behavior changes, actual CB/cost/lifecycle/AI/cancellation semantics unverified. All engine runs remain in the final campaign. This is a bounded parallel track in the backlog, not a new G1-first prerequisite for independent systems.
 
 **Current readiness:** development **64/80**, engine validation **0/20**, total
