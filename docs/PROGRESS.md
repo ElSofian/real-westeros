@@ -754,3 +754,6 @@
   ban, title acquisition veto, nobility stripping or actual restitution delivered.
   Next substantive work: native restitution/remaining route coverage, not another
   variant of journal/intent or a completed-sanction claim based on a score.
+
+- Request/transfer partial source assessment: `c1ab7749439bea78650d07f02ac40787ec145716`; +0 checkpoint.
+  J4/J5 open; frozen rubric and earlier checkpoints unchanged.
