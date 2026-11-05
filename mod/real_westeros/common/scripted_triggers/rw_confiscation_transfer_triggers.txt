@@ -15,6 +15,20 @@ rw_hcr_same_request_trigger = {
     var:rw_hcr_title = scope:landed_title
     var:rw_hcr_former = scope:recipient
 }
+# At refusal, missing selected-title context closes ALL metadata for this pair,
+# conservatively losing association rather than guessing a later war's cause.
+rw_hcr_closeable_request_trigger = {
+    story_type = story_rw_house_revocation_request
+    story_owner = scope:actor
+    var:rw_hcr_schema = 1
+    has_variable = rw_hcr_pending
+    var:rw_hcr_issuer = scope:actor
+    var:rw_hcr_former = scope:recipient
+    trigger_if = {
+        limit = { exists = scope:landed_title }
+        var:rw_hcr_title = scope:landed_title
+    }
+}
 # Story scope INSIDE the source-located title-gain callback (root is new holder).
 rw_hcr_matches_gain_trigger = {
     story_type = story_rw_house_revocation_request

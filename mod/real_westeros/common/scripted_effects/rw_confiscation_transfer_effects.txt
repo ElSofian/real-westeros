@@ -42,10 +42,10 @@ rw_hcr_register_request_effect = {
 # Close request association BEFORE native refusal/resistance; no war outcome inferred.
 rw_hcr_declined_effect = {
     if = {
-        limit = { exists = scope:actor exists = scope:recipient exists = scope:landed_title }
+        limit = { exists = scope:actor exists = scope:recipient }
         scope:actor = {
             every_owned_story = {
-                limit = { rw_hcr_same_request_trigger = yes }
+                limit = { rw_hcr_closeable_request_trigger = yes }
                 remove_variable = rw_hcr_pending
                 end_story = yes
             }

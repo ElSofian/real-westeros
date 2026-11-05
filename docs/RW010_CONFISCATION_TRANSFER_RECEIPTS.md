@@ -12,7 +12,9 @@ de titre. Il ne rejoue aucune révocation et ne fabrique aucun motif de sanction
 L’adaptateur privé **0.0.2** conserve le bonus IA et ajoute deux appels metadata-only :
 au début de `on_send`, capture du titre sélectionné encore détenu par le destinataire ;
 au début de `on_decline`, fermeture de l’association avant le corps scripté natif du refus.
-Le corps de `on_accept` reste intégralement inchangé. Le helper de révocation inspecté
+Si le titre manque au refus, toutes les associations de cette paire d’acteurs
+sont fermées conservativement ; aucun titre n’est deviné. Le corps de `on_accept`
+reste intégralement inchangé. Le helper de révocation inspecté
 gère notamment peines et relations ; il ne fournit pas la position du transfert moteur.
 Encadrer ce helper par deux lectures n’aurait donc pas établi un point fiable.
 

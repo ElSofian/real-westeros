@@ -51,7 +51,7 @@ def errors(t,e,event,wrapper,story):
          'name = rw_tp_former_house value = scope:rw_hcr_house',
          'name = rw_tp_hc_offer_pending value = flag:yes days = 7',
          'id = rw_confiscation_transfer.0001 days = 1'), 'fresh filing snapshot/isolated offer')
-    need(block(e,'rw_hcr_declined_effect'),('rw_hcr_same_request_trigger = yes','remove_variable = rw_hcr_pending',
+    need(block(e,'rw_hcr_declined_effect'),('rw_hcr_closeable_request_trigger = yes','remove_variable = rw_hcr_pending',
          'end_story = yes'), 'refusal association not closed')
     need(wrapper,('rw_on_title_revocation_context rw_on_pledged_title_gain_context rw_on_house_revocation_gain',
          'trigger = { rw_hcr_gain_context_trigger = yes }','effect = { rw_hcr_observe_gain_effect = yes }'), 'additive child')
@@ -136,6 +136,11 @@ class ConfiscationTransferTests(unittest.TestCase):
     def test_refusal_expires_request_without_war_outcome_inference(self):
         decline=block(self.e,'rw_hcr_declined_effect')
         self.assertNotIn('create_story',decline)
+        self.assertNotIn('scope:landed_title',decline)
+        closure=block(self.t,'rw_hcr_closeable_request_trigger')
+        self.assertIn('var:rw_hcr_former = scope:recipient',closure)
+        self.assertIn('trigger_if = {',closure)
+        self.assertIn('limit = { exists = scope:landed_title }',closure)
         self.assertTrue(self.check(e=self.e.replace('remove_variable = rw_hcr_pending','always = yes',1)))
 
     def test_delayed_filing_other_serial_or_reader_refused(self):
