@@ -1,0 +1,8 @@
+namespace = rw_native_restitution
+
+# Hidden dispatch only, following the holder's explicit pledge-panel choice.
+rw_native_restitution.0001 = {
+    type = character_event
+    hidden = yes
+    immediate = { rw_nd_execute_effect = yes }
+}

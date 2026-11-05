@@ -29,6 +29,9 @@ rw_restitution_pledge.0001 = {
                     triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_rp_response_done = flag:acknowledged } } desc = rw_restitution_pledge.response_history }
                     triggered_desc = { trigger = { rw_rg_view_trigger = yes } desc = rw_restitution_transfer.observed }
                     triggered_desc = { trigger = { NOT = { rw_rg_view_trigger = yes } } desc = rw_restitution_transfer.unobserved }
+                    triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_nd_result = flag:pending has_variable = rw_nd_ticket } } desc = rw_native_restitution.pending }
+                    triggered_desc = { trigger = { scope:rw_rs_record = { var:rw_nd_result = flag:transferred } } desc = rw_native_restitution.transferred }
+                    triggered_desc = { trigger = { scope:rw_rs_record = { OR = { var:rw_nd_result = flag:blocked var:rw_nd_result = flag:failed AND = { var:rw_nd_result = flag:pending NOT = { has_variable = rw_nd_ticket } } } } } desc = rw_native_restitution.failed }
                     desc = rw_restitution_pledge.boundaries
                 }
             }
@@ -59,6 +62,13 @@ rw_restitution_pledge.0001 = {
         trigger = { rw_rp_can_acknowledge_trigger = yes }
         rw_rp_acknowledge_effect = yes
         ai_chance = { base = 80 }
+    }
+    option = {
+        name = rw_native_restitution.deliver
+        trigger = { rw_nd_can_deliver_trigger = yes }
+        custom_tooltip = rw_native_restitution.delivery_terms
+        rw_nd_queue_effect = yes
+        ai_chance = { base = 80 modifier = { factor = 2 has_trait = honest } modifier = { factor = 0.25 has_trait = deceitful } }
     }
     option = {
         name = rw_restitution_pledge.renounce

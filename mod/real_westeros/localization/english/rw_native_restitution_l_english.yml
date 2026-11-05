@@ -1,0 +1,6 @@
+﻿l_english:
+ rw_native_restitution.deliver:0 "Return this ducal title"
+ rw_native_restitution.delivery_terms:0 "I will attempt to grant this ducal title tomorrow, subject to the current rules of title grants. This transfers the dignity only, without transferring other characters’ lands or vassals. This decision cannot be repeated for this pledge."
+ rw_native_restitution.pending:0 "I have ordered the return of the ducal title. The grant must still pass the current restrictions."
+ rw_native_restitution.transferred:0 "The pledged ducal title was transferred to the named recipient. This does not establish that an earlier loss was a lawful punishment."
+ rw_native_restitution.failed:0 "This attempt did not establish a completed transfer. I may still use ordinary title grants; this decision will not retry automatically."

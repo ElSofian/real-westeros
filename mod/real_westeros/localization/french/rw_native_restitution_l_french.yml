@@ -1,0 +1,6 @@
+﻿l_french:
+ rw_native_restitution.deliver:0 "Rendre ce titre ducal"
+ rw_native_restitution.delivery_terms:0 "Je tenterai de céder ce titre ducal demain, sous réserve des règles actuelles d’attribution. Seule la dignité est cédée, sans transférer les terres ou les vassaux d’autres personnages. Cette décision ne pourra pas être répétée pour cette promesse."
+ rw_native_restitution.pending:0 "J’ai ordonné la restitution du titre ducal. L’attribution doit encore respecter les restrictions actuelles."
+ rw_native_restitution.transferred:0 "Le titre ducal promis a été transféré au bénéficiaire désigné. Cela ne prouve pas qu’une perte antérieure constituait une sanction légale."
+ rw_native_restitution.failed:0 "Cette tentative n’a pas établi de transfert accompli. L’attribution ordinaire de titres reste possible ; cette décision ne sera pas relancée automatiquement."

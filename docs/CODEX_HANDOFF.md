@@ -1,5 +1,25 @@
 # Codex implementation handoff
 
+## Current continuation — actual voluntary ducal restitution
+
+RW010_NATIVE_RESTITUTION.md implements an actual source-level native type=granted
+transfer after the current holder's separate explicit pledge choice. One consumed
+attempt per exact promise, isolated next-day dispatch, dynamic capacity/ownership,
+shared player/AI; existing landed count vassal receives ducal dignity only, no
+county/barony/vassal transfer. New optional PRIVATE build_native_restitution.py
+copies four generic grant predicates and two callbacks, renames keys only, six
+native bodies byte-identical. Public availability/native predicate fallbacks false.
+Native callbacks run once only after actual holder verification. target_titles and
+titles_to_grant isolated/cleared; native TITLE alias dummy_gender explicitly bound.
+No native interaction override; native hardcoded grant equivalence/timing/load
+order and AGOT callbacks remain UNVERIFIED, not inferred from script preservation.
+Old promise acknowledgement and title-gain observation remain separate; no invented
+crime/causal verdict/automatic promise closure. J5 still open,+0,64/80 +0/20: an
+isolated voluntary return does not complete restoration after effective coercion.
+RESTORE-01…08 grouped with HCONF/HCRECEIPT/G3 in final campaign, no intermediate
+launch. Next substantive work is remaining coercive-route coverage/integrated chain,
+not another intent/journal variant or metric recalibration.
+
 ## Current continuation — native request to canonical title fact
 
 RW010_CONFISCATION_TRANSFER_RECEIPTS.md extends private adapter0.0.2: capture chosen

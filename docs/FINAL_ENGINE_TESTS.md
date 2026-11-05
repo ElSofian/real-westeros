@@ -1396,3 +1396,15 @@ Existing optional filing uses an isolated event and exact seven-day UI ticket;
 no native grant/revocation or restoration is executed by this integration.
 Group all cases with HCONF in the final playset sessions (7–10min/start); no
 intermediate game run requested. Verify actual send scopes and callback composition.
+
+## Voluntary ducal restitution — RESTORE-01…08 (all unexecuted)
+
+RW010_NATIVE_RESTITUTION.md covers actual type=granted transfer after separate
+holder consent, shared AI/player, exact title/promise/version, current native grant
+predicates, no third-party lands/vassals, one-attempt preconsumption, verified
+post-holder before native consequences, old acknowledgement/observer separation,
+failed/stale/dead/expired/blocked paths and native comparison/AGOT regression.
+New private adapter supplies six read-only/copied native bodies under RW names,
+no native interaction override. Check callback timing, TITLE alias and hidden
+engine grant effects explicitly; source cloning is not equivalence proof.
+Group with HCONF/HCRECEIPT/G3 in final sessions; no intermediate CK3 launch.

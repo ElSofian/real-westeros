@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "status": "Private source inspection; NOT engine-tested",
+  "archive_sha256": "9d6b622a41d0b640568d6f220aa99045d9994db3b8f0fdc98bfb2ff8bfa3ac69",
+  "files": [
+    {
+      "path": "AGOT/common/character_interactions/00_grant_titles_interaction.txt",
+      "sha256": "56d1544e86c378853518997cd2dd09e940806827a865a66880d919f4e453f707",
+      "size": 66529,
+      "markers": {
+        "grant_titles_interaction = {": [
+          2
+        ],
+        "on_accept = {": [
+          406,
+          1976
+        ],
+        "on_auto_accept = {": [
+          400,
+          1967
+        ]
+      }
+    },
+    {
+      "path": "AGOT/common/character_interactions/06_ep3_interactions.txt",
+      "sha256": "7cb2344b17b8b7eb7b0bebb0ecd9262b5a4207dc4ce57984dc87071de533f736",
+      "size": 333571,
+      "markers": {
+        "transfer_county_interaction = {": [
+          4177
+        ],
+        "save_scope_as = title_change_vassal": [
+          4528
+        ],
+        "change = scope:title_change_vassal": [
+          4534,
+          4538
+        ]
+      }
+    },
+    {
+      "path": "AGOT/common/scripted_effects/00_agot_nw_btw_effects.txt",
+      "sha256": "f5016105155f6da5d8456b27dedbcc3fcc990014d55515ddfe3eb73fee4fb44e",
+      "size": 13578,
+      "markers": {
+        "clear_local_variable_list": [
+          223,
+          249,
+          317
+        ]
+      }
+    }
+  ],
+  "limits": [
+    "Native administrative county interaction is evidence for the granted title-change API only; it is not invoked or generalized.",
+    "Native grant code timing and generic grant equivalence remain unverified.",
+    "Descriptor used for offline build is a fixture, not an installed game."
+  ]
+}
