@@ -1471,3 +1471,13 @@ RW restitution paths without a revoke/return loop. Source J4 credit does not cle
 G3/G4/G5 or establish a universal pre-transfer veto. Regenerate revoke0.0.4 and
 matching grant adapter from the same checkout. Run alongside G3/HCONF/HCRECEIPT/
 POSTRESTORE/RESTORE in final sessions, no intermediate launch or per-case relaunch.
+
+## One PRIVATE assembly for the grouped campaign — zero cases executed
+
+FINAL_CAMPAIGN_PACK.md / tools/prepare_final_campaign.py assemble one exact public
+release with all three matching PRIVATE adapters, checked before any launch.
+The tool does not install, touch saves or edit launcher data. A separate AGOT-only
+control playset is still needed; no hot-reload promise or one-launch-only guarantee.
+Use the existing G1CHOICE/DECLAW/AIDEFY/WARLIFE and J4/J5/G3/G4/G5 plans together,
+reusing disposable saves/session where possible. Generated private native code
+must not be redistributed. Preparation earns no source or engine points.

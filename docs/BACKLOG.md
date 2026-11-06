@@ -1,5 +1,14 @@
 # Development backlog
 
+**Current continuation — final-campaign assembly (RW-005):**
+FINAL_CAMPAIGN_PACK.md / tools/prepare_final_campaign.py prepare base+three matching
+PRIVATE adapters from a single verified public ZIP, without modifying installation,
+launcher or saves. Exact release, pinned native inputs, runtime/output hashes and
+exclusive destination checked; source-only, no engine cases executed. +0,68/80
+source+0/20 engine. RW-004 planner discovery remains unresolved; starts_enabled
+is only preference. No new source collection or intermediate launch requested.
+
+
 **Current delivery — J4 institutional family confiscation:**
 [INSTITUTIONAL_HOUSE_FORFEITURE.md](INSTITUTIONAL_HOUSE_FORFEITURE.md) adds an
 explicit campaign attached to the existing Crown decree and its original expiry,

@@ -1,5 +1,12 @@
 # Installing the Real Westeros submod (manual development build)
 
+**For the grouped final test campaign:** use
+[FINAL_CAMPAIGN_PACK.md](FINAL_CAMPAIGN_PACK.md) to prepare the base and three
+matching PRIVATE adapters in one new folder. This is preparation only: the tool
+does not alter the launcher, installed files or saves, and never launches CK3.
+The generated private folder contains AGOT code and must not be redistributed.
+
+
 > **Status:** Experimental integrated scripts for reconciliation, services, mediation and allegations are included. **No in-game test has been performed.** See INTEGRATED_BUILD.md for included features, exclusions, build integrity and GitHub artifact downloads.
 
 ## Development target and version

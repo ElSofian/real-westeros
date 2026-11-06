@@ -941,3 +941,17 @@
   empreintes correspondant au contenu livré. Résultats CI exacts et archive GitHub
   à vérifier avant fusion ; aucun test CK3 effectué. Les18 nouveaux tests portent
   sur la source, pas sur une simulation des acquisitions du moteur.
+
+
+- RW-005 grouped campaign preparation: original stdlib-only CLI assembles a
+  verified public ZIP/checksum and matching tools with the three existing private
+  generators. Native input pins, adapter/runtime/output hashes, archive integrity
+  and safe exclusive destination checked; no installation, launcher, save or
+  game launch changed. Final completion receipt covers every assembled file and
+  retains the release commit, with no local installation path. Native outputs
+  remain PRIVATE and excluded from public packaging. Sixteen executable tests
+  cover actual synthetic-input assembly and negative paths, not engine simulation.
+  RW-004 source review has no new planner entry: starts_enabled remains preference,
+  not native discovery. W1/W2/W4/W5/AI4 unchanged, +0,68/80 source+0/20 engine.
+  All CK3 cases remain in the final grouped campaign, no intermediate launch.
+  Real received-input generation, full suite and publication evidence follow.

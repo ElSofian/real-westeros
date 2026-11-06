@@ -1,5 +1,12 @@
 # Integrated experimental build — 0.1.0
 
+**Preparation helper:** [FINAL_CAMPAIGN_PACK.md](FINAL_CAMPAIGN_PACK.md) documents
+one command assembling this exact public ZIP and three native adapters into a
+PRIVATE folder. It never installs or launches the game. The generated folder
+contains AGOT code and must not be distributed; the public ZIP ships only original
+tools. No engine validation or readiness points are earned by assembly.
+
+
 This is an installable source snapshot, **not a gameplay-validated release**.
 The descriptor targets CK3 1.19.* using AGOT 0.5.2.1 source metadata; this is not
 proof of compatibility with your executable, DLC, playset or save. Runtime tests
