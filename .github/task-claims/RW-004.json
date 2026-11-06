@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "task": "RW-004",
+  "owner": "codex-local-g1-fixes-20261106T215525013Z-98e23765",
+  "branch": "fix/rw004-first-engine-defects",
+  "claimed_at": "2026-11-06T21:55:25.013Z",
+  "expires_at": "2026-11-07T01:55:25.013Z"
+}
