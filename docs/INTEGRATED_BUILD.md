@@ -31,6 +31,7 @@ are deferred to the final campaign, not waived. Prefer a disposable fresh save.
 | Exact-affair revocation intentions | Generic title choice plus explicit private-basis confirmation; thirty-day withdrawal/match window; no forced sanction |
 | Crown land register | Voluntary public title-fact filing; scoped successor/house access and custody, max hundred-year archive; no private guilt or title right |
 | Restitution discussions | Exact public-entry request to current holder; private review/refusal/withdrawal and optional bounded personal rancour; no promised/automatic land transfer |
+| Optional PRIVATE post-confiscation return | Native accepted revocation + exact loss → explicit keep/return → one guarded native ducal transfer, shared AI/player; POST_CONFISCATION_RESTITUTION.md, source-only J5. |
 | Optional PRIVATE ducal restitution | Explicit holder choice → one-attempt native granted transfer of a ducal dignity to an existing count vassal, after native script guards; no other lands/vassals; callbacks/equivalence unverified. See RW010_NATIVE_RESTITUTION.md. |
 | Personal restitution promises | Explicit 14/30-day offers and bilateral consent; separate deadline, release/renunciation, optional personal response; beneficiary satisfaction is a statement plus ownership, no forced or proven grant |
 | Pledged title observations | Conditional exact native title-gain context for one unique live accepted promise; participant-private first note, no automatic fulfillment or proved grant/cause |

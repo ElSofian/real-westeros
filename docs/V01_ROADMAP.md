@@ -1,14 +1,12 @@
 # Suivi de la première version intégrée — v0.1-plan-1
 
-**Développement : 64/80 · Validation en jeu : 0/20 · Total : 64/100 (inchangé après revue des critères restants).**
-Il reste **sept critères source ouverts, totalisant 16 points** : W1/W2/W4/W5,
-J4/J5 et AI4. Le [bilan du travail restant](V01_REMAINING_WORK.md) distingue code
-expérimental écrit, fonctionnalité absente et dépendance d’observation moteur.
-La capture W1, la préférence IA et la clôture W4 ne terminent pas ces critères.
-J4 a un [candidat de priorité native](RW010_NATIVE_HOUSE_CONFISCATION.md), sans
-coercition moteur démontrée ni couverture G3 complète ; J5 reste à développer.
-On ne peut pas déduire de ce score qu’il reste seulement des tests ou que 80/80
-sera nécessairement atteint avant toute observation CK3. Campagne finale maintenue.
+**Développement : 66/80 · Validation en jeu : 0/20 · Total : 66/100 (+2 J5 source).**
+Il reste **six critères source ouverts, totalisant 14 points** : W1/W2/W4/W5,
+J4 et AI4. [J5](POST_CONFISCATION_RESTITUTION.md) livre la chaîne native acceptation
++ perte constatée → choix explicite → retour réel du duché, joueur/IA, sous gardes.
+C'est une voie personnelle et ducale, pas une restauration universelle des maisons
+sans terre, des descendants ou de la noblesse. J4/G3 restent ouverts. Source
+expérimentale, aucune compatibilité moteur démontrée ; campagne finale maintenue.
 Vitesse encore non mesurable : moins de sept jours de recul sur cette grille.
 
 Relevé initial : **1 novembre 2026, 38/100**, évalué sur le code de
@@ -32,7 +30,7 @@ coût. Les trois scénarios initiaux ne limitent pas le périmètre ; le catalog
 | Affaires politiques | 8 | 8 |
 | Négociation | 10 | 10 |
 | Promesses et obligations | 10 | 10 |
-| Justice et sanctions | 8 | 12 |
+| Justice et sanctions | 10 | 12 |
 | Information et preuves | 8 | 8 |
 | Mémoire politique | 10 | 10 |
 | IA politique | 8 | 10 |
@@ -99,7 +97,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 | J2 | 3 | Sanction individuelle réellement exécutée via chemin natif joueur/IA, avec refus et résistance | Source seulement : [RW010_NATIVE_JUSTICE_ACTIONS.md](RW010_NATIVE_JUSTICE_ACTIONS.md), [rw_justice_action_effects.txt](../mod/real_westeros/common/scripted_effects/rw_justice_action_effects.txt) |
 | J3 | 3 | Pouvoir arbitraire/légal et sanctions discrétionnaires distinctes sans double peine native | Source seulement : [RW010_LAWFUL_ARBITRARY_SENTENCES.md](RW010_LAWFUL_ARBITRARY_SENTENCES.md), [rw_native_sentence_effects.txt](../mod/real_westeros/common/scripted_effects/rw_native_sentence_effects.txt) |
 | J4 | 2 | Mesures coercitives familiales/dynastiques de terres ou statut couvrant les routes G3 | Candidat source partiel : [priorité de révocation native](RW010_NATIVE_HOUSE_CONFISCATION.md) ; couverture G3 non établie, ouvert |
-| J5 | 2 | Restauration après sanction coercitive effective, au-delà de la réhabilitation politique | À développer / valider |
+| J5 | 2 | Restauration après sanction coercitive effective, au-delà de la réhabilitation politique | Source seulement : [retour après confiscation](POST_CONFISCATION_RESTITUTION.md), [rw_post_confiscation_effects.txt](../mod/real_westeros/common/scripted_effects/rw_post_confiscation_effects.txt) ; chemin personnel ducal, moteur non testé |
 
 ### I — Information et preuves
 
@@ -143,7 +141,8 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 ## Prochain ordre de travail
 
 **Direction courante :** suivre [V01_REMAINING_WORK.md](V01_REMAINING_WORK.md) :
-J4 est la prochaine cible substantielle, J5 dépend de sa sanction effective ;
+J4 est la prochaine cible substantielle ; J5 a une chaîne source de restitution
+après la révocation native effective dans son périmètre personnel ducal ;
 préserver le candidat de guerre sauf défaut concret ou preuve levant un blocage.
 Les étapes ci-dessous conservent l’historique des livraisons et dépendances.
 

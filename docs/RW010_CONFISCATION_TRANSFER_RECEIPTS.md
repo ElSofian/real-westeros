@@ -1,5 +1,13 @@
 # Demande native et transfert de titre observé
 
+**Extension courante :** [POST_CONFISCATION_RESTITUTION.md](POST_CONFISCATION_RESTITUTION.md)
+ajoute le cas opératif de retour après révocation acceptée et perte constatée.
+Adaptateur0.0.3 : quatre insertions inversibles,29 sources runtime/deux sorties
+privées. Le corps natif d'acceptation est conservé avec un suffixe RW ; aucun
+coût/effet de révocation rejoué. Le présent guide conserve la description de
+l'association canonique/ordre IA initial, qui ne constitue pas à elle seule
+une restitution ou un verdict. J4 reste ouvert ; J5 source+2,66/80+0/20.
+
 **Source expérimentale, aucun test CK3. Préparation J4/J5, +0 :64/80 source,
 0/20 moteur, total64/100. Ce chemin ne restaure aucun titre et ne valide pas J5.**
 

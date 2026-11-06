@@ -1,0 +1,11 @@
+﻿l_french:
+ rw_review_post_confiscation_return_interaction:0 "Envisager la restitution d’un duché révoqué"
+ rw_review_post_confiscation_return_interaction_desc:0 "Examiner les titres ducaux retirés par une révocation acceptée que je peux choisir de rendre à cet ancien titulaire."
+ rw_post_confiscation.title:0 "Un duché que j’ai retiré"
+ rw_post_confiscation.terms:0 "Ma révocation acceptée et la perte de [rw_pcr_title.GetName] par [rw_pcr_former.GetShortUIName] ont toutes deux été constatées. Je détiens encore le titre sous la même autorité. Je peux rendre cette dignité ducale demain, sous réserve des règles actuelles d’attribution. Les terres et vassaux d’autres personnages sont exclus. Cela n’efface pas le passé et ne prouve pas que la sanction était légale."
+ rw_post_confiscation.unavailable:0 "L’ancien titulaire, le titre ou mon autorité ne permet plus cette restitution."
+ rw_post_confiscation.return:0 "Rendre ce titre ducal."
+ rw_post_confiscation.keep:0 "Conserver le titre."
+ rw_post_confiscation.returned:0 "[rw_pcr_title.GetName] a été rendu à [rw_pcr_former.GetShortUIName]. Cette concession n’efface pas les autres sanctions et ne crée aucun droit futur."
+ rw_post_confiscation.failed:0 "La restitution n’a pas été établie. Aucune nouvelle tentative automatique ne sera faite ; l’attribution ordinaire de titres reste possible."
+ rw_post_confiscation.close:0 "Fermer"

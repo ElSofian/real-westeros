@@ -880,3 +880,39 @@
 
 - Memory label completion source assessment: `d3c694af0b44c85575ff0ebeca2780f6f8b5ff1b`; +0 checkpoint.
   Frozen rubric/statuses/history preserved; no runtime/UI or full semantic claim.
+
+- RW-010 / J5 functional post-confiscation restitution (2026-11-06): source
+  path now connects native accepted revocation AND exact observed loss, in either
+  callback order, to a current holder's shared player/AI keep/return decision and
+  an actual guarded next-day native granted transfer. Original primary duchy of
+  a feudal duke, now living same-house count/direct vassal; current independent
+  issuer/authority/ownership, peace/capacity, four unchanged native grant guards.
+  No public deposit, promise or political rehabilitation prerequisite. Success
+  only after real title holder check; native grant consequences/notice once.
+  Exactly one consumed attempt, serial/frozen party snapshots, fixed proof/window
+  clocks, refusal closes unconfirmed proof, any genuine title departure closes
+  old case without reacquisition revival. No-op gain ignored; previous-holder
+  lookup cheaply excludes actors without case counters. Personal five-year path,
+  death cleanup/30-day terminal retention, no global scan or inherited entitlement.
+  No county/barony/vassal transfer, fabricated crime, pardon or native revoke replay.
+  Original canonical TP/archive facts preserved; the new object is the operative
+  restoration transaction, not another public ledger. Private revoke adapter0.0.3
+  adds native on_accept suffix: four inverse-proved insertions,29 runtime hashes,
+  two private outputs. Separate matching grant adapter preserves six native bodies.
+  Received-byte build with reported-version descriptor fixture PASS, not installed
+  game. Seventeen new adversarial tests; original callback tests preserve four
+  named children and inverse on_accept bytes. 1040 discovered,1017 local passed,
+  23 PowerShell skips. Structure,telemetry,whitespace PASS; partial Tiger has no
+  new scope/effect errors for this path (native definitions/assets still missing).
+  Exact-head CI/committed ZIP/standalone private builders required before merge.
+  POSTRESTORE-01…08 deferred/grouped with HCONF/HCRECEIPT/RESTORE/G3, no intermediate
+  CK3 launch (7–10min/start). **J5 SOURCE_COMPLETE,+2:development66/80,engine0/20,
+  total66/100.** Acceptance/weights/prior checkpoint history unchanged. Qualifies
+  restoration after effective native title loss in the bounded personal ducal
+  v0.1 path; does NOT claim landless-house/descendant/nobility/general restoration
+  or runtime compatibility. J4/G3 family measures, W1/W2/W4/W5 and AI4 remain open.
+  Next substantive target is J4/G3 coverage, not more metadata/localization/journal
+  variants or points from test/PR counts. No native code/assets distributed.
+
+- J5 source acceptance assessment: `3310b802ca4f1b080f40b1490b13497d8a02d94d`; +2 checkpoint, source66/80,engine0/20.
+  Complete bounded native post-confiscation restitution path; no frozen rubric change.

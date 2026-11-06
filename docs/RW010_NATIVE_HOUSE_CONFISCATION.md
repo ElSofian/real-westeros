@@ -1,5 +1,13 @@
 # Confiscations de maison — politique dans l’IA native de révocation
 
+**Extension courante :** [POST_CONFISCATION_RESTITUTION.md](POST_CONFISCATION_RESTITUTION.md)
+ajoute le cas opératif de retour après révocation acceptée et perte constatée.
+Adaptateur0.0.3 : quatre insertions inversibles,29 sources runtime/deux sorties
+privées. Le corps natif d'acceptation est conservé avec un suffixe RW ; aucun
+coût/effet de révocation rejoué. Le présent guide conserve la description de
+l'association canonique/ordre IA initial, qui ne constitue pas à elle seule
+une restitution ou un verdict. J4 reste ouvert ; J5 source+2,66/80+0/20.
+
 **Source expérimentale, pas de lancement CK3. Préparation J4, +0 :
 développement 64/80, validation en jeu 0/20, total 64/100.**
 

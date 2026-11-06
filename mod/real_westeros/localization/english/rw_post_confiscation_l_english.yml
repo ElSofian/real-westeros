@@ -1,0 +1,11 @@
+﻿l_english:
+ rw_review_post_confiscation_return_interaction:0 "Consider returning a revoked duchy"
+ rw_review_post_confiscation_return_interaction_desc:0 "Review the ducal titles I took through accepted revocation and may now choose to return to this former holder."
+ rw_post_confiscation.title:0 "A duchy I took"
+ rw_post_confiscation.terms:0 "My accepted revocation and the loss of [rw_pcr_title.GetName] by [rw_pcr_former.GetShortUIName] were both recorded. I still hold the title under the same authority. I may return this ducal dignity tomorrow, subject to the current rules of granting titles. No other character’s lands or vassals are included. This does not erase the past or establish that the sanction was lawful."
+ rw_post_confiscation.unavailable:0 "The former holder, title or my authority no longer permits this return."
+ rw_post_confiscation.return:0 "Return this ducal title."
+ rw_post_confiscation.keep:0 "Keep the title."
+ rw_post_confiscation.returned:0 "[rw_pcr_title.GetName] has been returned to [rw_pcr_former.GetShortUIName]. This grant does not erase other sanctions or create a future entitlement."
+ rw_post_confiscation.failed:0 "The return was not established. No automatic second attempt will be made; ordinary title grants remain available."
+ rw_post_confiscation.close:0 "Close"

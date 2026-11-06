@@ -29,6 +29,10 @@ rw_hcr_register_request_effect = {
                 set_variable = { name = rw_hcr_sent_on value = current_date }
                 set_variable = { name = rw_hcr_pending value = flag:yes days = 30 }
             }
+            if = {
+                limit = { rw_pcr_capture_primary_trigger = yes }
+                scope:rw_hcr_request = { set_variable = { name = rw_pcr_primary value = flag:yes } }
+            }
             scope:actor = {
                 if = {
                     limit = { rw_house_sovereign_trigger = yes }
@@ -41,6 +45,7 @@ rw_hcr_register_request_effect = {
 }
 # Close request association BEFORE native refusal/resistance; no war outcome inferred.
 rw_hcr_declined_effect = {
+    rw_pcr_native_declined_effect = yes
     if = {
         limit = { exists = scope:actor exists = scope:recipient }
         scope:actor = {
@@ -74,6 +79,7 @@ rw_hcr_observe_gain_effect = {
             if = { limit = { has_variable = rw_hcr_sovereign } save_scope_value_as = { name = rw_hcr_sovereign value = yes } }
             # Consume BEFORE canonical facts/filing. A repeated callback cannot reuse it.
             remove_variable = rw_hcr_pending
+            rw_pcr_capture_gain_effect = yes
             end_story = yes
         }
         scope:rw_hcr_issuer = {

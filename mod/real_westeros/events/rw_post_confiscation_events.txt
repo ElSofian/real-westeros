@@ -1,0 +1,36 @@
+namespace = rw_post_confiscation
+rw_post_confiscation.0001 = {
+    type = character_event
+    theme = diplomacy
+    title = rw_post_confiscation.title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_pcr_can_return_trigger = yes } desc = rw_post_confiscation.terms }
+            desc = rw_post_confiscation.unavailable
+        }
+    }
+    option = {
+        name = rw_post_confiscation.return
+        trigger = { rw_pcr_can_return_trigger = yes }
+        rw_pcr_queue_effect = yes
+        ai_chance = { base = 40 modifier = { factor = 2 has_trait = forgiving } modifier = { factor = 0.2 has_trait = greedy } }
+    }
+    option = { name = rw_post_confiscation.keep ai_chance = { base = 60 } }
+}
+rw_post_confiscation.0002 = {
+    type = character_event
+    hidden = yes
+    immediate = { rw_pcr_execute_effect = yes }
+}
+rw_post_confiscation.0003 = {
+    type = character_event
+    theme = diplomacy
+    title = rw_post_confiscation.title
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { rw_pcr_view_trigger = yes scope:rw_pcr_case = { var:rw_pcr_result = flag:transferred } } desc = rw_post_confiscation.returned }
+            desc = rw_post_confiscation.failed
+        }
+    }
+    option = { name = rw_post_confiscation.close ai_chance = { base = 100 } }
+}
