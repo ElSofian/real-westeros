@@ -17,6 +17,15 @@ not an exhaustive completion checklist. PR/test counts are not global progress m
 | P1 | RW-009 | Add AI actor selection and negative-path tests for one end-to-end incident | Implemented experimentally — bounded liege targeting; engine untested |
 | P2 | RW-010 | Expand political memory, justice, diplomacy and other systems incrementally | In progress — services, mediation, case history, contested allegations and voluntary repair responses and mutual promise cancellation and immutable mediated service clauses plus personal restitution promises and voluntary private case compensation in scripts; engine untested; native observation intake added; voluntary political responses added; coercive justice/dynastic stages remain |
 
+**J5 source delivered — actual post-confiscation restitution:**
+POST_CONFISCATION_RESTITUTION.md links native accepted revocation plus observed
+loss (either callback order) to an explicit shared player/AI choice and actual
+next-day ducal return, with current ownership/authority/native grant predicates
+and exactly-once effects. No public filing/promise prerequisite, no future
+acquisition veto/inherited guilt or vassal transfer. Personal bounded ducal path;
+landless-family/nobility/general G3 measures remain J4/future work. +2 J5 source,
+66/80+0/20. Native adapters PRIVATE, no engine proof; final tests grouped.
+
 **Native memory label correction:** three native memory type names now have
 FR/EN labels in addition to the nine perspective texts. Validator requires both
 languages; three fixtures, no memory emission/retention/gameplay change. Partial
@@ -84,12 +93,11 @@ Final campaign schedule and frozen64/80 +0/20 score remain unchanged.
 
 **War-track preparation:** RW-004 now has an opt-in exact-target intent diagnostic (G1_INTENT_PROBE.md): pinned native helper/claim inputs, explicit one-day staged confirmation, target/liege/serial guards, owner cleanup and conditional native claim-CB observations. Private generation only; no base-mod behavior changes, actual CB/cost/lifecycle/AI/cancellation semantics unverified. All engine runs remain in the final campaign. This is a bounded parallel track in the backlog, not a new G1-first prerequisite for independent systems.
 
-**Current readiness:** development **64/80**, engine validation **0/20**, total
-**64/100 (+2 W3)**. Source integration includes discretion to ignore/censure/demand
-and the guarded native stop-attacker-war request; this is not proof of peace or
-special-interface target propagation. See G1_NATIVE_INTERVENTION.md. Remaining
-source criteria: W1/W2/W4/W5 (10), J4/J5 (4), AI4 (2). Keep G1/G3 and native war-AI
-selection constraints visible. All runtime observations remain in the final campaign.
+**Current readiness:** development **66/80**, engine validation **0/20**, total
+**66/100 (+2 J5 source)**. Full bounded post-confiscation ducal restitution chain
+is delivered in original scripts with PRIVATE native adapters, not engine proof.
+Six source criteria remain: W1/W2/W4/W5 (10), J4 (2), AI4 (2). Keep all G1/G3,
+family sanction and native war-AI limits visible; final campaign remains deferred.
 
 
 

@@ -1448,3 +1448,14 @@ applicable description in the already planned public support/Crown recognition
 memory scenarios. No new emission or retention behavior; no extra launch.
 The qualified scheme intake scope warning remains: validate discovery with no
 participant versus exposed agent with its exact identity, never infer organizer.
+
+## Post-confiscation actual return — POSTRESTORE-01…08 (all unexecuted)
+
+POST_CONFISCATION_RESTITUTION.md contains the full native-revocation-to-ducal-return
+campaign: native accepted callback plus exact loss, either order/expiry/refusal,
+shared player/AI choice, one-attempt next-day grant, native predicates and effects,
+actual post-holder, title departure/reacquisition/no-op, deaths and stale authority,
+no public-archive/promise dependency or invented crime, AGOT/ordinary grant
+comparison. Source J5 credit is not engine proof. Both PRIVATE adapters required,
+revoke0.0.3 and matching grant; no native assets in public ZIP. Group with HCONF,
+HCRECEIPT,RESTORE,G3 in final sessions, no intermediate launch or relaunch per case.

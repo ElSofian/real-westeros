@@ -1,0 +1,19 @@
+rw_review_post_confiscation_return_interaction = {
+    category = interaction_category_diplomacy
+    desc = rw_review_post_confiscation_return_interaction_desc
+    auto_accept = yes
+    is_shown = { rw_pcr_can_review_trigger = yes }
+    is_valid = { rw_pcr_can_review_trigger = yes }
+    on_accept = { rw_pcr_open_effect = yes }
+    ai_potential = { is_alive = yes is_adult = yes is_independent_ruler = yes is_at_war = no }
+    ai_targets = { ai_recipients = vassals }
+    ai_frequency = 6
+    ai_will_do = {
+        base = 0
+        modifier = {
+            add = 20
+            rw_pcr_can_review_trigger = yes
+            scope:actor = { OR = { has_trait = forgiving opinion = { target = scope:recipient value >= 25 } } }
+        }
+    }
+}

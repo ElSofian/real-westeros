@@ -90,7 +90,7 @@ class ConfiscationTransferTests(unittest.TestCase):
 
     def test_actual_runtime_contract(self):self.assertEqual([],self.check())
 
-    def test_three_additions_preserve_native_bodies_and_zero_factor(self):
+    def test_four_additions_preserve_native_bodies_and_zero_factor(self):
         for newline in ('\n','\r\n'):
             old,new=b.patch_native(b'\xef\xbb\xbf'+FIXTURE.replace('\n',newline).encode());restored=new
             for addition in b.INSERTIONS:
@@ -98,7 +98,7 @@ class ConfiscationTransferTests(unittest.TestCase):
             self.assertEqual(old,restored)
             self.assertLess(new.index(b.BEFORE.encode()),new.index(b'original_native_send'))
             self.assertLess(new.index(b.AFTER.encode()),new.index(b'original_resistance'))
-            self.assertEqual(block(old.decode(),'on_accept'),block(new.decode(),'on_accept'))
+            self.assertEqual(block(old.decode(),'on_accept'),block(new.decode().replace(b.ACCEPTED,''),'on_accept'))
 
     def test_missing_or_duplicate_send_or_decline_refused(self):
         for name in ('on_send','on_decline'):

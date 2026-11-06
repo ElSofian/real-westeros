@@ -1,6 +1,6 @@
 # Source-located post-transfer callback. Preserve every native effect/event.
 on_title_gain = {
-    on_actions = { rw_on_title_revocation_context rw_on_pledged_title_gain_context rw_on_house_revocation_gain }
+    on_actions = { rw_on_title_revocation_context rw_on_pledged_title_gain_context rw_on_house_revocation_gain rw_on_post_confiscation_title_left }
 }
 rw_on_title_revocation_context = {
     trigger = { rw_tp_native_context_trigger = yes }
@@ -10,4 +10,8 @@ rw_on_title_revocation_context = {
 rw_on_house_revocation_gain = {
     trigger = { rw_hcr_gain_context_trigger = yes }
     effect = { rw_hcr_observe_gain_effect = yes }
+}
+
+rw_on_post_confiscation_title_left = {
+    effect = { rw_pcr_title_left_effect = yes }
 }

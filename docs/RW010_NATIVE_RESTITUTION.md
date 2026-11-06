@@ -1,5 +1,10 @@
 # Restitution volontaire effective — titre ducal
 
+**Mise à jour :** la [chaîne après confiscation](POST_CONFISCATION_RESTITUTION.md)
+complète désormais J5 dans son périmètre personnel ducal (+2 source,66/80+0/20).
+Le chemin de promesse décrit ci-dessous reste distinct et ne suffit pas seul à
+ce critère ; sa description/évaluation initiale à64 est conservée comme historique.
+
 **Candidat source expérimental ; aucun test CK3. J5 reste ouvert, +0 :
 64/80 développement, 0/20 moteur, 64/100 total.** Ce changement écrit un véritable
 appel de transfert, pas seulement une intention ou une ouverture de fenêtre.

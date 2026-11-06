@@ -1,0 +1,204 @@
+# Called from original request STORY after the exact title gain, before retirement.
+rw_pcr_capture_gain_effect = {
+    if = {
+        limit = { rw_pcr_gain_source_trigger = yes }
+        save_scope_as = rw_pcr_request
+        clear_saved_scope = rw_pcr_case
+        scope:rw_hcr_issuer = { create_story = { type = story_rw_post_confiscation save_scope_as = rw_pcr_case } }
+        if = {
+            limit = {
+                exists = scope:rw_pcr_case
+                scope:rw_pcr_case = {
+                    story_type = story_rw_post_confiscation
+                    story_owner = scope:rw_hcr_issuer
+                    NOT = { has_variable = rw_pcr_schema }
+                }
+            }
+            scope:rw_hcr_issuer = {
+                if = { limit = { NOT = { has_variable = rw_pcr_counter } } set_variable = { name = rw_pcr_counter value = 0 } }
+                change_variable = { name = rw_pcr_counter add = 1 }
+            }
+            scope:rw_pcr_case = {
+                set_variable = { name = rw_pcr_serial value = scope:rw_hcr_issuer.var:rw_pcr_counter }
+                set_variable = { name = rw_pcr_issuer value = scope:rw_hcr_issuer }
+                set_variable = { name = rw_pcr_former value = scope:rw_hcr_former }
+                set_variable = { name = rw_pcr_title value = scope:rw_hcr_title }
+                set_variable = { name = rw_pcr_house value = scope:rw_pcr_request.var:rw_hcr_house }
+                set_variable = { name = rw_pcr_authority value = scope:rw_pcr_request.var:rw_hcr_authority }
+                set_variable = { name = rw_pcr_gained_on value = current_date }
+                set_variable = { name = rw_pcr_gain_ticket value = flag:yes days = 2 }
+                set_variable = { name = rw_pcr_schema value = 1 }
+                if = { limit = { scope:rw_pcr_request = { has_variable = rw_pcr_accept_seen } } set_variable = { name = rw_pcr_accept_seen value = flag:yes } }
+                if = {
+                    limit = { scope:rw_pcr_request = { has_variable = rw_pcr_accepted } }
+                    rw_pcr_confirm_effect = yes
+                }
+            }
+        }
+        clear_saved_scope = rw_pcr_case
+        clear_saved_scope = rw_pcr_request
+    }
+}
+# STORY scope. Both proofs are required; never infer acceptance from a pending order.
+rw_pcr_confirm_effect = {
+    if = {
+        limit = {
+            rw_pcr_record_trigger = yes
+            has_variable = rw_pcr_gain_ticket
+            has_variable = rw_pcr_accept_seen
+            NOT = { has_variable = rw_pcr_confirmed_on }
+            save_temporary_scope_as = rw_pcr_confirm
+            var:rw_pcr_title = { holder = scope:rw_pcr_confirm.var:rw_pcr_issuer }
+        }
+        remove_variable = rw_pcr_gain_ticket
+        set_variable = { name = rw_pcr_confirmed_on value = current_date }
+        set_variable = { name = rw_pcr_restore_window value = flag:yes years = 5 }
+    }
+}
+# PRIVATE native on_accept suffix; the native action/costs/effects are not replayed.
+rw_pcr_native_accepted_effect = {
+    if = {
+        limit = { exists = scope:actor exists = scope:recipient exists = scope:landed_title }
+        scope:actor = {
+            every_owned_story = {
+                limit = { rw_pcr_pending_accept_trigger = yes }
+                set_variable = { name = rw_pcr_accept_seen value = flag:yes }
+                set_variable = { name = rw_pcr_accepted value = flag:yes days = 2 }
+            }
+            every_owned_story = {
+                limit = { rw_pcr_awaiting_accept_trigger = yes }
+                set_variable = { name = rw_pcr_accept_seen value = flag:yes }
+                rw_pcr_confirm_effect = yes
+            }
+        }
+    }
+}
+rw_pcr_native_declined_effect = {
+    if = {
+        limit = { exists = scope:actor exists = scope:recipient }
+        scope:actor = {
+            every_owned_story = {
+                limit = {
+                    rw_pcr_record_trigger = yes has_variable = rw_pcr_gain_ticket
+                    var:rw_pcr_former = scope:recipient
+                    trigger_if = { limit = { exists = scope:landed_title } var:rw_pcr_title = scope:landed_title }
+                }
+                end_story = yes
+            }
+        }
+    }
+}
+# Current holder's explicit review; one panel per eligible title, no arbitrary cap.
+rw_pcr_open_effect = {
+    if = {
+        limit = { rw_pcr_can_review_trigger = yes }
+        scope:actor = {
+            every_owned_story = {
+                limit = { rw_pcr_pair_offer_trigger = yes }
+                save_scope_as = rw_pcr_case
+                save_scope_value_as = { name = rw_pcr_serial value = var:rw_pcr_serial }
+                var:rw_pcr_issuer = { save_scope_as = rw_pcr_issuer }
+                var:rw_pcr_former = { save_scope_as = rw_pcr_former }
+                var:rw_pcr_title = { save_scope_as = rw_pcr_title }
+                var:rw_pcr_house = { save_scope_as = rw_pcr_house }
+                var:rw_pcr_authority = { save_scope_as = rw_pcr_authority }
+                scope:rw_pcr_issuer = { trigger_event = { id = rw_post_confiscation.0001 } }
+            }
+        }
+    }
+}
+rw_pcr_queue_effect = {
+    if = {
+        limit = { rw_pcr_can_return_trigger = yes }
+        scope:rw_pcr_case = {
+            set_variable = { name = rw_pcr_attempt value = flag:yes }
+            set_variable = { name = rw_pcr_result value = flag:pending }
+            set_variable = { name = rw_pcr_execute_ticket value = flag:yes days = 2 }
+        }
+        trigger_event = { id = rw_post_confiscation.0002 days = 1 }
+    }
+}
+rw_pcr_execute_effect = {
+    if = {
+        limit = {
+            rw_pcr_view_trigger = yes
+            scope:rw_pcr_case = { has_variable = rw_pcr_execute_ticket var:rw_pcr_result = flag:pending }
+        }
+        # Consume once, including stale/invalid attempts; never retry an ambiguous effect.
+        scope:rw_pcr_case = {
+            remove_variable = rw_pcr_execute_ticket
+            set_variable = { name = rw_pcr_result value = flag:blocked }
+        }
+        if = {
+            limit = {
+                rw_nd_adapter_available_trigger = yes
+                scope:rw_pcr_case = {
+                    has_variable = rw_pcr_confirmed_on has_variable = rw_pcr_restore_window
+                    rw_pcr_capacity_trigger = yes
+                }
+            }
+            clear_local_variable_list = target_titles
+            clear_local_variable_list = titles_to_grant
+            clear_saved_scope = recipient_is_independent
+            clear_saved_scope = this_title
+            clear_saved_scope = claim_title
+            clear_saved_scope = claim_vassal
+            clear_saved_scope = lowborn_scope
+            clear_saved_scope = claimant_scope
+            clear_saved_scope = dragon
+            clear_saved_scope = granted_duchy
+            clear_saved_scope = loc_title
+            clear_saved_scope = county
+            save_scope_as = actor
+            scope:rw_pcr_former = { save_scope_as = recipient }
+            scope:rw_pcr_title = {
+                save_scope_as = target save_scope_as = target_title
+                save_scope_as = landed_title save_scope_as = dummy_gender
+                add_to_temporary_list = target_titles
+            }
+            if = {
+                limit = { rw_nd_native_eligible_trigger = yes }
+                scope:rw_pcr_case = { set_variable = { name = rw_pcr_result value = flag:failed } }
+                create_title_and_vassal_change = { type = granted save_scope_as = rw_pcr_change }
+                scope:rw_pcr_title = {
+                    change_title_holder = { holder = scope:rw_pcr_former change = scope:rw_pcr_change take_baronies = no }
+                }
+                resolve_title_and_vassal_change = scope:rw_pcr_change
+                if = {
+                    limit = { scope:rw_pcr_title = { holder = scope:rw_pcr_former } }
+                    scope:rw_pcr_case = {
+                        set_variable = { name = rw_pcr_result value = flag:transferred }
+                        set_variable = { name = rw_pcr_returned_on value = current_date }
+                        remove_variable = rw_pcr_restore_window
+                        set_variable = { name = rw_pcr_retained value = flag:yes days = 30 }
+                    }
+                    rw_nd_native_consequences_effect = yes
+                    rw_nd_native_notification_effect = yes
+                }
+            }
+        }
+        scope:rw_pcr_case = {
+            remove_variable = rw_pcr_restore_window
+            set_variable = { name = rw_pcr_retained value = flag:yes days = 30 }
+        }
+        trigger_event = { id = rw_post_confiscation.0003 }
+    }
+}
+# Title-gain child: any transfer away closes the old case, even a later reacquisition.
+rw_pcr_title_left_effect = {
+    if = {
+        limit = {
+            exists = scope:previous_holder exists = scope:title
+            scope:previous_holder = { has_variable = rw_pcr_counter }
+            scope:title = { exists = holder NOT = { holder = scope:previous_holder } }
+        }
+        scope:previous_holder = {
+            every_owned_story = {
+                limit = { rw_pcr_record_trigger = yes OR = { has_variable = rw_pcr_restore_window has_variable = rw_pcr_gain_ticket } var:rw_pcr_title = scope:title }
+                remove_variable = rw_pcr_gain_ticket
+                remove_variable = rw_pcr_restore_window
+                set_variable = { name = rw_pcr_retained value = flag:yes days = 30 }
+            }
+        }
+    }
+}

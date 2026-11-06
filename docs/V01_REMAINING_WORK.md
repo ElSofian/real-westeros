@@ -1,9 +1,16 @@
 # Ce qui reste avant la première version intégrée
 
 Revue du **5 novembre 2026**, après PR #81 (`e0d9121b04e33316a0a3c1c5eb0a248904263109`).
-**Développement qualifié : 64/80 ; validation en jeu : 0/20 ; total : 64/100.**
-Cette revue ne livre pas de fonctionnalité et ne modifie ni la grille, ni les points,
-ni les critères ouverts de [V01_PROGRESS.json](V01_PROGRESS.json).
+**Mise à jour fonctionnelle du 6 novembre 2026 : développement66/80,
+validation en jeu0/20, total66/100 (+2 J5 source).**
+[La restitution après confiscation](POST_CONFISCATION_RESTITUTION.md) complète le
+chemin personnel ducal : révocation native acceptée + perte exacte observée,
+choix du détenteur, transfert réel sous gardes et confirmation du titulaire.
+Le critère source J5 est fermé sur cette voie v0.1 ; aucun test moteur effectué.
+Les six critères source encore ouverts totalisent14points : W1/W2/W4/W5,J4,AI4.
+La revue initiale ci-dessous décrit les dépendances historiques ; la grille et
+l'historique ne sont pas recalibrés. Les mesures familiales G3 et la restauration
+universelle des maisons sans terre/noblesse/descendants ne sont pas annoncées.
 
 ## Lecture du score
 
@@ -19,7 +26,7 @@ une correction de conservation anti-rejeu, sans achever un nouveau critère enti
 Il reste aussi des fonctionnalités absentes : le développement n’est pas terminé.
 Les huit systèmes restent le périmètre ; les trois scénarios sont des exemples.
 
-## Les sept critères source ouverts
+## Critères et dépendances de la revue initiale (J5 désormais livré en source)
 
 | Critère | Écrit dans le dépôt | Ce qui manque réellement | Dépendance / prochaine décision |
 |---|---|---|---|
@@ -28,7 +35,7 @@ Les huit systèmes restent le périmètre ; les trois scénarios sont des exempl
 | **W4 — 2 pts** | Conservation du reçu exact indépendante des rôles/CB, clôture des choix dans quatre callbacks natifs et gardes de contexte. | Intégration effective aux transitions/clôtures guerre et Mega Wars ; adaptations éventuelles selon les scopes, l’ordre et les remplacements observés. | WARLIFE-01…08 et témoin AGOT. Ne pas réécrire les cycles natifs pour contourner l’absence d’observation. |
 | **W5 — 2 pts** | Tests négatifs de source/générateur, gardes de cible/numéro/autorité, préservation des octets natifs. | Couverture du chemin de jeu effectivement retenu et livré, distinct des diagnostics ; corriger les lacunes identifiées après choix du chemin W2/W4. | Dépend du chemin final. Ajouter des tests répétant les mêmes gardes ne suffit pas à terminer le critère. |
 | **J4 — 2 pts** | Disgrâce politique, archives et diagnostic de transferts ; sanctions personnelles séparées. | Mesure coercitive familiale/dynastique effective sur terres ou statut, couvrant les routes G3 et l’autorité qui l’impose. L’interdiction universelle de terres pendant 50 ans n’est pas implémentée. | Développement réel manquant et mécanisme de couverture non établi. Les sources d’octroi/succession/élection/conquête sont déjà reçues ; un callback après transfert n’est pas un veto. |
-| **J5 — 2 pts** | Réhabilitation politique et discussions de restitution, sans restauration coercitive démontrée. | Restauration après la sanction effective J4, avec identité, autorité et état réellement sanctionné ; aucun octroi automatique supposé. | Dépend de J4. Une réhabilitation politique supplémentaire ne remplace pas la restauration de terres/statut. |
+| **J5 — 2 pts, source livré** | [Chaîne après confiscation](POST_CONFISCATION_RESTITUTION.md) : acceptation native et perte exacte, choix puis retour ducal réel. | Valider le moteur et les régressions en campagne finale ; extensions personnelles/landless/noblesse hors de cette voie. | La révocation native actuelle fournit la sanction de ce chemin, sans attendre toutes les mesures familiales J4. |
 | **AI4 — 2 pts** | Voies originales IA de justice/négociation et réactions royales ; préférence initiale de défi. | Parcours autonome IA↔IA traversant aussi l’initiative de guerre, avec mêmes gardes/coûts/conséquences. | Travail de guerre partagé avec W2 puis observation AIDEFY/G4 ; ne pas compter deux fois la même modification comme deux mécanismes livrés. |
 
 Preuves et limites : [contexte W1](G1_DECLARATION_LAW_CONTEXT.md),

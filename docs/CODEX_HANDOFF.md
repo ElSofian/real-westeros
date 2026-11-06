@@ -1,5 +1,29 @@
 # Codex implementation handoff
 
+## Current continuation — J5 post-confiscation restitution delivered in source
+
+POST_CONFISCATION_RESTITUTION.md implements the missing functional chain: native
+on_send captures an ordinary primary duchy; native on_accept suffix plus exact
+on_title_gain both required in either order, two-day proofs, no inferred crime.
+Operative case enables shared player/AI review/keep/return, then one next-day
+native granted transfer under original four grant predicates and verified new
+holder before native consequences/notification. No archive filing/promise or
+political rehabilitation prerequisite. Current independent issuer/authority,
+living same-house former duke now count vassal, no diarchy/partition/war, exact
+identity and attempt; no vassal/county transfer. Later title departure closes old
+case even on reacquisition; no-op gain ignored. Five-year personal opportunity,
+no inherited entitlement; no restoration of landless houses or stripped nobility.
+J5 source acceptance is fulfilled by this complete bounded path, +2,66/80 +0/20;
+J4 family/G3 coverage and war/AI4 remain open. Frozen acceptance/weights/history
+unchanged; this is NOT a runtime compatibility or full-vision completion claim.
+Private revoke adapter0.0.3 adds fourth insertion; removing four restores native
+bytes,29 runtime hashes/two outputs. Separate private grant adapter needed; six
+native bodies preserved. Original TP facts/archives untouched, operative case
+never becomes a second public journal. Both builders use pinned native inputs;
+no native source distributed. POSTRESTORE-01…08 grouped in final campaign, no
+intermediate launch (7–10min/start). Next substantive target J4/G3, not marker,
+localization or journal variants just to increase PR counts.
+
 ## Current continuation — native memory labels and diagnostic qualification
 
 RW010_NATIVE_MEMORIES.md adds the three missing native type labels in FR/EN,

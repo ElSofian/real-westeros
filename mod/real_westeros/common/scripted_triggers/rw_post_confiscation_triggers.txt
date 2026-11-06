@@ -1,0 +1,122 @@
+# A restoration case requires BOTH a native accepted revocation and observed loss.
+# It is never reconstructed from a political censure or a historical journal.
+rw_pcr_capture_primary_trigger = {
+    scope:actor = { is_independent_ruler = yes }
+    scope:recipient = { government_has_flag = government_is_feudal highest_held_title_tier = tier_duchy }
+    scope:landed_title = { tier = tier_duchy this = scope:recipient.primary_title }
+}
+# Consumed original request, only within the guarded actual title-gain handler.
+rw_pcr_gain_source_trigger = {
+    story_type = story_rw_house_revocation_request
+    var:rw_hcr_schema = 1
+    story_owner = scope:rw_hcr_issuer
+    has_variable = rw_pcr_primary
+    NOT = { has_variable = rw_hcr_pending }
+    var:rw_hcr_issuer = scope:rw_hcr_issuer
+    var:rw_hcr_former = scope:rw_hcr_former
+    var:rw_hcr_title = scope:rw_hcr_title
+    scope:rw_hcr_title = { holder = scope:rw_hcr_issuer }
+}
+# Original request STORY scope, at native on_accept; no assumed callback order.
+rw_pcr_pending_accept_trigger = {
+    story_type = story_rw_house_revocation_request
+    story_owner = scope:actor
+    var:rw_hcr_schema = 1
+    has_variable = rw_hcr_pending
+    has_variable = rw_pcr_primary
+    NOT = { has_variable = rw_pcr_accept_seen }
+    var:rw_hcr_issuer = scope:actor
+    var:rw_hcr_former = scope:recipient
+    var:rw_hcr_title = scope:landed_title
+}
+# Operative case STORY scope. Serial and immutable parties prevent old-panel reuse.
+rw_pcr_record_trigger = {
+    story_type = story_rw_post_confiscation
+    var:rw_pcr_schema = 1
+    has_variable = rw_pcr_serial
+    has_variable = rw_pcr_gained_on
+    exists = var:rw_pcr_issuer
+    exists = var:rw_pcr_former
+    exists = var:rw_pcr_title
+    exists = var:rw_pcr_house
+    exists = var:rw_pcr_authority
+    story_owner = var:rw_pcr_issuer
+}
+rw_pcr_awaiting_accept_trigger = {
+    rw_pcr_record_trigger = yes
+    story_owner = scope:actor
+    has_variable = rw_pcr_gain_ticket
+    NOT = { has_variable = rw_pcr_confirmed_on }
+    NOT = { has_variable = rw_pcr_accept_seen }
+    var:rw_pcr_issuer = scope:actor
+    var:rw_pcr_former = scope:recipient
+    var:rw_pcr_title = scope:landed_title
+    var:rw_pcr_title = { holder = scope:actor }
+}
+# STORY scope. This is personal restitution of a ducal dignity, no vassal transfer.
+rw_pcr_capacity_trigger = {
+    rw_pcr_record_trigger = yes
+    save_temporary_scope_as = rw_pcr_check
+    var:rw_pcr_issuer = {
+        is_alive = yes is_adult = yes is_imprisoned = no is_at_war = no
+        is_independent_ruler = yes government_has_flag = government_is_feudal
+        highest_held_title_tier >= tier_kingdom has_active_diarchy = no
+        primary_title = scope:rw_pcr_check.var:rw_pcr_authority
+        NOT = { has_partition_succession_realm_law_trigger = yes }
+        exists = house
+    }
+    var:rw_pcr_former = {
+        is_alive = yes is_adult = yes is_imprisoned = no is_at_war = no
+        government_has_flag = government_is_feudal highest_held_title_tier = tier_county
+        has_active_diarchy = no
+        liege = scope:rw_pcr_check.var:rw_pcr_issuer
+        house = scope:rw_pcr_check.var:rw_pcr_house
+        faith = scope:rw_pcr_check.var:rw_pcr_issuer.faith
+        culture = scope:rw_pcr_check.var:rw_pcr_issuer.culture
+        NOT = { this = scope:rw_pcr_check.var:rw_pcr_issuer.player_heir }
+    }
+    var:rw_pcr_title = {
+        holder = scope:rw_pcr_check.var:rw_pcr_issuer tier = tier_duchy
+        is_noble_family_title = no is_landless_type_title = no is_head_of_faith = no
+        is_leased_out = no
+        NOT = { has_variable = agot_title_blocked_to_give_away }
+        NOT = { has_variable = wagered_county }
+    }
+}
+rw_pcr_offerable_trigger = {
+    rw_pcr_record_trigger = yes
+    has_variable = rw_pcr_confirmed_on
+    has_variable = rw_pcr_restore_window
+    NOT = { has_variable = rw_pcr_attempt }
+    rw_pcr_capacity_trigger = yes
+}
+rw_pcr_pair_offer_trigger = {
+    rw_pcr_offerable_trigger = yes
+    var:rw_pcr_issuer = scope:actor
+    var:rw_pcr_former = scope:recipient
+}
+rw_pcr_can_review_trigger = {
+    rw_nd_adapter_available_trigger = yes
+    exists = scope:actor exists = scope:recipient
+    scope:actor = { any_owned_story = { rw_pcr_pair_offer_trigger = yes } }
+}
+rw_pcr_view_trigger = {
+    exists = scope:rw_pcr_case exists = scope:rw_pcr_serial
+    exists = scope:rw_pcr_issuer exists = scope:rw_pcr_former
+    exists = scope:rw_pcr_title exists = scope:rw_pcr_house exists = scope:rw_pcr_authority
+    this = scope:rw_pcr_issuer
+    scope:rw_pcr_case = {
+        rw_pcr_record_trigger = yes
+        var:rw_pcr_serial = scope:rw_pcr_serial
+        var:rw_pcr_issuer = scope:rw_pcr_issuer
+        var:rw_pcr_former = scope:rw_pcr_former
+        var:rw_pcr_title = scope:rw_pcr_title
+        var:rw_pcr_house = scope:rw_pcr_house
+        var:rw_pcr_authority = scope:rw_pcr_authority
+    }
+}
+rw_pcr_can_return_trigger = {
+    rw_pcr_view_trigger = yes
+    rw_nd_adapter_available_trigger = yes
+    scope:rw_pcr_case = { rw_pcr_offerable_trigger = yes }
+}

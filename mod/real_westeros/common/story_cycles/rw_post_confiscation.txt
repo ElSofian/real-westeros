@@ -1,0 +1,15 @@
+# Personal, source-attested revocation/restoration transaction, not a second land journal.
+story_rw_post_confiscation = {
+    on_owner_death = { end_story = yes }
+    effect_group = {
+        days = 30
+        triggered_effect = {
+            trigger = { NOR = { has_variable = rw_pcr_gain_ticket has_variable = rw_pcr_restore_window has_variable = rw_pcr_retained } }
+            effect = { end_story = yes }
+        }
+        triggered_effect = {
+            trigger = { OR = { var:rw_pcr_former = { is_alive = no } var:rw_pcr_title = { NOT = { exists = holder } } } }
+            effect = { end_story = yes }
+        }
+    }
+}
