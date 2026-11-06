@@ -1,0 +1,153 @@
+{
+  "schema": 1,
+  "date": "2026-11-06",
+  "status": "Partial-source static integration analysis; NOT engine-tested",
+  "assessed_source_commit": "9364817db27dff786299fa438bbcda809a656de8",
+  "tiger": {
+    "version": "1.19.0",
+    "binary_sha256": "6325beb3c8c28457c82d2aff55c59bb02cce2ce7fcfbe6e9d796f2c57f05d6e0",
+    "reference": "https://github.com/amtep/tiger/tree/v1.19.0"
+  },
+  "fixture_limits": [
+    "Partial received CK3/AGOT scripts, with previously documented signature/directory fixtures; not a complete installation.",
+    "Same six reviewed original native inputs loaded in both controls before applying adapters.",
+    "No diagnostic filter/suppression; show_loaded_mods=yes in both controls.",
+    "Raw reports remain PRIVATE and contain native snippets; hashes only are published.",
+    "Exit code zero does not mean zero diagnostics."
+  ],
+  "private_fixture_fingerprints": {
+    "ck3_partial": {
+      "files": 302,
+      "tree_sha256": "2744352babc2fce1874050e9dc66b304e1fc0a8952387e2f1263737937457df0"
+    },
+    "agot_partial": {
+      "files": 419,
+      "tree_sha256": "c2e3489ff1b60cbbb09a3a84dcae5c8ddc3236830581bf3d602720e441ea0211"
+    },
+    "six_reviewed_native_inputs": {
+      "files": 7,
+      "tree_sha256": "26fc021ccce5e64d040f13383707f28456f41ed655db3e3f5b5bb138870711a7"
+    }
+  },
+  "profiles": {
+    "control": {
+      "order": [
+        "CK3-partial",
+        "AGOT-partial",
+        "six-reviewed-native-inputs",
+        "RW-base"
+      ],
+      "raw_diagnostics": 301226,
+      "rw_base_diagnostics": 370,
+      "raw_report_sha256": "66da5d26a58e5f6d5ba5efb9d1eeee6c1ef2208a72a527bc1b7cdccee69e8712"
+    },
+    "integrated": {
+      "order": [
+        "CK3-partial",
+        "AGOT-partial",
+        "six-reviewed-native-inputs",
+        "RW-base",
+        "RW-war",
+        "RW-revoke",
+        "RW-grant"
+      ],
+      "raw_diagnostics": 250003,
+      "rw_base_diagnostics": 370,
+      "raw_report_sha256": "bb1cd93ef08bed1544a7369aa9b6d5e171cc78646ae683bd10d2249aa12199fa",
+      "first_origin_counts": {
+        "RW-war": 91,
+        "RW-base": 370,
+        "RW-revoke": 76,
+        "MOD": 139
+      }
+    }
+  },
+  "rw_base_comparison": {
+    "signature": [
+      "key",
+      "message",
+      "primary_relative_path",
+      "primary_line",
+      "severity",
+      "confidence"
+    ],
+    "added": 0,
+    "removed": 0,
+    "meaning": "Identical RW-base primary diagnostics across controls; not semantic or runtime clearance."
+  },
+  "adapters": [
+    {
+      "id": "rw_g1_native_choice",
+      "runtime_source_count": 13,
+      "outputs": [
+        {
+          "path": "common/character_interactions/zz_rw_native_war_choice.txt",
+          "sha256": "1bfd04964429d86a28b6394ec4d2baa7816818879eeb40368bacffd3ae8ecd07"
+        },
+        {
+          "path": "common/casus_belli_types/zz_rw_native_claim_law.txt",
+          "sha256": "c3ebcdd15b2dea16da9328964f00cbf8de6d0a5e5a34bb4486c97724a4412ef2"
+        },
+        {
+          "path": "common/scripted_triggers/zz_rw_native_law_permission.txt",
+          "sha256": "49994e9f8a836b25d877a62b6993cf492c04aa40e0265262bc8ad62e403aa63f"
+        }
+      ]
+    },
+    {
+      "id": "rw_g3_native_confiscation",
+      "runtime_source_count": 38,
+      "outputs": [
+        {
+          "path": "common/character_interactions/zz_rw_native_confiscation.txt",
+          "sha256": "4aca538aba266de3869985ddba8b206ca40a705b912e35fd5d0d6a1b22d25ff5"
+        },
+        {
+          "path": "common/scripted_triggers/zz_rw_native_confiscation_available.txt",
+          "sha256": "6561adf03799c1edaf8f223b05a3d437debcf28d99b65b311c9d1375be82d0ea"
+        }
+      ]
+    },
+    {
+      "id": "rw_native_restitution",
+      "runtime_source_count": 297,
+      "outputs": [
+        {
+          "path": "common/scripted_triggers/zz_rw_native_restitution.txt",
+          "sha256": "c1fb1b186044866d4a7994f88d7da9b4f61039796c7b01df368cd04138dc021a"
+        },
+        {
+          "path": "common/scripted_effects/zz_rw_native_restitution.txt",
+          "sha256": "470edd58411b6a0b3d3676c5a7b3ba6f0b62e86b051e17a04ceaf5916dcb8e52"
+        }
+      ]
+    }
+  ],
+  "qualified_native_findings": [
+    "The claim callback root-scope warning also appears in the original reviewed claim definition.",
+    "The duplicate revocation interface_priority and three revocation-war scope warnings also appear in the original reviewed revocation definition.",
+    "Native body inversion/clone proofs remain those of the existing generators; no native warning was patched or suppressed."
+  ],
+  "headless_research": {
+    "source_commit": "ba27da2431ce92f96c6e9b8a1db7b6e0235f8142",
+    "repository": "https://github.com/Xorrad/meckt",
+    "monitor": "src/tests/workflows/monitor.py",
+    "launch_option_observed_in_source": "-nographics",
+    "prerequisite": "Existing CK3 executable in a private Docker image, loaded from a token-gated LFS repository.",
+    "observed_public_run": "https://github.com/Xorrad/meckt/actions/runs/41043934161",
+    "observed_conclusion": "failure",
+    "failed_step": "Run CK3",
+    "limits": [
+      "Source example only; not proof that this option or workflow works for CK3 1.19.* / AGOT 0.5.2.1.",
+      "A load marker or elapsed time alone does not prove war AI, costs, callbacks or Mega Wars correctness.",
+      "No private image retrieved, no Steam login requested, no third-party runtime code executed."
+    ]
+  },
+  "engine_cases_executed": 0,
+  "source_point_delta": 0,
+  "readiness": {
+    "source": 68,
+    "engine": 0,
+    "total": 68
+  }
+}

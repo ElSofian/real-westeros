@@ -1,5 +1,14 @@
 # Development backlog
 
+**Autonomous testing research (RW-005):** two controlled integrated Tiger runs
+now cover base plus all three private adapters, same reviewed native originals.
+RW-base diagnostic signatures370→370,0 added/removed; missing native definitions
+still prevent semantic clearance. AUTONOMOUS_CK3_TESTING.md / receipt distinguish
+static automation from engine execution. Public -nographics source example found,
+requires private game runtime and inspected execution fails; no supported engine
+verified here. No launch requested, no native changes, +0,68/80+0/20.
+
+
 **Current continuation — final-campaign assembly (RW-005):**
 FINAL_CAMPAIGN_PACK.md / tools/prepare_final_campaign.py prepare base+three matching
 PRIVATE adapters from a single verified public ZIP, without modifying installation,

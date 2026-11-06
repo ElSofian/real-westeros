@@ -1,5 +1,21 @@
 # Codex implementation handoff
 
+## Current continuation — autonomous integrated Tiger research
+
+AUTONOMOUS_CK3_TESTING.md / receipt record two actual controlled Tiger1.19.0
+runs against partial native data, same six reviewed originals and PR93 private
+assembly. Base primary diagnostic signatures identical370→370, added0/removed0;
+combined676 includes generated native bodies. Selected claim/revocation warnings
+also present in reviewed originals, no native patches or suppression. Native
+references remain missing; not full semantic clearance. Raw reports private,
+hashes and aggregate counts only public. Public -nographics workflow found but
+requires existing private CK3 image; inspected run fails at game execution.
+No compatible headless engine verified here, no game/Steam login/image obtained.
+CWTools remains static alternative, not runtime proof. No source gameplay change,
++0,68/80+0/20. W1/W2/W4/W5/AI4 stay open; continue concrete autonomous checks,
+not duplicate preparation or a simulated engine; grouped final schedule intact.
+
+
 ## Current continuation — one PRIVATE final-campaign assembly
 
 FINAL_CAMPAIGN_PACK.md and tools/prepare_final_campaign.py assemble a verified

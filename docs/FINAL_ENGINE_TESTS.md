@@ -1481,3 +1481,13 @@ control playset is still needed; no hot-reload promise or one-launch-only guaran
 Use the existing G1CHOICE/DECLAW/AIDEFY/WARLIFE and J4/J5/G3/G4/G5 plans together,
 reusing disposable saves/session where possible. Generated private native code
 must not be redistributed. Preparation earns no source or engine points.
+
+## Autonomous-check research (no engine cases executed)
+
+AUTONOMOUS_CK3_TESTING.md / receipt record integrated Tiger analysis with all three
+private adapters and the matching native-original control. Identical370 RW-base
+primary diagnostics is source comparison only; native definitions are incomplete.
+A public -nographics launch example is a runtime-installation-dependent research
+lead, not a supported CK3 1.19.* / AGOT0.5.2.1 runner. No engine result is inferred
+from startup markers, elapsed time or static exit status. Final grouped schedule
+and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requested.
