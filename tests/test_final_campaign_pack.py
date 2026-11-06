@@ -27,7 +27,7 @@ class CampaignPackTests(unittest.TestCase):
             shutil.copyfile(pack.REPO/name,target)
         def git(*args):
             return subprocess.check_output(['git','-C',str(repo),*args],stderr=subprocess.PIPE)
-        git('init','-q');git('add','.')
+        git('init','-q');git('config','core.autocrlf','false');git('add','.')
         git('-c','user.name=Fixture','-c','user.email=fixture@example.invalid',
             '-c','core.hooksPath=/dev/null','commit','-qm','Fixture')
         cls.commit=git('rev-parse','HEAD').decode().strip()
@@ -168,7 +168,11 @@ class CampaignPackTests(unittest.TestCase):
             with self.subTest(out=out),self.assertRaises(ValueError):pack.prepare(self.archive,self.agot,out)
 
     def test_symlink_source_directory_or_output_parent_rejected(self):
-        link=self.root/'linked';link.symlink_to(self.agot,target_is_directory=True)
+        link=self.root/'linked'
+        try:link.symlink_to(self.agot,target_is_directory=True)
+        except OSError as exc:
+            if getattr(exc,'winerror',None)==1314:self.skipTest('Windows symlink privilege unavailable')
+            raise
         with self.assertRaises(ValueError):pack.prepare(self.archive,link,self.out)
         with self.assertRaises(ValueError):pack.prepare(self.archive,self.agot,link/'new')
 

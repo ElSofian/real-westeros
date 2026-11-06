@@ -954,4 +954,9 @@
   RW-004 source review has no new planner entry: starts_enabled remains preference,
   not native discovery. W1/W2/W4/W5/AI4 unchanged, +0,68/80 source+0/20 engine.
   All CK3 cases remain in the final grouped campaign, no intermediate launch.
-  Real received-input generation, full suite and publication evidence follow.
+  Full local suite1074 discovered:1051 passed,23 PowerShell skips. Structural,
+  telemetry/readiness/whitespace checks PASS. Real received-input private assembly
+  passed:427 files before completion receipt, three adapters,13/38/297 runtime
+  hashes and3/2/2 native outputs; all assembled file hashes verified. Descriptor
+  metadata remains a fixture, not installed-game evidence. Windows assembly test
+  added to CI; exact-head CI/public artifact required before merge.
