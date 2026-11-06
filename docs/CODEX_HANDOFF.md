@@ -1,5 +1,21 @@
 # Codex implementation handoff
 
+## Current continuation — one PRIVATE final-campaign assembly
+
+FINAL_CAMPAIGN_PACK.md and tools/prepare_final_campaign.py assemble a verified
+public ZIP/checksum and exact matching tools with the three existing private
+adapters. All native inputs pinned; runtime/output hashes checked; no launcher,
+installation, save, network or game launch touched. New external folder only,
+no overwrite; final completion receipt and full hashes, no local installation
+paths in receipts. Generated native code stays PRIVATE, absent public CI ZIP.
+All engine cases remain unexecuted. Source review finds no native AI planner
+entry in received scripts; starts_enabled is still only preference, not discovery.
+W1/W2/W4/W5/AI4 stay open; +0,68/80 source+0/20 engine,total68/100. Preserve the
+war candidate until concrete source evidence or grouped final observations resolve
+its missing discovery/context/lifecycle behavior; do not add simulated initiators,
+repeated journal variants or credit preparation as completed source development.
+
+
 ## Current continuation — institutional house forfeiture, J4 source
 
 INSTITUTIONAL_HOUSE_FORFEITURE.md delivers an explicit armed policy on an existing

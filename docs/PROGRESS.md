@@ -941,3 +941,29 @@
   empreintes correspondant au contenu livré. Résultats CI exacts et archive GitHub
   à vérifier avant fusion ; aucun test CK3 effectué. Les18 nouveaux tests portent
   sur la source, pas sur une simulation des acquisitions du moteur.
+
+
+- RW-005 grouped campaign preparation: original stdlib-only CLI assembles a
+  verified public ZIP/checksum and matching tools with the three existing private
+  generators. Native input pins, adapter/runtime/output hashes, archive integrity
+  and safe exclusive destination checked; no installation, launcher, save or
+  game launch changed. Final completion receipt covers every assembled file and
+  retains the release commit, with no local installation path. Native outputs
+  remain PRIVATE and excluded from public packaging. Sixteen executable tests
+  cover actual synthetic-input assembly and negative paths, not engine simulation.
+  RW-004 source review has no new planner entry: starts_enabled remains preference,
+  not native discovery. W1/W2/W4/W5/AI4 unchanged, +0,68/80 source+0/20 engine.
+  All CK3 cases remain in the final grouped campaign, no intermediate launch.
+  Full local suite1074 discovered:1051 passed,23 PowerShell skips. Structural,
+  telemetry/readiness/whitespace checks PASS. Real received-input private assembly
+  passed:427 files before completion receipt, three adapters,13/38/297 runtime
+  hashes and3/2/2 native outputs; all assembled file hashes verified. Descriptor
+  metadata remains a fixture, not installed-game evidence. Windows assembly test
+  added to CI; exact-head CI/public artifact required before merge.
+
+- PR #93 first CI exposed a Windows test-fixture path alias: output resolution
+  expanded the temporary path, so the synthetic final-copy failure was not
+  injected. Compare resolved paths and exercise an alias on all platforms;
+  product assembly unchanged. All other15 Windows assembly cases passed;
+  corrected exact-head CI still required before merge. No tests ignored to
+  bypass the failure, no readiness points added.

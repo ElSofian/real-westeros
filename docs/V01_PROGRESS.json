@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "a191c6ff2b5504040ff0e2fec5f7d7e988d2809a",
+  "assessed_commit": "9cca7c5367f2905c274f4a2c3d9fc87026a3d873",
   "lots": [
     {
       "id": "W",
@@ -1625,6 +1625,50 @@
       "score": 68,
       "reference": "a191c6ff2b5504040ff0e2fec5f7d7e988d2809a",
       "note": "J4 source terminé : campagne institutionnelle explicite sous le décret existant, échéance originale et autorité actuelle, confiscation native réactive des titres actuels après octroi/héritage/élection/conquête ; coûts, protections et résistance conservés. Information publique sans preuves privées, retrait et gardes anti-boucle de restitution. Aucun veto universel, garantie de privation foncière ou noblesse supprimée ; G3 moteur reste ouvert. Barème/acceptation/historique gelés inchangés. +2,développement68/80,moteur0/20,total68/100."
+    },
+    {
+      "date": "2026-11-06",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4",
+        "O4",
+        "I3",
+        "M5",
+        "P4",
+        "N4",
+        "N5",
+        "J3",
+        "AI5",
+        "W3",
+        "J5",
+        "J4"
+      ],
+      "score": 68,
+      "reference": "9cca7c5367f2905c274f4a2c3d9fc87026a3d873",
+      "note": "RW-005 : assemblage privé depuis un ZIP public vérifié, base et trois adaptateurs issus des mêmes sources, empreintes natives/runtime/sorties, destination exclusive et reçu final ; aucune installation ni exécution CK3. Préparation seulement : aucun nouveau critère source ou moteur terminé. W1/W2/W4/W5/AI4 restent ouverts, découverte IA native non résolue. +0,développement68/80,moteur0/20,total68/100."
     }
   ]
 }

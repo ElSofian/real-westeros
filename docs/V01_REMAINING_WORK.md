@@ -1,5 +1,13 @@
 # Ce qui reste avant la première version intégrée
 
+**Préparation de campagne ajoutée, +0 :**
+[FINAL_CAMPAIGN_PACK.md](FINAL_CAMPAIGN_PACK.md) assemble une version exacte du
+mod et les trois adaptateurs privés sans installer ni lancer CK3. La revue des
+sources reçues n'apporte aucun point d'entrée du planificateur natif de guerre ;
+la découverte IA reste ouverte. Score68/80 +0/20 inchangé ; aucun travail de
+préparation ne remplace W1/W2/W4/W5/AI4 ou leurs observations moteur.
+
+
 **Mise à jour du 6 novembre2026 après J4 :68/80 source,0/20 moteur,total68/100.**
 [La campagne institutionnelle](INSTITUTIONAL_HOUSE_FORFEITURE.md) complète J4 en
 source par confiscation native réactive des titres actuels après les quatre routes
