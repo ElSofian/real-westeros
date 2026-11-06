@@ -90,3 +90,19 @@ integration as a complete political-memory system.
 | NMEM-08 | Save/reload before/after performance and recognition, during suppression and after five years: memory ownership, roles, retention and reference display remain native and correct; no financial effect is retried. |
 | NMEM-09 | Human and AI providers, clients and rulers share effects/flags; no privilege or additional proposal loop. Invalid/dead/self parties cannot produce a new support memory. |
 | NMEM-10 | Measure final G4 memory volume/performance and G5 regressions. Existing AGOT memories, house relations, banking, contracts, titles, justice and war flows keep their normal behavior. No compatibility/performance claim before those runs. |
+
+## Memory type labels — 6 November 2026
+
+The three native types now also have their own FR/EN display labels, in addition
+to the nine existing perspective descriptions. Those descriptions do not replace
+localization under the type's identifier. The same pinned Tiger v1.19.0 requires
+that identifier in src/ck3/data/memories.rs; its three missing-localization reports
+now disappear on the PRIVATE partial source fixture. Actual UI remains untested.
+No type, participant, duration, emission rule or public/private boundary changed.
+
+The regular validator requires each owned memory type's label in both supported
+languages. Three added fixtures cover both labels present, one language missing
+and perspective descriptions without a type label; existing memory contracts still
+check all nine public perspective descriptions. No new engine criterion or points:
+64/80 source,0/20 engine,+0. Read type labels and perspective text in both languages
+within the existing final memory scenarios; no intermediate CK3 launch.

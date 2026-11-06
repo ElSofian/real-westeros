@@ -30,6 +30,35 @@ class ValidatorTests(unittest.TestCase):
     def test_valid_scaffold(self):
         self.assertEqual(validate(self.root), [])
 
+    def memory_fixture(self, english=True, french=True, perspectives_only=False):
+        folder = self.mod / 'common/character_memory_types'
+        folder.mkdir()
+        (folder / 'rw_memory_fixture.txt').write_text('rw_memory_fixture = { duration = { years = 5 } }\n')
+        key = 'rw_memory_fixture.first' if perspectives_only else 'rw_memory_fixture'
+        for lang, present in (('english', english), ('french', french)):
+            directory = self.mod / 'localization' / lang
+            directory.mkdir(parents=True, exist_ok=True)
+            text = 'l_' + lang + ':\n'
+            if present:
+                text += ' ' + key + ':0 "A public memory"\n'
+            (directory / ('rw_memory_fixture_l_' + lang + '.yml')).write_text(text, encoding='utf-8-sig')
+
+    def test_memory_type_label_exists_in_both_supported_languages(self):
+        self.memory_fixture()
+        self.assertEqual([], validate(self.root))
+
+    def test_memory_type_label_missing_from_one_language_is_rejected(self):
+        self.memory_fixture(french=False)
+        problems = validate(self.root)
+        self.assertTrue(any('missing french localization for memory type rw_memory_fixture' in e for e in problems))
+        self.assertFalse(any('missing english localization for memory type' in e for e in problems))
+
+    def test_perspective_text_does_not_replace_memory_type_label(self):
+        self.memory_fixture(perspectives_only=True)
+        problems = validate(self.root)
+        self.assertTrue(any('missing english localization for memory type rw_memory_fixture' in e for e in problems))
+        self.assertTrue(any('missing french localization for memory type rw_memory_fixture' in e for e in problems))
+
     def test_missing_folder(self):
         (self.mod / 'events').rmdir()
         self.assertTrue(any('missing directory' in e for e in validate(self.root)))

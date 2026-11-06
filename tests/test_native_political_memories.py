@@ -117,7 +117,7 @@ class NativePoliticalMemoryTests(unittest.TestCase):
             p=MOD/f'localization/{lang}/rw_political_memory_l_{lang}.yml'
             self.assertTrue(p.read_bytes().startswith(b'\xef\xbb\xbf'))
             text=p.read_text(encoding='utf-8-sig')
-            self.assertEqual(keys,set(re.findall(r'^\s+([\w.]+):0',text,re.M)))
+            self.assertEqual(keys | {'rw_public_support_given','rw_public_support_received','rw_public_crown_recognition'},set(re.findall(r'^\s+([\w.]+):0',text,re.M)))
             self.assertIn('[counterpart.GetTitledFirstName]',text)
             self.assertIn('[owner.GetName]',text)
             self.assertNotRegex(text,r'\b(?:gold|hook|crime|complot|accusation|promise|or|faveur)\b')

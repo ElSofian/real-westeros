@@ -115,3 +115,16 @@ legal eligibility and prior consequences before coercive personal sanctions,
 while preserving native justice and avoiding duplicate effects. Actual family/house
 sanctions and restoration remain a separate G3 stage. The unlawful-war feature stays
 at its G1 stage. Source entry points are now located; engine feasibility is still open.
+
+## Conditional participant scope — source review, 6 November 2026
+
+The partial-source Tiger warning propagates from the common constructor's
+participant assignment into scheme discovery. Source inspection finds the
+assignment guarded by kind=participant_exposed, after that kind is set from the
+literal constructor argument. The discovery caller supplies scheme_discovered;
+only the separate exposed-agent caller binds the participant, after native
+agent-exists/exposed/non-target guards. Discovery does not need a participant.
+No placeholder identity, extra discovery prerequisite, suppression or runtime
+rewrite was added to silence this interprocedural warning. Verify both branches
+and absence of an inferred organizer in the already planned final cases. This
+is a source qualification, not successful engine evidence; the warning is retained.

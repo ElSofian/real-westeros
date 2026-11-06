@@ -244,6 +244,12 @@ def validate(root):
                 else:
                     localization_keys[header][key] = f'{relative}:{line_no}'
 
+    # Native memory types require their own label, in addition to perspective prose.
+    for key, source in definitions_by_folder['common/character_memory_types'].items():
+        for language in ('english', 'french'):
+            if key not in localization_keys[f'l_{language}:']:
+                errors.append(f'{source}: missing {language} localization for memory type {key}')
+
     outer = descriptors.get(OUTER, {})
     inner = descriptors.get(MOD_DIR / 'descriptor.mod', {})
     for key in META_KEYS:

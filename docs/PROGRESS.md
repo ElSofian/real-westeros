@@ -855,3 +855,25 @@
 
 - AI availability correction source assessment: `9d6b0811e8aeacb77441413ebd40cf0d040a66fd`; +0 checkpoint.
   Frozen rubric and prior history intact; no native scheduling or engine claim.
+
+- RW-010 / native memory type label completion (2026-11-06): add three owned
+  native type labels in both FR/EN, keeping nine perspective descriptions, BOM,
+  participants, five-year retention and emission rules unchanged. Validator now
+  requires each owned memory type identifier in both supported languages, not
+  only perspective text. Three fixture tests added, existing memory localization
+  coverage extended. 1023 discovered,1000 local passed,23 PowerShell skips;
+  structure/targeted checks,telemetry,readiness and whitespace PASS. Same pinned
+  Tiger on PRIVATE partial fixtures: missing-localization3→0, remaining strict
+  scheme-intake warning retained. Source review: participant assignment follows
+  kind set from the caller's literal and executes only for participant_exposed;
+  discovery does not require or invent an identity. No suppression or runtime
+  rewrite. Native knight helper observed throughout AGOT, missing definition in
+  partial source is not proof of invalid API; no guessed replacement. Other
+  missing assets/definitions/diagnostics remain, no full semantic/engine clearance.
+  Required exact-head CI, committed ZIP and extracted missing-label regression
+  verification before merge. No native source/binary/private report distributed.
+  +0,development64/80,engine0/20,total64/100: repair of existing memory display,
+  no new criterion. Final type/perspective reads grouped with existing scenarios,
+  no intermediate CK3 launch (7–10min/start). Next substantive source-backed
+  defect or G1/J4/J5 unblock; do not repeatedly change qualified warnings or
+  extend credited journals merely to create more PRs.
