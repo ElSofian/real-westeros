@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "task": "RW-010",
+  "owner": "codex-local-service-mode-20261106-b7b8e2d1",
+  "branch": "fix/rw010-service-mode-snapshot",
+  "claimed_at": "2026-11-06T23:34:00Z",
+  "expires_at": "2026-11-07T03:34:00Z"
+}
