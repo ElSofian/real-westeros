@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "task": "RW-005",
+  "owner": "codex-local-g1-20261106T205715067Z-8479512a",
+  "branch": "test/rw005-local-g1-preflight",
+  "claimed_at": "2026-11-06T20:57:15.067Z",
+  "expires_at": "2026-11-07T00:57:15.067Z"
+}
