@@ -36,6 +36,8 @@ TERMINAL_PREFIXES = {name: '\n    rw_uw_terminal_effect = { OUTCOME = ' + name +
 CLONE = 'rw_dl_native_permission_trigger'
 NATIVE_PERMISSION = 'war_declarer_needs_hook_on_liege'
 ACCEPT = '\n    scope:actor = { rw_uw_notice_effect = yes }\n'
+INTERVENTION_PREFIX = '\n    rw_uw_bind_native_target_effect = yes\n'
+INTERVENTION_MARKER = 'rw_uw_native_target_adapter_available_trigger = { always = yes }\n'
 GUARD = '\n            rw_uw_selected_defiance_trigger = yes\n'
 OPTION = '''
     # RW isolated experiment: the native window owns this transient send flag.
@@ -175,6 +177,18 @@ def clone_permission(raw):
     return native.encode('utf-8'), (prefix+copied).encode('utf-8')
 
 
+def patch_native_intervention(raw):
+    """Restore only the RW dispatch target before the unchanged native callback."""
+    native = top_definition(raw, 'stop_attacker_vassal_war_interaction')
+    if 'rw_uw_' in native:
+        raise ValueError('Native intervention already patched')
+    _, opening, _ = bounds(native, 'on_accept')
+    patched = native[:opening + 1] + INTERVENTION_PREFIX + native[opening + 1:]
+    if brace_errors(patched) or patched.replace(INTERVENTION_PREFIX, '', 1) != native:
+        raise ValueError('Native intervention preservation failed')
+    return native.encode('utf-8'), patched.encode('utf-8')
+
+
 def pinned_sources():
     first = json.loads((REPO / 'docs/G1_SOURCE_RECEIPT.json').read_text())['files']
     second = json.loads((REPO / 'docs/G1_COMPLEMENT_RECEIPT.json').read_text())['files']
@@ -240,18 +254,23 @@ def build(agot_root, output):
     original_claim, law_claim = patch_claim_law(sources[CLAIM])
     _, patched_claim = patch_claim_lifecycle(law_claim)
     original_helper, cloned_helper = clone_permission(sources[HELPER])
+    original_intervention, patched_intervention = patch_native_intervention(sources[VASSAL])
     runtime = template_payload()
     payload = {
         'common/character_interactions/zz_rw_native_war_choice.txt': b'\xef\xbb\xbf' + patched + b'\n',
         'common/casus_belli_types/zz_rw_native_claim_law.txt': b'\xef\xbb\xbf' + patched_claim + b'\n',
-        'common/scripted_triggers/zz_rw_native_law_permission.txt': b'\xef\xbb\xbf' + cloned_helper + b'\n',
+        'common/scripted_triggers/zz_rw_native_law_permission.txt': b'\xef\xbb\xbf' + cloned_helper + b'\n' + INTERVENTION_MARKER.encode(),
+        'common/character_interactions/zz_rw_native_war_intervention.txt': b'\xef\xbb\xbf' + patched_intervention + b'\n',
     }
     metadata = ('name="Real Westeros PRIVATE native war choice EXPERIMENT"\n'
-                'version="0.0.5"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
+                'version="0.0.6"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
                 'dependencies={ "Real Westeros" }\n')
     receipt = {'schema': 1, 'status': 'PRIVATE isolated experimental source; NOT engine-tested',
                'reported_agot': fields,
                'requires_base_mod': 'Real Westeros',
+               'native_intervention_definition_sha256': hashlib.sha256(original_intervention).hexdigest(),
+               'patched_intervention_definition_sha256': hashlib.sha256(patched_intervention).hexdigest(),
+               'intervention_preservation': 'Removing INTERVENTION_PREFIX restores native stop interaction; exact target transport is NOT engine-tested',
                'runtime_sources': [{'path': p, 'sha256': hashlib.sha256(b).hexdigest()} for p,b in runtime.items()],
                'inputs': [{'path': p, 'sha256': hashlib.sha256(b).hexdigest()} for p,b in sources.items()],
                'law_capture_phase': 'claim_cb.on_declaration prefix; engine callback order NOT VERIFIED',

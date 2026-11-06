@@ -1,5 +1,32 @@
 # Codex implementation handoff
 
+## Current continuation — corrected G1 acceptance observed
+
+PRIVATE0.0.6 installed codec9d6a59, before-save replay by owner: letter correctly
+names Paxter; actual peace8June. Corrected save verifies title retained, serials/
+counters/link1, native_requested result closed plus on_white_peace receipt, no
+transport markers. Prior G1 runtime errors absent; other diagnostics remain.
+G1_FIRST_ENGINE_TRIAL.md holds sanitized proof. Bounded acceptance path now
+engine-observed; earlier untested statements below describe the preparation stage.
+Same-session corrected refusal also verified to1July: active authentic claim war,
+positive serials, no terminal receipt/transport markers or targeted G1 errors.
+Full AI/exceptions/terminal/
+Mega Wars and final campaign remain open. Score unchanged68/80+0/20,+0.
+
+## Current continuation — first G1 engine trial and isolated correction candidate
+
+G1_FIRST_ENGINE_TRIAL.md supersedes no-runtime statements for this narrow path.
+Owner operates UI; saves/logs confirm genuine claim_cb and exact parties/title
+after ban/defiance. Demand/refusal leave war active, but serial initialization
+and native target transmission FAIL. Engine script_docs lists no target argument
+for run_interaction. Missing-only numeric initialization plus PRIVATE0.0.6 native
+on_accept binding candidate are not engine-tested. Four private outputs, same
+four native inputs/thirteen runtime files, inverse-preserved native body. No
+event replay/forced peace or point gain. Keep risky handoff isolated until next
+targeted run. Prepare all changes before one restart; load before-save, test
+cancel, valid serials/target, separate refusal/acceptance. No hot reload proven.
+Score68/80+0/20; full AI/Mega Wars/final-campaign criteria remain open.
+
 ## Current continuation — autonomous integrated Tiger research
 
 AUTONOMOUS_CK3_TESTING.md / receipt record two actual controlled Tiger1.19.0

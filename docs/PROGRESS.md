@@ -1,5 +1,43 @@
 # Progress
 
+- RW-004/RW-005 corrected0.0.6 acceptance trial,6November: owner reports correct
+  Paxter/La Treille letter and peace8June. Screenshot plus read-only corrected save
+  confirm actual white peace/title retained, valid1 counters/serials/link, closed
+  native_requested result/on_white_peace receipt8June and no transport markers.
+  Installed hashes match; prior G1 counter/target errors absent in captured logs.
+  Targeted path engine-observed, not complete G1/AI/Mega Wars or clean global logs.
+  G1_FIRST_ENGINE_TRIAL.md records private-artifact hashes and limits; no raw data
+  published. Corrected refusal counter-test also observed: same-session before-save
+  replay, active same claim war1July, valid serials, no terminal receipt/transport
+  markers or targeted G1 errors. Baseline/result68/80+0/20,total68/100,delta0.
+  Bounded fix in branch fix/rw004-first-engine-defects/PR#96; RW-004 remains in
+  progress for full AI/exception/terminal/Mega Wars gates. Next: remaining grouped
+  regressions. No new source gameplay
+  changes or requested restart for this evidence update.
+
+- RW-004/RW-005 first local engine trial,6November: CK3 1.19.0.6,AGOT0.5.2.1,
+  three-mod playset,reference19d567f/private0.0.5. Owner observed ban/defiance,
+  war2June,Mace demand3June,refusal and ongoing war/defender mobilization.
+  Before/10June saves verify genuine claim_cb/parties/La Treille and captured
+  permission_required/internal law, but empty serials and missing native target.
+  Prestige net1050→982 is not exact cost proof. G1_FIRST_ENGINE_TRIAL.md records
+  sanitized evidence/hashes; raw data private. Missing-only counter initialization
+  and PRIVATE0.0.6 native callback binding prepared, no native effects replayed.
+  Correction not engine-tested; keep risky handoff isolated pending next run.
+  Windows control recovered; owner now operates UI. Baseline/result68/80+0/20,
+  total68/100,delta0. Next: matching private build, one-restart before-save batch.
+  Local verification:1084/1084 tests PASS, structure/telemetry/readiness/whitespace
+  PASS. Initial environment failures (sandbox temp/PowerShell, Git long paths and
+  CRLF checkout) resolved without weakening tests; final suite ran outside sandbox
+  with scoped temporary Git settings. Real pinned private build:4 inputs/13 runtime/
+  4 outputs match, native stop definition inverse PASS. Candidate still untested
+  in CK3; installation must wait for closed game and checked rollback backup.
+  Subsequent local synchronization: owner closed CK3; coherent code atc9d6a59
+  and PRIVATE0.0.6 installed with checked rollback backup,303 base/5 adapter files
+  and all copied hashes verified. Original game/AGOT files, playsets and both
+  saves untouched. PR#96 remains draft pending corrected engine trial; no restart
+  or hot reload performed by agent, no correction credited as engine-tested.
+
 - RW-005 local G1 preflight, 6 November 2026: verified source ZIP/revision,
   303 installed base files, four private adapter files, four native inputs,
   thirteen runtime and three output hashes, all matching. Separate Git clone

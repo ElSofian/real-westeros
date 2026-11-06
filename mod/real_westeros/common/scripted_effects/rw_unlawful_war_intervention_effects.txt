@@ -26,11 +26,24 @@ rw_uw_send_native_effect = {
                 set_variable = { name = rw_uw_native_dispatched_on value = current_date }
                 remove_variable = rw_uw_live
             }
+            set_variable = { name = rw_uw_native_send_record value = scope:rw_uw_record days = 1 }
+            set_variable = { name = rw_uw_native_send_serial value = scope:rw_uw_serial days = 1 }
             run_interaction = {
                 interaction = stop_attacker_vassal_war_interaction
                 actor = scope:rw_uw_issuer
                 recipient = scope:rw_uw_attacker
+                redirect = no
                 send_threshold = decline
+            }
+            # The synchronous callback normally consumed these; clear a no-op send
+            # without touching a different dispatch's markers.
+            if = {
+                limit = {
+                    has_variable = rw_uw_native_send_record
+                    var:rw_uw_native_send_record = scope:rw_uw_record
+                }
+                remove_variable = rw_uw_native_send_record
+                remove_variable = rw_uw_native_send_serial
             }
         }
         else = {
@@ -43,6 +56,25 @@ rw_uw_send_native_effect = {
                 type = event_generic_neutral
                 title = rw_uw.native_blocked_title
                 desc = rw_uw.native_blocked_notice
+            }
+        }
+    }
+}
+
+# Called ONLY by the private prefix of the real native on_accept. No native
+# event/effect is replayed. Its unchanged body then inherits the exact war scope.
+rw_uw_bind_native_target_effect = {
+    if = {
+        limit = { exists = scope:actor exists = scope:recipient }
+        scope:actor = {
+            if = {
+                limit = { has_variable = rw_uw_native_send_record has_variable = rw_uw_native_send_serial }
+                if = {
+                    limit = { rw_uw_native_binding_context_trigger = yes }
+                    var:rw_uw_native_send_record.var:rw_uw_war = { save_scope_as = target }
+                    remove_variable = rw_uw_native_send_record
+                    remove_variable = rw_uw_native_send_serial
+                }
             }
         }
     }

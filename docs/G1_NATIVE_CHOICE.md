@@ -1,6 +1,10 @@
 # G1 — Choix explicite dans la fenêtre native
 
-**Source expérimentale ; aucun test moteur.** Le choix de défi ajoute une alternative
+**Source expérimentale ; premier parcours moteur corrigé et observé.**
+[G1_FIRST_ENGINE_TRIAL.md](G1_FIRST_ENGINE_TRIAL.md) distingue le vrai claim_cb
+observé, les défauts0.0.5 et l'essai0.0.6 avec lettre correcte/paix blanche réelle,
+numéros valides et clôture RW. Validation limitée à ce parcours ; G1 ouvert,+0.
+Le choix de défi ajoute une alternative
 locale au contrôle d'autorisation native dans un adaptateur privé séparé. Le mod
 principal ne remplace aucune interaction, loi, CB ou callback de guerre.
 G1, W1/W2, W4/W5 et l'initiative autonome de guerre restent ouverts.
@@ -77,13 +81,20 @@ constatée ou une simple demande ne démontre ni illégalité, paix ou sanction 
 
 ## Migration de l'ancien adaptateur
 
-L'adaptateur privé porte désormais la version **0.0.5**. À la campagne finale,
+L'adaptateur privé porte désormais la version **0.0.6**. Au prochain essai,
 remplacer entièrement son ancien dossier `rw_g1_native_choice` par le nouveau
 dossier généré ; ne pas simplement superposer les fichiers. Les versions précédentes
 contenaient leurs propres bibliothèques, qui pourraient sinon masquer celles du
 mod principal. Mettre à jour Real Westeros avec le même ZIP/commit et comparer les
 treize empreintes du reçu privé aux sources installées. Le générateur ne supprime ni
 ne remplace automatiquement aucun dossier d'installation.
+
+La version0.0.6 produit **quatre** fichiers privés : les trois précédents et
+l'interaction native d'arrêt de guerre avec un seul préfixe metadata-only dans
+`on_accept`. Le fichier natif de vassaux déjà épinglé fournit cette définition ;
+aucun nouveau hash natif autorisé. Ne pas cumuler un override concurrent de
+`stop_attacker_vassal_war_interaction`. Le marqueur supplémentaire ferme l'envoi
+RW sans nouvel adaptateur. Les sections0.0.3/0.0.5 ci-dessous sont historiques.
 
 ### Relevé de déclaration — adaptateur 0.0.3
 
