@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "3310b802ca4f1b080f40b1490b13497d8a02d94d",
+  "assessed_commit": "a191c6ff2b5504040ff0e2fec5f7d7e988d2809a",
   "lots": [
     {
       "id": "W",
@@ -311,22 +311,15 @@
           "id": "J4",
           "points": 2,
           "acceptance": "Mesures coercitives familiales/dynastiques de terres ou statut couvrant les routes G3",
-          "status": "open",
+          "status": "source_complete",
           "evidence": [
-            "docs/RW010_NATIVE_HOUSE_CONFISCATION.md",
-            "docs/HOUSE_CONFISCATION_SOURCE_RECEIPT.json",
-            "mod/real_westeros/common/character_interactions/rw_house_confiscation_interactions.txt",
-            "mod/real_westeros/common/scripted_triggers/rw_house_confiscation_triggers.txt",
-            "mod/real_westeros/common/scripted_effects/rw_house_confiscation_effects.txt",
+            "docs/INSTITUTIONAL_HOUSE_FORFEITURE.md",
+            "mod/real_westeros/common/scripted_triggers/rw_institutional_forfeiture_triggers.txt",
+            "mod/real_westeros/common/scripted_effects/rw_institutional_forfeiture_effects.txt",
+            "mod/real_westeros/common/character_interactions/rw_institutional_forfeiture_interactions.txt",
             "mod/real_westeros/common/script_values/rw_house_confiscation_values.txt",
-            "mod/real_westeros/common/story_cycles/rw_house_confiscation.txt",
             "tools/build_g3_native_confiscation.py",
-            "docs/RW010_CONFISCATION_TRANSFER_RECEIPTS.md",
-            "mod/real_westeros/common/scripted_triggers/rw_confiscation_transfer_triggers.txt",
-            "mod/real_westeros/common/scripted_effects/rw_confiscation_transfer_effects.txt",
-            "mod/real_westeros/common/on_action/rw_title_provenance_on_actions.txt",
-            "mod/real_westeros/common/story_cycles/rw_house_revocation_request.txt",
-            "mod/real_westeros/events/rw_confiscation_transfer_events.txt"
+            "tests/test_institutional_forfeiture.py"
           ]
         },
         {
@@ -1589,6 +1582,50 @@
       "score": 66,
       "reference": "3310b802ca4f1b080f40b1490b13497d8a02d94d",
       "note": "J5 source terminé : chaîne complète native acceptation de révocation + perte exacte observée → choix partagé joueur/IA → retour ducal réel sous gardes natives et détenteur vérifié, sans archive/promesse ou réhabilitation comme substitut. Voie personnelle ducale bornée, pas restauration universelle des maisons sans terre/descendants/noblesse ; J4/G3 reste ouvert. Aucun test moteur, barème/acceptation/historique gelés inchangés. +2,développement66/80,moteur0/20,total66/100."
+    },
+    {
+      "date": "2026-11-06",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4",
+        "O4",
+        "I3",
+        "M5",
+        "P4",
+        "N4",
+        "N5",
+        "J3",
+        "AI5",
+        "W3",
+        "J5",
+        "J4"
+      ],
+      "score": 68,
+      "reference": "a191c6ff2b5504040ff0e2fec5f7d7e988d2809a",
+      "note": "J4 source terminé : campagne institutionnelle explicite sous le décret existant, échéance originale et autorité actuelle, confiscation native réactive des titres actuels après octroi/héritage/élection/conquête ; coûts, protections et résistance conservés. Information publique sans preuves privées, retrait et gardes anti-boucle de restitution. Aucun veto universel, garantie de privation foncière ou noblesse supprimée ; G3 moteur reste ouvert. Barème/acceptation/historique gelés inchangés. +2,développement68/80,moteur0/20,total68/100."
     }
   ]
 }
