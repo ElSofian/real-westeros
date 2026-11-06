@@ -960,3 +960,10 @@
   hashes and3/2/2 native outputs; all assembled file hashes verified. Descriptor
   metadata remains a fixture, not installed-game evidence. Windows assembly test
   added to CI; exact-head CI/public artifact required before merge.
+
+- PR #93 first CI exposed a Windows test-fixture path alias: output resolution
+  expanded the temporary path, so the synthetic final-copy failure was not
+  injected. Compare resolved paths and exercise an alias on all platforms;
+  product assembly unchanged. All other15 Windows assembly cases passed;
+  corrected exact-head CI still required before merge. No tests ignored to
+  bypass the failure, no readiness points added.

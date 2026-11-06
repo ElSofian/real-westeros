@@ -182,9 +182,13 @@ class CampaignPackTests(unittest.TestCase):
         self.assertEqual(previous,(pack.war.REPO,pack.war.TEMPLATES))
 
     def test_final_copy_failure_leaves_no_ready_or_partial_destination(self):
+        # Windows can expand 8.3 temp paths during resolve(). Exercise an alias
+        # on every platform so the injected I/O failure still reaches final copy.
+        (self.root/'nested').mkdir()
+        self.out=self.root/'nested'/'..'/'private'
         original=shutil.copytree
         def fail(src,dst,*args,**kwargs):
-            if Path(dst)==self.out:
+            if Path(dst).resolve()==self.out.resolve():
                 (self.out/'partial').write_text('partial');raise OSError('synthetic disk error')
             return original(src,dst,*args,**kwargs)
         with patch.object(pack.shutil,'copytree',side_effect=fail):self.rejected()
