@@ -1,5 +1,20 @@
 # Progress
 
+- RW-004/RW-005 corrected0.0.6 acceptance trial,6November: owner reports correct
+  Paxter/La Treille letter and peace8June. Screenshot plus read-only corrected save
+  confirm actual white peace/title retained, valid1 counters/serials/link, closed
+  native_requested result/on_white_peace receipt8June and no transport markers.
+  Installed hashes match; prior G1 counter/target errors absent in captured logs.
+  Targeted path engine-observed, not complete G1/AI/Mega Wars or clean global logs.
+  G1_FIRST_ENGINE_TRIAL.md records private-artifact hashes and limits; no raw data
+  published. Corrected refusal counter-test also observed: same-session before-save
+  replay, active same claim war1July, valid serials, no terminal receipt/transport
+  markers or targeted G1 errors. Baseline/result68/80+0/20,total68/100,delta0.
+  Bounded fix in branch fix/rw004-first-engine-defects/PR#96; RW-004 remains in
+  progress for full AI/exception/terminal/Mega Wars gates. Next: remaining grouped
+  regressions. No new source gameplay
+  changes or requested restart for this evidence update.
+
 - RW-004/RW-005 first local engine trial,6November: CK3 1.19.0.6,AGOT0.5.2.1,
   three-mod playset,reference19d567f/private0.0.5. Owner observed ban/defiance,
   war2June,Mace demand3June,refusal and ongoing war/defender mobilization.

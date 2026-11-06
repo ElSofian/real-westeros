@@ -1,5 +1,18 @@
 # Codex implementation handoff
 
+## Current continuation — corrected G1 acceptance observed
+
+PRIVATE0.0.6 installed codec9d6a59, before-save replay by owner: letter correctly
+names Paxter; actual peace8June. Corrected save verifies title retained, serials/
+counters/link1, native_requested result closed plus on_white_peace receipt, no
+transport markers. Prior G1 runtime errors absent; other diagnostics remain.
+G1_FIRST_ENGINE_TRIAL.md holds sanitized proof. Bounded acceptance path now
+engine-observed; earlier untested statements below describe the preparation stage.
+Same-session corrected refusal also verified to1July: active authentic claim war,
+positive serials, no terminal receipt/transport markers or targeted G1 errors.
+Full AI/exceptions/terminal/
+Mega Wars and final campaign remain open. Score unchanged68/80+0/20,+0.
+
 ## Current continuation — first G1 engine trial and isolated correction candidate
 
 G1_FIRST_ENGINE_TRIAL.md supersedes no-runtime statements for this narrow path.

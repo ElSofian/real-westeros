@@ -1,5 +1,16 @@
 # Development backlog
 
+**Corrected G1 acceptance trial (RW-004/RW-005):** installed PRIVATE0.0.6,
+owner-operated before-save replay: letter names correct defender, actual white
+peace8June, contested title retained. Save verifies numeric1 counters/serial/link,
+closed response/on_white_peace receipt and no transport markers; prior G1 errors
+absent. Targeted path engine-observed, not full G1/AI/Mega Wars clearance.
+G1_FIRST_ENGINE_TRIAL.md records evidence,+0,68/80+0/20. Same-session corrected
+refusal also verified through1July with active authentic claim war, no terminal
+receipt/transport marker or targeted G1 error. Historical failed/preparation
+statuses below are superseded only
+for the bounded corrected acceptance path.
+
 **RW-004/RW-005 first targeted engine trial (6 November):** genuine claim_cb war
 confirmed in disposable save, ban/checkbox observed, native demand next day,
 refusal and ongoing war. Empty RW serials and missing native target FAIL;

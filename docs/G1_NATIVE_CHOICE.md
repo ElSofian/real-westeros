@@ -1,8 +1,9 @@
 # G1 — Choix explicite dans la fenêtre native
 
-**Source expérimentale ; premier essai moteur partiel avec défauts.**
+**Source expérimentale ; premier parcours moteur corrigé et observé.**
 [G1_FIRST_ENGINE_TRIAL.md](G1_FIRST_ENGINE_TRIAL.md) distingue le vrai claim_cb
-observé du correctif0.0.6, encore non testé dans le moteur. G1 reste ouvert,+0.
+observé, les défauts0.0.5 et l'essai0.0.6 avec lettre correcte/paix blanche réelle,
+numéros valides et clôture RW. Validation limitée à ce parcours ; G1 ouvert,+0.
 Le choix de défi ajoute une alternative
 locale au contrôle d'autorisation native dans un adaptateur privé séparé. Le mod
 principal ne remplace aucune interaction, loi, CB ou callback de guerre.
