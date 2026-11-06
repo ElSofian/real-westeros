@@ -982,3 +982,9 @@
   requested. AUTONOMOUS_CK3_TESTING.md / receipt preserve evidence; no gameplay
   change, no new tests for documentation, +0,68/80 source+0/20 engine. Available
   repository checks and exact-head CI/artifact required before merge.
+
+- Autonomous-validation publication checks:1074 local tests discovered,
+ 1051 passed/23 PowerShell skips; structure, telemetry, readiness and whitespace
+  PASS. Raw Tiger reports were examined privately; public evidence contains no
+  native code, binary, installation path or credentials. No gameplay source,
+  frozen criterion, score, prior checkpoint or validation schedule changed.
