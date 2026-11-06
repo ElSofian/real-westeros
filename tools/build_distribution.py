@@ -37,6 +37,7 @@ DOCS = ('docs/AUTONOMOUS_CK3_TESTING.md', 'docs/AUTONOMOUS_CK3_TESTING_RECEIPT.j
         'docs/RW010_RESTRAINT_RESPONSES.md', 'docs/RW010_RESTITUTION_CHARTERS.md', 'docs/RW010_CHARTER_COMPENSATION.md', 'docs/RW010_CHARTER_TERMS.md',
         'docs/G1_INTENT_PROBE.md', 'docs/G1_PROBE.md', 'docs/G1_FEASIBILITY.md',
         'docs/G1_SOURCE_RECEIPT.json', 'docs/G1_COMPLEMENT_RECEIPT.json')
+DOCS += ('docs/G1_FIRST_ENGINE_TRIAL.md',)
 PREFIX = 'mod/real_westeros/'
 G3_ROOT = 'diagnostics/g3_house_trace/mod/'
 G3_FILES = tuple(G3_ROOT + name for name in (

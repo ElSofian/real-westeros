@@ -1,5 +1,23 @@
 # Progress
 
+- RW-004/RW-005 first local engine trial,6November: CK3 1.19.0.6,AGOT0.5.2.1,
+  three-mod playset,reference19d567f/private0.0.5. Owner observed ban/defiance,
+  war2June,Mace demand3June,refusal and ongoing war/defender mobilization.
+  Before/10June saves verify genuine claim_cb/parties/La Treille and captured
+  permission_required/internal law, but empty serials and missing native target.
+  Prestige net1050→982 is not exact cost proof. G1_FIRST_ENGINE_TRIAL.md records
+  sanitized evidence/hashes; raw data private. Missing-only counter initialization
+  and PRIVATE0.0.6 native callback binding prepared, no native effects replayed.
+  Correction not engine-tested; keep risky handoff isolated pending next run.
+  Windows control recovered; owner now operates UI. Baseline/result68/80+0/20,
+  total68/100,delta0. Next: matching private build, one-restart before-save batch.
+  Local verification:1084/1084 tests PASS, structure/telemetry/readiness/whitespace
+  PASS. Initial environment failures (sandbox temp/PowerShell, Git long paths and
+  CRLF checkout) resolved without weakening tests; final suite ran outside sandbox
+  with scoped temporary Git settings. Real pinned private build:4 inputs/13 runtime/
+  4 outputs match, native stop definition inverse PASS. Candidate still untested
+  in CK3; installation must wait for closed game and checked rollback backup.
+
 - RW-005 local G1 preflight, 6 November 2026: verified source ZIP/revision,
   303 installed base files, four private adapter files, four native inputs,
   thirteen runtime and three output hashes, all matching. Separate Git clone

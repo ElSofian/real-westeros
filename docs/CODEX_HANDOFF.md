@@ -1,5 +1,19 @@
 # Codex implementation handoff
 
+## Current continuation — first G1 engine trial and isolated correction candidate
+
+G1_FIRST_ENGINE_TRIAL.md supersedes no-runtime statements for this narrow path.
+Owner operates UI; saves/logs confirm genuine claim_cb and exact parties/title
+after ban/defiance. Demand/refusal leave war active, but serial initialization
+and native target transmission FAIL. Engine script_docs lists no target argument
+for run_interaction. Missing-only numeric initialization plus PRIVATE0.0.6 native
+on_accept binding candidate are not engine-tested. Four private outputs, same
+four native inputs/thirteen runtime files, inverse-preserved native body. No
+event replay/forced peace or point gain. Keep risky handoff isolated until next
+targeted run. Prepare all changes before one restart; load before-save, test
+cancel, valid serials/target, separate refusal/acceptance. No hot reload proven.
+Score68/80+0/20; full AI/Mega Wars/final-campaign criteria remain open.
+
 ## Current continuation — autonomous integrated Tiger research
 
 AUTONOMOUS_CK3_TESTING.md / receipt record two actual controlled Tiger1.19.0

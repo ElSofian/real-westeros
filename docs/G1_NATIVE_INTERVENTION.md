@@ -1,5 +1,12 @@
 # W3 — Réaction discrétionnaire et demande native d'intervention
 
+**6 novembre : premier essai moteur en échec sur la cible native.** Guerre réelle
+et refus observés, mais `run_interaction` perd `target` et la lettre perd défenseur/
+guerre. [G1_FIRST_ENGINE_TRIAL.md](G1_FIRST_ENGINE_TRIAL.md) décrit les preuves et
+le correctif privé0.0.6, non testé dans CK3 : préfixe dans le vrai `on_accept`,
+marqueurs personnels éphémères/exacts, aucun argument moteur inventé. Préparation
+historique ci-dessous ; +0,score68/100. Ne pas confondre demande et paix exécutée.
+
 **Scripts CK3 originaux intégrés ; vérification statique seulement, aucun test moteur.**
 Le suzerain peut désormais choisir une tentative native de négociation pour arrêter
 la guerre de revendication du dossier. Ce chemin complète la décision de tolérer,

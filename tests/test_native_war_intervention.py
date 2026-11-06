@@ -122,7 +122,7 @@ class NativeWarInterventionTests(unittest.TestCase):
     def test_known_native_api_fields_only(self):
         api=block(self.e,'run_interaction')
         fields=re.findall(r'(?m)^\s*(\w+)\s*=',api)
-        self.assertEqual(['run_interaction','interaction','actor','recipient','send_threshold'],fields)
+        self.assertEqual(['run_interaction','interaction','actor','recipient','redirect','send_threshold'],fields)
         self.assertNotIn('target =',api)  # No invented run_interaction argument.
 
     def test_original_runtime_libraries_are_integrated_without_native_override(self):

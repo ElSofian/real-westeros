@@ -51,6 +51,11 @@ rw_uw_notice_effect = {
                         NOT = { has_variable = rw_uw_serial }
                     }
                 }
+                # Preserve existing serials; initialize only the first observation.
+                if = {
+                    limit = { NOT = { has_variable = rw_uw_serial_counter } }
+                    set_variable = { name = rw_uw_serial_counter value = 0 }
+                }
                 change_variable = { name = rw_uw_serial_counter add = 1 }
                 save_scope_value_as = { name = rw_uw_serial value = var:rw_uw_serial_counter }
                 scope:rw_uw_record = {

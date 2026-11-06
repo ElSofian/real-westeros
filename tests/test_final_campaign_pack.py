@@ -47,7 +47,7 @@ class CampaignPackTests(unittest.TestCase):
         self.inputs={pack.war.INTERACTION:WAR.encode(),
             pack.war.HELPER:b'war_declarer_needs_hook_on_liege = { scope:actor = { synthetic_peer = scope:recipient } }',
             pack.war.CLAIM:b'claim_cb = { on_declaration = { original = yes } on_victory = {} on_defeat = {} on_white_peace = {} on_invalidated = {} }',
-            pack.war.VASSAL:b'synthetic native intervention',pack.revoke.INPUT:REVOKE.encode(),pack.grant.INPUT:GRANT}
+            pack.war.VASSAL:b'stop_attacker_vassal_war_interaction = { on_accept = { synthetic_negotiation = yes } }',pack.revoke.INPUT:REVOKE.encode(),pack.grant.INPUT:GRANT}
         for name,data in self.inputs.items():
             dest=self.agot/name;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(data)
         self.pins={n:hashlib.sha256(b).hexdigest() for n,b in self.inputs.items()}

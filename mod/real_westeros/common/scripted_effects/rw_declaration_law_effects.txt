@@ -59,6 +59,11 @@ rw_dl_capture_effect = {
                             NOT = { has_variable = rw_dl_serial }
                         }
                     }
+                    # CK3 does not create a numeric value when changing an unset variable.
+                    if = {
+                        limit = { NOT = { has_variable = rw_dl_serial_counter } }
+                        set_variable = { name = rw_dl_serial_counter value = 0 }
+                    }
                     change_variable = { name = rw_dl_serial_counter add = 1 }
                     scope:rw_dl_record = {
                         set_variable = { name = rw_dl_schema value = 1 }

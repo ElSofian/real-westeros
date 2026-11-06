@@ -1,5 +1,6 @@
 # Original runtime guards; native entry requires the isolated PRIVATE adapter.
 # The unmodified native helper remains authoritative for law/contract exceptions.
+rw_uw_native_target_adapter_available_trigger = { always = no }
 rw_uw_peer_ban_trigger = {
     exists = scope:actor
     exists = scope:recipient
@@ -145,6 +146,7 @@ rw_uw_native_context_trigger = {
     }
 }
 rw_uw_can_queue_native_trigger = {
+    rw_uw_native_target_adapter_available_trigger = yes
     rw_uw_issuer_turn_trigger = yes
     rw_uw_native_context_trigger = yes
 }
@@ -174,6 +176,7 @@ rw_uw_native_ticket_trigger = {
 }
 # Used ONLY inside the separate next-day event after binding native input scopes.
 rw_uw_can_send_native_trigger = {
+    rw_uw_native_target_adapter_available_trigger = yes
     rw_uw_native_ticket_trigger = yes
     rw_uw_native_context_trigger = yes
     scope:actor = scope:rw_uw_issuer
@@ -185,4 +188,26 @@ rw_uw_can_send_native_trigger = {
     }
     # Do not proceed if native validation replaced the candidate target context.
     scope:target = scope:rw_uw_war
+}
+
+# Native interaction callback context. A one-day sender-local transport marker is
+# not permission: exact consumed receipt, current roles and one-war guards apply.
+rw_uw_native_binding_context_trigger = {
+    exists = scope:actor
+    exists = scope:recipient
+    scope:actor = {
+        has_variable = rw_uw_native_send_record
+        has_variable = rw_uw_native_send_serial
+        var:rw_uw_native_send_record = {
+            rw_uw_record_context_trigger = yes
+            var:rw_uw_issuer = scope:actor
+            var:rw_uw_attacker = scope:recipient
+            var:rw_uw_serial = scope:actor.var:rw_uw_native_send_serial
+            var:rw_uw_state = flag:closed
+            var:rw_uw_result = flag:native_requested
+            var:rw_uw_native_dispatched_on = current_date
+        }
+    }
+    scope:recipient = { NOT = { any_character_war = { count >= 2 } } }
+    NOT = { scope:actor = { is_participant_in_war = scope:actor.var:rw_uw_native_send_record.var:rw_uw_war } }
 }

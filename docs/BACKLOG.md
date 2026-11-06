@@ -1,5 +1,13 @@
 # Development backlog
 
+**RW-004/RW-005 first targeted engine trial (6 November):** genuine claim_cb war
+confirmed in disposable save, ban/checkbox observed, native demand next day,
+refusal and ongoing war. Empty RW serials and missing native target FAIL;
+G1_FIRST_ENGINE_TRIAL.md records partial evidence. Numeric first-use initialization
+and isolated PRIVATE0.0.6 callback-binding candidate are static corrections only,
+not engine-tested. Retest from before-save after one prepared restart; full
+criteria stay open,+0,68/80+0/20. Keep risky handoff isolated before engine retest.
+
 **Local targeted G1 preflight (RW-005, 6 November 2026):** installed base and
 private adapter match the verified revision and pinned inputs; isolated three-mod
 playset exists as Real Westeros but is inactive, not yet named RW-Test. Debug is
