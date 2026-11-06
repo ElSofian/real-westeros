@@ -1,5 +1,18 @@
 # Progress
 
+- RW-005 local G1 preflight, 6 November 2026: verified source ZIP/revision,
+  303 installed base files, four private adapter files, four native inputs,
+  thirteen runtime and three output hashes, all matching. Separate Git clone
+  created. Read-only launcher inspection finds inactive three-mod Real Westeros
+  playset, usual playset still active; debug configured, no CK3 running or RW-era
+  logs. Native Windows control pipe unavailable after retry/reset, so no launch
+  or engine scenario executed and no installed/config/save files changed.
+  61 focused positive/negative tests, structure and UTF-8 readiness PASS.
+  LOCAL_G1_PREFLIGHT.md records the minimal first player trial and actual blocker.
+  Target G1CHOICE/DECLAW, baseline/result68/80+0/20,total68/100,delta0.
+  Next: restore game control, select isolated RW-Test and observe genuine CB,
+  cancellation/costs and callback linkage; RW-004 claim required for source fixes.
+
 - RW-001: complete — repository guidance and design summary committed.
 - RW-002: complete — independent CK3 mod scaffold, relative launcher descriptor, and install instructions.
 - RW-003: implemented stdlib-only validator, 12 positive/negative unit tests, and GitHub Actions CI. Local tests: **12 passed**; local scaffold structural check: **PASS**. See `docs/STATIC_VALIDATION.md`.

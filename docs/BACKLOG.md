@@ -1,5 +1,13 @@
 # Development backlog
 
+**Local targeted G1 preflight (RW-005, 6 November 2026):** installed base and
+private adapter match the verified revision and pinned inputs; isolated three-mod
+playset exists as Real Westeros but is inactive, not yet named RW-Test. Debug is
+configured; no CK3 process or new RW-era logs. Windows Computer Use native pipe
+fails after documented recovery, blocking observed game control. 61 focused tests,
+structure and UTF-8 readiness pass; no engine case executed, +0,68/80+0/20.
+See LOCAL_G1_PREFLIGHT.md for evidence and the first real-CB/negative-path trial.
+
 **Autonomous testing research (RW-005):** two controlled integrated Tiger runs
 now cover base plus all three private adapters, same reviewed native originals.
 RW-base diagnostic signatures370→370,0 added/removed; missing native definitions
