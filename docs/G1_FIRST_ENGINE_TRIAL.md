@@ -85,6 +85,11 @@ execution outside the sandbox; no tests were disabled or acceptance checks relax
 
 ## Next single-restart batch
 
+Prepared locally after owner closed CK3: code revision
+`c9d6a59a0e331355f3be983c6316b5b36832971c`, PRIVATE0.0.6,303 base/5 adapter
+files copied and fully hash-verified with rollback backup. No game/AGOT files,
+playsets or saves changed. PR#96 remains draft; corrected runtime trial pending.
+
 Generate matching private0.0.6/base, verify hashes and inverse native bytes, then
 synchronize while CK3 is closed with rollback backup. Preserve both saves and
 usual playset. No hot reload established. After one restart load before-save,

@@ -17,6 +17,11 @@
   with scoped temporary Git settings. Real pinned private build:4 inputs/13 runtime/
   4 outputs match, native stop definition inverse PASS. Candidate still untested
   in CK3; installation must wait for closed game and checked rollback backup.
+  Subsequent local synchronization: owner closed CK3; coherent code atc9d6a59
+  and PRIVATE0.0.6 installed with checked rollback backup,303 base/5 adapter files
+  and all copied hashes verified. Original game/AGOT files, playsets and both
+  saves untouched. PR#96 remains draft pending corrected engine trial; no restart
+  or hot reload performed by agent, no correction credited as engine-tested.
 
 - RW-005 local G1 preflight, 6 November 2026: verified source ZIP/revision,
   303 installed base files, four private adapter files, four native inputs,
