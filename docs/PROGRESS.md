@@ -967,3 +967,18 @@
   product assembly unchanged. All other15 Windows assembly cases passed;
   corrected exact-head CI still required before merge. No tests ignored to
   bypass the failure, no readiness points added.
+
+
+- RW-005 autonomous CK3 testing research: actual controlled Tiger1.19.0 runs on
+  partial native fixtures and PR93 private pack, same six reviewed originals in
+  both profiles. RW-base primary diagnostic signatures identical370→370,
+ 0 added/removed; combined676 includes copied native bodies. Qualified claim root,
+  duplicate revocation priority and three revoke-war scope alerts also found in
+  original reviewed inputs. No native patch/suppression, no semantic or engine
+  clearance. Raw native reports remain private, only hashes/counts/limits shipped.
+  Public meckt -nographics source example depends on private game image; inspected
+  game-run step fails, compatible runtime not established here. CWTools is static,
+  not an engine substitute. No login/image/new paid service or manual launch
+  requested. AUTONOMOUS_CK3_TESTING.md / receipt preserve evidence; no gameplay
+  change, no new tests for documentation, +0,68/80 source+0/20 engine. Available
+  repository checks and exact-head CI/artifact required before merge.
