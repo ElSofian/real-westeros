@@ -318,8 +318,7 @@
             "mod/real_westeros/common/scripted_effects/rw_institutional_forfeiture_effects.txt",
             "mod/real_westeros/common/character_interactions/rw_institutional_forfeiture_interactions.txt",
             "mod/real_westeros/common/script_values/rw_house_confiscation_values.txt",
-            "tools/build_g3_native_confiscation.py",
-            "tests/test_institutional_forfeiture.py"
+            "tools/build_g3_native_confiscation.py"
           ]
         },
         {
