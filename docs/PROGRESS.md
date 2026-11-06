@@ -913,3 +913,6 @@
   or runtime compatibility. J4/G3 family measures, W1/W2/W4/W5 and AI4 remain open.
   Next substantive target is J4/G3 coverage, not more metadata/localization/journal
   variants or points from test/PR counts. No native code/assets distributed.
+
+- J5 source acceptance assessment: `3310b802ca4f1b080f40b1490b13497d8a02d94d`; +2 checkpoint, source66/80,engine0/20.
+  Complete bounded native post-confiscation restitution path; no frozen rubric change.
