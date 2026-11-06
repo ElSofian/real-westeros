@@ -1,0 +1,81 @@
+# STORY scope. Exports only the public operative order; never private case grounds.
+rw_hs_snapshot_effect = {
+    save_scope_as = rw_hs_record
+    var:rw_house_target = { save_scope_as = rw_hs_house }
+    var:rw_house_authority = { save_scope_as = rw_hs_authority }
+    save_scope_value_as = { name = rw_hs_serial value = var:rw_house_serial }
+    save_scope_value_as = { name = rw_hs_epoch value = var:rw_hs_epoch }
+}
+rw_hs_arm_effect = {
+    if = {
+        limit = { rw_hs_can_arm_trigger = yes }
+        random_in_global_list = {
+            variable = rw_house_affairs
+            limit = { rw_hs_armable_pair_trigger = yes }
+            if = { limit = { NOT = { has_variable = rw_hs_epoch } } set_variable = { name = rw_hs_epoch value = 0 } }
+            change_variable = { name = rw_hs_epoch add = 1 }
+            set_variable = { name = rw_hs_schema value = 1 }
+            set_variable = { name = rw_hs_armed value = flag:yes }
+            set_variable = { name = rw_hs_armed_by value = scope:actor }
+            set_variable = { name = rw_hs_armed_on value = current_date }
+            # Original rw_house_term is deliberately not renewed.
+            rw_hs_snapshot_effect = yes
+            scope:actor = { trigger_event = { id = rw_institutional_forfeiture.0001 } }
+        }
+    }
+}
+rw_hs_disarm_effect = {
+    if = {
+        limit = { rw_hs_can_disarm_trigger = yes }
+        every_in_global_list = {
+            variable = rw_house_affairs
+            limit = { rw_hs_armed_pair_trigger = yes }
+            remove_variable = rw_hs_armed
+            change_variable = { name = rw_hs_epoch add = 1 }
+            set_variable = { name = rw_hs_disarmed_on value = current_date }
+            rw_hs_snapshot_effect = yes
+            scope:actor = { trigger_event = { id = rw_institutional_forfeiture.0001 } }
+        }
+        # Same issuer/house only; actual outstanding native requests stay untouched.
+        rw_hc_withdraw_effect = yes
+    }
+}
+rw_hs_read_effect = {
+    if = {
+        limit = { rw_hs_can_read_trigger = yes }
+        every_in_global_list = {
+            variable = rw_house_affairs
+            limit = { rw_hs_public_pair_trigger = yes }
+            rw_hs_snapshot_effect = yes
+            scope:actor = { trigger_event = { id = rw_institutional_forfeiture.0001 } }
+        }
+    }
+}
+# STORY scope on explicit political rehabilitation/withdrawal, not automatic expiry.
+# Stop only this Crown's matching RW intentions, never an accepted native action.
+rw_hs_close_personal_for_decree_effect = {
+    if = {
+        limit = {
+            rw_house_record_valid_trigger = yes
+            var:rw_hs_schema = 1 has_variable = rw_hs_armed
+            OR = { var:rw_house_state = flag:restored var:rw_house_state = flag:withdrawn }
+            var:rw_house_authority = { exists = holder }
+        }
+        save_scope_as = rw_hs_closing
+        var:rw_house_authority.holder = {
+            every_owned_story = {
+                limit = {
+                    story_type = story_rw_house_confiscation
+                    var:rw_hc_schema = 1
+                    var:rw_hc_house = scope:rw_hs_closing.var:rw_house_target
+                    var:rw_hc_authority = scope:rw_hs_closing.var:rw_house_authority
+                }
+                remove_variable = rw_hc_live
+                end_story = yes
+            }
+        }
+        remove_variable = rw_hs_armed
+        change_variable = { name = rw_hs_epoch add = 1 }
+        clear_saved_scope = rw_hs_closing
+    }
+}

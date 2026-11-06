@@ -36,6 +36,13 @@ rw_nd_domain_trigger = {
         NOT = { has_variable = agot_title_blocked_to_give_away }
         NOT = { has_variable = wagered_county }
     }
+    NOT = {
+        rw_hs_blocks_return_trigger = {
+            HOUSE = scope:rw_rs_requester.house
+            AUTHORITY = scope:rw_rs_holder.primary_title
+            ISSUER = scope:rw_rs_holder
+        }
+    }
 }
 rw_nd_can_deliver_trigger = {
     rw_nd_adapter_available_trigger = yes

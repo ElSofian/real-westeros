@@ -24,6 +24,7 @@ are deferred to the final campaign, not waived. Prefer a disposable fresh save.
 | Judicial inspection | Observer-only custody/reason check and guarded native arrest-window shortcut; no automatic send |
 | Personal prisoner sentencing | Native execution/release terms or unchanged detention; no automatic send/result |
 | Individual title/status review | Current grounds, knight/contract status; experimental native revocation/release terms, no forced transfer |
+| Optional PRIVATE institutional forfeiture | Explicit campaign under existing Crown decree, original expiry, current eligible native lieges after grant/inheritance/election/conquest; public read/disarm and restitution-loop guards. Source J4 only, no universal acquisition veto; INSTITUTIONAL_HOUSE_FORFEITURE.md. |
 | Optional G3 diagnostic | Separate mod under `diagnostics/g3_house_trace/`; debug-only seven-day house/title trace, no sanction |
 | Political house affairs | Fifty-year political disfavor, independent institutional records, head petitions/sovereign rehabilitation; no title ban |
 | Post-rehabilitation land review | Current sovereign/head review; guarded native grant terms, no automatic transfer or restitution |

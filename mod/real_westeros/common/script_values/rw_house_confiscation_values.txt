@@ -1,10 +1,14 @@
-# This value is inserted BEFORE all native AI modifiers. Original zero factors,
-# risks, relationship penalties and regional reluctance still apply afterward.
-# Native base score remains unchanged; no campaign or missing context adds zero.
+# One native modifier, before unchanged native risks/penalties/zero factors.
+# An institutional Crown order has greater weight than a personal intention;
+# matching both never stacks the two priorities.
 rw_hc_native_priority_value = {
     value = 0
     if = {
-        limit = { rw_hc_native_candidate_trigger = yes }
+        limit = { rw_hs_native_candidate_trigger = yes }
+        add = 2500
+    }
+    else_if = {
+        limit = { rw_hc_personal_candidate_trigger = yes }
         add = 1500
     }
 }

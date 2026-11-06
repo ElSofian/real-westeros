@@ -1,0 +1,23 @@
+namespace = rw_institutional_forfeiture
+rw_institutional_forfeiture.0001 = {
+    type = character_event
+    theme = diplomacy
+    title = rw_institutional_forfeiture.title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { rw_hs_view_trigger = yes }
+                desc = {
+                    desc = rw_institutional_forfeiture.identity
+                    first_valid = {
+                        triggered_desc = { trigger = { scope:rw_hs_record = { rw_hs_order_trigger = yes } } desc = rw_institutional_forfeiture.armed }
+                        desc = rw_institutional_forfeiture.inactive
+                    }
+                    desc = rw_institutional_forfeiture.boundaries
+                }
+            }
+            desc = rw_institutional_forfeiture.unavailable
+        }
+    }
+    option = { name = rw_institutional_forfeiture.close ai_chance = { base = 100 } }
+}

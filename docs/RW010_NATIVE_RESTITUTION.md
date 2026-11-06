@@ -1,5 +1,14 @@
 # Restitution volontaire effective — titre ducal
 
+**État courant après J4 :** voir [INSTITUTIONAL_HOUSE_FORFEITURE.md](INSTITUTIONAL_HOUSE_FORFEITURE.md).
+La campagne institutionnelle complète la voie personnelle antérieure, sans veto
+universel. Les deux retours RW exigent l'arrêt des ordres correspondants avant
+transfert. Régénérer les adaptateurs depuis le même checkout ; révocation0.0.4,
+38 sources runtime/deux sorties privées, quatre insertions inchangées. Les scores
+et comptes plus bas décrivent la livraison historique de ce guide, pas le score
+courant68/80 source +0/20 moteur. Aucun test CK3.
+
+
 **Mise à jour :** la [chaîne après confiscation](POST_CONFISCATION_RESTITUTION.md)
 complète désormais J5 dans son périmètre personnel ducal (+2 source,66/80+0/20).
 Le chemin de promesse décrit ci-dessous reste distinct et ne suffit pas seul à

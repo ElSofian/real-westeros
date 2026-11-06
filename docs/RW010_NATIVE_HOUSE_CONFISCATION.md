@@ -1,5 +1,14 @@
 # Confiscations de maison — politique dans l’IA native de révocation
 
+**État courant après J4 :** voir [INSTITUTIONAL_HOUSE_FORFEITURE.md](INSTITUTIONAL_HOUSE_FORFEITURE.md).
+La campagne institutionnelle complète la voie personnelle antérieure, sans veto
+universel. Les deux retours RW exigent l'arrêt des ordres correspondants avant
+transfert. Régénérer les adaptateurs depuis le même checkout ; révocation0.0.4,
+38 sources runtime/deux sorties privées, quatre insertions inchangées. Les scores
+et comptes plus bas décrivent la livraison historique de ce guide, pas le score
+courant68/80 source +0/20 moteur. Aucun test CK3.
+
+
 **Extension courante :** [POST_CONFISCATION_RESTITUTION.md](POST_CONFISCATION_RESTITUTION.md)
 ajoute le cas opératif de retour après révocation acceptée et perte constatée.
 Adaptateur0.0.3 : quatre insertions inversibles,29 sources runtime/deux sorties
