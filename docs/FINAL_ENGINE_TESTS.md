@@ -1459,3 +1459,15 @@ no public-archive/promise dependency or invented crime, AGOT/ordinary grant
 comparison. Source J5 credit is not engine proof. Both PRIVATE adapters required,
 revoke0.0.3 and matching grant; no native assets in public ZIP. Group with HCONF,
 HCRECEIPT,RESTORE,G3 in final sessions, no intermediate launch or relaunch per case.
+
+## Institutional house confiscation — HFORFEIT-01…10 (all unexecuted)
+
+INSTITUTIONAL_HOUSE_FORFEITURE.md defines the ten grouped cases: ordinary grant,
+inheritance, election, conquest; native eligibility/cost/refusal/resistance and
+protected AGOT institutions; AI↔AI scheduling; Crown and custody succession;
+original expiry/reactivation; dormant jurisdiction/law/war/self-house changes;
+public realm/target-house readers without private evidence; withdrawal and both
+RW restitution paths without a revoke/return loop. Source J4 credit does not clear
+G3/G4/G5 or establish a universal pre-transfer veto. Regenerate revoke0.0.4 and
+matching grant adapter from the same checkout. Run alongside G3/HCONF/HCRECEIPT/
+POSTRESTORE/RESTORE in final sessions, no intermediate launch or per-case relaunch.

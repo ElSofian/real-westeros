@@ -16,7 +16,7 @@ REPO = Path(__file__).resolve().parents[1]
 TEMPLATES = REPO/'mod/real_westeros'
 INPUT = 'common/character_interactions/00_revoke_title_interaction.txt'
 MOD_ID = 'rw_g3_native_confiscation'
-FILES = ('common/scripted_triggers/rw_post_confiscation_triggers.txt', 'common/scripted_effects/rw_post_confiscation_effects.txt', 'common/story_cycles/rw_post_confiscation.txt', 'common/character_interactions/rw_post_confiscation_interactions.txt', 'events/rw_post_confiscation_events.txt', 'localization/english/rw_post_confiscation_l_english.yml', 'localization/french/rw_post_confiscation_l_french.yml', 'events/rw_title_provenance_events.txt',
+FILES = ('common/scripted_triggers/rw_native_restitution_triggers.txt', 'common/scripted_effects/rw_house_affair_effects.txt', 'common/story_cycles/rw_house_affairs.txt', 'common/scripted_triggers/rw_institutional_forfeiture_triggers.txt', 'common/scripted_effects/rw_institutional_forfeiture_effects.txt', 'common/character_interactions/rw_institutional_forfeiture_interactions.txt', 'events/rw_institutional_forfeiture_events.txt', 'localization/english/rw_institutional_forfeiture_l_english.yml', 'localization/french/rw_institutional_forfeiture_l_french.yml', 'common/scripted_triggers/rw_post_confiscation_triggers.txt', 'common/scripted_effects/rw_post_confiscation_effects.txt', 'common/story_cycles/rw_post_confiscation.txt', 'common/character_interactions/rw_post_confiscation_interactions.txt', 'events/rw_post_confiscation_events.txt', 'localization/english/rw_post_confiscation_l_english.yml', 'localization/french/rw_post_confiscation_l_french.yml', 'events/rw_title_provenance_events.txt',
          'localization/english/rw_title_provenance_l_english.yml',
          'localization/french/rw_title_provenance_l_french.yml', 'common/scripted_effects/rw_title_provenance_effects.txt', 'common/story_cycles/rw_house_revocation_request.txt',
          'common/on_action/rw_title_provenance_on_actions.txt', 'common/scripted_triggers/rw_confiscation_transfer_triggers.txt',
@@ -110,7 +110,7 @@ def build(agot_root, output):
         'common/scripted_triggers/zz_rw_native_confiscation_available.txt': AVAILABLE.encode(),
     }
     metadata = ('name="Real Westeros PRIVATE confiscation AI EXPERIMENT"\n'
-                'version="0.0.3"\nsupported_version="1.19.*"\n'
+                'version="0.0.4"\nsupported_version="1.19.*"\n'
                 'dependencies={ "Real Westeros" }\ntags={ "Gameplay" }\n')
     receipt = {'schema':1,'status':'PRIVATE experimental source; NOT engine-tested',
                'reported_agot':fields,'requires_base_mod':'Real Westeros',

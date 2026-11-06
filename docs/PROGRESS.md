@@ -916,3 +916,28 @@
 
 - J5 source acceptance assessment: `3310b802ca4f1b080f40b1490b13497d8a02d94d`; +2 checkpoint, source66/80,engine0/20.
   Complete bounded native post-confiscation restitution path; no frozen rubric change.
+
+
+- RW-010 J4 source — institutional family confiscation: explicit campaign under
+  an existing Crown decree, original expiry, dynamic authority and preserved
+  custody succession; current house/realm/eligible direct-liege/title checks after
+  all four ordinary G3 routes. One native AI preference, no forced transfer,
+  fabricated reason or universal acquisition veto; native costs/refusal intact.
+  Public metadata only; disarm and explicit rehabilitation close corresponding
+  intentions. Both structured ducal returns require matching orders stopped.
+  Private revoke0.0.4 hashes38 runtime sources/two outputs, four native insertions
+  inverse-preserved; matching grant adapter required. Eighteen new source-contract
+  tests and mutations, no game simulation. Local1058 tests:1035 passed,23 skipped
+  (PowerShell unavailable); structural/telemetry checks PASS. Partial-source Tiger
+  retains missing native definitions/resources and qualified diagnostics; no full
+  semantic/engine clearance. J4 +2 source,68/80,motor0/20,total68/100; frozen rubric
+  and checkpoints unchanged. HFORFEIT-01…10 grouped with final campaign; next
+  source criteria W1/W2/W4/W5/AI4. Publication/CI/artifact evidence follows.
+
+- J4 publication : PR #92 (feat/institutional-house-forfeiture), source évaluée
+  a191c6f ; contrôle local du ZIP406 fichiers/121 preuves/11 entrées mod modifiées,
+  empreintes complètes et extraction conformes. Générateurs privés depuis le ZIP :
+  révocation38 sources/deux sorties, octroi297 sources/six corps natifs conservés,
+  empreintes correspondant au contenu livré. Résultats CI exacts et archive GitHub
+  à vérifier avant fusion ; aucun test CK3 effectué. Les18 nouveaux tests portent
+  sur la source, pas sur une simulation des acquisitions du moteur.

@@ -1,0 +1,50 @@
+rw_arm_house_forfeiture_interaction = {
+    category = interaction_category_hostile
+    desc = rw_arm_house_forfeiture_interaction_desc
+    use_diplomatic_range = no
+    auto_accept = yes
+    is_shown = { rw_hs_can_arm_trigger = yes }
+    is_valid = { rw_hs_can_arm_trigger = yes }
+    on_accept = { rw_hs_arm_effect = yes }
+    ai_potential = { rw_house_sovereign_trigger = yes is_at_war = no }
+    ai_targets = { ai_recipients = vassals ai_recipients = courtiers }
+    ai_frequency = 6
+    ai_will_do = {
+        base = 0
+        modifier = {
+            add = 20
+            rw_hs_can_arm_trigger = yes
+            scope:actor = {
+                has_revoke_title_reason = scope:recipient
+                opinion = { target = scope:recipient value <= -25 }
+            }
+        }
+    }
+}
+rw_disarm_house_forfeiture_interaction = {
+    common_interaction = yes
+    category = interaction_category_diplomacy
+    desc = rw_disarm_house_forfeiture_interaction_desc
+    use_diplomatic_range = no
+    auto_accept = yes
+    is_shown = { rw_hs_can_disarm_trigger = yes }
+    is_valid = { rw_hs_can_disarm_trigger = yes }
+    on_accept = { rw_hs_disarm_effect = yes }
+    ai_potential = { rw_house_sovereign_trigger = yes }
+    ai_targets = { ai_recipients = vassals ai_recipients = courtiers }
+    ai_frequency = 6
+    ai_will_do = {
+        base = 0
+        modifier = { add = 30 rw_hs_can_disarm_trigger = yes scope:actor = { has_trait = forgiving opinion = { target = scope:recipient value >= 25 } } }
+    }
+}
+rw_read_house_forfeiture_interaction = {
+    common_interaction = yes
+    category = interaction_category_diplomacy
+    desc = rw_read_house_forfeiture_interaction_desc
+    use_diplomatic_range = no
+    auto_accept = yes
+    is_shown = { rw_hs_can_read_trigger = yes }
+    on_accept = { rw_hs_read_effect = yes }
+    ai_will_do = { base = 0 }
+}

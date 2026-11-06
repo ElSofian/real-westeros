@@ -1,5 +1,14 @@
 # Ce qui reste avant la première version intégrée
 
+**Mise à jour du 6 novembre2026 après J4 :68/80 source,0/20 moteur,total68/100.**
+[La campagne institutionnelle](INSTITUTIONAL_HOUSE_FORFEITURE.md) complète J4 en
+source par confiscation native réactive des titres actuels après les quatre routes
+ordinaires G3, sans veto universel ni garantie de privation foncière. J5 est déjà
+livré en source. Cinq critères source restent ouverts,12points : W1/W2/W4/W5/AI4.
+G3/G4/G5 moteur demeurent non vérifiés. La revue historique ci-dessous conserve
+ses dépendances et scores d'époque ; elle ne redéfinit pas le barème gelé.
+
+
 Revue du **5 novembre 2026**, après PR #81 (`e0d9121b04e33316a0a3c1c5eb0a248904263109`).
 **Mise à jour fonctionnelle du 6 novembre 2026 : développement66/80,
 validation en jeu0/20, total66/100 (+2 J5 source).**

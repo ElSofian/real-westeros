@@ -1,0 +1,151 @@
+# STORY scope: explicit operative authorization on an existing public house decree.
+# Political censure alone never enables native confiscation preferences.
+rw_hs_order_trigger = {
+    rw_house_record_active_trigger = yes
+    var:rw_hs_schema = 1
+    has_variable = rw_hs_armed
+    has_variable = rw_hs_epoch
+    has_variable = rw_hs_armed_on
+    exists = var:rw_hs_armed_by
+    save_temporary_scope_as = rw_hs_check
+    var:rw_house_authority = {
+        exists = holder
+        holder = {
+            rw_house_sovereign_trigger = yes
+            primary_title = scope:rw_hs_check.var:rw_house_authority
+            government_has_flag = government_is_feudal
+            has_realm_law_flag = title_revocation_allowed
+            exists = house
+            NOT = { house = scope:rw_hs_check.var:rw_house_target }
+        }
+    }
+}
+# Public realm matching, independent of where the institutional record is stored.
+rw_hs_public_pair_trigger = {
+    rw_house_record_active_trigger = yes
+    var:rw_hs_schema = 1
+    has_variable = rw_hs_epoch
+    var:rw_house_target = scope:recipient.house
+    OR = {
+        AND = {
+            var:rw_house_authority = scope:actor.top_liege.primary_title
+            var:rw_house_authority = { exists = holder holder = scope:actor.top_liege }
+        }
+        scope:actor = { exists = house house = scope:recipient.house }
+    }
+}
+rw_hs_decree_pair_trigger = {
+    rw_house_record_active_trigger = yes
+    var:rw_house_target = scope:recipient.house
+    var:rw_house_authority = scope:actor.primary_title
+}
+rw_hs_armable_pair_trigger = {
+    rw_house_record_active_trigger = yes
+    var:rw_house_target = scope:recipient.house
+    var:rw_house_authority = scope:actor.primary_title
+    NOT = { has_variable = rw_hs_armed }
+}
+rw_hs_armed_pair_trigger = {
+    rw_house_record_active_trigger = yes
+    var:rw_hs_schema = 1
+    has_variable = rw_hs_armed
+    var:rw_house_target = scope:recipient.house
+    var:rw_house_authority = scope:actor.primary_title
+}
+rw_hs_issuer_trigger = {
+    exists = scope:actor exists = scope:recipient
+    scope:actor = { rw_house_sovereign_trigger = yes government_has_flag = government_is_feudal }
+    scope:recipient = {
+        is_alive = yes exists = house
+    }
+}
+rw_hs_can_arm_trigger = {
+    rw_hc_adapter_available_trigger = yes
+    rw_hs_issuer_trigger = yes
+    scope:recipient = { NOT = { house = scope:actor.house } }
+    scope:actor = { has_realm_law_flag = title_revocation_allowed }
+    has_global_variable_list = rw_house_affairs
+    any_in_global_list = { variable = rw_house_affairs rw_hs_armable_pair_trigger = yes }
+    NOT = { any_in_global_list = { variable = rw_house_affairs count >= 2 rw_hs_decree_pair_trigger = yes } }
+}
+rw_hs_can_disarm_trigger = {
+    rw_hs_issuer_trigger = yes
+    has_global_variable_list = rw_house_affairs
+    any_in_global_list = { variable = rw_house_affairs rw_hs_armed_pair_trigger = yes }
+}
+rw_hs_can_read_trigger = {
+    exists = scope:actor exists = scope:recipient exists = scope:recipient.house
+    scope:actor = { is_alive = yes }
+    has_global_variable_list = rw_house_affairs
+    any_in_global_list = { variable = rw_house_affairs rw_hs_public_pair_trigger = yes }
+}
+# Native AI candidate: all ordinary land acquisition routes converge on current
+# title ownership. No inheritance/election/CB result is vetoed or rolled back.
+rw_hs_native_candidate_trigger = {
+    rw_hc_adapter_available_trigger = yes
+    exists = scope:actor exists = scope:recipient exists = scope:landed_title
+    scope:actor = {
+        is_alive = yes is_adult = yes is_landed = yes is_imprisoned = no is_at_war = no
+        government_has_flag = government_is_feudal
+        highest_held_title_tier >= tier_duchy
+        has_realm_law_flag = title_revocation_allowed
+    }
+    scope:recipient = {
+        is_alive = yes is_landed = yes is_at_war = no
+        government_has_flag = government_is_feudal
+        liege = scope:actor exists = house
+        NOT = { house = scope:actor.house }
+    }
+    scope:landed_title = {
+        holder = scope:recipient tier >= tier_county
+        is_noble_family_title = no is_landless_type_title = no
+    }
+    has_global_variable_list = rw_house_affairs
+    any_in_global_list = {
+        variable = rw_house_affairs
+        var:rw_house_target = scope:recipient.house
+        var:rw_house_authority = scope:actor.top_liege.primary_title
+        rw_hs_order_trigger = yes
+        var:rw_house_authority = { holder = { is_at_war = no } }
+    }
+}
+# Personal title-return permission: disarm/rehabilitate an active institutional
+# campaign first, preventing repeated native revoke/return cycles under that order.
+rw_hs_blocks_return_trigger = {
+    OR = {
+        AND = {
+            has_global_variable_list = rw_house_affairs
+            any_in_global_list = {
+                variable = rw_house_affairs
+                var:rw_house_target = $HOUSE$
+                var:rw_house_authority = $AUTHORITY$
+                rw_house_record_active_trigger = yes
+                var:rw_hs_schema = 1 has_variable = rw_hs_armed
+            }
+        }
+        $ISSUER$ = {
+            any_owned_story = {
+                rw_hc_live_record_trigger = yes
+                var:rw_hc_house = $HOUSE$
+                var:rw_hc_authority = $AUTHORITY$
+            }
+        }
+    }
+}
+
+rw_hs_view_trigger = {
+    exists = scope:rw_hs_record exists = scope:rw_hs_house exists = scope:rw_hs_authority
+    exists = scope:rw_hs_serial exists = scope:rw_hs_epoch
+    scope:rw_hs_record = {
+        rw_house_record_valid_trigger = yes
+        var:rw_hs_schema = 1
+        var:rw_house_target = scope:rw_hs_house
+        var:rw_house_authority = scope:rw_hs_authority
+        var:rw_house_serial = scope:rw_hs_serial
+        var:rw_hs_epoch = scope:rw_hs_epoch
+    }
+    OR = {
+        scope:rw_hs_authority = { exists = holder holder = root.top_liege }
+        AND = { exists = house house = scope:rw_hs_house }
+    }
+}

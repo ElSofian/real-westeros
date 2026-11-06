@@ -1,5 +1,17 @@
 # Development backlog
 
+**Current delivery — J4 institutional family confiscation:**
+[INSTITUTIONAL_HOUSE_FORFEITURE.md](INSTITUTIONAL_HOUSE_FORFEITURE.md) adds an
+explicit campaign attached to the existing Crown decree and its original expiry,
+with dynamic authority and succession, current house/realm/direct-liege/title
+checks after grant/inheritance/election/conquest, native revocation preference
+and shared player/AI controls. Costs/refusal/protections remain native. Public
+consultation excludes private evidence; withdrawal and restitution guards prevent
+RW revoke/return cycles. No universal acquisition veto, guaranteed landlessness
+or nobility stripping. J4 source +2,68/80 +0/20,total68/100; G3 runtime unverified.
+Historical checkpoint descriptions below retain their then-current limits.
+
+
 A task is done only when the deliverable and verification evidence are present.
 The eight systems define project scope; the original three scenarios are examples,
 not an exhaustive completion checklist. PR/test counts are not global progress metrics.
@@ -93,11 +105,11 @@ Final campaign schedule and frozen64/80 +0/20 score remain unchanged.
 
 **War-track preparation:** RW-004 now has an opt-in exact-target intent diagnostic (G1_INTENT_PROBE.md): pinned native helper/claim inputs, explicit one-day staged confirmation, target/liege/serial guards, owner cleanup and conditional native claim-CB observations. Private generation only; no base-mod behavior changes, actual CB/cost/lifecycle/AI/cancellation semantics unverified. All engine runs remain in the final campaign. This is a bounded parallel track in the backlog, not a new G1-first prerequisite for independent systems.
 
-**Current readiness:** development **66/80**, engine validation **0/20**, total
-**66/100 (+2 J5 source)**. Full bounded post-confiscation ducal restitution chain
-is delivered in original scripts with PRIVATE native adapters, not engine proof.
-Six source criteria remain: W1/W2/W4/W5 (10), J4 (2), AI4 (2). Keep all G1/G3,
-family sanction and native war-AI limits visible; final campaign remains deferred.
+**Current readiness:** development **68/80**, engine validation **0/20**, total
+**68/100 (+2 J4 source)**. Institutional family confiscation across ordinary G3
+routes and bounded J5 restitution are delivered in source with PRIVATE adapters.
+Five source criteria remain: W1/W2/W4/W5 (10), AI4 (2). G1/G3 compatibility and
+native war-AI limits remain unverified; final campaign remains deferred.
 
 
 

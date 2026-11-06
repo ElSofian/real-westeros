@@ -1,5 +1,14 @@
 # J5 — restitution effective après révocation native
 
+**État courant après J4 :** voir [INSTITUTIONAL_HOUSE_FORFEITURE.md](INSTITUTIONAL_HOUSE_FORFEITURE.md).
+La campagne institutionnelle complète la voie personnelle antérieure, sans veto
+universel. Les deux retours RW exigent l'arrêt des ordres correspondants avant
+transfert. Régénérer les adaptateurs depuis le même checkout ; révocation0.0.4,
+38 sources runtime/deux sorties privées, quatre insertions inchangées. Les scores
+et comptes plus bas décrivent la livraison historique de ce guide, pas le score
+courant68/80 source +0/20 moteur. Aucun test CK3.
+
+
 **Source expérimentale vérifiée, aucun test CK3.** La voie livrée relie une
 révocation native acceptée et une perte de titre constatée à un véritable octroi
 du titre perdu. Elle complète J5 dans les sources de la première v0.1 : **+2,

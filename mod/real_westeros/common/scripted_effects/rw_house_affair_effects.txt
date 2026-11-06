@@ -230,6 +230,7 @@ rw_house_close_effect = {
             remove_variable = rw_house_petition_cooldown
             change_variable = { name = rw_house_revision add = 1 }
             set_variable = { name = rw_house_retained value = flag:yes years = 50 }
+            rw_hs_close_personal_for_decree_effect = yes
         }
     }
 }

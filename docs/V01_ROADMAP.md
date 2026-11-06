@@ -1,12 +1,14 @@
 # Suivi de la première version intégrée — v0.1-plan-1
 
-**Développement : 66/80 · Validation en jeu : 0/20 · Total : 66/100 (+2 J5 source).**
-Il reste **six critères source ouverts, totalisant 14 points** : W1/W2/W4/W5,
-J4 et AI4. [J5](POST_CONFISCATION_RESTITUTION.md) livre la chaîne native acceptation
-+ perte constatée → choix explicite → retour réel du duché, joueur/IA, sous gardes.
-C'est une voie personnelle et ducale, pas une restauration universelle des maisons
-sans terre, des descendants ou de la noblesse. J4/G3 restent ouverts. Source
-expérimentale, aucune compatibilité moteur démontrée ; campagne finale maintenue.
+**Développement : 68/80 · Validation en jeu : 0/20 · Total : 68/100 (+2 J4 source).**
+Il reste **cinq critères source ouverts, totalisant 12 points** : W1/W2/W4/W5 et AI4.
+[J4](INSTITUTIONAL_HOUSE_FORFEITURE.md) livre une campagne institutionnelle de
+confiscation après les quatre acquisitions ordinaires G3 ; droits/coûts/refus
+natifs préservés, aucun veto universel ou garantie d'absence de terres.
+[J5](POST_CONFISCATION_RESTITUTION.md) livre le retour réel ducal après confiscation,
+pas une restauration universelle des maisons sans terre, descendants ou noblesse.
+G3 moteur reste ouvert. Source expérimentale, aucune compatibilité moteur démontrée ;
+campagne finale maintenue.
 Vitesse encore non mesurable : moins de sept jours de recul sur cette grille.
 
 Relevé initial : **1 novembre 2026, 38/100**, évalué sur le code de
@@ -96,7 +98,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 | J1 | 2 | Inspection des raisons natives et de la détention, sans fausse immunité ni verdict rétroactif | Source seulement : [RW010_SCHEME_JUSTICE.md](RW010_SCHEME_JUSTICE.md), [rw_scheme_justice_triggers.txt](../mod/real_westeros/common/scripted_triggers/rw_scheme_justice_triggers.txt) |
 | J2 | 3 | Sanction individuelle réellement exécutée via chemin natif joueur/IA, avec refus et résistance | Source seulement : [RW010_NATIVE_JUSTICE_ACTIONS.md](RW010_NATIVE_JUSTICE_ACTIONS.md), [rw_justice_action_effects.txt](../mod/real_westeros/common/scripted_effects/rw_justice_action_effects.txt) |
 | J3 | 3 | Pouvoir arbitraire/légal et sanctions discrétionnaires distinctes sans double peine native | Source seulement : [RW010_LAWFUL_ARBITRARY_SENTENCES.md](RW010_LAWFUL_ARBITRARY_SENTENCES.md), [rw_native_sentence_effects.txt](../mod/real_westeros/common/scripted_effects/rw_native_sentence_effects.txt) |
-| J4 | 2 | Mesures coercitives familiales/dynastiques de terres ou statut couvrant les routes G3 | Candidat source partiel : [priorité de révocation native](RW010_NATIVE_HOUSE_CONFISCATION.md) ; couverture G3 non établie, ouvert |
+| J4 | 2 | Mesures coercitives familiales/dynastiques de terres ou statut couvrant les routes G3 | Source seulement : [campagne institutionnelle](INSTITUTIONAL_HOUSE_FORFEITURE.md) après les quatre acquisitions ordinaires, révocation native ; pas de veto universel, moteur non testé |
 | J5 | 2 | Restauration après sanction coercitive effective, au-delà de la réhabilitation politique | Source seulement : [retour après confiscation](POST_CONFISCATION_RESTITUTION.md), [rw_post_confiscation_effects.txt](../mod/real_westeros/common/scripted_effects/rw_post_confiscation_effects.txt) ; chemin personnel ducal, moteur non testé |
 
 ### I — Information et preuves
@@ -141,9 +143,10 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 ## Prochain ordre de travail
 
 **Direction courante :** suivre [V01_REMAINING_WORK.md](V01_REMAINING_WORK.md) :
-J4 est la prochaine cible substantielle ; J5 a une chaîne source de restitution
-après la révocation native effective dans son périmètre personnel ducal ;
-préserver le candidat de guerre sauf défaut concret ou preuve levant un blocage.
+J4 et J5 disposent de leurs voies source, sans preuve moteur ; restent les cinq
+critères de guerre/AI4. Chercher un défaut concret ou une preuve levant un blocage
+du candidat de guerre ; sinon préparer la campagne groupée, sans variantes qui
+ne terminent aucun critère.
 Les étapes ci-dessous conservent l’historique des livraisons et dépendances.
 
 1. **AI3 — livré dans les sources, +2 points acquis** : politique contextuelle partagée

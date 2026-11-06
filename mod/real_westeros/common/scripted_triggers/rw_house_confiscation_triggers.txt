@@ -19,7 +19,10 @@ rw_hc_live_record_trigger = {
     exists = var:rw_hc_authority
     story_owner = var:rw_hc_issuer
     save_temporary_scope_as = rw_hc_check
-    var:rw_hc_issuer = { rw_hc_ruler_trigger = yes }
+    var:rw_hc_issuer = {
+        rw_hc_ruler_trigger = yes
+        primary_title = scope:rw_hc_check.var:rw_hc_authority
+    }
     var:rw_hc_authority = { holder = scope:rw_hc_check.var:rw_hc_issuer }
 }
 # Native interaction context: actor / recipient. Never use a third party's dossier.
@@ -52,7 +55,7 @@ rw_hc_can_issue_trigger = {
 }
 # Native AI scoring ONLY. Native eligibility, cost, resistance and execution stay
 # in the original interaction; nothing calls run_interaction or selects a title.
-rw_hc_native_candidate_trigger = {
+rw_hc_personal_candidate_trigger = {
     rw_hc_adapter_available_trigger = yes
     exists = scope:landed_title
     exists = scope:actor
@@ -72,4 +75,9 @@ rw_hc_native_candidate_trigger = {
         is_noble_family_title = no
     }
     rw_hc_has_order_trigger = yes
+}
+
+# One native preference, whether personal or institutional; never a double bonus.
+rw_hc_native_candidate_trigger = {
+    OR = { rw_hc_personal_candidate_trigger = yes rw_hs_native_candidate_trigger = yes }
 }

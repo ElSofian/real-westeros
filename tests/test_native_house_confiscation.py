@@ -37,7 +37,7 @@ def contract_errors(t, e, v, i, s):
     errors=[]
     def need(source, tokens, name):
         if any(not re.search(re.escape(x)+r'(?![\w:])',source) for x in tokens): errors.append(name)
-    candidate=block(t,'rw_hc_native_candidate_trigger')
+    candidate=block(t,'rw_hc_personal_candidate_trigger')
     need(candidate,('rw_hc_adapter_available_trigger = yes','exists = scope:landed_title',
          'holder = scope:recipient','tier >= tier_county','is_landless_type_title = no',
          'is_noble_family_title = no','liege = scope:actor','rw_hc_has_order_trigger = yes'), 'native context')
@@ -47,7 +47,7 @@ def contract_errors(t, e, v, i, s):
     live=block(t,'rw_hc_live_record_trigger')
     need(live,('story_type = story_rw_house_confiscation','var:rw_hc_schema = 1',
          'has_variable = rw_hc_live','story_owner = var:rw_hc_issuer',
-         'holder = scope:rw_hc_check.var:rw_hc_issuer'), 'identity/expiry/authority')
+         'holder = scope:rw_hc_check.var:rw_hc_issuer','primary_title = scope:rw_hc_check.var:rw_hc_authority'), 'identity/expiry/authority')
     need(block(t,'rw_hc_can_issue_trigger'),('NOT = { rw_hc_has_order_trigger = yes }',
          'liege = scope:actor','NOT = { house = scope:actor.house }'), 'duplicate/self order')
     need(block(e,'rw_hc_issue_effect'),('limit = { rw_hc_can_issue_trigger = yes }',
@@ -55,7 +55,7 @@ def contract_errors(t, e, v, i, s):
          'NOT = { has_variable = rw_hc_schema }','name = rw_hc_live value = flag:yes days = 180',
          'name = rw_hc_house value = scope:recipient.house','name = rw_hc_authority value = scope:actor.primary_title'), 'fresh bounded issue')
     priority=block(v,'rw_hc_native_priority_value')
-    need(priority,('value = 0','limit = { rw_hc_native_candidate_trigger = yes }','add = 1500'), 'zero outside order')
+    need(priority,('value = 0','limit = { rw_hc_personal_candidate_trigger = yes }','add = 1500'), 'zero outside order')
     need(s,('on_owner_death = { end_story = yes }','days = 30',
          'NOT = { rw_hc_live_record_trigger = yes }'), 'cleanup/inheritance')
     for name in ('rw_hc_issue_interaction','rw_hc_withdraw_interaction'):

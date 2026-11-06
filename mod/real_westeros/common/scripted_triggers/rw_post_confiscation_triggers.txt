@@ -57,6 +57,7 @@ rw_pcr_awaiting_accept_trigger = {
 rw_pcr_capacity_trigger = {
     rw_pcr_record_trigger = yes
     save_temporary_scope_as = rw_pcr_check
+    NOT = { rw_hs_blocks_return_trigger = { HOUSE = scope:rw_pcr_check.var:rw_pcr_house AUTHORITY = scope:rw_pcr_check.var:rw_pcr_authority ISSUER = scope:rw_pcr_check.var:rw_pcr_issuer } }
     var:rw_pcr_issuer = {
         is_alive = yes is_adult = yes is_imprisoned = no is_at_war = no
         is_independent_ruler = yes government_has_flag = government_is_feudal

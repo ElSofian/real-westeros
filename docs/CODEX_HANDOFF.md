@@ -1,5 +1,25 @@
 # Codex implementation handoff
 
+## Current continuation — institutional house forfeiture, J4 source
+
+INSTITUTIONAL_HOUSE_FORFEITURE.md delivers an explicit armed policy on an existing
+Crown decree, original expiry unchanged. Current authority/succession, exact house
+and realm, each eligible native liege's direct-vassal/title guards apply after all
+four ordinary G3 acquisition routes. Native AI preference2500 else personal1500,
+never stacked; native costs/eligibility/refusal/protections unchanged. No universal
+pre-transfer veto, landlessness guarantee, inherited crime or nobility stripping.
+Public decree information shared with realm and target-house readers, no private
+plot evidence. Disarm/explicit rehabilitation of armed decree closes appropriate
+intentions; pending native actions untouched. Both RW ducal gift paths require
+standing and matching personal orders stopped to avoid revoke/return cycles.
+Private revoke adapter0.0.4,38 runtime hashes/two outputs; four inverse-preserved
+insertions unchanged. Grant adapter same six native bodies, matching checkout.
+J4 source +2:68/80 +0/20,total68/100, frozen rubric/history intact. G3/G4/G5 runtime
+unverified; final HFORFEIT-01…10 grouped, no intermediate launch. Five source
+criteria remain W1/W2/W4/W5/AI4,12points; inspect concrete native war unblocks,
+otherwise prepare one grouped campaign rather than variants of credited slices.
+
+
 ## Current continuation — J5 post-confiscation restitution delivered in source
 
 POST_CONFISCATION_RESTITUTION.md implements the missing functional chain: native
