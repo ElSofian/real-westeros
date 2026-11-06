@@ -933,3 +933,11 @@
   semantic/engine clearance. J4 +2 source,68/80,motor0/20,total68/100; frozen rubric
   and checkpoints unchanged. HFORFEIT-01…10 grouped with final campaign; next
   source criteria W1/W2/W4/W5/AI4. Publication/CI/artifact evidence follows.
+
+- J4 publication : PR #92 (feat/institutional-house-forfeiture), source évaluée
+  a191c6f ; contrôle local du ZIP406 fichiers/121 preuves/11 entrées mod modifiées,
+  empreintes complètes et extraction conformes. Générateurs privés depuis le ZIP :
+  révocation38 sources/deux sorties, octroi297 sources/six corps natifs conservés,
+  empreintes correspondant au contenu livré. Résultats CI exacts et archive GitHub
+  à vérifier avant fusion ; aucun test CK3 effectué. Les18 nouveaux tests portent
+  sur la source, pas sur une simulation des acquisitions du moteur.
