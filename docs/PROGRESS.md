@@ -1,5 +1,59 @@
 # Progress
 
+- RW-004 audit identifies the failed control predicate: eleven checks pass,
+  hostility fails, native legality remains true. Removed hostility only from
+  legal/reject diagnostic controls; banned preference and production unchanged.
+  Nine construction tests PASS, seven installed console-file hashes match v006.
+  Corrected query is not engine-tested; selector success, negative path and
+  matched banned comparison remain for the grouped final campaign. No new
+  manual test requested. W2/AI4 open; baseline/result68/80+0/20, delta0.
+
+- RW-004 inspection was blocked by expired diagnostic handles, not an AI result.
+  Console probes now rebind only the explicit historical Leyton/Paxter fixture
+  under exact current-holder checks before current-state sampling. All selector
+  guards retained; no production AI/law/budget change. Nine construction tests PASS,
+  original user run files hashed/updated. Next: read the twelve predicate results;
+  W2/AI4 open,+0,68/80+0/20. See G1_AI_PLANNER_PROBE.md.
+
+- RW-004 natural AI update confirmed in4June control save: initialized=yes with
+  nonzero ticks/calculated budgets; prior inspection logged native legality=yes.
+  Next query stopped at allowed_precondition_failed before native selector, so
+  this is not a native planning failure. Claim/holder/liege chain and money intact,
+  no claimant war or RW obligation. Added twelve-predicate inspection only, eight
+  construction tests PASS. Identify failed precondition next; no gameplay changes,
+  baseline/result68/80+0/20,+0. Details/hash in G1_AI_PLANNER_PROBE.md.
+
+- RW-004 permissive AI control also failed immediately while paused. Both saved
+  Leyton native strategies are active=yes/initialized=no with all update ticks0:
+  controller changed but strategy not yet initialized. No law/AI incapability
+  conclusion. Probe handles extended to7days; added exact native can_declare_war
+  inspection without initializing AI or changing budgets/laws. Seven construction
+  tests PASS; user run files hashed/updated. Next: one natural day, inspect native
+  initialization and rerun permissive selector, then reconsider banned comparison.
+  G1_AI_PLANNER_PROBE.md records evidence,+0,68/80+0/20, no production change.
+
+- RW-004 first native-selector probe: actual /run resolution/setup/observer entry
+  confirmed; banned_default_defiance_yes then banned_failure while paused.
+  Paused2June save confirms no claim war and exact handles; user reports no war
+  by2July but did not save that later state. Immediate native failure remains
+  ambiguous until permissive control. Probe's redundant existing-law addition
+  emitted an error; fixed with missing-law guard, six construction tests PASS,
+  three user console files updated/hashed. No production script change or new
+  restart. G1_AI_PLANNER_PROBE.md records evidence and next allowed/reject cases.
+  W2/AI4 remain open; baseline/result68/80+0/20,+0.
+
+- RW-004 native AI discovery investigation: installed engine effects documentation
+  exposes ai_start_best_war with exact CB/candidate filters and callbacks; real
+  native conqueror callers located. Interaction reference clarifies window defaults
+  and full-send option rechecks; neither proves early planner discovery. Owner's
+  help run confirms console effect-file execution. Original console-only probes
+  built/hash-verified and placed in user run directory without overwriting files;
+  no production/native mod or defines changed. Five construction/negative tests
+  PASS. G1_AI_PLANNER_PROBE.md records controlled banned/permissive/reject protocol,
+  disclosed rivalry fixture, failure ambiguity and manual-call/autonomy distinction.
+  Runtime pending: file resolution, root context, candidate trace and real war.
+  Branch investigate/rw004-native-ai-discovery; baseline/result68/80+0/20,+0.
+
 - RW-004/RW-005 corrected0.0.6 acceptance trial,6November: owner reports correct
   Paxter/La Treille letter and peace8June. Screenshot plus read-only corrected save
   confirm actual white peace/title retained, valid1 counters/serials/link, closed

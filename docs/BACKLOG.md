@@ -1,5 +1,32 @@
 # Development backlog
 
+**RW-004 latest control audit:** native strategy initialized; eleven eligibility
+checks pass, hostility fails, native legality=true. Legal/reject diagnostics no
+longer require hostility; banned guard and production unchanged. Nine static
+tests PASS, installed v006 hashes verified. Corrected selector/reject/matched
+ban comparison pending grouped final campaign; no additional intermediate manual
+test requested. W2/AI4 open, baseline/result68/80+0/20, delta0.
+
+**RW-004 AI control corrected:** permissive case also failed; both paused saves
+  show native strategy initialized=no/all ticks0 after observe. Not proof of a
+  prohibition-specific filter. Seven-day probe handles/read-only legality check
+  prepared, seven static tests PASS. Next: natural daily initialization and valid
+  permissive control; no gameplay change or new restart,+0,68/80+0/20.
+
+**RW-004 native AI probe first result:** /run/setup/observer confirmed; hostile
+  default-defiance preference true, native selector failure under ban while
+  paused, no claim war in2June save. No candidate trace or permissive control yet,
+  so discovery/AI incapability cannot be concluded. Redundant-law diagnostic call
+  guarded; six static tests PASS. Next: same-fixture permissive/reject controls,
+  no restart or production change,+0,68/80+0/20.
+
+**RW-004 current AI investigation:** installed native ai_start_best_war and its
+  actual conqueror callers provide a new diagnostic entry. Original console-only
+  exact-target/claim probes prepared for banned/permissive/reject comparisons,
+  five construction tests PASS; owner confirmed help run. No new gameplay AI
+  initiator/override, no demonstrated scheduling or runtime probe yet. See
+  G1_AI_PLANNER_PROBE.md. W2/AI4 open,+0,68/80+0/20; keep current CK3 session.
+
 **Corrected G1 acceptance trial (RW-004/RW-005):** installed PRIVATE0.0.6,
 owner-operated before-save replay: letter names correct defender, actual white
 peace8June, contested title retained. Save verifies numeric1 counters/serial/link,
