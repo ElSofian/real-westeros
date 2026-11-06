@@ -8,3 +8,6 @@
  rw_memory.crown_recognition.first:0 "J’ai explicitement reconnu un engagement public de la Couronne envers [counterpart.GetTitledFirstName]."
  rw_memory.crown_recognition.second:0 "Vous avez explicitement reconnu un engagement public de la Couronne envers [counterpart.GetTitledFirstName]."
  rw_memory.crown_recognition.third:0 "[owner.GetName] a explicitement reconnu un engagement public de la Couronne envers [counterpart.GetTitledFirstName]."
+ rw_public_support_given:0 "Soutien public apporté"
+ rw_public_support_received:0 "Soutien public reçu"
+ rw_public_crown_recognition:0 "Reconnaissance d’un engagement de la Couronne"

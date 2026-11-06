@@ -1439,3 +1439,12 @@ Observe autonomous AI↔AI discovery, applicable capacity/pending/cooldown exclu
 direct-liege frequency12 and resolution; verify the player's unchanged execution
 and no new spam. Source scope diagnostics gone is not scheduler or performance
 proof. Group with the existing final cases, no intermediate launch per interaction.
+
+## Native memory label completion — existing final memory scenarios (unexecuted)
+
+The three memory type identifiers have FR/EN display labels in addition to their
+existing first/second/third perspective texts. Read both the type label and each
+applicable description in the already planned public support/Crown recognition
+memory scenarios. No new emission or retention behavior; no extra launch.
+The qualified scheme intake scope warning remains: validate discovery with no
+participant versus exposed agent with its exact identity, never infer organizer.

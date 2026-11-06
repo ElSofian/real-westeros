@@ -8,3 +8,6 @@
  rw_memory.crown_recognition.first:0 "I explicitly recognised a public Crown commitment towards [counterpart.GetTitledFirstName]."
  rw_memory.crown_recognition.second:0 "You explicitly recognised a public Crown commitment towards [counterpart.GetTitledFirstName]."
  rw_memory.crown_recognition.third:0 "[owner.GetName] explicitly recognised a public Crown commitment towards [counterpart.GetTitledFirstName]."
+ rw_public_support_given:0 "Public support given"
+ rw_public_support_received:0 "Public support received"
+ rw_public_crown_recognition:0 "Recognition of a Crown commitment"

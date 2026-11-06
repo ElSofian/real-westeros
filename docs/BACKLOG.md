@@ -17,6 +17,13 @@ not an exhaustive completion checklist. PR/test counts are not global progress m
 | P1 | RW-009 | Add AI actor selection and negative-path tests for one end-to-end incident | Implemented experimentally — bounded liege targeting; engine untested |
 | P2 | RW-010 | Expand political memory, justice, diplomacy and other systems incrementally | In progress — services, mediation, case history, contested allegations and voluntary repair responses and mutual promise cancellation and immutable mediated service clauses plus personal restitution promises and voluntary private case compensation in scripts; engine untested; native observation intake added; voluntary political responses added; coercive justice/dynastic stages remain |
 
+**Native memory label correction:** three native memory type names now have
+FR/EN labels in addition to the nine perspective texts. Validator requires both
+languages; three fixtures, no memory emission/retention/gameplay change. Partial
+Tiger missing-localization3→0; remaining scheme participant warning source-qualified
+and retained, not suppressed or fixed by a fabricated identity. Guides updated;
++0,64/80+0/20, no UI/engine validation; final memory reads grouped as planned.
+
 **AI availability scope corrected (RW-010/RW-009):** nine initial filters in
 seven interaction files now evaluate the candidate character directly instead
 of an unbound scope:actor wrapper. Same conditions, direct-liege pool, frequency,

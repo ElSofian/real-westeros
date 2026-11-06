@@ -1,5 +1,26 @@
 # Codex implementation handoff
 
+## Current continuation — native memory labels and diagnostic qualification
+
+RW010_NATIVE_MEMORIES.md adds the three missing native type labels in FR/EN,
+while all nine perspective descriptions remain intact. No memory definition,
+participant/retention/emission or gameplay changed. Validator requires owned
+memory type identifiers in both supported languages; three negative/positive
+fixtures added, existing public-memory coverage adapted. Partial-source Tiger
+missing-localization3→0, source-only,+0,64/80 +0/20.
+RW010_SCHEME_EVIDENCE.md qualifies the remaining intake warning: participant
+assignment is conditional on the kind set from the caller's literal; discovery
+passes scheme_discovered and does not bind a participant, exposed-agent intake
+binds only its native exposed agent. No fabricated identity or suppression;
+retain the warning and verify both branches in the final campaign. The unknown
+knight helper is also used by many actual AGOT files; its definition is absent
+from the partial collection, not grounds to replace it with a guessed predicate.
+Missing icons/assets/native definitions and other diagnostics remain unresolved;
+no full semantic or runtime clearance. UI checks grouped with final memory cases,
+no intermediate launch (7–10min/start). Next seek concrete source-backed defects
+or substantive G1/J4/J5 unblocks; do not repeatedly "fix" qualified warnings,
+replace native helpers or expand already-credited journals to manufacture points.
+
 ## Current continuation — AI availability scope correction
 
 AI_AVAILABILITY_SCOPE_FIXES.md fixes nine initial ai_potential filters across seven
