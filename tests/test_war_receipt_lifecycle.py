@@ -37,7 +37,8 @@ def errors(t, e, s):
     need(context, ('rw_uw_active_record_trigger = yes',
          'holder = scope:rw_wc_check.var:rw_uw_issuer'), 'live context')
     if context.count('liege = scope:rw_wc_check.var:rw_uw_issuer') != 2: found.append('jurisdiction')
-    terminal = block(e, 'rw_uw_terminal_effect')
+    worker_definition = e[e.index('\nrw_uw_close_owned_receipts_effect = {'):]
+    terminal = block(e, 'rw_uw_terminal_effect') + block(worker_definition, 'rw_uw_close_owned_receipts_effect')
     need(terminal, ('exists = scope:war', 'exists = scope:attacker',
          'story_owner = scope:rw_wc_actor', 'var:rw_uw_attacker = scope:rw_wc_actor',
          'var:rw_uw_schema = 1', 'has_variable = rw_uw_serial',
@@ -66,6 +67,31 @@ class WarReceiptLifecycleTests(unittest.TestCase):
     def test_current_source_contract(self):
         self.assertEqual([], errors(self.t, self.e, self.s))
         self.assertIn('common/scripted_effects/rw_war_lifecycle_effects.txt', b.FILES)
+
+    def test_terminal_visits_callback_attacker_and_other_exact_war_participants(self):
+        terminal = block(self.e, 'rw_uw_terminal_effect')
+        self.assertIn('rw_uw_close_owned_receipts_effect = { OUTCOME = $OUTCOME$ }',
+                      block(terminal, 'scope:attacker'))
+        self.assertIn('scope:war = { every_war_participant = {', ' '.join(terminal.split()))
+        participants = block(terminal, 'every_war_participant')
+        self.assertIn('limit = { NOT = { this = scope:attacker } }', participants)
+        self.assertIn('rw_uw_close_owned_receipts_effect = { OUTCOME = $OUTCOME$ }', participants)
+        self.assertEqual(2, terminal.count('rw_uw_close_owned_receipts_effect ='))
+        for restricted_role in ('primary_attacker', 'primary_defender', 'liege', 'using_cb'):
+            self.assertNotIn(restricted_role, participants)
+        for global_scan in ('every_living_character', 'every_ruler', 'every_character'):
+            self.assertNotIn(global_scan, terminal)
+
+    def test_receipt_worker_requires_original_owner_and_exact_war_on_either_side(self):
+        worker_definition = self.e[self.e.index('\nrw_uw_close_owned_receipts_effect = {'):]
+        worker = block(worker_definition, 'rw_uw_close_owned_receipts_effect')
+        self.assertIn('save_scope_as = rw_wc_actor', worker)
+        self.assertIn('story_owner = scope:rw_wc_actor', worker)
+        self.assertIn('var:rw_uw_attacker = scope:rw_wc_actor', worker)
+        self.assertIn('var:rw_uw_war = scope:rw_wc_war', worker)
+        self.assertNotIn('var:rw_uw_attacker = scope:attacker', worker)
+        for operation in ('create_story', 'make_story_owner', 'run_interaction', 'end_war'):
+            self.assertNotIn(operation, worker)
 
     def test_all_terminal_bodies_and_law_prefix_preserve_native_bytes(self):
         for newline in ('\n', '\r\n'):

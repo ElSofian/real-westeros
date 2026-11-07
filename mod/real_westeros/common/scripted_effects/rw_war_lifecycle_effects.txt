@@ -6,31 +6,43 @@ rw_uw_terminal_effect = {
         limit = { exists = scope:war exists = scope:attacker }
         scope:war = { save_scope_as = rw_wc_war }
         scope:attacker = {
-            save_scope_as = rw_wc_actor
-            every_owned_story = {
-                limit = {
-                    story_type = story_rw_unlawful_war_response
-                    story_owner = scope:rw_wc_actor
-                    var:rw_uw_schema = 1
-                    has_variable = rw_uw_serial
-                    var:rw_uw_attacker = scope:rw_wc_actor
-                    var:rw_uw_war = scope:rw_wc_war
-                    NOT = { has_variable = rw_uw_terminal_seen }
-                }
-                # Preserve an earlier censure/refusal/native dispatch result.
-                # First callback receipt wins; duplicate calls cannot overwrite it.
-                set_variable = { name = rw_uw_terminal_seen value = flag:yes }
-                set_variable = { name = rw_uw_terminal_kind value = flag:$OUTCOME$ }
-                set_variable = { name = rw_uw_terminal_seen_on value = current_date }
-                if = {
-                    limit = { NOT = { var:rw_uw_state = flag:closed } }
-                    set_variable = { name = rw_uw_state value = flag:closed }
-                    set_variable = { name = rw_uw_result value = flag:war_callback_closed }
-                }
-                remove_variable = rw_uw_live
-                remove_variable = rw_uw_issuer_window
-                remove_variable = rw_uw_answer_window
+            rw_uw_close_owned_receipts_effect = { OUTCOME = $OUTCOME$ }
+        }
+        # A transferred former leader can still participate on either side.
+        # Inspect only this war's other participants and their personal receipts.
+        scope:war = {
+            every_war_participant = {
+                limit = { NOT = { this = scope:attacker } }
+                rw_uw_close_owned_receipts_effect = { OUTCOME = $OUTCOME$ }
             }
         }
+    }
+}
+# Internal character-scope worker; the caller binds the exact callback war.
+rw_uw_close_owned_receipts_effect = {
+    save_scope_as = rw_wc_actor
+    every_owned_story = {
+        limit = {
+            story_type = story_rw_unlawful_war_response
+            story_owner = scope:rw_wc_actor
+            var:rw_uw_schema = 1
+            has_variable = rw_uw_serial
+            var:rw_uw_attacker = scope:rw_wc_actor
+            var:rw_uw_war = scope:rw_wc_war
+            NOT = { has_variable = rw_uw_terminal_seen }
+        }
+        # Preserve an earlier censure/refusal/native dispatch result.
+        # First callback receipt wins; duplicate calls cannot overwrite it.
+        set_variable = { name = rw_uw_terminal_seen value = flag:yes }
+        set_variable = { name = rw_uw_terminal_kind value = flag:$OUTCOME$ }
+        set_variable = { name = rw_uw_terminal_seen_on value = current_date }
+        if = {
+            limit = { NOT = { var:rw_uw_state = flag:closed } }
+            set_variable = { name = rw_uw_state value = flag:closed }
+            set_variable = { name = rw_uw_result value = flag:war_callback_closed }
+        }
+        remove_variable = rw_uw_live
+        remove_variable = rw_uw_issuer_window
+        remove_variable = rw_uw_answer_window
     }
 }
