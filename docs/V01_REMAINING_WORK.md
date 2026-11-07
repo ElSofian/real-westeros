@@ -1,5 +1,11 @@
 # Ce qui reste avant la première version intégrée
 
+**Actualisation du 7 novembre 2026 —78/80 source,0/20 campagne,delta+2.**
+[W4 est qualifié en source](G1_WAR_RECEIPT_LIFECYCLE.md) après ajout de la recherche
+terminale des participants de la guerre exacte. Le chemin transféré reste non
+testé dans CK3. Restent W5 pour2points et les critères V1–V5 de campagne.
+Les états ci-dessous sont les revues historiques antérieures.
+
 **Actualisation du 7 novembre 2026 —76/80 source,0/20 campagne,delta+2.**
 [W1 est qualifié en source](G1_W1_QUALIFICATION.md) sur l’implémentation historique
 et les observations existantes. Restent W4, cycles guerre/Mega Wars, et W5, gardes

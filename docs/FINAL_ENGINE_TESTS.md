@@ -1504,3 +1504,10 @@ A public -nographics launch example is a runtime-installation-dependent research
 lead, not a supported CK3 1.19.* / AGOT0.5.2.1 runner. No engine result is inferred
 from startup markers, elapsed time or static exit status. Final grouped schedule
 and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requested.
+
+- W4 transferred participant closure. Extend WARLIFE-04/06 with the original
+  declarant still participating after leadership/side changes. Verify their exact
+  personal receipt closes at the native claim callback, existing results remain,
+  foreign-war/owner records survive and no deferred royal send is replayed. Compare
+  to AGOT, then cover absent participants, missing callbacks, replacement wars and
+  reloads. Measure cost with many participants. New iterator path not engine-tested.

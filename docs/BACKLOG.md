@@ -1,5 +1,14 @@
 # Development backlog
 
+**RW-004 W4 lifecycle integration, 7 November:** terminal handling now visits
+  the callback attacker and other participants of the exact war. A former leader
+  can retain their personal receipt after leadership/side changes. One shared
+  worker retains the previous identity, first-callback, result and window cleanup
+  operations. Actual native claim byte inversion and engine iterator docs were
+  checked. Two new regressions cover participant traversal and original ownership.
+  W4 source complete,76→78/80, campaign0/20, delta+2. Participant/transfer/Mega Wars
+  runtime behavior remains unverified and grouped. W5 is the next source criterion.
+
 **RW-004 W1 law qualification, 7 November:** G1_W1_QUALIFICATION.md assesses
   the existing declaration-prefix snapshot, unchanged native exceptions and exact
   early links already observed for player and two autonomous AI declarations.

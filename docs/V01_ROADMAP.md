@@ -1,7 +1,10 @@
 # Suivi de la première version intégrée — v0.1-plan-1
 
-**Développement : 76/80 · Validation en jeu : 0/20 · Total : 76/100 (+2 W1).**
-Il reste **deux critères source ouverts, totalisant 4 points** : W4/W5.
+**Développement : 78/80 · Validation en jeu : 0/20 · Total : 78/100 (+2 W4).**
+Il reste **un critère source ouvert, totalisant 2 points** : W5.
+[W4](G1_WAR_RECEIPT_LIFECYCLE.md) ajoute la fermeture des dossiers du déclarant
+initial encore participant après transfert. Les transitions Mega Wars et la
+nouvelle recherche restent à vérifier dans le moteur.
 [La qualification W1](G1_W1_QUALIFICATION.md) rapproche la capture historique, les
 exceptions natives préservées et les liens exacts déjà observés chez joueur et IA.
 Les contextes exceptionnels gardent leur validation moteur en campagne finale.
@@ -35,7 +38,7 @@ coût. Les trois scénarios initiaux ne limitent pas le périmètre ; le catalog
 
 | Système | Points acquis | Poids |
 |---|---:|---:|
-| Liberté, légalité et guerres | 8 | 12 |
+| Liberté, légalité et guerres | 10 | 12 |
 | Affaires politiques | 8 | 8 |
 | Négociation | 10 | 10 |
 | Promesses et obligations | 10 | 10 |
@@ -67,7 +70,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 | W1 | 2 | Qualification de la loi au moment de l’acte et exceptions natives dans le mod livré | Source qualifiée : [G1_W1_QUALIFICATION.md](G1_W1_QUALIFICATION.md) ; observations limitées, exceptions moteur à valider |
 | W2 | 4 | Déclaration malgré l’interdit avec vrai CB, contexte exact, coûts, annulation et accès joueur/IA | Source qualifiée et observations ciblées : [chemin natif autonome](G1_AI_AUTONOMY.md), [parcours joueur](G1_FIRST_ENGINE_TRIAL.md) |
 | W3 | 2 | Réaction royale discrétionnaire : intervention, sanction ou abstention selon le contexte | Source seulement : [G1_NATIVE_INTERVENTION.md](G1_NATIVE_INTERVENTION.md), [rw_unlawful_war_intervention_effects.txt](../mod/real_westeros/common/scripted_effects/rw_unlawful_war_intervention_effects.txt) |
-| W4 | 2 | Intégration du nouveau chemin aux cycles guerre/Mega Wars et à leur clôture | À développer / valider |
+| W4 | 2 | Intégration du nouveau chemin aux cycles guerre/Mega Wars et à leur clôture | Source qualifiée : [G1_WAR_RECEIPT_LIFECYCLE.md](G1_WAR_RECEIPT_LIFECYCLE.md) ; transitions moteur à valider |
 | W5 | 2 | Gardes et tests négatifs du chemin livré, distinct du diagnostic privé | À développer / valider |
 
 ### P — Affaires politiques
