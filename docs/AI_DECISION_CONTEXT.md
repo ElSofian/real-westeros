@@ -1,5 +1,9 @@
 # Context and personality in political decisions
 
+AI_DECIDER_AUDIT.md records the owner-requested per-trait inventory and separates
+zero direct honor/greed input from a justified zero contextual effect. Complete
+contextual review remains pending for all enumerated traits.
+
 The owner requires contextual reasoning across every Real Westeros action family.
 The audit covers the decision maker, other participating characters, the action's
 purpose and the consequences the decision maker can anticipate. This is an ongoing

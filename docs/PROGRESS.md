@@ -1,5 +1,15 @@
 # Progress
 
+- RW-010 owner-requested decider inventory. AI_DECIDER_AUDIT.md distinguishes
+  trait enumeration, direct native-axis input and complete contextual review.
+  Original private reader resolves filename overlays and literal script values,
+  preserves French homonyms/IDs and rejects ambiguous surviving trait IDs.
+  Installed source result1,212 traits, direct84/conditional2/zero-direct1,126.
+  Eight synthetic regressions cover normal and negative paths. Full-context
+  review stays pending for every trait. No new runtime coefficients or engine
+  claim. AI3/O1 quality, baseline/result74/80+0/20, delta0. Next review personality
+  traits against each option's purpose, existing indirect effects and combined axes.
+
 - RW-010 first comprehensive-context refinement. GAME_DESIGN.md and
   AI_DECISION_CONTEXT.md record the owner's requirement across all families and
   the remaining coverage review. Four promise-provider choices now combine
