@@ -23,12 +23,14 @@ PERSONAL = ('diplomacy', 'martial', 'stewardship', 'intrigue', 'learning',
             'prowess', 'health', 'fertility', 'stress_gain_mult', 'stress_loss_mult',
             'minimum_age', 'maximum_age')
 PROMISE_INPUTS = {
-    'gold_perform': {'ai_honor': 1, 'ai_greed': 1},
+    'gold_perform': {'ai_honor': 1, 'ai_greed': 1, 'ai_energy': 1},
     'gold_break': {'ai_honor': -1},
-    'favor_perform_hook': {'ai_honor': 1},
-    'favor_perform_gold25': {'ai_honor': 1, 'ai_greed': 1},
+    'gold_wait': {'ai_energy': -1},
+    'favor_perform_hook': {'ai_honor': 1, 'ai_energy': 1},
+    'favor_perform_gold25': {'ai_honor': 1, 'ai_greed': 1, 'ai_energy': 1},
     'favor_renounce_living': {'ai_honor': -1},
     'favor_renounce_deceased': {},
+    'favor_leave_pending': {'ai_energy': -1},
 }
 
 
@@ -120,7 +122,7 @@ def read_traits(text, source, relative_path, scalar_values=None):
                               if body[index][0] in AXES and body[index + 1][0] == '='
                               and body[index][1] not in direct_offsets})
         unresolved = sorted(set(direct) - set(resolved))
-        relevant = {'ai_honor', 'ai_greed'}
+        relevant = {'ai_honor', 'ai_greed', 'ai_energy'}
         if relevant.intersection(unresolved + nested_axes):
             coverage = 'conditional_or_unresolved'
         elif any(resolved.get(key, 0) != 0 for key in relevant):
@@ -211,7 +213,7 @@ def inventory(ck3_root, agot_root):
                          'sha256': hashlib.sha256(data).hexdigest(), 'traits': len(parsed)})
     return {'schema': 1, 'status': 'source_inventory_not_engine_tested',
             'scope': 'CK3 then AGOT, filename overlay only, no other mods or DLC enablement filtering',
-            'profile': 'four promise choices using native honor/greed; other indirect effects unreviewed',
+            'profile': 'six promise choices using native honor/greed/energy; other indirect effects unreviewed',
             'summary': dict(Counter(row['promise_input_status'] for row in rows)),
             'trait_count': len(rows), 'replaced_files': replaced,
             'files': receipts, 'script_value_files': value_receipts,
@@ -222,12 +224,13 @@ def markdown(report):
     lines = ['# Inventaire privé des traits — personnage qui décide', '',
              'Inventaire source CK3 + AGOT. Compatibilité moteur non validée.', '',
              f"{report['trait_count']} traits recensés. Tous restent à examiner pour leur contexte politique complet.", '',
-             'Les colonnes honneur et avidité décrivent les entrées directes du profil de promesses actuel.',
+             'Les entrées du profil de promesses actuel sont honneur, avidité et énergie.',
+             'L’énergie figure dans les autres axes déclarés.',
              '0 signifie aucune contribution directe déclarée sur cet axe dans la définition examinée.',
              'Des effets indirects, conditionnels, de piste ou de compétence peuvent encore intervenir.',
              'Une valeur native ne constitue pas un bonus final ni une probabilité.', '']
     labels = {'native_axes_input': 'Entrée native utilisée',
-              'zero_direct_axis_input': '0 direct · contexte à examiner',
+              'zero_direct_axis_input': '0 direct sur les trois axes · contexte à examiner',
               'conditional_or_unresolved': 'Conditionnel / non résolu'}
     groups = {'Personnalité hors dragons': [], 'Personnalité des dragons': [], 'Autres traits': []}
     for row in report['traits']:
@@ -255,13 +258,13 @@ def markdown(report):
 def promise_markdown(report):
     lines = ['# Personnalité — influence actuelle sur les promesses', '',
              'Revue source des traits de personnalité hors dragons. Validation moteur en attente.', '',
-             'Chaque colonne tient fixes les autres tendances, opinions, moyens, parties et conditions.',
+             'Dossier de promesse courant du prestataire, options éligibles. Chaque colonne tient fixes les autres tendances, opinions, moyens, parties et conditions.',
              '↑/0 signifie hausse ou neutralisation par les bornes. ↓/0 signifie baisse ou neutralisation.',
              '± signifie motivations opposées dont le résultat dépend des valeurs agrégées.',
              '0 direct signifie effet nul par les seuls axes lus dans cette option.',
              'Les effets relationnels, les moyens et les autres influences contextuelles restent distincts.', '',
-             '| Trait | Identifiant | Tenir contre or | Tenir contre faveur | Rompre / renoncer, client vivant |',
-             '|---|---|---|---|---|']
+             '| Trait | Identifiant | Tenir contre or | Tenir contre faveur | Rompre / renoncer, client vivant | Attendre / laisser en attente |',
+             '|---|---|---|---|---|---|']
     labels = {'nondecreasing': '↑/0', 'nonincreasing': '↓/0',
               'mixed': '±', 'zero_direct': '0 direct', 'unresolved': 'À résoudre'}
     for row in report['traits']:
@@ -270,11 +273,14 @@ def promise_markdown(report):
         review = row['promise_axis_review']
         label = row.get('label_fr', row['id']).replace('|', '\\|')
         lines.append(f"| {label} | `{row['id']}` | {labels[review['gold_perform']]} | "
-                     f"{labels[review['favor_perform_hook']]} | {labels[review['gold_break']]} |")
+                     f"{labels[review['favor_perform_hook']]} | {labels[review['gold_break']]} | {labels[review['gold_wait']]} |")
     lines.extend(['', 'Le paiement gold25 de la famille faveur suit la colonne or.',
                   'Renoncer après le décès du client conserve le poids neutre de cette option.',
-                  'Un dossier invalide ou une option indisponible annule son poids avant ces préférences.',
-                  'Les options attendre, renégocier, annuler et les réponses du client nécessitent leur propre revue.', ''])
+                  'Les actions indisponibles ont un poids nul avant ces préférences.',
+                  'Laisser conserve son poids de sortie de 30 hors promesse courante du prestataire.',
+                  'L’urgence renforce l’exécution et réduit l’attente seulement lorsque le service est exécutable.',
+                  'Les dossiers sans repère temporel exact conservent une urgence neutre.',
+                  'Renégocier, annuler et les réponses du client nécessitent leur propre revue.', ''])
     return '\n'.join(lines)
 
 

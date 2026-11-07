@@ -12,6 +12,10 @@ rw_fd_accept_effect = {
             add_character_flag = { flag = rw_fv_obligation days = 32 }
             add_character_flag = { flag = rw_fd_not_due days = 7 }
             add_character_flag = { flag = rw_fd_due days = 30 }
+            # The day-22 prompt is the last scheduled execution opportunity.
+            set_variable = { name = rw_fd_ai_timing_serial value = var:rw_fv_serial }
+            remove_character_flag = rw_fd_ai_later_prompt
+            add_character_flag = { flag = rw_fd_ai_later_prompt days = 22 }
         }
         rw_fv_snapshot_effect = yes
         scope:rw_fv_provider = {
@@ -31,6 +35,8 @@ rw_fd_finish_effect = {
             remove_character_flag = rw_fv_obligation
             remove_character_flag = rw_fd_due
             remove_character_flag = rw_fd_not_due
+            remove_character_flag = rw_fd_ai_later_prompt
+            remove_variable = rw_fd_ai_timing_serial
             set_variable = { name = rw_fv_finished_on value = current_date }
             set_variable = { name = rw_fv_state value = flag:$RESULT$ }
         }

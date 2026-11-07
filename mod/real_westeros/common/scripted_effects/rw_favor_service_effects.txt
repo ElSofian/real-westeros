@@ -45,6 +45,8 @@ rw_fv_begin_effect = {
             set_variable = { name = rw_fv_mode value = flag:$MODE$ }
             set_variable = { name = rw_fv_turn value = flag:client }
             set_variable = { name = rw_fv_state value = flag:offered }
+            remove_character_flag = rw_fd_ai_later_prompt
+            remove_variable = rw_fd_ai_timing_serial
             set_variable = { name = rw_fv_issued_on value = current_date }
             remove_variable = rw_fv_finished_on
             add_character_flag = { flag = rw_fv_pending days = 30 }

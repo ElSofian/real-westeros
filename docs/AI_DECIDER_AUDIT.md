@@ -13,7 +13,9 @@ humain. Le relevé ne filtre ni les DLC actifs ni l'accessibilité à un personn
 Il ne décrit aucun autre mod du playset. Un même nom français peut correspondre
 à plusieurs identifiants, notamment Curieux.
 
-| Entrées dans le profil actuel des quatre promesses | Nombre |
+Premier relevé du profil honneur/avidité, avant l'extension temporelle.
+
+| Entrées dans le premier profil des quatre promesses | Nombre |
 |---|---:|
 | Contribution directe non nulle à l'honneur ou à l'avidité | 84 |
 | Contribution conditionnelle ou non résolue sur ces axes | 2 |
@@ -23,7 +25,7 @@ Il ne décrit aucun autre mod du playset. Un même nom français peut correspond
 Le dernier groupe ne constitue pas une liste de traits politiquement sans effet.
 Les traits peuvent modifier les opinions, compétences, ressources, conditions ou
 autres tendances natives utilisées ailleurs. Ces chemins restent à examiner.
-Les deux contributions conditionnelles sont conservées comme telles. Le lecteur
+Les contributions conditionnelles sont conservées comme telles. Le lecteur
 ne substitue jamais zéro à une expression qu'il ne sait pas résoudre.
 
 Tous les traits gardent le statut `context_review = pending` pour la revue
@@ -37,7 +39,11 @@ les branches or/faveur. La couverture politique globale reste en cours.
 
 ## Ce que signifie une contribution
 
-Le profil actuel lit l'honneur et l'avidité agrégés du personnage. Il ne lit pas
+AI_PROMISE_TIMING.md étend le profil à l'énergie et à l'attente. Le relevé courant
+des trois axes compte 176 entrées directes, 3 conditionnelles et 1 033 nulles directes.
+Les comptes du premier relevé ci-dessus restent historiques.
+
+Le profil actuel lit l'honneur, l'avidité et l'énergie agrégés du personnage. Il ne lit pas
 une liste exclusive de noms de traits. Les contributions natives des traits et
 modificateurs peuvent donc parvenir au profil par ces axes.
 

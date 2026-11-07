@@ -70,3 +70,35 @@ rw_ai_favor_promise_context_trigger = {
     }
     trigger_else = { always = no }
 }
+
+# Missing legacy timing metadata is neutral. Never infer timing from a late view.
+rw_ai_gold_promise_urgent_trigger = {
+    trigger_if = {
+        limit = { rw_ai_gold_promise_context_trigger = yes }
+        rw_service_obligation_actionable_trigger = yes
+        scope:rw_service_provider = {
+            trigger_if = {
+                limit = { has_variable = rw_service_ai_timing_serial }
+                var:rw_service_ai_timing_serial = scope:rw_service_serial
+                NOT = { has_character_flag = rw_service_ai_wait_room }
+            }
+            trigger_else = { always = no }
+        }
+    }
+    trigger_else = { always = no }
+}
+rw_ai_favor_promise_urgent_trigger = {
+    trigger_if = {
+        limit = { rw_ai_favor_promise_context_trigger = yes }
+        rw_fd_due_trigger = yes
+        scope:rw_fv_provider = {
+            trigger_if = {
+                limit = { has_variable = rw_fd_ai_timing_serial }
+                var:rw_fd_ai_timing_serial = scope:rw_fv_serial
+                NOT = { has_character_flag = rw_fd_ai_later_prompt }
+            }
+            trigger_else = { always = no }
+        }
+    }
+    trigger_else = { always = no }
+}
