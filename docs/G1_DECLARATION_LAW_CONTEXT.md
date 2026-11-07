@@ -1,5 +1,10 @@
 # W1 — Relevé de contexte dans le callback natif de déclaration
 
+**Actualisation du 7 novembre 2026.** [W1 est qualifié en source](G1_W1_QUALIFICATION.md),
++2 points, développement76/80 et campagne0/20. Les liens déjà observés lèvent le
+doute de disponibilité avant liaison pour ces parcours. Les essais exceptionnels
+restent groupés. La préparation ci-dessous conserve son état historique initial.
+
 **Source expérimentale ; aucun test CK3. W1 reste ouvert, +0 point.**
 Cette tranche prépare la qualification de la loi et des exceptions au bon endroit
 scripté. Elle ne prétend pas avoir démontré l'ordre des callbacks du moteur ou

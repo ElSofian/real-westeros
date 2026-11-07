@@ -1,5 +1,11 @@
 # Ce qui reste avant la première version intégrée
 
+**Actualisation du 7 novembre 2026 —76/80 source,0/20 campagne,delta+2.**
+[W1 est qualifié en source](G1_W1_QUALIFICATION.md) sur l’implémentation historique
+et les observations existantes. Restent W4, cycles guerre/Mega Wars, et W5, gardes
+du chemin final, pour4points. V1–V5 restent ouverts. Les états ci-dessous sont
+les revues historiques antérieures.
+
 **Mise à jour du 7 novembre2026 —74/80 source,0/20 campagne,delta+6.**
 [L'initiative native autonome](G1_AI_AUTONOMY.md) est confirmée pour deux IA de
 Dorne sous interdiction. La qualification du chemin joueur/IA et l'audit des

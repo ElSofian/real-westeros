@@ -76,3 +76,13 @@ These are design goals, not a list of implemented or engine-verified features.
 
 Do not replace scenario 1 with agreement-breaking alone. Preserve discretionary
 responses and equal execution rules for player and AI across all three scenarios.
+
+## Owner-directed post-foundation review
+
+After reaching the80/80 foundation milestone, revisit the substantive rules of
+all eight systems against the intended design. The owner permits this review
+alongside the grouped engine campaign. Establish what each current baseline
+supports, observe the complete implemented variant where available, identify
+missing context and improve iteratively from the results. Track simplified
+feasibility paths and their remaining gaps explicitly. The finite readiness
+rubric retains its existing acceptance text and checkpoint history.

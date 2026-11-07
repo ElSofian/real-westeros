@@ -1,5 +1,17 @@
 # Progress
 
+- RW-004 W1 source assessment. Existing original law scripts and native-helper
+  inverse preservation qualify the supported feudal-peer claim path. Exact links
+  in prior player/ordinary AI saves establish capture before response linkage in
+  those runs. All three current law scripts match the observed private receipt.
+  Two added regressions lock outcome/condition pairing and single archive copying.
+  Full checks and committed ZIP evidence are recorded in the PR. No new CK3 run.
+  Baseline74/80 source +0/20 campaign; result76/80 +0/20, actual delta+2 for the
+  existing implementation and observed evidence. Contract/hook/law-change runtime
+  cases stay open in DECLAW. Next W4 lifecycle/Mega Wars, followed by W5. Owner
+  direction for the subsequent eight-system review is recorded in the design
+  and final campaign plan, with iterative base/full-system observations.
+
 - RW-010 global foundation linkage. The existing structural validator now checks
   explicit owned effect/trigger calls after collecting all definition files, so
   forward references resolve and each kind uses its own namespace. A missing

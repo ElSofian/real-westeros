@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "8479880931bb5aa7c2e15ecb3fa2345859a5097a",
+  "assessed_commit": "15fcec34204377a9c930a392f13460d1b3f7dcc9",
   "lots": [
     {
       "id": "W",
@@ -14,14 +14,18 @@
           "id": "W1",
           "points": 2,
           "acceptance": "Qualification de la loi au moment de l’acte et exceptions natives dans le mod livré",
-          "status": "open",
+          "status": "source_complete",
           "evidence": [
             "docs/G1_DECLARATION_LAW_CONTEXT.md",
             "docs/G1_DECLARATION_LAW_SOURCE_RECEIPT.json",
             "mod/real_westeros/common/scripted_effects/rw_declaration_law_effects.txt",
             "mod/real_westeros/common/scripted_triggers/rw_declaration_law_triggers.txt",
             "mod/real_westeros/common/story_cycles/rw_declaration_law.txt",
-            "tools/build_g1_native_choice.py"
+            "tools/build_g1_native_choice.py",
+            "docs/G1_W1_QUALIFICATION.md",
+            "docs/G1_FIRST_ENGINE_TRIAL.md",
+            "docs/G1_AI_AUTONOMY.md",
+            "tests/test_declaration_law_context.py"
           ]
         },
         {
@@ -1724,6 +1728,53 @@
       "score": 74,
       "reference": "8479880931bb5aa7c2e15ecb3fa2345859a5097a",
       "note": "W2 et AI4 source qualifiés après observations CK3 1.19.0.6 / AGOT 0.5.2.1 / PRIVATE0.0.6. Deux IA de Dorne initient spontanément des claim_cb sous interdiction interne, choix natif de défi et dossiers royaux liés, tentatives natives le lendemain. Le témoin contrôlé confirme le coût natif de68prestige. Audit des entrées autonomes justice et négociation existantes, encore statiques. La même voie guerre complète les deux critères de la grille, sans nouveau planificateur. W1/W4/W5 et campagne V1–V5 restent ouverts. Barème et historique inchangés. +6,développement74/80,campagne0/20."
+    },
+    {
+      "date": "2026-11-07",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4",
+        "O4",
+        "I3",
+        "M5",
+        "P4",
+        "N4",
+        "N5",
+        "J3",
+        "AI5",
+        "W3",
+        "J5",
+        "J4",
+        "W2",
+        "AI4",
+        "W1"
+      ],
+      "score": 76,
+      "reference": "15fcec34204377a9c930a392f13460d1b3f7dcc9",
+      "note": "W1 qualifié en source sur la capture existante au préfixe natif de déclaration et le helper intégral réversible conservant les exceptions. Les liens exacts observés chez le joueur et deux IA établissent que la capture précède la liaison royale dans ces parcours. Les trois fichiers de loi courants correspondent au reçu PRIVATE0.0.6 observé. Deux régressions fixent les branches de qualification et la copie historique unique. Le crédit porte sur cette implémentation et ces preuves existantes. Les contrats, hameçons, changements de loi et autres contextes restent à tester dans la campagne groupée. W4/W5 et V1–V5 restent ouverts. +2, développement76/80, campagne0/20. Barème et checkpoints antérieurs conservés."
     }
   ]
 }
