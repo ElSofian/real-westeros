@@ -1,5 +1,19 @@
 # Progress
 
+- RW-010 promise timing preferences. AI_PROMISE_TIMING.md records moderate native
+  energy action/delay factors and exact-contract timing indicators for gold14/30
+  waits and favor's final scheduled prompt. Missing legacy markers are neutral.
+  Urgency favors executable performance without suppressing blocked waiting.
+  Provider leave retains a positive fallback in non-promise views. Four effect
+  files invert to their prior hashes after removing metadata, and event action
+  graphs retain their existing proofs. Seven new source regressions cover guards,
+  calendars, cleanup, unavailable consideration and conservative trait directions.
+  Historical gold-debit receipts append seven exact reversible metadata updates,
+  retaining the eleven original debit proofs.
+  Source-only, engine cases grouped. AI3/O1 quality, baseline/result74/80+0/20,
+  delta0. Next review actual context for client reactions and remaining traits,
+  retaining independent roles and known-information limits.
+
 - RW-010 personality-context review for all39 non-dragon personality traits.
   AI_PERSONALITY_PROMISE_REVIEW.md traces four provider options, term branches,
   native opinion/resource paths and outstanding context. Private reader adds

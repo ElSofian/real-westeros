@@ -7,18 +7,22 @@ Elle suit le prestataire lorsqu'il décide de tenir une promesse de soutien publ
 ou de rompre/renoncer. **Static-checked**. Validation moteur en attente.
 
 Le relevé privé `--promise-review` donne les directions actuelles, trait par trait,
-pour les quatre options et leurs branches de rémunération. Les questions
+pour les six choix actuels et leurs branches de rémunération. Les questions
 contextuelles ci-dessous identifient les règles encore à développer. Aucun poids
-de gameplay n'est ajouté par cette revue.
+de gameplay n'est ajouté par cette revue initiale. AI_PROMISE_TIMING.md décrit
+l'extension suivante, maintenant codée et statiquement vérifiée, pour l'énergie,
+les échéances et les deux choix d'attente. Sa validation moteur reste en attente.
 
 ## Parcours réellement consommés par les options
 
 | Option du prestataire | Entrées actuelles | Effets après validation |
 |---|---|---|
-| Tenir contre or | Honneur, avidité, importance du revenu, opinion du client, dossier et capacité d'exécution | Paiement du client au prestataire, 50 prestige au client, mémoire de soutien public |
+| Tenir contre or | Honneur, avidité, énergie, urgence, importance du revenu, opinion du client, dossier et capacité d'exécution | Paiement du client au prestataire, 50 prestige au client, mémoire de soutien public |
 | Rompre contre or | Honneur, opinion du client, engagement courant actionnable | Reçu de rupture puis choix de réaction du client |
-| Tenir dans la famille faveur | Honneur, opinion, dossier et capacité d'exécution. Avidité et revenu seulement pour le terme gold25 | Hameçon reçu par le prestataire ou paiement de 25 or, 50 prestige au client, mémoire de soutien public |
+| Tenir dans la famille faveur | Honneur, énergie, urgence, opinion, dossier et capacité d'exécution. Avidité et revenu seulement pour le terme gold25 | Hameçon reçu par le prestataire ou paiement de 25 or, 50 prestige au client, mémoire de soutien public |
 | Renoncer dans la famille faveur | Honneur et opinion si le client vit, engagement courant en attente | Reçu de renonciation et possibilité de réponse personnelle du client |
+| Attendre contre or | Énergie, urgence si le service est exécutable, dossier courant actionnable | Rappel existant de sept jours |
+| Laisser la faveur en attente | Énergie dans la promesse courante du prestataire, urgence si exécutable, sortie de poids30 dans les autres vues | Fermeture de la fenêtre, occasions fixes existantes conservées |
 
 Après le décès du client, la renonciation conserve son poids neutre. L'exécution
 reste soumise aux conditions de validité. Une rupture ne déclenche pas une
@@ -28,7 +32,8 @@ sanction judiciaire automatique. Une réaction future reste incertaine.
 
 L'honneur augmente la préférence pour tenir et réduit celle pour rompre. L'avidité
 augmente l'intérêt de recevoir un paiement dans les branches monétaires. Les
-autres axes ne sont pas directement consommés par ces quatre nouveaux profils.
+six autres axes ne sont pas directement consommés par ces profils. L'énergie
+favorise agir ou différer, selon les calculs bornés de AI_PROMISE_TIMING.md.
 
 Le relevé indique hausse ou baisse possible avec neutralisation par les bornes.
 Des contributions opposées à l'honneur et à l'avidité restent marquées mixtes.
@@ -74,7 +79,7 @@ La couverture politique complète de chaque trait garde son état en cours.
 | `paranoid` | Paranoïaque | Distinguer savoir et soupçon. Une crainte ne devient pas une preuve et ne donne pas accès à un secret inconnu. |
 | `lazy` | Paresseux | Examiner efforts ou contraintes représentés. Aucun coût de travail arbitraire n'est attribué à un soutien immédiat. |
 | `arbitrary` | Partial | L'honneur natif agit déjà. Examiner intérêts et préférences du contexte, sans transformer le trait en rupture obligatoire. |
-| `patient` | Patient | Examiner délais, urgence et option attendre. Le trait n'alimente actuellement aucun des deux axes directement lus par les quatre profils. |
+| `patient` | Patient | Son énergie native favorise désormais différer et réduit légèrement l'attrait d'agir tout de suite. L'urgence tempère cette préférence lorsque le service reste exécutable. |
 | `sadistic` | Sadique | Examiner la souffrance réellement prévisible d'une personne concernée. Le soutien public ne produit pas une blessure ou une torture par lui-même. |
 | `callous` | Sans cœur | Examiner dommages et intérêts d'autrui concernés. La faible compassion ne supprime pas l'intérêt personnel à tenir une promesse rentable. |
 | `gregarious` | Sociable | Examiner liens et valeur sociale du soutien. L'opinion native peut déjà porter une partie de ces relations, à éviter de recompter. |
@@ -96,7 +101,7 @@ passée par les revenus ou dépenses ne doit pas être recomptée comme un trans
 Ces profils ne lisent directement ni les six compétences, ni un âge numérique,
 ni la santé, ni le stress. Leurs autres effets restent à examiner.
 
-Le décideur est toujours le prestataire dans les quatre profils. Les réactions
+Le décideur est toujours le prestataire dans les six profils. Les réactions
 du client, notamment pardonner, exprimer une rancune ou saisir un médiateur,
 nécessitent une politique distincte. Les traits d'un conjoint ne remplacent pas
 la personnalité du décideur.
@@ -109,10 +114,10 @@ la famille faveur vérifie en plus la liberté des deux parties. Rupture et
 renonciation ont des conditions moins restrictives que l'exécution. Les rendre
 identiques empêcherait de traiter certains engagements devenus impossibles.
 
-Le prochain lot doit traiter le choix entre exécuter, attendre et renoncer avec
-les délais réels. Conserver renégociation, engagements existants, gardes et
-conséquences partagées joueur/IA. Peur, foi, stress et arbitrages globaux restent
-ouverts. Les tests moteur demeurent regroupés dans la campagne finale.
+Le choix temporel est maintenant codé dans AI_PROMISE_TIMING.md. Renégociation,
+engagements existants, gardes et conséquences partagées joueur/IA sont conservés.
+Peur, foi, stress et arbitrages globaux restent ouverts. Les tests moteur
+demeurent regroupés dans la campagne finale.
 
 Qualité AI3/O1. Baseline et résultat **74/80 source, 0/20 campagne**, delta **0**.
 Cette revue apporte la traçabilité des influences actuelles et une revue de

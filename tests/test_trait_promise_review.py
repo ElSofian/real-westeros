@@ -64,7 +64,7 @@ class TraitPromiseReviewTests(unittest.TestCase):
     def test_symbolic_mapping_is_tied_to_current_owned_policy_and_unchanged_actions(self):
         values = (ROOT/'mod/real_westeros/common/script_values/rw_promise_ai_values.txt').read_text(encoding='utf-8-sig')
         self.assertEqual([], policy_errors(values))
-        self.assertEqual({'ai_honor', 'ai_greed'}, set(re.findall(r'\bai_(?:honor|greed|boldness|compassion|energy|rationality|sociability|vengefulness|zeal)\b', values)))
+        self.assertEqual({'ai_honor', 'ai_greed', 'ai_energy'}, set(re.findall(r'\bai_(?:honor|greed|boldness|compassion|energy|rationality|sociability|vengefulness|zeal)\b', values)))
         for filename, expected in (
             ('rw_obligation_events.txt', '3e937926b1425d3141b471efb5a8ea27f39c6bcd1fbbb195221fd4e9ee025ea5'),
             ('rw_favor_service_events.txt', 'a0f079aa0e9ab8700a00add3c2248e17948dc81f809b84f027ca315664f91cc3'),

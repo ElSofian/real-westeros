@@ -24,8 +24,23 @@ rw_ai_paid_reward_factor = {
     max = 1.5
 }
 
-# An accepted gold service pays its provider on performance. The current quote
-# determines the importance of that income relative to the provider's funds.
+# Moderate current-character preferences for acting or delaying.
+rw_ai_prompt_action_factor = {
+    value = ai_energy
+    divide = 200
+    add = 1
+    min = 0.5
+    max = 1.5
+}
+rw_ai_deliberate_delay_factor = {
+    value = ai_energy
+    multiply = -1
+    divide = 200
+    add = 1
+    min = 0.5
+    max = 1.5
+}
+# The current quote determines this income's importance relative to own funds.
 rw_ai_gold_promise_perform_weight = {
     value = 0
     if = {
@@ -37,6 +52,8 @@ rw_ai_gold_promise_perform_weight = {
             }
             add = 70
             multiply = rw_ai_keep_word_factor
+            multiply = rw_ai_prompt_action_factor
+            if = { limit = { rw_ai_gold_promise_urgent_trigger = yes } multiply = 1.5 }
             multiply = rw_ai_paid_reward_factor
             if = { limit = { gold < scope:rw_service_price } multiply = 1.25 }
             if = { limit = { opinion = { target = scope:rw_service_client value >= 25 } } multiply = 1.25 }
@@ -61,6 +78,22 @@ rw_ai_gold_promise_break_weight = {
     }
 }
 
+rw_ai_gold_promise_wait_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_gold_promise_context_trigger = yes }
+        if = {
+            limit = { rw_service_obligation_actionable_trigger = yes this = scope:rw_service_provider }
+            add = 20
+            multiply = rw_ai_deliberate_delay_factor
+            if = {
+                limit = { rw_service_obligation_fulfillable_trigger = yes rw_ai_gold_promise_urgent_trigger = yes }
+                multiply = 0.25
+            }
+        }
+    }
+}
+
 # Favor and monetary consideration use the same word-keeping personality. Cash
 # motivation applies only to the current monetary term of twenty-five gold.
 rw_ai_favor_promise_perform_weight = {
@@ -74,6 +107,8 @@ rw_ai_favor_promise_perform_weight = {
             }
             add = 70
             multiply = rw_ai_keep_word_factor
+            multiply = rw_ai_prompt_action_factor
+            if = { limit = { rw_ai_favor_promise_urgent_trigger = yes } multiply = 1.5 }
             if = {
                 limit = { scope:rw_fv_term = flag:gold25 }
                 multiply = rw_ai_paid_reward_factor
@@ -99,6 +134,22 @@ rw_ai_favor_promise_renounce_weight = {
                 multiply = rw_ai_break_word_factor
                 if = { limit = { opinion = { target = scope:rw_fv_client value >= 25 } } multiply = 0.75 }
                 if = { limit = { opinion = { target = scope:rw_fv_client value <= -25 } } multiply = 1.25 }
+            }
+        }
+    }
+}
+
+# This is also the safe exit from offers, terminal, foreign and obsolete views.
+rw_ai_favor_promise_leave_weight = {
+    value = 30
+    if = {
+        limit = { rw_ai_favor_promise_context_trigger = yes }
+        if = {
+            limit = { rw_fd_pending_trigger = yes this = scope:rw_fv_provider }
+            multiply = rw_ai_deliberate_delay_factor
+            if = {
+                limit = { rw_fd_can_perform_trigger = yes rw_ai_favor_promise_urgent_trigger = yes }
+                multiply = 0.25
             }
         }
     }

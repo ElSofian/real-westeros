@@ -125,5 +125,5 @@ rw_favor_service.0001 = {
         rw_fr_note_effect = yes
         ai_chance = { base = 40 modifier = { factor = 2 has_trait = forgiving } }
     }
-    option = { name = rw_favor_service.leave ai_chance = { base = 30 } }
+    option = { name = rw_favor_service.leave ai_chance = { base = 0 modifier = { add = rw_ai_favor_promise_leave_weight always = yes } } }
 }

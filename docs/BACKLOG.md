@@ -1,5 +1,15 @@
 # Development backlog
 
+**RW-010 promise timing policy, 7 November:** AI_PROMISE_TIMING.md adds bounded
+  native energy preferences for acting/delaying and current-contract timing for
+  gold14/30-day waits and favor day22 final prompt. Urgency boosts execution and
+  reduces waiting only while executable. Legacy missing timing stays neutral,
+  stale/foreign/expired contexts fail closed, safe leave remains available.
+  Two existing event weights updated, four effect files gain metadata only.
+  Seven source regressions plus inverse proofs, runtime unverified. AI3/O1
+  quality, baseline/result74/80+0/20, delta0. Fear/faith/stress and client response
+  policies remain open. Keep final runtime tests grouped.
+
 **RW-010 personality review by promise option, 7 November:**
   AI_PERSONALITY_PROMISE_REVIEW.md reviews39 non-dragon personality traits,
   actual decider/beneficiary roles, indirect native opinions, current age guards

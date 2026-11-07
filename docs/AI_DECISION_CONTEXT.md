@@ -1,11 +1,21 @@
 # Context and personality in political decisions
 
+## Current timing extension
+
+AI_PROMISE_TIMING.md extends the initial profile below to native energy and
+actual promise horizons. Gold wait and favor leave now have provider-context
+weights. Execution gains moderate promptness and urgency factors. Current
+contract serials bind two temporary timing indicators, while legacy missing
+metadata remains timing-neutral. Seven source regressions and inverse effect
+checks cover the extension. Engine validation remains deferred. Source74/80,
+campaign0/20, delta0. The first-profile section retains its original scope.
+
 AI_DECIDER_AUDIT.md records the owner-requested per-trait inventory and separates
 zero direct honor/greed input from a justified zero contextual effect. Complete
 contextual review remains pending for all enumerated traits.
 
 AI_PERSONALITY_PROMISE_REVIEW.md follows all39 non-dragon personality traits
-through the four current provider choices, payment branches and indirect
+through the six current provider choices, payment branches and indirect
 opinion/resource inputs. The private reader reports conservative per-option
 axis directions without final weights or probabilities. Contextual gameplay
 implementation remains incomplete.
