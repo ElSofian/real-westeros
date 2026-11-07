@@ -1,7 +1,11 @@
 # Suivi de la première version intégrée — v0.1-plan-1
 
-**Développement : 78/80 · Validation en jeu : 0/20 · Total : 78/100 (+2 W4).**
-Il reste **un critère source ouvert, totalisant 2 points** : W5.
+**Développement : 80/80 · Validation en jeu : 0/20 · Total : 80/100 (+2 W5).**
+Les critères source de ce socle v0.1 sont qualifiés.
+[W5](G1_W5_DELIVERED_GUARDS.md) couvre les gardes du parcours réellement assemblé
+et ses mutations négatives. V1–V5 restent ouverts. La revue de fond des huit
+systèmes prévue par le propriétaire reprend sur ce socle et peut accompagner
+les essais groupés, avec amélioration des variantes à partir des résultats.
 [W4](G1_WAR_RECEIPT_LIFECYCLE.md) ajoute la fermeture des dossiers du déclarant
 initial encore participant après transfert. Les transitions Mega Wars et la
 nouvelle recherche restent à vérifier dans le moteur.
@@ -38,7 +42,7 @@ coût. Les trois scénarios initiaux ne limitent pas le périmètre ; le catalog
 
 | Système | Points acquis | Poids |
 |---|---:|---:|
-| Liberté, légalité et guerres | 10 | 12 |
+| Liberté, légalité et guerres | 12 | 12 |
 | Affaires politiques | 8 | 8 |
 | Négociation | 10 | 10 |
 | Promesses et obligations | 10 | 10 |
@@ -71,7 +75,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 | W2 | 4 | Déclaration malgré l’interdit avec vrai CB, contexte exact, coûts, annulation et accès joueur/IA | Source qualifiée et observations ciblées : [chemin natif autonome](G1_AI_AUTONOMY.md), [parcours joueur](G1_FIRST_ENGINE_TRIAL.md) |
 | W3 | 2 | Réaction royale discrétionnaire : intervention, sanction ou abstention selon le contexte | Source seulement : [G1_NATIVE_INTERVENTION.md](G1_NATIVE_INTERVENTION.md), [rw_unlawful_war_intervention_effects.txt](../mod/real_westeros/common/scripted_effects/rw_unlawful_war_intervention_effects.txt) |
 | W4 | 2 | Intégration du nouveau chemin aux cycles guerre/Mega Wars et à leur clôture | Source qualifiée : [G1_WAR_RECEIPT_LIFECYCLE.md](G1_WAR_RECEIPT_LIFECYCLE.md) ; transitions moteur à valider |
-| W5 | 2 | Gardes et tests négatifs du chemin livré, distinct du diagnostic privé | À développer / valider |
+| W5 | 2 | Gardes et tests négatifs du chemin livré, distinct du diagnostic privé | Source qualifiée : [G1_W5_DELIVERED_GUARDS.md](G1_W5_DELIVERED_GUARDS.md) ; comportements moteur à valider |
 
 ### P — Affaires politiques
 

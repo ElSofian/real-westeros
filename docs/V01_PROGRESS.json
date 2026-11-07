@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "f5f91d722b47c6102e796bb2b85b2d580e468970",
+  "assessed_commit": "a723d364a1dbe7af6be78c0f8741b9a0b3cb8c36",
   "lots": [
     {
       "id": "W",
@@ -81,8 +81,24 @@
           "id": "W5",
           "points": 2,
           "acceptance": "Gardes et tests négatifs du chemin livré, distinct du diagnostic privé",
-          "status": "open",
-          "evidence": []
+          "status": "source_complete",
+          "evidence": [
+            "docs/G1_W5_DELIVERED_GUARDS.md",
+            "mod/real_westeros/common/scripted_triggers/rw_unlawful_war_choice_triggers.txt",
+            "mod/real_westeros/common/scripted_effects/rw_unlawful_war_response_effects.txt",
+            "mod/real_westeros/common/scripted_effects/rw_unlawful_war_intervention_effects.txt",
+            "mod/real_westeros/common/scripted_effects/rw_war_lifecycle_effects.txt",
+            "tests/test_g1_native_choice.py",
+            "tests/test_g1_royal_response.py",
+            "tests/test_declaration_law_context.py",
+            "tests/test_native_war_intervention.py",
+            "tests/test_g1_native_target_binding.py",
+            "tests/test_war_receipt_lifecycle.py",
+            "tests/test_distribution.py",
+            "tests/test_final_campaign_pack.py",
+            "tools/build_g1_native_choice.py",
+            "tools/prepare_final_campaign.py"
+          ]
         }
       ]
     },
@@ -1825,6 +1841,55 @@
       "score": 78,
       "reference": "f5f91d722b47c6102e796bb2b85b2d580e468970",
       "note": "W4 source qualifié après correction de la recherche terminale des dossiers du déclarant initial encore participant après transfert de commandement ou de camp. Visite de la guerre exacte, propriétaire/attaquant initial et anti-rejeu conservés par un effet partagé; opérations normalisées identiques au corps antérieur. Inversion du vrai claim_cb et audit des actions/histoires Mega Wars natives, itérateur documenté du moteur. Deux régressions ajoutées. Paix blanche/refus observés sur le corps antérieur; nouvelle visite des participants, transferts et Mega Wars non testés dans CK3. WARLIFE reste groupé, W5 et V1–V5 ouverts. +2, développement78/80,campagne0/20. Barème et historique conservés."
+    },
+    {
+      "date": "2026-11-07",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4",
+        "O4",
+        "I3",
+        "M5",
+        "P4",
+        "N4",
+        "N5",
+        "J3",
+        "AI5",
+        "W3",
+        "J5",
+        "J4",
+        "W2",
+        "AI4",
+        "W1",
+        "W4",
+        "W5"
+      ],
+      "score": 80,
+      "reference": "a723d364a1dbe7af6be78c0f8741b9a0b3cb8c36",
+      "note": "W5 source qualifié sur le chemin intégré retenu après W1/W2/W4. Les gardes livrées de choix explicite, identité, autorité, délais, anti-rejeu, cible et validation natives, loi historique et clôture sont couvertes dans les fichiers assemblés depuis le ZIP. Neuf mutations négatives réutilisent les validateurs de source sur ce dossier; inversion des définitions générées de déclaration et claim_cb vérifiée dans le même parcours. Contrôles existants des entrées natives, empreintes, erreurs de copie et livraisons conservés. Ces contrôles sont statiques; V1–V5 restent ouverts. +2, développement80/80,campagne0/20. Barème et checkpoints antérieurs conservés. Suite prévue par le propriétaire: revue de fond des huit systèmes avec essais groupés possibles et itération sur les variantes."
     }
   ]
 }

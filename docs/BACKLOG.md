@@ -1,5 +1,14 @@
 # Development backlog
 
+**RW-004 W5 delivered-path coverage, 7 November:** assembled campaign files now
+  run through the existing royal/law/intervention/lifecycle source validators.
+  Nine corrupted variants must be detected, with native generated declaration and
+  claim definitions restored exactly in the positive path. G1_W5_DELIVERED_GUARDS.md
+  maps the selected delivery's guards, negative tests and engine limits. W5 source
+  complete,78→80/80, campaign0/20, delta+2. Frozen rubric/history preserved. Next is
+  the owner-directed substantive review of all eight systems, optionally alongside
+  grouped baseline/full-variant engine observations and iterative improvements.
+
 **RW-004 W4 lifecycle integration, 7 November:** terminal handling now visits
   the callback attacker and other participants of the exact war. A former leader
   can retain their personal receipt after leadership/side changes. One shared
