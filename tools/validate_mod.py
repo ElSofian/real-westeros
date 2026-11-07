@@ -182,6 +182,7 @@ def validate(root):
     descriptors = {}
     localization_keys = defaultdict(dict)
     definitions_by_folder = defaultdict(dict)
+    owned_calls = []
     for path in sorted((root / 'mod').rglob('*')):
         if not path.is_file():
             continue
@@ -211,6 +212,12 @@ def validate(root):
         if relative in (OUTER, MOD_DIR / 'descriptor.mod'):
             descriptors[relative] = descriptor(text, relative, errors)
         if path.suffix == '.txt':
+            # Explicit owned calls only. Native symbols, scope navigation and
+            # parameter-built names need their separate source/engine reviews.
+            code = clean_script(text)[0]
+            for call in re.finditer(r'(?<![\w:.$])(rw_\w+_(effect|trigger))\s*=', code):
+                line = code.count('\n', 0, call.start()) + 1
+                owned_calls.append((relative, line, call[1], call[2]))
             folder = path.parent.relative_to(mod).as_posix()
             if folder in SCRIPT_FOLDERS:
                 for name in definitions(text):
@@ -243,6 +250,10 @@ def validate(root):
                     errors.append(f'{relative}:{line_no}: duplicate {key} (also in {previous})')
                 else:
                     localization_keys[header][key] = f'{relative}:{line_no}'
+
+    for source, line, name, kind in owned_calls:
+        if name not in definitions_by_folder[f'common/scripted_{kind}s']:
+            errors.append(f'{source.as_posix()}:{line}: undefined owned {kind} {name}')
 
     # Native memory types require their own label, in addition to perspective prose.
     for key, source in definitions_by_folder['common/character_memory_types'].items():

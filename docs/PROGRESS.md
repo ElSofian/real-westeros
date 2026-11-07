@@ -1,5 +1,18 @@
 # Progress
 
+- RW-010 global foundation linkage. The existing structural validator now checks
+  explicit owned effect/trigger calls after collecting all definition files, so
+  forward references resolve and each kind uses its own namespace. A missing
+  definition reports the call's relative file and line. Comments, strings, native
+  calls, scope navigation and parameter-built names are outside this check.
+  Six regressions cover valid/parameterized calls, missing definitions, wrong
+  namespaces, commented definitions and an actual G1 module omitted from the
+  committed ZIP fixture. The last case must produce neither ZIP nor checksum.
+  No runtime script changed. Source checks only, no additional engine evidence.
+  Target is cross-system delivery integrity supporting W5; baseline/result
+  74/80 source +0/20 campaign, actual delta0. W1/W4/W5 remain open. Next resolve
+  their recorded callback/exception/Mega Wars cases in the grouped campaign.
+
 - RW-010 financial repair negotiation. Seven existing choices now distinguish
   payer and recipient, own native greed/honor/compassion, actual25/50 amount,
   payer funds/reserve, own cooperation/relations and same-case completed repair.

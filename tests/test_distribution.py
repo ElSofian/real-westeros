@@ -125,6 +125,15 @@ class DistributionTests(unittest.TestCase):
             build(self.root, self.output)
         self.assertEqual(b'keep me', self.output.read_bytes())
 
+    def test_missing_owned_call_definition_refuses_delivered_zip(self):
+        source = self.root / 'mod/real_westeros/common/scripted_effects/rw_unlawful_war_intervention_effects.txt'
+        source.unlink()
+        self.commit()
+        with self.assertRaisesRegex(ValueError, 'undefined owned effect rw_uw_queue_native_effect'):
+            build(self.root, self.output)
+        self.assertFalse(self.output.exists())
+        self.assertFalse(self.output.with_suffix('.zip.sha256').exists())
+
     def test_missing_committed_document_fails(self):
         (self.root / 'docs/INSTALL.md').unlink()
         self.commit()
