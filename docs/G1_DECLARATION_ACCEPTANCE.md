@@ -1,5 +1,9 @@
 # Liaison de l'acceptation native à la guerre observée
 
+Actualisation PRIVATE0.0.8. G1_EXTERNAL_DEFIANCE.md décrit l'option élargie aux
+cibles extérieures. La liaison ci-dessous conserve ses gardes. Le parcours
+politique existant conserve explicitement son périmètre de suzerain commun.
+
 Tranche du 8 novembre 2026. **Static-checked**, expérimentale et **non testée dans
 CK3**. Baseline et résultat80/80 source,0/20 campagne, delta0.
 

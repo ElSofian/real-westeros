@@ -1,7 +1,7 @@
 # Original runtime guards; native entry requires the isolated PRIVATE adapter.
 # The unmodified native helper remains authoritative for law/contract exceptions.
 rw_uw_native_target_adapter_available_trigger = { always = no }
-rw_uw_peer_ban_trigger = {
+rw_uw_applicable_ban_trigger = {
     exists = scope:actor
     exists = scope:recipient
     NOT = { scope:actor = scope:recipient }
@@ -9,25 +9,31 @@ rw_uw_peer_ban_trigger = {
         is_alive = yes is_adult = yes is_landed = yes is_imprisoned = no
         government_has_flag = government_is_feudal
         exists = liege
-        liege = scope:recipient.liege
-        liege = {
-            is_alive = yes
-            OR = {
-                has_realm_law_flag = vassal_internal_wars_banned
-                has_realm_law_flag = vassal_all_wars_banned
+        liege = { is_alive = yes }
+        OR = {
+            liege = { has_realm_law_flag = vassal_all_wars_banned }
+            AND = {
+                exists = scope:recipient.liege
+                liege = scope:recipient.liege
+                liege = { has_realm_law_flag = vassal_internal_wars_banned }
             }
         }
     }
     scope:recipient = {
         is_alive = yes is_adult = yes is_landed = yes is_imprisoned = no
         government_has_flag = government_is_feudal
-        exists = liege
     }
     war_declarer_needs_hook_on_liege = yes
 }
+# The existing political-response path still requires a shared direct liege.
+rw_uw_peer_ban_trigger = {
+    rw_uw_applicable_ban_trigger = yes
+    exists = scope:recipient.liege
+    scope:actor = { liege = scope:recipient.liege }
+}
 # A native window-local send flag, not a character variable or reusable ticket.
 rw_uw_selected_defiance_trigger = {
-    rw_uw_peer_ban_trigger = yes
+    rw_uw_applicable_ban_trigger = yes
     always = scope:rw_uw_defy
     NOT = { always = scope:hook }
 }
@@ -36,7 +42,7 @@ rw_uw_selected_defiance_trigger = {
 # the authentic interaction. No random roll in repeatedly evaluated UI triggers.
 # A player starts unchecked; this does not change either actor's valid choices.
 rw_uw_ai_default_defiance_trigger = {
-    rw_uw_peer_ban_trigger = yes
+    rw_uw_applicable_ban_trigger = yes
     NOT = { always = scope:hook }
     scope:actor = {
         is_ai = yes

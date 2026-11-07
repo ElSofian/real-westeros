@@ -1543,3 +1543,13 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   legacy missing marker, stale dates, changed authority/roles, callback replay and
   reload. Verify retained law/title facts, unchanged costs and lifetime, and no
   inferred hook consumption or crime. New scope/order behavior not engine-tested.
+
+- External defiance. Use matching PRIVATE0.0.8/base. Compare the declarer's direct
+  internal/all ban against another branch and an independent target, including
+  differing higher/defender laws. Check unselected/selected defiance, selected
+  hook, contract/native exceptions and unrelated native restrictions. Observe
+  costs once, authentic CB/roles and exact fresh acceptance binding for claim_cb.
+  Repeat with AI and reload. Outside declarations must not enter the existing
+  peer-only response, while peer reactions retain their prior path. Cover native
+  Mega Wars constraints. This source extension is not engine-tested; coordinated
+  Mace/Doran responses remain separate development work.

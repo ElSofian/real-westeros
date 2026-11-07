@@ -6,6 +6,7 @@ rw_uw_notice_effect = {
         limit = {
             this = scope:actor
             rw_uw_selected_defiance_trigger = yes
+            rw_uw_peer_ban_trigger = yes
             any_character_war = {
                 using_cb = claim_cb
                 primary_attacker = scope:actor

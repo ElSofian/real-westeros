@@ -24,7 +24,7 @@ def contract_errors(t,e,s):
     def require(text,parts,label):
         if any(not re.search(re.escape(x)+r'(?![\w:])',text) for x in parts): errors.append(label)
     register=block(e,'rw_uw_notice_effect')
-    require(register,('this = scope:actor','rw_uw_selected_defiance_trigger = yes',
+    require(register,('this = scope:actor','rw_uw_selected_defiance_trigger = yes','rw_uw_peer_ban_trigger = yes',
         'count >= 2','using_cb = claim_cb','primary_attacker = scope:actor',
         'primary_defender = scope:recipient','exists = scope:rw_uw_war',
         'any_owned_story =','story_owner = scope:rw_uw_attacker',
