@@ -1,5 +1,18 @@
 # Codex implementation handoff
 
+## Current continuation — ordinary AI defiance confirmed
+
+G1_AI_AUTONOMY.md records the 7 November owner-run observation. Leyton remained
+peaceful, while Nymella and Taubert autonomously started authentic claim_cb wars
+under Doran's internal-war ban. Exact law/royal records, native_choice_accept,
+linked serials and next-day native_requested dispatch receipts are present.
+The setup contains no war query. All thirteen installed G1 runtime files match
+the assessed source. Continue the existing native planner and shared option.
+W2/AI4 source assessment adds6points to74/80, campaign0/20. Justice/negotiation
+entry paths retain static status. W1/W4/W5 remain the source priorities, followed
+by full G1–G5 scenarios and performance. G1_AI_PLANNER_PROBE.md preserves the
+earlier manual controls, preview errors and sanitized save hashes.
+
 ## Current continuation — corrected G1 acceptance observed
 
 PRIVATE0.0.6 installed codec9d6a59, before-save replay by owner: letter correctly

@@ -1,5 +1,14 @@
 # Ce qui reste avant la première version intégrée
 
+**Mise à jour du 7 novembre2026 —74/80 source,0/20 campagne,delta+6.**
+[L'initiative native autonome](G1_AI_AUTONOMY.md) est confirmée pour deux IA de
+Dorne sous interdiction. La qualification du chemin joueur/IA et l'audit des
+entrées justice/négociation terminent W2 et AI4 en source. Le planificateur natif
+reste le point d'entrée de guerre. Les trois critères source restants sont W1
+(loi au moment de l'acte et exceptions), W4 (cycles guerre/Mega Wars) et W5
+(gardes et négatifs du chemin livré), pour6points. V1–V5 restent ouverts.
+Les revues ci-dessous conservent leurs dépendances et scores historiques.
+
 **Préparation de campagne ajoutée, +0 :**
 [FINAL_CAMPAIGN_PACK.md](FINAL_CAMPAIGN_PACK.md) assemble une version exacte du
 mod et les trois adaptateurs privés sans installer ni lancer CK3. La revue des

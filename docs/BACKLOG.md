@@ -1,5 +1,25 @@
 # Development backlog
 
+**RW-004 ordinary AI path confirmed, 7 November:** two Dorne AI rulers autonomously
+  declared genuine claim_cb wars under an internal ban. Native-choice acceptance,
+  exact linked law/royal context and next-day dispatch attempts are saved.
+  G1_AI_AUTONOMY.md supports source closure of W2 and AI4 with the existing shared
+  paths and justice/negotiation source audit. Development74/80, final campaign0/20,
+  delta+6 from68. W1/W4/W5 remain open. Use the native scheduler for continuation.
+
+**RW-004 banned selector succeeds:** reject-all control fails as intended, then
+  native AI defiance and actual claim_cb succeed. Law and royal acceptance records
+  and68prestige cost confirmed. Ordinary scheduler observation is next, using a
+  pure365-day hostility/ban fixture with no selector/declaration call. Twelve
+  static tests pass. Preview-stage tooltip errors are documented. W2/AI4 remain
+  open, baseline/result68/80+0/20, delta0.
+
+**RW-004 legal selector control succeeds, 7 November:** initialized AI starts
+  authentic Leyton/Paxter claim_cb for d_the_arbor. Log and save agree. Next
+  comparison groups reject-all, banned and conditional legal fallback under a
+  disclosed temporary hostility fixture. Eleven construction tests pass, eight
+  run files hash-verified. W2/AI4 remain open, baseline/result68/80+0/20, delta0.
+
 **RW-010 service mode correction, 7 November:** observed wrong-type snapshot read
   corrected through literal immediate/deferred flags and unknown-mode rejection.
   Existing persisted flag modes retain their representation. Coercion/missing/

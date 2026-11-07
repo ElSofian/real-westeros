@@ -1,5 +1,9 @@
 # Native AI war selection probe — 6 November 2026
 
+Current outcome is recorded in G1_AI_AUTONOMY.md. Two ordinary AI declarations
+qualify W2/AI4 source,74/80+0/20,+6. The sections below retain the chronological
+controls and their earlier uncertainty labels.
+
 **Console-only diagnostic, not a gameplay initiator or autonomous-AI proof.**
 Target W2/AI4; baseline/result68/80 source+0/20 campaign, delta0 until actual
 full-criterion evidence. No production mod, native helper, define or CB changed.
@@ -186,3 +190,63 @@ in CK3: no successful permissive selector control or matched ban comparison yet.
 The reject path also remains pending. Continue these in the grouped final
 campaign rather than requesting repeated intermediate manual tests. W2/AI4 stay
 open; baseline/result68/80+0/20, delta0.
+
+## Initialized legal control succeeds, 7 November
+
+The corrected allowed probe logs fixture_bound, allowed_begin,
+allowed_default_defiance_no, allowed_success and allowed_end. The paused
+RW-AI-autorise-valide save on 4 June contains an active authentic claim_cb war
+from Leyton to Paxter, claimant Leyton and targeted d_the_arbor. Strategy remains
+initialized=yes with calculated budgets. Save SHA256 is
+`60aec5dadf454c187fb5a792b19629c77fe815935045c6acc3605ea75285e8c7`.
+No rw_ai1 console-file error was found in this session's error log.
+The same-date before/after saves show prestige600 to532, gold1472 to1472 and
+piety600 to600. The observed legal selector declaration spent68 prestige.
+
+This establishes a working legal selector control through the manually invoked
+native effect. The banned comparison and autonomous scheduling remain open.
+Target W2/AI4, baseline/result68/80+0/20, delta0.
+
+The prepared rw_ai1_compare.txt runs on a fresh reload of the initialized pre-war
+save. It samples the same fixture and adds the installed native debug opinion
+debug_hates_liege_opinion for seven days. Actual opinion must reach -25 before
+continuing. This explicit disposable fixture changes a political preference.
+The effect signature and modifier were checked in installed primary sources.
+
+The sequence requires the reject-all control to return failure before trying
+the banned law. Only a banned failure allows the legal fallback. A successful
+war or an unexpected reject-control success stops the sequence. Every query keeps
+the exact real CB, target and title filters. One diagnostic stage variable is
+initialized on entry, expires after one day and is included in cleanup.
+Eight generated console files are hash-verified. Eleven construction tests pass.
+The comparison is prepared for engine execution.
+
+## Initialized banned comparison succeeds, 7 November
+
+Observed sequence is compare_hostile_ready, reject_failure,
+banned_default_defiance_yes, banned_success, compare_end. Legal fallback was
+skipped. RW-AI-comparaison on 4 June contains the authentic Leyton/Paxter claim_cb
+for d_the_arbor, prestige532 from600, gold1472 and piety600. The declaration-law
+receipt records internal and permission_required. The royal response record
+records native_choice_accept, showing the native interaction acceptance path.
+Save SHA256 is
+`d6fe412a17bad48455abf01e44bf131c7da35cbe787c8096c0f5f4668b464b0a`.
+
+The engine reports unset comparison-stage variables while building the console
+tooltip before execution. Runtime markers and saved stage=banned_success record
+the actual sequence. The comparison now uses hidden_effect, with a static wrapper
+check. Suppression of those preview errors awaits an engine observation.
+
+The native selector, default defiance and acceptance path have therefore worked
+together under the ban in this controlled invocation. Ordinary autonomous
+initiation still needs observation before choosing an additional scheduler.
+The current source and installed private adapter remain0.0.6.
+
+rw_ai1_autonomous.txt prepares the initialized before-save with the same ban and
+native debug hostility for365days, then logs whether the shared default-defiance
+preference is true. It contains no selector query, declaration, event invocation
+or AI-state change. Native scheduling and scoring make the subsequent decisions.
+Observe up to one game year and save, or pause/save when a declaration appears.
+A declaration is positive evidence. Absence within that window alone cannot prove
+incapability because native cooldown, energy and priorities also influence timing.
+Twelve construction tests pass. Target W2/AI4 remains open, delta0,68/80+0/20.
