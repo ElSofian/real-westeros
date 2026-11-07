@@ -99,13 +99,13 @@ rw_favor_service.0001 = {
         name = rw_deferred_favor.perform
         trigger = { rw_fd_can_perform_trigger = yes }
         rw_fd_perform_effect = yes
-        ai_chance = { base = 70 modifier = { factor = 2 has_trait = honest } }
+        ai_chance = { base = 0 modifier = { add = rw_ai_favor_promise_perform_weight always = yes } }
     }
     option = {
         name = rw_deferred_favor.renounce
         trigger = { rw_fd_can_renounce_trigger = yes }
         rw_fd_renounce_effect = yes
-        ai_chance = { base = 5 modifier = { factor = 0.2 has_trait = honest } modifier = { factor = 2 has_trait = deceitful } }
+        ai_chance = { base = 0 modifier = { add = rw_ai_favor_promise_renounce_weight always = yes } }
     }
     option = {
         name = rw_deferred_favor.withdraw

@@ -1,0 +1,105 @@
+﻿# Current-character personality axes combine native trait and modifier inputs.
+# Positive bounded preferences retain alternatives at both ends of each axis.
+# Experimental profile. Engine validation remains pending.
+rw_ai_keep_word_factor = {
+    value = ai_honor
+    divide = 100
+    add = 1
+    min = 0.25
+    max = 2
+}
+rw_ai_break_word_factor = {
+    value = ai_honor
+    multiply = -1
+    divide = 100
+    add = 1
+    min = 0.25
+    max = 2
+}
+rw_ai_paid_reward_factor = {
+    value = ai_greed
+    divide = 200
+    add = 1
+    min = 0.5
+    max = 1.5
+}
+
+# An accepted gold service pays its provider on performance. The current quote
+# determines the importance of that income relative to the provider's funds.
+rw_ai_gold_promise_perform_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_gold_promise_context_trigger = yes }
+        if = {
+            limit = {
+                rw_service_obligation_fulfillable_trigger = yes
+                this = scope:rw_service_provider
+            }
+            add = 70
+            multiply = rw_ai_keep_word_factor
+            multiply = rw_ai_paid_reward_factor
+            if = { limit = { gold < scope:rw_service_price } multiply = 1.25 }
+            if = { limit = { opinion = { target = scope:rw_service_client value >= 25 } } multiply = 1.25 }
+            if = { limit = { opinion = { target = scope:rw_service_client value <= -25 } } multiply = 0.75 }
+        }
+    }
+}
+rw_ai_gold_promise_break_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_gold_promise_context_trigger = yes }
+        if = {
+            limit = {
+                rw_service_obligation_actionable_trigger = yes
+                this = scope:rw_service_provider
+            }
+            add = 10
+            multiply = rw_ai_break_word_factor
+            if = { limit = { opinion = { target = scope:rw_service_client value >= 25 } } multiply = 0.75 }
+            if = { limit = { opinion = { target = scope:rw_service_client value <= -25 } } multiply = 1.25 }
+        }
+    }
+}
+
+# Favor and monetary consideration use the same word-keeping personality. Cash
+# motivation applies only to the current monetary term of twenty-five gold.
+rw_ai_favor_promise_perform_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_favor_promise_context_trigger = yes }
+        if = {
+            limit = {
+                rw_fd_can_perform_trigger = yes
+                this = scope:rw_fv_provider
+            }
+            add = 70
+            multiply = rw_ai_keep_word_factor
+            if = {
+                limit = { scope:rw_fv_term = flag:gold25 }
+                multiply = rw_ai_paid_reward_factor
+                if = { limit = { gold < 25 } multiply = 1.25 }
+            }
+            if = { limit = { opinion = { target = scope:rw_fv_client value >= 25 } } multiply = 1.25 }
+            if = { limit = { opinion = { target = scope:rw_fv_client value <= -25 } } multiply = 0.75 }
+        }
+    }
+}
+rw_ai_favor_promise_renounce_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_favor_promise_context_trigger = yes }
+        if = {
+            limit = {
+                rw_fd_can_renounce_trigger = yes
+                this = scope:rw_fv_provider
+            }
+            add = 5
+            if = {
+                limit = { scope:rw_fv_client = { is_alive = yes } }
+                multiply = rw_ai_break_word_factor
+                if = { limit = { opinion = { target = scope:rw_fv_client value >= 25 } } multiply = 0.75 }
+                if = { limit = { opinion = { target = scope:rw_fv_client value <= -25 } } multiply = 1.25 }
+            }
+        }
+    }
+}

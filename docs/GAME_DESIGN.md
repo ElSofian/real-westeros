@@ -23,6 +23,24 @@
 - Prefer relevant event-driven AI opportunities to periodic scans of all pairs of characters.
 - Existing features of AGOT should be reused, not reconstructed.
 
+## Decision context across all systems
+
+The owner requires every implemented political decision to consider the relevant
+known context. Review personality and combined traits, skills and education,
+health/stress, resources, obligations, relationships, family and beneficiary
+interests, faith/culture, law and authority, timing, expected support and probable
+consequences. Each action defines how those dimensions influence its own goal.
+
+The initiator and beneficiary retain distinct agency. A beneficiary's personality
+informs their participation and the support the initiator can reasonably expect.
+The initiator's choice uses their own personality and interests. Knowledge and
+evidence-access rules govern information used about other characters.
+
+AI_DECISION_CONTEXT.md records implemented coverage and the remaining review by
+family. Native aggregate personality axes provide combined inputs for original
+action profiles. Eligibility, decision preference and execution consequences are
+reviewed separately, including the point where the engine consumes a preference.
+
 ## Scope and status
 
 The original three scenarios are non-exhaustive examples within the eight-system

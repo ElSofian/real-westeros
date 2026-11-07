@@ -1,5 +1,10 @@
 # RW-010 / AI3 — contextual political choices
 
+Current expansion is recorded in AI_DECISION_CONTEXT.md. The owner's comprehensive
+context requirement applies across all action families. The first additional
+profile connects native combined personality to four promise-provider choices.
+The earlier cooperation policy and its historical delivery record follow below.
+
 **Original CK3 scripts, static-checked; not engine-tested.** This delivers the
 source criterion AI3, not all political AI. AI4 (autonomous war/justice/negotiation
 coverage), AI5 (instrumentation/performance) and all engine gates remain open.

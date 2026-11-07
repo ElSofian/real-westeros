@@ -16,13 +16,13 @@ rw_obligations.0001 = {
         name = rw_obligations.fulfill
         trigger = { rw_service_obligation_fulfillable_trigger = yes }
         rw_service_fulfill_promise_effect = yes
-        ai_chance = { base = 70 }
+        ai_chance = { base = 0 modifier = { add = rw_ai_gold_promise_perform_weight always = yes } }
     }
     option = {
         name = rw_obligations.break
         trigger = { rw_service_obligation_actionable_trigger = yes }
         rw_service_break_promise_effect = yes
-        ai_chance = { base = 10 }
+        ai_chance = { base = 0 modifier = { add = rw_ai_gold_promise_break_weight always = yes } }
     }
     option = {
         name = rw_cancellations.propose
