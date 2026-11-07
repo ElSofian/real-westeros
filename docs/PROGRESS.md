@@ -1,5 +1,18 @@
 # Progress
 
+- RW-004 acceptance binding. PRIVATE0.0.7 extends the original native acceptance
+  tail with a metadata reader before the existing royal response. Exact actor,
+  recipient, active claim war, direct authority/title, parent schema/serial/date
+  and uniqueness checks bind supplied identities to an early receipt. Same-pair
+  ambiguity includes other CBs and already-bound receipts. Fresh-only marker and
+  consumed acceptance date prevent legacy backfill/replay. Choice metadata keeps
+  ordinary/defy_selected/hook_selected/ambiguous distinct. No new native action
+  or historical law/party reconstruction. Six new source tests and13 royal tests,
+  structural/telemetry/whitespace checks pass. Full CI and committed private
+  assembly evidence are recorded in PR. New native callback behavior is not
+  engine-tested. Baseline/result80/80 source +0/20 campaign, delta0. Next broaden
+  external defiance only with proper context, then route Mace/Doran responses.
+
 - RW-004 declaration parties. Native source distinguishes primary defender from
   vassals holding targeted titles. Added optional party schema, native claimant
   and defender-liege facts to fresh parent records. A guarded worker visits all

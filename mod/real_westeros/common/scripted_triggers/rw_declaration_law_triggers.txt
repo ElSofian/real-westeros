@@ -18,6 +18,33 @@ rw_dl_callback_context_trigger = {
     }
     scope:defender = { is_alive = yes is_landed = yes government_has_flag = government_is_feudal }
 }
+# STORY scope in the native interaction's on_accept. Include already bound
+# receipts in the uniqueness check; only the write rejects a consumed receipt.
+rw_dl_acceptance_match_trigger = {
+    story_type = story_rw_declaration_law
+    story_owner = scope:actor
+    var:rw_dl_schema = 1
+    var:rw_dl_party_schema = 1
+    var:rw_dl_serial > 0
+    has_variable = rw_dl_retained
+    var:rw_dl_phase = flag:claim_cb_on_declaration_prefix
+    var:rw_dl_seen_on = current_date
+    var:rw_dl_attacker = scope:actor
+    var:rw_dl_defender = scope:recipient
+    var:rw_dl_issuer = scope:actor.liege
+    exists = var:rw_dl_authority
+    var:rw_dl_authority = { holder = scope:actor.liege }
+    exists = var:rw_dl_war
+    save_temporary_scope_as = rw_da_check
+    var:rw_dl_war = {
+        using_cb = claim_cb
+        primary_attacker = scope:actor
+        primary_defender = scope:recipient
+    }
+    scope:actor = {
+        any_character_war = { this = scope:rw_da_check.var:rw_dl_war }
+    }
+}
 # STORY scope. An exact retained callback receipt, never a later reconstruction.
 rw_dl_match_response_trigger = {
     story_type = story_rw_declaration_law
