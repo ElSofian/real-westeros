@@ -1,5 +1,11 @@
 # Development backlog
 
+**RW-010 contextual-AI prerequisite, 7 November:** favor/gold terms and immediate/
+  deferred snapshots retain their flag types, including legacy mode-less offers.
+  Malformed fields fail closed, review guards absent schema/client. Native
+  personality policy for promise choices follows this repair. Source74/80,
+  campaign0/20, delta0. Engine checks remain grouped in the final campaign.
+
 **RW-004 ordinary AI path confirmed, 7 November:** two Dorne AI rulers autonomously
   declared genuine claim_cb wars under an internal ban. Native-choice acceptance,
   exact linked law/royal context and next-day dispatch attempts are saved.

@@ -2,11 +2,31 @@ rw_fv_snapshot_effect = {
     scope:rw_fv_provider = {
         save_scope_value_as = { name = rw_fv_serial value = var:rw_fv_serial }
         save_scope_value_as = { name = rw_fv_revision value = var:rw_fv_revision }
-        save_scope_value_as = { name = rw_fv_term value = var:rw_fv_term }
+        save_scope_value_as = { name = rw_fv_term value = flag:invalid }
+        if = {
+            limit = { has_variable = rw_fv_term }
+            if = {
+                limit = { var:rw_fv_term = flag:favor }
+                save_scope_value_as = { name = rw_fv_term value = flag:favor }
+            }
+            else_if = {
+                limit = { var:rw_fv_term = flag:gold25 }
+                save_scope_value_as = { name = rw_fv_term value = flag:gold25 }
+            }
+        }
+        # A missing mode is the supported legacy immediate offer.
         save_scope_value_as = { name = rw_fv_mode value = flag:immediate }
         if = {
             limit = { has_variable = rw_fv_mode }
-            save_scope_value_as = { name = rw_fv_mode value = var:rw_fv_mode }
+            save_scope_value_as = { name = rw_fv_mode value = flag:invalid }
+            if = {
+                limit = { var:rw_fv_mode = flag:immediate }
+                save_scope_value_as = { name = rw_fv_mode value = flag:immediate }
+            }
+            else_if = {
+                limit = { var:rw_fv_mode = flag:deferred }
+                save_scope_value_as = { name = rw_fv_mode value = flag:deferred }
+            }
         }
     }
 }

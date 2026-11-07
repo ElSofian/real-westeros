@@ -76,12 +76,20 @@ rw_fv_review_allowed_trigger = {
     scope:actor = { is_alive = yes }
     scope:recipient = {
         is_alive = yes
-        var:rw_fv_schema = 1
-        exists = var:rw_fv_client
-        has_variable = rw_fv_serial
-        has_variable = rw_fv_revision
-        has_variable = rw_fv_term
-        trigger_if = { limit = { has_variable = rw_fv_mode } var:rw_fv_provider = scope:recipient }
+        trigger_if = {
+            limit = { has_variable = rw_fv_schema }
+            var:rw_fv_schema = 1
+            exists = var:rw_fv_client
+            has_variable = rw_fv_serial
+            has_variable = rw_fv_revision
+            has_variable = rw_fv_term
+            trigger_if = { limit = { has_variable = rw_fv_mode } var:rw_fv_provider = scope:recipient }
+        }
+        trigger_else = { always = no }
     }
-    OR = { scope:actor = scope:recipient scope:actor = scope:recipient.var:rw_fv_client }
+    trigger_if = {
+        limit = { scope:recipient = { exists = var:rw_fv_client } }
+        OR = { scope:actor = scope:recipient scope:actor = scope:recipient.var:rw_fv_client }
+    }
+    trigger_else = { always = no }
 }

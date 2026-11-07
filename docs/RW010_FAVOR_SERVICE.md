@@ -6,6 +6,14 @@ hook type, a future promise, an unlawful-war bypass or proof of compatibility.
 
 ## Explicit offer and latest-term consent
 
+The 7 November snapshot correction transports favor/gold25 terms and immediate/
+deferred modes through matching literal flags. Missing modes retain the legacy
+immediate interpretation. Unknown modes and missing terms produce invalid
+snapshots. Review checks variable presence before reading the schema or client.
+The historical gold-debit proof includes a reversible record of this later edit.
+Available checks cover valid variants, missing values, malformed review context
+and snapshot purity. The engine retest remains in the final campaign.
+
 A landed adult free provider at peace can offer a landed adult free client an
 immediate endorsement in exchange for a native **`favor_hook` over that client**.
 The new interaction's auto-accept only opens the scripted proposal. No prestige,

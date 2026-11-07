@@ -1,5 +1,13 @@
 # Progress
 
+- RW-010 prerequisite for broader AI policy. Favor-service snapshots now carry
+  term/mode enums through literal flags, preserving legacy immediate offers and
+  rejecting malformed fields. Review guards missing schema/client. Source
+  regression checks cover the normal and deferred routes. Existing gold-debit
+  proof retains its historical hashes through a reversible later edit. Target
+  N1/O1 reliability, baseline/result74/80+0/20, delta0. Engine retest remains in
+  the final campaign. Next change connects native personality to promise choices.
+
 - RW-004 ordinary AI initiative is observed in two Dorne claim wars. Nymella and
   Taubert used the native defiance acceptance path under Doran's internal ban,
   with linked law/royal stories and next-day dispatch attempts. Leyton stayed
