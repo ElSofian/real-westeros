@@ -1,5 +1,18 @@
 # Final CK3 validation campaign
 
+## Owner-directed system review and iteration
+
+After the80/80 foundation milestone, revisit all eight systems against the
+intended design. The owner permits this review alongside the grouped engine
+campaign. For each system, record the current baseline, the intended contextual
+rules, the implemented variant and its remaining gaps. Observe a bounded base
+path first when feasibility is uncertain, then the complete implemented path.
+Use the result to choose the next improvement and repeat its affected scenarios.
+Distinguish each variant in saves/results and retain failures and simplified-path
+limits. Award V1–V5 only from their own reproducible acceptance evidence.
+
+## Campaign scenarios
+
 Owner decision: defer engine tests until the integrated candidate is ready. None of
 these scenarios has run. Static passes are not game behavior or compatibility proof.
 Record CK3 executable, AGOT version, DLC, playset order and commit for every run.

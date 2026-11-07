@@ -1,5 +1,14 @@
 # Development backlog
 
+**RW-004 W1 law qualification, 7 November:** G1_W1_QUALIFICATION.md assesses
+  the existing declaration-prefix snapshot, unchanged native exceptions and exact
+  early links already observed for player and two autonomous AI declarations.
+  Three current law files match the observed PRIVATE0.0.6 receipt. Two new source
+  regressions guard exact outcome branches and the single historical archive copy.
+  W1 source complete,74→76/80, campaign0/20, delta+2. Exceptional engine contexts
+  remain grouped; W4/W5 are next. Owner requests a substantive eight-system review
+  after the80/80 foundation, potentially alongside staged engine tests and iteration.
+
 **RW-010 delivered script linkage, 7 November:** structural validation now
   resolves explicit rw_*_effect / rw_*_trigger calls against their respective
   definition folders across the assembled mod. Missing or misnamed definitions

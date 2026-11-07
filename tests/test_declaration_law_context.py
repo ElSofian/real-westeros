@@ -104,6 +104,33 @@ class DeclarationLawSourceTests(unittest.TestCase):
     def setUp(self):self.t=T.read_text();self.e=E.read_text();self.s=S.read_text()
     def test_real_source_contract(self):self.assertEqual([],contract_errors(self.t,self.e,self.s))
 
+    def test_native_permission_outcomes_keep_their_exact_branch_conditions(self):
+        # Presence-only checks miss swapped outcomes or an inverted ban test.
+        expected = '''
+            save_scope_value_as = { name = rw_dl_gate value = flag:no_ban }
+            if = {
+                limit = { rw_dl_native_permission_trigger = yes }
+                save_scope_value_as = { name = rw_dl_gate value = flag:permission_required }
+                if = {
+                    limit = { scope:rw_dl_ban = flag:none }
+                    save_scope_value_as = { name = rw_dl_gate value = flag:inconsistent }
+                }
+            }
+            else_if = {
+                limit = { NOT = { scope:rw_dl_ban = flag:none } }
+                save_scope_value_as = { name = rw_dl_gate value = flag:native_exception }
+            }
+        '''
+        self.assertIn(' '.join(expected.split()), ' '.join(clean_script(self.e)[0].split()))
+
+    def test_archived_gate_is_copied_once_from_the_early_snapshot(self):
+        writes = re.findall(r'\bset_variable\s*=\s*\{\s*name\s*=\s*rw_dl_gate\s+value\s*=\s*([^}]+)\}',
+                            clean_script(self.e + self.s)[0])
+        self.assertEqual(['scope:rw_dl_gate'], [value.strip() for value in writes])
+        capture = block(self.e, 'rw_dl_capture_effect')
+        self.assertLess(capture.index('rw_dl_native_permission_trigger = yes'), capture.index('create_story ='))
+        self.assertNotIn('rw_dl_native_permission_trigger', block(self.e, 'rw_dl_link_response_effect'))
+
     def test_base_without_adapter_fails_closed(self):
         self.assertIn('always = no',block(self.t,'rw_dl_adapter_available_trigger'))
         self.assertIn('always = no',block(self.t,'rw_dl_native_permission_trigger'))
