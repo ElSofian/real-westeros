@@ -106,5 +106,10 @@ external-defiance responses. Capture facts once and retain partial-source limits
 G1_DECLARATION_ACCEPTANCE.md records the experimental native acceptance link.
 Bind supplied interaction identities only to an exact unique fresh war receipt;
 keep selected flags distinct from demonstrated native costs and legal verdicts.
-Ambiguous/changed contexts retain an unbound record. Existing action eligibility
-remains peer-scoped until the external route and response routing are developed.
+Ambiguous/changed contexts retain an unbound record.
+
+G1_EXTERNAL_DEFIANCE.md records the experimental external action extension.
+The declaring actor's direct all-war ban can expose the native defiance option
+against another branch or independent target. Internal bans remain same-liege,
+with native exceptions and other conditions preserved. Existing political
+responses explicitly remain peer-scoped pending distinct Mace/Doran routing.

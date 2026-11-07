@@ -1,5 +1,17 @@
 # Progress
 
+- RW-004 external defiance, 8 November. PRIVATE0.0.8 uses the declaring actor's
+  applicable direct-liege ban for the native checkbox and existing AI preference.
+  An all-war ban covers outside/independent targets; an internal ban requires
+  the same direct liege. Native permission exceptions, selected-hook exclusion,
+  costs and other declaration conditions remain guarded. The existing response
+  intake now explicitly retains its shared-liege restriction. Five new source
+  tests include mutations of territorial law, native exceptions and response
+  scope. Static checks, full CI and committed private assembly evidence are
+  recorded in PR. New outside-war behavior is not engine-tested. Baseline/result
+  80/80 source +0/20 campaign, actual delta0. Next route Mace/Doran responses
+  using the existing role/law/acceptance facts. General royal peace is deferred.
+
 - RW-004 acceptance binding. PRIVATE0.0.7 extends the original native acceptance
   tail with a metadata reader before the existing royal response. Exact actor,
   recipient, active claim war, direct authority/title, parent schema/serial/date

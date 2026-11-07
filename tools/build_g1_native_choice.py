@@ -49,11 +49,11 @@ OPTION = '''
     send_option = {
         flag = rw_uw_defy
         localization = rw_uw_defy_option
-        is_shown = { rw_uw_peer_ban_trigger = yes }
+        is_shown = { rw_uw_applicable_ban_trigger = yes }
         is_valid = {
             custom_tooltip = {
                 text = rw_uw_defy_warning
-                rw_uw_peer_ban_trigger = yes
+                rw_uw_applicable_ban_trigger = yes
                 NOT = { always = scope:hook }
             }
         }
@@ -268,7 +268,7 @@ def build(agot_root, output):
         'common/character_interactions/zz_rw_native_war_intervention.txt': b'\xef\xbb\xbf' + patched_intervention + b'\n',
     }
     metadata = ('name="Real Westeros PRIVATE native war choice EXPERIMENT"\n'
-                'version="0.0.7"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
+                'version="0.0.8"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
                 'dependencies={ "Real Westeros" }\n')
     receipt = {'schema': 1, 'status': 'PRIVATE isolated experimental source; NOT engine-tested',
                'reported_agot': fields,

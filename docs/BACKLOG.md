@@ -1,5 +1,14 @@
 # Development backlog
 
+**RW-004 external-defiance opening, 8 November:** PRIVATE0.0.8 broadens the
+  native checkbox and existing AI preference to outside/independent targets
+  only under the declaring actor's direct all-war ban and native permission
+  requirement. Internal bans remain same-liege. Explicit selection and selected
+  hook exclusion remain shared. Existing political responses now explicitly
+  retain their peer-only scope. Five source regressions include negative paths.
+  Experimental, not engine-tested.80/80+0/20, delta0. Next Mace/Doran response
+  routing from captured roles/law/acceptance. General royal peace stays deferred.
+
 **RW-004 native acceptance binding, 8 November:** PRIVATE0.0.7 binds supplied
   interaction actor/recipient and selected flags to a unique retained same-day
   early claim receipt with exact roles/war/authority. Reject multiple same-pair

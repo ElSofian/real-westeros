@@ -65,7 +65,7 @@ class NativeChoiceBuilderTests(unittest.TestCase):
     def test_real_original_templates_and_private_manifest(self):
         receipt = self.build()
         self.assertIn('NOT VERIFIED', receipt['ai_option_initialization'])
-        self.assertIn('version="0.0.7"', (self.out/builder.MOD_ID/'descriptor.mod').read_text())
+        self.assertIn('version="0.0.8"', (self.out/builder.MOD_ID/'descriptor.mod').read_text())
         self.assertEqual(4, len(receipt['outputs']))
         self.assertEqual(len(builder.FILES), len(receipt['runtime_sources']))
         self.assertEqual('Real Westeros', receipt['requires_base_mod'])
@@ -152,7 +152,7 @@ class NativeChoiceSourceTests(unittest.TestCase):
         self.text=(builder.TEMPLATES/'common/scripted_triggers/rw_unlawful_war_choice_triggers.txt').read_text()
 
     def test_same_live_peer_and_native_exception_guards(self):
-        start,_,end=builder.bounds(self.text,'rw_uw_peer_ban_trigger')
+        start,_,end=builder.bounds(self.text,'rw_uw_applicable_ban_trigger')
         text=clean_script(self.text[start:end])[0]
         self.assertIn('liege = scope:recipient.liege',text)
         self.assertEqual(2,text.count('government_has_flag = government_is_feudal'))
@@ -178,7 +178,7 @@ class NativeChoiceSourceTests(unittest.TestCase):
 
     def test_ai_initial_choice_never_changes_shared_permission(self):
         # Identity/AI/means are preference only, never a new eligibility branch.
-        for name in ('rw_uw_peer_ban_trigger', 'rw_uw_selected_defiance_trigger'):
+        for name in ('rw_uw_applicable_ban_trigger', 'rw_uw_peer_ban_trigger', 'rw_uw_selected_defiance_trigger'):
             start, _, end = builder.bounds(self.text, name)
             block = clean_script(self.text[start:end])[0]
             self.assertNotIn('is_ai', block)
@@ -193,7 +193,7 @@ class NativeChoiceSourceTests(unittest.TestCase):
     def test_ai_preference_fails_closed_on_context_hook_or_burden(self):
         start, _, end = builder.bounds(self.text, 'rw_uw_ai_default_defiance_trigger')
         block = clean_script(self.text[start:end])[0]
-        for guard in ('rw_uw_peer_ban_trigger = yes', 'NOT = { always = scope:hook }',
+        for guard in ('rw_uw_applicable_ban_trigger = yes', 'NOT = { always = scope:hook }',
                       'is_ai = yes', 'is_at_war = no', 'gold >= 150',
                       'rw_ai_existing_commitment_trigger = no',
                       'opinion = { target = scope:actor.liege value <= -25 }'):

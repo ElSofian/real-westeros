@@ -170,7 +170,9 @@ class DeclarationLawSourceTests(unittest.TestCase):
         self.assertIn('limit = { scope:rw_dl_rule = flag:all }', capture)
         choice = (ROOT/'common/scripted_triggers/rw_unlawful_war_choice_triggers.txt').read_text()
         self.assertIn('liege = scope:recipient.liege', block(choice, 'rw_uw_peer_ban_trigger'))
-        self.assertIn('rw_uw_peer_ban_trigger = yes', block(choice, 'rw_uw_selected_defiance_trigger'))
+        self.assertIn('rw_uw_applicable_ban_trigger = yes', block(choice, 'rw_uw_selected_defiance_trigger'))
+        response = (ROOT/'common/scripted_effects/rw_unlawful_war_response_effects.txt').read_text()
+        self.assertIn('rw_uw_peer_ban_trigger = yes', block(response, 'rw_uw_notice_effect'))
 
     def test_native_permission_outcomes_keep_their_exact_branch_conditions(self):
         # Presence-only checks miss swapped outcomes or an inverted ban test.
