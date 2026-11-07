@@ -104,6 +104,7 @@ rw_dl_capture_effect = {
                         set_variable = { name = rw_dl_gate value = scope:rw_dl_gate }
                         set_variable = { name = rw_dl_retained value = flag:yes days = 365 }
                         set_variable = { name = rw_dl_party_schema value = 1 }
+                        set_variable = { name = rw_dl_acceptance_ready value = flag:yes }
                         set_variable = { name = rw_dl_claimant_state value = flag:missing }
                         if = {
                             limit = { exists = scope:claimant }
@@ -236,6 +237,68 @@ rw_dl_capture_targets_effect = {
                 if = {
                     limit = { var:rw_dl_target_records = var:rw_dl_target_count }
                     set_variable = { name = rw_dl_targets_state value = flag:all_titles_recorded }
+                }
+            }
+        }
+    }
+}
+# Native on_accept tail only. Bind supplied interaction identities to an existing
+# early receipt, without inventing a title-holder or claimant identity.
+rw_dl_bind_acceptance_effect = {
+    if = {
+        limit = {
+            exists = scope:actor
+            exists = scope:recipient
+            this = scope:actor
+            is_alive = yes
+            is_adult = yes
+            is_landed = yes
+            government_has_flag = government_is_feudal
+            exists = liege
+            liege = { is_alive = yes is_landed = yes }
+            NOT = {
+                any_character_war = {
+                    count >= 2
+                    primary_attacker = scope:actor
+                    primary_defender = scope:recipient
+                }
+            }
+            any_owned_story = { rw_dl_acceptance_match_trigger = yes }
+            NOT = { any_owned_story = { count >= 2 rw_dl_acceptance_match_trigger = yes } }
+        }
+        clear_saved_scope = rw_da_record
+        random_owned_story = {
+            limit = { rw_dl_acceptance_match_trigger = yes }
+            save_scope_as = rw_da_record
+        }
+        if = {
+            limit = {
+                exists = scope:rw_da_record
+                scope:rw_da_record = {
+                    rw_dl_acceptance_match_trigger = yes
+                    has_variable = rw_dl_acceptance_ready
+                    NOT = { has_variable = rw_dl_accepted_on }
+                }
+            }
+            scope:rw_da_record = {
+                # Consume before the remaining metadata writes.
+                remove_variable = rw_dl_acceptance_ready
+                set_variable = { name = rw_dl_accepted_on value = current_date }
+                set_variable = { name = rw_dl_acceptance_schema value = 1 }
+                set_variable = { name = rw_dl_accepted_actor value = scope:actor }
+                set_variable = { name = rw_dl_accepted_recipient value = scope:recipient }
+                set_variable = { name = rw_dl_accepted_choice value = flag:ordinary }
+                if = {
+                    limit = { always = scope:rw_uw_defy }
+                    set_variable = { name = rw_dl_accepted_choice value = flag:defy_selected }
+                    if = {
+                        limit = { always = scope:hook }
+                        set_variable = { name = rw_dl_accepted_choice value = flag:ambiguous }
+                    }
+                }
+                else_if = {
+                    limit = { always = scope:hook }
+                    set_variable = { name = rw_dl_accepted_choice value = flag:hook_selected }
                 }
             }
         }

@@ -102,3 +102,9 @@ primary attacker/defender, supplied claimant and each target title's holder and
 direct authority distinct. Missing identities stay explicit. Link original
 interaction initiators through demonstrated native context before enabling new
 external-defiance responses. Capture facts once and retain partial-source limits.
+
+G1_DECLARATION_ACCEPTANCE.md records the experimental native acceptance link.
+Bind supplied interaction identities only to an exact unique fresh war receipt;
+keep selected flags distinct from demonstrated native costs and legal verdicts.
+Ambiguous/changed contexts retain an unbound record. Existing action eligibility
+remains peer-scoped until the external route and response routing are developed.

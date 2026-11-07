@@ -35,7 +35,12 @@ TERMINAL_PREFIXES = {name: '\n    rw_uw_terminal_effect = { OUTCOME = ' + name +
                      for name in TERMINAL_CALLBACKS}
 CLONE = 'rw_dl_native_permission_trigger'
 NATIVE_PERMISSION = 'war_declarer_needs_hook_on_liege'
-ACCEPT = '\n    scope:actor = { rw_uw_notice_effect = yes }\n'
+ACCEPT = '''
+    scope:actor = {
+        rw_dl_bind_acceptance_effect = yes
+        rw_uw_notice_effect = yes
+    }
+'''
 INTERVENTION_PREFIX = '\n    rw_uw_bind_native_target_effect = yes\n'
 INTERVENTION_MARKER = 'rw_uw_native_target_adapter_available_trigger = { always = yes }\n'
 GUARD = '\n            rw_uw_selected_defiance_trigger = yes\n'
@@ -263,7 +268,7 @@ def build(agot_root, output):
         'common/character_interactions/zz_rw_native_war_intervention.txt': b'\xef\xbb\xbf' + patched_intervention + b'\n',
     }
     metadata = ('name="Real Westeros PRIVATE native war choice EXPERIMENT"\n'
-                'version="0.0.6"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
+                'version="0.0.7"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
                 'dependencies={ "Real Westeros" }\n')
     receipt = {'schema': 1, 'status': 'PRIVATE isolated experimental source; NOT engine-tested',
                'reported_agot': fields,

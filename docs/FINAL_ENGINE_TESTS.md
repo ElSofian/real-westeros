@@ -1535,3 +1535,11 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   and many-title/AI-war cost. New callback scope availability and child cleanup
   are not engine-tested. Interaction-initiator binding and external defiance
   remain separate development work.
+
+- Native acceptance binding. Use matching PRIVATE0.0.7/base and inspect ordinary,
+  hook-selected and defy-selected claims between peers and different branches.
+  Compare supplied actor/recipient to native principal roles and the exact early
+  receipt. Exercise same-pair other-CB ambiguity, duplicate/consumed receipts,
+  legacy missing marker, stale dates, changed authority/roles, callback replay and
+  reload. Verify retained law/title facts, unchanged costs and lifetime, and no
+  inferred hook consumption or crime. New scope/order behavior not engine-tested.

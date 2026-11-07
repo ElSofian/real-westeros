@@ -1,5 +1,12 @@
 # Parties et titres d'une guerre de revendication
 
+**Liaison du 8 novembre 2026.**
+[G1_DECLARATION_ACCEPTANCE.md](G1_DECLARATION_ACCEPTANCE.md) relie sous conditions
+l'acteur et le destinataire de l'interaction acceptée à un relevé précoce exact.
+La génération privée passe à0.0.7. Cette nouvelle liaison reste non testée dans
+CK3. L'ouverture du défi extérieur et les réponses inter-seigneuries restent
+les tranches suivantes. Score80/80 source,0/20 campagne, delta0.
+
 Tranche de la revue de fond du 7 novembre 2026. **Static-checked** et expérimentale,
 **non testée dans CK3**. Baseline et résultat80/80 source,0/20 campagne, delta0.
 

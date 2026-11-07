@@ -1,5 +1,14 @@
 # Development backlog
 
+**RW-004 native acceptance binding, 8 November:** PRIVATE0.0.7 binds supplied
+  interaction actor/recipient and selected flags to a unique retained same-day
+  early claim receipt with exact roles/war/authority. Reject multiple same-pair
+  wars across all CBs and duplicate receipts, including already-bound matches.
+  Fresh-record marker consumed before writing metadata; legacy and replay stay
+  untouched. Six source regressions pass. New ordering/scopes remain unverified
+  in CK3.80/80+0/20, delta0. Next external defiance and Mace/Doran response routing;
+  existing defiance/response eligibility remains peer-scoped.
+
 **RW-004 declaration-party context, 7 November:** early claim snapshots now
   preserve optional native claimant and defender liege. Each actual CB target
   title receives a linked immutable holder/holder-liege/authority fact. Exact
