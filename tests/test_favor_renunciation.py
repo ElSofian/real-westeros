@@ -144,8 +144,11 @@ class FavorRenunciationTests(unittest.TestCase):
         for action in ('resent', 'note'):
             self.assertIn('trigger = { rw_fr_can_respond_trigger = yes }', self.ev)
             self.assertIn('rw_fr_'+action+'_effect = yes', self.ev)
-        self.assertIn('has_trait = vengeful', self.ev)
-        self.assertIn('has_trait = forgiving', self.ev)
+        values = (MOD/'common/script_values/rw_client_response_ai_values.txt').read_text(encoding='utf-8-sig')
+        self.assertIn('add = rw_ai_favor_client_resent_weight', self.ev)
+        self.assertIn('add = rw_ai_favor_client_note_weight', self.ev)
+        self.assertIn('value = ai_vengefulness', values)
+        self.assertIn('multiply = rw_ai_client_forgiveness_factor', block(values, 'rw_ai_favor_client_note_weight'))
 
     def test_localized_choices_and_distinct_silence_status(self):
         keys = set(re.findall(r'(?:name|desc)\s*=\s*(rw_favor_renunciation\.[\w.]+)', self.ev))

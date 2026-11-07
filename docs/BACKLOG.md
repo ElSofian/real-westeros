@@ -1,5 +1,14 @@
 # Development backlog
 
+**RW-010 client breach response policy, 7 November:**
+  AI_CLIENT_BREACH_RESPONSES.md covers gold resentment/forgiveness/referral,
+  favor resentment/note and independent repair acceptance/rejection. Own native
+  vengeance/compassion/honor, own opinion and historical capacity shape seven
+  existing choices. Missing capacity stays neutral. No inference from later means
+  or another current receipt. Twelve source regressions, preserved action graphs
+  and reversible metadata proofs. AI3/O1 quality,74/80+0/20, delta0. Engine cases
+  remain grouped. Monetary bargaining and wider harm/risk context remain open.
+
 **RW-010 promise timing policy, 7 November:** AI_PROMISE_TIMING.md adds bounded
   native energy preferences for acting/delaying and current-contract timing for
   gold14/30-day waits and favor day22 final prompt. Urgency boosts execution and

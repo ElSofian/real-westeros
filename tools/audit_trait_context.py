@@ -32,9 +32,20 @@ PROMISE_INPUTS = {
     'favor_renounce_deceased': {},
     'favor_leave_pending': {'ai_energy': -1},
 }
+CLIENT_RESPONSE_INPUTS = {
+    'resent': {'ai_vengefulness': 1, 'ai_compassion': -1},
+    'forgive_or_note': {'ai_vengefulness': -1, 'ai_compassion': 1},
+    'refer_known_available': {'ai_honor': 1},
+    'repair_accept': {'ai_vengefulness': -1, 'ai_compassion': 1},
+    'repair_reject': {'ai_vengefulness': 1, 'ai_compassion': -1},
+}
 
 
 def promise_axis_review(row):
+    return axis_directions(row, PROMISE_INPUTS)
+
+
+def axis_directions(row, profiles):
     """Monotone directions only, with all non-axis inputs and eligibility held fixed.
 
     Opposing axes stay mixed. Bounds can neutralize an otherwise monotone change.
@@ -42,7 +53,7 @@ def promise_axis_review(row):
     """
     unresolved = set(row['nested_axes'] + row['unresolved_fields'])
     review = {}
-    for option, inputs in PROMISE_INPUTS.items():
+    for option, inputs in profiles.items():
         if unresolved.intersection(inputs):
             review[option] = 'unresolved'
             continue
@@ -144,6 +155,7 @@ def read_traits(text, source, relative_path, scalar_values=None):
             'context_review': 'pending',
         }
         row['promise_axis_review'] = promise_axis_review(row)
+        row['client_response_axis_review'] = axis_directions(row, CLIENT_RESPONSE_INPUTS)
         rows.append(row)
     return rows
 
@@ -213,7 +225,8 @@ def inventory(ck3_root, agot_root):
                          'sha256': hashlib.sha256(data).hexdigest(), 'traits': len(parsed)})
     return {'schema': 1, 'status': 'source_inventory_not_engine_tested',
             'scope': 'CK3 then AGOT, filename overlay only, no other mods or DLC enablement filtering',
-            'profile': 'six promise choices using native honor/greed/energy; other indirect effects unreviewed',
+            'profile': 'provider honor/greed/energy and client honor/compassion/vengefulness; other indirect effects unreviewed',
+            'summary_scope': 'provider promise inputs only',
             'summary': dict(Counter(row['promise_input_status'] for row in rows)),
             'trait_count': len(rows), 'replaced_files': replaced,
             'files': receipts, 'script_value_files': value_receipts,
@@ -224,7 +237,7 @@ def markdown(report):
     lines = ['# Inventaire privé des traits — personnage qui décide', '',
              'Inventaire source CK3 + AGOT. Compatibilité moteur non validée.', '',
              f"{report['trait_count']} traits recensés. Tous restent à examiner pour leur contexte politique complet.", '',
-             'Les entrées du profil de promesses actuel sont honneur, avidité et énergie.',
+             'Les comptes et entrées du profil prestataire portent sur honneur, avidité et énergie.',
              'L’énergie figure dans les autres axes déclarés.',
              '0 signifie aucune contribution directe déclarée sur cet axe dans la définition examinée.',
              'Des effets indirects, conditionnels, de piste ou de compétence peuvent encore intervenir.',
@@ -284,6 +297,34 @@ def promise_markdown(report):
     return '\n'.join(lines)
 
 
+def client_markdown(report):
+    lines = ['# Réactions du client — personnalité et promesse rompue', '',
+             'Revue source des traits de personnalité hors dragons. Validation moteur en attente.', '',
+             'Dossier courant du client. Relation, responsabilité constatée et autres entrées sont tenues fixes.',
+             '↑/0 signifie hausse ou neutralisation par les bornes, ↓/0 baisse ou neutralisation.',
+             '± signifie influences opposées. 0 direct concerne uniquement les axes lus par cette option.',
+             'La colonne médiation suppose une capacité d’exécution attestée dans le reçu.',
+             'Sans cette attestation, l’honneur n’ajoute aucun facteur à la médiation.', '',
+             '| Trait | Identifiant | Rancune | Pardonner / prendre acte | Médiation, capacité attestée | Accepter réparation | Refuser réparation |',
+             '|---|---|---|---|---|---|---|']
+    labels = {'nondecreasing': '↑/0', 'nonincreasing': '↓/0',
+              'mixed': '±', 'zero_direct': '0 direct', 'unresolved': 'À résoudre'}
+    for row in report['traits']:
+        if not row['personality_trait'] or row['id'].startswith('dragon_'):
+            continue
+        review = row['client_response_axis_review']
+        label = row.get('label_fr', row['id']).replace('|', '\\|')
+        cells = [labels[review[key]] for key in CLIENT_RESPONSE_INPUTS]
+        lines.append('| '+label+' | `'+row['id']+'` | '+' | '.join(cells)+' |')
+    lines.extend(['', 'Une impossibilité constatée réduit les poids de rancune et de saisine, et favorise une réponse apaisée.',
+                  'Un refus explicite avec capacité attestée renforce la responsabilité formelle.',
+                  'Un reçu ancien ou inconnu garde un facteur de responsabilité neutre.',
+                  'La réparation est évaluée dans son propre dossier, sans réutiliser un reçu plus récent.',
+                  'Les influences indirectes et la couverture contextuelle globale restent à examiner.',
+                  'Les gardes, coûts, consentements et conséquences restent ceux des options partagées.', ''])
+    return '\n'.join(lines)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--ck3-root', type=Path, required=True)
@@ -291,6 +332,7 @@ def main():
     parser.add_argument('--output', type=Path, required=True, help='Private JSON output, outside tracked source')
     parser.add_argument('--markdown', type=Path, help='Optional private owner-readable inventory')
     parser.add_argument('--promise-review', type=Path, help='Optional private per-option personality review')
+    parser.add_argument('--client-review', type=Path, help='Optional private client-response personality review')
     args = parser.parse_args()
     try:
         report = inventory(args.ck3_root, args.agot_root)
@@ -302,6 +344,9 @@ def main():
         if args.promise_review:
             args.promise_review.parent.mkdir(parents=True, exist_ok=True)
             args.promise_review.write_text(promise_markdown(report), encoding='utf-8')
+        if args.client_review:
+            args.client_review.parent.mkdir(parents=True, exist_ok=True)
+            args.client_review.write_text(client_markdown(report), encoding='utf-8')
     except (ValueError, OSError, UnicodeError) as error:
         parser.exit(1, str(error) + '\n')
     print(json.dumps({'traits': report['trait_count'], 'summary': report['summary']}, ensure_ascii=False))

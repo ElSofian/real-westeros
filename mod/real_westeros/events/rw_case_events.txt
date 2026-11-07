@@ -128,17 +128,13 @@ rw_cases.0003 = {
         name = rw_repair.accept
         trigger = { rw_repair_client_turn_trigger = yes }
         rw_repair_accept_effect = yes
-        ai_chance = {
-            base = 50
-            modifier = { factor = 2 opinion = { target = scope:rw_service_provider value > 25 } }
-            modifier = { factor = 0.5 opinion = { target = scope:rw_service_provider value < -25 } }
-        }
+        ai_chance = { base = 0 modifier = { add = rw_ai_client_repair_accept_weight always = yes } }
     }
     option = {
         name = rw_repair.reject
         trigger = { rw_repair_client_turn_trigger = yes }
         rw_repair_reject_effect = yes
-        ai_chance = { base = 50 }
+        ai_chance = { base = 0 modifier = { add = rw_ai_client_repair_reject_weight always = yes } }
     }
     option = {
         name = rw_cases.acknowledge

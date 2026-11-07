@@ -1,0 +1,152 @@
+﻿# Experimental client-response preferences. Current character is the client.
+rw_ai_client_resentment_factor = {
+    value = ai_vengefulness
+    divide = 200
+    add = 1
+    min = 0.25
+    max = 2
+}
+rw_ai_client_forgiveness_factor = {
+    value = ai_vengefulness
+    multiply = -1
+    divide = 200
+    add = 1
+    min = 0.25
+    max = 2
+}
+rw_ai_client_compassion_factor = {
+    value = ai_compassion
+    divide = 400
+    add = 1
+    min = 0.5
+    max = 1.5
+}
+rw_ai_client_fair_process_factor = {
+    value = ai_honor
+    divide = 200
+    add = 1
+    min = 0.5
+    max = 1.5
+}
+# Missing or unknown historical capacity stays neutral, never reconstructed.
+rw_ai_gold_response_accountability_factor = {
+    value = 1
+    if = {
+        limit = { rw_ai_gold_breach_context_trigger = yes }
+        if = {
+            limit = { scope:rw_service_provider = { has_variable = rw_service_last_performance_capacity } }
+            if = {
+                limit = { scope:rw_service_provider = { var:rw_service_last_performance_capacity = flag:unavailable } }
+                multiply = 0.5
+            }
+            else_if = {
+                limit = { scope:rw_service_provider = { has_variable = rw_service_last_reason var:rw_service_last_performance_capacity = flag:available } }
+                if = {
+                    limit = { scope:rw_service_provider = { var:rw_service_last_reason = flag:refusal } }
+                    multiply = 1.25
+                }
+            }
+        }
+    }
+}
+rw_ai_favor_response_accountability_factor = {
+    value = 1
+    if = {
+        limit = { rw_ai_favor_renunciation_context_trigger = yes }
+        if = {
+            limit = { scope:rw_fv_provider = { has_variable = rw_fr_capacity } }
+            if = { limit = { scope:rw_fv_provider = { var:rw_fr_capacity = flag:unavailable } } multiply = 0.5 }
+            else_if = { limit = { scope:rw_fv_provider = { var:rw_fr_capacity = flag:available } } multiply = 1.25 }
+        }
+    }
+}
+rw_ai_gold_client_resent_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_gold_breach_context_trigger = yes }
+        add = 60
+        multiply = rw_ai_client_resentment_factor
+        divide = rw_ai_client_compassion_factor
+        multiply = rw_ai_gold_response_accountability_factor
+        if = { limit = { opinion = { target = scope:rw_service_provider value >= 25 } } multiply = 0.75 }
+        if = { limit = { opinion = { target = scope:rw_service_provider value <= -25 } } multiply = 1.25 }
+    }
+}
+rw_ai_gold_client_forgive_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_gold_breach_context_trigger = yes }
+        add = 40
+        multiply = rw_ai_client_forgiveness_factor
+        multiply = rw_ai_client_compassion_factor
+        divide = rw_ai_gold_response_accountability_factor
+        if = { limit = { opinion = { target = scope:rw_service_provider value >= 25 } } multiply = 1.25 }
+        if = { limit = { opinion = { target = scope:rw_service_provider value <= -25 } } multiply = 0.75 }
+    }
+}
+rw_ai_gold_client_refer_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_gold_breach_context_trigger = yes }
+        if = {
+            limit = { rw_case_can_open_trigger = yes }
+            add = 20
+            multiply = rw_ai_gold_response_accountability_factor
+            if = {
+                limit = { scope:rw_service_provider = { has_variable = rw_service_last_performance_capacity } }
+                if = {
+                    limit = { scope:rw_service_provider = { var:rw_service_last_performance_capacity = flag:available } }
+                    multiply = rw_ai_client_fair_process_factor
+                }
+            }
+            if = { limit = { opinion = { target = scope:rw_service_provider value < 0 } } multiply = 2 }
+        }
+    }
+}
+rw_ai_favor_client_resent_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_favor_renunciation_context_trigger = yes }
+        add = 30
+        multiply = rw_ai_client_resentment_factor
+        divide = rw_ai_client_compassion_factor
+        multiply = rw_ai_favor_response_accountability_factor
+        if = { limit = { opinion = { target = scope:rw_fv_provider value >= 25 } } multiply = 0.75 }
+        if = { limit = { opinion = { target = scope:rw_fv_provider value <= -25 } } multiply = 1.25 }
+    }
+}
+rw_ai_favor_client_note_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_favor_renunciation_context_trigger = yes }
+        add = 40
+        multiply = rw_ai_client_forgiveness_factor
+        multiply = rw_ai_client_compassion_factor
+        divide = rw_ai_favor_response_accountability_factor
+        if = { limit = { opinion = { target = scope:rw_fv_provider value >= 25 } } multiply = 1.25 }
+        if = { limit = { opinion = { target = scope:rw_fv_provider value <= -25 } } multiply = 0.75 }
+    }
+}
+# Repair is its own concluded case and consent, independent of a later receipt.
+rw_ai_client_repair_accept_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_repair_response_context_trigger = yes }
+        add = 50
+        multiply = rw_ai_client_forgiveness_factor
+        multiply = rw_ai_client_compassion_factor
+        if = { limit = { opinion = { target = scope:rw_service_provider value > 25 } } multiply = 2 }
+        if = { limit = { opinion = { target = scope:rw_service_provider value < -25 } } multiply = 0.5 }
+    }
+}
+rw_ai_client_repair_reject_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_repair_response_context_trigger = yes }
+        add = 50
+        multiply = rw_ai_client_resentment_factor
+        divide = rw_ai_client_compassion_factor
+        if = { limit = { opinion = { target = scope:rw_service_provider value >= 25 } } multiply = 0.75 }
+        if = { limit = { opinion = { target = scope:rw_service_provider value <= -25 } } multiply = 1.25 }
+    }
+}

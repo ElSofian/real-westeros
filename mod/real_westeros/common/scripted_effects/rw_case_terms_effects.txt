@@ -1,5 +1,6 @@
 # No old receipt can leave its certificate on a new or neutral terminal outcome.
 rw_service_clear_receipt_terms_effect = {
+    remove_variable = rw_service_last_performance_capacity
     remove_variable = rw_service_last_terms_schema
     remove_variable = rw_service_last_revision
     remove_variable = rw_service_last_mode

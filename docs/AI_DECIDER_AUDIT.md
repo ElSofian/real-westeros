@@ -39,6 +39,10 @@ les branches or/faveur. La couverture politique globale reste en cours.
 
 ## Ce que signifie une contribution
 
+AI_CLIENT_BREACH_RESPONSES.md ajoute la perspective du client, avec ses propres
+axes honneur/compassion/vengeance et les circonstances attestées du reçu.
+`--client-review` produit sa lecture séparée, sans remplacer le profil prestataire.
+
 AI_PROMISE_TIMING.md étend le profil à l'énergie et à l'attente. Le relevé courant
 des trois axes compte 176 entrées directes, 3 conditionnelles et 1 033 nulles directes.
 Les comptes du premier relevé ci-dessus restent historiques.

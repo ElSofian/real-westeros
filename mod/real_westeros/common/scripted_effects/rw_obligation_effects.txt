@@ -100,6 +100,18 @@ rw_service_record_breach_effect = {
             set_variable = { name = rw_service_last_outcome value = flag:broken }
             set_variable = { name = rw_service_last_reason value = scope:rw_service_breach_reason }
         }
+        # Capture shared execution conditions now, independently of popup timing.
+        if = {
+            limit = {
+                scope:rw_service_provider = { rw_service_party_eligible_trigger = yes }
+                scope:rw_service_client = { rw_service_party_eligible_trigger = yes }
+                rw_service_affordable_trigger = yes
+            }
+            scope:rw_service_provider = { set_variable = { name = rw_service_last_performance_capacity value = flag:available } }
+        }
+        else = {
+            scope:rw_service_provider = { set_variable = { name = rw_service_last_performance_capacity value = flag:unavailable } }
+        }
         rw_service_clear_effect = yes
         scope:rw_service_client = { trigger_event = { id = rw_obligations.0003 } }
     }
