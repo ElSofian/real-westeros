@@ -19,3 +19,26 @@ story_rw_declaration_law = {
         }
     }
 }
+# Personal title facts share their original parent's identity and lifetime.
+story_rw_declaration_target = {
+    on_owner_death = { end_story = yes }
+    effect_group = {
+        days = 30
+        triggered_effect = {
+            trigger = {
+                save_temporary_scope_as = rw_dt_check
+                NOT = {
+                    exists = var:rw_dt_parent
+                    var:rw_dt_parent = {
+                        story_type = story_rw_declaration_law
+                        story_owner = scope:rw_dt_check.story_owner
+                        var:rw_dl_schema = 1
+                        var:rw_dl_serial = scope:rw_dt_check.var:rw_dt_parent_serial
+                        var:rw_dl_war = scope:rw_dt_check.var:rw_dt_war
+                    }
+                }
+            }
+            effect = { end_story = yes }
+        }
+    }
+}

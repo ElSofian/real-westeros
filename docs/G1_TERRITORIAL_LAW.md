@@ -1,5 +1,12 @@
 # Portée territoriale des interdictions de guerre
 
+**Extension de contexte du 7 novembre 2026.**
+[G1_DECLARATION_PARTIES.md](G1_DECLARATION_PARTIES.md) ajoute la capture du
+bénéficiaire natif et des détenteurs de tous les titres ciblés, avec leur suzerain
+observé. Ces nouvelles références sont non testées dans CK3. La liaison à
+l'initiateur de l'interaction et les réactions inter-seigneuries restent à développer.
+Baseline/résultat80/80 source,0/20 campagne, delta0.
+
 Première tranche de la revue de fond du 7 novembre 2026. Baseline et résultat
 **80/80 source, 0/20 campagne**, delta **0**. Extension expérimentale du relevé
 de loi, **non testée dans CK3**.

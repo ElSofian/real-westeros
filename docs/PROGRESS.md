@@ -1,5 +1,20 @@
 # Progress
 
+- RW-004 declaration parties. Native source distinguishes primary defender from
+  vassals holding targeted titles. Added optional party schema, native claimant
+  and defender-liege facts to fresh parent records. A guarded worker visits all
+  titles of the exact war's native CB and creates personal linked title facts,
+  preserving holder/liege/authority when present. Missing aliases are cleared for
+  each title, counters begin at zero, partial creation stays explicit and replay
+  cannot replace history. Children require exact parent owner/serial/war and end
+  on owner death or parent cleanup. Seven new source regressions,23 law and4
+  first-use tests pass, as do structural/telemetry checks. Full CI and committed
+  assembly evidence are in PR. Not engine-tested; new scope availability and
+  storage/evaluation cost remain campaign cases. Baseline/result80/80 source
+  +0/20 campaign, delta0. Next bind native interaction initiator before opening
+  cross-liege defiance and routing Mace/Doran responses. Existing response scope
+  remains peer-only.
+
 - RW-004 territorial-law context. Extended the read-only claim callback capture
   to different-liege feudal defenders and independent defenders while keeping a
   direct living landed issuer for the attacker. Optional same_liege/different_liege

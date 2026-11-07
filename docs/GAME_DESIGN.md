@@ -96,3 +96,9 @@ Native internal-war and all-war bans retain their native exception logic.
 G1_TERRITORIAL_LAW.md records the current table and incremental source coverage.
 The Leyton/Dayne scenario needs proven native actor/defender/title binding before
 Mace/Doran response routing and requests to a common superior are implemented.
+
+G1_DECLARATION_PARTIES.md records the first role-capture extension. Keep native
+primary attacker/defender, supplied claimant and each target title's holder and
+direct authority distinct. Missing identities stay explicit. Link original
+interaction initiators through demonstrated native context before enabling new
+external-defiance responses. Capture facts once and retain partial-source limits.

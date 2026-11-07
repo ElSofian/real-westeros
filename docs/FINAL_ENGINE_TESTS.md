@@ -1526,3 +1526,12 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   same_liege/different_liege archive, retention, legacy missing metadata and reload.
   New capture contexts are not engine-tested; cross-liege defiance and response
   routing remain separate development work. General royal peace is deferred.
+
+- Declaration parties. Exercise personal/third-party claims with one/multiple
+  target titles, different holders and a primary defender above the targeted
+  holder. Inspect native claimant/defender liege, every title's holder/liege and
+  authority, expected/recorded counts and explicit missing/partial states. Change
+  holdings and reload to check immutability. Cover parent deletion, owner death
+  and many-title/AI-war cost. New callback scope availability and child cleanup
+  are not engine-tested. Interaction-initiator binding and external defiance
+  remain separate development work.
