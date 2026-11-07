@@ -1,5 +1,14 @@
 # Context and personality in political decisions
 
+## Current client-response extension
+
+AI_CLIENT_BREACH_RESPONSES.md weights seven original-client choices with native
+vengeance/compassion/honor, own opinion and recorded capacity at breach. Legacy
+unknown capacity stays neutral. Later wealth or a newer service receipt does not
+reconstruct history. Repair acceptance uses its independent concluded case.
+The private reader provides a separate per-trait client review. Source-only,
+AI3/O1 quality,74/80+0/20, delta0. Complete contextual implementation remains open.
+
 ## Current timing extension
 
 AI_PROMISE_TIMING.md extends the initial profile below to native energy and

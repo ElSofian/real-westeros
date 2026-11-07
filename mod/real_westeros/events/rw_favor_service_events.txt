@@ -117,13 +117,13 @@ rw_favor_service.0001 = {
         name = rw_favor_renunciation.resent
         trigger = { rw_fr_can_respond_trigger = yes }
         rw_fr_resent_effect = yes
-        ai_chance = { base = 30 modifier = { factor = 2 has_trait = vengeful } modifier = { factor = 0.2 has_trait = forgiving } }
+        ai_chance = { base = 0 modifier = { add = rw_ai_favor_client_resent_weight always = yes } }
     }
     option = {
         name = rw_favor_renunciation.note
         trigger = { rw_fr_can_respond_trigger = yes }
         rw_fr_note_effect = yes
-        ai_chance = { base = 40 modifier = { factor = 2 has_trait = forgiving } }
+        ai_chance = { base = 0 modifier = { add = rw_ai_favor_client_note_weight always = yes } }
     }
     option = { name = rw_favor_service.leave ai_chance = { base = 0 modifier = { add = rw_ai_favor_promise_leave_weight always = yes } } }
 }

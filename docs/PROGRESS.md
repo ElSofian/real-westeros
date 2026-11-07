@@ -1,5 +1,17 @@
 # Progress
 
+- RW-010 client breach reactions. Seven existing choices now combine the
+  original client's native vengeance/compassion/honor, own opinion and the
+  received historical capacity. Gold captures shared party/payment conditions
+  before cleanup. Favor records unknown outside its due window. Old receipts
+  remain neutral. Repair response uses its own concluded case, not a later
+  personal receipt. Twelve regressions cover guards, ownership, immutable inputs,
+  independent case context, positive alternatives and private trait directions.
+  Event action graphs and historical payment/timing proofs are retained through
+  exact reversible metadata additions. AI3/O1 quality,74/80+0/20, delta0.
+  Engine behavior unverified. Next review monetary repair negotiation and real
+  stakes, maintaining role independence and known-information limits.
+
 - RW-010 promise timing preferences. AI_PROMISE_TIMING.md records moderate native
   energy action/delay factors and exact-contract timing indicators for gold14/30
   waits and favor's final scheduled prompt. Missing legacy markers are neutral.

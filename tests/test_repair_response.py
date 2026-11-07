@@ -104,4 +104,7 @@ class RepairResponseTests(unittest.TestCase):
         self.assertIn('name = rw_repair.reject', notice)
         self.assertEqual(2, notice.count('trigger = { rw_repair_client_turn_trigger = yes }'))
         self.assertIn('NOT = { rw_repair_client_turn_trigger = yes }', notice)
-        self.assertIn('opinion = { target = scope:rw_service_provider', notice)
+        self.assertIn('add = rw_ai_client_repair_accept_weight', notice)
+        self.assertIn('add = rw_ai_client_repair_reject_weight', notice)
+        values = (MOD/'common/script_values/rw_client_response_ai_values.txt').read_text(encoding='utf-8-sig')
+        self.assertIn('opinion = { target = scope:rw_service_provider', block(values, 'rw_ai_client_repair_accept_weight'))

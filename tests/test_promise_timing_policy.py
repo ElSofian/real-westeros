@@ -1,12 +1,14 @@
 """Source and arithmetic checks only. Native flag expiry awaits the campaign."""
 
 import hashlib
+import json
 from pathlib import Path
 import re
 import unittest
 
 from test_deferred_service_contract import block
 from test_political_ai import option
+from test_gold_effects import restore_later_updates
 from tools.audit_trait_context import read_traits
 from tools.validate_mod import clean_script
 
@@ -105,8 +107,14 @@ class PromiseTimingPolicyTests(unittest.TestCase):
             'rw_deferred_favor_effects.txt': '2e17cf4e011309d24a4c18821e2cbcba357f9cd019395cdc4441db97d35bfd79',
             'rw_favor_service_effects.txt': '50a400cc2569f63585cfb3d5ded282fef5e42224cf146a370e67fa9c673918c0',
         }
+        receipt = MOD.parents[1]/'docs/GOLD_DEBIT_SOURCE_RECEIPT.json'
+        later_updates = [row for row in json.loads(receipt.read_text())['subsequent_updates']
+                         if row.get('reason') == 'RW-010 client breach capacity snapshot']
         for filename, digest in expected.items():
-            text = (MOD/'common/scripted_effects'/filename).read_text(encoding='utf-8-sig')
+            path = MOD/'common/scripted_effects'/filename
+            relative = path.relative_to(MOD.parents[1]).as_posix()
+            raw = restore_later_updates(path.read_bytes(), relative, later_updates)
+            text = raw.decode('utf-8-sig')
             restored = '\n'.join(line for line in text.splitlines() if not any(field in line for field in TIMING_FIELDS))
             restored = re.sub(r'\s+', '', clean_script(restored)[0])
             self.assertEqual(digest, hashlib.sha256(restored.encode()).hexdigest(), filename)

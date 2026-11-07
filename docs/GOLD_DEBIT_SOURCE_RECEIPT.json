@@ -182,6 +182,22 @@
       "after": "            remove_character_flag = rw_fd_ai_later_prompt\n            remove_variable = rw_fd_ai_timing_serial\n",
       "before_sha256": "8f441bfcb27cf29868f7a6d6e598962faec8a1c61889a42812f15dfa3169e1f5",
       "after_sha256": "a01cd695a0ab4edce680b6f79b5523e0d0aa16651088955f794528923c0bfed4"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_obligation_effects.txt",
+      "reason": "RW-010 client breach capacity snapshot",
+      "before": "",
+      "after": "        # Capture shared execution conditions now, independently of popup timing.\n        if = {\n            limit = {\n                scope:rw_service_provider = { rw_service_party_eligible_trigger = yes }\n                scope:rw_service_client = { rw_service_party_eligible_trigger = yes }\n                rw_service_affordable_trigger = yes\n            }\n            scope:rw_service_provider = { set_variable = { name = rw_service_last_performance_capacity value = flag:available } }\n        }\n        else = {\n            scope:rw_service_provider = { set_variable = { name = rw_service_last_performance_capacity value = flag:unavailable } }\n        }\n",
+      "before_sha256": "debfa016b825dd93e36f8a8c3c9a07f840906952ced58cd3c734f747ae28d3ae",
+      "after_sha256": "6b9b216603f50e5d1bb01401b4d4ea128b0287980173fdb40de71e7eccb3d226"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_deferred_favor_effects.txt",
+      "reason": "RW-010 client breach capacity snapshot",
+      "before": "",
+      "after": "        # Before the due window, present inability cannot establish future capacity.\n        scope:rw_fv_provider = { set_variable = { name = rw_fr_capacity value = flag:unknown } }\n        if = {\n            limit = { rw_fd_due_trigger = yes }\n            scope:rw_fv_provider = { set_variable = { name = rw_fr_capacity value = flag:unavailable } }\n            if = {\n                limit = { rw_fd_can_perform_trigger = yes }\n                scope:rw_fv_provider = { set_variable = { name = rw_fr_capacity value = flag:available } }\n            }\n        }\n",
+      "before_sha256": "1d51803d05d0b497f26b479910eb493b57719b604bfa37a029487f7c90b960c1",
+      "after_sha256": "64c0bde6c31346b01727f1e4a71956c98fd5bfa66cdace6498813067bb78b337"
     }
   ]
 }
