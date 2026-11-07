@@ -1,5 +1,16 @@
 # Progress
 
+- RW-010 financial repair negotiation. Seven existing choices now distinguish
+  payer and recipient, own native greed/honor/compassion, actual25/50 amount,
+  payer funds/reserve, own cooperation/relations and same-case completed repair.
+  Counter scores its target amount, including a feasible cheaper concession.
+  Payment acceptance is independent of the later personal response. Twelve new
+  source/arithmetic regressions cover stale/foreign frames, affordability, roles,
+  prior repair and private trait directions. Payment/response effect hashes and
+  the event action graph are retained. AI3/N1 quality,74/80+0/20, delta0. Source-
+  only, final engine cases grouped. Next review wider stakes and contextual
+  proportionality, with the finite roadmap's W1/W4/W5 priorities still open.
+
 - RW-010 client breach reactions. Seven existing choices now combine the
   original client's native vengeance/compassion/honor, own opinion and the
   received historical capacity. Gold captures shared party/payment conditions

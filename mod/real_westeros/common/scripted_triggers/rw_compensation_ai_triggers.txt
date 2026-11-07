@@ -1,0 +1,35 @@
+﻿# Original parties and retained service case, before reading quote or payment.
+rw_ai_compensation_case_context_trigger = {
+    trigger_if = {
+        limit = {
+            exists = scope:rw_service_provider
+            exists = scope:rw_service_client
+            exists = scope:rw_case_record
+            exists = scope:rw_case_mediator
+            exists = scope:rw_case_serial
+            exists = scope:rw_case_reason
+            exists = scope:rw_case_kind
+        }
+        rw_cc_base_trigger = yes
+    }
+    trigger_else = { always = no }
+}
+rw_ai_compensation_quote_context_trigger = {
+    trigger_if = {
+        limit = {
+            rw_ai_compensation_case_context_trigger = yes
+            exists = scope:rw_cc_revision
+            exists = scope:rw_cc_price
+        }
+        rw_cc_view_trigger = yes
+    }
+    trigger_else = { always = no }
+}
+rw_ai_compensation_response_context_trigger = {
+    trigger_if = {
+        limit = { rw_ai_compensation_quote_context_trigger = yes }
+        this = scope:rw_service_client
+        rw_cp_can_respond_trigger = yes
+    }
+    trigger_else = { always = no }
+}

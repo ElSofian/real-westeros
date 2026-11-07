@@ -39,6 +39,12 @@ CLIENT_RESPONSE_INPUTS = {
     'repair_accept': {'ai_vengefulness': -1, 'ai_compassion': 1},
     'repair_reject': {'ai_vengefulness': 1, 'ai_compassion': -1},
 }
+COMPENSATION_INPUTS = {
+    'payer_payment': {'ai_honor': 1, 'ai_compassion': 1, 'ai_greed': -1},
+    'client_receive': {'ai_greed': 1},
+    'client_appreciate': {'ai_vengefulness': -1, 'ai_compassion': 1},
+    'client_note': {'ai_vengefulness': 1, 'ai_compassion': -1},
+}
 
 
 def promise_axis_review(row):
@@ -156,6 +162,7 @@ def read_traits(text, source, relative_path, scalar_values=None):
         }
         row['promise_axis_review'] = promise_axis_review(row)
         row['client_response_axis_review'] = axis_directions(row, CLIENT_RESPONSE_INPUTS)
+        row['financial_repair_axis_review'] = axis_directions(row, COMPENSATION_INPUTS)
         rows.append(row)
     return rows
 
@@ -225,7 +232,7 @@ def inventory(ck3_root, agot_root):
                          'sha256': hashlib.sha256(data).hexdigest(), 'traits': len(parsed)})
     return {'schema': 1, 'status': 'source_inventory_not_engine_tested',
             'scope': 'CK3 then AGOT, filename overlay only, no other mods or DLC enablement filtering',
-            'profile': 'provider honor/greed/energy and client honor/compassion/vengefulness; other indirect effects unreviewed',
+            'profile': 'provider promises, client breach responses and role-specific financial repair; other indirect effects unreviewed',
             'summary_scope': 'provider promise inputs only',
             'summary': dict(Counter(row['promise_input_status'] for row in rows)),
             'trait_count': len(rows), 'replaced_files': replaced,
@@ -325,6 +332,28 @@ def client_markdown(report):
     return '\n'.join(lines)
 
 
+def compensation_markdown(report):
+    lines = ['# Réparation financière — rôle et personnalité', '',
+             'Revue source des traits de personnalité hors dragons. Validation moteur en attente.', '',
+             'Montant courant, moyens, liens, souvenirs, réparations antérieures et éligibilité sont tenus fixes.',
+             '↑/0 signifie hausse ou neutralisation par les bornes, ↓/0 baisse ou neutralisation.',
+             '± signifie influences opposées à calculer ensemble. 0 direct concerne les seuls axes lus.',
+             'La contre-offre change de montant et peut ajouter une concession. Elle demande son propre contexte.', '',
+             '| Trait | Identifiant | Payeur, payer | Bénéficiaire, recevoir | Bénéficiaire, apprécier ensuite | Bénéficiaire, prendre acte ensuite |',
+             '|---|---|---|---|---|---|']
+    labels = {'nondecreasing': '↑/0', 'nonincreasing': '↓/0',
+              'mixed': '±', 'zero_direct': '0 direct', 'unresolved': 'À résoudre'}
+    for row in report['traits']:
+        if not row['personality_trait'] or row['id'].startswith('dragon_'):
+            continue
+        label = row.get('label_fr', row['id']).replace('|', '\\|')
+        cells = [labels[row['financial_repair_axis_review'][key]] for key in COMPENSATION_INPUTS]
+        lines.append('| '+label+' | `'+row['id']+'` | '+' | '.join(cells)+' |')
+    lines.extend(['', 'L’acceptation du paiement et sa reconnaissance personnelle sont deux décisions séparées.',
+                  'Les effets indirects et la couverture contextuelle globale restent à examiner.', ''])
+    return '\n'.join(lines)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--ck3-root', type=Path, required=True)
@@ -333,6 +362,7 @@ def main():
     parser.add_argument('--markdown', type=Path, help='Optional private owner-readable inventory')
     parser.add_argument('--promise-review', type=Path, help='Optional private per-option personality review')
     parser.add_argument('--client-review', type=Path, help='Optional private client-response personality review')
+    parser.add_argument('--compensation-review', type=Path, help='Optional private financial-repair role review')
     args = parser.parse_args()
     try:
         report = inventory(args.ck3_root, args.agot_root)
@@ -347,6 +377,9 @@ def main():
         if args.client_review:
             args.client_review.parent.mkdir(parents=True, exist_ok=True)
             args.client_review.write_text(client_markdown(report), encoding='utf-8')
+        if args.compensation_review:
+            args.compensation_review.parent.mkdir(parents=True, exist_ok=True)
+            args.compensation_review.write_text(compensation_markdown(report), encoding='utf-8')
     except (ValueError, OSError, UnicodeError) as error:
         parser.exit(1, str(error) + '\n')
     print(json.dumps({'traits': report['trait_count'], 'summary': report['summary']}, ensure_ascii=False))

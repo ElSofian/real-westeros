@@ -214,7 +214,10 @@ class CaseCompensationTests(unittest.TestCase):
         self.assertNotIn('rw_cc_',story)
         for action in ('propose','counter','settle','close'):
             self.assertIn('rw_cc_'+action+'_effect',self.v)
-        self.assertIn('has_trait = generous',self.v)
+        self.assertIn('add = rw_ai_compensation_propose_25_weight',self.v)
+        values=(MOD/'common/script_values/rw_compensation_ai_values.txt').read_text(encoding='utf-8-sig')
+        self.assertIn('value = ai_greed',block(values,'rw_ai_compensation_spend_25_factor'))
+        self.assertIn('multiply = -1',block(values,'rw_ai_compensation_spend_25_factor'))
 
     def test_bom_locales_cover_all_financial_state_and_boundary_keys(self):
         events=(MOD/'events/rw_case_events.txt').read_text()

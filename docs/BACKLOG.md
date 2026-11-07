@@ -1,5 +1,14 @@
 # Development backlog
 
+**RW-010 financial repair negotiation AI, 7 November:** AI_FINANCIAL_REPAIR.md
+  weights25/50 proposals, acceptance, counter, close and separate appreciation/
+  note. Actual payer liquidity, own role-specific greed, honor/compassion,
+  relationships, existing own cooperation/memory and same-case completed repair
+  shape choices. Counter evaluates the next amount, preserving feasible cheaper
+  alternatives. Twelve regressions, unchanged effect hashes/action graph. AI3/N1
+  quality,74/80+0/20, delta0. Engine validation remains grouped. Wider stakes,
+  urgency and harm valuation remain open.
+
 **RW-010 client breach response policy, 7 November:**
   AI_CLIENT_BREACH_RESPONSES.md covers gold resentment/forgiveness/referral,
   favor resentment/note and independent repair acceptance/rejection. Own native

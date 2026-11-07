@@ -39,6 +39,10 @@ les branches or/faveur. La couverture politique globale reste en cours.
 
 ## Ce que signifie une contribution
 
+AI_FINANCIAL_REPAIR.md distingue les préférences du payeur, du bénéficiaire et
+de sa réponse après paiement. `--compensation-review` fournit la lecture privée
+de ces rôles, à montant et contexte fixes. La contre-offre garde son contexte propre.
+
 AI_CLIENT_BREACH_RESPONSES.md ajoute la perspective du client, avec ses propres
 axes honneur/compassion/vengeance et les circonstances attestées du reçu.
 `--client-review` produit sa lecture séparée, sans remplacer le profil prestataire.

@@ -159,9 +159,12 @@ class CompensationResponseTests(unittest.TestCase):
         for name in ('appreciate','note'):
             self.assertIn('rw_cp_'+name+'_effect = yes',self.v)
         self.assertEqual(2,self.v.count('trigger = { rw_cp_can_respond_trigger = yes }'))
-        self.assertIn('has_trait = forgiving',self.v)
-        self.assertIn('has_trait = vengeful',self.v)
-        self.assertIn('target = scope:rw_service_provider value < -25',self.v)
+        self.assertIn('add = rw_ai_compensation_appreciate_weight',self.v)
+        self.assertIn('add = rw_ai_compensation_note_weight',self.v)
+        values=(MOD/'common/script_values/rw_compensation_ai_values.txt').read_text(encoding='utf-8-sig')
+        self.assertIn('rw_ai_client_forgiveness_factor',block(values,'rw_ai_compensation_appreciate_weight'))
+        self.assertIn('rw_ai_client_resentment_factor',block(values,'rw_ai_compensation_note_weight'))
+        self.assertIn('target = scope:rw_service_provider value < -25',values)
         self.assertIn('option = { name = rw_case_compensation.leave ai_chance = { base = 50 } }',self.v)
 
     def test_existing_retention_provider_death_and_private_role_filter_still_apply(self):
