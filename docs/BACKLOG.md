@@ -1,5 +1,15 @@
 # Development backlog
 
+**RW-010 delivered script linkage, 7 November:** structural validation now
+  resolves explicit rw_*_effect / rw_*_trigger calls against their respective
+  definition folders across the assembled mod. Missing or misnamed definitions
+  refuse ZIP generation before output. Native symbols, comments, strings, scope
+  navigation and parameter-built names stay outside this bounded check. Six new
+  regressions include deletion of the actual G1 intervention effects from a
+  committed delivery fixture. Global integration quality, W5 support only,
+  baseline/result74/80+0/20, delta0. W1/W4/W5 remain open and the final engine
+  campaign remains grouped.
+
 **RW-010 financial repair negotiation AI, 7 November:** AI_FINANCIAL_REPAIR.md
   weights25/50 proposals, acceptance, counter, close and separate appreciation/
   note. Actual payer liquidity, own role-specific greed, honor/compassion,

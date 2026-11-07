@@ -148,7 +148,7 @@ class RoyalResponseSourceTests(unittest.TestCase):
         for effect in ('ignore','censure','demand','acknowledge','refuse'):
             self.assertIn('rw_uw_'+effect+'_effect = yes',event)
 
-    def test_original_module_passes_structure_and_localization_checks(self):
+    def test_original_module_requires_base_for_structure_and_localization_checks(self):
         with tempfile.TemporaryDirectory() as d:
             root=Path(d);mod=root/'mod/real_westeros';mod.mkdir(parents=True)
             for name in builder.FILES:
@@ -156,6 +156,11 @@ class RoyalResponseSourceTests(unittest.TestCase):
             for name in ('descriptor.mod',): shutil.copyfile(builder.REPO/'mod/real_westeros'/name,mod/name)
             shutil.copyfile(builder.REPO/'mod/real_westeros.mod',root/'mod/real_westeros.mod')
             for name in ('common/character_interactions','common/on_action'): (mod/name).mkdir(parents=True,exist_ok=True)
+            # The adapter declares a Real Westeros dependency. Its thirteen
+            # attested runtime inputs alone do not include the shared AI guard.
+            self.assertTrue(any('undefined owned trigger rw_ai_existing_commitment_trigger' in error
+                                for error in validate(root)))
+            shutil.copytree(ROOT, mod, dirs_exist_ok=True)
             self.assertEqual([],validate(root))
 
 

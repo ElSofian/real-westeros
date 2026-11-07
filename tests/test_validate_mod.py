@@ -30,6 +30,48 @@ class ValidatorTests(unittest.TestCase):
     def test_valid_scaffold(self):
         self.assertEqual(validate(self.root), [])
 
+    def test_owned_calls_resolve_across_files_and_forward_definitions(self):
+        (self.mod / 'events/rw_caller.txt').write_text(
+            'rw_fixture.0001 = { trigger = { rw_fixture_trigger = yes } '
+            'immediate = { rw_fixture_effect = { AMOUNT = 2 } } }')
+        (self.mod / 'common/scripted_effects/rw_fixture.txt').write_text(
+            'rw_fixture_effect = { if = { limit = { rw_fixture_trigger = yes } '
+            'add_prestige = $AMOUNT$ } }')
+        (self.mod / 'common/scripted_triggers/rw_fixture.txt').write_text(
+            'rw_fixture_trigger = { always = yes }')
+        self.assertEqual([], validate(self.root))
+
+    def test_missing_owned_effect_or_trigger_reports_source_and_line(self):
+        for kind in ('effect', 'trigger'):
+            with self.subTest(kind=kind):
+                (self.mod / 'events/rw_caller.txt').write_text(
+                    'rw_fixture.0001 = {\n rw_missing_' + kind + ' = yes\n}')
+                self.assertEqual([
+                    f'mod/real_westeros/events/rw_caller.txt:2: undefined owned {kind} rw_missing_{kind}'
+                ], validate(self.root))
+
+    def test_wrong_definition_namespace_does_not_resolve_owned_call(self):
+        (self.mod / 'common/scripted_effects/rw_wrong.txt').write_text(
+            'rw_missing_trigger = { always = yes }')
+        self.assertTrue(any('undefined owned trigger rw_missing_trigger' in error
+                            for error in validate(self.root)))
+
+    def test_comments_strings_scopes_and_native_calls_are_not_owned_calls(self):
+        (self.mod / 'events/rw_caller.txt').write_text(
+            '# rw_comment_effect = yes\n'
+            'rw_fixture.0001 = { desc = "rw_string_trigger = yes" '
+            'immediate = { native_effect = yes scope:rw_saved_effect = { native_effect = yes } '
+            'var:rw_saved_trigger = yes rw_$PREFIX$_effect = yes } }')
+        self.assertEqual([], validate(self.root))
+
+    def test_commented_definition_cannot_satisfy_owned_call(self):
+        (self.mod / 'common/scripted_effects/rw_wrong.txt').write_text(
+            '# rw_missing_effect = { always = yes }\n')
+        (self.mod / 'events/rw_caller.txt').write_text(
+            'rw_fixture.0001 = { immediate = { rw_missing_effect = yes } }')
+        self.assertTrue(any('undefined owned effect rw_missing_effect' in error
+                            for error in validate(self.root)))
+
     def memory_fixture(self, english=True, french=True, perspectives_only=False):
         folder = self.mod / 'common/character_memory_types'
         folder.mkdir()
