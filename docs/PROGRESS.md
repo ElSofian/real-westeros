@@ -1,5 +1,15 @@
 # Progress
 
+- RW-010 personality-context review for all39 non-dragon personality traits.
+  AI_PERSONALITY_PROMISE_REVIEW.md traces four provider options, term branches,
+  native opinion/resource paths and outstanding context. Private reader adds
+  conservative per-option directions, preserving mixed/unresolved/zero-direct
+  distinctions and context-review pending. Seven synthetic/source regressions
+  cover branch differences, unresolved inputs and unchanged event action graphs.
+  No new gameplay coefficient, age threshold or engine claim. AI3/O1 quality,
+  baseline/result74/80+0/20, delta0. Next implement justified timing preferences
+  across perform/wait/renounce with actual deadlines and shared eligibility.
+
 - RW-010 owner-requested decider inventory. AI_DECIDER_AUDIT.md distinguishes
   trait enumeration, direct native-axis input and complete contextual review.
   Original private reader resolves filename overlays and literal script values,

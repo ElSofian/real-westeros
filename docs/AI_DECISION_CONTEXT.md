@@ -4,6 +4,12 @@ AI_DECIDER_AUDIT.md records the owner-requested per-trait inventory and separate
 zero direct honor/greed input from a justified zero contextual effect. Complete
 contextual review remains pending for all enumerated traits.
 
+AI_PERSONALITY_PROMISE_REVIEW.md follows all39 non-dragon personality traits
+through the four current provider choices, payment branches and indirect
+opinion/resource inputs. The private reader reports conservative per-option
+axis directions without final weights or probabilities. Contextual gameplay
+implementation remains incomplete.
+
 The owner requires contextual reasoning across every Real Westeros action family.
 The audit covers the decision maker, other participating characters, the action's
 purpose and the consequences the decision maker can anticipate. This is an ongoing

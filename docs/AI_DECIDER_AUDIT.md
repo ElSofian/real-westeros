@@ -30,6 +30,11 @@ Tous les traits gardent le statut `context_review = pending` pour la revue
 politique complète. Un futur statut « examiné, effet nul » exige une justification
 pour la décision considérée. L'inventaire seul n'établit pas cette justification.
 
+AI_PERSONALITY_PROMISE_REVIEW.md poursuit la revue des 39 traits de personnalité
+hors dragons, avec les chemins actuels et les questions contextuelles pour chaque
+trait. Le rapport privé `--promise-review` distingue les directions par option et
+les branches or/faveur. La couverture politique globale reste en cours.
+
 ## Ce que signifie une contribution
 
 Le profil actuel lit l'honneur et l'avidité agrégés du personnage. Il ne lit pas
