@@ -1,5 +1,13 @@
 # Development backlog
 
+**RW-010 owner-requested decider inventory, 7 November:**
+  AI_DECIDER_AUDIT.md and the private source reader enumerate 1,212 effective
+  CK3/AGOT trait definitions. Current promise inputs are direct84, conditional2,
+  zero-direct1,126. Zero-direct does not establish contextual irrelevance.
+  Every full-context review remains explicitly pending. French names retain
+  exact IDs, including homonyms. No gameplay weights changed. AI3/O1 quality,
+  baseline/result74/80+0/20, delta0. Next review personality-context paths per option.
+
 **RW-010 comprehensive AI context, owner direction 7 November:** every action
   family must review relevant known personality, interests, means, relationships,
   norms, timing and expected consequences. Initiator/beneficiary roles remain
