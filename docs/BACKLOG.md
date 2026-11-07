@@ -5,7 +5,7 @@
   title receives a linked immutable holder/holder-liege/authority fact. Exact
   parent schema/owner/serial/war/phase/date, one-time start marker and per-title
   dedup guard the capture. Counts distinguish unavailable/partial/all-title
-  recordings. Child cleanup follows parent identity and owner death. Seven source
+  recordings. Child cleanup follows parent identity and owner death. Eight source
   regressions pass. New callback scopes are engine-unverified.80/80+0/20, delta0.
   Next prove interaction-initiator binding, then external defiance and Mace/Doran
   routing. Existing defiance and responses remain peer-scoped.

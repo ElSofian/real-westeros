@@ -68,7 +68,7 @@ références dans ce callback restent à valider dans CK3.
 
 ## Vérifications et campagne groupée
 
-Sept régressions source couvrent le parent exact, les données manquantes,
+Huit régressions source couvrent le parent exact, les données manquantes,
 l'absence de substitution du bénéficiaire par l'attaquant, le rejeu, les alias
 périmés entre titres, la capture partielle et la durée de vie des enfants.
 Les tests de loi et des premiers compteurs restent applicables.

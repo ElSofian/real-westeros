@@ -46,6 +46,11 @@ def party_errors(effects, stories):
                   'name = rw_dl_targets_state value = flag:all_titles_recorded'), 'partial list treated as complete')
     if worker.index('name = rw_dl_targets_started value = flag:yes') > worker.index('every_target_title = {'):
         errors.append('list observed before consumption')
+    for counter in ('rw_dl_target_count', 'rw_dl_target_records'):
+        initializer = 'name = '+counter+' value = 0'
+        increment = 'name = '+counter+' add = 1'
+        if worker.index(initializer) > worker.index(increment):
+            errors.append('counter increment before initialization')
     for alias in ('rw_dt_holder', 'rw_dt_liege', 'rw_dt_authority'):
         if 'clear_saved_scope = '+alias not in worker or worker.index('clear_saved_scope = '+alias) > worker.index('holder = {'):
             errors.append('stale title-party alias')
@@ -104,6 +109,14 @@ class DeclarationPartyTests(unittest.TestCase):
         changed = self.effects.replace('var:rw_dl_target_records = var:rw_dl_target_count',
                                        'var:rw_dl_target_records > 0')
         self.assertIn('partial list treated as complete', party_errors(changed, self.stories))
+
+    def test_target_counters_start_before_the_first_increment(self):
+        for counter in ('rw_dl_target_count', 'rw_dl_target_records'):
+            initializer = 'set_variable = { name = '+counter+' value = 0 }'
+            increment = 'change_variable = { name = '+counter+' add = 1 }'
+            changed = self.effects.replace(initializer, '').replace(increment, increment+' '+initializer)
+            with self.subTest(counter=counter):
+                self.assertIn('counter increment before initialization', party_errors(changed, self.stories))
 
     def test_child_requires_exact_parent_owner_serial_and_war(self):
         for token in ('story_owner = scope:rw_dt_check.story_owner',

@@ -7,7 +7,7 @@
   preserving holder/liege/authority when present. Missing aliases are cleared for
   each title, counters begin at zero, partial creation stays explicit and replay
   cannot replace history. Children require exact parent owner/serial/war and end
-  on owner death or parent cleanup. Seven new source regressions,23 law and4
+  on owner death or parent cleanup. Eight new source regressions,23 law and4
   first-use tests pass, as do structural/telemetry checks. Full CI and committed
   assembly evidence are in PR. Not engine-tested; new scope availability and
   storage/evaluation cost remain campaign cases. Baseline/result80/80 source
