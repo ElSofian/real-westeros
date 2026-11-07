@@ -86,3 +86,13 @@ supports, observe the complete implemented variant where available, identify
 missing context and improve iteratively from the results. Track simplified
 feasibility paths and their remaining gaps explicitly. The finite readiness
 rubric retains its existing acceptance text and checkpoint history.
+
+## Territorial war authority review
+
+The owner retains direct territorial authority at each hierarchy level and defers
+a royal general-peace proclamation. Distinguish the declaring actor's applicable
+war restriction from another ruler's competence or willingness to intervene.
+Native internal-war and all-war bans retain their native exception logic.
+G1_TERRITORIAL_LAW.md records the current table and incremental source coverage.
+The Leyton/Dayne scenario needs proven native actor/defender/title binding before
+Mace/Doran response routing and requests to a common superior are implemented.

@@ -14,10 +14,9 @@ rw_dl_callback_context_trigger = {
         is_alive = yes is_adult = yes is_landed = yes
         government_has_flag = government_is_feudal
         exists = liege
-        liege = scope:defender.liege
         liege = { is_alive = yes is_landed = yes exists = primary_title }
     }
-    scope:defender = { is_alive = yes is_landed = yes government_has_flag = government_is_feudal exists = liege }
+    scope:defender = { is_alive = yes is_landed = yes government_has_flag = government_is_feudal }
 }
 # STORY scope. An exact retained callback receipt, never a later reconstruction.
 rw_dl_match_response_trigger = {

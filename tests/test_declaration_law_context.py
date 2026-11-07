@@ -32,7 +32,7 @@ def contract_errors(t,e,s):
     need(ctx,('rw_dl_adapter_available_trigger = yes','exists = scope:attacker',
         'exists = scope:defender','exists = scope:war','using_cb = claim_cb',
         'primary_attacker = scope:attacker','primary_defender = scope:defender',
-        'liege = scope:defender.liege','liege = { is_alive = yes is_landed = yes exists = primary_title }'),'wrong callback context')
+        'exists = liege','liege = { is_alive = yes is_landed = yes exists = primary_title }'),'wrong callback context')
     capture=block(e,'rw_dl_capture_effect')
     need(capture,('limit = { rw_dl_callback_context_trigger = yes }','rw_dl_native_permission_trigger = yes',
         'flag:inconsistent','flag:native_exception','flag:permission_required','flag:no_ban',
@@ -40,6 +40,12 @@ def contract_errors(t,e,s):
         'story_owner = scope:rw_dl_actor','NOT = { has_variable = rw_dl_serial }',
         'clear_saved_scope = rw_dl_authority','exists = scope:rw_dl_authority',
         'name = rw_dl_retained value = flag:yes days = 365'),'missing provenance or immutable capture')
+    internal = '''limit = {
+        scope:rw_dl_rule = flag:internal
+        scope:rw_dl_peer_relation = flag:same_liege
+    }'''
+    if ' '.join(internal.split()) not in ' '.join(clean_script(capture)[0].split()):
+        errors.append('internal ban applied outside its direct hierarchy')
     if re.search(r'save_scope_as\s*=\s*(actor|recipient|target|attacker|defender|war)\b',capture):
         errors.append('native aliases overwritten')
     link=block(e,'rw_dl_link_response_effect')
@@ -103,6 +109,68 @@ class DeclarationLawBuilderTests(unittest.TestCase):
 class DeclarationLawSourceTests(unittest.TestCase):
     def setUp(self):self.t=T.read_text();self.e=E.read_text();self.s=S.read_text()
     def test_real_source_contract(self):self.assertEqual([],contract_errors(self.t,self.e,self.s))
+
+    def test_capture_reads_attacker_liege_across_different_defender_hierarchies(self):
+        context = block(self.t, 'rw_dl_callback_context_trigger')
+        self.assertIn('exists = liege', block(context, 'scope:attacker'))
+        self.assertNotIn('liege = scope:defender.liege', context)
+        self.assertNotIn('exists = liege', block(context, 'scope:defender'))
+        self.assertIn('scope:attacker.liege = {', self.e)
+        for other_authority in ('scope:defender.liege = {', 'top_liege = {', 'every_liege_or_above'):
+            self.assertNotIn(other_authority, block(self.e, 'rw_dl_capture_effect'))
+
+    def test_direct_hierarchy_relation_is_guarded_and_archived_once(self):
+        capture = block(self.e, 'rw_dl_capture_effect')
+        expected = '''
+            save_scope_value_as = { name = rw_dl_peer_relation value = flag:different_liege }
+            if = {
+                limit = {
+                    exists = scope:defender.liege
+                    scope:attacker.liege = scope:defender.liege
+                }
+                save_scope_value_as = { name = rw_dl_peer_relation value = flag:same_liege }
+            }
+        '''
+        self.assertIn(' '.join(expected.split()), ' '.join(capture.split()))
+        writes = re.findall(r'\bset_variable\s*=\s*\{\s*name\s*=\s*rw_dl_peer_relation\s+value\s*=\s*([^}]+)\}',
+                            clean_script(self.e + self.s)[0])
+        self.assertEqual(['scope:rw_dl_peer_relation'], [value.strip() for value in writes])
+        self.assertIn('set_variable = { name = rw_dl_rule value = scope:rw_dl_rule }', capture)
+        self.assertNotIn('rw_dl_peer_relation', block(self.t, 'rw_dl_match_response_trigger'))
+        self.assertNotIn('rw_dl_peer_relation', block(self.t, 'rw_dl_link_view_trigger'))
+
+    def test_internal_ban_domain_removal_or_inversion_is_detected(self):
+        for replacement in ('always = yes', 'scope:rw_dl_peer_relation = flag:different_liege'):
+            changed = self.e.replace('scope:rw_dl_peer_relation = flag:same_liege', replacement)
+            self.assertIn('internal ban applied outside its direct hierarchy',
+                          contract_errors(self.t, changed, self.s))
+
+    def test_authority_rule_is_preserved_separately_from_applicability(self):
+        expected = '''
+            save_scope_value_as = { name = rw_dl_rule value = flag:none }
+            if = {
+                limit = { scope:rw_dl_issuer = { has_realm_law_flag = vassal_all_wars_banned } }
+                save_scope_value_as = { name = rw_dl_rule value = flag:all }
+            }
+            else_if = {
+                limit = { scope:rw_dl_issuer = { has_realm_law_flag = vassal_internal_wars_banned } }
+                save_scope_value_as = { name = rw_dl_rule value = flag:internal }
+            }
+        '''
+        self.assertIn(' '.join(expected.split()), ' '.join(clean_script(self.e)[0].split()))
+        writes = re.findall(r'\bset_variable\s*=\s*\{\s*name\s*=\s*rw_dl_rule\s+value\s*=\s*([^}]+)\}',
+                            clean_script(self.e + self.s)[0])
+        self.assertEqual(['scope:rw_dl_rule'], [value.strip() for value in writes])
+        self.assertNotIn('rw_dl_rule', block(self.t, 'rw_dl_match_response_trigger'))
+        self.assertNotIn('rw_dl_rule', block(self.t, 'rw_dl_link_view_trigger'))
+
+    def test_total_ban_keeps_priority_and_response_entry_keeps_its_peer_guard(self):
+        capture = block(self.e, 'rw_dl_capture_effect')
+        self.assertLess(capture.index('vassal_all_wars_banned'), capture.index('vassal_internal_wars_banned'))
+        self.assertIn('limit = { scope:rw_dl_rule = flag:all }', capture)
+        choice = (ROOT/'common/scripted_triggers/rw_unlawful_war_choice_triggers.txt').read_text()
+        self.assertIn('liege = scope:recipient.liege', block(choice, 'rw_uw_peer_ban_trigger'))
+        self.assertIn('rw_uw_peer_ban_trigger = yes', block(choice, 'rw_uw_selected_defiance_trigger'))
 
     def test_native_permission_outcomes_keep_their_exact_branch_conditions(self):
         # Presence-only checks miss swapped outcomes or an inverted ban test.

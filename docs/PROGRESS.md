@@ -1,5 +1,18 @@
 # Progress
 
+- RW-004 territorial-law context. Extended the read-only claim callback capture
+  to different-liege feudal defenders and independent defenders while keeping a
+  direct living landed issuer for the attacker. Optional same_liege/different_liege
+  metadata is archived once. Internal bans require the same direct liege; all-war
+  bans retain priority. Existing receipts require no new field and are not rebuilt.
+  Source23 law and4 first-use counter tests, structural/telemetry/readiness and
+  whitespace checks pass. Full CI and committed ZIP evidence are recorded in PR.
+  New capture contexts are experimental and not engine-tested. Existing defiance
+  and royal response eligibility remains peer-scoped. Next implement a proven
+  cross-liege action/context binding before multi-authority response routing.
+  Owner keeps territorial authority and defers general royal peace. Baseline and
+  result80/80 source +0/20 campaign; actual delta0.
+
 - RW-004 W5. Checked the selected delivered path after W1/W2/W4. The campaign
   assembly test now applies four existing source validators to delivered files,
   verifies generated native declaration/claim preservation and detects nine guard

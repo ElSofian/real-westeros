@@ -1,5 +1,12 @@
 # W1 — Relevé de contexte dans le callback natif de déclaration
 
+**Revue territoriale du 7 novembre 2026.**
+[G1_TERRITORIAL_LAW.md](G1_TERRITORIAL_LAW.md) étend le relevé aux chefs de guerre
+féodaux de branches différentes et à un défenseur indépendant. La relation directe
+est figée et conditionne l'applicabilité de l'interdiction interne. Cette extension
+est non testée dans CK3. Les descriptions de préparation ci-dessous sont historiques.
+Score80/80 source,0/20 campagne, delta0.
+
 **Actualisation du 7 novembre 2026.** [W1 est qualifié en source](G1_W1_QUALIFICATION.md),
 +2 points, développement76/80 et campagne0/20. Les liens déjà observés lèvent le
 doute de disponibilité avant liaison pour ces parcours. Les essais exceptionnels

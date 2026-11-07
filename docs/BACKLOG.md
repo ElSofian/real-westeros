@@ -1,5 +1,14 @@
 # Development backlog
 
+**RW-004 territorial-law review, 7 November:** G1_TERRITORIAL_LAW.md records
+  direct-authority scope, internal/all bans and the owner-deferred general peace
+  proclamation. The read-only declaration snapshot now covers different-liege
+  feudal claim wars and independent defenders. It archives the observed direct
+  peer relation and applies the internal-ban flag only within that relation.
+  Native helper exceptions remain intact. Existing defiance/royal-response entry
+  remains peer-scoped; cross-liege defiance and Mace/Doran responses are next.
+  Five source regressions, engine unverified.80/80+0/20, actual delta0.
+
 **RW-004 W5 delivered-path coverage, 7 November:** assembled campaign files now
   run through the existing royal/law/intervention/lifecycle source validators.
   Nine corrupted variants must be detected, with native generated declaration and
