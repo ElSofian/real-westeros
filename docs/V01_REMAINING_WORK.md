@@ -1,5 +1,11 @@
 # Ce qui reste avant la première version intégrée
 
+**Actualisation du 7 novembre 2026 —80/80 source,0/20 campagne,delta+2.**
+[W5 termine le socle source](G1_W5_DELIVERED_GUARDS.md) par la couverture des gardes
+et négatifs du parcours assemblé depuis le ZIP. V1–V5 restent ouverts. La suite
+convenue reprend les règles de fond des huit systèmes, avec essais groupés et
+itérations possibles. Les scores et dépendances ci-dessous sont historiques.
+
 **Actualisation du 7 novembre 2026 —78/80 source,0/20 campagne,delta+2.**
 [W4 est qualifié en source](G1_WAR_RECEIPT_LIFECYCLE.md) après ajout de la recherche
 terminale des participants de la guerre exacte. Le chemin transféré reste non

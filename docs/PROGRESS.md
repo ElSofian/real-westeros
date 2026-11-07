@@ -1,5 +1,18 @@
 # Progress
 
+- RW-004 W5. Checked the selected delivered path after W1/W2/W4. The campaign
+  assembly test now applies four existing source validators to delivered files,
+  verifies generated native declaration/claim preservation and detects nine guard
+  mutations for choice, stale/foreign identity, authority, native validation,
+  historical law, participant traversal, open windows and callback replay. The
+  participant check is also part of the reusable lifecycle validator. Targeted
+  assembled positive/negative tests and twelve lifecycle tests pass. Full CI,
+  committed ZIP and installed-native assembly evidence are recorded in the PR.
+  No new engine run. Source checks do not establish runtime behavior. Baseline
+  78/80 source +0/20 campaign; result80/80 +0/20, actual delta+2 for W5 coverage.
+  Next review substantive rules across all eight systems as directed by the owner,
+  potentially alongside grouped engine tests and improvements from their results.
+
 - RW-004 W4. Fixed a terminal lookup gap after leadership transfer by examining
   the exact war's other participants as well as its callback attacker. Original
   owner/attacker/war/schema/serial and first-callback guards remain in a shared

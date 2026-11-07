@@ -1511,3 +1511,10 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   foreign-war/owner records survive and no deferred royal send is replayed. Compare
   to AGOT, then cover absent participants, missing callbacks, replacement wars and
   reloads. Measure cost with many participants. New iterator path not engine-tested.
+
+- W5 delivered guards. Use the matching base/adapters from the assessed ZIP.
+  Exercise unchecked defiance, selected hook, expired/consumed events, changed
+  issuer/title/parties, multiple wars and ended/replaced wars. Verify actual
+  refusal before effects, one-time native costs and exact target binding. Repeat
+  after reload and swap player/AI roles. Source mutations in the assembly tests
+  are static evidence; record actual engine observations separately.

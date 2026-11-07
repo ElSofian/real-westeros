@@ -38,7 +38,12 @@ def errors(t, e, s):
          'holder = scope:rw_wc_check.var:rw_uw_issuer'), 'live context')
     if context.count('liege = scope:rw_wc_check.var:rw_uw_issuer') != 2: found.append('jurisdiction')
     worker_definition = e[e.index('\nrw_uw_close_owned_receipts_effect = {'):]
-    terminal = block(e, 'rw_uw_terminal_effect') + block(worker_definition, 'rw_uw_close_owned_receipts_effect')
+    dispatch = block(e, 'rw_uw_terminal_effect')
+    need(dispatch, ('every_war_participant = {', 'limit = { NOT = { this = scope:attacker } }'),
+         'exact-war participant traversal')
+    if dispatch.count('rw_uw_close_owned_receipts_effect = { OUTCOME = $OUTCOME$ }') != 2:
+        found.append('callback attacker or participant worker missing')
+    terminal = dispatch + block(worker_definition, 'rw_uw_close_owned_receipts_effect')
     need(terminal, ('exists = scope:war', 'exists = scope:attacker',
          'story_owner = scope:rw_wc_actor', 'var:rw_uw_attacker = scope:rw_wc_actor',
          'var:rw_uw_schema = 1', 'has_variable = rw_uw_serial',
