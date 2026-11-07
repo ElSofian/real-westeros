@@ -84,6 +84,10 @@ et retrouve les empreintes des quatre fichiers d'effets précédents. Les graphe
 d'actions des événements, après retrait des seuls poids IA, gardent leurs preuves
 existantes. Ces contrôles n'émulent pas le moteur.
 
+GOLD_DEBIT_SOURCE_RECEIPT.json ajoute sept transformations réversibles pour ces
+métadonnées. Les preuves historiques des onze corrections de paiement sont
+conservées et leur vérification retrouve chaque ancienne empreinte.
+
 Les sources natives privées inspectées confirment le getter `ai_energy`, son
 emploi dans les script values et les indicateurs de personnage temporaires.
 Leur existence ne prouve pas le comportement temporel de cette extension.

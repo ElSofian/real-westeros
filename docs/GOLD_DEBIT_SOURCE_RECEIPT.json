@@ -126,6 +126,62 @@
       "after_sha256": "8f441bfcb27cf29868f7a6d6e598962faec8a1c61889a42812f15dfa3169e1f5",
       "before": "rw_fv_snapshot_effect = {\n    scope:rw_fv_provider = {\n        save_scope_value_as = { name = rw_fv_serial value = var:rw_fv_serial }\n        save_scope_value_as = { name = rw_fv_revision value = var:rw_fv_revision }\n        save_scope_value_as = { name = rw_fv_term value = var:rw_fv_term }\n        save_scope_value_as = { name = rw_fv_mode value = flag:immediate }\n        if = {\n            limit = { has_variable = rw_fv_mode }\n            save_scope_value_as = { name = rw_fv_mode value = var:rw_fv_mode }\n        }\n    }\n}",
       "after": "rw_fv_snapshot_effect = {\n    scope:rw_fv_provider = {\n        save_scope_value_as = { name = rw_fv_serial value = var:rw_fv_serial }\n        save_scope_value_as = { name = rw_fv_revision value = var:rw_fv_revision }\n        save_scope_value_as = { name = rw_fv_term value = flag:invalid }\n        if = {\n            limit = { has_variable = rw_fv_term }\n            if = {\n                limit = { var:rw_fv_term = flag:favor }\n                save_scope_value_as = { name = rw_fv_term value = flag:favor }\n            }\n            else_if = {\n                limit = { var:rw_fv_term = flag:gold25 }\n                save_scope_value_as = { name = rw_fv_term value = flag:gold25 }\n            }\n        }\n        # A missing mode is the supported legacy immediate offer.\n        save_scope_value_as = { name = rw_fv_mode value = flag:immediate }\n        if = {\n            limit = { has_variable = rw_fv_mode }\n            save_scope_value_as = { name = rw_fv_mode value = flag:invalid }\n            if = {\n                limit = { var:rw_fv_mode = flag:immediate }\n                save_scope_value_as = { name = rw_fv_mode value = flag:immediate }\n            }\n            else_if = {\n                limit = { var:rw_fv_mode = flag:deferred }\n                save_scope_value_as = { name = rw_fv_mode value = flag:deferred }\n            }\n        }\n    }\n}"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_obligation_effects.txt",
+      "reason": "RW-010 promise timing metadata, reversible source-only addition",
+      "before": "            else = { add_character_flag = { flag = rw_service_deadline days = 30 } }\n",
+      "after": "            else = {\n                add_character_flag = { flag = rw_service_deadline days = 30 }\n                add_character_flag = { flag = rw_service_ai_wait_room days = 23 }\n            }\n",
+      "before_sha256": "9dcaa6118833a13bf908174c3195ed33383780c0eee454e5411ff1f6e376fa09",
+      "after_sha256": "e9bf85c97e17ccfe0dbc9d7dbc05ac39945e5e71840715a30cbd1126dabdc3a0"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_obligation_effects.txt",
+      "reason": "RW-010 promise timing metadata, reversible source-only addition",
+      "before": "",
+      "after": "                add_character_flag = { flag = rw_service_ai_wait_room days = 7 }\n",
+      "before_sha256": "e9bf85c97e17ccfe0dbc9d7dbc05ac39945e5e71840715a30cbd1126dabdc3a0",
+      "after_sha256": "bba4c69b60fd7240b9fa314e9af6aea793f37347473ab51ea401f3eeacffa90b"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_obligation_effects.txt",
+      "reason": "RW-010 promise timing metadata, reversible source-only addition",
+      "before": "",
+      "after": "            # Current contract only. A seven-day wait must fit before its deadline.\n            set_variable = { name = rw_service_ai_timing_serial value = var:rw_service_serial }\n            remove_character_flag = rw_service_ai_wait_room\n",
+      "before_sha256": "bba4c69b60fd7240b9fa314e9af6aea793f37347473ab51ea401f3eeacffa90b",
+      "after_sha256": "debfa016b825dd93e36f8a8c3c9a07f840906952ced58cd3c734f747ae28d3ae"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_service_effects.txt",
+      "reason": "RW-010 promise timing metadata, reversible source-only addition",
+      "before": "",
+      "after": "            remove_character_flag = rw_service_ai_wait_room\n            remove_variable = rw_service_ai_timing_serial\n",
+      "before_sha256": "5bfbc24cd0e0a122ba11461820466c6732d8b7c8516d8c29a5b446ac59e544c1",
+      "after_sha256": "26d75e0743ccb3a2869fdebb9491e1999ff7d90a869d1b3cc6791f4cae38fbb7"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_deferred_favor_effects.txt",
+      "reason": "RW-010 promise timing metadata, reversible source-only addition",
+      "before": "",
+      "after": "            remove_character_flag = rw_fd_ai_later_prompt\n            remove_variable = rw_fd_ai_timing_serial\n",
+      "before_sha256": "b2172745b169d62176c0096258c2b4072843cddb30800fe946df74a499f665c8",
+      "after_sha256": "d7cf7fa1031d3f62d3e90d65d8be238152371de44905fb90bb6c1c7bc9c413e8"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_deferred_favor_effects.txt",
+      "reason": "RW-010 promise timing metadata, reversible source-only addition",
+      "before": "",
+      "after": "            # The day-22 prompt is the last scheduled execution opportunity.\n            set_variable = { name = rw_fd_ai_timing_serial value = var:rw_fv_serial }\n            remove_character_flag = rw_fd_ai_later_prompt\n            add_character_flag = { flag = rw_fd_ai_later_prompt days = 22 }\n",
+      "before_sha256": "d7cf7fa1031d3f62d3e90d65d8be238152371de44905fb90bb6c1c7bc9c413e8",
+      "after_sha256": "1d51803d05d0b497f26b479910eb493b57719b604bfa37a029487f7c90b960c1"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_favor_service_effects.txt",
+      "reason": "RW-010 promise timing metadata, reversible source-only addition",
+      "before": "",
+      "after": "            remove_character_flag = rw_fd_ai_later_prompt\n            remove_variable = rw_fd_ai_timing_serial\n",
+      "before_sha256": "8f441bfcb27cf29868f7a6d6e598962faec8a1c61889a42812f15dfa3169e1f5",
+      "after_sha256": "a01cd695a0ab4edce680b6f79b5523e0d0aa16651088955f794528923c0bfed4"
     }
   ]
 }

@@ -8,6 +8,8 @@
   files invert to their prior hashes after removing metadata, and event action
   graphs retain their existing proofs. Seven new source regressions cover guards,
   calendars, cleanup, unavailable consideration and conservative trait directions.
+  Historical gold-debit receipts append seven exact reversible metadata updates,
+  retaining the eleven original debit proofs.
   Source-only, engine cases grouped. AI3/O1 quality, baseline/result74/80+0/20,
   delta0. Next review actual context for client reactions and remaining traits,
   retaining independent roles and known-information limits.
