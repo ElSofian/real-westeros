@@ -1,5 +1,12 @@
 # Development backlog
 
+**RW-010 service mode correction, 7 November:** observed wrong-type snapshot read
+  corrected through literal immediate/deferred flags and unknown-mode rejection.
+  Existing persisted flag modes retain their representation. Coercion/missing/
+  mismatched-mode static negatives pass. N1/O1 reliability correction, delta0,
+  baseline/result68/80+0/20. Runtime retest joins the final campaign. Next source
+  audit covers related favor/archive flag-variable snapshots.
+
 **RW-004 latest control audit:** native strategy initialized; eleven eligibility
 checks pass, hostility fails, native legality=true. Legal/reject diagnostics no
 longer require hostility; banned guard and production unchanged. Nine static

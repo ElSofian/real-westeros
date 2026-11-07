@@ -32,6 +32,10 @@ rw_service_matches_trigger = {
         has_variable = rw_service_revision
         has_variable = rw_service_price
         has_variable = rw_service_mode
+        OR = {
+            var:rw_service_mode = flag:immediate
+            var:rw_service_mode = flag:deferred
+        }
         var:rw_service_target = scope:rw_service_client
         var:rw_service_serial = scope:rw_service_serial
         var:rw_service_revision = scope:rw_service_revision

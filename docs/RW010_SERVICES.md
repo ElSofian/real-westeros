@@ -32,6 +32,17 @@ RW010_DELIVERY_TERMS.md. Immediate services retain their original immediate effe
 
 ## State and boundaries
 
+The 7 November correction addresses an observed CK3 wrong-type diagnostic in
+rw_service_snapshot_effect. Its mode variable holds a flag, while reading that
+variable through a script value requests a numeric conversion. The snapshot now
+selects the literal immediate or deferred flag under a matching stored-mode
+condition. Missing or unknown modes receive an invalid snapshot, and matching
+accepts only the two supported modes. Existing stored modes and event flag
+identities retain their representation. Static mutation checks cover numeric
+coercion, a missing variable guard, a mismatched branch and invalid-mode acceptance.
+Engine retest remains scheduled for the final campaign through both offer
+interactions, counteroffers, deferred fulfillment and save/reload.
+
 Provider stores a monotonic `rw_service_serial`, quote revision, client, price and
 turn. Each event captures provider/client plus serial/revision/price values. Responses
 must match all of them. New contracts increment serial; counters increment revision.

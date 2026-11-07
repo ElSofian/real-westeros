@@ -109,5 +109,15 @@
     "Partial source set lacks assets and definitions: remaining semantic reports are not cleared by this correction.",
     "Only payer debit tokens change; original consent, affordability, consumption, amount, payee, credit, hooks and telemetry calls are byte-preserved.",
     "Static source validation does not establish real gold balances, budget semantics or engine atomicity."
+  ],
+  "subsequent_updates": [
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_service_effects.txt",
+      "reason": "RW-010 literal service mode snapshot, 2026-11-07",
+      "before_sha256": "3df9ffe7759875f69eb413ae66b7ce73132b10a69a52fccc7731a835cb20005b",
+      "after_sha256": "5bfbc24cd0e0a122ba11461820466c6732d8b7c8516d8c29a5b446ac59e544c1",
+      "before": "        save_scope_value_as = { name = rw_service_mode value = var:rw_service_mode }\n",
+      "after": "        # Reading a flag variable as a script value coerces it to a number.\n        # Preserve the enum through literal flags; missing/unknown mode fails closed.\n        save_scope_value_as = { name = rw_service_mode value = flag:invalid }\n        if = {\n            limit = { has_variable = rw_service_mode }\n            if = {\n                limit = { var:rw_service_mode = flag:immediate }\n                save_scope_value_as = { name = rw_service_mode value = flag:immediate }\n            }\n            else_if = {\n                limit = { var:rw_service_mode = flag:deferred }\n                save_scope_value_as = { name = rw_service_mode value = flag:deferred }\n            }\n        }\n"
+    }
   ]
 }

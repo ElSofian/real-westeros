@@ -3,6 +3,7 @@ from pathlib import Path
 import re
 import unittest
 from tools.validate_mod import clean_script
+from test_deferred_service_contract import block
 
 ROOT = Path(__file__).resolve().parents[1] / 'mod/real_westeros'
 
@@ -15,6 +16,9 @@ def contract_errors(triggers, effects):
             errors.append(f'missing {key} identity')
     if 'var:rw_service_target = scope:rw_service_client' not in triggers:
         errors.append('missing client identity')
+    allowed_modes = block(block(triggers, 'rw_service_matches_trigger'), 'OR')
+    if set(re.findall(r'var:rw_service_mode\s*=\s*flag:(\w+)', allowed_modes)) != {'immediate', 'deferred'}:
+        errors.append('unknown service mode accepted')
     if 'remove_variable = rw_service_serial' in effects:
         errors.append('serial reset')
     if 'limit = { rw_service_can_offer_trigger = yes }' not in effects:
@@ -32,6 +36,24 @@ def contract_errors(triggers, effects):
     return errors
 
 
+def mode_snapshot_errors(effects):
+    """Check finite flag transport, not the CK3 effect implementation."""
+    snapshot = block(effects, 'rw_service_snapshot_effect')
+    errors = []
+    writes = re.findall(r'save_scope_value_as\s*=\s*\{\s*name\s*=\s*rw_service_mode\s+value\s*=\s*([^\s}]+)', snapshot)
+    if writes != ['flag:invalid', 'flag:immediate', 'flag:deferred']:
+        errors.append('mode snapshot must use literal enum flags with invalid default')
+    guarded = block(snapshot, 'if')
+    if 'has_variable = rw_service_mode' not in block(guarded, 'limit'):
+        errors.append('missing mode must not be read')
+    for kind, branch in (('immediate', 'if'), ('deferred', 'else_if')):
+        selected = block(guarded, branch)
+        if ('var:rw_service_mode = flag:'+kind not in block(selected, 'limit')
+                or 'name = rw_service_mode value = flag:'+kind not in selected):
+            errors.append('unmatched '+kind+' snapshot')
+    return errors
+
+
 class ServiceContractTests(unittest.TestCase):
     def setUp(self):
         self.t = (ROOT / 'common/scripted_triggers/rw_service_triggers.txt').read_text()
@@ -39,6 +61,24 @@ class ServiceContractTests(unittest.TestCase):
 
     def test_contract(self):
         self.assertEqual([], contract_errors(self.t, self.e))
+
+    def test_mode_snapshot_uses_literal_flags_without_numeric_coercion(self):
+        self.assertEqual([], mode_snapshot_errors(self.e))
+
+    def test_numeric_flag_read_and_missing_mode_guard_are_rejected(self):
+        changed = self.e.replace('value = flag:immediate }', 'value = var:rw_service_mode }', 1)
+        self.assertTrue(mode_snapshot_errors(changed))
+        changed = self.e.replace('limit = { has_variable = rw_service_mode }', 'limit = { always = yes }', 1)
+        self.assertIn('missing mode must not be read', mode_snapshot_errors(changed))
+
+    def test_unknown_or_mismatched_modes_cannot_become_valid_snapshots(self):
+        changed = self.e.replace('value = flag:invalid }', 'value = flag:immediate }', 1)
+        self.assertTrue(mode_snapshot_errors(changed))
+        changed = self.e.replace('limit = { var:rw_service_mode = flag:deferred }',
+                                 'limit = { var:rw_service_mode = flag:immediate }', 1)
+        self.assertIn('unmatched deferred snapshot', mode_snapshot_errors(changed))
+        changed = self.t.replace('var:rw_service_mode = flag:immediate', 'always = yes', 1)
+        self.assertIn('unknown service mode accepted', contract_errors(changed, self.e))
 
     def test_stale_quote_mutation(self):
         changed = self.t.replace('var:rw_service_revision = scope:rw_service_revision', 'always = yes')

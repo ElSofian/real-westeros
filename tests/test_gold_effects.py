@@ -11,6 +11,21 @@ from tools.verify_telemetry import gameplay_digest
 ROOT=Path(__file__).resolve().parents[1]
 
 
+def restore_later_updates(raw, path, updates):
+    for update in reversed(updates):
+        if update['path'] != path:
+            continue
+        if hashlib.sha256(raw).hexdigest() != update['after_sha256']:
+            raise ValueError('Unrecorded source change after debit correction')
+        before, after = (update[key].encode() for key in ('before', 'after'))
+        if raw.count(after) != 1:
+            raise ValueError('Ambiguous subsequent source update')
+        raw = raw.replace(after, before, 1)
+        if hashlib.sha256(raw).hexdigest() != update['before_sha256']:
+            raise ValueError('Subsequent source update does not reverse exactly')
+    return raw
+
+
 class GoldEffectTests(unittest.TestCase):
     def test_negative_scalar_debits_rejected(self):
         for effect in ('add_gold','remove_short_term_gold'):
@@ -69,13 +84,26 @@ class GoldEffectTests(unittest.TestCase):
         self.assertEqual(11,len({x['path'] for x in data['corrections']}))
         for row in data['corrections']:
             with self.subTest(path=row['path']):
-                raw=(ROOT/row['path']).read_bytes();text=raw.decode()
+                raw=(ROOT/row['path']).read_bytes()
+                self.assertEqual([],gold_errors(raw.decode()))
+                raw=restore_later_updates(raw,row['path'],data.get('subsequent_updates',[]))
+                text=raw.decode()
                 self.assertEqual(row['after_sha256'],hashlib.sha256(raw).hexdigest())
                 self.assertEqual(1,text.count(row['after']))
                 restored=text.replace(row['after'],row['before'],1)
                 self.assertEqual(row['before_sha256'],hashlib.sha256(restored.encode()).hexdigest())
                 self.assertEqual([],gold_errors(text))
                 self.assertTrue(gold_errors(restored))
+
+    def test_subsequent_updates_reject_unrecorded_or_nonreversible_changes(self):
+        data=json.loads((ROOT/'docs/GOLD_DEBIT_SOURCE_RECEIPT.json').read_text())
+        update=data['subsequent_updates'][-1]
+        raw=(ROOT/update['path']).read_bytes()
+        with self.assertRaises(ValueError):
+            restore_later_updates(raw+b'\n',update['path'],[update])
+        changed=dict(update,before=update['before']+'\n')
+        with self.assertRaises(ValueError):
+            restore_later_updates(raw,update['path'],[changed])
 
     def test_telemetry_baseline_changes_only_for_the_approved_debit(self):
         data=json.loads((ROOT/'docs/TELEMETRY_HOOKS.json').read_text())
