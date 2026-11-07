@@ -49,7 +49,9 @@ def party_errors(effects, stories):
     for counter in ('rw_dl_target_count', 'rw_dl_target_records'):
         initializer = 'name = '+counter+' value = 0'
         increment = 'name = '+counter+' add = 1'
-        if worker.index(initializer) > worker.index(increment):
+        initializer_at = worker.find(initializer)
+        increment_at = worker.find(increment)
+        if initializer_at < 0 or increment_at < 0 or initializer_at > increment_at:
             errors.append('counter increment before initialization')
     for alias in ('rw_dt_holder', 'rw_dt_liege', 'rw_dt_authority'):
         if 'clear_saved_scope = '+alias not in worker or worker.index('clear_saved_scope = '+alias) > worker.index('holder = {'):
@@ -114,9 +116,11 @@ class DeclarationPartyTests(unittest.TestCase):
         for counter in ('rw_dl_target_count', 'rw_dl_target_records'):
             initializer = 'set_variable = { name = '+counter+' value = 0 }'
             increment = 'change_variable = { name = '+counter+' add = 1 }'
-            changed = self.effects.replace(initializer, '').replace(increment, increment+' '+initializer)
-            with self.subTest(counter=counter):
-                self.assertIn('counter increment before initialization', party_errors(changed, self.stories))
+            missing = self.effects.replace(initializer, '')
+            late = missing.replace(increment, increment+' '+initializer)
+            for changed in (missing, late):
+                with self.subTest(counter=counter, missing=changed == missing):
+                    self.assertIn('counter increment before initialization', party_errors(changed, self.stories))
 
     def test_child_requires_exact_parent_owner_serial_and_war(self):
         for token in ('story_owner = scope:rw_dt_check.story_owner',
