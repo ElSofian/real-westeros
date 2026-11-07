@@ -8,6 +8,10 @@
   Six regressions cover valid/parameterized calls, missing definitions, wrong
   namespaces, commented definitions and an actual G1 module omitted from the
   committed ZIP fixture. The last case must produce neither ZIP nor checksum.
+  The existing G1 fixture now rejects its incomplete runtime subset before
+  validating with the declared base dependency. Validator22, G1 royal13 and
+  distribution11 tests pass, as do structural, telemetry and readiness checks;
+  the committed public ZIP builds. Full-suite evidence is recorded in the PR.
   No runtime script changed. Source checks only, no additional engine evidence.
   Target is cross-system delivery integrity supporting W5; baseline/result
   74/80 source +0/20 campaign, actual delta0. W1/W4/W5 remain open. Next resolve
