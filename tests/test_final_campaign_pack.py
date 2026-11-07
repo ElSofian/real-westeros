@@ -13,6 +13,32 @@ from tools import prepare_final_campaign as pack
 from test_g1_native_choice import FIXTURE as WAR
 from test_native_house_confiscation import FIXTURE as REVOKE
 from test_native_restitution import FIXTURE as GRANT
+from test_g1_royal_response import contract_errors as royal_errors
+from test_declaration_law_context import contract_errors as law_errors
+from test_native_war_intervention import errors as intervention_errors
+from test_war_receipt_lifecycle import errors as lifecycle_errors
+
+
+WAR_FILES = {
+    'triggers': 'common/scripted_triggers/rw_unlawful_war_choice_triggers.txt',
+    'response': 'common/scripted_effects/rw_unlawful_war_response_effects.txt',
+    'story': 'common/story_cycles/rw_unlawful_war_responses.txt',
+    'law_triggers': 'common/scripted_triggers/rw_declaration_law_triggers.txt',
+    'law_effects': 'common/scripted_effects/rw_declaration_law_effects.txt',
+    'law_story': 'common/story_cycles/rw_declaration_law.txt',
+    'intervention': 'common/scripted_effects/rw_unlawful_war_intervention_effects.txt',
+    'lifecycle': 'common/scripted_effects/rw_war_lifecycle_effects.txt',
+}
+
+
+def war_guard_errors(sources):
+    """Reuse source checks on delivered bytes; this does not execute game logic."""
+    return {
+        'royal': royal_errors(sources['triggers'], sources['response'], sources['story']),
+        'law': law_errors(sources['law_triggers'], sources['law_effects'], sources['law_story']),
+        'intervention': intervention_errors(sources['triggers'], sources['intervention']),
+        'lifecycle': lifecycle_errors(sources['triggers'], sources['lifecycle'], sources['story']),
+    }
 
 
 class CampaignPackTests(unittest.TestCase):
@@ -90,6 +116,47 @@ class CampaignPackTests(unittest.TestCase):
         self.assertNotIn(str(self.agot),serialized)
         self.assertEqual(result,json.loads((self.out/pack.READY).read_text()))
         self.assertIn('ne jamais publier',(self.out/'PRIVATE_README.txt').read_text())
+        sources = {key: (self.out/'mod/real_westeros'/name).read_text(encoding='utf-8-sig')
+                   for key, name in WAR_FILES.items()}
+        self.assertEqual({name: [] for name in ('royal', 'law', 'intervention', 'lifecycle')},
+                         war_guard_errors(sources))
+
+        # Inspect the delivered adapter, including the genuine CB identifier.
+        adapter = self.out/'mod'/pack.war.MOD_ID
+        declaration = (adapter/'common/character_interactions/zz_rw_native_war_choice.txt').read_bytes().decode('utf-8-sig')
+        for addition in (pack.war.GUARD, pack.war.OPTION, pack.war.ACCEPT):
+            self.assertEqual(1, declaration.count(addition))
+            declaration = declaration.replace(addition, '', 1)
+        self.assertEqual(pack.war.top_definition(self.inputs[pack.war.INTERACTION], 'declare_war_interaction'),
+                         declaration.removesuffix('\n'))
+        claim = (adapter/'common/casus_belli_types/zz_rw_native_claim_law.txt').read_bytes().decode('utf-8-sig')
+        for addition in (pack.war.LAW_PREFIX, *pack.war.TERMINAL_PREFIXES.values()):
+            self.assertEqual(1, claim.count(addition))
+            claim = claim.replace(addition, '', 1)
+        self.assertEqual(pack.war.top_definition(self.inputs[pack.war.CLAIM], 'claim_cb'), claim.removesuffix('\n'))
+
+    def test_assembled_war_guards_detect_foreign_stale_bypassed_and_replayed_paths(self):
+        self.prepare()
+        sources = {key: (self.out/'mod/real_westeros'/name).read_text(encoding='utf-8-sig')
+                   for key, name in WAR_FILES.items()}
+        mutations = (
+            ('response', 'rw_uw_selected_defiance_trigger = yes', 'always = yes', 'royal'),
+            ('triggers', 'var:rw_uw_serial = scope:rw_uw_serial', 'has_variable = rw_uw_serial', 'royal'),
+            ('triggers', 'var:rw_uw_war = scope:rw_uw_war', 'var:rw_uw_war = scope:rw_uw_authority', 'royal'),
+            ('triggers', 'holder = scope:rw_uw_issuer', 'always = yes', 'royal'),
+            ('triggers', 'is_character_interaction_valid = {', 'always = {', 'intervention'),
+            ('law_effects', 'rw_dl_link_response_effect = {',
+             'rw_dl_link_response_effect = { rw_dl_capture_effect = yes', 'law'),
+            ('lifecycle', 'every_war_participant = {', 'every_war_attacker = {', 'lifecycle'),
+            ('lifecycle', 'remove_variable = rw_uw_live', '', 'lifecycle'),
+            ('lifecycle', 'NOT = { has_variable = rw_uw_terminal_seen }', 'always = yes', 'lifecycle'),
+        )
+        for file, before, after, family in mutations:
+            with self.subTest(file=file, guard=before):
+                self.assertIn(before, sources[file])
+                changed = dict(sources)
+                changed[file] = changed[file].replace(before, after)
+                self.assertTrue(war_guard_errors(changed)[family])
 
     def test_completion_receipt_covers_every_other_file(self):
         r=self.prepare();names={x['path'] for x in r['files']}
