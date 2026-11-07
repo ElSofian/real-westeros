@@ -1,5 +1,16 @@
 # Progress
 
+- RW-004 initialized legal selector control succeeds in CK3. Log allowed_success
+  and 4 June save confirm authentic claim_cb, Leyton/Paxter and d_the_arbor.
+  Sanitized hash and limits are in G1_AI_PLANNER_PROBE.md. Prepared one matched
+  reject/banned/legal-fallback console comparison with a disclosed seven-day
+  native debug hostility fixture and guarded sequencing. Eleven focused tests
+  pass, eight console files hash-verified. W2/AI4 remain open until banned access
+  and autonomous scheduling are established. Baseline/result68/80+0/20, delta0.
+  Complete local suite passes1099 tests. Branch
+  investigate/rw004-initialized-selector-comparison awaits RW-AI-comparaison
+  engine evidence before the next implementation decision.
+
 - RW-010 corrects the service mode snapshot after CK3 reported a wrong-type flag
   read. Literal enum branches preserve immediate/deferred event identity, with
   missing/unknown mode rejection and stored-value compatibility. Target N1/O1

@@ -186,3 +186,33 @@ in CK3: no successful permissive selector control or matched ban comparison yet.
 The reject path also remains pending. Continue these in the grouped final
 campaign rather than requesting repeated intermediate manual tests. W2/AI4 stay
 open; baseline/result68/80+0/20, delta0.
+
+## Initialized legal control succeeds, 7 November
+
+The corrected allowed probe logs fixture_bound, allowed_begin,
+allowed_default_defiance_no, allowed_success and allowed_end. The paused
+RW-AI-autorise-valide save on 4 June contains an active authentic claim_cb war
+from Leyton to Paxter, claimant Leyton and targeted d_the_arbor. Strategy remains
+initialized=yes with calculated budgets. Save SHA256 is
+`60aec5dadf454c187fb5a792b19629c77fe815935045c6acc3605ea75285e8c7`.
+No rw_ai1 console-file error was found in this session's error log.
+The same-date before/after saves show prestige600 to532, gold1472 to1472 and
+piety600 to600. The observed legal selector declaration spent68 prestige.
+
+This establishes a working legal selector control through the manually invoked
+native effect. The banned comparison and autonomous scheduling remain open.
+Target W2/AI4, baseline/result68/80+0/20, delta0.
+
+The prepared rw_ai1_compare.txt runs on a fresh reload of the initialized pre-war
+save. It samples the same fixture and adds the installed native debug opinion
+debug_hates_liege_opinion for seven days. Actual opinion must reach -25 before
+continuing. This explicit disposable fixture changes a political preference.
+The effect signature and modifier were checked in installed primary sources.
+
+The sequence requires the reject-all control to return failure before trying
+the banned law. Only a banned failure allows the legal fallback. A successful
+war or an unexpected reject-control success stops the sequence. Every query keeps
+the exact real CB, target and title filters. One diagnostic stage variable is
+initialized on entry, expires after one day and is included in cleanup.
+Eight generated console files are hash-verified. Eleven construction tests pass.
+The comparison is prepared for engine execution.

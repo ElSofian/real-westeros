@@ -54,7 +54,7 @@ class AIProbeTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             out = Path(tmp)/'new'
             receipt = probe.build(out)
-            self.assertEqual(7, len(receipt['files']))
+            self.assertEqual(8, len(receipt['files']))
             for name in receipt['files']:
                 self.assertTrue((out/name).read_bytes().startswith(b'\xef\xbb\xbf'))
             with self.assertRaises(ValueError):
@@ -95,6 +95,30 @@ class AIProbeTests(unittest.TestCase):
         for name, raw in probe.payload().items():
             if any(key in name for key in ('inspect', 'allowed', 'banned', 'reject')):
                 self.assertTrue(raw.decode('utf-8-sig').startswith(probe.REBIND))
+
+    def test_comparison_requires_negative_control_before_ban_and_stops_on_war(self):
+        text = probe.comparison()
+        self.assertEqual(3, text.count('ai_start_best_war ='))
+        self.assertLess(text.index('name = rw_ai1_compare_stage value = flag:unready'),
+                        text.index('global_var:rw_ai1_compare_stage = flag:hostile_ready'))
+        self.assertLess(text.index('RW_AI1 reject_begin'), text.index('RW_AI1 banned_begin'))
+        self.assertLess(text.index('RW_AI1 banned_begin'), text.index('RW_AI1 allowed_begin'))
+        for required in ('hostile_ready', 'reject_ok', 'banned_failure'):
+            self.assertIn('limit = { global_var:rw_ai1_compare_stage = flag:'+required+' }', text)
+        self.assertNotIn('limit = { global_var:rw_ai1_compare_stage = flag:reject_bad }', text)
+        self.assertNotIn('limit = { global_var:rw_ai1_compare_stage = flag:banned_success }', text)
+        self.assertEqual(1, text.count('add_opinion ='))
+        self.assertIn('modifier = debug_hates_liege_opinion days = 7', text)
+        self.assertIn('opinion = { target = liege value <= -25 }', text)
+        self.assertIn('remove_global_variable = rw_ai1_compare_stage', probe.CLEANUP)
+
+    def test_comparison_keeps_real_cb_filters_and_no_direct_war_or_means_grants(self):
+        text = clean_script(probe.comparison())[0]
+        self.assertEqual(3, text.count('cb = { claim_cb }'))
+        self.assertEqual(3, text.count('scope:target_character = global_var:rw_ai1_target'))
+        self.assertEqual(3, text.count('scope:target_title = global_var:rw_ai1_title'))
+        for forbidden in ('start_war =', 'end_war =', 'add_claim =', 'add_gold =', 'add_prestige =', 'run_interaction ='):
+            self.assertNotIn(forbidden, text)
 
 
 if __name__ == '__main__':

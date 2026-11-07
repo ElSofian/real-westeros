@@ -63,6 +63,7 @@ else = { debug_log = "RW_AI1 setup_refused" }
 CLEANUP = '''remove_global_variable = rw_ai1_actor
 remove_global_variable = rw_ai1_target
 remove_global_variable = rw_ai1_title
+remove_global_variable = rw_ai1_compare_stage
 debug_log = "RW_AI1 cleanup"
 '''
 INSPECT = '''# Extend only the exact existing diagnostic handles before a natural AI tick.
@@ -193,10 +194,53 @@ def payload():
     files.update({'rw_ai1_' + mode + '.txt': case(mode) for mode in ('allowed', 'banned', 'reject')})
     for name in ('rw_ai1_inspect.txt', 'rw_ai1_allowed.txt', 'rw_ai1_banned.txt', 'rw_ai1_reject.txt'):
         files[name] = REBIND + files[name]
+    files['rw_ai1_compare.txt'] = comparison()
     for text in files.values():
         if brace_errors(text):
             raise ValueError('Invalid original console script')
     return {name: ('\ufeff' + text).encode('utf-8') for name, text in files.items()}
+
+
+def comparison():
+    """One disposable matched comparison, stopping immediately on a bad control."""
+    fixture = '''set_global_variable = { name = rw_ai1_compare_stage value = flag:unready days = 1 }
+if = {
+    limit = {
+        exists = global_var:rw_ai1_actor
+        exists = global_var:rw_ai1_target
+        global_var:rw_ai1_actor = {
+            is_ai = yes is_alive = yes is_at_war = no
+            liege = global_var:rw_ai1_target.liege
+            has_claim_on = global_var:rw_ai1_title
+        }
+    }
+    # Disclosed seven-day native debug opinion in the disposable comparison only.
+    global_var:rw_ai1_actor = {
+        add_opinion = { target = liege modifier = debug_hates_liege_opinion days = 7 }
+        if = {
+            limit = { opinion = { target = liege value <= -25 } }
+            set_global_variable = { name = rw_ai1_compare_stage value = flag:hostile_ready days = 1 }
+            debug_log = "RW_AI1 compare_hostile_ready"
+        }
+        else = { debug_log = "RW_AI1 compare_hostility_failed" }
+    }
+}
+else = { debug_log = "RW_AI1 compare_fixture_failed" }
+'''
+    result = REBIND + fixture
+    stages = (
+        ('reject', 'hostile_ready', 'reject_bad', 'reject_ok'),
+        ('banned', 'reject_ok', 'banned_success', 'banned_failure'),
+        ('allowed', 'banned_failure', 'allowed_success', 'allowed_failure'),
+    )
+    for mode, required, success, failure in stages:
+        script = case(mode)
+        for outcome, stage in (('success', success), ('failure', failure)):
+            marker = 'debug_log = "RW_AI1 '+mode+'_'+outcome+'"'
+            script = script.replace(marker, marker+'\n                    set_global_variable = { name = rw_ai1_compare_stage value = flag:'+stage+' days = 1 }', 1)
+        result += '\nif = {\n    limit = { global_var:rw_ai1_compare_stage = flag:'+required+' }\n'+script+'\n}\n'
+    result += '\ndebug_log = "RW_AI1 compare_end"\n'
+    return result
 
 
 def build(output):

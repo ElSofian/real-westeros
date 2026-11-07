@@ -1,5 +1,11 @@
 # Development backlog
 
+**RW-004 legal selector control succeeds, 7 November:** initialized AI starts
+  authentic Leyton/Paxter claim_cb for d_the_arbor. Log and save agree. Next
+  comparison groups reject-all, banned and conditional legal fallback under a
+  disclosed temporary hostility fixture. Eleven construction tests pass, eight
+  run files hash-verified. W2/AI4 remain open, baseline/result68/80+0/20, delta0.
+
 **RW-010 service mode correction, 7 November:** observed wrong-type snapshot read
   corrected through literal immediate/deferred flags and unknown-mode rejection.
   Existing persisted flag modes retain their representation. Coercion/missing/
