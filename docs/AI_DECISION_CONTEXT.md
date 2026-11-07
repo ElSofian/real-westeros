@@ -1,5 +1,14 @@
 # Context and personality in political decisions
 
+## Current financial-repair extension
+
+AI_FINANCIAL_REPAIR.md weights seven existing compensation choices using the
+actual amount, own payer/recipient personality, own means/cooperation and
+same-case prior repair. Counter evaluates the toggled price. Receiving cash
+and acknowledging it remain distinct current frames. Existing transaction and
+personal-response effect hashes are preserved. Private trait review separates
+both roles and later appreciation. Source-only,AI3/N1 quality,74/80+0/20, delta0.
+
 ## Current client-response extension
 
 AI_CLIENT_BREACH_RESPONSES.md weights seven original-client choices with native

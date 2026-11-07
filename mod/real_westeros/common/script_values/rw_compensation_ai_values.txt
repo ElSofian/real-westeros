@@ -1,0 +1,196 @@
+﻿# Experimental own-party financial preferences. No new transaction effects.
+rw_ai_compensation_spend_25_factor = {
+    value = ai_greed
+    multiply = -1
+    divide = 400
+    add = 1
+    min = 0.5
+    max = 1.5
+}
+rw_ai_compensation_spend_50_factor = {
+    value = ai_greed
+    multiply = -1
+    divide = 200
+    add = 1
+    min = 0.5
+    max = 1.5
+}
+rw_ai_compensation_receive_25_factor = {
+    value = ai_greed
+    divide = 400
+    add = 1
+    min = 0.5
+    max = 1.5
+}
+rw_ai_compensation_conciliation_factor = {
+    value = ai_honor
+    add = ai_compassion
+    divide = 400
+    add = 1
+    min = 0.5
+    max = 1.5
+}
+# Value of the actual candidate amount to the deciding original party.
+# The provider always pays. Recipient cash acceptance does not require affection.
+rw_ai_compensation_price_25_factor = {
+    value = 0
+    if = {
+        limit = { rw_ai_compensation_case_context_trigger = yes }
+        if = {
+            limit = { rw_cc_context_trigger = yes scope:rw_service_provider = { gold >= 25 } }
+            add = 1
+            if = {
+                limit = { this = scope:rw_service_provider }
+                multiply = rw_ai_compensation_spend_25_factor
+                multiply = rw_ai_compensation_conciliation_factor
+                multiply = rw_ai_cooperation_factor
+                if = { limit = { gold < 50 } multiply = 0.5 }
+                if = { limit = { scope:rw_case_record = { var:rw_case_result = flag:repaired } } multiply = 0.75 }
+            }
+            else = {
+                multiply = rw_ai_compensation_receive_25_factor
+                if = { limit = { gold < 25 } multiply = 1.25 }
+                if = { limit = { scope:rw_case_record = { var:rw_case_result = flag:repaired } } multiply = 1.25 }
+            }
+        }
+    }
+}
+rw_ai_compensation_price_50_factor = {
+    value = 0
+    if = {
+        limit = { rw_ai_compensation_case_context_trigger = yes }
+        if = {
+            limit = { rw_cc_context_trigger = yes scope:rw_service_provider = { gold >= 50 } }
+            add = 1
+            if = {
+                limit = { this = scope:rw_service_provider }
+                multiply = rw_ai_compensation_spend_50_factor
+                multiply = rw_ai_compensation_conciliation_factor
+                multiply = rw_ai_cooperation_factor
+                multiply = 0.75
+                if = { limit = { gold < 100 } multiply = 0.5 }
+                if = { limit = { scope:rw_case_record = { var:rw_case_result = flag:repaired } } multiply = 0.75 }
+            }
+            else = {
+                multiply = rw_ai_paid_reward_factor
+                multiply = 1.25
+                if = { limit = { gold < 50 } multiply = 1.25 }
+            }
+        }
+    }
+}
+rw_ai_compensation_propose_25_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_compensation_case_context_trigger = yes }
+        if = {
+            limit = { rw_cc_can_propose_trigger = yes }
+            add = 2
+            multiply = rw_ai_compensation_price_25_factor
+            if = {
+                limit = { this = scope:rw_service_client }
+                if = { limit = { rw_ai_trusted_counterpart_trigger = yes } multiply = 1.25 }
+                if = { limit = { rw_ai_hostile_counterpart_trigger = yes } multiply = 0.75 }
+            }
+        }
+    }
+}
+rw_ai_compensation_propose_50_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_compensation_case_context_trigger = yes }
+        if = {
+            limit = { rw_cc_can_propose_trigger = yes }
+            add = 1
+            multiply = rw_ai_compensation_price_50_factor
+            if = {
+                limit = { this = scope:rw_service_client }
+                if = { limit = { rw_ai_trusted_counterpart_trigger = yes } multiply = 0.75 }
+                if = { limit = { rw_ai_hostile_counterpart_trigger = yes } multiply = 1.25 }
+                if = { limit = { scope:rw_case_record = { var:rw_case_result = flag:repaired } } multiply = 0.5 }
+            }
+        }
+    }
+}
+rw_ai_compensation_accept_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_compensation_quote_context_trigger = yes }
+        if = {
+            limit = { rw_cc_can_settle_trigger = yes }
+            add = 60
+            if = { limit = { scope:rw_cc_price = 25 } multiply = rw_ai_compensation_price_25_factor }
+            else = { multiply = rw_ai_compensation_price_50_factor }
+        }
+    }
+}
+rw_ai_compensation_counter_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_compensation_quote_context_trigger = yes }
+        if = {
+            limit = { rw_cc_responder_trigger = yes }
+            add = 10
+            # Score the toggled amount, not the currently displayed quotation.
+            if = { limit = { scope:rw_cc_price = 25 } multiply = rw_ai_compensation_price_50_factor }
+            else = { multiply = rw_ai_compensation_price_25_factor }
+            if = {
+                limit = {
+                    OR = {
+                        AND = { this = scope:rw_service_provider scope:rw_cc_price = 50 }
+                        AND = { this = scope:rw_service_client scope:rw_cc_price = 25 }
+                    }
+                }
+                multiply = 1.5
+                if = {
+                    limit = { this = scope:rw_service_client scope:rw_case_record = { var:rw_case_result = flag:repaired } }
+                    multiply = 0.5
+                }
+            }
+            else = {
+                multiply = 0.5
+                if = {
+                    limit = { this = scope:rw_service_client }
+                    multiply = rw_ai_compensation_spend_25_factor
+                    multiply = rw_ai_client_compassion_factor
+                    multiply = rw_ai_cooperation_factor
+                }
+            }
+            if = { limit = { scope:rw_service_provider = { gold < scope:rw_cc_price } } multiply = 2 }
+        }
+    }
+}
+rw_ai_compensation_close_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_compensation_quote_context_trigger = yes }
+        if = {
+            limit = { rw_cc_can_close_trigger = yes }
+            add = 10
+            if = { limit = { NOT = { rw_cc_offer_live_trigger = yes } } multiply = 4 }
+            else_if = { limit = { scope:rw_service_provider = { gold < 25 } } multiply = 4 }
+            if = { limit = { rw_ai_hostile_counterpart_trigger = yes } multiply = 1.25 }
+            if = { limit = { rw_ai_trusted_counterpart_trigger = yes } multiply = 0.75 }
+        }
+    }
+}
+# Receipt of gold and personal appreciation are separate decisions.
+rw_ai_compensation_appreciate_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_compensation_response_context_trigger = yes }
+        add = 50
+        multiply = rw_ai_client_forgiveness_factor
+        multiply = rw_ai_client_compassion_factor
+        if = { limit = { opinion = { target = scope:rw_service_provider value < -25 } } multiply = 0.5 }
+    }
+}
+rw_ai_compensation_note_weight = {
+    value = 0
+    if = {
+        limit = { rw_ai_compensation_response_context_trigger = yes }
+        add = 50
+        multiply = rw_ai_client_resentment_factor
+        divide = rw_ai_client_compassion_factor
+    }
+}
