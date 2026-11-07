@@ -7,7 +7,7 @@ Elle suit le prestataire lorsqu'il décide de tenir une promesse de soutien publ
 ou de rompre/renoncer. **Static-checked**. Validation moteur en attente.
 
 Le relevé privé `--promise-review` donne les directions actuelles, trait par trait,
-pour les quatre options et leurs branches de rémunération. Les questions
+pour les six choix actuels et leurs branches de rémunération. Les questions
 contextuelles ci-dessous identifient les règles encore à développer. Aucun poids
 de gameplay n'est ajouté par cette revue initiale. AI_PROMISE_TIMING.md décrit
 l'extension suivante, maintenant codée et statiquement vérifiée, pour l'énergie,
@@ -101,7 +101,7 @@ passée par les revenus ou dépenses ne doit pas être recomptée comme un trans
 Ces profils ne lisent directement ni les six compétences, ni un âge numérique,
 ni la santé, ni le stress. Leurs autres effets restent à examiner.
 
-Le décideur est toujours le prestataire dans les quatre profils. Les réactions
+Le décideur est toujours le prestataire dans les six profils. Les réactions
 du client, notamment pardonner, exprimer une rancune ou saisir un médiateur,
 nécessitent une politique distincte. Les traits d'un conjoint ne remplacent pas
 la personnalité du décideur.
