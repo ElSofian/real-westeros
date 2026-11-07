@@ -12,13 +12,36 @@ rw_dl_capture_effect = {
             save_scope_as = rw_dl_issuer
             primary_title = { save_scope_as = rw_dl_authority }
         }
-        save_scope_value_as = { name = rw_dl_ban value = flag:none }
+        # Direct hierarchy as observed in the native callback, not a geographic
+        # border or an inferred identity for the holder of a claimed title.
+        save_scope_value_as = { name = rw_dl_peer_relation value = flag:different_liege }
+        if = {
+            limit = {
+                exists = scope:defender.liege
+                scope:attacker.liege = scope:defender.liege
+            }
+            save_scope_value_as = { name = rw_dl_peer_relation value = flag:same_liege }
+        }
+        save_scope_value_as = { name = rw_dl_rule value = flag:none }
         if = {
             limit = { scope:rw_dl_issuer = { has_realm_law_flag = vassal_all_wars_banned } }
-            save_scope_value_as = { name = rw_dl_ban value = flag:all }
+            save_scope_value_as = { name = rw_dl_rule value = flag:all }
         }
         else_if = {
             limit = { scope:rw_dl_issuer = { has_realm_law_flag = vassal_internal_wars_banned } }
+            save_scope_value_as = { name = rw_dl_rule value = flag:internal }
+        }
+        # Keep the authority's rule and its applicability as separate facts.
+        save_scope_value_as = { name = rw_dl_ban value = flag:none }
+        if = {
+            limit = { scope:rw_dl_rule = flag:all }
+            save_scope_value_as = { name = rw_dl_ban value = flag:all }
+        }
+        else_if = {
+            limit = {
+                scope:rw_dl_rule = flag:internal
+                scope:rw_dl_peer_relation = flag:same_liege
+            }
             save_scope_value_as = { name = rw_dl_ban value = flag:internal }
         }
         save_scope_value_as = { name = rw_dl_gate value = flag:no_ban }
@@ -75,6 +98,8 @@ rw_dl_capture_effect = {
                         set_variable = { name = rw_dl_issuer value = scope:rw_dl_issuer }
                         set_variable = { name = rw_dl_authority value = scope:rw_dl_authority }
                         set_variable = { name = rw_dl_seen_on value = current_date }
+                        set_variable = { name = rw_dl_peer_relation value = scope:rw_dl_peer_relation }
+                        set_variable = { name = rw_dl_rule value = scope:rw_dl_rule }
                         set_variable = { name = rw_dl_ban value = scope:rw_dl_ban }
                         set_variable = { name = rw_dl_gate value = scope:rw_dl_gate }
                         set_variable = { name = rw_dl_retained value = flag:yes days = 365 }

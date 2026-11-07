@@ -1518,3 +1518,11 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   refusal before effects, one-time native costs and exact target binding. Repeat
   after reload and swap player/AI roles. Source mutations in the assembly tests
   are static evidence; record actual engine observations separately.
+
+- Territorial law capture. Compare same-liege and different-liege feudal claim
+  wars and an independent defender, under no/internal/all bans and native contract
+  exceptions. Compare the attacker's direct authority law with a different higher
+  crown/defender law. Verify actual native attacker/defender/title roles, one-time
+  same_liege/different_liege archive, retention, legacy missing metadata and reload.
+  New capture contexts are not engine-tested; cross-liege defiance and response
+  routing remain separate development work. General royal peace is deferred.

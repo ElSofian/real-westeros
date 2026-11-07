@@ -1,5 +1,11 @@
 # W1 — Qualification source de la loi à la déclaration
 
+**Extension ultérieure de la lecture territoriale.**
+[G1_TERRITORIAL_LAW.md](G1_TERRITORIAL_LAW.md) décrit les nouveaux contextes de
+capture, encore non testés dans CK3. La qualification et les empreintes ci-dessous
+correspondent à la version antérieure observée. Les anciennes archives sont
+conservées. Le score courant reste80/80 source et0/20 campagne, delta0.
+
 Revue du 7 novembre 2026 sur le code de `15fcec34204377a9c930a392f13460d1b3f7dcc9`.
 W1 est qualifié en source pour le chemin livré de revendication entre pairs
 féodaux. Développement **74 → 76/80**, campagne finale **0/20**, delta **+2**.
