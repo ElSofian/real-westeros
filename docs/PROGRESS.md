@@ -1,5 +1,16 @@
 # Progress
 
+- RW-010 corrects the service mode snapshot after CK3 reported a wrong-type flag
+  read. Literal enum branches preserve immediate/deferred event identity, with
+  missing/unknown mode rejection and stored-value compatibility. Target N1/O1
+  reliability, baseline68/80 source+0/20 campaign. Focused service/deferred tests
+  pass, including coercion, guard and branch mutations. Engine retest is pending
+  the final campaign. Delta0, score68/100. Related flag-variable snapshots in the
+  favor and archive systems remain to audit separately.
+  Historical gold-debit evidence retains its original hashes through a checked
+  inverse of the later mode edit. Its negative test rejects unrecorded edits and
+  a nonreversible update. Focused service/deferred/debit tests pass (38 total).
+
 - RW-004 audit identifies the failed control predicate: eleven checks pass,
   hostility fails, native legality remains true. Removed hostility only from
   legal/reject diagnostic controls; banned preference and production unchanged.
