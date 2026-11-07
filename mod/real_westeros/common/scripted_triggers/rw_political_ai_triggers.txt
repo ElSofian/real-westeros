@@ -39,3 +39,34 @@ rw_ai_existing_commitment_trigger = {
         has_character_flag = rw_fv_obligation
     }
 }
+
+# Guard the complete saved decision frame before calling family validation.
+rw_ai_gold_promise_context_trigger = {
+    trigger_if = {
+        limit = {
+            exists = scope:rw_service_provider
+            exists = scope:rw_service_client
+            exists = scope:rw_service_serial
+            exists = scope:rw_service_revision
+            exists = scope:rw_service_price
+            exists = scope:rw_service_mode
+            exists = scope:rw_service_decision_serial
+        }
+        this = scope:rw_service_provider
+    }
+    trigger_else = { always = no }
+}
+rw_ai_favor_promise_context_trigger = {
+    trigger_if = {
+        limit = {
+            exists = scope:rw_fv_provider
+            exists = scope:rw_fv_client
+            exists = scope:rw_fv_serial
+            exists = scope:rw_fv_revision
+            exists = scope:rw_fv_term
+            exists = scope:rw_fv_mode
+        }
+        this = scope:rw_fv_provider
+    }
+    trigger_else = { always = no }
+}

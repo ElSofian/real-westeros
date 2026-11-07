@@ -220,7 +220,7 @@ class DeferredFavorTests(unittest.TestCase):
         i=(MOD/'common/character_interactions/rw_favor_service_interactions.txt').read_text()
         self.assertIn('rw_offer_deferred_favor_endorsement_interaction = {',i)
         self.assertEqual(2,i.count('ai_targets = { ai_recipients = liege }'))
-        self.assertIn('has_trait = honest',self.v)
+        self.assertIn('add = rw_ai_favor_promise_perform_weight',self.v)
 
     def test_bom_localizations_cover_new_consent_status_and_timing(self):
         keys=set(re.findall(r'(?:name|desc)\s*=\s*(rw_deferred_favor\.[\w.]+)',self.v))

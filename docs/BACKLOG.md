@@ -1,5 +1,13 @@
 # Development backlog
 
+**RW-010 comprehensive AI context, owner direction 7 November:** every action
+  family must review relevant known personality, interests, means, relationships,
+  norms, timing and expected consequences. Initiator/beneficiary roles remain
+  distinct. AI_DECISION_CONTEXT.md records coverage and remaining work. The first
+  profile covers four gold/favor promise choices through native combined honor/
+  greed, current means and own counterpart opinion. Seven source regressions
+  pass. Runtime validation remains grouped. Source74/80, campaign0/20, delta0.
+
 **RW-010 contextual-AI prerequisite, 7 November:** favor/gold terms and immediate/
   deferred snapshots retain their flag types, including legacy mode-less offers.
   Malformed fields fail closed, review guards absent schema/client. Native

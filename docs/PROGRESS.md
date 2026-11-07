@@ -1,5 +1,15 @@
 # Progress
 
+- RW-010 first comprehensive-context refinement. GAME_DESIGN.md and
+  AI_DECISION_CONTEXT.md record the owner's requirement across all families and
+  the remaining coverage review. Four promise-provider choices now combine
+  native honor/greed axes, current quote/means, own counterpart opinion and
+  validated party/commitment context. Event action graphs are preserved after
+  stripping AI weights. Seven adversarial policy tests pass. Target AI3/O1
+  quality, baseline/result74/80+0/20, delta0. Engine behavior remains unverified
+  for these new weights. Next review is effective political-risk weighting for
+  defiance and the other action families in the coverage matrix.
+
 - RW-010 prerequisite for broader AI policy. Favor-service snapshots now carry
   term/mode enums through literal flags, preserving legacy immediate offers and
   rejecting malformed fields. Review guards missing schema/client. Source
