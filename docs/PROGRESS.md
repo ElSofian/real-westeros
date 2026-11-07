@@ -1,5 +1,18 @@
 # Progress
 
+- RW-004 W4. Fixed a terminal lookup gap after leadership transfer by examining
+  the exact war's other participants as well as its callback attacker. Original
+  owner/attacker/war/schema/serial and first-callback guards remain in a shared
+  worker. Normalized operations match the earlier closure body. Twelve lifecycle
+  tests pass, including two new regressions. Actual pinned native claim inversion,
+  structural and telemetry checks pass. Full CI and committed ZIP evidence are in
+  the PR. Native Mega Wars story/actions remain untouched; source receipt records
+  the audit and documented participant iterator. Experimental participant path is
+  not engine-tested. Earlier white-peace/refusal observations cover the previous
+  closure implementation. Baseline76/80 source +0/20 campaign; result78/80 +0/20,
+  actual delta+2 for W4 integration. Next W5. Extend WARLIFE-04/06 with transferred
+  original participants, side changes, foreign receipts and participant-count cost.
+
 - RW-004 W1 source assessment. Existing original law scripts and native-helper
   inverse preservation qualify the supported feudal-peer claim path. Exact links
   in prior player/ordinary AI saves establish capture before response linkage in

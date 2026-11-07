@@ -18,6 +18,9 @@
         ],
         "on_defeat": [
           748
+        ],
+        "agot_mw_war_valid_during_megawar": [
+          50
         ]
       },
       "supports": "Four native callback blocks only; callback labels are not observed game outcomes"
@@ -34,6 +37,51 @@
         ]
       },
       "supports": "Classification helper uses root and global ruler/story traversal; not invoked or overridden by local receipt maintenance"
+    },
+    {
+      "path": "AGOT/common/story_cycles/agot_story_cycle_mega_wars.txt",
+      "sha256": "5fb6b17534e7c46d3b24a56190fd9c380e5e28d94f4d7450612acecbed4bd6b5",
+      "markers": {
+        "mw_outcome": [
+          617,
+          694,
+          705,
+          722,
+          776,
+          790
+        ],
+        "mw_linked_war_status": [
+          710
+        ]
+      },
+      "supports": "Native daily fallback and story lifecycle remain owned by AGOT; no RW override"
+    },
+    {
+      "path": "AGOT/common/on_action/agot_on_actions/agot_war_on_actions.txt",
+      "sha256": "92bc772f325eeb30e531be42d8fb6cd6a2d5ffe1cb0ac5ae4f422472d71d4919",
+      "markers": {
+        "on_war_started =": [
+          7
+        ],
+        "on_war_transferred =": [
+          56
+        ],
+        "on_war_invalidated =": [
+          47
+        ]
+      },
+      "supports": "Native war and transfer hooks remain untouched by the G1 adapter"
+    },
+    {
+      "path": "Engine-generated/effects.log",
+      "sha256": "83bec80303576bc4b3bc3180ce23044a64f16215da4f604081cebedf81fcd05b",
+      "markers": {
+        "every_war_participant -": [
+          13877
+        ]
+      },
+      "supports": "Documented war-scope iterator targets characters; callback availability and performance still require engine observation"
     }
-  ]
+  ],
+  "participant_closure_review": "Original owner may remain a participant after leadership/side changes; exact-war participant closure is source-checked, NOT engine-tested"
 }

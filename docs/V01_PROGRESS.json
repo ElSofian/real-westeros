@@ -2,7 +2,7 @@
   "schema": 1,
   "metric_version": "v0.1-plan-1",
   "scope": "Préparation de la première version intégrée couvrant les huit systèmes ; pas la vision finale illimitée ni un pourcentage d’effort.",
-  "assessed_commit": "15fcec34204377a9c930a392f13460d1b3f7dcc9",
+  "assessed_commit": "f5f91d722b47c6102e796bb2b85b2d580e468970",
   "lots": [
     {
       "id": "W",
@@ -65,14 +65,16 @@
           "id": "W4",
           "points": 2,
           "acceptance": "Intégration du nouveau chemin aux cycles guerre/Mega Wars et à leur clôture",
-          "status": "open",
+          "status": "source_complete",
           "evidence": [
             "docs/G1_WAR_RECEIPT_LIFECYCLE.md",
             "docs/G1_LIFECYCLE_SOURCE_RECEIPT.json",
+            "docs/G1_FIRST_ENGINE_TRIAL.md",
             "mod/real_westeros/common/scripted_effects/rw_war_lifecycle_effects.txt",
             "mod/real_westeros/common/scripted_triggers/rw_unlawful_war_choice_triggers.txt",
             "mod/real_westeros/common/story_cycles/rw_unlawful_war_responses.txt",
-            "tools/build_g1_native_choice.py"
+            "tools/build_g1_native_choice.py",
+            "tests/test_war_receipt_lifecycle.py"
           ]
         },
         {
@@ -1775,6 +1777,54 @@
       "score": 76,
       "reference": "15fcec34204377a9c930a392f13460d1b3f7dcc9",
       "note": "W1 qualifié en source sur la capture existante au préfixe natif de déclaration et le helper intégral réversible conservant les exceptions. Les liens exacts observés chez le joueur et deux IA établissent que la capture précède la liaison royale dans ces parcours. Les trois fichiers de loi courants correspondent au reçu PRIVATE0.0.6 observé. Deux régressions fixent les branches de qualification et la copie historique unique. Le crédit porte sur cette implémentation et ces preuves existantes. Les contrats, hameçons, changements de loi et autres contextes restent à tester dans la campagne groupée. W4/W5 et V1–V5 restent ouverts. +2, développement76/80, campagne0/20. Barème et checkpoints antérieurs conservés."
+    },
+    {
+      "date": "2026-11-07",
+      "kind": "delivery",
+      "metric_version": "v0.1-plan-1",
+      "rubric_sha256": "208683d72c20fab7012c2cdf76621a8ee7d3f0bbc0448e7c73238ea4f4dff2e9",
+      "completed": [
+        "P1",
+        "P2",
+        "P3",
+        "N1",
+        "N2",
+        "N3",
+        "O1",
+        "O2",
+        "O3",
+        "O5",
+        "J1",
+        "I1",
+        "I2",
+        "I4",
+        "M1",
+        "M2",
+        "M3",
+        "AI1",
+        "AI2",
+        "AI3",
+        "J2",
+        "M4",
+        "O4",
+        "I3",
+        "M5",
+        "P4",
+        "N4",
+        "N5",
+        "J3",
+        "AI5",
+        "W3",
+        "J5",
+        "J4",
+        "W2",
+        "AI4",
+        "W1",
+        "W4"
+      ],
+      "score": 78,
+      "reference": "f5f91d722b47c6102e796bb2b85b2d580e468970",
+      "note": "W4 source qualifié après correction de la recherche terminale des dossiers du déclarant initial encore participant après transfert de commandement ou de camp. Visite de la guerre exacte, propriétaire/attaquant initial et anti-rejeu conservés par un effet partagé; opérations normalisées identiques au corps antérieur. Inversion du vrai claim_cb et audit des actions/histoires Mega Wars natives, itérateur documenté du moteur. Deux régressions ajoutées. Paix blanche/refus observés sur le corps antérieur; nouvelle visite des participants, transferts et Mega Wars non testés dans CK3. WARLIFE reste groupé, W5 et V1–V5 ouverts. +2, développement78/80,campagne0/20. Barème et historique conservés."
     }
   ]
 }
