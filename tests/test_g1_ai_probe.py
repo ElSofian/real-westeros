@@ -54,7 +54,7 @@ class AIProbeTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             out = Path(tmp)/'new'
             receipt = probe.build(out)
-            self.assertEqual(8, len(receipt['files']))
+            self.assertEqual(9, len(receipt['files']))
             for name in receipt['files']:
                 self.assertTrue((out/name).read_bytes().startswith(b'\xef\xbb\xbf'))
             with self.assertRaises(ValueError):
@@ -119,6 +119,20 @@ class AIProbeTests(unittest.TestCase):
         self.assertEqual(3, text.count('scope:target_title = global_var:rw_ai1_title'))
         for forbidden in ('start_war =', 'end_war =', 'add_claim =', 'add_gold =', 'add_prestige =', 'run_interaction ='):
             self.assertNotIn(forbidden, text)
+
+    def test_autonomous_observation_only_prepares_fixture_without_starting_a_war(self):
+        text = clean_script(probe.AUTONOMY)[0]
+        for forbidden in ('ai_start_best_war', 'start_war =', 'run_interaction =', 'trigger_event =',
+                          'on_action', 'add_claim =', 'add_gold =', 'add_prestige =', 'change_variable ='):
+            self.assertNotIn(forbidden, text)
+        self.assertIn('is_ai = yes', text)
+        self.assertIn('is_at_war = no', text)
+        self.assertIn('has_claim_on = global_var:rw_ai1_title', text)
+        self.assertIn('add_realm_law = crown_authority_2', text)
+        self.assertIn('modifier = debug_hates_liege_opinion days = 365', text)
+        self.assertIn('rw_uw_ai_default_defiance_trigger = yes', text)
+        self.assertTrue(text.lstrip().startswith('hidden_effect = {'))
+        self.assertTrue(probe.comparison().startswith('hidden_effect = {'))
 
 
 if __name__ == '__main__':

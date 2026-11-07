@@ -1,14 +1,18 @@
 # Suivi de la première version intégrée — v0.1-plan-1
 
-**Développement : 68/80 · Validation en jeu : 0/20 · Total : 68/100 (+2 J4 source).**
-Il reste **cinq critères source ouverts, totalisant 12 points** : W1/W2/W4/W5 et AI4.
+**Développement : 74/80 · Validation en jeu : 0/20 · Total : 74/100 (+6 W2/AI4).**
+Il reste **trois critères source ouverts, totalisant 6 points** : W1/W4/W5.
+[L'observation autonome](G1_AI_AUTONOMY.md) confirme deux guerres de revendication
+initiées par des IA sous interdiction, avec choix de défi et dossiers royaux.
+Elle lève le doute sur l'accès IA du chemin livré et complète l'audit des entrées
+de guerre, justice et négociation. W2 et AI4 sont qualifiés en source.
 [J4](INSTITUTIONAL_HOUSE_FORFEITURE.md) livre une campagne institutionnelle de
 confiscation après les quatre acquisitions ordinaires G3 ; droits/coûts/refus
 natifs préservés, aucun veto universel ou garantie d'absence de terres.
 [J5](POST_CONFISCATION_RESTITUTION.md) livre le retour réel ducal après confiscation,
 pas une restauration universelle des maisons sans terre, descendants ou noblesse.
-G3 moteur reste ouvert. Source expérimentale, aucune compatibilité moteur démontrée ;
-campagne finale maintenue.
+G3 moteur reste ouvert. Les observations G1 ciblées sont documentées. La campagne
+finale conserve ses critères V1–V5 et ses scénarios complets.
 Vitesse encore non mesurable : moins de sept jours de recul sur cette grille.
 
 Relevé initial : **1 novembre 2026, 38/100**, évalué sur le code de
@@ -28,18 +32,19 @@ coût. Les trois scénarios initiaux ne limitent pas le périmètre ; le catalog
 
 | Système | Points acquis | Poids |
 |---|---:|---:|
-| Liberté, légalité et guerres | 2 | 12 |
+| Liberté, légalité et guerres | 6 | 12 |
 | Affaires politiques | 8 | 8 |
 | Négociation | 10 | 10 |
 | Promesses et obligations | 10 | 10 |
-| Justice et sanctions | 10 | 12 |
+| Justice et sanctions | 12 | 12 |
 | Information et preuves | 8 | 8 |
 | Mémoire politique | 10 | 10 |
-| IA politique | 8 | 10 |
+| IA politique | 10 | 10 |
 | Validation finale CK3/AGOT | 0 | 20 |
 
 Les critères « source » ci-dessous sont implémentés expérimentalement et vérifiés
-statiquement, **pas démontrés dans CK3**. Les points moteur sont indépendants.
+statiquement. Les observations CK3 ciblées figurent dans leurs preuves. Les points
+de campagne moteur sont comptabilisés séparément.
 Un diagnostic privé, une fenêtre native ouverte ou une réhabilitation politique ne
 valident respectivement ni une guerre illégale livrée, ni une sanction exécutée,
 ni une restauration après confiscation. Les gardes et contrôles existants restent
@@ -57,7 +62,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 | ID | Points | Critère de fin | État / preuve principale |
 |---|---:|---|---|
 | W1 | 2 | Qualification de la loi au moment de l’acte et exceptions natives dans le mod livré | Préparation source : [G1_DECLARATION_LAW_CONTEXT.md](G1_DECLARATION_LAW_CONTEXT.md) ; ordre moteur non démontré, critère ouvert |
-| W2 | 4 | Déclaration malgré l’interdit avec vrai CB, contexte exact, coûts, annulation et accès joueur/IA | À développer / valider |
+| W2 | 4 | Déclaration malgré l’interdit avec vrai CB, contexte exact, coûts, annulation et accès joueur/IA | Source qualifiée et observations ciblées : [chemin natif autonome](G1_AI_AUTONOMY.md), [parcours joueur](G1_FIRST_ENGINE_TRIAL.md) |
 | W3 | 2 | Réaction royale discrétionnaire : intervention, sanction ou abstention selon le contexte | Source seulement : [G1_NATIVE_INTERVENTION.md](G1_NATIVE_INTERVENTION.md), [rw_unlawful_war_intervention_effects.txt](../mod/real_westeros/common/scripted_effects/rw_unlawful_war_intervention_effects.txt) |
 | W4 | 2 | Intégration du nouveau chemin aux cycles guerre/Mega Wars et à leur clôture | À développer / valider |
 | W5 | 2 | Gardes et tests négatifs du chemin livré, distinct du diagnostic privé | À développer / valider |
@@ -127,7 +132,7 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 | AI1 | 2 | Actions implémentées : coûts et gardes partagés, raccourcis humains explicitement bornés | Source seulement : [RW010_FAVOR_SERVICE.md](RW010_FAVOR_SERVICE.md), [rw_favor_service_effects.txt](../mod/real_westeros/common/scripted_effects/rw_favor_service_effects.txt) |
 | AI2 | 2 | Ciblage borné, occasions réactives et délais anti-spam sans parcours global des paires | Source seulement : [RW010_FAVOR_SERVICE.md](RW010_FAVOR_SERVICE.md), [rw_favor_service_interactions.txt](../mod/real_westeros/common/character_interactions/rw_favor_service_interactions.txt) |
 | AI3 | 2 | Politique contextuelle partagée par deux familles avec au moins trois facteurs : enjeux, risques, moyens, savoir ou obligations | Source seulement : [RW010_CONTEXTUAL_AI.md](RW010_CONTEXTUAL_AI.md), [rw_political_ai_values.txt](../mod/real_westeros/common/script_values/rw_political_ai_values.txt) |
-| AI4 | 2 | Chemins autonomes IA↔IA à travers guerre, justice et négociation | À développer / valider |
+| AI4 | 2 | Chemins autonomes IA↔IA à travers guerre, justice et négociation | Source qualifiée : [audit des trois entrées et initiative de guerre observée](G1_AI_AUTONOMY.md) ; justice/négociation vérifiées statiquement |
 | AI5 | 2 | Instrumentation effective des décisions, abus et performances, prête pour la campagne finale | Source seulement : [RW010_TELEMETRY.md](RW010_TELEMETRY.md), [rw_telemetry_effects.txt](../mod/real_westeros/common/scripted_effects/rw_telemetry_effects.txt) |
 
 ### V — Validation finale CK3/AGOT
@@ -143,8 +148,8 @@ le critère est rempli. La qualification est une revue humaine explicite du code
 ## Prochain ordre de travail
 
 **Direction courante :** suivre [V01_REMAINING_WORK.md](V01_REMAINING_WORK.md) :
-J4 et J5 disposent de leurs voies source, sans preuve moteur ; restent les cinq
-critères de guerre/AI4. Chercher un défaut concret ou une preuve levant un blocage
+J4 et J5 disposent de leurs voies source, sans preuve moteur ; restent W1/W4/W5.
+W2/AI4 utilisent désormais la voie native observée. Chercher un défaut concret ou une preuve levant un blocage
 du candidat de guerre ; sinon préparer la campagne groupée, sans variantes qui
 ne terminent aucun critère.
 Les étapes ci-dessous conservent l’historique des livraisons et dépendances.

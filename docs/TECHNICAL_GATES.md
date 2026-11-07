@@ -2,7 +2,10 @@
 
 **Current owner direction: G1 is restored to todo for the war-feature stage, not the immediate priority. Resolve it before shipping unlawful-war gameplay; independent development can continue.**
 
-**Status: none engine-tested.** AGOT script extracts were audited from an AGOT 0.5.2.1 installation descriptor reporting CK3 support for 1.19.0.6. The actual CK3 executable version and installed DLC set were not verified.
+**Partial engine observations are recorded for CK3 1.19.0.6 and AGOT 0.5.2.1.**
+G1_FIRST_ENGINE_TRIAL.md records the bounded player declaration and royal-response
+cases. G1_AI_AUTONOMY.md records two ordinary AI declarations despite the internal
+war ban. The full G1–G5 gates and campaign criteria remain open.
 
 | Gate | Need to demonstrate | Failure risk |
 |---|---|---|

@@ -120,6 +120,45 @@ AUDIT = '\n'.join('if = { limit = { '+trigger+' } debug_log = "RW_AI1 check_'+na
 INSPECT = INSPECT.replace('global_var:rw_ai1_actor = {\n',
                           'global_var:rw_ai1_actor = {\n'+AUDIT+'\n', 1)
 
+# Prepare a disposable observation of the ordinary scheduler. This file contains
+# no selector query or declaration call.
+AUTONOMY = '''hidden_effect = {
+REBIND
+if = {
+    limit = {
+        exists = global_var:rw_ai1_actor
+        exists = global_var:rw_ai1_target
+        exists = global_var:rw_ai1_title
+        global_var:rw_ai1_actor = {
+            is_ai = yes is_alive = yes is_adult = yes is_landed = yes
+            is_imprisoned = no is_at_war = no
+            has_claim_on = global_var:rw_ai1_title
+            liege = global_var:rw_ai1_target.liege
+        }
+    }
+    global_var:rw_ai1_actor = {
+        add_opinion = { target = liege modifier = debug_hates_liege_opinion days = 365 }
+        liege = {
+            if = {
+                limit = { NOT = { has_realm_law = crown_authority_2 } }
+                add_realm_law = crown_authority_2
+            }
+        }
+        save_scope_as = actor
+        global_var:rw_ai1_target = { save_scope_as = recipient }
+        save_scope_value_as = { name = hook value = no }
+        save_scope_value_as = { name = rw_uw_defy value = no }
+        if = {
+            limit = { rw_uw_ai_default_defiance_trigger = yes }
+            debug_log = "RW_AI1 autonomous_ready"
+        }
+        else = { debug_log = "RW_AI1 autonomous_preference_failed" }
+    }
+}
+else = { debug_log = "RW_AI1 autonomous_fixture_failed" }
+}
+'''.replace('REBIND', REBIND)
+
 
 def case(mode):
     if mode not in ('allowed', 'banned', 'reject'):
@@ -195,6 +234,7 @@ def payload():
     for name in ('rw_ai1_inspect.txt', 'rw_ai1_allowed.txt', 'rw_ai1_banned.txt', 'rw_ai1_reject.txt'):
         files[name] = REBIND + files[name]
     files['rw_ai1_compare.txt'] = comparison()
+    files['rw_ai1_autonomous.txt'] = AUTONOMY
     for text in files.values():
         if brace_errors(text):
             raise ValueError('Invalid original console script')
@@ -240,7 +280,7 @@ else = { debug_log = "RW_AI1 compare_fixture_failed" }
             script = script.replace(marker, marker+'\n                    set_global_variable = { name = rw_ai1_compare_stage value = flag:'+stage+' days = 1 }', 1)
         result += '\nif = {\n    limit = { global_var:rw_ai1_compare_stage = flag:'+required+' }\n'+script+'\n}\n'
     result += '\ndebug_log = "RW_AI1 compare_end"\n'
-    return result
+    return 'hidden_effect = {\n' + result + '}\n'
 
 
 def build(output):

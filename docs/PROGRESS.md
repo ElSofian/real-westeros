@@ -1,5 +1,22 @@
 # Progress
 
+- RW-004 ordinary AI initiative is observed in two Dorne claim wars. Nymella and
+  Taubert used the native defiance acceptance path under Doran's internal ban,
+  with linked law/royal stories and next-day dispatch attempts. Leyton stayed
+  peaceful. G1_AI_AUTONOMY.md records exact identities, dates, before/after hashes,
+  setup provenance and limits. The twelve fixture tests and full1100-test suite
+  pass. Source review closes W2(+4) and AI4(+2), including the existing justice/
+  negotiation entries. Baseline68/80+0/20 becomes74/80+0/20, delta+6. Frozen rubric
+  and earlier checkpoints retained. Next source priorities are W1/W4/W5.
+
+- RW-004 banned comparison succeeds after reject-all control. Genuine claim_cb,
+  correct parties/title,68prestige, internal/permission_required law receipt and
+  native_choice_accept royal record confirmed in the save. Hash and preview-stage
+  errors recorded in G1_AI_PLANNER_PROBE.md. Prepared a pure fixture for ordinary
+  autonomous observation,365-day disclosed debug hostility, no selector call.
+  Twelve construction tests pass. Additional scheduling awaits that observation.
+  Baseline/result68/80+0/20, delta0. Installed gameplay remains PRIVATE0.0.6.
+
 - RW-004 initialized legal selector control succeeds in CK3. Log allowed_success
   and 4 June save confirm authentic claim_cb, Leyton/Paxter and d_the_arbor.
   Sanitized hash and limits are in G1_AI_PLANNER_PROBE.md. Prepared one matched
