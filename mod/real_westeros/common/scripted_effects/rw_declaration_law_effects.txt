@@ -103,7 +103,139 @@ rw_dl_capture_effect = {
                         set_variable = { name = rw_dl_ban value = scope:rw_dl_ban }
                         set_variable = { name = rw_dl_gate value = scope:rw_dl_gate }
                         set_variable = { name = rw_dl_retained value = flag:yes days = 365 }
+                        set_variable = { name = rw_dl_party_schema value = 1 }
+                        set_variable = { name = rw_dl_claimant_state value = flag:missing }
+                        if = {
+                            limit = { exists = scope:claimant }
+                            set_variable = { name = rw_dl_claimant value = scope:claimant }
+                            set_variable = { name = rw_dl_claimant_state value = flag:known }
+                        }
+                        if = {
+                            limit = { exists = scope:rw_dl_target.liege }
+                            set_variable = { name = rw_dl_defender_liege value = scope:rw_dl_target.liege }
+                        }
                     }
+                    rw_dl_capture_targets_effect = yes
+                }
+            }
+        }
+    }
+}
+# Original CB callback context only. Capture all supplied target-title facts once.
+# Counters distinguish missing/partial input from an entirely recorded title list.
+rw_dl_capture_targets_effect = {
+    if = {
+        limit = {
+            rw_dl_callback_context_trigger = yes
+            exists = scope:rw_dl_actor
+            exists = scope:rw_dl_record
+            exists = scope:rw_dl_war
+            scope:rw_dl_record = {
+                story_type = story_rw_declaration_law
+                story_owner = scope:rw_dl_actor
+                var:rw_dl_schema = 1
+                var:rw_dl_party_schema = 1
+                var:rw_dl_serial > 0
+                var:rw_dl_attacker = scope:rw_dl_actor
+                var:rw_dl_defender = scope:defender
+                var:rw_dl_war = scope:rw_dl_war
+                var:rw_dl_phase = flag:claim_cb_on_declaration_prefix
+                var:rw_dl_seen_on = current_date
+                NOT = { has_variable = rw_dl_targets_started }
+            }
+        }
+        scope:rw_dl_record = {
+            set_variable = { name = rw_dl_targets_started value = flag:yes }
+            set_variable = { name = rw_dl_target_count value = 0 }
+            set_variable = { name = rw_dl_target_records value = 0 }
+            set_variable = { name = rw_dl_targets_state value = flag:unavailable }
+        }
+        scope:rw_dl_war = {
+            casus_belli = {
+                every_target_title = {
+                    save_scope_as = rw_dt_title
+                    clear_saved_scope = rw_dt_holder
+                    clear_saved_scope = rw_dt_liege
+                    clear_saved_scope = rw_dt_authority
+                    if = {
+                        limit = { exists = holder }
+                        holder = {
+                            save_scope_as = rw_dt_holder
+                            if = {
+                                limit = { exists = liege }
+                                liege = {
+                                    save_scope_as = rw_dt_liege
+                                    if = {
+                                        limit = { exists = primary_title }
+                                        primary_title = { save_scope_as = rw_dt_authority }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    scope:rw_dl_record = { change_variable = { name = rw_dl_target_count add = 1 } }
+                    scope:rw_dl_actor = {
+                        if = {
+                            limit = {
+                                NOT = {
+                                    any_owned_story = {
+                                        story_type = story_rw_declaration_target
+                                        story_owner = scope:rw_dl_actor
+                                        var:rw_dt_schema = 1
+                                        var:rw_dt_parent = scope:rw_dl_record
+                                        var:rw_dt_parent_serial = scope:rw_dl_record.var:rw_dl_serial
+                                        var:rw_dt_war = scope:rw_dl_war
+                                        var:rw_dt_title = scope:rw_dt_title
+                                    }
+                                }
+                            }
+                            clear_saved_scope = rw_dt_record
+                            create_story = { type = story_rw_declaration_target save_scope_as = rw_dt_record }
+                            if = {
+                                limit = {
+                                    exists = scope:rw_dt_record
+                                    scope:rw_dt_record = {
+                                        story_type = story_rw_declaration_target
+                                        story_owner = scope:rw_dl_actor
+                                        NOT = { has_variable = rw_dt_schema }
+                                    }
+                                }
+                                scope:rw_dt_record = {
+                                    set_variable = { name = rw_dt_schema value = 1 }
+                                    set_variable = { name = rw_dt_parent value = scope:rw_dl_record }
+                                    set_variable = { name = rw_dt_parent_serial value = scope:rw_dl_record.var:rw_dl_serial }
+                                    set_variable = { name = rw_dt_war value = scope:rw_dl_war }
+                                    set_variable = { name = rw_dt_title value = scope:rw_dt_title }
+                                    set_variable = { name = rw_dt_seen_on value = current_date }
+                                    set_variable = { name = rw_dt_holder_state value = flag:missing }
+                                    if = {
+                                        limit = { exists = scope:rw_dt_holder }
+                                        set_variable = { name = rw_dt_holder value = scope:rw_dt_holder }
+                                        set_variable = { name = rw_dt_holder_state value = flag:known }
+                                    }
+                                    if = {
+                                        limit = { exists = scope:rw_dt_liege }
+                                        set_variable = { name = rw_dt_holder_liege value = scope:rw_dt_liege }
+                                    }
+                                    if = {
+                                        limit = { exists = scope:rw_dt_authority }
+                                        set_variable = { name = rw_dt_holder_authority value = scope:rw_dt_authority }
+                                    }
+                                }
+                                scope:rw_dl_record = { change_variable = { name = rw_dl_target_records add = 1 } }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        scope:rw_dl_record = {
+            if = {
+                limit = { var:rw_dl_target_count > 0 }
+                set_variable = { name = rw_dl_targets_state value = flag:partial }
+                if = {
+                    limit = { var:rw_dl_target_records = var:rw_dl_target_count }
+                    set_variable = { name = rw_dl_targets_state value = flag:all_titles_recorded }
                 }
             }
         }

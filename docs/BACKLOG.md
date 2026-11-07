@@ -1,5 +1,15 @@
 # Development backlog
 
+**RW-004 declaration-party context, 7 November:** early claim snapshots now
+  preserve optional native claimant and defender liege. Each actual CB target
+  title receives a linked immutable holder/holder-liege/authority fact. Exact
+  parent schema/owner/serial/war/phase/date, one-time start marker and per-title
+  dedup guard the capture. Counts distinguish unavailable/partial/all-title
+  recordings. Child cleanup follows parent identity and owner death. Eight source
+  regressions pass. New callback scopes are engine-unverified.80/80+0/20, delta0.
+  Next prove interaction-initiator binding, then external defiance and Mace/Doran
+  routing. Existing defiance and responses remain peer-scoped.
+
 **RW-004 territorial-law review, 7 November:** G1_TERRITORIAL_LAW.md records
   direct-authority scope, internal/all bans and the owner-deferred general peace
   proclamation. The read-only declaration snapshot now covers different-liege
