@@ -1,5 +1,14 @@
 # Development backlog
 
+**RW-010 personality review by promise option, 7 November:**
+  AI_PERSONALITY_PROMISE_REVIEW.md reviews39 non-dragon personality traits,
+  actual decider/beneficiary roles, indirect native opinions, current age guards
+  and remaining contextual questions. Private per-option directions distinguish
+  money/hook terms, mixed inputs, bounded neutrality and deceased-client release.
+  Seven source regressions cover classification and unchanged action graphs.
+  No runtime weights changed. AI3/O1 quality,74/80+0/20, delta0. Next connect real
+  timing to the provider's perform/wait/renounce choices, retaining negotiation.
+
 **RW-010 owner-requested decider inventory, 7 November:**
   AI_DECIDER_AUDIT.md and the private source reader enumerate 1,212 effective
   CK3/AGOT trait definitions. Current promise inputs are direct84, conditional2,

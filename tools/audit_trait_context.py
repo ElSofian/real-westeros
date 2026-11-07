@@ -22,6 +22,41 @@ AXES = ('ai_boldness', 'ai_compassion', 'ai_energy', 'ai_greed', 'ai_honor',
 PERSONAL = ('diplomacy', 'martial', 'stewardship', 'intrigue', 'learning',
             'prowess', 'health', 'fertility', 'stress_gain_mult', 'stress_loss_mult',
             'minimum_age', 'maximum_age')
+PROMISE_INPUTS = {
+    'gold_perform': {'ai_honor': 1, 'ai_greed': 1},
+    'gold_break': {'ai_honor': -1},
+    'favor_perform_hook': {'ai_honor': 1},
+    'favor_perform_gold25': {'ai_honor': 1, 'ai_greed': 1},
+    'favor_renounce_living': {'ai_honor': -1},
+    'favor_renounce_deceased': {},
+}
+
+
+def promise_axis_review(row):
+    """Monotone directions only, with all non-axis inputs and eligibility held fixed.
+
+    Opposing axes stay mixed. Bounds can neutralize an otherwise monotone change.
+    This never calculates a final weight, probability, decision or indirect effect.
+    """
+    unresolved = set(row['nested_axes'] + row['unresolved_fields'])
+    review = {}
+    for option, inputs in PROMISE_INPUTS.items():
+        if unresolved.intersection(inputs):
+            review[option] = 'unresolved'
+            continue
+        directions = {multiplier * row['direct_axes'].get(axis, 0)
+                      for axis, multiplier in inputs.items()} - {0}
+        positive = any(value > 0 for value in directions)
+        negative = any(value < 0 for value in directions)
+        if positive and negative:
+            review[option] = 'mixed'
+        elif positive:
+            review[option] = 'nondecreasing'
+        elif negative:
+            review[option] = 'nonincreasing'
+        else:
+            review[option] = 'zero_direct'
+    return review
 
 
 def tokens(text):
@@ -92,7 +127,7 @@ def read_traits(text, source, relative_path, scalar_values=None):
             coverage = 'native_axes_input'
         else:
             coverage = 'zero_direct_axis_input'
-        rows.append({
+        row = {
             'id': name, 'source': source, 'file': relative_path,
             'line': text.count('\n', 0, offset) + 1,
             'category': next((value.strip('"') for key, value, nested, _ in fields
@@ -105,7 +140,9 @@ def read_traits(text, source, relative_path, scalar_values=None):
             'nested_axes': nested_axes, 'unresolved_fields': unresolved,
             'promise_input_status': coverage,
             'context_review': 'pending',
-        })
+        }
+        row['promise_axis_review'] = promise_axis_review(row)
+        rows.append(row)
     return rows
 
 
@@ -215,12 +252,39 @@ def markdown(report):
     return '\n'.join(lines) + '\n'
 
 
+def promise_markdown(report):
+    lines = ['# Personnalité — influence actuelle sur les promesses', '',
+             'Revue source des traits de personnalité hors dragons. Validation moteur en attente.', '',
+             'Chaque colonne tient fixes les autres tendances, opinions, moyens, parties et conditions.',
+             '↑/0 signifie hausse ou neutralisation par les bornes. ↓/0 signifie baisse ou neutralisation.',
+             '± signifie motivations opposées dont le résultat dépend des valeurs agrégées.',
+             '0 direct signifie effet nul par les seuls axes lus dans cette option.',
+             'Les effets relationnels, les moyens et les autres influences contextuelles restent distincts.', '',
+             '| Trait | Identifiant | Tenir contre or | Tenir contre faveur | Rompre / renoncer, client vivant |',
+             '|---|---|---|---|---|']
+    labels = {'nondecreasing': '↑/0', 'nonincreasing': '↓/0',
+              'mixed': '±', 'zero_direct': '0 direct', 'unresolved': 'À résoudre'}
+    for row in report['traits']:
+        if not row['personality_trait'] or row['id'].startswith('dragon_'):
+            continue
+        review = row['promise_axis_review']
+        label = row.get('label_fr', row['id']).replace('|', '\\|')
+        lines.append(f"| {label} | `{row['id']}` | {labels[review['gold_perform']]} | "
+                     f"{labels[review['favor_perform_hook']]} | {labels[review['gold_break']]} |")
+    lines.extend(['', 'Le paiement gold25 de la famille faveur suit la colonne or.',
+                  'Renoncer après le décès du client conserve le poids neutre de cette option.',
+                  'Un dossier invalide ou une option indisponible annule son poids avant ces préférences.',
+                  'Les options attendre, renégocier, annuler et les réponses du client nécessitent leur propre revue.', ''])
+    return '\n'.join(lines)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--ck3-root', type=Path, required=True)
     parser.add_argument('--agot-root', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True, help='Private JSON output, outside tracked source')
     parser.add_argument('--markdown', type=Path, help='Optional private owner-readable inventory')
+    parser.add_argument('--promise-review', type=Path, help='Optional private per-option personality review')
     args = parser.parse_args()
     try:
         report = inventory(args.ck3_root, args.agot_root)
@@ -229,6 +293,9 @@ def main():
         if args.markdown:
             args.markdown.parent.mkdir(parents=True, exist_ok=True)
             args.markdown.write_text(markdown(report), encoding='utf-8')
+        if args.promise_review:
+            args.promise_review.parent.mkdir(parents=True, exist_ok=True)
+            args.promise_review.write_text(promise_markdown(report), encoding='utf-8')
     except (ValueError, OSError, UnicodeError) as error:
         parser.exit(1, str(error) + '\n')
     print(json.dumps({'traits': report['trait_count'], 'summary': report['summary']}, ensure_ascii=False))
