@@ -18,71 +18,35 @@ rw_external_war_response.0001 = {
         name = rw_xw.ignore
         trigger = { rw_xw_turn_trigger = yes }
         rw_xw_ignore_effect = yes
-        ai_chance = {
-            base = 30
-            modifier = { factor = 2 is_at_war = yes }
-            modifier = { factor = 2 gold < 50 }
-            modifier = { factor = 2 ai_boldness < -25 }
-            modifier = { factor = 2 opinion = { target = scope:rw_xw_attacker value >= 40 } }
-        }
+        ai_chance = { base = 0 modifier = { add = rw_ai_xw_ignore_weight always = yes } }
     }
     option = {
         name = rw_xw.disapprove
         trigger = { rw_xw_turn_trigger = yes }
         custom_tooltip = rw_xw.disapprove_effect
         rw_xw_disapprove_effect = yes
-        ai_chance = {
-            base = 30
-            modifier = { factor = 2 ai_honor >= 25 }
-            modifier = { factor = 2 ai_boldness >= 25 }
-            modifier = { factor = 2 opinion = { target = scope:rw_xw_attacker value <= -20 } }
-        }
+        ai_chance = { base = 0 modifier = { add = rw_ai_xw_disapprove_weight always = yes } }
     }
     option = {
         name = rw_xw.demand
         trigger = { rw_xw_turn_trigger = yes }
         custom_tooltip = rw_xw.demand_effect
         rw_xw_demand_effect = yes
-        ai_chance = {
-            base = 25
-            modifier = { factor = 0.5 is_at_war = yes }
-            modifier = { factor = 0.5 gold < 50 }
-            modifier = {
-                factor = 2
-                scope:rw_xw_record = { var:rw_xw_role = flag:declaring_liege }
-                ai_honor >= 25
-            }
-            modifier = {
-                factor = 2
-                scope:rw_xw_record = { var:rw_xw_role = flag:target_liege }
-                ai_compassion >= 25
-            }
-            modifier = { factor = 2 opinion = { target = scope:rw_xw_attacker value <= -20 } }
-        }
+        ai_chance = { base = 0 modifier = { add = rw_ai_xw_demand_weight always = yes } }
     }
     option = {
         name = rw_xw.native_intervene
         trigger = { rw_xw_can_queue_native_trigger = yes }
         custom_tooltip = rw_xw.native_intervene_effect
         rw_xw_queue_native_effect = yes
-        ai_chance = {
-            base = 20
-            modifier = { factor = 2 ai_honor >= 25 }
-            modifier = { factor = 0.5 is_at_war = yes }
-            modifier = { factor = 0.5 gold < 50 }
-            modifier = { factor = 2 opinion = { target = scope:rw_xw_attacker value <= -20 } }
-        }
+        ai_chance = { base = 0 modifier = { add = rw_ai_xw_native_weight always = yes } }
     }
     option = {
         name = rw_xm.request
         trigger = { rw_xm_can_request_trigger = yes }
         custom_tooltip = rw_xm.request_effect
         rw_xm_request_effect = yes
-        ai_chance = {
-            base = 25
-            modifier = { factor = 2 ai_compassion >= 25 }
-            modifier = { factor = 2 opinion = { target = scope:rw_xw_attacker value <= -20 } }
-        }
+        ai_chance = { base = 0 modifier = { add = rw_ai_xm_request_weight always = yes } }
     }
     option = { name = rw_xw.close trigger = { NOT = { rw_xw_turn_trigger = yes } } }
 }
@@ -106,12 +70,7 @@ rw_external_war_response.0002 = {
         trigger = { rw_xw_answer_turn_trigger = yes }
         custom_tooltip = rw_xw.acknowledge_effect
         rw_xw_acknowledge_effect = yes
-        ai_chance = {
-            base = 30
-            modifier = { factor = 2 ai_honor >= 25 }
-            modifier = { factor = 2 ai_boldness < -25 }
-            modifier = { factor = 2 opinion = { target = scope:rw_xw_ruler value >= 40 } }
-        }
+        ai_chance = { base = 0 modifier = { add = rw_ai_xw_acknowledge_weight always = yes } }
     }
     option = {
         name = rw_xw.refuse
@@ -122,12 +81,7 @@ rw_external_war_response.0002 = {
         }
         else = { custom_tooltip = rw_xw.refuse_protector_effect }
         rw_xw_refuse_effect = yes
-        ai_chance = {
-            base = 20
-            modifier = { factor = 2 ai_boldness >= 25 }
-            modifier = { factor = 2 ai_vengefulness >= 25 }
-            modifier = { factor = 2 opinion = { target = scope:rw_xw_ruler value <= -20 } }
-        }
+        ai_chance = { base = 0 modifier = { add = rw_ai_xw_refuse_weight always = yes } }
     }
     option = { name = rw_xw.close trigger = { NOT = { rw_xw_answer_turn_trigger = yes } } }
 }

@@ -1600,3 +1600,14 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   expired windows, replay and reload. Native send/binding must revalidate consent;
   ordinary pre-mediation tickets retain their path. Check neutral refusal/silence
   and unavailable handoff, plus AI and Mega Wars. New mediation is not engine-tested.
+
+- External response AI. Use this commit's matching base/adapters. Read actual
+  weights and repeat decisions while varying the decider's personality, own
+  opinion/kinship/alliance to attacker, primary defender, actual representative
+  holder and protector. Swap roles to detect sender/beneficiary axis confusion.
+  Compare own war/stress/health/duties, diplomacy, relevant liquidity and opposite
+  attacker scores. Verify free messages retain their costs and acknowledgement
+  scope, stale/foreign/expired contexts have zero willingness, and an existing
+  native attempt is actually present before reporting it. Reload and observe
+  native negotiation, peer/declaration baseline and performance. These source
+  weights have no new engine behavioral evidence.

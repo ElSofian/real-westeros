@@ -20,6 +20,7 @@ from test_war_receipt_lifecycle import errors as lifecycle_errors
 from test_external_war_responses import FILES as EXTERNAL_FILES, routing_errors
 from test_external_native_intervention import FILES as EXTERNAL_NATIVE_FILES, intervention_errors as external_native_errors
 from test_external_mediation import FILES as MEDIATION_FILES, mediation_errors
+from test_external_war_ai import VALUES as WAR_AI_VALUES, ACTION_DIGESTS as WAR_AI_EVENTS, policy_errors as war_ai_errors
 
 
 WAR_FILES = {
@@ -215,6 +216,18 @@ class CampaignPackTests(unittest.TestCase):
                 changed = dict(sources)
                 changed[file] = changed[file].replace(token, 'always = yes')
                 self.assertTrue(mediation_errors(changed))
+
+    def test_external_war_ai_in_delivered_files(self):
+        self.prepare()
+        base = self.out/'mod/real_westeros'
+        values = (base/WAR_AI_VALUES).read_text(encoding='utf-8-sig')
+        events = {file: (base/file).read_text(encoding='utf-8-sig') for file in WAR_AI_EVENTS}
+        self.assertEqual([], war_ai_errors(values, events))
+        for token in ('rw_xw_can_queue_native_trigger = yes',
+                      'target = scope:rw_xw_record.var:rw_xw_target.var:rw_dt_holder',
+                      'rw_xw_other_native_attempt_trigger = yes'):
+            with self.subTest(guard=token):
+                self.assertTrue(war_ai_errors(values.replace(token, 'always = yes'), events))
 
     def test_bad_or_missing_checksum_rejected(self):
         self.archive.with_suffix('.zip.sha256').write_text('0'*64+'  release.zip\n');self.rejected()
