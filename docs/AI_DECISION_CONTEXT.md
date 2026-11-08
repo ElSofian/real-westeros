@@ -1,5 +1,14 @@
 # Context and personality in political decisions
 
+## Current external beneficiary extension
+
+AI_EXTERNAL_BENEFICIARY.md reads the exact original claimant through the external
+ruler/attacker or mediator turn. Current decider's own relationships influence
+bounded responses. Own/absent/legacy/foreign/dead facts stay neutral. The prior
+numeric profile and shared peer/declaration factors are preserved outside this
+addition. Source-only, not engine-tested.80/80+0/20, actual delta0. Next title
+stakes and public power/support. Broader context review remains open.
+
 ## Current peer beneficiary extension
 
 AI_PEER_BENEFICIARY.md reads the original exact linked claimant for the peer

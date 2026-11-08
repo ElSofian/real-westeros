@@ -1,0 +1,29 @@
+# Current decider's public claimant context, including a consenting mediator.
+rw_ai_xw_beneficiary_context_trigger = {
+    OR = {
+        rw_xw_turn_trigger = yes
+        rw_xw_answer_turn_trigger = yes
+        rw_xm_turn_trigger = yes
+    }
+    scope:rw_xw_record = {
+        exists = var:rw_xw_source
+        has_variable = rw_xw_source_serial
+        var:rw_xw_source = {
+            story_type = story_rw_declaration_law
+            story_owner = scope:rw_xw_attacker
+            var:rw_dl_schema = 1
+            var:rw_dl_serial > 0
+            var:rw_dl_serial = prev.var:rw_xw_source_serial
+            var:rw_dl_party_schema = 1
+            var:rw_dl_phase = flag:claim_cb_on_declaration_prefix
+            has_variable = rw_dl_retained
+            var:rw_dl_war = scope:rw_xw_record.var:rw_xw_war
+            var:rw_dl_attacker = scope:rw_xw_attacker
+            var:rw_dl_defender = scope:rw_xw_defender
+            var:rw_dl_claimant_state = flag:known
+            exists = var:rw_dl_claimant
+            var:rw_dl_claimant = { is_alive = yes }
+            NOT = { var:rw_dl_claimant = scope:rw_xw_attacker }
+        }
+    }
+}

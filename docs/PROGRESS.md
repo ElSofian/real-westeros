@@ -1,5 +1,20 @@
 # Progress
 
+- RW-004 external beneficiary, 8 November. The exact original source/serial,
+  owner/schema/phase/retention/war/parties and known/live third-party claimant
+  guard a neutral-default affinity in ruler, attacker and mediator turns. Own
+  opinion/kinship/alliance shape response preferences with provisional coefficients
+  matching the peer slice. No beneficiary consent/personality/support inferred.
+  Existing-attempt reply stays factual. Eight source and one delivered regression
+  include negative mutations. Structural inversion preserves the entire prior
+  numeric profile, including shared peer/declaration factors, outside the new
+  factor and seven calls. Peer shared-file snapshot intentionally updated. Event
+  action graphs, effects, permission/transport guards and lifecycle preserved.
+  Available static/CI/committed private assembly evidence recorded in PR. Source
+  experimental, not engine-tested. Baseline/result80/80 source+0/20 campaign,
+  actual delta0. Next exact title stakes and public power/support. Native
+  pre-declaration selected-CB access and exhaustive context review remain open.
+
 - RW-004 peer beneficiary, 8 November. Read only the exact linked original
   native claimant through guarded peer turns, parent identity and serial, party
   schema and known/live third party. Own claims and missing/legacy/foreign/dead

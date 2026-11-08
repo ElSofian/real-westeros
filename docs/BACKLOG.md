@@ -1,5 +1,14 @@
 # Development backlog
 
+**RW-004 external beneficiary, 8 November:** original exact claimant now shapes
+  external ruler/attacker and mediator preferences through the decider's own
+  opinion, kinship and alliance. Own/absent/legacy/foreign/dead facts stay neutral.
+  Existing-attempt reply remains factual. Eight source and one delivered
+  regression, full prior numeric profile preserved outside seven new calls.
+  Experimental, not engine-tested. Baseline/result80/80+0/20, delta0.
+  Next exact title stakes, then public power/support. Pre-declaration selected-CB
+  access and exhaustive trait/context review remain open.
+
 **RW-004 peer beneficiary, 8 November:** exact linked original claimant now
   shapes peer liege/attacker response preferences through the decider's own
   opinion, kinship and alliance. Own claims and absent/legacy/foreign/dead facts
