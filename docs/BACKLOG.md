@@ -1,5 +1,13 @@
 # Development backlog
 
+**RW-004 peer war-response AI, 8 November:** six existing peer choices use named
+  guarded weights with shared own-personality/workload factors and separate peer
+  relationship/war-position readers. Lige weighs both vassals; attacker weighs its
+  lige and exact war position. Action digest and five source hashes preserved.
+  Eight source and one delivered regression. Experimental, not engine-tested.
+  Baseline/result80/80+0/20, delta0. Next declaration preference/stakes/knowledge
+  review. Full trait/power/support/faith/culture coverage remains open.
+
 **RW-004 external war-response AI, 8 November:** ten existing external reply and
   mediation choices use guarded named weights. Own bounded personality axes,
   public relationships, role-specific beneficiary, workload/health/stress/duties,

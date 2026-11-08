@@ -21,6 +21,7 @@ from test_external_war_responses import FILES as EXTERNAL_FILES, routing_errors
 from test_external_native_intervention import FILES as EXTERNAL_NATIVE_FILES, intervention_errors as external_native_errors
 from test_external_mediation import FILES as MEDIATION_FILES, mediation_errors
 from test_external_war_ai import VALUES as WAR_AI_VALUES, ACTION_DIGESTS as WAR_AI_EVENTS, policy_errors as war_ai_errors
+from test_peer_war_ai import VALUES as PEER_AI_VALUES, SHARED as PEER_AI_SHARED, EVENT as PEER_AI_EVENT, peer_policy_errors
 
 
 WAR_FILES = {
@@ -228,6 +229,17 @@ class CampaignPackTests(unittest.TestCase):
                       'rw_xw_other_native_attempt_trigger = yes'):
             with self.subTest(guard=token):
                 self.assertTrue(war_ai_errors(values.replace(token, 'always = yes'), events))
+
+    def test_peer_war_ai_in_delivered_files(self):
+        self.prepare()
+        base = self.out/'mod/real_westeros'
+        values = (base/PEER_AI_VALUES).read_text(encoding='utf-8-sig')
+        shared = (base/PEER_AI_SHARED).read_text(encoding='utf-8-sig')
+        event = (base/PEER_AI_EVENT).read_text(encoding='utf-8-sig')
+        self.assertEqual([], peer_policy_errors(values, shared, event))
+        for token in ('rw_uw_can_queue_native_trigger = yes', 'scope:rw_uw_defender', 'scope:rw_uw_war'):
+            with self.subTest(guard=token):
+                self.assertTrue(peer_policy_errors(values.replace(token, 'always = yes'), shared, event))
 
     def test_bad_or_missing_checksum_rejected(self):
         self.archive.with_suffix('.zip.sha256').write_text('0'*64+'  release.zip\n');self.rejected()

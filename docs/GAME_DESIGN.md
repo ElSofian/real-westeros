@@ -147,3 +147,9 @@ context. Preserve action/eligibility parity and distinguish a political reply
 from actual peace. Source-only weight changes leave the event action graphs and
 gameplay effects intact. Peer/declaration policy and broader contextual coverage
 remain further review, with grouped engine comparisons required.
+
+AI_PEER_WAR_RESPONSES.md applies guarded contextual preferences to six peer
+choices. Share only current-decider factors with the external profile and retain
+separate party/record/war frames. Preserve the existing event action graph and
+execution guards. Native declaration preference and broader contextual coverage
+remain further review, with grouped engine comparisons required.

@@ -1611,3 +1611,12 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   native attempt is actually present before reporting it. Reload and observe
   native negotiation, peer/declaration baseline and performance. These source
   weights have no new engine behavioral evidence.
+
+- Peer response AI. Use this commit's matching base/adapters. Compare the original
+  lige's preferences with opposed relations to attacker/defender, kinship and
+  alliances, own personality/workload/stress/health/duties and native-intervention
+  liquidity. Compare attacker replies with own lige relation and opposite war
+  scores. Swap player/AI roles, include stale/foreign/expired frames and reloads.
+  Observe actual weight evaluation, repeated choices, native costs/outcomes and
+  performance. Verify separate peer/external identities and the earlier external
+  policy. This extension has no new engine behavioral evidence.

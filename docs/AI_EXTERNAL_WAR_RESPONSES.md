@@ -1,5 +1,9 @@
 # Préférences IA des réponses aux guerres extérieures
 
+Actualisation. AI_PEER_WAR_RESPONSES.md applique les facteurs communs sans
+références aux parties à six choix du parcours entre pairs. Les relations et
+identités de ce parcours disposent de leurs propres lecteurs.
+
 Tranche du 8 novembre 2026. **Static-checked**, **non testée dans CK3**.
 Baseline et résultat 80/80 source, 0/20 campagne, delta 0.
 

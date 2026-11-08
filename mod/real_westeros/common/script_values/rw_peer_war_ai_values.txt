@@ -1,0 +1,136 @@
+﻿# Peer-war policy. Shared xw personality/workload factors read only the decider.
+# All counterpart/record references here use the peer event's original uw frame.
+rw_ai_uw_attacker_favor_factor = {
+    value = 1
+    if = { limit = { opinion = { target = scope:rw_uw_attacker value >= 25 } } multiply = 1.25 }
+    if = { limit = { opinion = { target = scope:rw_uw_attacker value <= -25 } } multiply = 0.75 }
+    if = {
+        limit = { OR = { is_close_family_of = scope:rw_uw_attacker is_allied_to = scope:rw_uw_attacker } }
+        multiply = 1.25
+    }
+    min = 0.5
+    max = 2
+}
+rw_ai_uw_defender_concern_factor = {
+    value = 1
+    if = { limit = { opinion = { target = scope:rw_uw_defender value >= 25 } } multiply = 1.25 }
+    if = { limit = { opinion = { target = scope:rw_uw_defender value <= -25 } } multiply = 0.75 }
+    if = {
+        limit = { OR = { is_close_family_of = scope:rw_uw_defender is_allied_to = scope:rw_uw_defender } }
+        multiply = 1.25
+    }
+    min = 0.5
+    max = 2
+}
+rw_ai_uw_issuer_favor_factor = {
+    value = 1
+    if = { limit = { opinion = { target = scope:rw_uw_issuer value >= 25 } } multiply = 1.25 }
+    if = { limit = { opinion = { target = scope:rw_uw_issuer value <= -25 } } multiply = 0.75 }
+    if = {
+        limit = { OR = { is_close_family_of = scope:rw_uw_issuer is_allied_to = scope:rw_uw_issuer } }
+        multiply = 1.25
+    }
+    min = 0.5
+    max = 2
+}
+rw_ai_uw_resolution_factor = {
+    value = 1
+    multiply = rw_ai_xw_honor_factor
+    multiply = rw_ai_xw_compassion_factor
+    multiply = rw_ai_xw_initiative_factor
+    multiply = rw_ai_uw_defender_concern_factor
+    divide = rw_ai_uw_attacker_favor_factor
+}
+# The original primary attacker knows the position of its own exact native war.
+rw_ai_uw_refusal_position_factor = {
+    value = 1
+    if = {
+        limit = { scope:rw_uw_war = { attacker_war_score >= 25 } }
+        multiply = rw_ai_xw_rationality_factor
+    }
+    if = {
+        limit = { scope:rw_uw_war = { attacker_war_score <= -25 } }
+        divide = rw_ai_xw_rationality_factor
+    }
+    min = 0.5
+    max = 1.5
+}
+rw_ai_uw_ignore_weight = {
+    value = 0
+    if = {
+        limit = { rw_uw_issuer_turn_trigger = yes }
+        add = 20
+        multiply = rw_ai_xw_caution_factor
+        multiply = rw_ai_uw_attacker_favor_factor
+        divide = rw_ai_uw_defender_concern_factor
+        divide = rw_ai_xw_initiative_factor
+        divide = rw_ai_xw_workload_factor
+        min = 1
+        max = 300
+    }
+}
+rw_ai_uw_censure_weight = {
+    value = 0
+    if = {
+        limit = { rw_uw_issuer_turn_trigger = yes }
+        add = 20
+        multiply = rw_ai_xw_grievance_factor
+        multiply = rw_ai_xw_resolve_factor
+        multiply = rw_ai_uw_defender_concern_factor
+        divide = rw_ai_uw_attacker_favor_factor
+        divide = rw_ai_xw_workload_factor
+        min = 1
+        max = 300
+    }
+}
+rw_ai_uw_demand_weight = {
+    value = 0
+    if = {
+        limit = { rw_uw_issuer_turn_trigger = yes }
+        add = 30
+        multiply = rw_ai_uw_resolution_factor
+        multiply = rw_ai_xw_workload_factor
+        min = 1
+        max = 300
+    }
+}
+rw_ai_uw_native_weight = {
+    value = 0
+    if = {
+        limit = { rw_uw_can_queue_native_trigger = yes }
+        add = 20
+        multiply = rw_ai_uw_resolution_factor
+        multiply = rw_ai_xw_workload_factor
+        if = { limit = { gold < 50 } multiply = 0.75 }
+        min = 1
+        max = 300
+    }
+}
+rw_ai_uw_acknowledge_weight = {
+    value = 0
+    if = {
+        limit = { rw_uw_answer_turn_trigger = yes }
+        add = 30
+        multiply = rw_ai_xw_social_factor
+        multiply = rw_ai_xw_caution_factor
+        multiply = rw_ai_uw_issuer_favor_factor
+        multiply = 1.25
+        divide = rw_ai_uw_refusal_position_factor
+        min = 1
+        max = 300
+    }
+}
+rw_ai_uw_refuse_weight = {
+    value = 0
+    if = {
+        limit = { rw_uw_answer_turn_trigger = yes }
+        add = 15
+        multiply = rw_ai_xw_resolve_factor
+        multiply = rw_ai_xw_grievance_factor
+        multiply = rw_ai_uw_refusal_position_factor
+        multiply = 0.8
+        divide = rw_ai_uw_issuer_favor_factor
+        min = 1
+        max = 300
+    }
+}

@@ -138,8 +138,10 @@ class RoyalResponseSourceTests(unittest.TestCase):
 
     def test_ai_uses_burden_means_and_opinion_without_rule_exceptions(self):
         event=(ROOT/EVENT).read_text()
+        policy = (ROOT/'common/script_values/rw_peer_war_ai_values.txt').read_text(encoding='utf-8-sig')
+        shared_factors = (ROOT/'common/script_values/rw_external_war_ai_values.txt').read_text(encoding='utf-8-sig')
         for condition in ('is_at_war = yes','gold < 50','opinion = { target = scope:rw_uw_attacker'):
-            self.assertIn(condition,event)
+            self.assertIn(condition, policy+shared_factors)
         a, _, b = builder.bounds(self.t, 'rw_uw_ai_default_defiance_trigger')
         shared = self.t[:a] + self.t[b:] + self.e + event
         # Only initial option preference may branch on AI identity.
