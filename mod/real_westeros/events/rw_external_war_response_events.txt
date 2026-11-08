@@ -38,5 +38,72 @@ rw_external_war_response.0001 = {
             modifier = { factor = 2 opinion = { target = scope:rw_xw_attacker value <= -20 } }
         }
     }
+    option = {
+        name = rw_xw.demand
+        trigger = { rw_xw_turn_trigger = yes }
+        custom_tooltip = rw_xw.demand_effect
+        rw_xw_demand_effect = yes
+        ai_chance = {
+            base = 25
+            modifier = { factor = 0.5 is_at_war = yes }
+            modifier = { factor = 0.5 gold < 50 }
+            modifier = {
+                factor = 2
+                scope:rw_xw_record = { var:rw_xw_role = flag:declaring_liege }
+                ai_honor >= 25
+            }
+            modifier = {
+                factor = 2
+                scope:rw_xw_record = { var:rw_xw_role = flag:target_liege }
+                ai_compassion >= 25
+            }
+            modifier = { factor = 2 opinion = { target = scope:rw_xw_attacker value <= -20 } }
+        }
+    }
     option = { name = rw_xw.close trigger = { NOT = { rw_xw_turn_trigger = yes } } }
+}
+rw_external_war_response.0002 = {
+    type = character_event
+    title = rw_xw.demand_title
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { scope:rw_xw_record = { var:rw_xw_role = flag:declaring_liege } }
+                desc = rw_xw.liege_demand_desc
+            }
+            desc = rw_xw.protector_demand_desc
+        }
+    }
+    theme = diplomacy
+    left_portrait = scope:rw_xw_ruler
+    trigger = { rw_xw_answer_turn_trigger = yes }
+    option = {
+        name = rw_xw.acknowledge
+        trigger = { rw_xw_answer_turn_trigger = yes }
+        custom_tooltip = rw_xw.acknowledge_effect
+        rw_xw_acknowledge_effect = yes
+        ai_chance = {
+            base = 30
+            modifier = { factor = 2 ai_honor >= 25 }
+            modifier = { factor = 2 ai_boldness < -25 }
+            modifier = { factor = 2 opinion = { target = scope:rw_xw_ruler value >= 40 } }
+        }
+    }
+    option = {
+        name = rw_xw.refuse
+        trigger = { rw_xw_answer_turn_trigger = yes }
+        if = {
+            limit = { scope:rw_xw_record = { var:rw_xw_role = flag:declaring_liege } }
+            custom_tooltip = rw_xw.refuse_liege_effect
+        }
+        else = { custom_tooltip = rw_xw.refuse_protector_effect }
+        rw_xw_refuse_effect = yes
+        ai_chance = {
+            base = 20
+            modifier = { factor = 2 ai_boldness >= 25 }
+            modifier = { factor = 2 ai_vengefulness >= 25 }
+            modifier = { factor = 2 opinion = { target = scope:rw_xw_ruler value <= -20 } }
+        }
+    }
+    option = { name = rw_xw.close trigger = { NOT = { rw_xw_answer_turn_trigger = yes } } }
 }

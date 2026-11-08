@@ -175,6 +175,8 @@ class CampaignPackTests(unittest.TestCase):
             ('triggers', 'var:rw_dt_parent_serial = scope:rw_xw_source.var:rw_dl_serial'),
             ('effects', 'remove_variable = rw_xw_route_ready'),
             ('triggers', 'var:rw_xw_serial = scope:rw_xw_serial'),
+            ('triggers', 'has_variable = rw_xw_demanded_on'),
+            ('effects', 'modifier = rw_uw_refused_stop_opinion'),
         ):
             with self.subTest(file=file, guard=token):
                 changed = dict(sources)

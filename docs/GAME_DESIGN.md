@@ -120,3 +120,9 @@ target-holder-liege ignore/disapprove choices. Distinct personal opinion effects
 carry no new native crime or peace outcome. Demands, mediation, higher assistance
 and broader contextual AI remain further development. New routing is experimental
 and requires grouped engine validation.
+
+G1_EXTERNAL_DEMANDS.md extends each personal external case with one political
+demand and the original attacker's acknowledgement or refusal. Keep reception,
+agreement, promise and actual native peace distinct. Opinion for refusal depends
+on the original authority role, with no inferred refusal from silence. Negotiated
+response terms, native peace linkage and broader AI context remain further work.
