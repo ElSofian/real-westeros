@@ -12,7 +12,9 @@ except ImportError:
 
 REPO = Path(__file__).resolve().parents[1]
 TEMPLATES = REPO / 'mod/real_westeros'
-FILES = ('common/script_values/rw_peer_war_ai_values.txt',
+FILES = ('common/script_values/rw_declaration_ai_values.txt',
+         'common/scripted_triggers/rw_declaration_ai_triggers.txt',
+         'common/script_values/rw_peer_war_ai_values.txt',
          'common/script_values/rw_external_war_ai_values.txt',
          'common/scripted_triggers/rw_political_ai_triggers.txt',
          'common/scripted_effects/rw_external_war_mediation_effects.txt',

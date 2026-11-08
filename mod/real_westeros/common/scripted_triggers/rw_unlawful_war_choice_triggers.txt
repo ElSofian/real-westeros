@@ -46,10 +46,7 @@ rw_uw_ai_default_defiance_trigger = {
     NOT = { always = scope:hook }
     scope:actor = {
         is_ai = yes
-        is_at_war = no
-        gold >= 150
-        rw_ai_existing_commitment_trigger = no
-        opinion = { target = scope:actor.liege value <= -25 }
+        rw_ai_wd_motivation_value >= rw_ai_wd_caution_value
     }
 }
 

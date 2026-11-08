@@ -1,5 +1,18 @@
 # Progress
 
+- RW-004 declaration defiance AI, 8 November. The existing AI-only native checkbox
+  initializer compares deterministic guarded motivation/caution values. Own bounded
+  axes, known liege/recipient relations, current burden/means, rationality, native
+  dread, law breadth and an owned usable-hook alternative replace the earlier
+  peace/reserve/commitment/opinion filter. Invalid frame stays motivation0 versus
+  caution1000. No random roll, state, scan, native war call or inferred claimant.
+  Shared permission guards and generated native insertions are preserved. Eight
+  source and one delivered negative/positive regression added. Full CI/static/
+  committed private assembly evidence is recorded in PR. Experimental, not
+  engine-tested. Baseline/result80/80 source +0/20 campaign, delta0. Existing AI
+  war observations remain historical. Next selected-CB/beneficiary/stakes/knowledge
+  review, then public power/support and broader trait/faith/culture context.
+
 - RW-004 peer war-response AI, 8 November. Six original peer choices consume
   guarded named weights. Reuse nine current-decider personality/workload factors;
   peer-only opinion/kinship/alliance and own war-position readers keep event frames

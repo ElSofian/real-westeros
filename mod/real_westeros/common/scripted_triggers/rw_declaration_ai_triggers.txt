@@ -1,0 +1,8 @@
+﻿# Native interaction candidate context. No inferred CB beneficiary or war scope.
+rw_ai_wd_context_trigger = {
+    exists = scope:actor
+    exists = scope:recipient
+    this = scope:actor
+    rw_uw_applicable_ban_trigger = yes
+    NOT = { always = scope:hook }
+}

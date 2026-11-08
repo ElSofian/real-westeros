@@ -1,5 +1,14 @@
 # Context and personality in political decisions
 
+## Current declaration-defiance extension
+
+AI_DECLARATION_DEFIANCE.md replaces the native checkbox's earlier initial AI
+filter with guarded deterministic motivation/caution. Own personality, known
+relations, burden/means, rationality, fear, law breadth and a usable hook shape
+preference. Existing native discovery/send remains a separate observation point.
+No claimant/CB beneficiary is inferred from this candidate frame. Source-only,
+80/80 source +0/20 campaign, actual delta0. New behavior is not engine-tested.
+
 ## Current peer war-response extension
 
 AI_PEER_WAR_RESPONSES.md weights six peer choices with the current decider's

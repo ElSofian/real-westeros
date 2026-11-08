@@ -148,6 +148,13 @@ from actual peace. Source-only weight changes leave the event action graphs and
 gameplay effects intact. Peer/declaration policy and broader contextual coverage
 remain further review, with grouped engine comparisons required.
 
+AI_DECLARATION_DEFIANCE.md refines the native AI checkbox's initial political
+preference with a deterministic known-context comparison. Keep boolean
+initialization distinct from candidate discovery, CB selection and native send.
+Do not infer a claimant, beneficiary or title stake from unavailable candidate
+identity. Preserve player/AI action parity, native exceptions and authentic CBs.
+New score evaluation requires grouped engine proof.
+
 AI_PEER_WAR_RESPONSES.md applies guarded contextual preferences to six peer
 choices. Share only current-decider factors with the external profile and retain
 separate party/record/war frames. Preserve the existing event action graph and

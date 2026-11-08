@@ -22,6 +22,7 @@ from test_external_native_intervention import FILES as EXTERNAL_NATIVE_FILES, in
 from test_external_mediation import FILES as MEDIATION_FILES, mediation_errors
 from test_external_war_ai import VALUES as WAR_AI_VALUES, ACTION_DIGESTS as WAR_AI_EVENTS, policy_errors as war_ai_errors
 from test_peer_war_ai import VALUES as PEER_AI_VALUES, SHARED as PEER_AI_SHARED, EVENT as PEER_AI_EVENT, peer_policy_errors
+from test_declaration_ai import VALUES as DECLARATION_AI_VALUES, CONTEXT as DECLARATION_AI_CONTEXT, declaration_policy_errors
 
 
 WAR_FILES = {
@@ -240,6 +241,19 @@ class CampaignPackTests(unittest.TestCase):
         for token in ('rw_uw_can_queue_native_trigger = yes', 'scope:rw_uw_defender', 'scope:rw_uw_war'):
             with self.subTest(guard=token):
                 self.assertTrue(peer_policy_errors(values.replace(token, 'always = yes'), shared, event))
+
+    def test_declaration_ai_in_delivered_files(self):
+        self.prepare()
+        base = self.out/'mod/real_westeros'
+        values = (base/DECLARATION_AI_VALUES).read_text(encoding='utf-8-sig')
+        context = (base/DECLARATION_AI_CONTEXT).read_text(encoding='utf-8-sig')
+        choices = (base/WAR_FILES['triggers']).read_text(encoding='utf-8-sig')
+        shared = (base/PEER_AI_SHARED).read_text(encoding='utf-8-sig')
+        self.assertEqual([], declaration_policy_errors(values, context, choices, shared))
+        for token in ('subtract = rw_ai_wd_honor_value', 'has_usable_hook = scope:actor.liege',
+                      'has_dread_level_towards = { target = scope:actor.liege level = 2 }'):
+            with self.subTest(input=token):
+                self.assertTrue(declaration_policy_errors(values.replace(token, 'always = yes'), context, choices, shared))
 
     def test_bad_or_missing_checksum_rejected(self):
         self.archive.with_suffix('.zip.sha256').write_text('0'*64+'  release.zip\n');self.rejected()
