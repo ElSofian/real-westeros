@@ -1,5 +1,15 @@
 # Progress
 
+- RW-004 playable-candidate triage, 8 November. Owner halted excessive war-AI
+  detail expansion. Superseding priorities now point to a bounded review of eight
+  delivered system entries/rules/scenarios, demonstrated blocking fixes, exact-commit
+  assembly and grouped V1–V5 validation. Route/arrival estimates removed from the
+  immediate path. Existing military factors remain experimental. Exhaustive context
+  coverage deferred and visible. No gameplay code or frozen score/history changed.
+  Checks recorded in the PR. Baseline/result80/80 source+0/20 campaign, actual delta0.
+  Engine compatibility and performance remain unverified. Next the eight-system
+  review, followed by a finite correction list or candidate assembly.
+
 - RW-004 observed reinforcement grouping, 8 November. Source audit found
   character-to-army, army-owner/location and province-army list APIs. No reliable
   distant-visibility script gate established. Use own army co-location as an

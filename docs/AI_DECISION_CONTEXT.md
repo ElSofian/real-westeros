@@ -1,5 +1,15 @@
 # Context and personality in political decisions
 
+## Active scope correction — 8 November
+
+The owner prioritizes a playable integrated candidate. Further military-detail
+expansion pauses. Route/arrival estimates leave the immediate preparation path.
+Existing bounded strength/support factors remain experimental candidate inputs.
+The eight-system review and grouped campaign take priority, following
+V01_REMAINING_WORK.md. Exhaustive trait/context coverage remains open. Older
+next-step suggestions below describe historical plans and do not authorize
+another simulation extension ahead of this review.80/80+0/20, actual delta0.
+
 ## Current observed reinforcement extension
 
 AI_OBSERVED_REINFORCEMENTS.md uses physical co-location of positive non-raiding

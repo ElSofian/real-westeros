@@ -1,5 +1,60 @@
 # Ce qui reste avant la première version intégrée
 
+## Priorité active du 8 novembre 2026
+
+**80/80 source, 0/20 campagne. Delta de ce cadrage +0.** Cette priorité
+remplace les anciennes indications de prochaine tâche ci-dessous. Le barème
+et ses relevés historiques restent gelés.
+
+Le propriétaire demande de privilégier une première version jouable après
+l'extension excessive de la tranche IA de guerre. La revue des huit systèmes
+reste prévue et peut accompagner la campagne groupée. Les estimations de trajet
+et d'arrivée sont écartées de cette préparation. Les indicateurs de forces et de
+soutien déjà écrits constituent la variante candidate à observer.
+
+### Ordre fini avant et pendant la campagne
+
+1. Revue transversale courte des huit parcours ci-dessous. Pour chacun, rapprocher
+   les entrées réellement livrées, les règles voulues et le scénario existant.
+   Consigner les lacunes. Corriger avant assemblage uniquement une entrée absente,
+   une garde incohérente, un effet dupliqué ou une rupture de symétrie démontrée.
+   Une inconnue moteur devient un cas de campagne identifié.
+2. Assembler un candidat identifié par commit et empreintes avec les adaptateurs
+   privés correspondants. Vérifier installation, distribution et contrôles statiques.
+3. Exécuter la campagne groupée V1–V5 existante. Observer d'abord un parcours de
+   base par système, puis ses refus, invalidations, rechargements et variantes
+   prévues. Corriger les échecs observés et rejouer les scénarios affectés.
+
+| Système | Parcours source à revoir | Observation essentielle en campagne |
+|---|---|---|
+| Liberté et légalité | Vraie revendication, défi, loi territoriale du seigneur direct | Déclaration, coûts, acceptation/refus et clôture exacte, puis transitions Mega Wars |
+| Affaires politiques | Incident et réponse discrétionnaire, médiation externe consentie | Choix et silence, rôles corrects, absence d'escalade automatique |
+| Négociation | Offre, contre-offre, version acceptée et clauses | Interface, acceptation partielle impossible par rejeu, résultats séparés des clauses |
+| Promesses | Engagement différé, échéance, exécution volontaire et rupture | Refus, expiration, changement de contexte et sauvegarde/rechargement |
+| Justice | Sanction native, confiscation institutionnelle et restitution ducale | Droits, coûts et résistance, quatre acquisitions G3, restauration et dettes |
+| Information | Fait, accusation, preuve contestée et divulgation | Accès autorisé, silence distinct d'un aveu, allégation sans altération native |
+| Mémoire | Dossiers, reçus et conséquences politiques conservées | Identités, persistance, décès/succession et absence de culpabilité personnelle héritée |
+| IA politique | Initiative et réponses via les mêmes actions et gardes | IA↔IA, coûts et conséquences identiques, anti-spam et performance mesurée |
+
+Cette table organise la revue à effectuer. Elle ne valide aucun nouveau parcours.
+Les scénarios détaillés et les critères complets restent dans
+[FINAL_ENGINE_TESTS.md](FINAL_ENGINE_TESTS.md) et
+[V01_ROADMAP.md](V01_ROADMAP.md).
+
+### Améliorations différées
+
+La simulation supplémentaire de déplacement, l'attribution détaillée d'un front,
+la puissance de combat exhaustive et la pondération individuelle exhaustive des
+traits/contextes sortent du chemin de préparation immédiat. Les lacunes restent
+visibles dans [AI_DECISION_CONTEXT.md](AI_DECISION_CONTEXT.md). Une amélioration
+reprend lorsqu'un résultat de campagne ou un manque fonctionnel concret la justifie.
+Les fonctions déjà écrites conservent leur statut expérimental jusqu'à observation.
+La paix royale universelle reste différée selon la décision du propriétaire.
+
+**Prochaine tâche bornée** — revue transversale des huit entrées livrées et de leurs
+scénarios, avec une liste finie des corrections bloquantes éventuelles. Aucune
+nouvelle extension de calcul militaire n'est nécessaire pour commencer cette revue.
+
 **Actualisation du 7 novembre 2026 —80/80 source,0/20 campagne,delta+2.**
 [W5 termine le socle source](G1_W5_DELIVERED_GUARDS.md) par la couverture des gardes
 et négatifs du parcours assemblé depuis le ZIP. V1–V5 restent ouverts. La suite

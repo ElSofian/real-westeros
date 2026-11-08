@@ -1,5 +1,15 @@
 # Development backlog
 
+**Priorité active, 8 November — playable candidate preparation.** Owner-directed
+scope correction supersedes the older next-step recommendations below. RW-004
+military-detail expansion pauses. Route/arrival estimates leave the preparation
+path. Use existing bounded strength/support signals for the candidate. Next a
+bounded eight-system entry/rule/scenario review, only demonstrated blocking fixes,
+then exact-commit assembly and the grouped V1–V5 campaign. Detailed sequence in
+[V01_REMAINING_WORK.md](V01_REMAINING_WORK.md). Exhaustive context remains an open
+improvement. Baseline/result80/80 source+0/20 campaign, actual delta0. This change
+only prioritizes work. Existing code remains experimental and not engine-tested.
+
 **RW-004 observed reinforcement grouping, 8 November:** own attacker replies
   gain a bounded1..1.1 signal from an actual secondary participant's positive
   non-raiding army sharing a province with a positive own non-raiding army.

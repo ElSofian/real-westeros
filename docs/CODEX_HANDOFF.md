@@ -1,5 +1,17 @@
 # Codex implementation handoff
 
+## Active continuation — playable candidate priority, 8 November
+
+The owner stopped further war-AI simulation expansion. Follow the active sequence
+in V01_REMAINING_WORK.md before older continuation notes. Next perform one bounded
+review of the eight delivered system entries and their existing campaign cases.
+Fix demonstrated missing core paths, inconsistent guards, duplicate effects or
+AI/player asymmetry. Record engine unknowns for the grouped campaign. Then assemble
+one exact-commit candidate and proceed through V1–V5, fixing observed failures.
+Route and arrival estimates are outside this preparation. Existing strength/support
+signals remain the source candidate. Exhaustive context improvements are deferred.
+No intermediate CK3 run requested. Baseline/result80/80 source+0/20 campaign, delta0.
+
 ## Current continuation — ordinary AI defiance confirmed
 
 G1_AI_AUTONOMY.md records the 7 November owner-run observation. Leyton remained
