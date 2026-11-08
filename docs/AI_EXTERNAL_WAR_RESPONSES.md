@@ -158,3 +158,11 @@ un effectif natif positif aux réponses du déclarant. Les deux camps sont lus
 dans la même guerre exacte. La présence de soutien reste distincte de sa force
 effective ou de sa mobilisation sur ce front. Coefficient provisoire0.8..1.25,
 delta0, non testé moteur. Runtime35 dans le kit correspondant.
+
+## Extension du regroupement avec une armée propre
+
+AI_OBSERVED_REINFORCEMENTS.md ajoute un signal de regroupement physique de deux
+armées de propriétaires distincts, dont l'une appartient au déclarant. Le tour
+propre et l'unique guerre du déclarant sont requis. La visibilité du regroupement
+reste une hypothèse de campagne finale, avec coefficient provisoire1..1.1.
+Delta0, non testé moteur. Runtime35 dans le kit correspondant.

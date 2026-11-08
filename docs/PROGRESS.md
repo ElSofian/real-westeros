@@ -1,5 +1,23 @@
 # Progress
 
+- RW-004 observed reinforcement grouping, 8 November. Source audit found
+  character-to-army, army-owner/location and province-army list APIs. No reliable
+  distant-visibility script gate established. Use own army co-location as an
+  explicit observation hypothesis. Own peer/external reply and single exact war
+  guard a live secondary attacker with an explicitly owned positive non-raiding
+  army in the same province as a positive own non-raiding army. Factor1..1.1
+  affects opposite replies, without troop sums or target-arrival inference.
+  Provisional coefficient; visibility/ownership and attachment semantics require
+  final engine observation. Eight source and one delivered positive/negative
+  regression. Inversion preserves prior full profiles outside one factor/two
+  calls each; historical support checks share the separately checked removal.
+  Peer shared-file snapshot intentionally updated. Actions, permissions,
+  lifecycle and native outputs preserved. Existing attested files reused,
+  runtime35. Available static/CI/committed private assembly evidence recorded
+  in PR. Experimental, not engine-tested. Baseline/result80/80 source+0/20 campaign,
+  actual delta0. Next visibility/front attribution and route/time audit, then
+  effective force/quality. No intermediate manual launch requested.
+
 - RW-004 support competing wars, 8 November. Refine existing peer/external
   joined-support factors. Exact own reply/war/participant guards remain; repeated
   eligibility checks precede a character-local other-war search excluding this
