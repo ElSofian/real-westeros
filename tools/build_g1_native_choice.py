@@ -12,7 +12,8 @@ except ImportError:
 
 REPO = Path(__file__).resolve().parents[1]
 TEMPLATES = REPO / 'mod/real_westeros'
-FILES = ('common/scripted_triggers/rw_protected_title_stakes_triggers.txt',
+FILES = ('common/scripted_triggers/rw_peer_title_stakes_triggers.txt',
+         'common/scripted_triggers/rw_protected_title_stakes_triggers.txt',
          'common/scripted_triggers/rw_external_beneficiary_triggers.txt',
          'common/scripted_triggers/rw_peer_beneficiary_triggers.txt',
          'common/script_values/rw_declaration_ai_values.txt',

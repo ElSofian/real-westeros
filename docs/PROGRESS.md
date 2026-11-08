@@ -1,5 +1,23 @@
 # Progress
 
+- RW-004 peer title stakes, 8 November. Liege concern uses exact defender-side
+  target facts, including actual nested vassals under the defender. Original
+  holder/direct liege/authority/date/war/parent/serial and complete capture remain
+  guarded. Highest current target rank, holder's current primary title and at
+  least two valid facts add provisional bounded stakes1..1.7. The attacker uses
+  that attachment only with a known living original claimant, including own and
+  unlanded third-party claims. Refusal/acknowledgement directions remain opposed.
+  Unknown/foreign/changed facts are excluded, partial/legacy context stays neutral.
+  No expected territorial gain, native transfer, beneficiary consent/personality
+  or support inferred. Local owned-story reads only. Eight source and one
+  delivered positive/negative regression. Structural inversion preserves the
+  prior complete peer numeric policy outside two factors and three calls.
+  Action graph, effects, permission/lifecycle/native outputs and other profiles
+  preserved. Available static/CI/committed private assembly evidence recorded in
+  PR. Experimental, not engine-tested. Baseline/result80/80 source+0/20 campaign,
+  actual delta0. Next other external deciders' title interests, then power/support.
+  Wealth, de-jure/dynastic detail and exhaustive context remain open.
+
 - RW-004 protected title stakes, 8 November. The protector's existing concern
   reads exact original attacker-owned target facts under its still-current
   authority. Parent identity/serial/schema/phase/date/war/parties and complete

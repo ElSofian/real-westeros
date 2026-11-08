@@ -1,0 +1,58 @@
+# Character scope. Linked historical facts are available only in an active turn.
+rw_ai_uw_title_context_trigger = {
+    OR = { rw_uw_issuer_turn_trigger = yes rw_uw_answer_turn_trigger = yes }
+    scope:rw_uw_record = {
+        exists = var:rw_dl_link
+        has_variable = rw_dl_link_serial
+        var:rw_dl_link = {
+            rw_dl_match_response_trigger = yes
+            var:rw_dl_serial > 0
+            var:rw_dl_serial = prev.var:rw_dl_link_serial
+            var:rw_dl_party_schema = 1
+            has_variable = rw_dl_seen_on
+            var:rw_dl_targets_state = flag:all_titles_recorded
+            var:rw_dl_target_count > 0
+            var:rw_dl_target_records = var:rw_dl_target_count
+        }
+    }
+}
+# STORY scope inside the original attacker's owned stories. Include the defender
+# and its actual nested vassals, retaining each holder's original direct authority.
+rw_ai_uw_title_fact_trigger = {
+    story_type = story_rw_declaration_target
+    story_owner = scope:rw_uw_attacker
+    var:rw_dt_schema = 1
+    exists = var:rw_dt_parent
+    has_variable = rw_dt_parent_serial
+    exists = var:rw_dt_war
+    has_variable = rw_dt_seen_on
+    var:rw_dt_parent = scope:rw_uw_record.var:rw_dl_link
+    var:rw_dt_parent_serial = scope:rw_uw_record.var:rw_dl_link_serial
+    var:rw_dt_war = scope:rw_uw_war
+    var:rw_dt_seen_on = scope:rw_uw_record.var:rw_dl_link.var:rw_dl_seen_on
+    var:rw_dt_holder_state = flag:known
+    exists = var:rw_dt_title
+    exists = var:rw_dt_holder
+    exists = var:rw_dt_holder_liege
+    exists = var:rw_dt_holder_authority
+    var:rw_dt_holder = {
+        is_alive = yes
+        liege = prev.var:rw_dt_holder_liege
+        OR = {
+            this = scope:rw_uw_defender
+            is_vassal_or_below_of = scope:rw_uw_defender
+        }
+    }
+    var:rw_dt_title = { holder = prev.var:rw_dt_holder }
+    var:rw_dt_holder_authority = { holder = prev.var:rw_dt_holder_liege }
+}
+# Original claimant identity may be the attacker or a third party. No successor.
+rw_ai_uw_contested_stakes_context_trigger = {
+    rw_uw_answer_turn_trigger = yes
+    rw_ai_uw_title_context_trigger = yes
+    scope:rw_uw_record.var:rw_dl_link = {
+        var:rw_dl_claimant_state = flag:known
+        exists = var:rw_dl_claimant
+        var:rw_dl_claimant = { is_alive = yes }
+    }
+}
