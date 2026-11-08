@@ -21,6 +21,10 @@ story_rw_external_war_response = {
                         var:rw_xw_state = flag:demanded
                         NOT = { has_variable = rw_xw_answer_window }
                     }
+                    AND = {
+                        var:rw_xw_state = flag:native_queued
+                        NOT = { has_variable = rw_xw_native_window }
+                    }
                 }
             }
             effect = {
@@ -28,6 +32,7 @@ story_rw_external_war_response = {
                 set_variable = { name = rw_xw_result value = flag:expired_or_context_lost }
                 remove_variable = rw_xw_window
                 remove_variable = rw_xw_answer_window
+                remove_variable = rw_xw_native_window
             }
         }
     }

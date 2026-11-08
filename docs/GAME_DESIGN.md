@@ -126,3 +126,10 @@ demand and the original attacker's acknowledgement or refusal. Keep reception,
 agreement, promise and actual native peace distinct. Opinion for refusal depends
 on the original authority role, with no inferred refusal from silence. Negotiated
 response terms, native peace linkage and broader AI context remain further work.
+
+G1_EXTERNAL_NATIVE_PEACE.md records the experimental link from the original
+declaring liege to the native stop-vassal-war negotiation. Current native validity
+and exact-target transport remain mandatory. The protective authority retains its
+distinct political capacity. Native terms, costs and outcomes remain owned by
+CK3/AGOT, with grouped engine proof required. Protector mediation, additional
+authority capacities and broader contextual AI remain further development.

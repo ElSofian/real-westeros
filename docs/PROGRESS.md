@@ -1,5 +1,21 @@
 # Progress
 
+- RW-004 external native negotiation, 8 November. PRIVATE0.0.10 exposes the real
+  stop-attacker-vassal-war interaction to the original declaring liege in an
+  eligible outside-war case. Queued next-day event captures exact war/authority,
+  consumes issuer turn and uses a two-day dispatch window. Current identity,
+  unique local war, nonparticipant authority and native interaction validity are
+  rechecked before one consumed send. A separate guarded callback restores the
+  exact target from short-lived personal transport and records binding only.
+  Peer/external transport collisions are refused in both paths. New availability
+  marker keeps older adapters disabled. Eight new source regressions and one
+  delivered test cover negatives, expiry and native preservation. Full CI,
+  structural/telemetry/readiness and committed private assembly evidence are
+  recorded in PR. No new native cost/outcome logic. Experimental, not engine-tested.
+  Baseline/result80/80 source +0/20 campaign, delta0. Next protector-to-liege
+  mediation/capacity review and contextual AI. Actual native negotiation outcomes
+  and compatibility remain grouped engine cases.
+
 - RW-004 external political demands, 8 November. Independent authority cases may
   consume their initial turn to ask the original attacker to end the war. Shared
   exact identity/context guards support separate issuer/attacker turns. A dated

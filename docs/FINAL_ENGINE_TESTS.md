@@ -1576,3 +1576,15 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   wrong-recipient/replayed/expired events, changed authority/title holder/war
   leadership and ended war. Repeat with AI in both roles. The request and answer
   paths are not engine-tested; negotiated terms and native peace remain open.
+
+- External native negotiation. Use matching PRIVATE0.0.10/base. The declaring
+  direct liege may queue the native intervention for one exact outside claim war;
+  the protector must lack that capacity. Observe next-day dispatch and native
+  negotiation, including ordinary consent, favor/gold counterterms, their refusal
+  and continued war, actual white peace and terminal callbacks. Compare native
+  costs and cooldowns once. Check native hooks, existing attempts, the authority
+  participating in the war, multiple wars of any CB, changed liege/title/roles,
+  ended war and queued expiry. Reload before/after queue/send/binding and try
+  duplicate/mixed peer-external transport. Old adapters must keep the option off.
+  Repeat with AI and Mega Wars. Dispatch/binding metadata alone proves no peace.
+  This new source route is not engine-tested.

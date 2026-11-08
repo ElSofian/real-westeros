@@ -1,0 +1,72 @@
+# Queue only. Native negotiation starts outside the declaration/event stack.
+rw_xw_queue_native_effect = {
+    if = {
+        limit = { rw_xw_can_queue_native_trigger = yes }
+        scope:rw_xw_record.var:rw_xw_war = { save_scope_as = rw_xn_war }
+        scope:rw_xw_record.var:rw_xw_authority = { save_scope_as = rw_xn_authority }
+        scope:rw_xw_record = {
+            set_variable = { name = rw_xw_state value = flag:native_queued }
+            set_variable = { name = rw_xw_native_queued_on value = current_date }
+            set_variable = { name = rw_xw_native_window value = flag:yes days = 2 }
+            remove_variable = rw_xw_window
+        }
+        trigger_event = { id = rw_external_war_intervention.0001 days = 1 }
+    }
+}
+rw_xw_send_native_effect = {
+    if = {
+        limit = { rw_xw_native_ticket_trigger = yes }
+        save_scope_as = actor
+        scope:rw_xw_attacker = { save_scope_as = recipient }
+        scope:rw_xw_record.var:rw_xw_war = { save_scope_as = target }
+        if = {
+            limit = { rw_xw_can_send_native_trigger = yes }
+            scope:rw_xw_record = {
+                set_variable = { name = rw_xw_state value = flag:closed }
+                set_variable = { name = rw_xw_result value = flag:native_requested }
+                set_variable = { name = rw_xw_native_dispatched_on value = current_date }
+                remove_variable = rw_xw_native_window
+            }
+            set_variable = { name = rw_xw_native_send_record value = scope:rw_xw_record days = 1 }
+            set_variable = { name = rw_xw_native_send_serial value = scope:rw_xw_serial days = 1 }
+            run_interaction = {
+                interaction = stop_attacker_vassal_war_interaction
+                actor = scope:rw_xw_ruler
+                recipient = scope:rw_xw_attacker
+                redirect = no
+                send_threshold = decline
+            }
+            if = {
+                limit = {
+                    has_variable = rw_xw_native_send_record
+                    var:rw_xw_native_send_record = scope:rw_xw_record
+                    var:rw_xw_native_send_serial = scope:rw_xw_serial
+                }
+                remove_variable = rw_xw_native_send_record
+                remove_variable = rw_xw_native_send_serial
+            }
+        }
+        else = {
+            scope:rw_xw_record = {
+                set_variable = { name = rw_xw_state value = flag:closed }
+                set_variable = { name = rw_xw_result value = flag:native_blocked }
+                remove_variable = rw_xw_native_window
+            }
+            send_interface_message = { type = event_generic_neutral title = rw_xw.native_blocked_title desc = rw_xw.native_blocked_desc }
+        }
+    }
+}
+# PRIVATE native on_accept prefix only. Let its unchanged body own all outcomes.
+rw_xw_bind_native_target_effect = {
+    if = {
+        limit = { rw_xw_native_binding_context_trigger = yes }
+        scope:actor = {
+            var:rw_xw_native_send_record.var:rw_xw_war = { save_scope_as = target }
+            var:rw_xw_native_send_record = {
+                set_variable = { name = rw_xw_native_bound_on value = current_date }
+            }
+            remove_variable = rw_xw_native_send_record
+            remove_variable = rw_xw_native_send_serial
+        }
+    }
+}

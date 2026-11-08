@@ -1,0 +1,7 @@
+namespace = rw_external_war_intervention
+rw_external_war_intervention.0001 = {
+    type = character_event
+    hidden = yes
+    trigger = { rw_xw_native_ticket_trigger = yes }
+    immediate = { rw_xw_send_native_effect = yes }
+}

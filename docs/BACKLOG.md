@@ -1,5 +1,15 @@
 # Development backlog
 
+**RW-004 external native negotiation, 8 November:** PRIVATE0.0.10 adds a direct
+  declaring-liege option using the genuine native stop-vassal-war negotiation.
+  Next-day dispatch, exact captured war/authority, current native validation,
+  one-war guard and consumed personal transport preserve targeting. Peer/external
+  transport collisions are refused; older private adapters keep this option off.
+  Eight source regressions and one delivered positive/negative test added. Native
+  terms/costs/results stay in AGOT. Experimental, not engine-tested. Baseline/result
+  80/80+0/20, delta0. Next protector-to-liege mediation/capacity and contextual AI.
+  General royal peace remains deferred; engine outcomes stay in the final campaign.
+
 **RW-004 external political demands, 8 November:** each authority may send one
   personal demand through its existing external case. Issuer window consumed
   before sending; original attacker gets a dated seven-day answer. Shared exact

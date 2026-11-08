@@ -185,6 +185,8 @@ rw_uw_can_send_native_trigger = {
     rw_uw_native_target_adapter_available_trigger = yes
     rw_uw_native_ticket_trigger = yes
     rw_uw_native_context_trigger = yes
+    NOT = { has_variable = rw_xw_native_send_record }
+    NOT = { has_variable = rw_xw_native_send_serial }
     scope:actor = scope:rw_uw_issuer
     scope:recipient = scope:rw_uw_attacker
     scope:target = scope:rw_uw_war
@@ -202,6 +204,8 @@ rw_uw_native_binding_context_trigger = {
     exists = scope:actor
     exists = scope:recipient
     scope:actor = {
+        NOT = { has_variable = rw_xw_native_send_record }
+        NOT = { has_variable = rw_xw_native_send_serial }
         has_variable = rw_uw_native_send_record
         has_variable = rw_uw_native_send_serial
         var:rw_uw_native_send_record = {

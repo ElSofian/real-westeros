@@ -18,6 +18,7 @@ from test_declaration_law_context import contract_errors as law_errors
 from test_native_war_intervention import errors as intervention_errors
 from test_war_receipt_lifecycle import errors as lifecycle_errors
 from test_external_war_responses import FILES as EXTERNAL_FILES, routing_errors
+from test_external_native_intervention import FILES as EXTERNAL_NATIVE_FILES, intervention_errors as external_native_errors
 
 
 WAR_FILES = {
@@ -182,6 +183,22 @@ class CampaignPackTests(unittest.TestCase):
                 changed = dict(sources)
                 changed[file] = changed[file].replace(token, 'always = yes')
                 self.assertTrue(routing_errors(changed))
+
+    def test_external_native_intervention_in_delivered_files(self):
+        self.prepare()
+        sources = {key: (self.out/'mod/real_westeros'/name).read_text(encoding='utf-8-sig')
+                   for key, name in EXTERNAL_NATIVE_FILES.items()}
+        self.assertEqual([], external_native_errors(sources))
+        for file, token in (
+            ('triggers', 'var:rw_xw_role = flag:declaring_liege'),
+            ('triggers', 'is_character_interaction_valid = {'),
+            ('triggers', 'NOT = { has_variable = rw_xw_native_bound_on }'),
+            ('effects', 'var:rw_xw_native_send_record.var:rw_xw_war = { save_scope_as = target }'),
+        ):
+            with self.subTest(file=file, guard=token):
+                changed = dict(sources)
+                changed[file] = changed[file].replace(token, 'always = yes')
+                self.assertTrue(external_native_errors(changed))
 
     def test_bad_or_missing_checksum_rejected(self):
         self.archive.with_suffix('.zip.sha256').write_text('0'*64+'  release.zip\n');self.rejected()

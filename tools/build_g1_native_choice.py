@@ -12,7 +12,10 @@ except ImportError:
 
 REPO = Path(__file__).resolve().parents[1]
 TEMPLATES = REPO / 'mod/real_westeros'
-FILES = ('common/scripted_effects/rw_external_war_response_effects.txt',
+FILES = ('common/scripted_effects/rw_external_war_intervention_effects.txt',
+         'common/scripted_triggers/rw_external_war_intervention_triggers.txt',
+         'events/rw_external_war_intervention_events.txt',
+         'common/scripted_effects/rw_external_war_response_effects.txt',
          'common/scripted_triggers/rw_external_war_response_triggers.txt',
          'common/story_cycles/rw_external_war_responses.txt',
          'events/rw_external_war_response_events.txt',
@@ -49,8 +52,9 @@ ACCEPT = '''
         rw_uw_notice_effect = yes
     }
 '''
-INTERVENTION_PREFIX = '\n    rw_uw_bind_native_target_effect = yes\n'
-INTERVENTION_MARKER = 'rw_uw_native_target_adapter_available_trigger = { always = yes }\n'
+INTERVENTION_PREFIX = '\n    rw_uw_bind_native_target_effect = yes\n    rw_xw_bind_native_target_effect = yes\n'
+INTERVENTION_MARKER = ('rw_uw_native_target_adapter_available_trigger = { always = yes }\n'
+                       'rw_xw_native_adapter_available_trigger = { always = yes }\n')
 GUARD = '\n            rw_uw_selected_defiance_trigger = yes\n'
 OPTION = '''
     # RW isolated experiment: the native window owns this transient send flag.
@@ -276,7 +280,7 @@ def build(agot_root, output):
         'common/character_interactions/zz_rw_native_war_intervention.txt': b'\xef\xbb\xbf' + patched_intervention + b'\n',
     }
     metadata = ('name="Real Westeros PRIVATE native war choice EXPERIMENT"\n'
-                'version="0.0.9"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
+                'version="0.0.10"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
                 'dependencies={ "Real Westeros" }\n')
     receipt = {'schema': 1, 'status': 'PRIVATE isolated experimental source; NOT engine-tested',
                'reported_agot': fields,
