@@ -1553,3 +1553,16 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   peer-only response, while peer reactions retain their prior path. Cover native
   Mega Wars constraints. This source extension is not engine-tested; coordinated
   Mace/Doran responses remain separate development work.
+
+- External authority reactions. Use matching PRIVATE0.0.9/base. Observe a fresh
+  outside claim defiance under the declarer's direct all-war ban. Distinguish
+  native interaction recipient, primary defender, actual targeted holder and
+  holder's direct liege. Verify independent declaring/protecting authority events,
+  one event per distinct authority/role despite multiple titles, and each ignore
+  or disapprove choice. Check one -10/2y opinion per deciding authority, unchanged
+  native war state, expiry/replay, ordinary/hook/native-exception declarations,
+  partial/missing target records, ambiguous same-pair wars and legacy receipts.
+  Change the representative title's holder/liege, authority-title holder and war
+  leadership before choosing. Reload pending/closed events and repeat with AI.
+  Check cleanup after war/owner death and many-title cost. New routing is not
+  engine-tested. Demands and higher assistance remain further development.

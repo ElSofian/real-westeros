@@ -285,6 +285,7 @@ rw_dl_bind_acceptance_effect = {
                 remove_variable = rw_dl_acceptance_ready
                 set_variable = { name = rw_dl_accepted_on value = current_date }
                 set_variable = { name = rw_dl_acceptance_schema value = 1 }
+                set_variable = { name = rw_xw_route_ready value = flag:yes }
                 set_variable = { name = rw_dl_accepted_actor value = scope:actor }
                 set_variable = { name = rw_dl_accepted_recipient value = scope:recipient }
                 set_variable = { name = rw_dl_accepted_choice value = flag:ordinary }

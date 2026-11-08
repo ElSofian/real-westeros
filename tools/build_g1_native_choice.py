@@ -12,7 +12,14 @@ except ImportError:
 
 REPO = Path(__file__).resolve().parents[1]
 TEMPLATES = REPO / 'mod/real_westeros'
-FILES = ('common/scripted_effects/rw_war_lifecycle_effects.txt', 'common/scripted_triggers/rw_declaration_law_triggers.txt',
+FILES = ('common/scripted_effects/rw_external_war_response_effects.txt',
+         'common/scripted_triggers/rw_external_war_response_triggers.txt',
+         'common/story_cycles/rw_external_war_responses.txt',
+         'events/rw_external_war_response_events.txt',
+         'localization/english/rw_external_war_response_l_english.yml',
+         'localization/french/rw_external_war_response_l_french.yml',
+         'common/scripted_effects/rw_war_lifecycle_effects.txt',
+         'common/scripted_triggers/rw_declaration_law_triggers.txt',
          'common/scripted_effects/rw_declaration_law_effects.txt',
          'common/story_cycles/rw_declaration_law.txt', 'common/scripted_effects/rw_unlawful_war_intervention_effects.txt',
          'events/rw_unlawful_war_intervention_events.txt',
@@ -38,6 +45,7 @@ NATIVE_PERMISSION = 'war_declarer_needs_hook_on_liege'
 ACCEPT = '''
     scope:actor = {
         rw_dl_bind_acceptance_effect = yes
+        rw_xw_notice_effect = yes
         rw_uw_notice_effect = yes
     }
 '''
@@ -268,7 +276,7 @@ def build(agot_root, output):
         'common/character_interactions/zz_rw_native_war_intervention.txt': b'\xef\xbb\xbf' + patched_intervention + b'\n',
     }
     metadata = ('name="Real Westeros PRIVATE native war choice EXPERIMENT"\n'
-                'version="0.0.8"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
+                'version="0.0.9"\nsupported_version="1.19.*"\ntags={ "Gameplay" }\n'
                 'dependencies={ "Real Westeros" }\n')
     receipt = {'schema': 1, 'status': 'PRIVATE isolated experimental source; NOT engine-tested',
                'reported_agot': fields,

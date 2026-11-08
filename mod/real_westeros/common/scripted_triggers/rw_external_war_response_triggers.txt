@@ -1,0 +1,176 @@
+# STORY scope in native on_accept. Fresh accepted facts are the only intake.
+rw_xw_accepted_source_trigger = {
+    rw_dl_acceptance_match_trigger = yes
+    var:rw_dl_acceptance_schema = 1
+    var:rw_dl_accepted_on = current_date
+    var:rw_dl_accepted_actor = scope:actor
+    var:rw_dl_accepted_recipient = scope:recipient
+    var:rw_dl_accepted_choice = flag:defy_selected
+    var:rw_dl_peer_relation = flag:different_liege
+    var:rw_dl_ban = flag:all
+    var:rw_dl_gate = flag:permission_required
+}
+rw_xw_source_trigger = {
+    rw_xw_accepted_source_trigger = yes
+    has_variable = rw_xw_route_ready
+    NOT = { has_variable = rw_xw_routed_on }
+}
+rw_xw_routed_source_trigger = {
+    rw_xw_accepted_source_trigger = yes
+    NOT = { has_variable = rw_xw_route_ready }
+    var:rw_xw_routed_on = current_date
+}
+# STORY scope. A complete title fact must still describe its original holder/liege.
+rw_xw_target_trigger = {
+    story_type = story_rw_declaration_target
+    story_owner = scope:actor
+    var:rw_dt_schema = 1
+    var:rw_dt_parent = scope:rw_xw_source
+    var:rw_dt_parent_serial = scope:rw_xw_source.var:rw_dl_serial
+    var:rw_dt_war = scope:rw_xw_war
+    var:rw_dt_seen_on = current_date
+    var:rw_dt_holder_state = flag:known
+    exists = var:rw_dt_title
+    exists = var:rw_dt_holder
+    exists = var:rw_dt_holder_liege
+    exists = var:rw_dt_holder_authority
+    NOT = { var:rw_dt_holder_liege = scope:actor }
+    NOT = { var:rw_dt_holder_liege = scope:rw_xw_source.var:rw_dl_issuer }
+    save_temporary_scope_as = rw_xw_target_check
+    var:rw_dt_holder = { is_alive = yes liege = scope:rw_xw_target_check.var:rw_dt_holder_liege }
+    var:rw_dt_title = { holder = scope:rw_xw_target_check.var:rw_dt_holder }
+    var:rw_dt_holder_authority = { holder = scope:rw_xw_target_check.var:rw_dt_holder_liege }
+}
+# Character scope before allocation. Dedup remains independent of closed state.
+rw_xw_can_create_trigger = {
+    this = scope:actor
+    exists = scope:rw_xw_source
+    exists = scope:rw_xw_war
+    exists = scope:rw_xw_ruler
+    exists = scope:rw_xw_authority
+    exists = scope:rw_xw_role
+    scope:rw_xw_source = { rw_xw_routed_source_trigger = yes }
+    scope:rw_xw_ruler = { is_alive = yes is_adult = yes is_landed = yes is_imprisoned = no }
+    scope:rw_xw_authority = { holder = scope:rw_xw_ruler }
+    OR = {
+        AND = {
+            scope:rw_xw_role = flag:declaring_liege
+            scope:rw_xw_source = {
+                var:rw_dl_issuer = scope:rw_xw_ruler
+                var:rw_dl_authority = scope:rw_xw_authority
+                var:rw_dl_war = scope:rw_xw_war
+            }
+        }
+        AND = {
+            scope:rw_xw_role = flag:target_liege
+            exists = scope:rw_xw_target
+            scope:rw_xw_target = {
+                rw_xw_target_trigger = yes
+                var:rw_dt_holder_liege = scope:rw_xw_ruler
+                var:rw_dt_holder_authority = scope:rw_xw_authority
+            }
+        }
+    }
+    NOT = {
+        any_owned_story = {
+            story_type = story_rw_external_war_response
+            story_owner = scope:actor
+            var:rw_xw_schema = 1
+            var:rw_xw_war = scope:rw_xw_war
+            var:rw_xw_role = scope:rw_xw_role
+            var:rw_xw_ruler = scope:rw_xw_ruler
+        }
+    }
+}
+# STORY scope. Closed receipts survive only while the original owner's exact war exists.
+rw_xw_exact_war_trigger = {
+    story_type = story_rw_external_war_response
+    var:rw_xw_schema = 1
+    exists = var:rw_xw_attacker
+    exists = var:rw_xw_war
+    story_owner = var:rw_xw_attacker
+    save_temporary_scope_as = rw_xw_check
+    story_owner = { any_character_war = { this = scope:rw_xw_check.var:rw_xw_war } }
+}
+# STORY scope. Each authority retains its own context, window and decision.
+rw_xw_context_trigger = {
+    rw_xw_exact_war_trigger = yes
+    exists = var:rw_xw_source
+    exists = var:rw_xw_ruler
+    exists = var:rw_xw_authority
+    exists = var:rw_xw_defender
+    var:rw_xw_source = {
+        story_type = story_rw_declaration_law
+        story_owner = scope:rw_xw_check.var:rw_xw_attacker
+        var:rw_dl_schema = 1
+        var:rw_dl_serial = scope:rw_xw_check.var:rw_xw_source_serial
+        var:rw_dl_war = scope:rw_xw_check.var:rw_xw_war
+        var:rw_dl_attacker = scope:rw_xw_check.var:rw_xw_attacker
+        var:rw_dl_defender = scope:rw_xw_check.var:rw_xw_defender
+        var:rw_dl_acceptance_schema = 1
+        var:rw_dl_accepted_on = scope:rw_xw_check.var:rw_xw_seen_on
+        var:rw_dl_accepted_actor = scope:rw_xw_check.var:rw_xw_attacker
+        var:rw_dl_accepted_recipient = scope:rw_xw_check.var:rw_xw_defender
+        var:rw_dl_accepted_choice = flag:defy_selected
+        var:rw_dl_peer_relation = flag:different_liege
+        var:rw_dl_ban = flag:all
+        var:rw_dl_gate = flag:permission_required
+        has_variable = rw_xw_routed_on
+    }
+    var:rw_xw_ruler = { is_alive = yes is_adult = yes is_landed = yes is_imprisoned = no }
+    var:rw_xw_authority = { holder = scope:rw_xw_check.var:rw_xw_ruler }
+    var:rw_xw_attacker = { is_alive = yes is_adult = yes is_landed = yes is_imprisoned = no }
+    var:rw_xw_defender = { is_alive = yes is_landed = yes }
+    var:rw_xw_war = {
+        using_cb = claim_cb
+        primary_attacker = scope:rw_xw_check.var:rw_xw_attacker
+        primary_defender = scope:rw_xw_check.var:rw_xw_defender
+    }
+    OR = {
+        AND = {
+            var:rw_xw_role = flag:declaring_liege
+            var:rw_xw_source = {
+                var:rw_dl_issuer = scope:rw_xw_check.var:rw_xw_ruler
+                var:rw_dl_authority = scope:rw_xw_check.var:rw_xw_authority
+            }
+            var:rw_xw_attacker = { liege = scope:rw_xw_check.var:rw_xw_ruler }
+        }
+        AND = {
+            var:rw_xw_role = flag:target_liege
+            exists = var:rw_xw_target
+            var:rw_xw_target = {
+                story_type = story_rw_declaration_target
+                story_owner = scope:rw_xw_check.var:rw_xw_attacker
+                var:rw_dt_schema = 1
+                var:rw_dt_parent = scope:rw_xw_check.var:rw_xw_source
+                var:rw_dt_parent_serial = scope:rw_xw_check.var:rw_xw_source_serial
+                var:rw_dt_war = scope:rw_xw_check.var:rw_xw_war
+                var:rw_dt_holder_liege = scope:rw_xw_check.var:rw_xw_ruler
+                var:rw_dt_holder_authority = scope:rw_xw_check.var:rw_xw_authority
+                exists = var:rw_dt_holder
+                exists = var:rw_dt_title
+                save_temporary_scope_as = rw_xw_target_check
+                var:rw_dt_holder = { is_alive = yes liege = scope:rw_xw_check.var:rw_xw_ruler }
+                var:rw_dt_title = { holder = scope:rw_xw_target_check.var:rw_dt_holder }
+            }
+        }
+    }
+}
+# Event identity is bound to one personal receipt, never a replacement ruler or heir.
+rw_xw_turn_trigger = {
+    exists = scope:rw_xw_record
+    exists = scope:rw_xw_serial
+    exists = scope:rw_xw_ruler
+    exists = scope:rw_xw_attacker
+    exists = scope:rw_xw_defender
+    this = scope:rw_xw_ruler
+    scope:rw_xw_record = {
+        rw_xw_context_trigger = yes
+        var:rw_xw_serial = scope:rw_xw_serial
+        var:rw_xw_ruler = scope:rw_xw_ruler
+        var:rw_xw_attacker = scope:rw_xw_attacker
+        var:rw_xw_defender = scope:rw_xw_defender
+        var:rw_xw_state = flag:pending
+        has_variable = rw_xw_window
+    }
+}
