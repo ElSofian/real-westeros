@@ -65,7 +65,7 @@ class NativeChoiceBuilderTests(unittest.TestCase):
     def test_real_original_templates_and_private_manifest(self):
         receipt = self.build()
         self.assertIn('NOT VERIFIED', receipt['ai_option_initialization'])
-        self.assertIn('version="0.0.8"', (self.out/builder.MOD_ID/'descriptor.mod').read_text())
+        self.assertIn('version="0.0.9"', (self.out/builder.MOD_ID/'descriptor.mod').read_text())
         self.assertEqual(4, len(receipt['outputs']))
         self.assertEqual(len(builder.FILES), len(receipt['runtime_sources']))
         self.assertEqual('Real Westeros', receipt['requires_base_mod'])
@@ -219,7 +219,11 @@ class NativeChoiceSourceTests(unittest.TestCase):
         for name in builder.FILES:
             if not name.endswith('.yml'): continue
             self.assertTrue(payload[name].startswith(b'\xef\xbb\xbf'))
-            for key in ('rw_uw_defy_option:0','rw_uw_defy_warning:0'):
+            keys = ('rw_uw_defy_option:0', 'rw_uw_defy_warning:0')
+            if 'rw_external_war_response' in name:
+                keys = ('rw_xw.title:0', 'rw_xw.declaring_desc:0', 'rw_xw.target_desc:0',
+                        'rw_xw.ignore:0', 'rw_xw.disapprove:0', 'rw_xw.disapprove_effect:0')
+            for key in keys:
                 self.assertIn(key,payload[name].decode('utf-8-sig'))
 
     def test_source_pins_cover_declaration_and_native_intervention(self):

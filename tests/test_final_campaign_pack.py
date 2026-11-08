@@ -17,6 +17,7 @@ from test_g1_royal_response import contract_errors as royal_errors
 from test_declaration_law_context import contract_errors as law_errors
 from test_native_war_intervention import errors as intervention_errors
 from test_war_receipt_lifecycle import errors as lifecycle_errors
+from test_external_war_responses import FILES as EXTERNAL_FILES, routing_errors
 
 
 WAR_FILES = {
@@ -163,6 +164,22 @@ class CampaignPackTests(unittest.TestCase):
         self.assertEqual(names|{pack.READY},{p.relative_to(self.out).as_posix() for p in self.out.rglob('*') if p.is_file()})
         for x in r['files']:
             raw=(self.out/x['path']).read_bytes();self.assertEqual(len(raw),x['size']);self.assertEqual(hashlib.sha256(raw).hexdigest(),x['sha256'])
+
+    def test_external_authority_guards_in_delivered_files(self):
+        self.prepare()
+        sources = {key: (self.out/'mod/real_westeros'/name).read_text(encoding='utf-8-sig')
+                   for key, name in EXTERNAL_FILES.items()}
+        self.assertEqual([], routing_errors(sources))
+        for file, token in (
+            ('triggers', 'var:rw_dl_accepted_choice = flag:defy_selected'),
+            ('triggers', 'var:rw_dt_parent_serial = scope:rw_xw_source.var:rw_dl_serial'),
+            ('effects', 'remove_variable = rw_xw_route_ready'),
+            ('triggers', 'var:rw_xw_serial = scope:rw_xw_serial'),
+        ):
+            with self.subTest(file=file, guard=token):
+                changed = dict(sources)
+                changed[file] = changed[file].replace(token, 'always = yes')
+                self.assertTrue(routing_errors(changed))
 
     def test_bad_or_missing_checksum_rejected(self):
         self.archive.with_suffix('.zip.sha256').write_text('0'*64+'  release.zip\n');self.rejected()

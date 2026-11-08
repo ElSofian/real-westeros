@@ -1,0 +1,26 @@
+# Separate personal choices, no hereditary guilt or inherited authority.
+story_rw_external_war_response = {
+    on_owner_death = { end_story = yes }
+    effect_group = {
+        days = 30
+        triggered_effect = {
+            trigger = { NOT = { rw_xw_exact_war_trigger = yes } }
+            effect = { end_story = yes }
+        }
+        triggered_effect = {
+            trigger = {
+                rw_xw_exact_war_trigger = yes
+                var:rw_xw_state = flag:pending
+                OR = {
+                    NOT = { has_variable = rw_xw_window }
+                    NOT = { rw_xw_context_trigger = yes }
+                }
+            }
+            effect = {
+                set_variable = { name = rw_xw_state value = flag:closed }
+                set_variable = { name = rw_xw_result value = flag:expired_or_context_lost }
+                remove_variable = rw_xw_window
+            }
+        }
+    }
+}

@@ -1,5 +1,16 @@
 # Development backlog
 
+**RW-004 external authority reactions, 8 November:** PRIVATE0.0.9 adds independent
+  ignore/disapprove choices for the original declaring liege and distinct direct
+  lieges of actual targeted holders. Fresh accepted exact law/party/war receipts,
+  complete target capture and current identity checks gate routing. Consumed
+  marker and per-war/role/authority dedup prevent replay. Seven-day personal
+  choices apply one political opinion consequence; existing peer/native peace
+  paths remain scoped. Eight source and one delivered regression added. Basic
+  AI policy and multi-authority demands remain incomplete. Not engine-tested.
+  Baseline/result80/80+0/20, delta0. Next contextual demands/negotiation, then
+  guarded higher assistance. General royal peace remains deferred.
+
 **RW-004 external-defiance opening, 8 November:** PRIVATE0.0.8 broadens the
   native checkbox and existing AI preference to outside/independent targets
   only under the declaring actor's direct all-war ban and native permission

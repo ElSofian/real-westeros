@@ -1,0 +1,122 @@
+# Called after fresh native acceptance binding. Never reconstruct missing facts.
+rw_xw_notice_effect = {
+    if = {
+        limit = {
+            this = scope:actor
+            exists = scope:rw_da_record
+            scope:rw_da_record = { rw_xw_source_trigger = yes }
+            NOT = {
+                any_character_war = {
+                    count >= 2
+                    primary_attacker = scope:actor
+                    primary_defender = scope:recipient
+                }
+            }
+            NOT = { any_owned_story = { count >= 2 rw_dl_acceptance_match_trigger = yes } }
+        }
+        scope:rw_da_record = {
+            remove_variable = rw_xw_route_ready
+            set_variable = { name = rw_xw_routed_on value = current_date }
+            save_scope_as = rw_xw_source
+            var:rw_dl_war = { save_scope_as = rw_xw_war }
+            var:rw_dl_issuer = { save_scope_as = rw_xw_ruler }
+            var:rw_dl_authority = { save_scope_as = rw_xw_authority }
+        }
+        clear_saved_scope = rw_xw_target
+        save_scope_value_as = { name = rw_xw_role value = flag:declaring_liege }
+        rw_xw_create_effect = yes
+        if = {
+            limit = { scope:rw_xw_source = { var:rw_dl_targets_state = flag:all_titles_recorded } }
+            every_owned_story = {
+                limit = { rw_xw_target_trigger = yes }
+                save_scope_as = rw_xw_target
+                var:rw_dt_holder_liege = { save_scope_as = rw_xw_ruler }
+                var:rw_dt_holder_authority = { save_scope_as = rw_xw_authority }
+                scope:actor = {
+                    save_scope_value_as = { name = rw_xw_role value = flag:target_liege }
+                    rw_xw_create_effect = yes
+                }
+            }
+        }
+    }
+}
+# One personal decision per exact war, role and original authority.
+rw_xw_create_effect = {
+    if = {
+        limit = { rw_xw_can_create_trigger = yes }
+        clear_saved_scope = rw_xw_record
+        create_story = { type = story_rw_external_war_response save_scope_as = rw_xw_record }
+        if = {
+            limit = {
+                exists = scope:rw_xw_record
+                scope:rw_xw_record = {
+                    story_type = story_rw_external_war_response
+                    story_owner = scope:actor
+                    NOT = { has_variable = rw_xw_schema }
+                }
+            }
+            if = {
+                limit = { NOT = { has_variable = rw_xw_serial_counter } }
+                set_variable = { name = rw_xw_serial_counter value = 0 }
+            }
+            change_variable = { name = rw_xw_serial_counter add = 1 }
+            save_scope_value_as = { name = rw_xw_serial value = var:rw_xw_serial_counter }
+            scope:actor = { save_scope_as = rw_xw_attacker }
+            scope:recipient = { save_scope_as = rw_xw_defender }
+            clear_saved_scope = rw_xw_holder
+            if = {
+                limit = { exists = scope:rw_xw_target }
+                scope:rw_xw_target.var:rw_dt_holder = { save_scope_as = rw_xw_holder }
+            }
+            scope:rw_xw_record = {
+                set_variable = { name = rw_xw_schema value = 1 }
+                set_variable = { name = rw_xw_serial value = scope:rw_xw_serial }
+                set_variable = { name = rw_xw_source value = scope:rw_xw_source }
+                set_variable = { name = rw_xw_source_serial value = scope:rw_xw_source.var:rw_dl_serial }
+                set_variable = { name = rw_xw_war value = scope:rw_xw_war }
+                set_variable = { name = rw_xw_attacker value = scope:rw_xw_attacker }
+                set_variable = { name = rw_xw_defender value = scope:rw_xw_defender }
+                set_variable = { name = rw_xw_ruler value = scope:rw_xw_ruler }
+                set_variable = { name = rw_xw_authority value = scope:rw_xw_authority }
+                set_variable = { name = rw_xw_role value = scope:rw_xw_role }
+                set_variable = { name = rw_xw_seen_on value = current_date }
+                set_variable = { name = rw_xw_state value = flag:pending }
+                set_variable = { name = rw_xw_window value = flag:yes days = 7 }
+                if = {
+                    limit = { exists = scope:rw_xw_target }
+                    set_variable = { name = rw_xw_target value = scope:rw_xw_target }
+                }
+            }
+            scope:rw_xw_ruler = {
+                if = {
+                    limit = { rw_xw_turn_trigger = yes }
+                    trigger_event = { id = rw_external_war_response.0001 }
+                }
+            }
+        }
+    }
+}
+rw_xw_ignore_effect = {
+    if = {
+        limit = { rw_xw_turn_trigger = yes }
+        scope:rw_xw_record = {
+            set_variable = { name = rw_xw_state value = flag:closed }
+            set_variable = { name = rw_xw_result value = flag:ignored }
+            remove_variable = rw_xw_window
+        }
+    }
+}
+rw_xw_disapprove_effect = {
+    if = {
+        limit = { rw_xw_turn_trigger = yes }
+        scope:rw_xw_record = {
+            set_variable = { name = rw_xw_state value = flag:closed }
+            set_variable = { name = rw_xw_result value = flag:disapproved }
+            remove_variable = rw_xw_window
+        }
+        add_opinion = { target = scope:rw_xw_attacker modifier = rw_uw_censured_opinion }
+        scope:rw_xw_attacker = {
+            send_interface_message = { type = event_generic_neutral title = rw_xw.notice_title desc = rw_xw.notice_desc }
+        }
+    }
+}

@@ -1,5 +1,9 @@
 # Défi d'une interdiction de guerre extérieure
 
+Actualisation PRIVATE0.0.9. G1_EXTERNAL_RESPONSES.md ajoute un parcours séparé
+de réactions personnelles pour les autorités des deux côtés. Le parcours entre
+pairs décrit ici conserve sa condition de suzerain commun.
+
 Tranche du 8 novembre 2026. **Static-checked**, expérimentale et **non testée dans
 CK3**. Baseline et résultat 80/80 source, 0/20 campagne, delta 0.
 

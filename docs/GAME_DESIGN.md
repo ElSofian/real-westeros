@@ -113,3 +113,10 @@ The declaring actor's direct all-war ban can expose the native defiance option
 against another branch or independent target. Internal bans remain same-liege,
 with native exceptions and other conditions preserved. Existing political
 responses explicitly remain peer-scoped pending distinct Mace/Doran routing.
+
+G1_EXTERNAL_RESPONSES.md records the first separate external reaction route.
+Fresh accepted defiance facts permit independent declaring-liege and actual
+target-holder-liege ignore/disapprove choices. Distinct personal opinion effects
+carry no new native crime or peace outcome. Demands, mediation, higher assistance
+and broader contextual AI remain further development. New routing is experimental
+and requires grouped engine validation.

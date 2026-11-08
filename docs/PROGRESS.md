@@ -1,5 +1,21 @@
 # Progress
 
+- RW-004 external authority reactions, 8 November. PRIVATE0.0.9 routes fresh
+  exact accepted outside claim defiance to separate original declaring-liege and
+  target-holder-liege decisions. Unique parent/serial/war/law/choice facts and a
+  fresh consumed marker exclude legacy, replay and ambiguous pairs. All-target
+  capture required for protector discovery; current holder/authority rechecked.
+  Dedup is per war/role/authority, including closed choices. Each authority may
+  ignore or disapprove, consuming its own seven-day choice before one -10/2y
+  political opinion consequence. Basic native-axis AI weights remain incomplete.
+  Changed context and expiry refuse effects, monthly cleanup retains dedup until
+  the exact war disappears, owner death ends the personal record. Eight new
+  source tests and one delivered positive/negative test cover this slice. Full CI,
+  static checks and committed private assembly evidence are recorded in PR.
+  Experimental, not engine-tested. Baseline/result80/80 source +0/20 campaign,
+  delta0. Next contextual demands/negotiation between branches; native peace and
+  higher assistance require their own guarded route. General peace stays deferred.
+
 - RW-004 external defiance, 8 November. PRIVATE0.0.8 uses the declaring actor's
   applicable direct-liege ban for the native checkbox and existing AI preference.
   An all-war ban covers outside/independent targets; an internal ban requires

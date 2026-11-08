@@ -1,0 +1,10 @@
+﻿l_french:
+ rw_xw.title:0 "Une guerre entre deux autorités"
+ rw_xw.declaring_desc:0 "[rw_xw_attacker.GetTitledFirstName] a déclaré la guerre contre [rw_xw_defender.GetTitledFirstName] malgré mon interdiction de toutes les guerres. Cette attaque touche une autre branche. Je peux choisir de laisser passer ou de manifester ma désapprobation."
+ rw_xw.target_desc:0 "La guerre de [rw_xw_attacker.GetTitledFirstName] contre [rw_xw_defender.GetTitledFirstName] vise un titre détenu par [rw_xw_holder.GetTitledFirstName], mon vassal direct. Je peux manifester mon opposition à cette attaque."
+ rw_xw.ignore:0 "Je laisse passer pour le moment."
+ rw_xw.disapprove:0 "Je désapprouve cette attaque."
+ rw_xw.disapprove_effect:0 "Mon opinion de l'attaquant baisse de 10 pendant deux ans. La guerre poursuit son cours."
+ rw_xw.notice_title:0 "Une attaque désapprouvée"
+ rw_xw.notice_desc:0 "[rw_xw_ruler.GetTitledFirstName] désapprouve mon attaque."
+ rw_xw.close:0 "La situation a changé."
