@@ -1676,3 +1676,13 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   expiry. Verify factual existing-attempt reply, protector's own reader, real
   weights/choices, native consent/costs/outcomes and local-query performance.
   New preferences remain engine-unverified until the final grouped campaign.
+
+- Declaration military caution. Use matching base/PRIVATE0.0.10. Inspect native
+  current strength of actor/recipient/liege and actor max separately. Compare
+  weaker/equal/stronger actor, zero on both sides, zero reference or own max,
+  depleted strength and opposed rationality. Observe actual values, initial
+  checkbox, final hook/defy flag and native discovery/send. Include invalid/changed
+  target or liege, selected hook, law/contract exceptions, cancellation, reload,
+  genuine CB/costs, Mega Wars and computation cost. Recipient remains an interaction
+  identity, allied support and full defender coalition remain separate cases.
+  New source preference is not engine-tested until the final grouped campaign.
