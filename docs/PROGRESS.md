@@ -1,5 +1,17 @@
 # Progress
 
+- RW-004 peer war-response AI, 8 November. Six original peer choices consume
+  guarded named weights. Reuse nine current-decider personality/workload factors;
+  peer-only opinion/kinship/alliance and own war-position readers keep event frames
+  separate. Liege balances both vassals, attacker considers its original lige and
+  public war score. Free replies retain their own costs; low liquidity influences
+  native intervention preference. One event action digest and five source hashes,
+  including the shared external profile, are preserved. Eight new source and one
+  delivered positive/negative regression added. Full CI/static/committed private
+  assembly evidence is recorded in PR. Experimental, not engine-tested. Baseline/
+  result80/80 source +0/20 campaign, actual delta0. Next declaration preference and
+  stakes/knowledge review. Broader traits/power/support/faith/culture remain open.
+
 - RW-004 external war-response AI, 8 November. Ten existing choices now consume
   named read-only weights through their unchanged action guards. Positive bounded
   own native axes, public own opinions/kinship/alliances, role-specific defender

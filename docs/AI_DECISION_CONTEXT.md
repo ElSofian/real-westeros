@@ -1,5 +1,14 @@
 # Context and personality in political decisions
 
+## Current peer war-response extension
+
+AI_PEER_WAR_RESPONSES.md weights six peer choices with the current decider's
+shared personality/workload factors and separate peer-party/war readers. Lige
+considers both vassals; original attacker considers its own lige and war position.
+One event action digest and five source hashes are preserved. Declaration policy
+and broader contextual review remain open. Static-checked, not engine-tested.
+80/80 source +0/20 campaign, actual delta0.
+
 ## Current external war-response extension
 
 AI_EXTERNAL_WAR_RESPONSES.md weights ten existing external reply/mediation choices

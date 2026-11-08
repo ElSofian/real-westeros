@@ -28,45 +28,28 @@ rw_unlawful_war_response.0001 = {
         name = rw_uw.ignore
         trigger = { rw_uw_issuer_turn_trigger = yes }
         rw_uw_ignore_effect = yes
-        ai_chance = {
-            base = 20
-            modifier = { factor = 3 is_at_war = yes }
-            modifier = { factor = 2 gold < 50 }
-            modifier = { factor = 2 opinion = { target = scope:rw_uw_attacker value >= 40 } }
-        }
+        ai_chance = { base = 0 modifier = { add = rw_ai_uw_ignore_weight always = yes } }
     }
     option = {
         name = rw_uw.censure
         trigger = { rw_uw_issuer_turn_trigger = yes }
         custom_tooltip = rw_uw.censure_effect
         rw_uw_censure_effect = yes
-        ai_chance = { base = 20 modifier = { factor = 2 has_trait = arrogant } modifier = { factor = 2 is_at_war = yes } }
+        ai_chance = { base = 0 modifier = { add = rw_ai_uw_censure_weight always = yes } }
     }
     option = {
         name = rw_uw.demand
         trigger = { rw_uw_issuer_turn_trigger = yes }
         custom_tooltip = rw_uw.demand_effect
         rw_uw_demand_effect = yes
-        ai_chance = {
-            base = 30
-            modifier = { factor = 2 has_trait = just }
-            modifier = { factor = 0.5 is_at_war = yes }
-            modifier = { factor = 0.5 gold < 50 }
-            modifier = { factor = 2 opinion = { target = scope:rw_uw_attacker value <= -20 } }
-        }
+        ai_chance = { base = 0 modifier = { add = rw_ai_uw_demand_weight always = yes } }
     }
     option = {
         name = rw_uw.native_intervene
         trigger = { rw_uw_can_queue_native_trigger = yes }
         custom_tooltip = rw_uw.native_intervene_effect
         rw_uw_queue_native_effect = yes
-        ai_chance = {
-            base = 20
-            modifier = { factor = 2 has_trait = just }
-            modifier = { factor = 0.5 is_at_war = yes }
-            modifier = { factor = 0.5 gold < 50 }
-            modifier = { factor = 2 opinion = { target = scope:rw_uw_attacker value <= -20 } }
-        }
+        ai_chance = { base = 0 modifier = { add = rw_ai_uw_native_weight always = yes } }
     }
     option = { name = rw_uw.close trigger = { NOT = { rw_uw_issuer_turn_trigger = yes } } }
 }
@@ -82,14 +65,14 @@ rw_unlawful_war_response.0002 = {
         trigger = { rw_uw_answer_turn_trigger = yes }
         custom_tooltip = rw_uw.acknowledge_effect
         rw_uw_acknowledge_effect = yes
-        ai_chance = { base = 30 modifier = { factor = 2 has_trait = humble } }
+        ai_chance = { base = 0 modifier = { add = rw_ai_uw_acknowledge_weight always = yes } }
     }
     option = {
         name = rw_uw.refuse
         trigger = { rw_uw_answer_turn_trigger = yes }
         custom_tooltip = rw_uw.refuse_effect
         rw_uw_refuse_effect = yes
-        ai_chance = { base = 15 modifier = { factor = 2 has_trait = stubborn } modifier = { factor = 2 has_trait = arrogant } }
+        ai_chance = { base = 0 modifier = { add = rw_ai_uw_refuse_weight always = yes } }
     }
     option = { name = rw_uw.close trigger = { NOT = { rw_uw_answer_turn_trigger = yes } } }
 }
