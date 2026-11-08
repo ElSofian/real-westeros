@@ -8,6 +8,7 @@ from tools.validate_mod import clean_script
 from test_deferred_service_contract import block
 from test_external_war_ai import VALUES, ACTION_DIGESTS
 from test_promise_ai_policy import action_digest
+from test_external_title_stakes import strip_title_extension
 
 CONTEXT = 'common/scripted_triggers/rw_protected_title_stakes_triggers.txt'
 FACTOR = 'rw_ai_xw_protected_title_factor'
@@ -46,7 +47,7 @@ CONTEXT_TOKENS = (
 
 
 def previous_profile_digest(values):
-    clean = clean_script(values)[0]
+    clean = strip_title_extension(values)
     start, _, end = builder.bounds(clean, FACTOR)
     clean = clean[:start]+clean[end:]
     clean = re.sub(r'\bmultiply\s*=\s*'+FACTOR+r'\b', '', clean)

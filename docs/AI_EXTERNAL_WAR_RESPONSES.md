@@ -141,3 +141,12 @@ visés de ses vassaux directs. Rang maximal, titre principal du détenteur actue
 et pluralité de faits valides modulent sa préoccupation existante. Le socle et
 PRIVATE0.0.10 attestent 33 sources de runtime. Coefficients provisoires, delta0,
 non testé moteur. Les intérêts des autres décideurs restent à approfondir.
+
+## Extension des autres décideurs et de la médiation
+
+AI_EXTERNAL_TITLE_STAKES.md raccorde les enjeux exacts du conflit au lige du
+déclarant, au médiateur et à l'attachement du déclarant à son objectif connu.
+Les titres du défenseur principal et des détenteurs sous lui ont leurs gardes
+propres. Le socle et PRIVATE0.0.10 attestent 35 sources de runtime. Coefficients
+provisoires, delta0, non testé moteur. La revue suivante concerne puissance et
+soutiens connus.

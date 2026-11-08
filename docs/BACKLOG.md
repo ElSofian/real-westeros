@@ -1,5 +1,14 @@
 # Development backlog
 
+**RW-004 external title stakes, 8 November:** declaring liege and mediator
+  weigh the exact defender-side targets of the war. Attacker attachment additionally
+  requires the known living original claimant. Independent primary defenders and
+  actual nested vassal holders have distinct paths; no missing-liege inference.
+  Protector keeps its own reader. Eight source and one delivered regression.
+  Experimental, not engine-tested. Baseline/result80/80+0/20, delta0.
+  Next public power and known support. Expected gain/wealth, de-jure detail and
+  exhaustive context remain open.
+
 **RW-004 peer title stakes, 8 November:** exact defender-side titles now shape
   peer liege concern and the attacker's attachment to its known original claim
   goal. Actual nested vassal holders retain their direct authority. Complete

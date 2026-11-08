@@ -1,5 +1,14 @@
 # Context and personality in political decisions
 
+## Current external title stakes extension
+
+AI_EXTERNAL_TITLE_STAKES.md adds exact war-target magnitude to declaring-liege
+concern and mediator replies, plus attacker attachment to the known living
+original claimant's goal. Primary defender and nested holders have distinct
+identity guards, including independent defenders. Protector keeps its own reader.
+Next public power/known support. Expected gain and full context remain open.
+Source-only, not engine-tested.80/80+0/20, actual delta0.
+
 ## Current peer title stakes extension
 
 AI_PEER_TITLE_STAKES.md reads exact defender-side titles, including actual nested
