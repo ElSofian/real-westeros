@@ -320,6 +320,11 @@ class CampaignPackTests(unittest.TestCase):
                 changed = dict(sources)
                 changed[name] = changed[name].replace('current_military_strength > 0', 'always = yes', 1)
                 self.assertTrue(support_errors(changed))
+                family = 'uw' if name == PEER_AI_VALUES else 'xw'
+                war = 'scope:rw_uw_war' if family == 'uw' else 'scope:rw_xw_record.var:rw_xw_war'
+                changed = dict(sources)
+                changed[name] = changed[name].replace('NOT = { this = '+war+' }', 'always = yes', 1)
+                self.assertTrue(support_errors(changed))
 
     def test_declaration_military_risk_in_delivered_files(self):
         self.prepare()

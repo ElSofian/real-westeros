@@ -46,29 +46,49 @@ def support_errors(sources):
                 ' '.join(block(conditional, 'limit').split()) != 'rw_'+family+'_answer_turn_trigger = yes' or
                 'min = 0.8' not in factor or 'max = 1.25' not in factor):
             errors.append('invalid neutral support frame '+family)
-        for side in ('attacker', 'defender'):
+        # Select direct branches only, without treating their nested availability
+        # conditions as separate camps. Braces are already comment/string-cleaned.
+        branches = [block(conditional[m.start():], 'if')
+                    for m in re.finditer(r'\bif\s*=\s*\{', conditional)
+                    if conditional[:m.start()].count('{') == conditional[:m.start()].count('}')]
+        if len(branches) != 2:
+            errors.append('wrong support camp branches '+family)
+        for index, (side, operation) in enumerate((('attacker', 'multiply'), ('defender', 'divide'))):
             marker = 'any_war_'+side
-            iterator = block(conditional, marker)
-            if any(token not in iterator for token in (
-                    'is_alive = yes', 'NOT = { this = scope:rw_'+family+'_'+side+' }',
-                    'current_military_strength > 0')):
-                errors.append('unbound secondary '+side+' '+family)
-            if conditional.count(marker+' = {') != 1:
-                errors.append('repeated side query '+family)
-        # Each camp must be queried from this family's exact original native war.
+            iterators = [block(conditional[m.start():], marker)
+                         for m in re.finditer(r'\b'+marker+r'\s*=\s*\{', conditional)]
+            if len(iterators) != 2:
+                errors.append('missing presence or availability query '+family)
+            for iterator in iterators:
+                if any(token not in iterator for token in (
+                        'is_alive = yes', 'NOT = { this = scope:rw_'+family+'_'+side+' }',
+                        'current_military_strength > 0')):
+                    errors.append('unbound secondary '+side+' '+family)
+            if index < len(branches):
+                branch = branches[index]
+                available = block(branch, 'if')
+                available_participant = block(available, marker)
+                expected = 'NOT = { any_character_war = { NOT = { this = '+case['war']+' } } }'
+                if (expected not in ' '.join(available_participant.split()) or
+                        available_participant.count('any_character_war = {') != 1):
+                    errors.append('wrong competing-war check '+family)
+                if (operation+' = 1.25' not in available or
+                        ' '.join(block(branch, 'else').split()) != operation+' = 1.1'):
+                    errors.append('wrong full or divided support signal '+family)
+                if marker+' = {' not in block(branch, 'limit'):
+                    errors.append('support camp lost '+family)
+        # Both the presence query and its availability refinement use this war.
         war_blocks = [block(conditional[m.start():], case['war'])
                       for m in re.finditer(re.escape(case['war'])+r'\s*=\s*\{', conditional)]
-        if (len(war_blocks) != 2 or 'any_war_attacker = {' not in war_blocks[0] or
-                'any_war_defender = {' not in war_blocks[1]):
+        if (len(war_blocks) != 4 or
+                any('any_war_'+side+' = {' not in body for body, side in
+                    zip(war_blocks, ('attacker', 'attacker', 'defender', 'defender')))):
             errors.append('wrong support war '+family)
-        branches = [block(conditional[m.start():], 'if')
-                    for m in re.finditer(r'\bif\s*=\s*\{', conditional)]
-        if (len(branches) != 2 or 'any_war_attacker = {' not in branches[0] or
-                'multiply = 1.25' not in branches[0] or
-                'any_war_defender = {' not in branches[1] or 'divide = 1.25' not in branches[1]):
-            errors.append('support camps reverse confidence '+family)
-        if (conditional.count('multiply = 1.25') != 1 or conditional.count('divide = 1.25') != 1):
+        if (conditional.count('multiply = 1.25') != 1 or conditional.count('divide = 1.25') != 1 or
+                conditional.count('multiply = 1.1') != 1 or conditional.count('divide = 1.1') != 1):
             errors.append('wrong symmetric support increments '+family)
+        if re.search(r'\b(count|percent)\s*[=<>]', factor):
+            errors.append('one eligible free supporter no longer sufficient '+family)
         for suffix, operation in (('acknowledge_weight', 'divide'), ('refuse_weight', 'multiply')):
             if block(values, 'rw_ai_'+family+'_'+suffix).count(operation+' = '+name) != 1:
                 errors.append('wrong support reply direction '+family)
@@ -79,7 +99,7 @@ def support_errors(sources):
         executable = clean_script(factor)[0]
         if re.search(r'\b(set_variable|change_variable|create_story|trigger_event|run_interaction|start_war|add_gold|save_\w+|random\w*|every_\w+)\s*=', executable):
             errors.append('support writes or global work '+family)
-        if set(re.findall(r'\b(any_\w+)\s*=', executable)) - {'any_war_attacker', 'any_war_defender'}:
+        if set(re.findall(r'\b(any_\w+)\s*=', executable)) - {'any_war_attacker', 'any_war_defender', 'any_character_war'}:
             errors.append('potential or unrelated support counted '+family)
         if any(not scope.startswith('rw_'+family+'_') for scope in re.findall(r'\bscope:(\w+)', executable)):
             errors.append('foreign support frame '+family)
@@ -145,6 +165,44 @@ class CommittedWarSupportTests(unittest.TestCase):
             changed = dict(self.sources)
             body = block(changed[case['values']], 'rw_ai_'+case['family']+'_committed_support_factor')
             changed[case['values']] = changed[case['values']].replace(body, body+'\nset_variable = {}')
+            self.assertTrue(support_errors(changed))
+
+    def test_exact_current_war_is_excluded_from_competing_wars(self):
+        for case in CASES:
+            changed = dict(self.sources)
+            token = 'NOT = { this = '+case['war']+' }'
+            changed[case['values']] = changed[case['values']].replace(token, 'always = yes', 1)
+            self.assertTrue(support_errors(changed))
+
+    def test_divided_support_keeps_reduced_signal_in_both_camps(self):
+        for case in CASES:
+            for token in ('multiply = 1.1', 'divide = 1.1'):
+                changed = dict(self.sources)
+                changed[case['values']] = changed[case['values']].replace(token, token.replace('1.1', '1.25'), 1)
+                self.assertTrue(support_errors(changed))
+
+    def test_availability_queries_repeat_secondary_participant_eligibility(self):
+        for case in CASES:
+            values = self.sources[case['values']]
+            factor = block(values, 'rw_ai_'+case['family']+'_committed_support_factor')
+            for side in ('attacker', 'defender'):
+                marker = 'any_war_'+side
+                matches = list(re.finditer(r'\b'+marker+r'\s*=\s*\{', factor))
+                iterator = block(factor[matches[1].start():], marker)
+                for token in ('is_alive = yes', 'current_military_strength > 0',
+                              'NOT = { this = scope:rw_'+case['family']+'_'+side+' }'):
+                    changed = dict(self.sources)
+                    changed_factor = factor.replace(iterator, iterator.replace(token, 'always = yes'), 1)
+                    changed[case['values']] = values.replace(factor, changed_factor, 1)
+                    self.assertTrue(support_errors(changed))
+
+    def test_one_unburdened_supporter_is_sufficient_without_all_roster_requirement(self):
+        for case in CASES:
+            changed = dict(self.sources)
+            values = changed[case['values']]
+            factor = block(values, 'rw_ai_'+case['family']+'_committed_support_factor')
+            changed_factor = factor.replace('any_war_attacker = {', 'any_war_attacker = { percent = 1', 1)
+            changed[case['values']] = values.replace(factor, changed_factor, 1)
             self.assertTrue(support_errors(changed))
 
     def test_entire_prior_profiles_legacy_inputs_and_action_graphs_preserved(self):

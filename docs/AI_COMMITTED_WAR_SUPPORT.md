@@ -34,17 +34,24 @@ force de coalition.
 ## Coefficients provisoires
 
 Le facteur commence à 1 et n'est évalué que pendant le propre tour du déclarant.
-La présence d'au moins un participant secondaire admissible attaquant multiplie
-par 1.25. La présence d'au moins un participant secondaire admissible défenseur
-divise par 1.25. Chaque camp intervient une seule fois, quel que soit le nombre
-de participants correspondants. Les bornes sont de 0.8 à 1.25.
+Chaque camp utilise désormais le meilleur signal de disponibilité observé parmi
+ses participants secondaires admissibles. Au moins un soutien sans autre guerre
+donne 1.25. Lorsque tous ces soutiens participent également à une autre guerre,
+le signal vaut 1.1. Un camp sans soutien admissible vaut 1. Le facteur global
+multiplie le signal attaquant et divise par le signal défenseur. Les bornes
+restent de 0.8 à 1.25. AI_SUPPORT_COMPETING_WARS.md détaille cette extension.
 
-| Participants secondaires admissibles | Facteur |
-|---|---|
-| Aucun dans les deux camps | 1 |
-| Camp attaquant seul | 1.25 |
-| Camp défenseur seul | 0.8 |
-| Présents dans les deux camps | 1 |
+| Signal attaquant | Signal défenseur | Facteur |
+|---|---|---|
+| Aucun | Aucun | 1 |
+| Sans autre guerre | Aucun | 1.25 |
+| Tous dans d'autres guerres | Aucun | 1.1 |
+| Aucun | Sans autre guerre | 0.8 |
+| Aucun | Tous dans d'autres guerres | Environ 0.909 |
+| Sans autre guerre | Sans autre guerre | 1 |
+| Tous dans d'autres guerres | Tous dans d'autres guerres | 1 |
+| Sans autre guerre | Tous dans d'autres guerres | Environ 1.136 |
+| Tous dans d'autres guerres | Sans autre guerre | 0.88 |
 
 Le refus est multiplié par ce facteur, l'accusé de réception est divisé par ce
 facteur. Les autres motivations, relations, enjeux de titres et score réel de
@@ -52,7 +59,7 @@ la guerre restent applicables. Les poids admissibles gardent leurs bornes de
 1 à 300. Les coefficients sont provisoires. L'accusé de réception conserve la
 portée politique documentée dans les tranches précédentes.
 
-La neutralité des deux camps soutenus exprime la limite de ce premier signal.
+La neutralité de deux camps ayant le même niveau de signal exprime sa limite.
 Les différences d'effectifs ou de qualité entre leurs soutiens conservent leur
 revue suivante. Les participants supplémentaires ne multiplient pas indéfiniment
 ce bonus. Tous les participants du camp restent susceptibles de satisfaire la
@@ -61,7 +68,8 @@ recherche native, sans tronquer leur liste à un nombre arbitraire.
 ## Lecture, livraison et vérification
 
 Les recherches restent dans les deux listes de participants de la guerre exacte.
-Aucun état, participant ou interaction n'est créé. Le facteur hors tour reste
+La recherche des autres engagements consulte les guerres du participant, en
+excluant explicitement la guerre examinée. Aucun état, participant ou interaction n'est créé. Le facteur hors tour reste
 neutre à 1, tandis que les gardes originales des poids conservent leurs conditions.
 Les soutiens peuvent rejoindre ou quitter la guerre et la préférence suit les
 faits courants. Aucun engagement personnel n'est transmis à un héritier.

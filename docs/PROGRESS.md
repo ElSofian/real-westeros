@@ -1,5 +1,21 @@
 # Progress
 
+- RW-004 support competing wars, 8 November. Refine existing peer/external
+  joined-support factors. Exact own reply/war/participant guards remain; repeated
+  eligibility checks precede a character-local other-war search excluding this
+  exact war by identity. One eligible supporter without another war retains1.25;
+  when all eligible supporters have other wars use1.1, with no support1. Opposite
+  camps divide as before, bounds0.8..1.25. Coefficients provisional and reduced
+  signal remains positive, without declaring all troops unavailable. Four new
+  source regressions, earlier eight adapted, delivered mutation extended.
+  Historical profile invariants outside the support factor and calls preserved;
+  peer shared-file snapshot intentionally updated. Actions, permissions,
+  lifecycle and native outputs preserved. Existing attested files reused,
+  runtime35. Available static/CI/committed private assembly evidence recorded in
+  PR. Experimental, not engine-tested. Baseline/result80/80 source+0/20 campaign,
+  actual delta0. Next deployment/effective reinforcement power, anticipated
+  support and broader response capacity. Other-war absence is not front arrival.
+
 - RW-004 committed war support, 8 November. Exact own reply turns and native
   war lists bind peer/external attacker support signals. Each camp needs a live
   secondary participant with positive current military strength. Primary attacker

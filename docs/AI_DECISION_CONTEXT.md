@@ -1,10 +1,20 @@
 # Context and personality in political decisions
 
+## Current competing-war support extension
+
+AI_SUPPORT_COMPETING_WARS.md refines joined-support signals with each eligible
+participant's other wars, excluding this exact war. One supporter without another
+war yields1.25; all eligible supporters occupied elsewhere retain1.1; no support1.
+Same eligibility, own turn and opposite replies remain guarded. Actual deployment,
+force on this front and anticipated support remain open. Source-only, not
+engine-tested.80/80+0/20, actual delta0.
+
 ## Current committed war-support extension
 
 AI_COMMITTED_WAR_SUPPORT.md adds exact-war secondary participant presence to
 peer/external attacker replies. Live participants with positive current strength
-supply one signal per side, with neutral neither/both cases. Potential allies
+supply one signal per side. The competing-war extension refines its level;
+matched levels remain neutral. Potential allies
 are not counted as joined. Physical availability, effective coalition power,
 quality/dragons and anticipated support remain open. Source-only, not engine-tested.
 80/80 source+0/20 campaign, actual delta0.
