@@ -1,5 +1,14 @@
 # Development backlog
 
+**RW-004 support competing wars, 8 November:** joined-support signals now
+  distinguish one eligible secondary participant without another war from a camp
+  whose eligible supporters all have other native wars. Exact current war excluded;
+  reduced signal1.1 retained, full1.25 with one unburdened supporter, none1.
+  Four added source regressions and existing delivered negative check extended.
+  Experimental, not engine-tested. Baseline/result80/80+0/20, delta0. Next real
+  reinforcement deployment/effective power, anticipated support and other deciders.
+  Absence of other wars does not establish immediate front availability.
+
 **RW-004 committed war support, 8 November:** attacker replies in peer and
   external cases now read exact-war secondary participants. Living participants
   with positive current native strength supply one presence signal per camp;

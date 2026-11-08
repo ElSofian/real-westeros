@@ -151,7 +151,7 @@ rw_ai_uw_resolution_factor = {
 }
 # The original primary attacker knows the position of its own exact native war.
 # Presence of living secondary participants with positive native current strength.
-# Both camps use the exact same war. This is a support signal, without troop sums.
+# Both camps use the exact same war, with a reduced signal when all supporters have other wars.
 rw_ai_uw_committed_support_factor = {
     value = 1
     if = {
@@ -166,7 +166,24 @@ rw_ai_uw_committed_support_factor = {
                     }
                 }
             }
-            multiply = 1.25
+            if = {
+                limit = {
+                    scope:rw_uw_war = {
+                        any_war_attacker = {
+                            is_alive = yes
+                            NOT = { this = scope:rw_uw_attacker }
+                            current_military_strength > 0
+                            NOT = {
+                                any_character_war = {
+                                    NOT = { this = scope:rw_uw_war }
+                                }
+                            }
+                        }
+                    }
+                }
+                multiply = 1.25
+            }
+            else = { multiply = 1.1 }
         }
         if = {
             limit = {
@@ -178,7 +195,24 @@ rw_ai_uw_committed_support_factor = {
                     }
                 }
             }
-            divide = 1.25
+            if = {
+                limit = {
+                    scope:rw_uw_war = {
+                        any_war_defender = {
+                            is_alive = yes
+                            NOT = { this = scope:rw_uw_defender }
+                            current_military_strength > 0
+                            NOT = {
+                                any_character_war = {
+                                    NOT = { this = scope:rw_uw_war }
+                                }
+                            }
+                        }
+                    }
+                }
+                divide = 1.25
+            }
+            else = { divide = 1.1 }
         }
     }
     min = 0.8

@@ -1696,3 +1696,13 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   exercise Mega Wars and measure large native participant lists. Verify native
   effects/costs. Physical arrival and effective coalition power remain separate
   cases. New source preferences remain engine-unverified until the final campaign.
+
+- Support competing-war signal. Use matching base/PRIVATE0.0.10. Inspect both
+  profiles with secondary supporters in only this war, all in another war,
+  mixed with exactly one eligible supporter without another war, no support and
+  asymmetric camps. The examined war itself must never count as competing.
+  Repeat eligibility for the unburdened query, including dead/empty/primary-only
+  and nonparticipant cases. Join/leave another war, reload, expire windows and
+  change identities. Observe actual values/replies, native effects/costs and
+  performance with many character-local wars. Exercise linked Mega Wars. This
+  soft availability signal remains engine-unverified and does not prove arrival.
