@@ -133,3 +133,10 @@ and exact-target transport remain mandatory. The protective authority retains it
 distinct political capacity. Native terms, costs and outcomes remain owned by
 CK3/AGOT, with grouped engine proof required. Protector mediation, additional
 authority capacities and broader contextual AI remain further development.
+
+G1_EXTERNAL_MEDIATION.md adds the protector's discretionary request to the
+captured declaring liege. Explicit personal consent precedes a separate native
+ticket and preserves the earlier political decision. Revalidate both authorities
+and the protective context, retain historical law facts, and guard concurrent
+attempts on the same war. Superior assistance and broader contextual motivations
+remain separate development. New mediation behavior is not engine-tested.

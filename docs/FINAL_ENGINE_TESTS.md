@@ -1588,3 +1588,15 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   duplicate/mixed peer-external transport. Old adapters must keep the option off.
   Repeat with AI and Mega Wars. Dispatch/binding metadata alone proves no peace.
   This new source route is not engine-tested.
+
+- Protector mediation. Use the matching PRIVATE0.0.10/base from this commit.
+  A protector approaches the captured declaring liege, who accepts, declines,
+  stays silent or reports an existing attempt. Compare original declaring-liege
+  decisions before/after consent, including an already closed first decision.
+  Check separate consent ticket, original declaration date, cross-linked serials,
+  next-day native negotiation and actual outcomes/costs. Exercise several
+  protectors, competing direct/mediated attempts, stale/foreign consent, changed
+  mediator/protector/authority/representative target/war roles, missing parent,
+  expired windows, replay and reload. Native send/binding must revalidate consent;
+  ordinary pre-mediation tickets retain their path. Check neutral refusal/silence
+  and unavailable handoff, plus AI and Mega Wars. New mediation is not engine-tested.

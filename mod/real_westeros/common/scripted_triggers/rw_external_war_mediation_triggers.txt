@@ -1,0 +1,92 @@
+rw_xm_can_request_trigger = {
+    rw_xw_native_adapter_available_trigger = yes
+    rw_xw_turn_trigger = yes
+    scope:rw_xw_record = {
+        var:rw_xw_role = flag:target_liege
+        save_temporary_scope_as = rw_xm_check
+        var:rw_xw_source = {
+            exists = var:rw_dl_issuer
+            exists = var:rw_dl_authority
+            var:rw_dl_issuer = { is_alive = yes is_adult = yes is_landed = yes is_imprisoned = no }
+            save_temporary_scope_as = rw_xm_law_check
+            var:rw_dl_authority = { holder = scope:rw_xm_law_check.var:rw_dl_issuer }
+            scope:rw_xm_check.var:rw_xw_attacker = { liege = scope:rw_xm_law_check.var:rw_dl_issuer }
+        }
+    }
+}
+# STORY scope. A request never follows a replacement liege, title or protector.
+rw_xm_context_trigger = {
+    rw_xw_context_trigger = yes
+    var:rw_xw_role = flag:target_liege
+    exists = var:rw_xm_mediator
+    exists = var:rw_xm_authority
+    save_temporary_scope_as = rw_xm_check
+    var:rw_xw_source = {
+        var:rw_dl_issuer = scope:rw_xm_check.var:rw_xm_mediator
+        var:rw_dl_authority = scope:rw_xm_check.var:rw_xm_authority
+    }
+    var:rw_xm_mediator = { is_alive = yes is_adult = yes is_landed = yes is_imprisoned = no }
+    var:rw_xm_authority = { holder = scope:rw_xm_check.var:rw_xm_mediator }
+    var:rw_xw_attacker = { liege = scope:rw_xm_check.var:rw_xm_mediator }
+}
+rw_xm_turn_trigger = {
+    rw_xw_identity_trigger = yes
+    exists = scope:rw_xm_mediator
+    exists = scope:rw_xm_protector
+    exists = scope:rw_xm_authority
+    this = scope:rw_xm_mediator
+    scope:rw_xw_record = {
+        rw_xm_context_trigger = yes
+        var:rw_xm_mediator = scope:rw_xm_mediator
+        var:rw_xm_authority = scope:rw_xm_authority
+        var:rw_xw_ruler = scope:rw_xm_protector
+        var:rw_xw_state = flag:mediation_requested
+        has_variable = rw_xm_requested_on
+        has_variable = rw_xm_window
+    }
+}
+rw_xm_can_accept_trigger = {
+    rw_xm_turn_trigger = yes
+    rw_xw_native_adapter_available_trigger = yes
+    NOT = { is_participant_in_war = scope:rw_xw_record.var:rw_xw_war }
+    scope:rw_xw_attacker = { NOT = { any_character_war = { count >= 2 } } }
+    scope:rw_xw_record = { NOT = { rw_xw_other_native_attempt_trigger = yes } }
+    NOT = { has_variable = rw_uw_native_send_record }
+    NOT = { has_variable = rw_uw_native_send_serial }
+    NOT = { has_variable = rw_xw_native_send_record }
+    NOT = { has_variable = rw_xw_native_send_serial }
+}
+# STORY scope. Ordinary tickets have no mediation origin. Mediated tickets must
+# retain exact explicit consent and the protective context through native dispatch.
+rw_xm_native_origin_trigger = {
+    OR = {
+        AND = {
+            NOT = { has_variable = rw_xm_ticket_schema }
+            NOT = { has_variable = rw_xm_origin }
+            NOT = { has_variable = rw_xm_origin_serial }
+        }
+        AND = {
+            var:rw_xm_ticket_schema = 1
+            exists = var:rw_xm_origin
+            has_variable = rw_xm_origin_serial
+            save_temporary_scope_as = rw_xm_job
+            var:rw_xm_origin = {
+                rw_xm_context_trigger = yes
+                story_owner = scope:rw_xm_job.story_owner
+                var:rw_xw_serial = scope:rw_xm_job.var:rw_xm_origin_serial
+                var:rw_xw_source = scope:rw_xm_job.var:rw_xw_source
+                var:rw_xw_source_serial = scope:rw_xm_job.var:rw_xw_source_serial
+                var:rw_xw_war = scope:rw_xm_job.var:rw_xw_war
+                var:rw_xw_attacker = scope:rw_xm_job.var:rw_xw_attacker
+                var:rw_xw_defender = scope:rw_xm_job.var:rw_xw_defender
+                var:rw_xm_mediator = scope:rw_xm_job.var:rw_xw_ruler
+                var:rw_xm_authority = scope:rw_xm_job.var:rw_xw_authority
+                var:rw_xw_state = flag:closed
+                var:rw_xw_result = flag:mediation_accepted
+                has_variable = rw_xm_answered_on
+                var:rw_xm_native_ticket = scope:rw_xm_job
+                var:rw_xm_native_serial = scope:rw_xm_job.var:rw_xw_serial
+            }
+        }
+    }
+}

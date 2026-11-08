@@ -25,6 +25,13 @@ story_rw_external_war_response = {
                         var:rw_xw_state = flag:native_queued
                         NOT = { has_variable = rw_xw_native_window }
                     }
+                    AND = {
+                        var:rw_xw_state = flag:mediation_requested
+                        OR = {
+                            NOT = { has_variable = rw_xm_window }
+                            NOT = { rw_xm_context_trigger = yes }
+                        }
+                    }
                 }
             }
             effect = {
@@ -33,6 +40,7 @@ story_rw_external_war_response = {
                 remove_variable = rw_xw_window
                 remove_variable = rw_xw_answer_window
                 remove_variable = rw_xw_native_window
+                remove_variable = rw_xm_window
             }
         }
     }

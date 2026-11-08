@@ -1,5 +1,15 @@
 # Development backlog
 
+**RW-004 protector mediation, 8 November:** a target-holder liege may approach
+  the original declaring liege through its personal case. Exact consent/refusal
+  and a seven-day window precede any linked native ticket. Earlier mediator
+  decisions and historical law/date remain intact. Reuse native worker; bind
+  consent at queue/send/callback, retain current protective context and refuse
+  competing live/same-day attempts. Existing-attempt reply and neutral silence.
+  Eight source and one delivered regression. Not engine-tested. Baseline/result
+  80/80+0/20, delta0. Next contextual war-response AI review. Higher assistance is a
+  separate capacity; general royal peace stays deferred.
+
 **RW-004 external native negotiation, 8 November:** PRIVATE0.0.10 adds a direct
   declaring-liege option using the genuine native stop-vassal-war negotiation.
   Next-day dispatch, exact captured war/authority, current native validation,

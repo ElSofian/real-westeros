@@ -73,6 +73,17 @@ rw_external_war_response.0001 = {
             modifier = { factor = 2 opinion = { target = scope:rw_xw_attacker value <= -20 } }
         }
     }
+    option = {
+        name = rw_xm.request
+        trigger = { rw_xm_can_request_trigger = yes }
+        custom_tooltip = rw_xm.request_effect
+        rw_xm_request_effect = yes
+        ai_chance = {
+            base = 25
+            modifier = { factor = 2 ai_compassion >= 25 }
+            modifier = { factor = 2 opinion = { target = scope:rw_xw_attacker value <= -20 } }
+        }
+    }
     option = { name = rw_xw.close trigger = { NOT = { rw_xw_turn_trigger = yes } } }
 }
 rw_external_war_response.0002 = {

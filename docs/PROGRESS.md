@@ -1,5 +1,20 @@
 # Progress
 
+- RW-004 protector mediation, 8 November. A target-liege case may consume its
+  initial turn to approach the captured declaring liege. Seven-day personal
+  mediator consent/refusal/existing-attempt reply, with exact current role/title
+  checks and neutral expiry. Consent is consumed before a separate linked native
+  ticket, preserving the mediator's original political record and historical law
+  date. Single-use allocation links both records/serials; failures stay explicit.
+  Existing native queue/dispatch/binding revalidates mediated consent and current
+  protective context. Local busy guard excludes self and blocks other live queued
+  or same-day native attempts on that war. Legacy direct tickets retain their
+  no-origin path. Eight source regressions and one delivered positive/negative
+  test added. Full CI/static/committed private assembly evidence is recorded in PR.
+  Experimental, not engine-tested. Baseline/result80/80 source +0/20 campaign,
+  delta0. Next contextual war-response AI review; superior assistance remains a
+  separate capacity. General royal peace remains deferred.
+
 - RW-004 external native negotiation, 8 November. PRIVATE0.0.10 exposes the real
   stop-attacker-vassal-war interaction to the original declaring liege in an
   eligible outside-war case. Queued next-day event captures exact war/authority,
