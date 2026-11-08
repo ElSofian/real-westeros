@@ -21,3 +21,7 @@
  rw_xw.answer_title:0 "An answer to my request"
  rw_xw.acknowledged_notice:0 "[rw_xw_attacker.GetTitledFirstName] has acknowledged my request. The question of peace remains open."
  rw_xw.refused_notice:0 "[rw_xw_attacker.GetTitledFirstName] refuses my request and intends to continue this war."
+ rw_xw.native_intervene:0 "I shall negotiate an end to this war."
+ rw_xw.native_intervene_effect:0 "Tomorrow, the native intervention conditions will be checked for this exact war. CK3/AGOT handles the negotiation, any consideration and its outcome."
+ rw_xw.native_blocked_title:0 "Intervention became unavailable"
+ rw_xw.native_blocked_desc:0 "This war's context or its native conditions have changed. My intervention attempt ends here."

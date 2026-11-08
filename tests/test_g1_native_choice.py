@@ -65,7 +65,7 @@ class NativeChoiceBuilderTests(unittest.TestCase):
     def test_real_original_templates_and_private_manifest(self):
         receipt = self.build()
         self.assertIn('NOT VERIFIED', receipt['ai_option_initialization'])
-        self.assertIn('version="0.0.9"', (self.out/builder.MOD_ID/'descriptor.mod').read_text())
+        self.assertIn('version="0.0.10"', (self.out/builder.MOD_ID/'descriptor.mod').read_text())
         self.assertEqual(4, len(receipt['outputs']))
         self.assertEqual(len(builder.FILES), len(receipt['runtime_sources']))
         self.assertEqual('Real Westeros', receipt['requires_base_mod'])

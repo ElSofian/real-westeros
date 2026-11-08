@@ -1,5 +1,9 @@
 # Demandes politiques des autorités extérieures
 
+Actualisation PRIVATE0.0.10. G1_EXTERNAL_NATIVE_PEACE.md ajoute une alternative
+initiale de négociation native pour le suzerain du déclarant. Les demandes et
+réponses déjà enregistrées ci-dessous conservent leur portée politique.
+
 Tranche du 8 novembre 2026. **Static-checked**, expérimentale et **non testée dans
 CK3**. Baseline et résultat 80/80 source, 0/20 campagne, delta 0.
 
