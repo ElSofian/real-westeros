@@ -1,5 +1,13 @@
 # Development backlog
 
+**RW-004 peer title stakes, 8 November:** exact defender-side titles now shape
+  peer liege concern and the attacker's attachment to its known original claim
+  goal. Actual nested vassal holders retain their direct authority. Complete
+  capture and exact parent/child identities guard bounded neutral-default factors.
+  Eight source and one delivered regression. Experimental, not engine-tested.
+  Baseline/result80/80+0/20, delta0. Next other external deciders' title interests,
+  then public power/support. Expected gains/wealth and full context remain open.
+
 **RW-004 protected title stakes, 8 November:** protector concern now reads all
   eligible exact title facts under its own original authority. Highest current
   target rank, holder's actual primary title and at least two valid facts shape

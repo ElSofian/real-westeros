@@ -22,6 +22,7 @@ from test_external_native_intervention import FILES as EXTERNAL_NATIVE_FILES, in
 from test_external_mediation import FILES as MEDIATION_FILES, mediation_errors
 from test_external_war_ai import VALUES as WAR_AI_VALUES, ACTION_DIGESTS as WAR_AI_EVENTS, policy_errors as war_ai_errors
 from test_peer_war_ai import VALUES as PEER_AI_VALUES, SHARED as PEER_AI_SHARED, EVENT as PEER_AI_EVENT, peer_policy_errors
+from test_peer_title_stakes import CONTEXT as PEER_TITLE_STAKES_CONTEXT, stakes_errors as peer_title_stakes_errors
 from test_protected_title_stakes import CONTEXT as TITLE_STAKES_CONTEXT, stakes_errors
 from test_external_beneficiary import CONTEXT as EXTERNAL_BENEFICIARY_CONTEXT, beneficiary_errors as external_beneficiary_errors
 from test_peer_beneficiary import CONTEXT as BENEFICIARY_CONTEXT, beneficiary_errors
@@ -244,6 +245,18 @@ class CampaignPackTests(unittest.TestCase):
         for token in ('rw_uw_can_queue_native_trigger = yes', 'scope:rw_uw_defender', 'scope:rw_uw_war'):
             with self.subTest(guard=token):
                 self.assertTrue(peer_policy_errors(values.replace(token, 'always = yes'), shared, event))
+
+    def test_peer_title_stakes_in_delivered_files(self):
+        self.prepare()
+        base = self.out/'mod/real_westeros'
+        values = (base/PEER_AI_VALUES).read_text(encoding='utf-8-sig')
+        context = (base/PEER_TITLE_STAKES_CONTEXT).read_text(encoding='utf-8-sig')
+        self.assertEqual([], peer_title_stakes_errors(values, context))
+        for token in ('var:rw_dl_targets_state = flag:all_titles_recorded',
+                      'var:rw_dt_parent_serial = scope:rw_uw_record.var:rw_dl_link_serial',
+                      'is_vassal_or_below_of = scope:rw_uw_defender'):
+            with self.subTest(guard=token):
+                self.assertTrue(peer_title_stakes_errors(values, context.replace(token, 'always = yes')))
 
     def test_protected_title_stakes_in_delivered_files(self):
         self.prepare()

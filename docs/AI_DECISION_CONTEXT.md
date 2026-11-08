@@ -1,5 +1,14 @@
 # Context and personality in political decisions
 
+## Current peer title stakes extension
+
+AI_PEER_TITLE_STAKES.md reads exact defender-side titles, including actual nested
+vassals. Liege concern reflects their importance; attacker attachment to the
+claim goal additionally requires its original known living claimant, including
+own claims. No expected gain or beneficiary support is inferred. Other external
+deciders' title interests, wealth and power/support remain open. Source-only,
+not engine-tested.80/80+0/20, actual delta0.
+
 ## Current protected title stakes extension
 
 AI_PROTECTED_TITLE_STAKES.md reads exact target-title facts for the protector's

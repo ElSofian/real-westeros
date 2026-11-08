@@ -95,3 +95,11 @@ début de la guerre. Les poids utilisent désormais l'affinité propre du décid
 avec ce tiers sous gardes exactes. Le socle et PRIVATE0.0.10 correspondants
 recensent 31 sources de runtime. La préférence initiale de déclaration et le
 profil extérieur conservent leur revue séparée. Source delta0, non testé moteur.
+
+## Extension des enjeux de titres
+
+AI_PEER_TITLE_STAKES.md relie les véritables titres du côté du défenseur à la
+préoccupation du lige et à l'attachement du déclarant à la revendication connue.
+Les détenteurs sous le défenseur conservent leur identité et autorité propres.
+Le socle et PRIVATE0.0.10 attestent 34 sources de runtime. Coefficients
+provisoires, delta0, non testé moteur.

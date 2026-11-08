@@ -1657,3 +1657,12 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   facts are excluded. Change holder, liege, authority and primary title; reload,
   expire windows and measure many local facts. Verify actual weights/choices,
   native costs/outcomes and the other deciders' profiles. Not engine-tested.
+
+- Peer target-title stakes. Use matching base/PRIVATE0.0.10. Inspect actual title
+  facts for defender and nested vassal holders, preserving their original direct
+  liege/authority. Compare liege concern and attacker acknowledgement/refusal with
+  own/third-party/unlanded, missing or dead original claimant. Exercise all ranks,
+  actual holder's current primary title, several facts, partial/legacy/foreign
+  parents, changed holder/liege/authority, expiry and reload. Verify weights,
+  native costs/outcomes, unchanged external profiles and local-query performance.
+  New source preferences remain engine-unverified.

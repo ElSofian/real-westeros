@@ -11,6 +11,93 @@ rw_ai_uw_attacker_favor_factor = {
     min = 0.5
     max = 2
 }
+# Read only exact defender-side titles. Highest rank, primary title and multiple
+# valid facts use the same provisional increments as the protector policy.
+rw_ai_uw_title_stakes_factor = {
+    value = 1
+    if = {
+        limit = { rw_ai_uw_title_context_trigger = yes }
+        if = {
+            limit = {
+                scope:rw_uw_attacker = {
+                    any_owned_story = {
+                        rw_ai_uw_title_fact_trigger = yes
+                        var:rw_dt_title = { tier >= tier_empire }
+                    }
+                }
+            }
+            add = 0.4
+        }
+        else_if = {
+            limit = {
+                scope:rw_uw_attacker = {
+                    any_owned_story = {
+                        rw_ai_uw_title_fact_trigger = yes
+                        var:rw_dt_title = { tier >= tier_kingdom }
+                    }
+                }
+            }
+            add = 0.3
+        }
+        else_if = {
+            limit = {
+                scope:rw_uw_attacker = {
+                    any_owned_story = {
+                        rw_ai_uw_title_fact_trigger = yes
+                        var:rw_dt_title = { tier >= tier_duchy }
+                    }
+                }
+            }
+            add = 0.2
+        }
+        else_if = {
+            limit = {
+                scope:rw_uw_attacker = {
+                    any_owned_story = {
+                        rw_ai_uw_title_fact_trigger = yes
+                        var:rw_dt_title = { tier >= tier_county }
+                    }
+                }
+            }
+            add = 0.1
+        }
+        if = {
+            limit = {
+                scope:rw_uw_attacker = {
+                    any_owned_story = {
+                        rw_ai_uw_title_fact_trigger = yes
+                        exists = var:rw_dt_holder.primary_title
+                        var:rw_dt_title = { this = prev.var:rw_dt_holder.primary_title }
+                    }
+                }
+            }
+            add = 0.2
+        }
+        if = {
+            limit = {
+                scope:rw_uw_attacker = {
+                    any_owned_story = {
+                        count >= 2
+                        rw_ai_uw_title_fact_trigger = yes
+                    }
+                }
+            }
+            add = 0.1
+        }
+    }
+    min = 1
+    max = 1.7
+}
+# Political attachment to the known original claim goal, before any native result.
+rw_ai_uw_contested_stakes_factor = {
+    value = 1
+    if = {
+        limit = { rw_ai_uw_contested_stakes_context_trigger = yes }
+        multiply = rw_ai_uw_title_stakes_factor
+    }
+    min = 1
+    max = 1.7
+}
 rw_ai_uw_defender_concern_factor = {
     value = 1
     if = { limit = { opinion = { target = scope:rw_uw_defender value >= 25 } } multiply = 1.25 }
@@ -19,6 +106,7 @@ rw_ai_uw_defender_concern_factor = {
         limit = { OR = { is_close_family_of = scope:rw_uw_defender is_allied_to = scope:rw_uw_defender } }
         multiply = 1.25
     }
+    multiply = rw_ai_uw_title_stakes_factor
     min = 0.5
     max = 2
 }
@@ -139,6 +227,7 @@ rw_ai_uw_acknowledge_weight = {
         multiply = 1.25
         divide = rw_ai_uw_refusal_position_factor
         divide = rw_ai_uw_beneficiary_favor_factor
+        divide = rw_ai_uw_contested_stakes_factor
         min = 1
         max = 300
     }
@@ -154,6 +243,7 @@ rw_ai_uw_refuse_weight = {
         multiply = rw_ai_uw_beneficiary_favor_factor
         multiply = 0.8
         divide = rw_ai_uw_issuer_favor_factor
+        multiply = rw_ai_uw_contested_stakes_factor
         min = 1
         max = 300
     }
