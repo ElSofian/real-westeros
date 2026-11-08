@@ -1,5 +1,17 @@
 # Ce qui reste avant la première version intégrée
 
+## Revue des conséquences du 9 novembre 2026
+
+[La revue chiffrée](CONSEQUENCE_BALANCE_REVIEW.md) relève trois corrections
+prioritaires de cohérence dans les parcours actuels. B1 concerne la demande de
+paix close par un accusé de réception sans engagement ni malus propre. B2 concerne
+le +50 de prestige uniforme des soutiens et leurs répétitions entre familles.
+B3 concerne les durées différentes des promesses comparables rompues.
+Les prix fixes, la politique de légitimité/stress et le renouvellement des opinions
+restent explicitement ouverts. Le prochain correctif borné vise B1.
+Cette revue couvre les valeurs directes des huit systèmes. Elle conserve les
+scénarios et l'ordre de campagne groupée ci-dessous.80/80+0/20, delta réel +0.
+
 ## Priorité active du 8 novembre 2026
 
 **80/80 source, 0/20 campagne. Delta de ce cadrage +0.** Cette priorité

@@ -1,5 +1,16 @@
 # Development backlog
 
+**Consequence balance review, 9 November — RW-004/RW-010.**
+[CONSEQUENCE_BALANCE_REVIEW.md](CONSEQUENCE_BALANCE_REVIEW.md) inventories 15 opinion
+definitions, 20 application sites, eight prestige effects and eleven gold transfers.
+Priority findings are the consequence-free acknowledgement closing a peace demand,
+uniform +50 support rewards across families and inconsistent broken-promise duration.
+Fixed 25/50 prices, missing explicit legitimacy/stress policy and differing opinion
+refresh rules remain calibration gaps. Source/text agreement does not establish
+balance. 300 existing targeted tests pass after resolving a Windows temporary-fixture
+access error. Gameplay values remain unchanged. Baseline/result80/80+0/20, delta0.
+Next bounded correction B1, with B2/B3 tracked before candidate assembly.
+
 **Priorité active, 8 November — playable candidate preparation.** Owner-directed
 scope correction supersedes the older next-step recommendations below. RW-004
 military-detail expansion pauses. Route/arrival estimates leave the preparation

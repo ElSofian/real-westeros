@@ -1,5 +1,15 @@
 # Progress
 
+- RW-004/RW-010 consequence balance review, 9 November. Completed a source inventory
+  of direct opinion, prestige and gold consequences across the eight systems, with
+  roles, durations, replay guards, costs and native handoffs. Review records three
+  priority coherence findings, plus price scaling, legitimacy/stress policy and
+  opinion refresh gaps. Existing gameplay values preserved during audit. 300 targeted
+  tests including negative paths pass on retry with an accessible Windows fixture
+  directory. Final static/CI evidence in PR. No new engine observation. Baseline/result
+  80/80 source+0/20 campaign, actual delta0. Next bounded peace-demand correction B1.
+  Full balance and native compatibility still require the grouped campaign.
+
 - RW-004 playable-candidate triage, 8 November. Owner halted excessive war-AI
   detail expansion. Superseding priorities now point to a bounded review of eight
   delivered system entries/rules/scenarios, demonstrated blocking fixes, exact-commit
