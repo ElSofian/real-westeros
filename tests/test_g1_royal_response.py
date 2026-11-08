@@ -156,10 +156,13 @@ class RoyalResponseSourceTests(unittest.TestCase):
             for name in ('descriptor.mod',): shutil.copyfile(builder.REPO/'mod/real_westeros'/name,mod/name)
             shutil.copyfile(builder.REPO/'mod/real_westeros.mod',root/'mod/real_westeros.mod')
             for name in ('common/character_interactions','common/on_action'): (mod/name).mkdir(parents=True,exist_ok=True)
-            # The adapter declares a Real Westeros dependency. Its thirteen
-            # attested runtime inputs alone do not include the shared AI guard.
-            self.assertTrue(any('undefined owned trigger rw_ai_existing_commitment_trigger' in error
-                                for error in validate(root)))
+            # Attested inputs now include the shared AI guard file. Its other
+            # service/favor guards still require the complete Real Westeros base.
+            errors = validate(root)
+            for name in ('rw_service_obligation_actionable_trigger', 'rw_fd_due_trigger'):
+                self.assertTrue(any('undefined owned trigger '+name in error for error in errors))
+            self.assertFalse(any('undefined owned trigger rw_ai_existing_commitment_trigger' in error
+                                 for error in errors))
             shutil.copytree(ROOT, mod, dirs_exist_ok=True)
             self.assertEqual([],validate(root))
 
