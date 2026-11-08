@@ -1666,3 +1666,13 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   parents, changed holder/liege/authority, expiry and reload. Verify weights,
   native costs/outcomes, unchanged external profiles and local-query performance.
   New source preferences remain engine-unverified.
+
+- Other external title stakes. Use matching base/PRIVATE0.0.10. Compare declaring
+  liege concern, mediator acceptance/refusal and attacker goal replies. Include
+  independent primary defender, exact nested holders, multiple protectors and
+  distinct representative titles. Vary rank, actual holder's primary title,
+  multiple targets, own/third-party/unlanded/missing/dead original claimant.
+  Exercise partial/legacy/foreign facts, ownership/authority changes, reload and
+  expiry. Verify factual existing-attempt reply, protector's own reader, real
+  weights/choices, native consent/costs/outcomes and local-query performance.
+  New preferences remain engine-unverified until the final grouped campaign.

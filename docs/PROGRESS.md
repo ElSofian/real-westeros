@@ -1,5 +1,24 @@
 # Progress
 
+- RW-004 external title stakes, 8 November. Own declaring-liege/attacker/mediator
+  turns, exact complete parent and immutable target facts guard bounded stakes.
+  Actual primary defender may be independent; other holders must still be nested
+  below the defender with original direct authority. No missing-liege inference.
+  Highest rank, actual holder's current primary title and at least two facts use
+  provisional increments1..1.7. Declaring-liege concern, opposite mediation replies
+  and attacker claim-goal replies receive distinct calls. Claim-goal attachment
+  requires the known living original claimant, own or third party. Protector's
+  own reader and factual existing-attempt reply preserved. Local reads only.
+  Eight source and one delivered negative/positive regression. Inversion preserves
+  the full prior numeric profile outside two factors and five calls. Earlier
+  beneficiary/protector comparisons share the separately checked removal; peer
+  shared-file snapshot deliberately updated. Actions, effects, permission,
+  consent/lifecycle/native outputs and other profiles preserved. Available static,
+  CI and committed private assembly evidence recorded in PR. Experimental, not
+  engine-tested. Baseline/result80/80 source+0/20 campaign, actual delta0. Next
+  public power/known support. Expected wealth/gain, de-jure/dynastic detail and
+  exhaustive context remain open.
+
 - RW-004 peer title stakes, 8 November. Liege concern uses exact defender-side
   target facts, including actual nested vassals under the defender. Original
   holder/direct liege/authority/date/war/parent/serial and complete capture remain

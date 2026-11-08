@@ -8,6 +8,7 @@ from tools.validate_mod import clean_script
 from test_deferred_service_contract import block
 from test_external_war_ai import VALUES, ACTION_DIGESTS
 from test_promise_ai_policy import action_digest
+from test_external_title_stakes import strip_title_extension
 
 CONTEXT = 'common/scripted_triggers/rw_external_beneficiary_triggers.txt'
 CLAIMANT = 'scope:rw_xw_record.var:rw_xw_source.var:rw_dl_claimant'
@@ -36,7 +37,7 @@ DIRECTIONS = {
 
 def baseline_profile_digest(values):
     """Remove only this addition to retain the entire prior numeric policy."""
-    clean = clean_script(values)[0]
+    clean = strip_title_extension(values)
     start, _, end = builder.bounds(clean, FACTOR)
     clean = clean[:start]+clean[end:]
     clean = re.sub(r'\b(?:multiply|divide)\s*=\s*'+FACTOR+r'\b', '', clean)
