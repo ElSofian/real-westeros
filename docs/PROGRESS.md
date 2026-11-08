@@ -1,5 +1,24 @@
 # Progress
 
+- RW-004 protected title stakes, 8 November. The protector's existing concern
+  reads exact original attacker-owned target facts under its still-current
+  authority. Parent identity/serial/schema/phase/date/war/parties and complete
+  capture counters guard availability. Each child binds original title/holder/
+  liege/authority/date. Unknown, foreign or changed facts contribute nothing;
+  incomplete/legacy parent retains neutral1. Highest current native target rank,
+  actual holder's current primary title and at least two valid facts add bounded
+  urgency1..1.7 before existing concern cap2. Provisional coefficients documented.
+  Local owned-story queries only, no state/dispatch/global search. Eight source
+  and one delivered positive/negative regression added. Structural inversion
+  preserves the entire prior numeric profile outside this factor and its one
+  protector-only call. Earlier beneficiary inversion and peer shared-file
+  snapshot deliberately accommodate this separately checked slice. Actions,
+  effects, permission/transport/lifecycle and native outputs preserved. Available
+  static/CI/committed private assembly evidence recorded in PR. Experimental,
+  not engine-tested. Baseline/result80/80 source+0/20 campaign, actual delta0.
+  Next other deciders' title interests, then public power/support. Wealth,
+  detailed dynastic/de-jure stakes and exhaustive context remain open.
+
 - RW-004 external beneficiary, 8 November. The exact original source/serial,
   owner/schema/phase/retention/war/parties and known/live third-party claimant
   guard a neutral-default affinity in ruler, attacker and mediator turns. Own

@@ -1,5 +1,14 @@
 # Context and personality in political decisions
 
+## Current protected title stakes extension
+
+AI_PROTECTED_TITLE_STAKES.md reads exact target-title facts for the protector's
+own current response. Highest rank, actual holder's current primary title and
+multiple valid targets shape bounded concern. Parent completeness and each
+original holder/liege/authority remain guarded. Unknown or changed facts are
+excluded. Other deciders' title interests, wealth and power/support remain open.
+Source-only, not engine-tested.80/80+0/20, actual delta0.
+
 ## Current external beneficiary extension
 
 AI_EXTERNAL_BENEFICIARY.md reads the exact original claimant through the external

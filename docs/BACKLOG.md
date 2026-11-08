@@ -1,5 +1,13 @@
 # Development backlog
 
+**RW-004 protected title stakes, 8 November:** protector concern now reads all
+  eligible exact title facts under its own original authority. Highest current
+  target rank, holder's actual primary title and at least two valid facts shape
+  bounded urgency. Incomplete capture stays neutral; foreign/changed/unknown
+  facts are excluded. Eight source and one delivered regression. Experimental,
+  not engine-tested. Baseline/result80/80+0/20, delta0. Next title interests for
+  other deciders, then public power/support. Full context review remains open.
+
 **RW-004 external beneficiary, 8 November:** original exact claimant now shapes
   external ruler/attacker and mediator preferences through the decider's own
   opinion, kinship and alliance. Own/absent/legacy/foreign/dead facts stay neutral.

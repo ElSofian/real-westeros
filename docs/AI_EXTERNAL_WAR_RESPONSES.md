@@ -133,3 +133,11 @@ AI_EXTERNAL_BENEFICIARY.md ajoute l'affinité propre du décideur avec le tiers
 revendiquant capturé. Les tours du lige, du protecteur, du déclarant et du
 médiateur restent distincts. Le socle et PRIVATE0.0.10 correspondants attestent
 32 sources de runtime. Coefficients provisoires, delta0, non testé moteur.
+
+## Extension des titres protégés
+
+AI_PROTECTED_TITLE_STAKES.md ajoute au protecteur un lecteur des titres réellement
+visés de ses vassaux directs. Rang maximal, titre principal du détenteur actuel
+et pluralité de faits valides modulent sa préoccupation existante. Le socle et
+PRIVATE0.0.10 attestent 33 sources de runtime. Coefficients provisoires, delta0,
+non testé moteur. Les intérêts des autres décideurs restent à approfondir.
