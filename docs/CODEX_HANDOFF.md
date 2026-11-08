@@ -1,5 +1,18 @@
 # Codex implementation handoff
 
+## Active continuation — consequence balance review, 9 November
+
+CONSEQUENCE_BALANCE_REVIEW.md records the current figures and findings across the
+eight systems. Direct values remain provisional and unchanged. Next one bounded
+RW-004 correction for B1, the peace demand closed by consequence-free acknowledgement.
+Retain genuine CBs, explicit commitments and discretionary authority. B2 uniform support
+prestige/repetition and B3 inconsistent broken-promise duration follow as finite
+coherence work. Price scaling and explicit legitimacy/stress policy remain visible
+calibration gaps. 300 targeted tests pass, engine campaign still pending.80/80+0/20,
+actual delta0. Follow the grouped-campaign priority instead of earlier military-detail
+expansion suggestions.
+
+
 ## Active continuation — playable candidate priority, 8 November
 
 The owner stopped further war-AI simulation expansion. Follow the active sequence
