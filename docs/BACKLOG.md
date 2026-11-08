@@ -1,5 +1,15 @@
 # Development backlog
 
+**RW-004 external political demands, 8 November:** each authority may send one
+  personal demand through its existing external case. Issuer window consumed
+  before sending; original attacker gets a dated seven-day answer. Shared exact
+  identity/context guards protect both turns. Acknowledge closes with notice;
+  refusal applies one role-specific political opinion after consumption, -15/2y
+  for the direct liege, -10/2y for the protector. Silence remains neutral. Six
+  regressions plus delivered mutations. Experimental, not engine-tested.
+  Baseline/result80/80+0/20, delta0. Next explicit response terms and guarded native
+  peace linkage. Full contextual AI and higher assistance remain open.
+
 **RW-004 external authority reactions, 8 November:** PRIVATE0.0.9 adds independent
   ignore/disapprove choices for the original declaring liege and distinct direct
   lieges of actual targeted holders. Fresh accepted exact law/party/war receipts,

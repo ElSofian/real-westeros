@@ -157,20 +157,34 @@ rw_xw_context_trigger = {
     }
 }
 # Event identity is bound to one personal receipt, never a replacement ruler or heir.
-rw_xw_turn_trigger = {
+rw_xw_identity_trigger = {
     exists = scope:rw_xw_record
     exists = scope:rw_xw_serial
     exists = scope:rw_xw_ruler
     exists = scope:rw_xw_attacker
     exists = scope:rw_xw_defender
-    this = scope:rw_xw_ruler
     scope:rw_xw_record = {
         rw_xw_context_trigger = yes
         var:rw_xw_serial = scope:rw_xw_serial
         var:rw_xw_ruler = scope:rw_xw_ruler
         var:rw_xw_attacker = scope:rw_xw_attacker
         var:rw_xw_defender = scope:rw_xw_defender
+    }
+}
+rw_xw_turn_trigger = {
+    rw_xw_identity_trigger = yes
+    this = scope:rw_xw_ruler
+    scope:rw_xw_record = {
         var:rw_xw_state = flag:pending
         has_variable = rw_xw_window
+    }
+}
+rw_xw_answer_turn_trigger = {
+    rw_xw_identity_trigger = yes
+    this = scope:rw_xw_attacker
+    scope:rw_xw_record = {
+        var:rw_xw_state = flag:demanded
+        has_variable = rw_xw_demanded_on
+        has_variable = rw_xw_answer_window
     }
 }

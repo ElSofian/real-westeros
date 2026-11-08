@@ -1,5 +1,8 @@
 # Réactions distinctes aux guerres entre branches
 
+Actualisation du même adaptateur PRIVATE0.0.9. G1_EXTERNAL_DEMANDS.md ajoute une
+demande politique et une réponse personnelle au dossier ci-dessous.
+
 Tranche du 8 novembre 2026, **Static-checked**, expérimentale et **non testée
 dans CK3**. PRIVATE0.0.9. Baseline et résultat 80/80 source, 0/20 campagne,
 delta 0. Les essais moteur restent regroupés dans la campagne finale.

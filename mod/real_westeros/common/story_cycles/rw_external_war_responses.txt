@@ -10,16 +10,24 @@ story_rw_external_war_response = {
         triggered_effect = {
             trigger = {
                 rw_xw_exact_war_trigger = yes
-                var:rw_xw_state = flag:pending
+                NOT = { var:rw_xw_state = flag:closed }
                 OR = {
-                    NOT = { has_variable = rw_xw_window }
                     NOT = { rw_xw_context_trigger = yes }
+                    AND = {
+                        var:rw_xw_state = flag:pending
+                        NOT = { has_variable = rw_xw_window }
+                    }
+                    AND = {
+                        var:rw_xw_state = flag:demanded
+                        NOT = { has_variable = rw_xw_answer_window }
+                    }
                 }
             }
             effect = {
                 set_variable = { name = rw_xw_state value = flag:closed }
                 set_variable = { name = rw_xw_result value = flag:expired_or_context_lost }
                 remove_variable = rw_xw_window
+                remove_variable = rw_xw_answer_window
             }
         }
     }

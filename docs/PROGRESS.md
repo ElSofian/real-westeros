@@ -1,5 +1,19 @@
 # Progress
 
+- RW-004 external political demands, 8 November. Independent authority cases may
+  consume their initial turn to ask the original attacker to end the war. Shared
+  exact identity/context guards support separate issuer/attacker turns. A dated
+  demand opens a seven-day answer window. Acknowledgement closes with notice only;
+  refusal consumes first, then applies -15/2y opinion from the direct declaring
+  liege or -10/2y from the protector. Silent expiry stays neutral. Monthly cleanup
+  covers both windows, closed cases keep dedup, legacy pending cases require an
+  explicit new demand before any answer. Six new regressions and extended
+  delivered mutations cover the transition. Static/full CI and committed private
+  assembly evidence are recorded in PR. Not engine-tested. Baseline/result80/80
+  source +0/20 campaign, actual delta0. Next explicit negotiated response terms and
+  guarded native peace linkage. Acknowledgement establishes no peace commitment;
+  broader AI context and higher assistance remain further work.
+
 - RW-004 external authority reactions, 8 November. PRIVATE0.0.9 routes fresh
   exact accepted outside claim defiance to separate original declaring-liege and
   target-holder-liege decisions. Unique parent/serial/war/law/choice facts and a

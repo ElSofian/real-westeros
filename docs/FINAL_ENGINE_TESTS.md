@@ -1566,3 +1566,13 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   leadership before choosing. Reload pending/closed events and repeat with AI.
   Check cleanup after war/owner death and many-title cost. New routing is not
   engine-tested. Demands and higher assistance remain further development.
+
+- External political demands. Use matching PRIVATE0.0.9/base from the new commit.
+  Send demands from both original authority roles, then acknowledge one and
+  refuse another. Check independent state/windows and notices, -15/2y opinion
+  from the declaring direct liege versus -10/2y from a protector, with no inferred
+  refusal on silence. Observe war continuation after acknowledgement. Reload
+  initial/demanded/closed cases, including a pre-extension pending record. Exercise
+  wrong-recipient/replayed/expired events, changed authority/title holder/war
+  leadership and ended war. Repeat with AI in both roles. The request and answer
+  paths are not engine-tested; negotiated terms and native peace remain open.
