@@ -17,7 +17,7 @@ Cette identité provient du revendiquant fourni au début de la guerre native.
 Elle ne devient ni le défenseur principal, ni le détenteur d'un titre, ni le
 protecteur, ni un héritier de remplacement. Les gardes existantes continuent de
 vérifier la guerre active, les autorités et le titre représentatif du protecteur.
-Une demande de médiation utilise son propre tour et le consentement du médiateur.
+La réponse du médiateur utilise son propre tour, avant toute acceptation.
 
 Seule la relation personnelle du décideur au bénéficiaire entre dans le facteur.
 Ses traits ou opinions privées, son accord à participer et son soutien militaire
