@@ -1,5 +1,13 @@
 # Context and personality in political decisions
 
+## Current observed reinforcement extension
+
+AI_OBSERVED_REINFORCEMENTS.md uses physical co-location of positive non-raiding
+armies, one owned by a secondary participant and one by the attacker. Own reply
+and only exact native war are required. Co-location is an observation hypothesis
+for the final campaign. Distant visibility, front attribution, route/time and
+combat strength remain open. Source-only, not engine-tested.80/80+0/20, delta0.
+
 ## Current competing-war support extension
 
 AI_SUPPORT_COMPETING_WARS.md refines joined-support signals with each eligible

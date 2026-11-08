@@ -1,5 +1,14 @@
 # Development backlog
 
+**RW-004 observed reinforcement grouping, 8 November:** own attacker replies
+  gain a bounded1..1.1 signal from an actual secondary participant's positive
+  non-raiding army sharing a province with a positive own non-raiding army.
+  Require the actor's only exact native war, explicit owners and current location.
+  Eight source and one delivered regression. Experimental, not engine-tested.
+  Baseline/result80/80+0/20, delta0. Co-location visibility is a final-campaign
+  hypothesis. Next visibility/front attribution and route/time audit, then
+  effective force/quality. Grouping does not establish arrival on the CB target.
+
 **RW-004 support competing wars, 8 November:** joined-support signals now
   distinguish one eligible secondary participant without another war from a camp
   whose eligible supporters all have other native wars. Exact current war excluded;

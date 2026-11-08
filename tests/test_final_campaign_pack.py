@@ -27,6 +27,7 @@ from test_peer_title_stakes import CONTEXT as PEER_TITLE_STAKES_CONTEXT, stakes_
 from test_protected_title_stakes import CONTEXT as TITLE_STAKES_CONTEXT, stakes_errors
 from test_external_beneficiary import CONTEXT as EXTERNAL_BENEFICIARY_CONTEXT, beneficiary_errors as external_beneficiary_errors
 from test_peer_beneficiary import CONTEXT as BENEFICIARY_CONTEXT, beneficiary_errors
+from test_observed_reinforcements import observation_errors
 from test_committed_war_support import support_errors
 from test_declaration_military_risk import military_errors
 from test_declaration_ai import VALUES as DECLARATION_AI_VALUES, CONTEXT as DECLARATION_AI_CONTEXT, declaration_policy_errors
@@ -308,6 +309,18 @@ class CampaignPackTests(unittest.TestCase):
                       'var:rw_dl_claimant_state = flag:known'):
             with self.subTest(guard=token):
                 self.assertTrue(beneficiary_errors(values, context.replace(token, 'always = yes')))
+
+    def test_observed_reinforcements_in_delivered_files(self):
+        self.prepare()
+        base = self.out/'mod/real_westeros'
+        sources = {name: (base/name).read_text(encoding='utf-8-sig')
+                   for name in (PEER_AI_VALUES, WAR_AI_VALUES)}
+        self.assertEqual([], observation_errors(sources))
+        for name in sources:
+            with self.subTest(profile=name):
+                changed = dict(sources)
+                changed[name] = changed[name].replace('army_owner = prev', 'always = yes', 1)
+                self.assertTrue(observation_errors(changed))
 
     def test_committed_war_support_in_delivered_files(self):
         self.prepare()

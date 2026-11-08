@@ -415,6 +415,44 @@ rw_ai_xw_committed_support_factor = {
     min = 0.8
     max = 1.25
 }
+# Own army co-location supplies the observation anchor for grouped reinforcements.
+rw_ai_xw_observed_reinforcement_factor = {
+    value = 1
+    if = {
+        limit = { rw_xw_answer_turn_trigger = yes }
+        if = {
+            limit = {
+                scope:rw_xw_attacker = {
+                    NOT = {
+                        any_character_war = { NOT = { this = scope:rw_xw_record.var:rw_xw_war } }
+                    }
+                }
+                scope:rw_xw_record.var:rw_xw_war = {
+                    any_war_attacker = {
+                        is_alive = yes
+                        NOT = { this = scope:rw_xw_attacker }
+                        any_army = {
+                            army_owner = prev
+                            army_size > 0
+                            NOT = { is_raid_army = yes }
+                            exists = location
+                            location = {
+                                any_army_in_location = {
+                                    army_owner = scope:rw_xw_attacker
+                                    army_size > 0
+                                    NOT = { is_raid_army = yes }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            multiply = 1.1
+        }
+    }
+    min = 1
+    max = 1.1
+}
 rw_ai_xw_refusal_position_factor = {
     value = 1
     if = {
@@ -508,6 +546,7 @@ rw_ai_xw_acknowledge_weight = {
         divide = rw_ai_xw_beneficiary_favor_factor
         divide = rw_ai_xw_claim_goal_factor
         divide = rw_ai_xw_committed_support_factor
+        divide = rw_ai_xw_observed_reinforcement_factor
         min = 1
         max = 300
     }
@@ -525,6 +564,7 @@ rw_ai_xw_refuse_weight = {
         multiply = rw_ai_xw_beneficiary_favor_factor
         multiply = rw_ai_xw_claim_goal_factor
         multiply = rw_ai_xw_committed_support_factor
+        multiply = rw_ai_xw_observed_reinforcement_factor
         min = 1
         max = 300
     }

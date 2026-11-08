@@ -1706,3 +1706,13 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   change identities. Observe actual values/replies, native effects/costs and
   performance with many character-local wars. Exercise linked Mega Wars. This
   soft availability signal remains engine-unverified and does not prove arrival.
+
+- Observed reinforcement grouping. Use matching base/PRIVATE0.0.10. Compare
+  positive non-raiding armies owned separately by a secondary attacker and the
+  main attacker, sharing a province. Verify actual owner/location/size/raid API
+  outputs against the player's visible units. Include no own army, remote support,
+  primary only, dead/empty/raiding units, attached/merged armies, land and sea,
+  movement/siege/combat. Actor must have only this exact war. Exercise multiple
+  wars, visibility boundaries, changed roles/owners, reload, stale windows and
+  Mega Wars. Inspect values/choices and native costs/outcomes; measure nested
+  local queries. Co-location observation is unverified until this campaign.

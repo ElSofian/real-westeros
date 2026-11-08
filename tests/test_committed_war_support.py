@@ -9,6 +9,7 @@ from test_deferred_service_contract import block
 from test_peer_war_ai import VALUES as PEER, EVENT, ACTION_DIGEST
 from test_external_war_ai import VALUES as EXTERNAL, ACTION_DIGESTS
 from test_promise_ai_policy import action_digest
+from test_observed_reinforcements import strip_observed_extension
 
 CASES = (
     {'family': 'uw', 'values': PEER, 'war': 'scope:rw_uw_war',
@@ -20,7 +21,7 @@ CASES = (
 
 def strip_support_extension(values):
     """Share the exact removal with older independent profile invariants."""
-    clean = clean_script(values)[0]
+    clean = strip_observed_extension(values)
     for case in CASES:
         name = 'rw_ai_'+case['family']+'_committed_support_factor'
         if re.search(r'^\s*'+name+r'\s*=\s*\{', clean, re.MULTILINE):
