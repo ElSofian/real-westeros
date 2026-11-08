@@ -1,5 +1,14 @@
 # Context and personality in political decisions
 
+## Current peer beneficiary extension
+
+AI_PEER_BENEFICIARY.md reads the original exact linked claimant for the peer
+liege and attacker. Own opinion/kinship/alliance shape bounded response
+preferences. Own claims and missing/legacy/foreign/dead facts stay neutral.
+No claimant personality, consent or support is inferred. Pre-declaration selected
+CB access, external beneficiary and title stakes remain open. Static-checked,
+not engine-tested. 80/80 source +0/20 campaign, actual delta0.
+
 ## Current declaration-defiance extension
 
 AI_DECLARATION_DEFIANCE.md replaces the native checkbox's earlier initial AI

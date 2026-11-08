@@ -1,5 +1,13 @@
 # Development backlog
 
+**RW-004 peer beneficiary, 8 November:** exact linked original claimant now
+  shapes peer liege/attacker response preferences through the decider's own
+  opinion, kinship and alliance. Own claims and absent/legacy/foreign/dead facts
+  remain neutral. Seven source and one delivered regression. Experimental,
+  not engine-tested. Baseline/result80/80+0/20, delta0. Initial declaration
+  selected-CB access remains unestablished. Next external beneficiary reader,
+  then exact title stakes and public power/support. Full context review open.
+
 **RW-004 declaration defiance AI, 8 November:** existing native AI checkbox now
   compares guarded deterministic motivation/caution. Own personality, known
   relations, burden/means, rationality, native fear, law breadth and usable hook
