@@ -1,0 +1,51 @@
+# Character scope. Only this protector's own active response can gain urgency.
+rw_ai_xw_title_context_trigger = {
+    rw_xw_turn_trigger = yes
+    scope:rw_xw_record = {
+        var:rw_xw_role = flag:target_liege
+        exists = var:rw_xw_source
+        has_variable = rw_xw_source_serial
+        var:rw_xw_source = {
+            story_type = story_rw_declaration_law
+            story_owner = scope:rw_xw_attacker
+            var:rw_dl_schema = 1
+            var:rw_dl_serial > 0
+            var:rw_dl_serial = prev.var:rw_xw_source_serial
+            var:rw_dl_party_schema = 1
+            var:rw_dl_phase = flag:claim_cb_on_declaration_prefix
+            has_variable = rw_dl_retained
+            has_variable = rw_dl_seen_on
+            var:rw_dl_war = scope:rw_xw_record.var:rw_xw_war
+            var:rw_dl_attacker = scope:rw_xw_attacker
+            var:rw_dl_defender = scope:rw_xw_defender
+            var:rw_dl_targets_state = flag:all_titles_recorded
+            var:rw_dl_target_count > 0
+            var:rw_dl_target_records = var:rw_dl_target_count
+        }
+    }
+}
+# STORY scope, inside the original attacker's owned stories. Exact recorded
+# holders must still hold these titles under this protector's original authority.
+rw_ai_xw_protected_title_fact_trigger = {
+    story_type = story_rw_declaration_target
+    story_owner = scope:rw_xw_attacker
+    var:rw_dt_schema = 1
+    exists = var:rw_dt_parent
+    has_variable = rw_dt_parent_serial
+    exists = var:rw_dt_war
+    has_variable = rw_dt_seen_on
+    var:rw_dt_parent = scope:rw_xw_record.var:rw_xw_source
+    var:rw_dt_parent_serial = scope:rw_xw_record.var:rw_xw_source_serial
+    var:rw_dt_war = scope:rw_xw_record.var:rw_xw_war
+    var:rw_dt_seen_on = scope:rw_xw_record.var:rw_xw_source.var:rw_dl_seen_on
+    var:rw_dt_holder_state = flag:known
+    exists = var:rw_dt_title
+    exists = var:rw_dt_holder
+    exists = var:rw_dt_holder_liege
+    exists = var:rw_dt_holder_authority
+    var:rw_dt_holder_liege = scope:rw_xw_ruler
+    var:rw_dt_holder_authority = scope:rw_xw_record.var:rw_xw_authority
+    var:rw_dt_holder = { is_alive = yes liege = scope:rw_xw_ruler }
+    var:rw_dt_title = { holder = prev.var:rw_dt_holder }
+    var:rw_dt_holder_authority = { holder = scope:rw_xw_ruler }
+}

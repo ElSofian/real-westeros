@@ -40,6 +40,12 @@ def baseline_profile_digest(values):
     start, _, end = builder.bounds(clean, FACTOR)
     clean = clean[:start]+clean[end:]
     clean = re.sub(r'\b(?:multiply|divide)\s*=\s*'+FACTOR+r'\b', '', clean)
+    # The separately checked title-stakes slice also preserves this older policy.
+    title_factor = 'rw_ai_xw_protected_title_factor'
+    if re.search(r'^\s*'+title_factor+r'\s*=\s*\{', clean, re.MULTILINE):
+        start, _, end = builder.bounds(clean, title_factor)
+        clean = clean[:start]+clean[end:]
+        clean = re.sub(r'\bmultiply\s*=\s*'+title_factor+r'\b', '', clean)
     return hashlib.sha256(' '.join(clean.split()).encode()).hexdigest()
 
 

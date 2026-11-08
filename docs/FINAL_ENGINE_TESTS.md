@@ -1648,3 +1648,12 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   holder. Exercise parent serial/war/party mismatches, expiry, changed authority,
   reload and both peer/external cases. Verify factual existing-attempt reply,
   native costs/outcomes and performance. New weights remain engine-unverified.
+
+- Protected target-title stakes. Use matching base/PRIVATE0.0.10. Inspect exact
+  parent and child facts, highest rank only, actual holder's current primary
+  title and at least two valid facts under this protector. Compare several
+  holders/protectors, unrelated defender primary titles and all native ranks.
+  Missing/partial/legacy parents stay neutral; missing/foreign/dead/changed-holder
+  facts are excluded. Change holder, liege, authority and primary title; reload,
+  expire windows and measure many local facts. Verify actual weights/choices,
+  native costs/outcomes and the other deciders' profiles. Not engine-tested.

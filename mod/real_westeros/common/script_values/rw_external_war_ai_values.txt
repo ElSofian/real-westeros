@@ -88,6 +88,83 @@ rw_ai_xw_attacker_favor_factor = {
 }
 # Declaring liege considers the primary defender. Protector considers its actual
 # representative title holder, whose exact current identity is already guarded.
+# Public current stakes among this protector's exact recorded target titles.
+# Each signal is presence-based. Only the highest matching rank contributes.
+rw_ai_xw_protected_title_factor = {
+    value = 1
+    if = {
+        limit = { rw_ai_xw_title_context_trigger = yes }
+        if = {
+            limit = {
+                scope:rw_xw_attacker = {
+                    any_owned_story = {
+                        rw_ai_xw_protected_title_fact_trigger = yes
+                        var:rw_dt_title = { tier >= tier_empire }
+                    }
+                }
+            }
+            add = 0.4
+        }
+        else_if = {
+            limit = {
+                scope:rw_xw_attacker = {
+                    any_owned_story = {
+                        rw_ai_xw_protected_title_fact_trigger = yes
+                        var:rw_dt_title = { tier >= tier_kingdom }
+                    }
+                }
+            }
+            add = 0.3
+        }
+        else_if = {
+            limit = {
+                scope:rw_xw_attacker = {
+                    any_owned_story = {
+                        rw_ai_xw_protected_title_fact_trigger = yes
+                        var:rw_dt_title = { tier >= tier_duchy }
+                    }
+                }
+            }
+            add = 0.2
+        }
+        else_if = {
+            limit = {
+                scope:rw_xw_attacker = {
+                    any_owned_story = {
+                        rw_ai_xw_protected_title_fact_trigger = yes
+                        var:rw_dt_title = { tier >= tier_county }
+                    }
+                }
+            }
+            add = 0.1
+        }
+        if = {
+            limit = {
+                scope:rw_xw_attacker = {
+                    any_owned_story = {
+                        rw_ai_xw_protected_title_fact_trigger = yes
+                        exists = var:rw_dt_holder.primary_title
+                        var:rw_dt_title = { this = prev.var:rw_dt_holder.primary_title }
+                    }
+                }
+            }
+            add = 0.2
+        }
+        if = {
+            limit = {
+                scope:rw_xw_attacker = {
+                    any_owned_story = {
+                        count >= 2
+                        rw_ai_xw_protected_title_fact_trigger = yes
+                    }
+                }
+            }
+            add = 0.1
+        }
+    }
+    min = 1
+    max = 1.7
+}
 rw_ai_xw_concern_factor = {
     value = 1
     if = {
@@ -111,6 +188,7 @@ rw_ai_xw_concern_factor = {
             }
             multiply = 1.25
         }
+        multiply = rw_ai_xw_protected_title_factor
     }
     min = 0.5
     max = 2
