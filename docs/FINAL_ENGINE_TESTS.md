@@ -1620,3 +1620,13 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   Observe actual weight evaluation, repeated choices, native costs/outcomes and
   performance. Verify separate peer/external identities and the earlier external
   policy. This extension has no new engine behavioral evidence.
+
+- Declaration defiance preference. Use this commit's matching PRIVATE0.0.10/base.
+  Inspect native candidate discovery, initial RW checkbox, final hook/defy selection
+  and actual send separately. Compare own axes, liege/recipient relations,
+  native dread levels, known kin/alliance, money bands/debt, war/commitment,
+  stress/health and usable hook with selected/unselected hook and contract/law
+  exceptions. Repeat evaluation with identical inputs, then change target/liege,
+  cancel and reload. Player starts unchecked. Invalid candidate stays false.
+  Verify genuine CB/costs, separate original claimant/beneficiary roles, outcomes
+  and Mega Wars. The new boolean policy is not engine-tested.

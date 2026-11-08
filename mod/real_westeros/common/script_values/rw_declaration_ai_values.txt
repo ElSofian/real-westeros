@@ -1,0 +1,88 @@
+﻿# Political defiance preference only. Reuse bounded current-decider axes.
+# starts_enabled is boolean, so identical inputs produce an identical comparison.
+rw_ai_wd_boldness_value = {
+    value = rw_ai_xw_resolve_factor
+    subtract = 1
+    multiply = 50
+}
+rw_ai_wd_honor_value = {
+    value = rw_ai_xw_honor_factor
+    subtract = 1
+    multiply = 40
+}
+rw_ai_wd_energy_value = {
+    value = rw_ai_xw_initiative_factor
+    subtract = 1
+    multiply = 20
+}
+rw_ai_wd_compassion_value = {
+    value = rw_ai_xw_compassion_factor
+    subtract = 1
+    multiply = 20
+}
+rw_ai_wd_grievance_value = {
+    value = rw_ai_xw_grievance_factor
+    subtract = 1
+    multiply = 20
+}
+rw_ai_wd_motivation_value = {
+    value = 0
+    if = {
+        limit = { rw_ai_wd_context_trigger = yes }
+        add = 50
+        add = rw_ai_wd_boldness_value
+        subtract = rw_ai_wd_honor_value
+        add = rw_ai_wd_energy_value
+        subtract = rw_ai_wd_compassion_value
+        if = { limit = { opinion = { target = scope:actor.liege value <= -25 } } add = 15 }
+        if = { limit = { opinion = { target = scope:actor.liege value >= 25 } } subtract = 15 }
+        if = {
+            limit = { opinion = { target = scope:recipient value <= -25 } }
+            add = 10
+            add = rw_ai_wd_grievance_value
+        }
+        min = 0
+        max = 100
+    }
+}
+rw_ai_wd_burden_value = {
+    value = 0
+    if = {
+        limit = { rw_ai_wd_context_trigger = yes }
+        if = { limit = { gold < 0 } add = 25 }
+        else_if = { limit = { gold < 50 } add = 20 }
+        else_if = { limit = { gold < 150 } add = 10 }
+        if = { limit = { is_at_war = yes } add = 20 }
+        if = { limit = { rw_ai_existing_commitment_trigger = yes } add = 10 }
+        if = { limit = { stress_level >= 2 } add = 10 }
+        if = { limit = { health < 3 } add = 15 }
+    }
+}
+rw_ai_wd_practical_risk_value = {
+    value = rw_ai_wd_burden_value
+    multiply = rw_ai_xw_rationality_factor
+}
+# Unknown context retains an unreachable threshold. No memory or persistent ticket.
+rw_ai_wd_caution_value = {
+    value = 1000
+    if = {
+        limit = { rw_ai_wd_context_trigger = yes }
+        subtract = 1000
+        add = 60
+        add = rw_ai_wd_practical_risk_value
+        if = { limit = { liege = { has_realm_law_flag = vassal_all_wars_banned } } add = 5 }
+        if = { limit = { has_dread_level_towards = { target = scope:actor.liege level = 2 } } add = 25 }
+        else_if = { limit = { has_dread_level_towards = { target = scope:actor.liege level = 1 } } add = 10 }
+        if = {
+            limit = { OR = { is_close_family_of = scope:actor.liege is_allied_to = scope:actor.liege } }
+            add = 10
+        }
+        if = {
+            limit = { OR = { is_close_family_of = scope:recipient is_allied_to = scope:recipient } }
+            add = 15
+        }
+        if = { limit = { has_usable_hook = scope:actor.liege } add = 10 }
+        min = 0
+        max = 250
+    }
+}

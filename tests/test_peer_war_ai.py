@@ -13,10 +13,11 @@ VALUES = 'common/script_values/rw_peer_war_ai_values.txt'
 SHARED = 'common/script_values/rw_external_war_ai_values.txt'
 EVENT = 'events/rw_unlawful_war_response_events.txt'
 ACTION_DIGEST = '4ba2a17572959d677e3f0ec13ef46b8f28b752280e0e3f64eaccfd098cad8db0'
+GUARD_FILE = 'common/scripted_triggers/rw_unlawful_war_choice_triggers.txt'
+GUARD_DIGEST = 'fae47d2941fa3999b0ea65aa5f12f05390e84771a5aa138f69cfc793060c9db9'
 UNCHANGED = {
     'common/scripted_effects/rw_unlawful_war_response_effects.txt': '287f689916c744cc99f5ff7d12c0a619f1a8c515abeb79760d9e41f2ff72860e',
     'common/scripted_effects/rw_unlawful_war_intervention_effects.txt': '9de13bfe4d6e6d22463906d0440b8f5c50d87823d2027ed5fe69c59bc2cd6329',
-    'common/scripted_triggers/rw_unlawful_war_choice_triggers.txt': 'cd707600725fb779bc0ec7e80da700b87808755c6418e71ce2f5b036b9be710e',
     'common/story_cycles/rw_unlawful_war_responses.txt': '756a3ce435b83660d6bd9a1568ac732645d570fd8aae45b7a1c8b2c3b3390e4c',
     SHARED: 'f0c63034378ecb5da4de87dba22e5e68b2d374442c3557b7439bdf1b86db324e',
 }
@@ -31,6 +32,12 @@ BINDINGS = (
 SHARED_FACTORS = {'rw_ai_xw_'+name+'_factor' for name in (
     'resolve', 'caution', 'honor', 'compassion', 'grievance', 'initiative', 'social',
     'rationality', 'workload')}
+
+
+def guard_digest(text):
+    """Keep every byte outside the deliberately separate AI initial preference."""
+    start, _, end = builder.bounds(text, 'rw_uw_ai_default_defiance_trigger')
+    return hashlib.sha256((text[:start]+text[end:]).encode('utf-8')).hexdigest()
 
 
 def peer_policy_errors(values, shared, event):
@@ -126,6 +133,7 @@ class PeerWarAiTests(unittest.TestCase):
 
     def test_only_ai_weights_change_in_the_original_event(self):
         self.assertEqual(ACTION_DIGEST, action_digest(self.event))
+        self.assertEqual(GUARD_DIGEST, guard_digest((builder.TEMPLATES/GUARD_FILE).read_text(encoding='utf-8-sig')))
         for name, expected in UNCHANGED.items():
             with self.subTest(source=name):
                 self.assertEqual(expected, hashlib.sha256((builder.TEMPLATES/name).read_bytes()).hexdigest())

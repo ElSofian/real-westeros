@@ -1,5 +1,14 @@
 # Development backlog
 
+**RW-004 declaration defiance AI, 8 November:** existing native AI checkbox now
+  compares guarded deterministic motivation/caution. Own personality, known
+  relations, burden/means, rationality, native fear, law breadth and usable hook
+  shape preference. Invalid frames stay false, with player default and shared
+  permission/native execution guards preserved. Eight source and one delivered
+  regression. Experimental, not engine-tested. Baseline/result80/80+0/20, delta0.
+  Next selected-CB/beneficiary/stakes/knowledge review. Public power/support and
+  exhaustive trait/faith/culture context remain further work.
+
 **RW-004 peer war-response AI, 8 November:** six existing peer choices use named
   guarded weights with shared own-personality/workload factors and separate peer
   relationship/war-position readers. Lige weighs both vassals; attacker weighs its

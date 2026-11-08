@@ -1,5 +1,10 @@
 # G1 — Préférence initiale de désobéissance pour l’IA
 
+Actualisation du 8 novembre 2026. AI_DECLARATION_DEFIANCE.md remplace les seuils
+initiaux ci-dessous par une comparaison contextuelle déterministe. Les observations
+de G1_AI_AUTONOMY.md conservent leur périmètre antérieur. Le nouveau profil est
+static-checked et non testé dans CK3.
+
 **Expérimental, vérifié statiquement ; aucun test CK3. W2/AI4 restent ouverts, +0.**
 
 L’adaptateur privé 0.0.4 ajoute `starts_enabled` à son option de défi. Ce champ

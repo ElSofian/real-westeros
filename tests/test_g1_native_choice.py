@@ -190,17 +190,15 @@ class NativeChoiceSourceTests(unittest.TestCase):
         self.assertNotIn('starts_enabled', builder.GUARD)
         self.assertNotIn('can_be_changed', builder.OPTION)
 
-    def test_ai_preference_fails_closed_on_context_hook_or_burden(self):
+    def test_ai_preference_fails_closed_on_context_hook_or_comparison(self):
         start, _, end = builder.bounds(self.text, 'rw_uw_ai_default_defiance_trigger')
         block = clean_script(self.text[start:end])[0]
         for guard in ('rw_uw_applicable_ban_trigger = yes', 'NOT = { always = scope:hook }',
-                      'is_ai = yes', 'is_at_war = no', 'gold >= 150',
-                      'rw_ai_existing_commitment_trigger = no',
-                      'opinion = { target = scope:actor.liege value <= -25 }'):
+                      'is_ai = yes', 'rw_ai_wd_motivation_value >= rw_ai_wd_caution_value'):
             self.assertIn(guard, block)
         _, opening, actor_end = builder.bounds(block, 'scope:actor')
         actor = block[opening:actor_end]
-        for token in ('is_ai = yes', 'gold >= 150', 'is_at_war = no', 'opinion ='):
+        for token in ('is_ai = yes', 'rw_ai_wd_motivation_value >= rw_ai_wd_caution_value'):
             self.assertIn(token, actor)
         for token in ('random', 'set_', 'save_', 'every_', 'any_', 'run_interaction',
                       'start_war', 'add_gold', 'use_hook'):
