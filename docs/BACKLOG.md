@@ -1,5 +1,14 @@
 # Development backlog
 
+**RW-004 external war-response AI, 8 November:** ten existing external reply and
+  mediation choices use guarded named weights. Own bounded personality axes,
+  public relationships, role-specific beneficiary, workload/health/stress/duties,
+  diplomacy, relevant liquidity and attacker's war score now shape preferences.
+  Exact action graphs and seven gameplay-source hashes preserved. Eight source
+  and one delivered regression. Experimental, not engine-tested. Baseline/result
+  80/80+0/20, delta0. Next peer-response policy and declaration/stakes/context
+  review. Exhaustive trait and broader power/faith/culture coverage remain open.
+
 **RW-004 protector mediation, 8 November:** a target-holder liege may approach
   the original declaring liege through its personal case. Exact consent/refusal
   and a seven-day window precede any linked native ticket. Earlier mediator

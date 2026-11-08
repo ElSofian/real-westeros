@@ -1,5 +1,18 @@
 # Progress
 
+- RW-004 external war-response AI, 8 November. Ten existing choices now consume
+  named read-only weights through their unchanged action guards. Positive bounded
+  own native axes, public own opinions/kinship/alliances, role-specific defender
+  versus representative holder, own workload/health/stress/commitments, diplomacy,
+  native-intervention liquidity and attacker's own war score shape preferences.
+  Existing-attempt reporting requires its actual fact. Seven source files remain
+  byte-identical; both event action graphs match after removing AI weights.
+  Eight new regressions and one delivered positive/negative test added. Full CI,
+  static checks and committed private assembly evidence are recorded in PR.
+  Experimental, not engine-tested. Baseline/result80/80 source +0/20 campaign,
+  delta0. This refines external replies/mediation. Peer responses, declaration
+  preference and broader trait/stakes/power/faith/culture review remain open.
+
 - RW-004 protector mediation, 8 November. A target-liege case may consume its
   initial turn to approach the captured declaring liege. Seven-day personal
   mediator consent/refusal/existing-attempt reply, with exact current role/title

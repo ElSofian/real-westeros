@@ -140,3 +140,10 @@ ticket and preserves the earlier political decision. Revalidate both authorities
 and the protective context, retain historical law facts, and guard concurrent
 attempts on the same war. Superior assistance and broader contextual motivations
 remain separate development. New mediation behavior is not engine-tested.
+
+AI_EXTERNAL_WAR_RESPONSES.md refines ten existing external response/mediation
+preferences using the current decider's personality and known role-specific
+context. Preserve action/eligibility parity and distinguish a political reply
+from actual peace. Source-only weight changes leave the event action graphs and
+gameplay effects intact. Peer/declaration policy and broader contextual coverage
+remain further review, with grouped engine comparisons required.

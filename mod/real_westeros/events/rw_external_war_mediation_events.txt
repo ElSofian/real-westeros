@@ -11,24 +11,13 @@ rw_external_war_mediation.0001 = {
         trigger = { rw_xm_can_accept_trigger = yes }
         custom_tooltip = rw_xm.accept_effect
         rw_xm_accept_effect = yes
-        ai_chance = {
-            base = 30
-            modifier = { factor = 2 ai_honor >= 25 }
-            modifier = { factor = 2 opinion = { target = scope:rw_xm_protector value >= 40 } }
-            modifier = { factor = 0.5 is_at_war = yes }
-            modifier = { factor = 0.5 gold < 50 }
-        }
+        ai_chance = { base = 0 modifier = { add = rw_ai_xm_accept_weight always = yes } }
     }
     option = {
         name = rw_xm.decline
         trigger = { rw_xm_turn_trigger = yes }
         rw_xm_decline_effect = yes
-        ai_chance = {
-            base = 25
-            modifier = { factor = 2 opinion = { target = scope:rw_xw_attacker value >= 40 } }
-            modifier = { factor = 2 opinion = { target = scope:rw_xm_protector value <= -20 } }
-            modifier = { factor = 2 ai_vengefulness >= 25 }
-        }
+        ai_chance = { base = 0 modifier = { add = rw_ai_xm_decline_weight always = yes } }
     }
     option = {
         name = rw_xm.note_existing
@@ -37,7 +26,7 @@ rw_external_war_mediation.0001 = {
             scope:rw_xw_record = { rw_xw_other_native_attempt_trigger = yes }
         }
         rw_xm_note_existing_effect = yes
-        ai_chance = { base = 100 }
+        ai_chance = { base = 0 modifier = { add = rw_ai_xm_existing_weight always = yes } }
     }
     option = { name = rw_xw.close trigger = { NOT = { rw_xm_turn_trigger = yes } } }
 }

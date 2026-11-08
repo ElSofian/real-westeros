@@ -1,0 +1,297 @@
+﻿# Read-only external-war preferences. Every axis belongs to the current decider.
+# Positive bounded factors retain alternatives. Runtime evaluation is unverified.
+rw_ai_xw_resolve_factor = {
+    value = ai_boldness
+    divide = 200
+    add = 1
+    min = 0.5
+    max = 1.5
+}
+rw_ai_xw_caution_factor = {
+    value = ai_boldness
+    multiply = -1
+    divide = 200
+    add = 1
+    min = 0.5
+    max = 1.5
+}
+rw_ai_xw_honor_factor = {
+    value = ai_honor
+    divide = 200
+    add = 1
+    min = 0.5
+    max = 1.5
+}
+rw_ai_xw_compassion_factor = {
+    value = ai_compassion
+    divide = 200
+    add = 1
+    min = 0.5
+    max = 1.5
+}
+rw_ai_xw_grievance_factor = {
+    value = ai_vengefulness
+    divide = 200
+    add = 1
+    min = 0.5
+    max = 1.5
+}
+rw_ai_xw_initiative_factor = {
+    value = ai_energy
+    divide = 200
+    add = 1
+    min = 0.5
+    max = 1.5
+}
+rw_ai_xw_social_factor = {
+    value = ai_sociability
+    divide = 200
+    add = 1
+    min = 0.5
+    max = 1.5
+}
+rw_ai_xw_rationality_factor = {
+    value = ai_rationality
+    divide = 200
+    add = 1
+    min = 0.5
+    max = 1.5
+}
+# Own attention/capacity only. This does not make a free political choice costly.
+rw_ai_xw_workload_factor = {
+    value = 1
+    if = { limit = { is_at_war = yes } multiply = 0.75 }
+    if = { limit = { stress_level >= 2 } multiply = 0.75 }
+    if = { limit = { health < 3 } multiply = 0.75 }
+    if = { limit = { rw_ai_existing_commitment_trigger = yes } multiply = 0.75 }
+    min = 0.25
+    max = 1
+}
+rw_ai_xw_diplomacy_factor = {
+    value = diplomacy
+    divide = 100
+    add = 0.9
+    min = 0.75
+    max = 1.25
+}
+# Current decider's own public relationships, never another character's opinions.
+rw_ai_xw_attacker_favor_factor = {
+    value = 1
+    if = { limit = { opinion = { target = scope:rw_xw_attacker value >= 25 } } multiply = 1.25 }
+    if = { limit = { opinion = { target = scope:rw_xw_attacker value <= -25 } } multiply = 0.75 }
+    if = {
+        limit = { OR = { is_close_family_of = scope:rw_xw_attacker is_allied_to = scope:rw_xw_attacker } }
+        multiply = 1.25
+    }
+    min = 0.5
+    max = 2
+}
+# Declaring liege considers the primary defender. Protector considers its actual
+# representative title holder, whose exact current identity is already guarded.
+rw_ai_xw_concern_factor = {
+    value = 1
+    if = {
+        limit = { scope:rw_xw_record = { var:rw_xw_role = flag:declaring_liege } }
+        if = { limit = { opinion = { target = scope:rw_xw_defender value >= 25 } } multiply = 1.25 }
+        if = { limit = { opinion = { target = scope:rw_xw_defender value <= -25 } } multiply = 0.75 }
+        if = {
+            limit = { OR = { is_close_family_of = scope:rw_xw_defender is_allied_to = scope:rw_xw_defender } }
+            multiply = 1.25
+        }
+    }
+    else = {
+        if = { limit = { opinion = { target = scope:rw_xw_record.var:rw_xw_target.var:rw_dt_holder value >= 25 } } multiply = 1.25 }
+        if = { limit = { opinion = { target = scope:rw_xw_record.var:rw_xw_target.var:rw_dt_holder value <= -25 } } multiply = 0.75 }
+        if = {
+            limit = {
+                OR = {
+                    is_close_family_of = scope:rw_xw_record.var:rw_xw_target.var:rw_dt_holder
+                    is_allied_to = scope:rw_xw_record.var:rw_xw_target.var:rw_dt_holder
+                }
+            }
+            multiply = 1.25
+        }
+    }
+    min = 0.5
+    max = 2
+}
+rw_ai_xw_resolution_factor = {
+    value = 1
+    multiply = rw_ai_xw_compassion_factor
+    multiply = rw_ai_xw_initiative_factor
+    multiply = rw_ai_xw_concern_factor
+    divide = rw_ai_xw_attacker_favor_factor
+    if = {
+        limit = { scope:rw_xw_record = { var:rw_xw_role = flag:declaring_liege } }
+        multiply = rw_ai_xw_honor_factor
+    }
+}
+rw_ai_xw_requester_favor_factor = {
+    value = 1
+    if = { limit = { opinion = { target = scope:rw_xw_ruler value >= 25 } } multiply = 1.25 }
+    if = { limit = { opinion = { target = scope:rw_xw_ruler value <= -25 } } multiply = 0.75 }
+    if = {
+        limit = { OR = { is_close_family_of = scope:rw_xw_ruler is_allied_to = scope:rw_xw_ruler } }
+        multiply = 1.25
+    }
+    min = 0.5
+    max = 2
+}
+rw_ai_xm_requester_favor_factor = {
+    value = 1
+    if = { limit = { opinion = { target = scope:rw_xm_protector value >= 25 } } multiply = 1.25 }
+    if = { limit = { opinion = { target = scope:rw_xm_protector value <= -25 } } multiply = 0.75 }
+    if = {
+        limit = { OR = { is_close_family_of = scope:rw_xm_protector is_allied_to = scope:rw_xm_protector } }
+        multiply = 1.25
+    }
+    min = 0.5
+    max = 2
+}
+# Only the primary attacker reads its own war position for its public reply.
+rw_ai_xw_refusal_position_factor = {
+    value = 1
+    if = {
+        limit = { scope:rw_xw_record.var:rw_xw_war = { attacker_war_score >= 25 } }
+        multiply = rw_ai_xw_rationality_factor
+    }
+    if = {
+        limit = { scope:rw_xw_record.var:rw_xw_war = { attacker_war_score <= -25 } }
+        divide = rw_ai_xw_rationality_factor
+    }
+    min = 0.5
+    max = 1.5
+}
+# Every effective weight begins at zero and enters only through its actual turn.
+rw_ai_xw_ignore_weight = {
+    value = 0
+    if = {
+        limit = { rw_xw_turn_trigger = yes }
+        add = 30
+        multiply = rw_ai_xw_caution_factor
+        multiply = rw_ai_xw_attacker_favor_factor
+        divide = rw_ai_xw_concern_factor
+        divide = rw_ai_xw_initiative_factor
+        divide = rw_ai_xw_workload_factor
+        min = 1
+        max = 300
+    }
+}
+rw_ai_xw_disapprove_weight = {
+    value = 0
+    if = {
+        limit = { rw_xw_turn_trigger = yes }
+        add = 30
+        multiply = rw_ai_xw_grievance_factor
+        multiply = rw_ai_xw_resolve_factor
+        multiply = rw_ai_xw_concern_factor
+        divide = rw_ai_xw_attacker_favor_factor
+        divide = rw_ai_xw_workload_factor
+        min = 1
+        max = 300
+    }
+}
+rw_ai_xw_demand_weight = {
+    value = 0
+    if = {
+        limit = { rw_xw_turn_trigger = yes }
+        add = 25
+        multiply = rw_ai_xw_resolution_factor
+        multiply = rw_ai_xw_workload_factor
+        min = 1
+        max = 300
+    }
+}
+rw_ai_xw_native_weight = {
+    value = 0
+    if = {
+        limit = { rw_xw_can_queue_native_trigger = yes }
+        add = 20
+        multiply = rw_ai_xw_resolution_factor
+        multiply = rw_ai_xw_workload_factor
+        if = { limit = { gold < 50 } multiply = 0.75 }
+        min = 1
+        max = 300
+    }
+}
+rw_ai_xm_request_weight = {
+    value = 0
+    if = {
+        limit = { rw_xm_can_request_trigger = yes }
+        add = 25
+        multiply = rw_ai_xw_resolution_factor
+        multiply = rw_ai_xw_social_factor
+        multiply = rw_ai_xw_diplomacy_factor
+        multiply = rw_ai_xw_workload_factor
+        min = 1
+        max = 300
+    }
+}
+rw_ai_xw_acknowledge_weight = {
+    value = 0
+    if = {
+        limit = { rw_xw_answer_turn_trigger = yes }
+        add = 30
+        multiply = rw_ai_xw_social_factor
+        multiply = rw_ai_xw_caution_factor
+        multiply = rw_ai_xw_requester_favor_factor
+        divide = rw_ai_xw_refusal_position_factor
+        if = { limit = { scope:rw_xw_record = { var:rw_xw_role = flag:declaring_liege } } multiply = 1.25 }
+        min = 1
+        max = 300
+    }
+}
+rw_ai_xw_refuse_weight = {
+    value = 0
+    if = {
+        limit = { rw_xw_answer_turn_trigger = yes }
+        add = 20
+        multiply = rw_ai_xw_resolve_factor
+        multiply = rw_ai_xw_grievance_factor
+        multiply = rw_ai_xw_refusal_position_factor
+        divide = rw_ai_xw_requester_favor_factor
+        if = { limit = { scope:rw_xw_record = { var:rw_xw_role = flag:declaring_liege } } multiply = 0.8 }
+        min = 1
+        max = 300
+    }
+}
+rw_ai_xm_accept_weight = {
+    value = 0
+    if = {
+        limit = { rw_xm_can_accept_trigger = yes }
+        add = 30
+        multiply = rw_ai_xw_honor_factor
+        multiply = rw_ai_xw_compassion_factor
+        multiply = rw_ai_xw_initiative_factor
+        multiply = rw_ai_xw_social_factor
+        multiply = rw_ai_xw_workload_factor
+        multiply = rw_ai_xm_requester_favor_factor
+        divide = rw_ai_xw_attacker_favor_factor
+        if = { limit = { gold < 50 } multiply = 0.75 }
+        min = 1
+        max = 300
+    }
+}
+rw_ai_xm_decline_weight = {
+    value = 0
+    if = {
+        limit = { rw_xm_turn_trigger = yes }
+        add = 25
+        multiply = rw_ai_xw_grievance_factor
+        multiply = rw_ai_xw_attacker_favor_factor
+        divide = rw_ai_xm_requester_favor_factor
+        divide = rw_ai_xw_workload_factor
+        min = 1
+        max = 300
+    }
+}
+rw_ai_xm_existing_weight = {
+    value = 0
+    if = {
+        limit = {
+            rw_xm_turn_trigger = yes
+            scope:rw_xw_record = { rw_xw_other_native_attempt_trigger = yes }
+        }
+        add = 100
+    }
+}

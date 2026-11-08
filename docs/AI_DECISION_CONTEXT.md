@@ -1,5 +1,14 @@
 # Context and personality in political decisions
 
+## Current external war-response extension
+
+AI_EXTERNAL_WAR_RESPONSES.md weights ten existing external reply/mediation choices
+using the current decider's bounded native axes, own public relations to relevant
+parties, workload/stress/health/commitments, diplomacy, relevant liquidity and the
+attacker's own war position. Exact action graphs and seven gameplay-source hashes
+are preserved. Exhaustive trait/context coverage, peer responses and declaration
+policy remain separate review. Static-checked, not engine-tested.80/80+0/20, delta0.
+
 ## Current financial-repair extension
 
 AI_FINANCIAL_REPAIR.md weights seven existing compensation choices using the
