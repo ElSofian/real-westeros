@@ -1630,3 +1630,12 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   cancel and reload. Player starts unchecked. Invalid candidate stays false.
   Verify genuine CB/costs, separate original claimant/beneficiary roles, outcomes
   and Mega Wars. The new boolean policy is not engine-tested.
+
+- Peer beneficiary preference. With matching base/PRIVATE0.0.10, inspect actual
+  claimant capture, linked serial and calculated weights for both original lige
+  and attacker. Compare own claims and third parties, own positive/negative
+  opinions, kinship/alliance and the lige as claimant. Missing/legacy/foreign/dead
+  facts must stay neutral without substituting heir, holder or attacker. Reload,
+  change authority/war roles and expire windows. Verify separate declaration and
+  external profiles, native actions/costs and performance. All new behavior is
+  unverified until this grouped campaign.

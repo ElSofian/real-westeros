@@ -1,5 +1,18 @@
 # Progress
 
+- RW-004 peer beneficiary, 8 November. Read only the exact linked original
+  native claimant through guarded peer turns, parent identity and serial, party
+  schema and known/live third party. Own claims and missing/legacy/foreign/dead
+  facts keep factor1. Current decider's own opinion/kinship/alliance favor the
+  beneficiary in ignore/refusal and inversely in censure/resolution/acknowledgement.
+  Provisional coefficients documented. No beneficiary personality/support inferred,
+  no new native selected-CB score or guessed pre-declaration alias. Seven source
+  and one delivered positive/negative regression. Effects, permission/lifecycle
+  guards, receipt capture and event action graph preserved. Actual available
+  CI/static/committed assembly evidence recorded in PR. Experimental, not
+  engine-tested. Baseline/result80/80 source+0/20 campaign, actual delta0.
+  Next external beneficiary reader, then title stakes and public power/support.
+
 - RW-004 declaration defiance AI, 8 November. The existing AI-only native checkbox
   initializer compares deterministic guarded motivation/caution values. Own bounded
   axes, known liege/recipient relations, current burden/means, rationality, native

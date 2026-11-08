@@ -1,0 +1,19 @@
+# Read-only claimant facts from the exact original declaration receipt.
+# Both peer deciders may read public beneficiary identity through their own case.
+rw_ai_uw_beneficiary_context_trigger = {
+    OR = { rw_uw_issuer_turn_trigger = yes rw_uw_answer_turn_trigger = yes }
+    scope:rw_uw_record = {
+        exists = var:rw_dl_link
+        has_variable = rw_dl_link_serial
+        var:rw_dl_link = {
+            rw_dl_match_response_trigger = yes
+            var:rw_dl_serial > 0
+            var:rw_dl_serial = prev.var:rw_dl_link_serial
+            var:rw_dl_party_schema = 1
+            var:rw_dl_claimant_state = flag:known
+            exists = var:rw_dl_claimant
+            var:rw_dl_claimant = { is_alive = yes }
+            NOT = { var:rw_dl_claimant = scope:rw_uw_attacker }
+        }
+    }
+}

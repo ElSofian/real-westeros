@@ -33,6 +33,25 @@ rw_ai_uw_issuer_favor_factor = {
     min = 0.5
     max = 2
 }
+# Neutral for own claims, missing facts and invalid/foreign response frames.
+# Only the current decider's own relationships to the recorded third party enter.
+rw_ai_uw_beneficiary_favor_factor = {
+    value = 1
+    if = {
+        limit = { rw_ai_uw_beneficiary_context_trigger = yes }
+        if = { limit = { this = scope:rw_uw_record.var:rw_dl_link.var:rw_dl_claimant } multiply = 1.5 }
+        else = {
+            if = { limit = { opinion = { target = scope:rw_uw_record.var:rw_dl_link.var:rw_dl_claimant value >= 25 } } multiply = 1.25 }
+            if = { limit = { opinion = { target = scope:rw_uw_record.var:rw_dl_link.var:rw_dl_claimant value <= -25 } } multiply = 0.75 }
+            if = {
+                limit = { OR = { is_close_family_of = scope:rw_uw_record.var:rw_dl_link.var:rw_dl_claimant is_allied_to = scope:rw_uw_record.var:rw_dl_link.var:rw_dl_claimant } }
+                multiply = 1.25
+            }
+        }
+    }
+    min = 0.5
+    max = 2
+}
 rw_ai_uw_resolution_factor = {
     value = 1
     multiply = rw_ai_xw_honor_factor
@@ -40,6 +59,7 @@ rw_ai_uw_resolution_factor = {
     multiply = rw_ai_xw_initiative_factor
     multiply = rw_ai_uw_defender_concern_factor
     divide = rw_ai_uw_attacker_favor_factor
+    divide = rw_ai_uw_beneficiary_favor_factor
 }
 # The original primary attacker knows the position of its own exact native war.
 rw_ai_uw_refusal_position_factor = {
@@ -62,6 +82,7 @@ rw_ai_uw_ignore_weight = {
         add = 20
         multiply = rw_ai_xw_caution_factor
         multiply = rw_ai_uw_attacker_favor_factor
+        multiply = rw_ai_uw_beneficiary_favor_factor
         divide = rw_ai_uw_defender_concern_factor
         divide = rw_ai_xw_initiative_factor
         divide = rw_ai_xw_workload_factor
@@ -78,6 +99,7 @@ rw_ai_uw_censure_weight = {
         multiply = rw_ai_xw_resolve_factor
         multiply = rw_ai_uw_defender_concern_factor
         divide = rw_ai_uw_attacker_favor_factor
+        divide = rw_ai_uw_beneficiary_favor_factor
         divide = rw_ai_xw_workload_factor
         min = 1
         max = 300
@@ -116,6 +138,7 @@ rw_ai_uw_acknowledge_weight = {
         multiply = rw_ai_uw_issuer_favor_factor
         multiply = 1.25
         divide = rw_ai_uw_refusal_position_factor
+        divide = rw_ai_uw_beneficiary_favor_factor
         min = 1
         max = 300
     }
@@ -128,6 +151,7 @@ rw_ai_uw_refuse_weight = {
         multiply = rw_ai_xw_resolve_factor
         multiply = rw_ai_xw_grievance_factor
         multiply = rw_ai_uw_refusal_position_factor
+        multiply = rw_ai_uw_beneficiary_favor_factor
         multiply = 0.8
         divide = rw_ai_uw_issuer_favor_factor
         min = 1

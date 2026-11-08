@@ -87,3 +87,11 @@ familiaux/alliances, santé, stress, engagements, moyens et scores de guerre.
 Vérifier fenêtres périmées, dossiers étrangers, rechargements, coûts et effets
 natifs, ainsi que l'autre parcours extérieur. Mesurer le coût de calcul et
 observer plusieurs décisions. Aucun résultat comportemental nouveau n'est établi.
+
+## Extension du bénéficiaire
+
+AI_PEER_BENEFICIARY.md documente le lecteur du revendiquant tiers enregistré au
+début de la guerre. Les poids utilisent désormais l'affinité propre du décideur
+avec ce tiers sous gardes exactes. Le socle et PRIVATE0.0.10 correspondants
+recensent 31 sources de runtime. La préférence initiale de déclaration et le
+profil extérieur conservent leur revue séparée. Source delta0, non testé moteur.

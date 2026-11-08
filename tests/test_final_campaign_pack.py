@@ -22,6 +22,7 @@ from test_external_native_intervention import FILES as EXTERNAL_NATIVE_FILES, in
 from test_external_mediation import FILES as MEDIATION_FILES, mediation_errors
 from test_external_war_ai import VALUES as WAR_AI_VALUES, ACTION_DIGESTS as WAR_AI_EVENTS, policy_errors as war_ai_errors
 from test_peer_war_ai import VALUES as PEER_AI_VALUES, SHARED as PEER_AI_SHARED, EVENT as PEER_AI_EVENT, peer_policy_errors
+from test_peer_beneficiary import CONTEXT as BENEFICIARY_CONTEXT, beneficiary_errors
 from test_declaration_ai import VALUES as DECLARATION_AI_VALUES, CONTEXT as DECLARATION_AI_CONTEXT, declaration_policy_errors
 
 
@@ -241,6 +242,18 @@ class CampaignPackTests(unittest.TestCase):
         for token in ('rw_uw_can_queue_native_trigger = yes', 'scope:rw_uw_defender', 'scope:rw_uw_war'):
             with self.subTest(guard=token):
                 self.assertTrue(peer_policy_errors(values.replace(token, 'always = yes'), shared, event))
+
+    def test_peer_beneficiary_in_delivered_files(self):
+        self.prepare()
+        base = self.out/'mod/real_westeros'
+        values = (base/PEER_AI_VALUES).read_text(encoding='utf-8-sig')
+        context = (base/BENEFICIARY_CONTEXT).read_text(encoding='utf-8-sig')
+        self.assertEqual([], beneficiary_errors(values, context))
+        for token in ('rw_dl_match_response_trigger = yes',
+                      'var:rw_dl_serial = prev.var:rw_dl_link_serial',
+                      'var:rw_dl_claimant_state = flag:known'):
+            with self.subTest(guard=token):
+                self.assertTrue(beneficiary_errors(values, context.replace(token, 'always = yes')))
 
     def test_declaration_ai_in_delivered_files(self):
         self.prepare()
