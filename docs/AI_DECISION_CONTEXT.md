@@ -1,5 +1,14 @@
 # Context and personality in political decisions
 
+## Current committed war-support extension
+
+AI_COMMITTED_WAR_SUPPORT.md adds exact-war secondary participant presence to
+peer/external attacker replies. Live participants with positive current strength
+supply one signal per side, with neutral neither/both cases. Potential allies
+are not counted as joined. Physical availability, effective coalition power,
+quality/dragons and anticipated support remain open. Source-only, not engine-tested.
+80/80 source+0/20 campaign, actual delta0.
+
 ## Current declaration military-risk extension
 
 AI_DECLARATION_MILITARY_RISK.md adds native current-strength deficits against

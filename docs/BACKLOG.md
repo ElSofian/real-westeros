@@ -1,5 +1,15 @@
 # Development backlog
 
+**RW-004 committed war support, 8 November:** attacker replies in peer and
+  external cases now read exact-war secondary participants. Living participants
+  with positive current native strength supply one presence signal per camp;
+  primaries are excluded. Factor0.8..1.25 shapes opposite refusal/acknowledgement
+  directions, neutral with neither/both camps supported. Eight source and one
+  delivered regression. Experimental, not engine-tested. Baseline/result80/80+0/20,
+  delta0. Next reinforcement availability/effective power, anticipated support
+  before declaration and broader response power. Physical commitment/quality/
+  dragons and exhaustive context remain open.
+
 **RW-004 declaration military risk, 8 November:** guarded native current
   strengths compare actor to recipient and liege, plus own current/max deficit.
   Three nonnegative components add own-rationality-scaled caution0..67.5. Positive

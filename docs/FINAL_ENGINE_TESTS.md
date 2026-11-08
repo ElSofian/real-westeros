@@ -1686,3 +1686,13 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   genuine CB/costs, Mega Wars and computation cost. Recipient remains an interaction
   identity, allied support and full defender coalition remain separate cases.
   New source preference is not engine-tested until the final grouped campaign.
+
+- Joined war-support presence. Use matching base/PRIVATE0.0.10. Compare peer and
+  external attacker replies with no secondary participants, eligible attacker
+  support alone, defender support alone and both. Include diplomatic ally not
+  joined, participant in another war, non-allied participant, primary rulers only,
+  dead/zero-strength participants, joining/leaving and changed war roles. Inspect
+  exact roster, values and opposite reply directions. Reload, expire windows,
+  exercise Mega Wars and measure large native participant lists. Verify native
+  effects/costs. Physical arrival and effective coalition power remain separate
+  cases. New source preferences remain engine-unverified until the final campaign.
