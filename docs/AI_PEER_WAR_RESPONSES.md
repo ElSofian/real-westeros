@@ -103,3 +103,11 @@ préoccupation du lige et à l'attachement du déclarant à la revendication con
 Les détenteurs sous le défenseur conservent leur identité et autorité propres.
 Le socle et PRIVATE0.0.10 attestent 34 sources de runtime. Coefficients
 provisoires, delta0, non testé moteur.
+
+## Extension des soutiens entrés en guerre
+
+AI_COMMITTED_WAR_SUPPORT.md relie les participants secondaires vivants avec
+un effectif natif positif aux réponses du déclarant. Les deux camps sont lus
+dans la même guerre exacte. La présence de soutien reste distincte de sa force
+effective ou de sa mobilisation sur ce front. Coefficient provisoire0.8..1.25,
+delta0, non testé moteur. Runtime35 dans le kit correspondant.

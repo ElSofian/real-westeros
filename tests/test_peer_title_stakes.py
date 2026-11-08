@@ -8,6 +8,7 @@ from tools.validate_mod import clean_script
 from test_deferred_service_contract import block
 from test_peer_war_ai import VALUES, EVENT, ACTION_DIGEST
 from test_promise_ai_policy import action_digest
+from test_committed_war_support import strip_support_extension
 
 CONTEXT = 'common/scripted_triggers/rw_peer_title_stakes_triggers.txt'
 FACTOR = 'rw_ai_uw_title_stakes_factor'
@@ -48,7 +49,7 @@ CLAIMANT_TOKENS = (
 
 
 def previous_profile_digest(values):
-    clean = clean_script(values)[0]
+    clean = strip_support_extension(values)
     for name in (FACTOR, CONTESTED):
         start, _, end = builder.bounds(clean, name)
         clean = clean[:start]+clean[end:]

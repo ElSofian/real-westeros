@@ -8,6 +8,7 @@ from tools.validate_mod import clean_script
 from test_deferred_service_contract import block
 from test_external_war_ai import VALUES, ACTION_DIGESTS
 from test_promise_ai_policy import action_digest
+from test_committed_war_support import strip_support_extension
 
 CONTEXT = 'common/scripted_triggers/rw_external_title_stakes_triggers.txt'
 FACTOR = 'rw_ai_xw_external_title_factor'
@@ -54,7 +55,7 @@ CLAIMANT_TOKENS = (
 
 def strip_title_extension(values):
     """Share the exact removal with older invariants, including legacy inputs."""
-    clean = clean_script(values)[0]
+    clean = strip_support_extension(values)
     for name in (FACTOR, GOAL):
         if re.search(r'^\s*'+name+r'\s*=\s*\{', clean, re.MULTILINE):
             start, _, end = builder.bounds(clean, name)

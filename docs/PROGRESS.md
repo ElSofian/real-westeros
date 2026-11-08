@@ -1,5 +1,22 @@
 # Progress
 
+- RW-004 committed war support, 8 November. Exact own reply turns and native
+  war lists bind peer/external attacker support signals. Each camp needs a live
+  secondary participant with positive current military strength. Primary attacker
+  and defender are excluded from their respective signal. No potential-alliance
+  scan or troop sum. Factor1.25 for attacker-side presence, inverse for defender
+  presence, neutral neither/both; refusal multiplies, acknowledgement divides.
+  Provisional presence signal0.8..1.25, independent of physical arrival or quality.
+  Existing actions/costs and other deciders' profiles preserved. Eight source and
+  one delivered positive/negative regression. Inversion preserves both prior full
+  numeric profiles outside one factor and two calls each. Historical title checks
+  share this separately checked removal; peer shared-file snapshot intentionally
+  updated. Existing attested files reused, runtime35. Available static/CI/committed
+  private assembly evidence recorded in PR. Experimental, not engine-tested.
+  Baseline/result80/80 source+0/20 campaign, actual delta0. Next availability and
+  effective reinforcement power, anticipated support and broader response power.
+  Mobilisation/front presence, quality/dragons and exhaustive context remain open.
+
 - RW-004 declaration military risk, 8 November. Existing AI checkbox caution
   reads native current strength against recipient and own liege, plus current/max
   own deficit. Complete candidate context precedes metric reads, positive numeric

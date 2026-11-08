@@ -347,6 +347,40 @@ rw_ai_xm_requester_favor_factor = {
     max = 2
 }
 # Only the primary attacker reads its own war position for its public reply.
+# Presence of living secondary participants with positive native current strength.
+# Both camps use the exact same war. This is a support signal, without troop sums.
+rw_ai_xw_committed_support_factor = {
+    value = 1
+    if = {
+        limit = { rw_xw_answer_turn_trigger = yes }
+        if = {
+            limit = {
+                scope:rw_xw_record.var:rw_xw_war = {
+                    any_war_attacker = {
+                        is_alive = yes
+                        NOT = { this = scope:rw_xw_attacker }
+                        current_military_strength > 0
+                    }
+                }
+            }
+            multiply = 1.25
+        }
+        if = {
+            limit = {
+                scope:rw_xw_record.var:rw_xw_war = {
+                    any_war_defender = {
+                        is_alive = yes
+                        NOT = { this = scope:rw_xw_defender }
+                        current_military_strength > 0
+                    }
+                }
+            }
+            divide = 1.25
+        }
+    }
+    min = 0.8
+    max = 1.25
+}
 rw_ai_xw_refusal_position_factor = {
     value = 1
     if = {
@@ -439,6 +473,7 @@ rw_ai_xw_acknowledge_weight = {
         if = { limit = { scope:rw_xw_record = { var:rw_xw_role = flag:declaring_liege } } multiply = 1.25 }
         divide = rw_ai_xw_beneficiary_favor_factor
         divide = rw_ai_xw_claim_goal_factor
+        divide = rw_ai_xw_committed_support_factor
         min = 1
         max = 300
     }
@@ -455,6 +490,7 @@ rw_ai_xw_refuse_weight = {
         if = { limit = { scope:rw_xw_record = { var:rw_xw_role = flag:declaring_liege } } multiply = 0.8 }
         multiply = rw_ai_xw_beneficiary_favor_factor
         multiply = rw_ai_xw_claim_goal_factor
+        multiply = rw_ai_xw_committed_support_factor
         min = 1
         max = 300
     }
