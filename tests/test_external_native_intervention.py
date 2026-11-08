@@ -28,6 +28,8 @@ def intervention_errors(sources):
     context = block(triggers, 'rw_xw_native_context_trigger')
     need(context, ('rw_xw_identity_trigger = yes', 'this = scope:rw_xw_ruler',
                    'var:rw_xw_role = flag:declaring_liege',
+                   'rw_xm_native_origin_trigger = yes',
+                   'NOT = { rw_xw_other_native_attempt_trigger = yes }',
                    'NOT = { is_participant_in_war = scope:rw_xw_record.var:rw_xw_war }',
                    'any_character_war = { this = scope:rw_xw_record.var:rw_xw_war }',
                    'NOT = { any_character_war = { count >= 2 } }',
@@ -86,6 +88,7 @@ def intervention_errors(sources):
                    'NOT = { has_variable = rw_uw_native_send_serial }',
                    'has_variable = rw_xw_native_send_record', 'has_variable = rw_xw_native_send_serial',
                    'rw_xw_context_trigger = yes', 'var:rw_xw_ruler = scope:actor',
+                   'rw_xm_native_origin_trigger = yes',
                    'var:rw_xw_attacker = scope:recipient',
                    'var:rw_xw_serial = scope:actor.var:rw_xw_native_send_serial',
                    'var:rw_xw_role = flag:declaring_liege', 'var:rw_xw_state = flag:closed',

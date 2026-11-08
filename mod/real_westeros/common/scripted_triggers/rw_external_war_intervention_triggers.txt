@@ -1,10 +1,35 @@
 # Fail closed with an older private adapter or incorrect load order.
 rw_xw_native_adapter_available_trigger = { always = no }
+# STORY scope. Exclude this ticket while preventing competing queued/same-day sends.
+rw_xw_other_native_attempt_trigger = {
+    save_temporary_scope_as = rw_xw_busy_check
+    var:rw_xw_attacker = {
+        any_owned_story = {
+            story_type = story_rw_external_war_response
+            story_owner = scope:rw_xw_busy_check.var:rw_xw_attacker
+            var:rw_xw_schema = 1
+            var:rw_xw_war = scope:rw_xw_busy_check.var:rw_xw_war
+            var:rw_xw_role = flag:declaring_liege
+            NOT = { this = scope:rw_xw_busy_check }
+            OR = {
+                AND = { var:rw_xw_state = flag:native_queued has_variable = rw_xw_native_window }
+                AND = {
+                    has_variable = rw_xw_native_dispatched_on
+                    var:rw_xw_native_dispatched_on = current_date
+                }
+            }
+        }
+    }
+}
 # Character scope. Only the original declaring liege has this native capacity.
 rw_xw_native_context_trigger = {
     rw_xw_identity_trigger = yes
     this = scope:rw_xw_ruler
-    scope:rw_xw_record = { var:rw_xw_role = flag:declaring_liege }
+    scope:rw_xw_record = {
+        var:rw_xw_role = flag:declaring_liege
+        rw_xm_native_origin_trigger = yes
+        NOT = { rw_xw_other_native_attempt_trigger = yes }
+    }
     NOT = { is_participant_in_war = scope:rw_xw_record.var:rw_xw_war }
     scope:rw_xw_attacker = {
         any_character_war = { this = scope:rw_xw_record.var:rw_xw_war }
@@ -74,6 +99,7 @@ rw_xw_native_binding_context_trigger = {
         has_variable = rw_xw_native_send_serial
         var:rw_xw_native_send_record = {
             rw_xw_context_trigger = yes
+            rw_xm_native_origin_trigger = yes
             var:rw_xw_ruler = scope:actor
             var:rw_xw_attacker = scope:recipient
             var:rw_xw_serial = scope:actor.var:rw_xw_native_send_serial

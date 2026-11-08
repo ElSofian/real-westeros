@@ -1,0 +1,166 @@
+rw_xm_request_effect = {
+    if = {
+        limit = { rw_xm_can_request_trigger = yes }
+        scope:rw_xw_ruler = { save_scope_as = rw_xm_protector }
+        scope:rw_xw_record.var:rw_xw_source = {
+            var:rw_dl_issuer = { save_scope_as = rw_xm_mediator }
+            var:rw_dl_authority = { save_scope_as = rw_xm_authority }
+        }
+        scope:rw_xw_record = {
+            set_variable = { name = rw_xw_state value = flag:mediation_requested }
+            set_variable = { name = rw_xm_requested_on value = current_date }
+            set_variable = { name = rw_xm_mediator value = scope:rw_xm_mediator }
+            set_variable = { name = rw_xm_authority value = scope:rw_xm_authority }
+            remove_variable = rw_xw_window
+            set_variable = { name = rw_xm_window value = flag:yes days = 7 }
+        }
+        scope:rw_xm_mediator = { trigger_event = { id = rw_external_war_mediation.0001 } }
+    }
+}
+rw_xm_decline_effect = {
+    if = {
+        limit = { rw_xm_turn_trigger = yes }
+        scope:rw_xw_record = {
+            set_variable = { name = rw_xw_state value = flag:closed }
+            set_variable = { name = rw_xw_result value = flag:mediation_declined }
+            set_variable = { name = rw_xm_answered_on value = current_date }
+            remove_variable = rw_xm_window
+        }
+        scope:rw_xm_protector = {
+            send_interface_message = { type = event_generic_neutral title = rw_xm.answer_title desc = rw_xm.declined_notice }
+        }
+    }
+}
+rw_xm_accept_effect = {
+    if = {
+        limit = { rw_xm_can_accept_trigger = yes }
+        scope:rw_xw_record = {
+            save_scope_as = rw_xm_request
+            set_variable = { name = rw_xw_state value = flag:closed }
+            set_variable = { name = rw_xw_result value = flag:mediation_accepted }
+            set_variable = { name = rw_xm_answered_on value = current_date }
+            set_variable = { name = rw_xm_handoff value = flag:unavailable }
+            remove_variable = rw_xm_window
+        }
+        rw_xm_prepare_native_effect = yes
+        scope:rw_xm_protector = {
+            if = {
+                limit = { scope:rw_xm_request = { var:rw_xm_handoff = flag:queued } }
+                send_interface_message = { type = event_generic_neutral title = rw_xm.answer_title desc = rw_xm.queued_notice }
+            }
+            else = {
+                send_interface_message = { type = event_generic_neutral title = rw_xm.answer_title desc = rw_xm.unavailable_notice }
+            }
+        }
+    }
+}
+rw_xm_note_existing_effect = {
+    if = {
+        limit = {
+            rw_xm_turn_trigger = yes
+            scope:rw_xw_record = { rw_xw_other_native_attempt_trigger = yes }
+        }
+        scope:rw_xw_record = {
+            set_variable = { name = rw_xw_state value = flag:closed }
+            set_variable = { name = rw_xw_result value = flag:mediation_existing_attempt }
+            set_variable = { name = rw_xm_answered_on value = current_date }
+            remove_variable = rw_xm_window
+        }
+        scope:rw_xm_protector = {
+            send_interface_message = { type = event_generic_neutral title = rw_xm.answer_title desc = rw_xm.existing_notice }
+        }
+    }
+}
+# Separate consent ticket preserves the mediator's earlier political decision.
+# It uses the existing original response representation and native queue worker.
+rw_xm_prepare_native_effect = {
+    if = {
+        limit = {
+            this = scope:rw_xm_mediator
+            scope:rw_xm_request = {
+                rw_xm_context_trigger = yes
+                story_owner = scope:rw_xw_attacker
+                var:rw_xw_attacker = scope:rw_xw_attacker
+                var:rw_xw_defender = scope:rw_xw_defender
+                var:rw_xm_mediator = scope:rw_xm_mediator
+                var:rw_xm_authority = scope:rw_xm_authority
+                var:rw_xw_state = flag:closed
+                var:rw_xw_result = flag:mediation_accepted
+                var:rw_xm_answered_on = current_date
+                NOT = { has_variable = rw_xm_handoff_started }
+            }
+        }
+        scope:rw_xm_request = { set_variable = { name = rw_xm_handoff_started value = current_date } }
+        clear_saved_scope = rw_xm_ticket
+        scope:rw_xw_attacker = {
+            create_story = { type = story_rw_external_war_response save_scope_as = rw_xm_ticket }
+            if = {
+                limit = {
+                    exists = scope:rw_xm_ticket
+                    scope:rw_xm_ticket = {
+                        story_type = story_rw_external_war_response
+                        story_owner = scope:rw_xw_attacker
+                        NOT = { has_variable = rw_xw_schema }
+                    }
+                }
+                if = {
+                    limit = { NOT = { has_variable = rw_xw_serial_counter } }
+                    set_variable = { name = rw_xw_serial_counter value = 0 }
+                }
+                change_variable = { name = rw_xw_serial_counter add = 1 }
+                save_scope_value_as = { name = rw_xm_ticket_serial value = var:rw_xw_serial_counter }
+                scope:rw_xm_ticket = {
+                    set_variable = { name = rw_xw_schema value = 1 }
+                    set_variable = { name = rw_xm_ticket_schema value = 1 }
+                    set_variable = { name = rw_xw_serial value = scope:rw_xm_ticket_serial }
+                    set_variable = { name = rw_xw_source value = scope:rw_xm_request.var:rw_xw_source }
+                    set_variable = { name = rw_xw_source_serial value = scope:rw_xm_request.var:rw_xw_source_serial }
+                    set_variable = { name = rw_xw_war value = scope:rw_xm_request.var:rw_xw_war }
+                    set_variable = { name = rw_xw_attacker value = scope:rw_xw_attacker }
+                    set_variable = { name = rw_xw_defender value = scope:rw_xw_defender }
+                    set_variable = { name = rw_xw_ruler value = scope:rw_xm_mediator }
+                    set_variable = { name = rw_xw_authority value = scope:rw_xm_authority }
+                    set_variable = { name = rw_xw_role value = flag:declaring_liege }
+                    set_variable = { name = rw_xw_seen_on value = scope:rw_xm_request.var:rw_xw_seen_on }
+                    set_variable = { name = rw_xw_state value = flag:pending }
+                    set_variable = { name = rw_xw_window value = flag:yes days = 1 }
+                    set_variable = { name = rw_xm_origin value = scope:rw_xm_request }
+                    set_variable = { name = rw_xm_origin_serial value = scope:rw_xm_request.var:rw_xw_serial }
+                }
+                scope:rw_xm_request = {
+                    set_variable = { name = rw_xm_native_ticket value = scope:rw_xm_ticket }
+                    set_variable = { name = rw_xm_native_serial value = scope:rw_xm_ticket_serial }
+                }
+            }
+        }
+        if = {
+            limit = {
+                exists = scope:rw_xm_ticket
+                scope:rw_xm_ticket = {
+                    story_type = story_rw_external_war_response
+                    story_owner = scope:rw_xw_attacker
+                    var:rw_xw_schema = 1
+                    var:rw_xw_serial = scope:rw_xm_ticket_serial
+                    rw_xm_native_origin_trigger = yes
+                }
+            }
+            scope:rw_xm_ticket = {
+                save_scope_as = rw_xw_record
+                save_scope_value_as = { name = rw_xw_serial value = var:rw_xw_serial }
+                var:rw_xw_ruler = { save_scope_as = rw_xw_ruler }
+            }
+            rw_xw_queue_native_effect = yes
+            if = {
+                limit = { scope:rw_xm_ticket = { var:rw_xw_state = flag:native_queued } }
+                scope:rw_xm_request = { set_variable = { name = rw_xm_handoff value = flag:queued } }
+            }
+            else = {
+                scope:rw_xm_ticket = {
+                    set_variable = { name = rw_xw_state value = flag:closed }
+                    set_variable = { name = rw_xw_result value = flag:native_blocked }
+                    remove_variable = rw_xw_window
+                }
+            }
+        }
+    }
+}

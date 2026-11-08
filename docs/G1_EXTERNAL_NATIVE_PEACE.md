@@ -1,5 +1,9 @@
 # Intervention négociée du lige dans une guerre extérieure
 
+Actualisation du même adaptateur PRIVATE0.0.10. G1_EXTERNAL_MEDIATION.md ajoute
+une sollicitation du protecteur avec accord personnel du lige avant réutilisation
+du worker ci-dessous. Les tentatives concurrentes sont désormais contrôlées.
+
 Tranche du 8 novembre 2026. **Static-checked**, expérimentale et **non testée
 dans CK3**. PRIVATE0.0.10. Baseline et résultat 80/80 source, 0/20 campagne,
 delta 0. Les validations moteur restent regroupées dans la campagne finale.
