@@ -1639,3 +1639,12 @@ and unresolved W1/W2/W4/W5/AI4 remain unchanged; no intermediate launch requeste
   change authority/war roles and expire windows. Verify separate declaration and
   external profiles, native actions/costs and performance. All new behavior is
   unverified until this grouped campaign.
+
+- External beneficiary preference. Use matching base/PRIVATE0.0.10. Compare
+  exact claimant capture and calculated weights for declaring liege, protector,
+  attacker and mediator. Vary own positive/negative opinions, kinship/alliance,
+  decider as third-party claimant, own claims and unrelated target holders.
+  Missing/legacy/foreign/dead facts stay neutral, without substituting heir or
+  holder. Exercise parent serial/war/party mismatches, expiry, changed authority,
+  reload and both peer/external cases. Verify factual existing-attempt reply,
+  native costs/outcomes and performance. New weights remain engine-unverified.

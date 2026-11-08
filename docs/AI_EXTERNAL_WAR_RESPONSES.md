@@ -126,3 +126,10 @@ de guerre opposés. Vérifier les profils hors contexte, les fenêtres périmée
 les rechargements, les choix natifs et la conservation des mêmes conséquences.
 Observer plusieurs tirages et le coût de calcul. Aucun résultat comportemental
 ou de performance nouveau n'est revendiqué.
+
+## Extension du bénéficiaire de la revendication
+
+AI_EXTERNAL_BENEFICIARY.md ajoute l'affinité propre du décideur avec le tiers
+revendiquant capturé. Les tours du lige, du protecteur, du déclarant et du
+médiateur restent distincts. Le socle et PRIVATE0.0.10 correspondants attestent
+32 sources de runtime. Coefficients provisoires, delta0, non testé moteur.
