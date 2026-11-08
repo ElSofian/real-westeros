@@ -1,5 +1,14 @@
 # Development backlog
 
+**RW-004 declaration military risk, 8 November:** guarded native current
+  strengths compare actor to recipient and liege, plus own current/max deficit.
+  Three nonnegative components add own-rationality-scaled caution0..67.5. Positive
+  denominator checks precede division; equal/stronger/zero-reference cases stay
+  neutral. Eight source and one delivered regression. Experimental, not
+  engine-tested. Baseline/result80/80+0/20, delta0. Next known support and actual
+  participants, then broader response power context. Coalition/quality/dragons,
+  selected-CB access and exhaustive context remain open.
+
 **RW-004 external title stakes, 8 November:** declaring liege and mediator
   weigh the exact defender-side targets of the war. Attacker attachment additionally
   requires the known living original claimant. Independent primary defenders and

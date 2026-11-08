@@ -1,5 +1,15 @@
 # Context and personality in political decisions
 
+## Current declaration military-risk extension
+
+AI_DECLARATION_MILITARY_RISK.md adds native current-strength deficits against
+recipient/liege and own current/max deficit to caution through own rationality.
+Candidate and positive-denominator guards precede reads/division. Components
+stay nonnegative and neutral for equal/stronger or unusable numeric references.
+Known support/actual participants and broader response power remain next. Coalition,
+quality/dragons and selected-CB access stay open. Source-only, not engine-tested.
+80/80 source+0/20 campaign, actual delta0.
+
 ## Current external title stakes extension
 
 AI_EXTERNAL_TITLE_STAKES.md adds exact war-target magnitude to declaring-liege

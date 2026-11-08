@@ -27,6 +27,7 @@ from test_peer_title_stakes import CONTEXT as PEER_TITLE_STAKES_CONTEXT, stakes_
 from test_protected_title_stakes import CONTEXT as TITLE_STAKES_CONTEXT, stakes_errors
 from test_external_beneficiary import CONTEXT as EXTERNAL_BENEFICIARY_CONTEXT, beneficiary_errors as external_beneficiary_errors
 from test_peer_beneficiary import CONTEXT as BENEFICIARY_CONTEXT, beneficiary_errors
+from test_declaration_military_risk import military_errors
 from test_declaration_ai import VALUES as DECLARATION_AI_VALUES, CONTEXT as DECLARATION_AI_CONTEXT, declaration_policy_errors
 
 
@@ -306,6 +307,16 @@ class CampaignPackTests(unittest.TestCase):
                       'var:rw_dl_claimant_state = flag:known'):
             with self.subTest(guard=token):
                 self.assertTrue(beneficiary_errors(values, context.replace(token, 'always = yes')))
+
+    def test_declaration_military_risk_in_delivered_files(self):
+        self.prepare()
+        values = (self.out/'mod/real_westeros'/DECLARATION_AI_VALUES).read_text(encoding='utf-8-sig')
+        self.assertEqual([], military_errors(values))
+        for token in ('scope:recipient = { current_military_strength > 0 }',
+                      'scope:actor.liege = { current_military_strength > 0 }',
+                      'max_military_strength > 0'):
+            with self.subTest(denominator=token):
+                self.assertTrue(military_errors(values.replace(token, 'always = yes')))
 
     def test_declaration_ai_in_delivered_files(self):
         self.prepare()

@@ -123,3 +123,12 @@ stress, santé, contrat et hameçons, puis cibles/liges modifiés, annulation et
 rechargement. Contrôler le joueur, les cas hors contexte, plusieurs réévaluations,
 les coûts réels, les réactions et Mega Wars. Aucun nouveau résultat moteur ou
 de performance n'est revendiqué.
+
+## Extension des effectifs et de l'état des forces
+
+AI_DECLARATION_MILITARY_RISK.md ajoute à la prudence trois déficits numériques
+bornés utilisant les effectifs courants natifs du déclarant, du destinataire,
+du lige et le maximum propre. Les dénominateurs positifs et le contexte complet
+précèdent les calculs. La pondération passe par la rationalité propre. Les
+soutiens alliés et coalitions conservent leur revue séparée. Coefficients
+provisoires, delta0, non testé moteur. Runtime35 dans le kit correspondant.

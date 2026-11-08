@@ -1,5 +1,22 @@
 # Progress
 
+- RW-004 declaration military risk, 8 November. Existing AI checkbox caution
+  reads native current strength against recipient and own liege, plus current/max
+  own deficit. Complete candidate context precedes metric reads, positive numeric
+  denominators precede division. Three bounded nonnegative deficits20/15/10 sum
+  through own rationality into0..67.5 extra caution. Equal/stronger or invalid
+  numeric-reference components remain neutral. Provisional coefficients documented.
+  No expected allied armies or definitive CB defender inferred. Deterministic
+  read-only constant work. Eight source and one delivered positive/negative
+  regression. Structural inversion preserves the entire prior declaration
+  numeric profile outside four values and one caution call. Native initializer,
+  permissions, actions/lifecycle and other profiles preserved. Existing attested
+  file reused, runtime count35. Available static/CI/committed private assembly
+  evidence recorded in PR. Experimental, not engine-tested. Baseline/result80/80
+  source+0/20 campaign, actual delta0. Next known support/actual participants,
+  then broader response power context. Coalition strength, quality, dragons,
+  selected-CB access and exhaustive review remain open.
+
 - RW-004 external title stakes, 8 November. Own declaring-liege/attacker/mediator
   turns, exact complete parent and immutable target facts guard bounded stakes.
   Actual primary defender may be independent; other holders must still be nested
