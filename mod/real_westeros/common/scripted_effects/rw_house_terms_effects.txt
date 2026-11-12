@@ -2,11 +2,14 @@
 rw_house_offer_terms_effect = {
     if = {
         limit = { rw_house_ruler_reply_trigger = yes }
+        scope:rw_house_record.var:rw_house_petitioner = {
+            save_scope_value_as = { name = rw_house_terms_offer_price value = rw_institutional_payment_value }
+        }
         scope:rw_house_record = {
             remove_variable = rw_house_request_window
             change_variable = { name = rw_house_revision add = 1 }
             set_variable = { name = rw_house_last_response value = flag:terms_offered }
-            set_variable = { name = rw_house_terms_price value = 50 }
+            set_variable = { name = rw_house_terms_price value = scope:rw_house_terms_offer_price }
             set_variable = { name = rw_house_terms_window value = flag:yes days = 30 }
             set_variable = { name = rw_house_terms_offered_on value = current_date }
             rw_house_snapshot_effect = yes
@@ -28,8 +31,8 @@ rw_house_accept_terms_effect = {
         # Consume the live decision before money. No assumed engine transaction/rollback.
         rw_house_close_effect = { RESULT = restored }
         scope:rw_house_record = { set_variable = { name = rw_house_closed_by value = scope:rw_house_terms_payee } }
-        remove_short_term_gold = 50
-        scope:rw_house_terms_payee = { add_gold = 50 }
+        remove_short_term_gold = scope:rw_house_record.var:rw_house_terms_price
+        scope:rw_house_terms_payee = { add_gold = scope:rw_house_record.var:rw_house_terms_price }
         scope:rw_house_record = {
             set_variable = { name = rw_house_last_response value = flag:terms_settled }
             set_variable = { name = rw_house_terms_paid_by value = root }

@@ -108,8 +108,9 @@ class PromiseTimingPolicyTests(unittest.TestCase):
             'rw_favor_service_effects.txt': '50a400cc2569f63585cfb3d5ded282fef5e42224cf146a370e67fa9c673918c0',
         }
         receipt = MOD.parents[1]/'docs/GOLD_DEBIT_SOURCE_RECEIPT.json'
-        later_updates = [row for row in json.loads(receipt.read_text())['subsequent_updates']
-                         if row.get('reason') in {'RW-010 client breach capacity snapshot', 'Owner-authorized common support reward and comparable promise resentment.'}]
+        all_updates = json.loads(receipt.read_text())['subsequent_updates']
+        last_timing = max(i for i,row in enumerate(all_updates) if row.get('reason') == 'RW-010 promise timing metadata, reversible source-only addition')
+        later_updates = all_updates[last_timing+1:]
         for filename, digest in expected.items():
             path = MOD/'common/scripted_effects'/filename
             relative = path.relative_to(MOD.parents[1]).as_posix()

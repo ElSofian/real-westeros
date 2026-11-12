@@ -26,7 +26,7 @@ def terms_errors(t, e, base_t, base_e):
     for guard in ('rw_house_current_head_trigger = yes', 'rw_house_terms_valid_trigger = yes', 'var:rw_house_petitioner = root'):
         if guard not in turn:
             errors.append('foreign head or obsolete consent can settle')
-    if 'rw_house_terms_turn_trigger = yes' not in block(t, 'rw_house_terms_affordable_trigger') or 'gold >= 50' not in block(t, 'rw_house_terms_affordable_trigger'):
+    if 'rw_house_terms_turn_trigger = yes' not in block(t, 'rw_house_terms_affordable_trigger') or 'gold >= scope:rw_house_record.var:rw_house_terms_price' not in block(t, 'rw_house_terms_affordable_trigger'):
         errors.append('payment can create debt')
     for name, gate in (('rw_house_offer_terms_effect', 'rw_house_ruler_reply_trigger'),
                        ('rw_house_review_terms_effect', 'rw_house_terms_turn_trigger'),
@@ -36,16 +36,16 @@ def terms_errors(t, e, base_t, base_e):
             errors.append('public terms effect bypass')
     offer = block(e, 'rw_house_offer_terms_effect')
     for guard in ('remove_variable = rw_house_request_window', 'name = rw_house_revision add = 1',
-                  'name = rw_house_terms_price value = 50', 'name = rw_house_terms_window value = flag:yes days = 30'):
+                  'name = rw_house_terms_price value = scope:rw_house_terms_offer_price', 'name = rw_house_terms_window value = flag:yes days = 30'):
         if guard not in offer:
             errors.append('old consent or unbounded offer survives')
     if not 0 <= offer.find('change_variable') < offer.find('rw_house_snapshot_effect') < offer.find('trigger_event'):
         errors.append('offer sent before new revision')
     accept = block(e, 'rw_house_accept_terms_effect')
-    if not 0 <= accept.find('rw_house_close_effect = { RESULT = restored }') < accept.find('remove_short_term_gold = 50') < accept.find('add_gold = 50') < accept.find('flag:terms_settled'):
+    if not 0 <= accept.find('rw_house_close_effect = { RESULT = restored }') < accept.find('remove_short_term_gold = scope:rw_house_record.var:rw_house_terms_price') < accept.find('add_gold = scope:rw_house_record.var:rw_house_terms_price') < accept.find('flag:terms_settled'):
         errors.append('unconsumed or premature payment receipt')
     for guard in ('scope:rw_house_record.var:rw_house_requested_ruler = { save_scope_as = rw_house_terms_payee }',
-                  'scope:rw_house_terms_payee = { add_gold = 50 }', 'name = rw_house_terms_paid_by value = root',
+                  'scope:rw_house_terms_payee = { add_gold = scope:rw_house_record.var:rw_house_terms_price }', 'name = rw_house_terms_paid_by value = root',
                   'name = rw_house_terms_paid_to value = scope:rw_house_terms_payee'):
         if guard not in accept:
             errors.append('payment goes to wrong party')
@@ -102,8 +102,8 @@ class HouseTermsContractTests(unittest.TestCase):
 
     def test_offer_price_and_solvency_fail_closed(self):
         self.assertIn('stale roles price or terms accepted', self.errors(t=self.t.replace('var:rw_house_terms_price = 50', 'always = yes')))
-        self.assertIn('payment can create debt', self.errors(t=self.t.replace('gold >= 50', 'always = yes')))
-        self.assertNotIn('gold >= 50', block(self.t, 'rw_house_terms_turn_trigger'))
+        self.assertIn('payment can create debt', self.errors(t=self.t.replace('gold >= scope:rw_house_record.var:rw_house_terms_price', 'always = yes')))
+        self.assertNotIn('gold >= scope:rw_house_record.var:rw_house_terms_price', block(self.t, 'rw_house_terms_turn_trigger'))
         self.assertIn('rw_house_terms_turn_trigger = yes', block(self.e, 'rw_house_refuse_terms_effect'))
 
     def test_every_public_effect_rechecks_and_old_reply_is_consumed(self):
@@ -119,14 +119,14 @@ class HouseTermsContractTests(unittest.TestCase):
         accept = block(self.e, 'rw_house_accept_terms_effect')
         self.assertEqual(2, accept.count('add_gold') + accept.count('remove_short_term_gold'))
         self.assertIn('unconsumed or premature payment receipt', self.errors(e=self.e.replace('rw_house_close_effect = { RESULT = restored }', '')))
-        self.assertIn('unconsumed or premature payment receipt', self.errors(e=self.e.replace('remove_short_term_gold = 50', '').replace('rw_house_close_effect = { RESULT = restored }', 'remove_short_term_gold = 50 rw_house_close_effect = { RESULT = restored }')))
+        self.assertIn('unconsumed or premature payment receipt', self.errors(e=self.e.replace('remove_short_term_gold = scope:rw_house_record.var:rw_house_terms_price', '').replace('rw_house_close_effect = { RESULT = restored }', 'remove_short_term_gold = scope:rw_house_record.var:rw_house_terms_price rw_house_close_effect = { RESULT = restored }')))
         self.assertIn('unconsumed or premature payment receipt', self.errors(e=self.e.replace('flag:terms_settled', 'flag:terms_offered')))
         self.assertNotIn('add_opinion', accept)
         self.assertNotIn('rw_house_restore_effect', accept)
 
     def test_payee_is_exact_current_addressed_ruler_and_payer_is_head(self):
         for guard in ('scope:rw_house_record.var:rw_house_requested_ruler = { save_scope_as = rw_house_terms_payee }',
-                      'scope:rw_house_terms_payee = { add_gold = 50 }', 'name = rw_house_terms_paid_by value = root',
+                      'scope:rw_house_terms_payee = { add_gold = scope:rw_house_record.var:rw_house_terms_price }', 'name = rw_house_terms_paid_by value = root',
                       'name = rw_house_terms_paid_to value = scope:rw_house_terms_payee'):
             self.assertIn('payment goes to wrong party', self.errors(e=self.e.replace(guard, 'always = yes')))
         self.assertNotIn('story_owner', self.t + self.e)
@@ -202,7 +202,9 @@ class HouseTermsContractTests(unittest.TestCase):
             self.assertEqual(keys, set(re.findall(r'^\s+([\w.]+):0', loc, re.M)))
             for receipt in ('settled', 'refused', 'unanswered', 'invalidated', 'pending'):
                 self.assertIn('rw_house_terms.' + receipt, loc)
-            self.assertIn('50', loc)
+            amounts = (MOD/f'localization/{lang}/rw_institutional_payments_l_{lang}.yml').read_text(encoding='utf-8-sig')
+            for amount in (50,100,200,400):
+                self.assertIn('rw_institutional.amount_'+str(amount), amounts)
         self.assertLess(self.bv.index('desc = rw_house_terms.settled'), self.bv.index('desc = rw_house_affairs.restored'))
 
     def test_no_native_status_property_pardon_or_private_evidence_mutation(self):

@@ -1,5 +1,11 @@
 # Final CK3 validation campaign
 
+## Institutional contribution correction
+
+Include all rank tiers, legacy50gold offers, post-offer rank/representative changes,
+unaffordability, voluntary successor consent, exact treasury changes and replay
+in [INSTITUTIONAL_CONTRIBUTIONS.md](INSTITUTIONAL_CONTRIBUTIONS.md). Source-only.
+
 ## Support balance correction
 
 Include the cross-family pair-reward and rank scenarios in

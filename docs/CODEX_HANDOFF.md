@@ -1,5 +1,12 @@
 # Codex implementation handoff
 
+## Active continuation — institutional contribution scale, 12 November
+
+INSTITUTIONAL_CONTRIBUTIONS.md records B4's frozen50/100/200/400gold institutional
+contributions and legacy50gold support. Finish B5 legitimacy/stress policy, then
+assemble the integrated day1 candidate for the approved day2 grouped trial.
+Keep the day3 playable target and day4/day5 regression/play buffer.80/80+0/20, delta0.
+
 ## Active continuation — support balance delivered in source, 12 November
 
 SUPPORT_REWARD_BALANCE.md records B2/B3 rank-based prestige and the pair-bound

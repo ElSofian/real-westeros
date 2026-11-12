@@ -20,6 +20,9 @@ rw_dp_snapshot_effect = {
 rw_dp_begin_effect = {
     if = {
         limit = { rw_dp_can_offer_trigger = yes }
+        scope:actor = {
+            save_scope_value_as = { name = rw_dp_offer_amount value = rw_institutional_payment_value }
+        }
         clear_saved_scope = rw_dp_record
         scope:actor = { create_story = { type = story_rw_dynastic_pledge save_scope_as = rw_dp_record } }
         if = {
@@ -35,7 +38,7 @@ rw_dp_begin_effect = {
                 set_variable = { name = rw_dp_kind value = flag:legacy_endowment }
                 set_variable = { name = rw_dp_serial value = scope:rw_dp_serial }
                 set_variable = { name = rw_dp_revision value = 0 }
-                set_variable = { name = rw_dp_amount value = 50 }
+                set_variable = { name = rw_dp_amount value = scope:rw_dp_offer_amount }
                 set_variable = { name = rw_dp_original_payer value = scope:actor }
                 set_variable = { name = rw_dp_original_payee value = scope:recipient }
                 set_variable = { name = rw_dp_payer_house value = scope:actor.house }
@@ -100,8 +103,8 @@ rw_dp_pay_effect = {
             set_variable = { name = rw_dp_paid_by value = scope:rw_dp_payer }
             set_variable = { name = rw_dp_paid_to value = scope:rw_dp_payee }
         }
-        scope:rw_dp_payer = { remove_short_term_gold = 50 }
-        scope:rw_dp_payee = { add_gold = 50 }
+        scope:rw_dp_payer = { remove_short_term_gold = scope:rw_dp_record.var:rw_dp_amount }
+        scope:rw_dp_payee = { add_gold = scope:rw_dp_record.var:rw_dp_amount }
         scope:rw_dp_record = { rw_dp_notify_effect = yes }
     }
 }

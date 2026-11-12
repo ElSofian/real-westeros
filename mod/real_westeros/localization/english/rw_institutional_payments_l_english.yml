@@ -1,0 +1,5 @@
+﻿l_english:
+ rw_institutional.amount_50:0 "Agreed contribution of 50 gold."
+ rw_institutional.amount_100:0 "Agreed contribution of 100 gold."
+ rw_institutional.amount_200:0 "Agreed contribution of 200 gold."
+ rw_institutional.amount_400:0 "Agreed contribution of 400 gold."

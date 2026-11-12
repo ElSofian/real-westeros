@@ -12,7 +12,12 @@ rw_dp_record_trigger = {
     var:rw_dp_kind = flag:legacy_endowment
     has_variable = rw_dp_serial
     has_variable = rw_dp_revision
-    var:rw_dp_amount = 50
+    OR = {
+        var:rw_dp_amount = 50
+        var:rw_dp_amount = 100
+        var:rw_dp_amount = 200
+        var:rw_dp_amount = 400
+    }
     exists = var:rw_dp_original_payer
     exists = var:rw_dp_original_payee
     NOT = { var:rw_dp_original_payer = var:rw_dp_original_payee }
@@ -150,7 +155,7 @@ rw_dp_can_recognize_trigger = {
 rw_dp_can_pay_trigger = {
     rw_dp_active_trigger = yes
     this = scope:rw_dp_payer
-    scope:rw_dp_payer = { gold >= 50 }
+    scope:rw_dp_payer = { gold >= scope:rw_dp_record.var:rw_dp_amount }
     scope:rw_dp_record = {
         var:rw_dp_original_payer = { is_alive = no }
         NOT = { var:rw_dp_original_payer = scope:rw_dp_payer }

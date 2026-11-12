@@ -258,6 +258,86 @@
       "before": "scope:rw_ba_payee = { add_prestige = 50 }",
       "after": "rw_public_support_reward_effect = { PROVIDER = scope:rw_ba_payer CLIENT = scope:rw_ba_payee }",
       "reason": "Owner-authorized common support reward and comparable promise resentment."
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_house_terms_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "bf4c3f312b2a3cafa24aeb8444c5a212141818cd",
+      "before_sha256": "72941088eeb17da61446da09206ca589e7d0df020adb99ba574e094d48fc29f8",
+      "after_sha256": "f9d816a58bf3534e26d7c7894fc1fd40069f775c92a4d5d8f22f679c0bb18762",
+      "before": "        scope:rw_house_record = {\n            remove_variable = rw_house_request_window",
+      "after": "        scope:rw_house_record.var:rw_house_petitioner = {\n            save_scope_value_as = { name = rw_house_terms_offer_price value = rw_institutional_payment_value }\n        }\n        scope:rw_house_record = {\n            remove_variable = rw_house_request_window",
+      "reason": "Owner-authorized frozen institutional contribution scaled by original payer rank."
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_house_terms_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "bf4c3f312b2a3cafa24aeb8444c5a212141818cd",
+      "before_sha256": "f9d816a58bf3534e26d7c7894fc1fd40069f775c92a4d5d8f22f679c0bb18762",
+      "after_sha256": "3ad338d69b2ab247a640b260bc8bae58ab0aeff0c792d52c6c015cf2421e22ad",
+      "before": "name = rw_house_terms_price value = 50",
+      "after": "name = rw_house_terms_price value = scope:rw_house_terms_offer_price",
+      "reason": "Owner-authorized frozen institutional contribution scaled by original payer rank."
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_house_terms_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "bf4c3f312b2a3cafa24aeb8444c5a212141818cd",
+      "before_sha256": "3ad338d69b2ab247a640b260bc8bae58ab0aeff0c792d52c6c015cf2421e22ad",
+      "after_sha256": "5db989d73841438be881aa6fc77949f99a57e98072ad0d0a10f8b9e70ff74dca",
+      "before": "remove_short_term_gold = 50",
+      "after": "remove_short_term_gold = scope:rw_house_record.var:rw_house_terms_price",
+      "reason": "Owner-authorized frozen institutional contribution scaled by original payer rank."
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_house_terms_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "bf4c3f312b2a3cafa24aeb8444c5a212141818cd",
+      "before_sha256": "5db989d73841438be881aa6fc77949f99a57e98072ad0d0a10f8b9e70ff74dca",
+      "after_sha256": "84199361ea314ff06c2c9e00f8bf9d0faccf83218ad9425cbdacd64d712e1fc3",
+      "before": "add_gold = 50",
+      "after": "add_gold = scope:rw_house_record.var:rw_house_terms_price",
+      "reason": "Owner-authorized frozen institutional contribution scaled by original payer rank."
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_dynastic_pledge_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "bf4c3f312b2a3cafa24aeb8444c5a212141818cd",
+      "before_sha256": "b77d6d24da3a13ac10624d914d1a485a8d5feb26b084b6fcc710139001f56995",
+      "after_sha256": "8fc0852d30d79f02ca770bc9b3a647a48b1bb9e2ee7420ee1bb9e880c1c16b6b",
+      "before": "        clear_saved_scope = rw_dp_record",
+      "after": "        scope:actor = {\n            save_scope_value_as = { name = rw_dp_offer_amount value = rw_institutional_payment_value }\n        }\n        clear_saved_scope = rw_dp_record",
+      "reason": "Owner-authorized frozen institutional contribution scaled by original payer rank."
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_dynastic_pledge_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "bf4c3f312b2a3cafa24aeb8444c5a212141818cd",
+      "before_sha256": "8fc0852d30d79f02ca770bc9b3a647a48b1bb9e2ee7420ee1bb9e880c1c16b6b",
+      "after_sha256": "e0536061e0e3ca5208df203dc425ef0cd74aec410879d2a5bfe7d10c73c04cff",
+      "before": "name = rw_dp_amount value = 50",
+      "after": "name = rw_dp_amount value = scope:rw_dp_offer_amount",
+      "reason": "Owner-authorized frozen institutional contribution scaled by original payer rank."
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_dynastic_pledge_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "bf4c3f312b2a3cafa24aeb8444c5a212141818cd",
+      "before_sha256": "e0536061e0e3ca5208df203dc425ef0cd74aec410879d2a5bfe7d10c73c04cff",
+      "after_sha256": "210bf8cfa7551063786e00ed65b35bf80da481227e645a4b3ae577eb33dde3ff",
+      "before": "remove_short_term_gold = 50",
+      "after": "remove_short_term_gold = scope:rw_dp_record.var:rw_dp_amount",
+      "reason": "Owner-authorized frozen institutional contribution scaled by original payer rank."
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_dynastic_pledge_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "bf4c3f312b2a3cafa24aeb8444c5a212141818cd",
+      "before_sha256": "210bf8cfa7551063786e00ed65b35bf80da481227e645a4b3ae577eb33dde3ff",
+      "after_sha256": "54921c132658a3b2301b97403d11630086a31ee7b20bccadd759fba00d0032da",
+      "before": "add_gold = 50",
+      "after": "add_gold = scope:rw_dp_record.var:rw_dp_amount",
+      "reason": "Owner-authorized frozen institutional contribution scaled by original payer rank."
     }
   ]
 }

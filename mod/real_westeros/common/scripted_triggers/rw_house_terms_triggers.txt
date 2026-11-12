@@ -4,7 +4,12 @@ rw_house_terms_valid_trigger = {
     rw_house_record_active_trigger = yes
     var:rw_house_last_response = flag:terms_offered
     has_variable = rw_house_terms_window
-    var:rw_house_terms_price = 50
+    OR = {
+        var:rw_house_terms_price = 50
+        var:rw_house_terms_price = 100
+        var:rw_house_terms_price = 200
+        var:rw_house_terms_price = 400
+    }
     exists = var:rw_house_petitioner
     exists = var:rw_house_requested_ruler
     var:rw_house_petitioner = {
@@ -30,5 +35,5 @@ rw_house_terms_turn_trigger = {
 }
 rw_house_terms_affordable_trigger = {
     rw_house_terms_turn_trigger = yes
-    gold >= 50
+    gold >= scope:rw_house_record.var:rw_house_terms_price
 }

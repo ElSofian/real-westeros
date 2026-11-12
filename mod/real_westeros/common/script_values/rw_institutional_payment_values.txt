@@ -1,0 +1,7 @@
+# A contribution is fixed once from its original payer's CK3 title tier.
+rw_institutional_payment_value = {
+    value = 50
+    if = { limit = { highest_held_title_tier >= tier_empire } value = 400 }
+    else_if = { limit = { highest_held_title_tier >= tier_kingdom } value = 200 }
+    else_if = { limit = { highest_held_title_tier >= tier_duchy } value = 100 }
+}
