@@ -1,5 +1,15 @@
 # Development backlog
 
+**RW-010 support reward and promise balance, 12 November.**
+[SUPPORT_REWARD_BALANCE.md](SUPPORT_REWARD_BALANCE.md) replaces five flat+50 payouts
+with one provider-rank reward10/20/35/50 and pair-bound+5 opinion for one year.
+The shared opinion marker prevents repeated prestige/opinion rewards across contract
+families while existing monetary/favor clauses retain their execution. Gold-service
+promise resentment now matches comparable renunciation at−15/two years and does not
+refresh an existing pair modifier. Eight new negative/positive tests plus updated
+contract/memory assertions. Experimental, not engine-tested.80/80+0/20, delta0.
+Next institutional financial scale and explicit legitimacy/stress consequences.
+
 **RW-004 peace-demand follow-up, 12 November.**
 [PEACE_DEMAND_REVIEW.md](PEACE_DEMAND_REVIEW.md) gives acknowledgement, refusal and
 unanswered requests one last discretionary authority decision. Exact roles/war,

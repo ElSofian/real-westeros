@@ -104,8 +104,8 @@ class ServiceContractTests(unittest.TestCase):
 
     def test_consumption_after_payment(self):
         e = self.e.replace('        rw_service_clear_effect = yes', '')
-        e = e.replace('        scope:rw_service_client = { add_prestige = 50 }',
-                      '        scope:rw_service_client = { add_prestige = 50 }\n        rw_service_clear_effect = yes')
+        e = e.replace('        rw_public_support_reward_effect = { PROVIDER = scope:rw_service_provider CLIENT = scope:rw_service_client }',
+                      '        rw_public_support_reward_effect = { PROVIDER = scope:rw_service_provider CLIENT = scope:rw_service_client }\n        rw_service_clear_effect = yes')
         self.assertIn('settlement occurs before consume', contract_errors(self.t, e))
 
     def test_quote_cannot_extend_deadline(self):

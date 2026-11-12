@@ -1,0 +1,23 @@
+# All endorsement families use one pair-specific native opinion marker.
+# Existing callers consume their contract before awarding a delivered endorsement.
+rw_public_support_reward_effect = {
+    custom_tooltip = rw_public_support.reward_rule
+    if = {
+        limit = {
+            exists = $PROVIDER$
+            exists = $CLIENT$
+            NOT = { $PROVIDER$ = $CLIENT$ }
+            $PROVIDER$ = { is_alive = yes is_landed = yes }
+            $CLIENT$ = { is_alive = yes is_landed = yes }
+        }
+        $CLIENT$ = {
+            if = {
+                limit = {
+                    NOT = { has_opinion_modifier = { target = $PROVIDER$ modifier = rw_public_support_received_opinion } }
+                }
+                add_opinion = { target = $PROVIDER$ modifier = rw_public_support_received_opinion }
+                add_prestige = $PROVIDER$.rw_public_support_prestige_value
+            }
+        }
+    }
+}

@@ -1,5 +1,11 @@
 # Final CK3 validation campaign
 
+## Support balance correction
+
+Include the cross-family pair-reward and rank scenarios in
+[SUPPORT_REWARD_BALANCE.md](SUPPORT_REWARD_BALANCE.md), plus comparable broken
+promise duration and save/reload. These source changes remain unverified in CK3.
+
 ## Owner-directed system review and iteration
 
 After the80/80 foundation milestone, revisit all eight systems against the

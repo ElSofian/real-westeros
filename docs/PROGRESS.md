@@ -1,5 +1,14 @@
 # Progress
 
+- RW-010 support reward and promise balance, 12 November. Shared rank-based prestige
+  and one-year pair marker replace all five flat payouts. Add+5 personal opinion
+  with that marker. Consume marker before prestige. Keep existing contract/replay
+  guards and memory projection. Harmonize gold-service broken promise at−15/two
+  years and suppress refresh. Telemetry gameplay update recorded with prior hash.
+  Eight new regression tests and existing affected contracts checked. Evidence in
+  PR. Experimental, not engine-tested.80/80 source+0/20 campaign, actual delta0.
+  Next B4/B5 institutional gold scale and legitimacy/stress policy.
+
 - RW-004 peace-demand follow-up, 12 November. Resumed the interrupted correction.
   A reply or expired answer window returns one final authority choice. Preserve
   exact personal receipt/war/authority, original lifetime and consumed answer.

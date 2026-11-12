@@ -1,0 +1,7 @@
+# Public standing of the provider, evaluated at actual delivery.
+rw_public_support_prestige_value = {
+    value = 10
+    if = { limit = { highest_held_title_tier >= tier_empire } value = 50 }
+    else_if = { limit = { highest_held_title_tier >= tier_kingdom } value = 35 }
+    else_if = { limit = { highest_held_title_tier >= tier_duchy } value = 20 }
+}

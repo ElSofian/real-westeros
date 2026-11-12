@@ -1,5 +1,13 @@
 # Codex implementation handoff
 
+## Active continuation — support balance delivered in source, 12 November
+
+SUPPORT_REWARD_BALANCE.md records B2/B3 rank-based prestige and the pair-bound
+annual reward, plus comparable promise resentment at−15/two years. The owner chose
+the five-day candidate plan. Continue B4 institutional financial scale and B5
+explicit legitimacy/stress effects, then assemble the integrated candidate for
+the grouped day2 trial.80/80 source+0/20 campaign, delta0. Source remains experimental.
+
 ## Active continuation — five-day playable candidate, 12 November
 
 The owner approved day1 source corrections, day2 grouped CK3 trial, day3 playable
