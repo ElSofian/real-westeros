@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "task": "RW-004",
-  "owner": "codex-20261108T231444Z-balance-fix-a5e37c",
+  "owner": "codex-20261112T005443Z-balance-resume-c83fa7",
   "branch": "fix/consequence-balance",
-  "claimed_at": "2026-11-08T23:14:44Z",
-  "expires_at": "2026-11-09T03:14:44Z"
+  "claimed_at": "2026-11-12T00:54:43Z",
+  "expires_at": "2026-11-12T04:54:43Z"
 }
