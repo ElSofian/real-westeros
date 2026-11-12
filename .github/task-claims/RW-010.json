@@ -2,7 +2,7 @@
   "schema": 1,
   "task": "RW-010",
   "owner": "codex-20261112T005443Z-balance-resume-c83fa7",
-  "branch": "fix/consequence-balance",
+  "branch": "fix/support-reward-balance",
   "claimed_at": "2026-11-12T00:54:43Z",
   "expires_at": "2026-11-12T04:54:43Z"
 }
