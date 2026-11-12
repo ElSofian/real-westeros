@@ -19,7 +19,7 @@ UNCHANGED = {
     'common/scripted_effects/rw_unlawful_war_response_effects.txt': '9db8cdba02c879a5d2f945bf8205d2f5de6995d6cf2c9507c26ce63b3f0ba3c6',
     'common/scripted_effects/rw_unlawful_war_intervention_effects.txt': '9de13bfe4d6e6d22463906d0440b8f5c50d87823d2027ed5fe69c59bc2cd6329',
     'common/story_cycles/rw_unlawful_war_responses.txt': '756a3ce435b83660d6bd9a1568ac732645d570fd8aae45b7a1c8b2c3b3390e4c',
-    SHARED: '9367d558004dfbd387321a918dd4d0ff480b9b500d5f5f78cedc13cfbca42a7f',
+    SHARED: '2de4a200314de8c600f330d72054853584c4608a6614c68b9384db06326a4fe6',
 }
 BINDINGS = (
     ('rw_uw.ignore', 'rw_ai_uw_ignore_weight', 'rw_uw_issuer_turn_trigger', 20),
