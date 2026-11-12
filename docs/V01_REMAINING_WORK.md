@@ -1,5 +1,16 @@
 # Ce qui reste avant la première version intégrée
 
+## Candidat installé du 12 novembre 2026
+
+Le candidat `cd377badbe08a09b9612cb8a8ba3c1079f66e879` est installé pour la session groupée.
+Ses 495empreintes de fichiers assemblés et 349empreintes de fichiers installés
+sont vérifiées. Le playset **Real Westeros** contient AGOT et les quatre modules
+RW activés dans l'ordre prévu. Les contrôles Linux et Windows passent.
+La prochaine étape active est la session CK3 du deuxième jour selon
+[FINAL_ENGINE_TESTS.md](FINAL_ENGINE_TESTS.md). Le bilan reste 80/80 source et 0/20
+campagne, delta réel+0. Les résultats en jeu détermineront les corrections du
+troisième jour et la partie jouable visée.
+
 ## Candidat de premier jour, 12 novembre 2026
 
 Les cinq constats de la [revue des conséquences](CONSEQUENCE_BALANCE_REVIEW.md)

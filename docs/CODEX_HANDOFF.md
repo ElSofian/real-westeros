@@ -1,5 +1,23 @@
 # Codex implementation handoff
 
+## Active continuation — installed day1 candidate, 12 November
+
+Candidate commit `cd377badbe08a09b9612cb8a8ba3c1079f66e879` is assembled and installed for the
+approved day2 grouped CK3 trial. Public ZIP SHA256
+`2e345e7b9af59e342542091ad683618c08d83b07e9028f26b55755bbd5ef3275`.
+Four bounded corrections are merged in PR133–136. All required Linux/Windows
+checks pass. All 495private-assembly file hashes and all 349installed mod-file hashes
+were verified, then the launcher database was reopened and checked.
+
+The existing **Real Westeros** playset contains five enabled modules in custom
+order, AGOT, real_westeros, rw_g1_native_choice, rw_g3_native_confiscation and
+rw_native_restitution. Prior own mod entries and the launcher database have a
+private local backup. The owner should select **Real Westeros** when launching
+the day2 session. Continue FINAL_ENGINE_TESTS.md and the four balance guides,
+inspect actual saves/logs and correct observed failures.80/80 source+0/20 campaign,
+actual delta0. Engine cases for this candidate 0. Day3 targets first real play,
+with day4 regression/fixes and day5 play/buffer.
+
 ## Active continuation — day1 source corrections complete, 12 November
 
 POLITICAL_CONSEQUENCES.md closes the five balance findings in source through four

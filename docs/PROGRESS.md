@@ -1,5 +1,15 @@
 # Progress
 
+- Day1 candidate installed, 12 November. PR133–136 deliver the five consequence
+  review corrections in source. Candidate `cd377badbe08a09b9612cb8a8ba3c1079f66e879` and ZIP
+  `2e345e7b9af59e342542091ad683618c08d83b07e9028f26b55755bbd5ef3275` assemble with three matching private
+  adapters. All 495pack file hashes and 349installed mod file hashes verified.
+  Reopened launcher database confirms AGOT plus four RW modules enabled in the
+  existing Real Westeros playset in custom order. Previous own entries/database
+  backed up locally. Required Linux/Windows CI and delivered rule contracts pass.
+  Engine cases for this candidate 0.80/80 source+0/20 campaign, actual delta0.
+  Next owner-operated grouped day2 trial, then corrections from observed results.
+
 - RW-010 legitimacy/stress consequences, 12 November. Add guarded native legitimacy
   and trait-based stress for original public/personal decisions. Consume per-act
   markers before public effects. Give free-clemency legitimacy to a successor,
