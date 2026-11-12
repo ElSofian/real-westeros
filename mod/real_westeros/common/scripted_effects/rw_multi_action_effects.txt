@@ -203,11 +203,36 @@ rw_ba_refuse_effect = {
         limit = { rw_ba_can_refuse_trigger = { LEG = $LEG$ PAYER = $PAYER$ PAYEE = $PAYEE$ } }
         rw_tm_emit_effect = { FAMILY = bundle ACTION = refuse_$LEG$ STAGE = authorized }
         save_scope_as = rw_ba_refuser
+        save_scope_value_as = { name = rw_ba_refused_leg value = flag:$LEG$ }
+        save_scope_value_as = { name = rw_ba_refusal_stress_due value = flag:no }
+        if = {
+            limit = {
+                OR = {
+                    AND = { scope:rw_ba_refused_leg = flag:gold rw_ba_can_pay_trigger = yes }
+                    AND = { scope:rw_ba_refused_leg = flag:support rw_ba_can_support_trigger = yes }
+                    AND = { scope:rw_ba_refused_leg = flag:release rw_ba_can_release_trigger = yes }
+                }
+            }
+            save_scope_value_as = { name = rw_ba_refusal_stress_due value = flag:yes }
+        }
         scope:rw_ba_record = {
             set_variable = { name = rw_ba_$LEG$ value = flag:refused }
             set_variable = { name = rw_ba_$LEG$_refused_by value = scope:rw_ba_refuser }
             set_variable = { name = rw_ba_$LEG$_refused_on value = current_date }
             rw_ba_resolve_effect = yes
+        }
+        if = {
+            limit = { scope:rw_ba_refusal_stress_due = flag:yes }
+            if = {
+                limit = { this = scope:rw_ba_payer scope:rw_ba_record = { NOT = { has_variable = rw_ba_payer_stress_done } } }
+                scope:rw_ba_record = { set_variable = { name = rw_ba_payer_stress_done value = flag:yes } }
+                rw_promise_breach_stress_effect = yes
+            }
+            else_if = {
+                limit = { this = scope:rw_ba_payee scope:rw_ba_record = { NOT = { has_variable = rw_ba_payee_stress_done } } }
+                scope:rw_ba_record = { set_variable = { name = rw_ba_payee_stress_done value = flag:yes } }
+                rw_promise_breach_stress_effect = yes
+            }
         }
         rw_ba_notify_effect = yes
         rw_tm_emit_effect = { FAMILY = bundle ACTION = refuse_$LEG$ STAGE = complete }

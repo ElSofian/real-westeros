@@ -120,6 +120,10 @@ rw_dp_renounce_effect = {
         limit = { rw_dp_can_renounce_trigger = yes }
         save_scope_as = rw_dp_finisher
         scope:rw_dp_record = { rw_dp_close_story_effect = { RESULT = renounced } rw_dp_notify_effect = yes }
+        if = {
+            limit = { scope:rw_dp_record = { var:rw_dp_payer_recognized = root } }
+            rw_promise_breach_stress_effect = yes
+        }
     }
 }
 rw_dp_release_effect = {

@@ -338,6 +338,56 @@
       "before": "add_gold = 50",
       "after": "add_gold = scope:rw_dp_record.var:rw_dp_amount",
       "reason": "Owner-authorized frozen institutional contribution scaled by original payer rank."
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_obligation_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "9c22756b94fdff3d420a9d48c4beccc7ce1473d3",
+      "before_sha256": "e143c6605a319c4ad25c6eb2ee7ebf926c45ba6725c9f3cf954ed08f706d9751",
+      "after_sha256": "9e2affc1800e950e23f016ac7c5525dde2a199e479b5cef53a2d03cea242c1ee",
+      "before": "        rw_service_clear_effect = yes\n        scope:rw_service_client = { trigger_event = { id = rw_obligations.0003 } }",
+      "after": "        rw_service_clear_effect = yes\n        if = {\n            limit = {\n                OR = { scope:rw_service_breach_reason = flag:refusal scope:rw_service_breach_reason = flag:deadline }\n                scope:rw_service_provider = { var:rw_service_last_performance_capacity = flag:available }\n            }\n            scope:rw_service_provider = { rw_promise_breach_stress_effect = yes }\n        }\n        scope:rw_service_client = { trigger_event = { id = rw_obligations.0003 } }",
+      "reason": "Owner-authorized personal promise breach stress after consumed performance context."
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_deferred_favor_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "9c22756b94fdff3d420a9d48c4beccc7ce1473d3",
+      "before_sha256": "ee07815b4c27334ba6bd495311fed2ee4e76d90dcce72899a7be4e8297139165",
+      "after_sha256": "dfeac6c2789db87db116365753c8dcdafc63cc045a3214b9a703fe025656c539",
+      "before": "        rw_fd_finish_effect = { RESULT = provider_renounced }",
+      "after": "        rw_fd_finish_effect = { RESULT = provider_renounced }\n        if = {\n            limit = { NOT = { var:rw_fr_capacity = flag:unavailable } }\n            rw_promise_breach_stress_effect = yes\n        }",
+      "reason": "Owner-authorized personal promise breach stress after consumed performance context."
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_dynastic_pledge_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "9c22756b94fdff3d420a9d48c4beccc7ce1473d3",
+      "before_sha256": "54921c132658a3b2301b97403d11630086a31ee7b20bccadd759fba00d0032da",
+      "after_sha256": "68698f42d7cfe0c4ea8ceca6a9ed9b332705ed92507de8d32f7b70f4ab3b4ab7",
+      "before": "        scope:rw_dp_record = { rw_dp_close_story_effect = { RESULT = renounced } rw_dp_notify_effect = yes }",
+      "after": "        scope:rw_dp_record = { rw_dp_close_story_effect = { RESULT = renounced } rw_dp_notify_effect = yes }\n        if = {\n            limit = { scope:rw_dp_record = { var:rw_dp_payer_recognized = root } }\n            rw_promise_breach_stress_effect = yes\n        }",
+      "reason": "Owner-authorized personal promise breach stress after consumed performance context."
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_multi_action_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "9c22756b94fdff3d420a9d48c4beccc7ce1473d3",
+      "before_sha256": "627af9e98b13561ad6a72e39049163ed350ec0ad8ed573c98b97c84f38eb5c3d",
+      "after_sha256": "2cda8f29ad49346813c5ec0b760edce7553acc2895081c1e4422b6baa9d0d6ac",
+      "before": "        save_scope_as = rw_ba_refuser\n        scope:rw_ba_record = {",
+      "after": "        save_scope_as = rw_ba_refuser\n        save_scope_value_as = { name = rw_ba_refused_leg value = flag:$LEG$ }\n        save_scope_value_as = { name = rw_ba_refusal_stress_due value = flag:no }\n        if = {\n            limit = {\n                OR = {\n                    AND = { scope:rw_ba_refused_leg = flag:gold rw_ba_can_pay_trigger = yes }\n                    AND = { scope:rw_ba_refused_leg = flag:support rw_ba_can_support_trigger = yes }\n                    AND = { scope:rw_ba_refused_leg = flag:release rw_ba_can_release_trigger = yes }\n                }\n            }\n            save_scope_value_as = { name = rw_ba_refusal_stress_due value = flag:yes }\n        }\n        scope:rw_ba_record = {",
+      "reason": "Owner-authorized personal bundle breach stress after capacity observation and clause consumption."
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_multi_action_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "9c22756b94fdff3d420a9d48c4beccc7ce1473d3",
+      "before_sha256": "2cda8f29ad49346813c5ec0b760edce7553acc2895081c1e4422b6baa9d0d6ac",
+      "after_sha256": "30be2f5e93c964c9dc0ea830c8f588efd30935b37f0a14156f46f94c781a31a5",
+      "before": "        rw_ba_notify_effect = yes\n        rw_tm_emit_effect = { FAMILY = bundle ACTION = refuse_$LEG$ STAGE = complete }",
+      "after": "        if = {\n            limit = { scope:rw_ba_refusal_stress_due = flag:yes }\n            if = {\n                limit = { this = scope:rw_ba_payer scope:rw_ba_record = { NOT = { has_variable = rw_ba_payer_stress_done } } }\n                scope:rw_ba_record = { set_variable = { name = rw_ba_payer_stress_done value = flag:yes } }\n                rw_promise_breach_stress_effect = yes\n            }\n            else_if = {\n                limit = { this = scope:rw_ba_payee scope:rw_ba_record = { NOT = { has_variable = rw_ba_payee_stress_done } } }\n                scope:rw_ba_record = { set_variable = { name = rw_ba_payee_stress_done value = flag:yes } }\n                rw_promise_breach_stress_effect = yes\n            }\n        }\n        rw_ba_notify_effect = yes\n        rw_tm_emit_effect = { FAMILY = bundle ACTION = refuse_$LEG$ STAGE = complete }",
+      "reason": "Owner-authorized personal bundle breach stress after capacity observation and clause consumption."
     }
   ]
 }

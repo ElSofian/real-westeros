@@ -1,0 +1,92 @@
+# Personal breach or voluntary renunciation. Callers consume their own promise first.
+rw_promise_breach_stress_effect = {
+    custom_tooltip = rw_consequences.promise_stress
+    stress_impact = {
+        honest = 15
+        just = 10
+        compassionate = 5
+    }
+}
+# One consequence for the freshly issued, registered political decree.
+rw_house_censure_consequence_effect = {
+    if = {
+        limit = {
+            scope:rw_house_record = {
+                rw_house_record_active_trigger = yes
+                var:rw_house_issuer = root
+                var:rw_house_issued_on = current_date
+                NOT = { has_variable = rw_house_censure_consequences_done }
+            }
+        }
+        scope:rw_house_record = { set_variable = { name = rw_house_censure_consequences_done value = flag:yes } }
+        if = { limit = { has_legitimacy = yes } add_legitimacy = -10 }
+        stress_impact = { just = 10 compassionate = 10 }
+    }
+}
+# Free, explicit reversal of a decree. Paid settlements have their own result.
+rw_house_clemency_consequence_effect = {
+    if = {
+        limit = {
+            scope:rw_house_record = {
+                rw_house_record_valid_trigger = yes
+                OR = { var:rw_house_state = flag:restored var:rw_house_state = flag:withdrawn }
+                var:rw_house_closed_by = root
+                var:rw_house_closed_on = current_date
+                NOT = { var:rw_house_last_response = flag:terms_settled }
+                NOT = { has_variable = rw_house_clemency_consequences_done }
+            }
+        }
+        scope:rw_house_record = { set_variable = { name = rw_house_clemency_consequences_done value = flag:yes } }
+        if = {
+            limit = {
+                has_legitimacy = yes
+                NOT = { this = scope:rw_house_record.var:rw_house_issuer }
+            }
+            add_legitimacy = 10
+        }
+        stress_impact = { vengeful = 10 }
+    }
+}
+# An explicit recognition supports the current head's public standing once a year.
+rw_crown_recognition_consequence_effect = {
+    if = {
+        limit = {
+            rw_ch_active_trigger = yes
+            this = scope:rw_ch_ruler
+            scope:rw_lr_record = {
+                has_variable = rw_ch_recognized_on
+                var:rw_ch_recognized_on = current_date
+                var:rw_ch_recognized_by = scope:rw_ch_ruler
+            }
+            scope:rw_ch_head = {
+                is_alive = yes
+                has_legitimacy = yes
+                NOT = { has_character_flag = rw_public_recognition_bonus_recent }
+            }
+        }
+        scope:rw_ch_head = {
+            add_character_flag = { flag = rw_public_recognition_bonus_recent days = 365 }
+            add_legitimacy = 10
+        }
+    }
+}
+
+# A current ruler pays for renouncing a charter they personally recognised.
+rw_crown_renunciation_consequence_effect = {
+    if = {
+        limit = {
+            rw_ch_view_trigger = yes
+            this = scope:rw_ch_ruler
+            scope:rw_lr_record = {
+                var:rw_ch_state = flag:renounced
+                var:rw_ch_recognized_by = root
+                var:rw_ch_finished_by = root
+                var:rw_ch_finished_on = current_date
+                NOT = { has_variable = rw_ch_renunciation_consequences_done }
+            }
+        }
+        scope:rw_lr_record = { set_variable = { name = rw_ch_renunciation_consequences_done value = flag:yes } }
+        if = { limit = { has_legitimacy = yes } add_legitimacy = -10 }
+        rw_promise_breach_stress_effect = yes
+    }
+}

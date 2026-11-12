@@ -1,5 +1,17 @@
 # Ce qui reste avant la première version intégrée
 
+## Candidat de premier jour, 12 novembre 2026
+
+Les cinq constats de la [revue des conséquences](CONSEQUENCE_BALANCE_REVIEW.md)
+reçoivent leurs corrections source. Les règles et cas à vérifier figurent dans
+[POLITICAL_CONSEQUENCES.md](POLITICAL_CONSEQUENCES.md). La suite active est
+l'assemblage exact du candidat puis la session CK3 groupée du deuxième jour,
+avec les huit systèmes et les garde-fous de sauvegarde/rechargement, identité,
+coûts et conséquences. Le troisième jour vise la partie jouable et les quatrième
+et cinquième jours servent aux corrections, régressions et au jeu.
+80/80 source,0/20 campagne, delta réel+0. Les priorités plus anciennes ci-dessous
+conservent leur contexte historique.
+
 ## Revue des conséquences du 9 novembre 2026
 
 [La revue chiffrée](CONSEQUENCE_BALANCE_REVIEW.md) relève trois corrections

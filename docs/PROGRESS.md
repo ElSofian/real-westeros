@@ -1,5 +1,15 @@
 # Progress
 
+- RW-010 legitimacy/stress consequences, 12 November. Add guarded native legitimacy
+  and trait-based stress for original public/personal decisions. Consume per-act
+  markers before public effects. Give free-clemency legitimacy to a successor,
+  annual recognition to the current head and charter repudiation costs only to
+  its personally consenting ruler. Personal breach costs use capacity observations,
+  accepted consent and a once-per-actor bundle marker. Thirteen added regression
+  tests plus existing source/receipt checks. Evidence in PR. Experimental,
+  not engine-tested.80/80 source+0/20 campaign, actual delta0. Next integrated
+  candidate assembly and grouped trial on day2 of the accepted five-day plan.
+
 - RW-010 institutional financial scale, 12 November. Freeze payer-rank contribution
   when offering rehabilitation/legacy endowment. Display one of50/100/200/400gold
   before consent. Check stored amount at payment and use it for debit/credit after

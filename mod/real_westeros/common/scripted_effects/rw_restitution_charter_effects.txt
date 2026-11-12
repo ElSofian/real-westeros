@@ -56,11 +56,13 @@ rw_ch_accept_effect = {
             }
             else = { set_variable = { name = rw_ch_due value = flag:yes days = 1825 } }
             set_variable = { name = rw_ch_recognized_by value = scope:rw_ch_ruler }
+            set_variable = { name = rw_ch_recognized_on value = current_date }
             set_variable = { name = rw_ch_state value = flag:active }
             set_variable = { name = rw_ch_notified_ruler value = scope:rw_ch_ruler }
             set_variable = { name = rw_ch_notified_head value = scope:rw_ch_head }
             rw_ch_snapshot_effect = yes
         }
+        scope:rw_ch_ruler = { rw_crown_recognition_consequence_effect = yes }
         rw_ch_notify_effect = yes
     }
 }
@@ -73,6 +75,7 @@ rw_ch_assume_effect = {
             set_variable = { name = rw_ch_recognized_on value = current_date }
             rw_ch_snapshot_effect = yes
         }
+        rw_crown_recognition_consequence_effect = yes
         rw_pm_crown_recognition_effect = yes
         rw_ch_notify_effect = yes
     }
@@ -95,7 +98,12 @@ rw_ch_finish_effect = {
     }
 }
 rw_ch_renounce_effect = {
-    if = { limit = { rw_ch_can_renounce_trigger = yes } rw_ch_finish_effect = { RESULT = renounced } }
+    if = {
+        limit = { rw_ch_can_renounce_trigger = yes }
+        custom_tooltip = rw_consequences.charter_renunciation
+        rw_ch_finish_effect = { RESULT = renounced }
+        rw_crown_renunciation_consequence_effect = yes
+    }
 }
 rw_ch_release_effect = {
     if = { limit = { rw_ch_can_release_trigger = yes } rw_ch_finish_effect = { RESULT = released } }

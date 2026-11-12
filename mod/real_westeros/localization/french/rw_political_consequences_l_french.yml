@@ -1,0 +1,3 @@
+﻿l_french:
+ rw_consequences.promise_stress:0 "La rupture d’un engagement personnel utilise les bases de stress 15 pour honnête, 10 pour juste et 5 pour compatissant. Les modificateurs natifs de stress s’appliquent."
+ rw_consequences.charter_renunciation:0 "Répudier une charte que vous avez personnellement reconnue coûte 10 de légitimité lorsque cette mesure est disponible et le stress de rupture d’un engagement personnel."

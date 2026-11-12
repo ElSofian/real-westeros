@@ -63,6 +63,7 @@ rw_house_issue_censure_effect = {
                 }
                 scope:rw_scheme_evidence_record = { set_variable = { name = rw_house_filed value = flag:yes } }
                 add_prestige = -50
+                rw_house_censure_consequence_effect = yes
                 if = {
                     limit = { scope:rw_house_target = { exists = house_head house_head = { is_alive = yes } } }
                     scope:rw_house_target.house_head = {
@@ -241,6 +242,7 @@ rw_house_restore_effect = {
         scope:rw_house_record.var:rw_house_petitioner = { save_scope_as = rw_house_petitioner }
         rw_house_close_effect = { RESULT = restored }
         scope:rw_house_record = { set_variable = { name = rw_house_closed_by value = root } }
+        rw_house_clemency_consequence_effect = yes
         if = {
             limit = { NOT = { has_opinion_modifier = { target = scope:rw_house_petitioner modifier = rw_house_restored_opinion } } }
             add_opinion = { target = scope:rw_house_petitioner modifier = rw_house_restored_opinion }
@@ -266,6 +268,7 @@ rw_house_withdraw_effect = {
         limit = { rw_house_can_withdraw_trigger = yes }
         rw_house_close_effect = { RESULT = withdrawn }
         scope:rw_house_record = { set_variable = { name = rw_house_closed_by value = root } }
+        rw_house_clemency_consequence_effect = yes
     }
 }
 # Registry scans inspect records, not all character pairs. Read paths never write state.

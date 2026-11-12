@@ -55,6 +55,7 @@ rw_mr_renounce_effect = {
             set_variable = { name = rw_mr_finished_on value = current_date }
             set_variable = { name = rw_mr_state value = flag:renounced }
         }
+        rw_promise_breach_stress_effect = yes
         rw_mr_notify_effect = yes
     }
 }

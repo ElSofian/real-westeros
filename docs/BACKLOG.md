@@ -1,5 +1,16 @@
 # Development backlog
 
+**RW-010 native legitimacy and personal stress policy, 12 November.**
+[POLITICAL_CONSEQUENCES.md](POLITICAL_CONSEQUENCES.md) adds guarded native legitimacy
+for fresh house censure−10, a successor's free clemency+10, current-head public
+recognition+10 yearly and personal charter repudiation−10. Trait stress applies
+to consumed personal breaches, with capacity and consent guards. Bundles charge
+each original actor once, successors require personal recognition. Thirteen new
+negative/positive tests, updated exact inverse histories and telemetry hash.
+Experimental, not engine-tested.80/80+0/20, delta0. The five review corrections now
+have source implementations. Next exact-commit candidate assembly and the agreed
+day2 grouped CK3 session, then fixes driven by observed failures.
+
 **RW-010 institutional contribution scale, 12 November.**
 [INSTITUTIONAL_CONTRIBUTIONS.md](INSTITUTIONAL_CONTRIBUTIONS.md) fixes new financial
 rehabilitation and legacy-endowment offers at50/100/200/400gold from the original
