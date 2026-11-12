@@ -113,6 +113,13 @@ rw_service_record_breach_effect = {
             scope:rw_service_provider = { set_variable = { name = rw_service_last_performance_capacity value = flag:unavailable } }
         }
         rw_service_clear_effect = yes
+        if = {
+            limit = {
+                OR = { scope:rw_service_breach_reason = flag:refusal scope:rw_service_breach_reason = flag:deadline }
+                scope:rw_service_provider = { var:rw_service_last_performance_capacity = flag:available }
+            }
+            scope:rw_service_provider = { rw_promise_breach_stress_effect = yes }
+        }
         scope:rw_service_client = { trigger_event = { id = rw_obligations.0003 } }
     }
 }

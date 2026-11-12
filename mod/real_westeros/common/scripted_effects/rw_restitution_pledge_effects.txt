@@ -96,10 +96,19 @@ rw_rp_close_offer_effect = {
 rw_rp_renounce_effect = {
     if = {
         limit = { rw_rp_can_renounce_trigger = yes }
+        save_scope_value_as = { name = rw_rp_renunciation_stress_due value = flag:no }
+        if = {
+            limit = { rw_rp_parties_trigger = yes }
+            save_scope_value_as = { name = rw_rp_renunciation_stress_due value = flag:yes }
+        }
         scope:rw_rs_record = {
             remove_variable = rw_rp_due
             set_variable = { name = rw_rp_state value = flag:renounced }
             set_variable = { name = rw_rp_response_window value = flag:yes days = 7 }
+        }
+        if = {
+            limit = { scope:rw_rp_renunciation_stress_due = flag:yes }
+            rw_promise_breach_stress_effect = yes
         }
         rw_rp_notify_effect = yes
     }

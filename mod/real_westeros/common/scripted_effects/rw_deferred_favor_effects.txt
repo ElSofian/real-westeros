@@ -74,6 +74,10 @@ rw_fd_renounce_effect = {
             }
         }
         rw_fd_finish_effect = { RESULT = provider_renounced }
+        if = {
+            limit = { NOT = { var:rw_fr_capacity = flag:unavailable } }
+            rw_promise_breach_stress_effect = yes
+        }
         save_scope_as = rw_fr_fresh_renunciation
         rw_fr_begin_effect = yes
         clear_saved_scope = rw_fr_fresh_renunciation

@@ -1,5 +1,14 @@
 # Codex implementation handoff
 
+## Active continuation — day1 source corrections complete, 12 November
+
+POLITICAL_CONSEQUENCES.md closes the five balance findings in source through four
+bounded corrections. Confirm exact committed distribution/private assembly and
+use FINAL_ENGINE_TESTS.md for the agreed day2 grouped CK3 session. Source status
+is experimental and not engine-tested.80/80 source+0/20 campaign, actual delta0.
+The owner targets first real play on day3, with day4 regression/fixes and day5
+play/buffer. Correct observed failures and keep reproducible evidence for V1–V5.
+
 ## Active continuation — institutional contribution scale, 12 November
 
 INSTITUTIONAL_CONTRIBUTIONS.md records B4's frozen50/100/200/400gold institutional

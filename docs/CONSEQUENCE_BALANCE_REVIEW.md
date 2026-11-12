@@ -1,5 +1,13 @@
 # Revue des valeurs et conséquences
 
+## Conséquences politiques et personnelles, 12 novembre 2026
+
+B5 reçoit une [politique explicite de légitimité et de stress](POLITICAL_CONSEQUENCES.md).
+Les actes publics ont des conséquences natives liées à leurs auteurs, les ruptures
+personnelles utilisent traits et consentement, et les cas à0 sont documentés.
+Les cinq constats ont désormais leurs corrections en source. La calibration et
+la compatibilité attendent la campagne groupée.80/80+0/20, delta réel+0.
+
 ## Contributions institutionnelles, 12 novembre 2026
 
 B4 reçoit un [barème de contribution](INSTITUTIONAL_CONTRIBUTIONS.md) fixé selon

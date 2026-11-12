@@ -1,0 +1,3 @@
+﻿l_english:
+ rw_consequences.promise_stress:0 "Personal promise breach uses base stress 15 for honest, 10 for just and 5 for compassionate. Native stress modifiers apply."
+ rw_consequences.charter_renunciation:0 "Renouncing a charter you personally recognised costs 10 legitimacy when available and the personal promise-breach stress."

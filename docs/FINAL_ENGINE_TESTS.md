@@ -1,5 +1,12 @@
 # Final CK3 validation campaign
 
+## Political consequence correction
+
+Include the availability, traits, successor consent, per-act replay and bundle
+scenarios in [POLITICAL_CONSEQUENCES.md](POLITICAL_CONSEQUENCES.md). Compare exact
+native legitimacy/stress counters and existing native consequences during the
+grouped day2 campaign. These source variants remain unverified in CK3.
+
 ## Institutional contribution correction
 
 Include all rank tiers, legacy50gold offers, post-offer rank/representative changes,
