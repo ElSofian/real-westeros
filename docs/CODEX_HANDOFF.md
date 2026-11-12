@@ -1,5 +1,14 @@
 # Codex implementation handoff
 
+## Active continuation — five-day playable candidate, 12 November
+
+The owner approved day1 source corrections, day2 grouped CK3 trial, day3 playable
+campaign target, day4 regression/fixes and day5 play/buffer. Finish the finite balance
+findings and assemble a commit-identified candidate. PEACE_DEMAND_REVIEW.md records
+the bounded B1 correction. B2/B3 support rewards/opinion duration and B4/B5 finance/
+legitimacy/stress remain authorized follow-up work. Prefer observable play results
+to additional military simulation.80/80 source+0/20 campaign, delta0.
+
 ## Active continuation — consequence balance review, 9 November
 
 CONSEQUENCE_BALANCE_REVIEW.md records the current figures and findings across the

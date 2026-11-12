@@ -12,14 +12,14 @@ from test_promise_ai_policy import action_digest
 VALUES = 'common/script_values/rw_peer_war_ai_values.txt'
 SHARED = 'common/script_values/rw_external_war_ai_values.txt'
 EVENT = 'events/rw_unlawful_war_response_events.txt'
-ACTION_DIGEST = '4ba2a17572959d677e3f0ec13ef46b8f28b752280e0e3f64eaccfd098cad8db0'
+ACTION_DIGEST = '1c537212b778d0e7cd4fdc2448cfa53c3d2a05e1025f9d7d04aa22dfd2b09a3b'
 GUARD_FILE = 'common/scripted_triggers/rw_unlawful_war_choice_triggers.txt'
-GUARD_DIGEST = 'fae47d2941fa3999b0ea65aa5f12f05390e84771a5aa138f69cfc793060c9db9'
+GUARD_DIGEST = 'bb5f265da77ca9662c3a6ee404e65de281abb32ad5336ec7d9ee45a09eacda46'
 UNCHANGED = {
-    'common/scripted_effects/rw_unlawful_war_response_effects.txt': '287f689916c744cc99f5ff7d12c0a619f1a8c515abeb79760d9e41f2ff72860e',
+    'common/scripted_effects/rw_unlawful_war_response_effects.txt': '9db8cdba02c879a5d2f945bf8205d2f5de6995d6cf2c9507c26ce63b3f0ba3c6',
     'common/scripted_effects/rw_unlawful_war_intervention_effects.txt': '9de13bfe4d6e6d22463906d0440b8f5c50d87823d2027ed5fe69c59bc2cd6329',
     'common/story_cycles/rw_unlawful_war_responses.txt': '756a3ce435b83660d6bd9a1568ac732645d570fd8aae45b7a1c8b2c3b3390e4c',
-    SHARED: '2de4a200314de8c600f330d72054853584c4608a6614c68b9384db06326a4fe6',
+    SHARED: '9367d558004dfbd387321a918dd4d0ff480b9b500d5f5f78cedc13cfbca42a7f',
 }
 BINDINGS = (
     ('rw_uw.ignore', 'rw_ai_uw_ignore_weight', 'rw_uw_issuer_turn_trigger', 20),
@@ -131,7 +131,7 @@ class PeerWarAiTests(unittest.TestCase):
         changed = self.values.replace('multiply = rw_ai_uw_resolution_factor', 'multiply = rw_ai_missing_factor')
         self.assertIn('unresolved factor', peer_policy_errors(changed, self.shared, self.event))
 
-    def test_only_ai_weights_change_in_the_original_event(self):
+    def test_review_baseline_preserves_other_actions_and_native_dispatch(self):
         self.assertEqual(ACTION_DIGEST, action_digest(self.event))
         self.assertEqual(GUARD_DIGEST, guard_digest((builder.TEMPLATES/GUARD_FILE).read_text(encoding='utf-8-sig')))
         for name, expected in UNCHANGED.items():
