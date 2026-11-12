@@ -3,6 +3,7 @@ rw_external_war_response.0001 = {
     type = character_event
     title = rw_xw.title
     desc = {
+        triggered_desc = { trigger = { scope:rw_xw_record = { has_variable = rw_xw_reviewed_on } } desc = rw_xw.review_desc }
         first_valid = {
             triggered_desc = {
                 trigger = { scope:rw_xw_record = { var:rw_xw_role = flag:declaring_liege } }
@@ -29,7 +30,7 @@ rw_external_war_response.0001 = {
     }
     option = {
         name = rw_xw.demand
-        trigger = { rw_xw_turn_trigger = yes }
+        trigger = { rw_xw_can_demand_trigger = yes }
         custom_tooltip = rw_xw.demand_effect
         rw_xw_demand_effect = yes
         ai_chance = { base = 0 modifier = { add = rw_ai_xw_demand_weight always = yes } }
@@ -84,4 +85,11 @@ rw_external_war_response.0002 = {
         ai_chance = { base = 0 modifier = { add = rw_ai_xw_refuse_weight always = yes } }
     }
     option = { name = rw_xw.close trigger = { NOT = { rw_xw_answer_turn_trigger = yes } } }
+}
+
+# A single deadline callback. Late/obsolete callbacks have no effect.
+rw_external_war_response.0003 = {
+    type = character_event
+    hidden = yes
+    immediate = { rw_xw_unanswered_effect = yes }
 }

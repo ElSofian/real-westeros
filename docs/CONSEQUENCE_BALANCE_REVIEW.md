@@ -1,5 +1,13 @@
 # Revue des valeurs et conséquences
 
+## Suivi du 12 novembre 2026
+
+B1 reçoit un correctif source avec une dernière décision discrétionnaire de
+l'autorité après réponse ou silence. Les gardes et scénarios sont décrits dans
+[PEACE_DEMAND_REVIEW.md](PEACE_DEMAND_REVIEW.md). Validation moteur à effectuer
+pendant la session groupée du plan de cinq jours accepté par le propriétaire.
+Les constats chiffrés ci-dessous décrivent la base auditée.80/80+0/20, delta réel +0.
+
 ## Conclusion du 9 novembre 2026
 
 **Revue statique des scripts livrés. Équilibrage à corriger sur plusieurs points.**

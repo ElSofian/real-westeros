@@ -1,5 +1,14 @@
 # Progress
 
+- RW-004 peace-demand follow-up, 12 November. Resumed the interrupted correction.
+  A reply or expired answer window returns one final authority choice. Preserve
+  exact personal receipt/war/authority, original lifetime and consumed answer.
+  Shared AI/player paths, one-request guard and bounded legacy migration. Eight
+  added positive/negative tests, source snapshots reviewed for this intended change.
+  Final suite/assembly evidence in PR. Experimental, not engine-tested.
+  Baseline/result80/80 source+0/20 campaign, actual delta0. Next the remaining
+  consequence balance corrections, then integrated candidate and grouped CK3 trial.
+
 - RW-004/RW-010 consequence balance review, 9 November. Completed a source inventory
   of direct opinion, prestige and gold consequences across the eight systems, with
   roles, durations, replay guards, costs and native handoffs. Review records three

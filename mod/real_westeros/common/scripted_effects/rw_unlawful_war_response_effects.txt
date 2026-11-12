@@ -108,13 +108,15 @@ rw_uw_censure_effect = {
 }
 rw_uw_demand_effect = {
     if = {
-        limit = { rw_uw_issuer_turn_trigger = yes }
+        limit = { rw_uw_can_demand_trigger = yes }
         scope:rw_uw_record = {
             set_variable = { name = rw_uw_state value = flag:demanded }
+            set_variable = { name = rw_uw_demanded_on value = current_date }
             set_variable = { name = rw_uw_answer_window value = flag:yes days = 7 }
             remove_variable = rw_uw_issuer_window
         }
         scope:rw_uw_attacker = { trigger_event = { id = rw_unlawful_war_response.0002 } }
+        trigger_event = { id = rw_unlawful_war_response.0003 days = 8 }
     }
 }
 # Acknowledgement is NOT compliance, peace, a promise, legal consent or confession.
@@ -125,8 +127,8 @@ rw_uw_acknowledge_effect = {
             set_variable = { name = rw_uw_state value = flag:closed }
             set_variable = { name = rw_uw_result value = flag:acknowledged }
             remove_variable = rw_uw_answer_window
-            remove_variable = rw_uw_live
         }
+        rw_uw_reconsider_effect = { ANSWER = acknowledged }
         scope:rw_uw_issuer = {
             send_interface_message = { type = event_generic_neutral title = rw_uw.answer_title desc = rw_uw.acknowledged_notice }
         }
@@ -139,11 +141,44 @@ rw_uw_refuse_effect = {
             set_variable = { name = rw_uw_state value = flag:closed }
             set_variable = { name = rw_uw_result value = flag:refused }
             remove_variable = rw_uw_answer_window
-            remove_variable = rw_uw_live
         }
+        rw_uw_reconsider_effect = { ANSWER = refused }
         scope:rw_uw_issuer = {
             add_opinion = { target = scope:rw_uw_attacker modifier = rw_uw_refused_stop_opinion }
             send_interface_message = { type = event_generic_neutral title = rw_uw.answer_title desc = rw_uw.refused_notice }
         }
+    }
+}
+
+# Answer metadata survives the final authority choice. No native action is automatic.
+rw_uw_reconsider_effect = {
+    if = {
+        limit = { rw_uw_can_reconsider_trigger = yes }
+        scope:rw_uw_record = {
+            set_variable = { name = rw_uw_reviewed_on value = current_date }
+            set_variable = { name = rw_uw_answer value = flag:$ANSWER$ }
+            set_variable = { name = rw_uw_state value = flag:pending }
+            set_variable = { name = rw_uw_issuer_window value = flag:yes days = 7 }
+        }
+        scope:rw_uw_issuer = { trigger_event = { id = rw_unlawful_war_response.0001 days = 1 } }
+    }
+}
+rw_uw_unanswered_effect = {
+    if = {
+        limit = {
+            rw_uw_response_identity_trigger = yes
+            this = scope:rw_uw_issuer
+            scope:rw_uw_record = {
+                has_variable = rw_uw_live
+                has_variable = rw_uw_demanded_on
+                var:rw_uw_state = flag:demanded
+                NOT = { has_variable = rw_uw_answer_window }
+            }
+        }
+        scope:rw_uw_record = {
+            set_variable = { name = rw_uw_state value = flag:closed }
+            set_variable = { name = rw_uw_result value = flag:unanswered }
+        }
+        rw_uw_reconsider_effect = { ANSWER = unanswered }
     }
 }

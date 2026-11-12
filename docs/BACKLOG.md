@@ -1,5 +1,15 @@
 # Development backlog
 
+**RW-004 peace-demand follow-up, 12 November.**
+[PEACE_DEMAND_REVIEW.md](PEACE_DEMAND_REVIEW.md) gives acknowledgement, refusal and
+unanswered requests one last discretionary authority decision. Exact roles/war,
+original total lifetime and one-request/one-review guards apply. Existing native
+and mediation permissions remain gated. Old pending records have a bounded migration.
+Eight new negative/positive source tests and extended delivered contracts. Experimental,
+not engine-tested. Baseline/result80/80+0/20, delta0. Next support rewards, promise
+opinion duration, financial scale and legitimacy/stress policy in the agreed five-day
+playable-candidate sequence.
+
 **Consequence balance review, 9 November — RW-004/RW-010.**
 [CONSEQUENCE_BALANCE_REVIEW.md](CONSEQUENCE_BALANCE_REVIEW.md) inventories 15 opinion
 definitions, 20 application sites, eight prestige effects and eleven gold transfers.

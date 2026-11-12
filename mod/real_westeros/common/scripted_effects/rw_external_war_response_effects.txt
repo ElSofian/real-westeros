@@ -82,6 +82,8 @@ rw_xw_create_effect = {
                 set_variable = { name = rw_xw_seen_on value = current_date }
                 set_variable = { name = rw_xw_state value = flag:pending }
                 set_variable = { name = rw_xw_window value = flag:yes days = 7 }
+                set_variable = { name = rw_xw_review_limit value = flag:yes days = 14 }
+                set_variable = { name = rw_xw_review_schema value = 1 }
                 if = {
                     limit = { exists = scope:rw_xw_target }
                     set_variable = { name = rw_xw_target value = scope:rw_xw_target }
@@ -123,7 +125,15 @@ rw_xw_disapprove_effect = {
 # Personal political demand. Each authority consumes only its own issuer turn.
 rw_xw_demand_effect = {
     if = {
-        limit = { rw_xw_turn_trigger = yes }
+        limit = { rw_xw_can_demand_trigger = yes }
+        # Legacy pending requests gain one bounded review lifetime on first use.
+        scope:rw_xw_record = {
+            if = {
+                limit = { NOT = { has_variable = rw_xw_review_schema } }
+                set_variable = { name = rw_xw_review_schema value = 1 }
+                set_variable = { name = rw_xw_review_limit value = flag:yes days = 7 }
+            }
+        }
         scope:rw_xw_record = {
             set_variable = { name = rw_xw_state value = flag:demanded }
             set_variable = { name = rw_xw_demanded_on value = current_date }
@@ -131,18 +141,28 @@ rw_xw_demand_effect = {
             set_variable = { name = rw_xw_answer_window value = flag:yes days = 7 }
         }
         scope:rw_xw_attacker = { trigger_event = { id = rw_external_war_response.0002 } }
+        trigger_event = { id = rw_external_war_response.0003 days = 8 }
     }
 }
 # Acknowledging receipt makes no promise or legal admission.
 rw_xw_acknowledge_effect = {
     if = {
         limit = { rw_xw_answer_turn_trigger = yes }
+        # Legacy pending requests gain one bounded review lifetime on first use.
+        scope:rw_xw_record = {
+            if = {
+                limit = { NOT = { has_variable = rw_xw_review_schema } }
+                set_variable = { name = rw_xw_review_schema value = 1 }
+                set_variable = { name = rw_xw_review_limit value = flag:yes days = 7 }
+            }
+        }
         scope:rw_xw_record = {
             set_variable = { name = rw_xw_state value = flag:closed }
             set_variable = { name = rw_xw_result value = flag:acknowledged }
             set_variable = { name = rw_xw_answered_on value = current_date }
             remove_variable = rw_xw_answer_window
         }
+        rw_xw_reconsider_effect = { ANSWER = acknowledged }
         scope:rw_xw_ruler = {
             send_interface_message = { type = event_generic_neutral title = rw_xw.answer_title desc = rw_xw.acknowledged_notice }
         }
@@ -151,12 +171,21 @@ rw_xw_acknowledge_effect = {
 rw_xw_refuse_effect = {
     if = {
         limit = { rw_xw_answer_turn_trigger = yes }
+        # Legacy pending requests gain one bounded review lifetime on first use.
+        scope:rw_xw_record = {
+            if = {
+                limit = { NOT = { has_variable = rw_xw_review_schema } }
+                set_variable = { name = rw_xw_review_schema value = 1 }
+                set_variable = { name = rw_xw_review_limit value = flag:yes days = 7 }
+            }
+        }
         scope:rw_xw_record = {
             set_variable = { name = rw_xw_state value = flag:closed }
             set_variable = { name = rw_xw_result value = flag:refused }
             set_variable = { name = rw_xw_answered_on value = current_date }
             remove_variable = rw_xw_answer_window
         }
+        rw_xw_reconsider_effect = { ANSWER = refused }
         scope:rw_xw_ruler = {
             if = {
                 limit = { scope:rw_xw_record = { var:rw_xw_role = flag:declaring_liege } }
@@ -167,5 +196,38 @@ rw_xw_refuse_effect = {
             }
             send_interface_message = { type = event_generic_neutral title = rw_xw.answer_title desc = rw_xw.refused_notice }
         }
+    }
+}
+
+# Answer metadata survives the final authority choice. No native action is automatic.
+rw_xw_reconsider_effect = {
+    if = {
+        limit = { rw_xw_can_reconsider_trigger = yes }
+        scope:rw_xw_record = {
+            set_variable = { name = rw_xw_reviewed_on value = current_date }
+            set_variable = { name = rw_xw_answer value = flag:$ANSWER$ }
+            set_variable = { name = rw_xw_state value = flag:pending }
+            set_variable = { name = rw_xw_window value = flag:yes days = 7 }
+        }
+        scope:rw_xw_ruler = { trigger_event = { id = rw_external_war_response.0001 days = 1 } }
+    }
+}
+rw_xw_unanswered_effect = {
+    if = {
+        limit = {
+            rw_xw_identity_trigger = yes
+            this = scope:rw_xw_ruler
+            scope:rw_xw_record = {
+                has_variable = rw_xw_review_limit
+                has_variable = rw_xw_demanded_on
+                var:rw_xw_state = flag:demanded
+                NOT = { has_variable = rw_xw_answer_window }
+            }
+        }
+        scope:rw_xw_record = {
+            set_variable = { name = rw_xw_state value = flag:closed }
+            set_variable = { name = rw_xw_result value = flag:unanswered }
+        }
+        rw_xw_reconsider_effect = { ANSWER = unanswered }
     }
 }

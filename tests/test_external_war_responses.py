@@ -4,7 +4,7 @@ import unittest
 
 from tools import build_g1_native_choice as builder
 from tools.validate_mod import clean_script
-from test_g1_royal_response import block
+from test_g1_royal_response import block, reconsideration_errors
 
 FILES = {
     'triggers': 'common/scripted_triggers/rw_external_war_response_triggers.txt',
@@ -94,6 +94,7 @@ def routing_errors(sources):
          ('rw_xw_identity_trigger = yes', 'this = scope:rw_xw_ruler',
           'var:rw_xw_state = flag:pending', 'has_variable = rw_xw_window'), 'stale or foreign turn')
     errors.extend(demand_errors(sources))
+    errors.extend(reconsideration_errors(triggers, effects, "xw"))
     for name in ('rw_xw_ignore_effect', 'rw_xw_disapprove_effect'):
         choice = block(effects, name)
         need(choice, ('rw_xw_turn_trigger = yes', 'name = rw_xw_state value = flag:closed',
@@ -127,7 +128,7 @@ def demand_errors(sources):
                   'var:rw_xw_state = flag:demanded', 'has_variable = rw_xw_demanded_on',
                   'has_variable = rw_xw_answer_window'), 'invalid external answer turn')
     demand = block(sources['effects'], 'rw_xw_demand_effect')
-    need(demand, ('rw_xw_turn_trigger = yes', 'name = rw_xw_state value = flag:demanded',
+    need(demand, ('rw_xw_can_demand_trigger = yes', 'name = rw_xw_state value = flag:demanded',
                   'name = rw_xw_demanded_on value = current_date', 'remove_variable = rw_xw_window',
                   'name = rw_xw_answer_window value = flag:yes days = 7',
                   'scope:rw_xw_attacker = { trigger_event = { id = rw_external_war_response.0002 } }'),
@@ -238,7 +239,8 @@ class ExternalWarResponseTests(unittest.TestCase):
 
     def test_same_guard_for_human_ai_and_role_specific_text(self):
         events = self.sources['events']
-        self.assertEqual(5, events.count('rw_xw_turn_trigger = yes'))
+        self.assertEqual(4, events.count('rw_xw_turn_trigger = yes'))
+        self.assertIn('trigger = { rw_xw_can_demand_trigger = yes }', events)
         self.assertIn('flag:declaring_liege', events)
         self.assertIn('desc = rw_xw.target_desc', events)
         for lang in ('english', 'french'):

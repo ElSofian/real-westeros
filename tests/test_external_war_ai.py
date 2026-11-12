@@ -25,16 +25,16 @@ BINDINGS = (
     (MEDIATION, 'rw_xm.note_existing', 'rw_ai_xm_existing_weight', 'rw_xm_turn_trigger', 100),
 )
 ACTION_DIGESTS = {
-    RESPONSE: 'ebe39c24edf1ca939fb58ee1268e2076a1c19a05704b7681eecf8697b2786c5b',
+    RESPONSE: 'afcca6381934163542c831e730ca5e19d3081dd4bcd35393c9124de6b1027158',
     MEDIATION: '342b2c7ae440cf83516ba3eb93fbd74fd307496479f66cd1f9d3915ffa5ca7fe',
 }
 UNCHANGED = {
     'common/scripted_effects/rw_external_war_intervention_effects.txt': '7398b6162273edb1051d2e6e624ca98a5524e7e6908eb5fa4ecd6ef2be67b1c7',
     'common/scripted_effects/rw_external_war_mediation_effects.txt': '3497619872c765119c72902481b6c9df406d23b0326c46047d849398636acd75',
-    'common/scripted_effects/rw_external_war_response_effects.txt': '8b09f035557399529dfc679d281f737fc8b1783f93d043abfd32f6c3bf80d7b1',
+    'common/scripted_effects/rw_external_war_response_effects.txt': '2bcd7e24895bc7c228531029a9588f25e9d0f9e04edac988feea36438230111d',
     'common/scripted_triggers/rw_external_war_intervention_triggers.txt': '22db9a19ea2dcf7cb28b4c8c2ae2c527ef0ecc1cebaea523cdf60151e57dd4c7',
     'common/scripted_triggers/rw_external_war_mediation_triggers.txt': '24f9df8293f093ba367fe226698c26f8566df09ce59fdaf82269b9c75542c47d',
-    'common/scripted_triggers/rw_external_war_response_triggers.txt': '1960ed62bf9f7873c928fb9a32a0cf585530385c517e7bb539e36086e9af6ae3',
+    'common/scripted_triggers/rw_external_war_response_triggers.txt': '61b622421a1b4976d5cfaa3e0cb56e773a3415c5a924717673fbda4d0510bd17',
     'common/story_cycles/rw_external_war_responses.txt': '9a138b1fdb4526e372095535543dd9cbd943b853de1a6e079257fbf524956b5d',
 }
 AXES = {'resolve': 'boldness', 'caution': 'boldness', 'honor': 'honor',
@@ -148,7 +148,7 @@ class ExternalWarAiTests(unittest.TestCase):
         events[MEDIATION] = events[MEDIATION].replace('add = rw_ai_xm_accept_weight', 'add = 30')
         self.assertIn('unwired rw_ai_xm_accept_weight', policy_errors(self.values, events))
 
-    def test_all_actions_guards_effects_windows_and_native_dispatch_are_unchanged(self):
+    def test_review_baseline_preserves_other_actions_and_native_dispatch(self):
         for file, expected in ACTION_DIGESTS.items():
             with self.subTest(event=file):
                 self.assertEqual(expected, action_digest(self.events[file]))

@@ -14,9 +14,23 @@ STORY = 'common/story_cycles/rw_unlawful_war_responses.txt'
 EVENT = 'events/rw_unlawful_war_response_events.txt'
 
 
-def block(text,name):
-    a,_,b=builder.bounds(text,name)
-    return clean_script(text[a:b])[0]
+def definition_bounds(text, name):
+    clean = clean_script(text)[0]
+    match = re.search(r'^'+re.escape(name)+r'\s*=\s*\{', clean, re.MULTILINE)
+    if match is None:
+        return builder.bounds(text, name)
+    opening = clean.index('{', match.start())
+    depth = 1
+    for end in range(opening + 1, len(clean)):
+        depth += (clean[end] == '{') - (clean[end] == '}')
+        if depth == 0:
+            return match.start(), opening, end + 1
+    raise ValueError('Unclosed definition '+name)
+
+
+def block(text, name):
+    start, _, end = definition_bounds(text, name)
+    return clean_script(text[start:end])[0]
 
 
 def contract_errors(t,e,s):
@@ -51,13 +65,18 @@ def contract_errors(t,e,s):
                               ('acknowledge','answer','acknowledged'),('refuse','answer','refused')]:
         current=block(e,'rw_uw_'+name+'_effect')
         require(current,('limit = { rw_uw_'+guard+'_turn_trigger = yes }',
-            'name = rw_uw_state value = flag:closed','name = rw_uw_result value = flag:'+result,
-            'remove_variable = rw_uw_live'),'consumed action')
+            'name = rw_uw_state value = flag:closed','name = rw_uw_result value = flag:'+result),'consumed action')
+        if guard == 'issuer':
+            require(current, ('remove_variable = rw_uw_live',), 'closed issuer lifetime')
+        else:
+            require(current, ('remove_variable = rw_uw_answer_window', 'rw_uw_reconsider_effect = { ANSWER = '+result+' }'), 'consumed answer and review')
+            if 'remove_variable = rw_uw_live' in current:
+                errors.append('answer discards original review lifetime')
         for operation in ('add_opinion =','send_interface_message ='):
             if operation in current and ('flag:closed' not in current or current.index(operation)<current.index('flag:closed')):
                 errors.append('effect before consumption')
     demand=block(e,'rw_uw_demand_effect')
-    require(demand,('limit = { rw_uw_issuer_turn_trigger = yes }',
+    require(demand,('limit = { rw_uw_can_demand_trigger = yes }',
         'name = rw_uw_state value = flag:demanded','name = rw_uw_answer_window value = flag:yes days = 7',
         'remove_variable = rw_uw_issuer_window'),'bounded demand')
     if 'name = rw_uw_live' in demand: errors.append('renewed total deadline')
@@ -65,6 +84,56 @@ def contract_errors(t,e,s):
         'flag:timed_out','NOT = { has_variable = rw_uw_live }'),'inert retention and cleanup')
     forbidden=r'\b(start_war|end_war|run_interaction|add_claim|add_trait|remove_trait|imprison|execute|change_title_holder|add_gold|add_prestige|add_realm_law|remove_realm_law|use_hook|every_living_character|every_in_global_list|make_story_owner|add_imprisonment_reason)\s*='
     if re.search(forbidden,clean_script(t+e+s)[0]): errors.append('native state/rights mutated')
+    errors.extend(reconsideration_errors(t, e, 'uw'))
+    return errors
+
+
+def reconsideration_errors(triggers, effects, prefix):
+    errors = []
+    issuer = 'issuer' if prefix == 'uw' else 'ruler'
+    turn = 'rw_uw_issuer_turn_trigger' if prefix == 'uw' else 'rw_xw_turn_trigger'
+    identity = 'rw_uw_response_identity_trigger' if prefix == 'uw' else 'rw_xw_identity_trigger'
+    lifetime = 'rw_uw_live' if prefix == 'uw' else 'rw_xw_review_limit'
+    demand = block(triggers, 'rw_'+prefix+'_can_demand_trigger')
+    for token in (turn+' = yes', 'NOT = { has_variable = rw_'+prefix+'_demanded_on }',
+                  'NOT = { has_variable = rw_'+prefix+'_reviewed_on }'):
+        if token not in demand:
+            errors.append('repeat demand allowed')
+    guard = block(triggers, 'rw_'+prefix+'_can_reconsider_trigger')
+    for token in (identity+' = yes', 'this = scope:rw_'+prefix+'_'+issuer,
+                  'this = scope:rw_'+prefix+'_attacker', 'has_variable = '+lifetime,
+                  'NOT = { has_variable = rw_'+prefix+'_reviewed_on }',
+                  'var:rw_'+prefix+'_state = flag:closed'):
+        if token not in guard:
+            errors.append('unbound or repeated review')
+    review = block(effects, 'rw_'+prefix+'_reconsider_effect')
+    for token in ('rw_'+prefix+'_can_reconsider_trigger = yes',
+                  'name = rw_'+prefix+'_reviewed_on value = current_date',
+                  'name = rw_'+prefix+'_answer value = flag:$ANSWER$',
+                  'name = rw_'+prefix+'_state value = flag:pending',
+                  'days = 1'):
+        if token not in review:
+            errors.append('missing consumed review')
+    if 'name = '+lifetime in review:
+        errors.append('review renews original total lifetime')
+    if review.index('trigger_event =') < review.index('name = rw_'+prefix+'_reviewed_on'):
+        errors.append('review notified before consumption')
+    for choice, answer in (('acknowledge','acknowledged'),('refuse','refused')):
+        body = block(effects, 'rw_'+prefix+'_'+choice+'_effect')
+        call = 'rw_'+prefix+'_reconsider_effect = { ANSWER = '+answer+' }'
+        if body.count(call) != 1:
+            errors.append('answer bypasses review')
+        elif body.index(call) < body.index('remove_variable = rw_'+prefix+'_answer_window'):
+            errors.append('answer reviewed before consumption')
+    unanswered = block(effects, 'rw_'+prefix+'_unanswered_effect')
+    for token in (identity+' = yes', 'this = scope:rw_'+prefix+'_'+issuer,
+                  'has_variable = '+lifetime, 'var:rw_'+prefix+'_state = flag:demanded',
+                  'NOT = { has_variable = rw_'+prefix+'_answer_window }',
+                  'rw_'+prefix+'_reconsider_effect = { ANSWER = unanswered }'):
+        if token not in unanswered:
+            errors.append('stale or early silence review')
+    if re.search(r'\b(run_interaction|end_war|start_war|add_opinion|add_prestige|add_gold|create_story)\s*=',review+unanswered):
+        errors.append('review executes a consequence automatically')
     return errors
 
 

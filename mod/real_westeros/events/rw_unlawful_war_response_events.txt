@@ -4,6 +4,7 @@ rw_unlawful_war_response.0001 = {
     title = rw_uw.royal_title
     desc = {
         desc = rw_uw.royal_desc
+        triggered_desc = { trigger = { scope:rw_uw_record = { has_variable = rw_uw_reviewed_on } } desc = rw_uw.review_desc }
         triggered_desc = {
             trigger = { rw_dl_link_view_trigger = yes scope:rw_uw_record.var:rw_dl_link = { var:rw_dl_gate = flag:permission_required } }
             desc = rw_dl.permission_required
@@ -39,7 +40,7 @@ rw_unlawful_war_response.0001 = {
     }
     option = {
         name = rw_uw.demand
-        trigger = { rw_uw_issuer_turn_trigger = yes }
+        trigger = { rw_uw_can_demand_trigger = yes }
         custom_tooltip = rw_uw.demand_effect
         rw_uw_demand_effect = yes
         ai_chance = { base = 0 modifier = { add = rw_ai_uw_demand_weight always = yes } }
@@ -75,4 +76,11 @@ rw_unlawful_war_response.0002 = {
         ai_chance = { base = 0 modifier = { add = rw_ai_uw_refuse_weight always = yes } }
     }
     option = { name = rw_uw.close trigger = { NOT = { rw_uw_answer_turn_trigger = yes } } }
+}
+
+# A single deadline callback. Late/obsolete callbacks have no effect.
+rw_unlawful_war_response.0003 = {
+    type = character_event
+    hidden = yes
+    immediate = { rw_uw_unanswered_effect = yes }
 }

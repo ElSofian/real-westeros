@@ -177,6 +177,7 @@ rw_xw_turn_trigger = {
     scope:rw_xw_record = {
         var:rw_xw_state = flag:pending
         has_variable = rw_xw_window
+        trigger_if = { limit = { has_variable = rw_xw_demanded_on } has_variable = rw_xw_review_limit }
     }
 }
 rw_xw_answer_turn_trigger = {
@@ -186,5 +187,22 @@ rw_xw_answer_turn_trigger = {
         var:rw_xw_state = flag:demanded
         has_variable = rw_xw_demanded_on
         has_variable = rw_xw_answer_window
+    }
+}
+
+# One request per exact personal receipt; re-opening never renews its total life.
+rw_xw_can_demand_trigger = {
+    rw_xw_turn_trigger = yes
+    scope:rw_xw_record = { NOT = { has_variable = rw_xw_demanded_on } NOT = { has_variable = rw_xw_reviewed_on } }
+}
+rw_xw_can_reconsider_trigger = {
+    rw_xw_identity_trigger = yes
+    OR = { this = scope:rw_xw_ruler this = scope:rw_xw_attacker }
+    scope:rw_xw_record = {
+        has_variable = rw_xw_review_limit
+        has_variable = rw_xw_demanded_on
+        NOT = { has_variable = rw_xw_reviewed_on }
+        var:rw_xw_state = flag:closed
+        OR = { var:rw_xw_result = flag:acknowledged var:rw_xw_result = flag:refused var:rw_xw_result = flag:unanswered }
     }
 }
