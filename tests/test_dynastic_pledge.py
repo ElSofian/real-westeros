@@ -61,7 +61,7 @@ def pledge_errors(t,e,s,v,i):
               'NOT = { var:rw_dp_payee_recognized = scope:rw_dp_payee }'):
         if g not in recognize:out.append('personal recognition can replay or target another role')
     paygate=block(t,'rw_dp_can_pay_trigger')
-    for g in ('rw_dp_active_trigger = yes','this = scope:rw_dp_payer','gold >= 50',
+    for g in ('rw_dp_active_trigger = yes','this = scope:rw_dp_payer','gold >= scope:rw_dp_record.var:rw_dp_amount',
               'var:rw_dp_original_payer = { is_alive = no }',
               'NOT = { var:rw_dp_original_payer = scope:rw_dp_payer }',
               'var:rw_dp_payer_recognized = scope:rw_dp_payer',
@@ -73,7 +73,7 @@ def pledge_errors(t,e,s,v,i):
     pay=block(e,'rw_dp_pay_effect')
     ordering=[pay.find(g) for g in ('limit = { rw_dp_can_pay_trigger = yes }','rw_dp_close_story_effect = { RESULT = paid }',
                                    'name = rw_dp_paid_by value = scope:rw_dp_payer','name = rw_dp_paid_to value = scope:rw_dp_payee',
-                                   'scope:rw_dp_payer = { remove_short_term_gold = 50 }','scope:rw_dp_payee = { add_gold = 50 }','rw_dp_notify_effect = yes')]
+                                   'scope:rw_dp_payer = { remove_short_term_gold = scope:rw_dp_record.var:rw_dp_amount }','scope:rw_dp_payee = { add_gold = scope:rw_dp_record.var:rw_dp_amount }','rw_dp_notify_effect = yes')]
     if min(ordering)<0 or ordering!=sorted(ordering):out.append('payment before consent consumption or wrong personal purse')
     close=block(e,'rw_dp_close_story_effect')
     for g in ('var:rw_dp_state = flag:offered var:rw_dp_state = flag:active',
@@ -150,7 +150,7 @@ class DynasticPledgeTests(unittest.TestCase):
             with self.subTest(guard=guard):self.assertIn('pending consent inherited',self.errors(t=self.t.replace(guard,'always = yes',1)))
 
     def test_new_heads_both_must_recognize_and_original_must_be_dead(self):
-        for guard in ('var:rw_dp_original_payer = { is_alive = no }','var:rw_dp_payer_recognized = scope:rw_dp_payer','var:rw_dp_payee_recognized = scope:rw_dp_payee','gold >= 50'):
+        for guard in ('var:rw_dp_original_payer = { is_alive = no }','var:rw_dp_payer_recognized = scope:rw_dp_payer','var:rw_dp_payee_recognized = scope:rw_dp_payee','gold >= scope:rw_dp_record.var:rw_dp_amount'):
             with self.subTest(guard=guard):self.assertIn('death funds or explicit successor consent bypassed',self.errors(t=self.t.replace(guard,'always = yes')))
 
     def test_current_house_heads_and_membership_revalidated(self):
@@ -162,7 +162,7 @@ class DynasticPledgeTests(unittest.TestCase):
             with self.subTest(method=method):self.assertIn('direct effect bypass',self.errors(e=self.e.replace('limit = { rw_dp_can_'+method+'_trigger = yes }','limit = { always = yes }',1)))
 
     def test_payment_consumes_once_and_uses_only_actual_personal_purses(self):
-        for change in (self.e.replace('rw_dp_close_story_effect = { RESULT = paid }',''),self.e.replace('scope:rw_dp_payer = { remove_short_term_gold = 50 }','scope:rw_dp_original_payer = { remove_short_term_gold = 50 }'),self.e.replace('scope:rw_dp_payee = { add_gold = 50 }','scope:rw_dp_original_payee = { add_gold = 50 }')):
+        for change in (self.e.replace('rw_dp_close_story_effect = { RESULT = paid }',''),self.e.replace('scope:rw_dp_payer = { remove_short_term_gold = scope:rw_dp_record.var:rw_dp_amount }','scope:rw_dp_original_payer = { remove_short_term_gold = scope:rw_dp_record.var:rw_dp_amount }'),self.e.replace('scope:rw_dp_payee = { add_gold = scope:rw_dp_record.var:rw_dp_amount }','scope:rw_dp_original_payee = { add_gold = scope:rw_dp_record.var:rw_dp_amount }')):
             self.assertIn('payment before consent consumption or wrong personal purse',self.errors(e=change))
 
     def test_recognition_and_reads_never_reset_accepted_deadline(self):
@@ -171,7 +171,7 @@ class DynasticPledgeTests(unittest.TestCase):
 
     def test_owner_death_excludes_departed_even_before_native_flags_settle(self):
         self.assertIn('owner death loses explicit custodian exclusion',self.errors(t=self.t.replace('NOT = { this = scope:rw_dp_departed }','always = yes')))
-        self.assertIn('storage or maintenance inherits consent or pays automatically',self.errors(e=self.e.replace('rw_dp_owner_died_effect = {','rw_dp_owner_died_effect = { remove_short_term_gold = 50',1)))
+        self.assertIn('storage or maintenance inherits consent or pays automatically',self.errors(e=self.e.replace('rw_dp_owner_died_effect = {','rw_dp_owner_died_effect = { remove_short_term_gold = scope:rw_dp_record.var:rw_dp_amount',1)))
 
     def test_free_exits_do_not_require_healthy_or_consented_counterpart(self):
         self.assertIn('free exit blocked by counterpart eligibility',self.errors(t=self.t.replace('rw_dp_can_renounce_trigger = {','rw_dp_can_renounce_trigger = { rw_dp_roles_trigger = yes',1)))
@@ -196,7 +196,7 @@ class DynasticPledgeTests(unittest.TestCase):
         keys.update(('rw_offer_dynastic_endowment_interaction','rw_review_dynastic_endowments_interaction'))
         for lang in ('english','french'):
             p=MOD/f'localization/{lang}/rw_dynastic_pledge_l_{lang}.yml';self.assertTrue(p.read_bytes().startswith(b'\xef\xbb\xbf'))
-            text=p.read_text(encoding='utf-8-sig');self.assertEqual(keys,set(re.findall(r'^\s+([\w.]+):0',text,re.M)))
+            text=p.read_text(encoding='utf-8-sig')+(MOD/f'localization/{lang}/rw_institutional_payments_l_{lang}.yml').read_text(encoding='utf-8-sig');self.assertEqual(keys,set(re.findall(r'^\s+([\w.]+):0',text,re.M)))
             self.assertIn('[rw_dp_paid_payer.GetTitledFirstName]',text);self.assertIn('[rw_dp_original_payer.GetTitledFirstName]',text)
         for method in ('accept','decline','recognize','pay','renounce','release'):
             self.assertIn('trigger = { rw_dp_can_'+method+'_trigger = yes }',self.v)

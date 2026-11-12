@@ -1,5 +1,13 @@
 # Revue des valeurs et conséquences
 
+## Contributions institutionnelles, 12 novembre 2026
+
+B4 reçoit un [barème de contribution](INSTITUTIONAL_CONTRIBUTIONS.md) fixé selon
+le payeur initial. Les nouveaux montants institutionnels sont50/100/200/400or et
+les contrats déjà proposés gardent leur somme. Leurs transferts utilisent le
+montant validé et consenti. Validation en jeu dans la campagne groupée.80/80+0/20,
+delta réel+0.
+
 ## Correction du soutien et des promesses, 12 novembre 2026
 
 B2/B3 reçoivent le [barème partagé](SUPPORT_REWARD_BALANCE.md). Le prestige dépend

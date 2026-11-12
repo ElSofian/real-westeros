@@ -128,8 +128,9 @@ class ClientResponseAITests(unittest.TestCase):
         self.assertEqual(2, len(updates))
         for row in updates:
             raw = (ROOT/row['path']).read_bytes()
-            balance_updates = [change for change in json.loads((ROOT/'docs/GOLD_DEBIT_SOURCE_RECEIPT.json').read_text())['subsequent_updates']
-                               if change.get('reason') == 'Owner-authorized common support reward and comparable promise resentment.']
+            all_updates = json.loads((ROOT/'docs/GOLD_DEBIT_SOURCE_RECEIPT.json').read_text())['subsequent_updates']
+            last_capacity = max(i for i,change in enumerate(all_updates) if change.get('reason') == 'RW-010 client breach capacity snapshot')
+            balance_updates = all_updates[last_capacity+1:]
             raw = restore_later_updates(raw, row['path'], balance_updates)
             restored = restore_later_updates(raw, row['path'], updates)
             self.assertEqual(row['before_sha256'], hashlib.sha256(restored).hexdigest())

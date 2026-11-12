@@ -1,0 +1,5 @@
+﻿l_french:
+ rw_institutional.amount_50:0 "Contribution convenue de 50 pièces d’or."
+ rw_institutional.amount_100:0 "Contribution convenue de 100 pièces d’or."
+ rw_institutional.amount_200:0 "Contribution convenue de 200 pièces d’or."
+ rw_institutional.amount_400:0 "Contribution convenue de 400 pièces d’or."

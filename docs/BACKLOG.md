@@ -1,5 +1,14 @@
 # Development backlog
 
+**RW-010 institutional contribution scale, 12 November.**
+[INSTITUTIONAL_CONTRIBUTIONS.md](INSTITUTIONAL_CONTRIBUTIONS.md) fixes new financial
+rehabilitation and legacy-endowment offers at50/100/200/400gold from the original
+payer's CK3 rank. Stored amount drives affordability and both transfer legs.
+Original50gold offers remain supported, later rank/representative changes preserve
+the accepted amount. Exact positive enum, explicit consent and consume-before-pay
+guards apply. Eight added negative/positive tests and recorded reversible debit
+updates. Experimental, not engine-tested.80/80+0/20, delta0. Next B5 legitimacy/stress.
+
 **RW-010 support reward and promise balance, 12 November.**
 [SUPPORT_REWARD_BALANCE.md](SUPPORT_REWARD_BALANCE.md) replaces five flat+50 payouts
 with one provider-rank reward10/20/35/50 and pair-bound+5 opinion for one year.

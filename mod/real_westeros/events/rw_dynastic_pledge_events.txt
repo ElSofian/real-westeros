@@ -9,6 +9,10 @@ rw_dynastic_pledges.0001 = {
                 trigger = { rw_dp_view_trigger = yes }
                 desc = {
                     desc = rw_dynastic_pledge.history
+                    triggered_desc = { trigger = { scope:rw_dp_record = { var:rw_dp_amount = 50 } } desc = rw_institutional.amount_50 }
+                    triggered_desc = { trigger = { scope:rw_dp_record = { var:rw_dp_amount = 100 } } desc = rw_institutional.amount_100 }
+                    triggered_desc = { trigger = { scope:rw_dp_record = { var:rw_dp_amount = 200 } } desc = rw_institutional.amount_200 }
+                    triggered_desc = { trigger = { scope:rw_dp_record = { var:rw_dp_amount = 400 } } desc = rw_institutional.amount_400 }
                     first_valid = {
                         triggered_desc = { trigger = { scope:rw_dp_record = { var:rw_dp_state = flag:offered has_variable = rw_dp_offer_window } } desc = rw_dynastic_pledge.offered }
                         triggered_desc = { trigger = { scope:rw_dp_record = { var:rw_dp_state = flag:active has_variable = rw_dp_due } } desc = rw_dynastic_pledge.active }

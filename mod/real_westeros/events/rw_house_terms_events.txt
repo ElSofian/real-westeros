@@ -9,7 +9,11 @@ rw_house_terms.0001 = {
                 trigger = { rw_house_terms_turn_trigger = yes }
                 desc = {
                     desc = rw_house_terms.conditions
-                    triggered_desc = { trigger = { gold < 50 } desc = rw_house_terms.unaffordable }
+                    triggered_desc = { trigger = { scope:rw_house_record = { var:rw_house_terms_price = 50 } } desc = rw_institutional.amount_50 }
+                    triggered_desc = { trigger = { scope:rw_house_record = { var:rw_house_terms_price = 100 } } desc = rw_institutional.amount_100 }
+                    triggered_desc = { trigger = { scope:rw_house_record = { var:rw_house_terms_price = 200 } } desc = rw_institutional.amount_200 }
+                    triggered_desc = { trigger = { scope:rw_house_record = { var:rw_house_terms_price = 400 } } desc = rw_institutional.amount_400 }
+                    triggered_desc = { trigger = { gold < scope:rw_house_record.var:rw_house_terms_price } desc = rw_house_terms.unaffordable }
                 }
             }
             desc = rw_house_affairs.unavailable

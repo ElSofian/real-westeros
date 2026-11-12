@@ -1,5 +1,14 @@
 # Progress
 
+- RW-010 institutional financial scale, 12 November. Freeze payer-rank contribution
+  when offering rehabilitation/legacy endowment. Display one of50/100/200/400gold
+  before consent. Check stored amount at payment and use it for debit/credit after
+  consumption. Support historical50gold records and voluntary successor consent.
+  Eight new positive/negative tests, updated source contracts and historical inverse
+  proofs. Static/CI/assembly evidence in PR. Experimental, not engine-tested.
+  Baseline/result80/80 source+0/20 campaign, actual delta0. Next explicit native
+  legitimacy and trait-based stress for the original political choices.
+
 - RW-010 support reward and promise balance, 12 November. Shared rank-based prestige
   and one-year pair marker replace all five flat payouts. Add+5 personal opinion
   with that marker. Consume marker before prestige. Keep existing contract/replay
