@@ -87,7 +87,7 @@ def agreement_errors(t,e,ev):
         'remove_short_term_gold = scope:rw_ba_price','scope:rw_ba_payee = { add_gold = scope:rw_ba_price }','name = rw_ba_gold value = flag:done')]
     if min(seq)<0 or seq!=sorted(seq):errors.append('duplicate wrong-direction or unconsumed payment')
     support=block(e,'rw_ba_support_effect')
-    seq=[support.find(p) for p in ('name = rw_ba_support value = flag:attempted','scope:rw_ba_payee = { add_prestige = 50 }',
+    seq=[support.find(p) for p in ('name = rw_ba_support value = flag:attempted','rw_public_support_reward_effect = { PROVIDER = scope:rw_ba_payer CLIENT = scope:rw_ba_payee }',
         'rw_pm_public_support_effect = { PROVIDER = scope:rw_ba_payer CLIENT = scope:rw_ba_payee }','name = rw_ba_support value = flag:done')]
     if min(seq)<0 or seq!=sorted(seq):errors.append('support replay wrong recipient or memory before performance')
     release=block(e,'rw_ba_release_effect')

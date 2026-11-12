@@ -107,13 +107,15 @@ class GoldEffectTests(unittest.TestCase):
 
     def test_telemetry_baseline_changes_only_for_the_approved_debit(self):
         data=json.loads((ROOT/'docs/TELEMETRY_HOOKS.json').read_text())
-        update=data['gameplay_updates'][-1]
-        path=ROOT/update['file'];text=path.read_text()
+        update=next(row for row in data['gameplay_updates'] if row['date']=='2026-11-05')
+        path=ROOT/update['file']
+        receipt=json.loads((ROOT/'docs/GOLD_DEBIT_SOURCE_RECEIPT.json').read_text())
+        text=restore_later_updates(path.read_bytes(),update['file'],receipt.get('subsequent_updates',[])).decode()
         old=text.replace('remove_short_term_gold = scope:rw_ba_price',
                          'add_gold = { value = scope:rw_ba_price multiply = -1 }',1)
         self.assertEqual(update['before_sha256'],gameplay_digest(old))
         self.assertEqual(update['after_sha256'],gameplay_digest(text))
-        self.assertEqual(data['gameplay_sha256'][update['file']],gameplay_digest(text))
+        self.assertEqual(data['gameplay_sha256'][update['file']],gameplay_digest(path.read_text()))
         self.assertNotEqual(update['after_sha256'],gameplay_digest(text+'\nadd_gold = 25'))
 
 

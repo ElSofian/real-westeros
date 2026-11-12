@@ -1,8 +1,8 @@
 ﻿l_french:
  rw_multi_actions.title:0 "Un accord commun"
  rw_multi_actions.terms:0 "[rw_ba_payer.GetTitledFirstName] promet de l’or et un soutien public à [rw_ba_payee.GetTitledFirstName], qui promet en retour de libérer la charte concernant [rw_ba_title.GetNameNoTier]. Les trois clauses sont acceptées ensemble, mais chaque acte reste volontaire et est consigné séparément."
- rw_multi_actions.price25:0 "La somme promise est de 25 pièces d’or. Le soutien public apporte 50 points de prestige à son destinataire."
- rw_multi_actions.price50:0 "La somme promise est de 50 pièces d’or. Le soutien public apporte 50 points de prestige à son destinataire."
+ rw_multi_actions.price25:0 "La somme promise est de 25 pièces d’or. Le soutien public apporte un prestige adapté au rang du prestataire à son destinataire. Le bonus commun à ce prestataire et ce bénéficiaire se renouvelle après un an."
+ rw_multi_actions.price50:0 "La somme promise est de 50 pièces d’or. Le soutien public apporte un prestige adapté au rang du prestataire à son destinataire. Le bonus commun à ce prestataire et ce bénéficiaire se renouvelle après un an."
  rw_multi_actions.negotiating:0 "Cette proposition dure sept jours. L’acceptation engage les deux parties sur cet accord précis ; elle n’exécute aucune de ses actions."
  rw_multi_actions.declined:0 "Cette proposition est close. Aucun accord n’a été signé."
  rw_multi_actions.active:0 "Les parties disposent de trente jours à compter de l’acceptation pour accomplir leurs propres clauses, dans l’ordre de leur choix. Une promesse non tenue ne crée pas une infraction judiciaire."

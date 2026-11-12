@@ -145,7 +145,7 @@ rw_ba_support_effect = {
             set_variable = { name = rw_ba_support_revision value = scope:rw_ba_revision }
         }
         rw_tm_commit_effect = { FAMILY = bundle ACTION = support KEY = bundle_support CONTAINER = scope:rw_ba_record }
-        scope:rw_ba_payee = { add_prestige = 50 }
+        rw_public_support_reward_effect = { PROVIDER = scope:rw_ba_payer CLIENT = scope:rw_ba_payee }
         rw_pm_public_support_effect = { PROVIDER = scope:rw_ba_payer CLIENT = scope:rw_ba_payee }
         scope:rw_ba_record = { set_variable = { name = rw_ba_support value = flag:done } rw_ba_resolve_effect = yes }
         rw_ba_notify_effect = yes

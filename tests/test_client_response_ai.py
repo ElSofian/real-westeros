@@ -128,6 +128,9 @@ class ClientResponseAITests(unittest.TestCase):
         self.assertEqual(2, len(updates))
         for row in updates:
             raw = (ROOT/row['path']).read_bytes()
+            balance_updates = [change for change in json.loads((ROOT/'docs/GOLD_DEBIT_SOURCE_RECEIPT.json').read_text())['subsequent_updates']
+                               if change.get('reason') == 'Owner-authorized common support reward and comparable promise resentment.']
+            raw = restore_later_updates(raw, row['path'], balance_updates)
             restored = restore_later_updates(raw, row['path'], updates)
             self.assertEqual(row['before_sha256'], hashlib.sha256(restored).hexdigest())
             with self.assertRaises(ValueError):

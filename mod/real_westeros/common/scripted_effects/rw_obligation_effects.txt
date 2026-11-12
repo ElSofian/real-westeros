@@ -84,7 +84,7 @@ rw_service_fulfill_promise_effect = {
         rw_service_clear_effect = yes
         scope:rw_service_client = { remove_short_term_gold = scope:rw_service_price }
         scope:rw_service_provider = { add_gold = scope:rw_service_price }
-        scope:rw_service_client = { add_prestige = 50 }
+        rw_public_support_reward_effect = { PROVIDER = scope:rw_service_provider CLIENT = scope:rw_service_client }
         rw_pm_public_support_effect = { PROVIDER = scope:rw_service_provider CLIENT = scope:rw_service_client }
     }
 }
@@ -172,7 +172,10 @@ rw_service_resent_breach_effect = {
     if = {
         limit = { rw_service_breach_receipt_trigger = yes }
         scope:rw_service_provider = { set_variable = { name = rw_service_reacted_serial value = scope:rw_service_serial } }
-        add_opinion = { target = scope:rw_service_provider modifier = rw_broken_service_opinion }
+        if = {
+            limit = { NOT = { has_opinion_modifier = { target = scope:rw_service_provider modifier = rw_broken_service_opinion } } }
+            add_opinion = { target = scope:rw_service_provider modifier = rw_broken_service_opinion }
+        }
     }
 }
 rw_service_forgive_breach_effect = {

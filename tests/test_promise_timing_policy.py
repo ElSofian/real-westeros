@@ -109,7 +109,7 @@ class PromiseTimingPolicyTests(unittest.TestCase):
         }
         receipt = MOD.parents[1]/'docs/GOLD_DEBIT_SOURCE_RECEIPT.json'
         later_updates = [row for row in json.loads(receipt.read_text())['subsequent_updates']
-                         if row.get('reason') == 'RW-010 client breach capacity snapshot']
+                         if row.get('reason') in {'RW-010 client breach capacity snapshot', 'Owner-authorized common support reward and comparable promise resentment.'}]
         for filename, digest in expected.items():
             path = MOD/'common/scripted_effects'/filename
             relative = path.relative_to(MOD.parents[1]).as_posix()

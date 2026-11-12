@@ -198,6 +198,66 @@
       "after": "        # Before the due window, present inability cannot establish future capacity.\n        scope:rw_fv_provider = { set_variable = { name = rw_fr_capacity value = flag:unknown } }\n        if = {\n            limit = { rw_fd_due_trigger = yes }\n            scope:rw_fv_provider = { set_variable = { name = rw_fr_capacity value = flag:unavailable } }\n            if = {\n                limit = { rw_fd_can_perform_trigger = yes }\n                scope:rw_fv_provider = { set_variable = { name = rw_fr_capacity value = flag:available } }\n            }\n        }\n",
       "before_sha256": "1d51803d05d0b497f26b479910eb493b57719b604bfa37a029487f7c90b960c1",
       "after_sha256": "64c0bde6c31346b01727f1e4a71956c98fd5bfa66cdace6498813067bb78b337"
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_service_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "c867104e5c32311ffc93dcb808723589e2558372",
+      "before_sha256": "26d75e0743ccb3a2869fdebb9491e1999ff7d90a869d1b3cc6791f4cae38fbb7",
+      "after_sha256": "915a3f60b8a1a2f6d714af531429949ca22667dd6ad9bc14cc2bf9f6e1be216e",
+      "before": "scope:rw_service_client = { add_prestige = 50 }",
+      "after": "rw_public_support_reward_effect = { PROVIDER = scope:rw_service_provider CLIENT = scope:rw_service_client }",
+      "reason": "Owner-authorized common support reward and comparable promise resentment."
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_obligation_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "c867104e5c32311ffc93dcb808723589e2558372",
+      "before_sha256": "6b9b216603f50e5d1bb01401b4d4ea128b0287980173fdb40de71e7eccb3d226",
+      "after_sha256": "94b7c478cb38fae2a435593726db57c312f873a82f98fc3044a35ea6c60d2260",
+      "before": "scope:rw_service_client = { add_prestige = 50 }",
+      "after": "rw_public_support_reward_effect = { PROVIDER = scope:rw_service_provider CLIENT = scope:rw_service_client }",
+      "reason": "Owner-authorized common support reward and comparable promise resentment."
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_obligation_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "c867104e5c32311ffc93dcb808723589e2558372",
+      "before_sha256": "94b7c478cb38fae2a435593726db57c312f873a82f98fc3044a35ea6c60d2260",
+      "after_sha256": "e143c6605a319c4ad25c6eb2ee7ebf926c45ba6725c9f3cf954ed08f706d9751",
+      "before": "        add_opinion = { target = scope:rw_service_provider modifier = rw_broken_service_opinion }",
+      "after": "        if = {\n            limit = { NOT = { has_opinion_modifier = { target = scope:rw_service_provider modifier = rw_broken_service_opinion } } }\n            add_opinion = { target = scope:rw_service_provider modifier = rw_broken_service_opinion }\n        }",
+      "reason": "Owner-authorized common support reward and comparable promise resentment."
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_favor_service_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "c867104e5c32311ffc93dcb808723589e2558372",
+      "before_sha256": "a01cd695a0ab4edce680b6f79b5523e0d0aa16651088955f794528923c0bfed4",
+      "after_sha256": "7f8310c993a3056ab7404cdd66e003819e74e09eafc2d466ca1ff85723040f89",
+      "before": "scope:rw_fv_client = { add_prestige = 50 }",
+      "after": "rw_public_support_reward_effect = { PROVIDER = scope:rw_fv_provider CLIENT = scope:rw_fv_client }",
+      "reason": "Owner-authorized common support reward and comparable promise resentment."
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_deferred_favor_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "c867104e5c32311ffc93dcb808723589e2558372",
+      "before_sha256": "64c0bde6c31346b01727f1e4a71956c98fd5bfa66cdace6498813067bb78b337",
+      "after_sha256": "ee07815b4c27334ba6bd495311fed2ee4e76d90dcce72899a7be4e8297139165",
+      "before": "scope:rw_fv_client = { add_prestige = 50 }",
+      "after": "rw_public_support_reward_effect = { PROVIDER = scope:rw_fv_provider CLIENT = scope:rw_fv_client }",
+      "reason": "Owner-authorized common support reward and comparable promise resentment."
+    },
+    {
+      "path": "mod/real_westeros/common/scripted_effects/rw_multi_action_effects.txt",
+      "date": "2026-11-12",
+      "based_on_commit": "c867104e5c32311ffc93dcb808723589e2558372",
+      "before_sha256": "b19d4a8f032d180bb89836cacc233fefa8226bdda498e65bc5b6b2717ab01957",
+      "after_sha256": "627af9e98b13561ad6a72e39049163ed350ec0ad8ed573c98b97c84f38eb5c3d",
+      "before": "scope:rw_ba_payee = { add_prestige = 50 }",
+      "after": "rw_public_support_reward_effect = { PROVIDER = scope:rw_ba_payer CLIENT = scope:rw_ba_payee }",
+      "reason": "Owner-authorized common support reward and comparable promise resentment."
     }
   ]
 }

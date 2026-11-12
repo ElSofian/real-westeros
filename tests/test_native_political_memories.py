@@ -40,7 +40,7 @@ def memory_errors(helper,types,sources):
         effect=block(sources[filename],name)
         call='rw_pm_public_support_effect = { PROVIDER = scope:'+provider+' CLIENT = scope:'+client+' }'
         if sources[filename].count(call)!=1 or call not in effect:out.append('public performance call missing or elsewhere')
-        if effect.find(call)<effect.find('add_prestige = 50'):out.append('memory precedes actual performance')
+        if effect.find(call)<effect.find('rw_public_support_reward_effect ='):out.append('memory precedes actual performance')
     charter=sources['rw_restitution_charter_effects.txt']
     assume=block(charter,'rw_ch_assume_effect')
     if charter.count('rw_pm_crown_recognition_effect = yes')!=1 or 'rw_pm_crown_recognition_effect = yes' not in assume:

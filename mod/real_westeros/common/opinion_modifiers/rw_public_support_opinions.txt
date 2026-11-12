@@ -1,0 +1,6 @@
+rw_public_support_received_opinion = {
+    opinion = 5
+    years = 1
+    stacking = no
+    decaying = no
+}

@@ -50,11 +50,11 @@ def deferred_errors(t,e,fv,vt):
         out.append('performance bypasses current native eligibility or funds')
     body=block(e,'rw_fd_perform_effect')
     if 'limit = { rw_fd_can_perform_trigger = yes }' not in body:out.append('unguarded deferred performance')
-    points=[body.find(g) for g in ('rw_fd_finish_effect = { RESULT = fulfilled }','add_hook','add_prestige = 50','rw_fv_notify_effect = yes')]
+    points=[body.find(g) for g in ('rw_fd_finish_effect = { RESULT = fulfilled }','add_hook','rw_public_support_reward_effect =','rw_fv_notify_effect = yes')]
     if min(points)<0 or points!=sorted(points):out.append('native consideration before terminal consumption')
     for g in ('scope:rw_fv_provider = { add_hook = { type = favor_hook target = scope:rw_fv_client } }',
               'scope:rw_fv_client = { remove_short_term_gold = 25 }','scope:rw_fv_provider = { add_gold = 25 }',
-              'scope:rw_fv_client = { add_prestige = 50 }'):
+              'rw_public_support_reward_effect = { PROVIDER = scope:rw_fv_provider CLIENT = scope:rw_fv_client }'):
         if g not in body:out.append('wrong native consideration or beneficiary')
     finish=block(e,'rw_fd_finish_effect')
     for g in ('limit = { rw_fd_owner_matches_trigger = yes }','remove_character_flag = rw_fv_obligation',
@@ -171,7 +171,7 @@ class DeferredFavorTests(unittest.TestCase):
         self.assertIn('native consideration before terminal consumption',self.errors(e=self.e.replace('rw_fd_finish_effect = { RESULT = fulfilled }','')))
         for g in ('scope:rw_fv_provider = { add_hook = { type = favor_hook target = scope:rw_fv_client } }',
                   'scope:rw_fv_client = { remove_short_term_gold = 25 }','scope:rw_fv_provider = { add_gold = 25 }',
-                  'scope:rw_fv_client = { add_prestige = 50 }'):
+                  'rw_public_support_reward_effect = { PROVIDER = scope:rw_fv_provider CLIENT = scope:rw_fv_client }'):
             self.assertIn('wrong native consideration or beneficiary',self.errors(e=self.e.replace(g,'removed_part')))
         perform=block(self.e,'rw_fd_perform_effect')
         self.assertIn('limit = { scope:rw_fv_term = flag:favor }',perform)
